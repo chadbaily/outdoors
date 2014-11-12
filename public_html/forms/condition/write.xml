@@ -1,0 +1,72 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        data-type="regexp"
+        expression="/^[a-z]+$/"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+    <element
+        required="1"
+        name="rank"
+        data-type="integer"
+        element-id="rank" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required and must contain only lowercase letters and
+    underscores.
+    </td>
+  </tr>
+  <tr>
+    <td>Title (lowercase letters and underscores)</td>
+    <td>
+      <input type="text" name="title" id="title" style="width:400px" maxlength="100"/>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="rank-error">
+    <td colspan="2" class="error">
+    This field is required and must be an integer.
+    </td>
+  </tr>
+  <tr>
+    <td>Rank</td>
+    <td>
+      <input type="text" name="rank" id="rank" style="width:400px" maxlength="255"/>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input type="text" name="description" id="description" style="width:400px" maxlength="255"/>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,35 @@
+/calendar.sql/1.3/Tue Aug  2 03:10:18 2005//
+/generic-select.sql/1.1.1.1/Sun Mar 27 19:52:53 2005//
+D/absence////
+D/address////
+D/adventure////
+D/attendee////
+D/chat////
+D/checkout////
+D/checkout_gear////
+D/checkout_item////
+D/classified_ad////
+D/decision////
+D/email////
+D/email_list////
+D/expense////
+D/expense_report////
+D/expense_submission////
+D/group////
+D/interest////
+D/item////
+D/item_feature////
+D/item_note////
+D/item_type////
+D/location////
+D/member////
+D/member_note////
+D/membership////
+D/membership_type////
+D/misc////
+D/phone_number////
+D/privilege////
+D/question////
+D/subscription////
+D/transaction////
+D/application////

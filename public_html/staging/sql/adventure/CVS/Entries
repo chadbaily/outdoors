@@ -1,0 +1,22 @@
+/comment-select-for-read.sql/1.1.1.1/Sun Mar 27 19:52:56 2005//
+/leaders.sql/1.3/Tue Aug  2 03:10:19 2005//
+/list_all-inactive.sql/1.3/Tue Aug  2 03:10:19 2005//
+/list_all-joined.sql/1.2/Sun Jun  5 18:10:36 2005//
+/list_all-owned.sql/1.1.1.1/Sun Mar 27 19:52:56 2005//
+/list_all-past.sql/1.3/Tue Aug  2 03:10:19 2005//
+/list_all-upcoming.sql/1.3/Tue Aug  2 03:10:19 2005//
+/list_all.sql/1.4/Wed Aug 31 00:43:37 2005//
+/read.sql/1.3/Wed Mar  5 00:07:02 2008//
+/report-attendee.sql/1.2/Sun Jun  5 18:10:36 2005//
+/select-activities.sql/1.1/Tue Aug  2 02:26:16 2005//
+/select-attendee-info.sql/1.1/Mon Mar 27 03:46:25 2006//
+/select-attendees.sql/1.1.1.1/Sun Mar 27 19:52:56 2005//
+/select-by-location.sql/1.4/Wed Aug 31 00:43:50 2005//
+/select-by-member.sql/1.1.1.1/Sun Mar 27 19:52:56 2005//
+/select-main-category.sql/1.1.1.1/Sun Mar 27 19:52:56 2005//
+/select-top-upcoming.sql/1.4/Wed Aug 31 00:44:30 2005//
+/select-upcoming-by-interest.sql/1.3/Tue Aug  2 03:10:19 2005//
+/view_report-summary.sql/1.1/Tue Sep 13 21:13:39 2005//
+/view_report.sql/1.2/Mon Mar 27 03:46:25 2006//
+/waitlist-statistics-select.sql/1.3/Tue Aug  2 03:10:19 2005//
+D

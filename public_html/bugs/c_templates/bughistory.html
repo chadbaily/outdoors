@@ -1,0 +1,63 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-19 12:10:34
+         compiled from bughistory.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'maskemail', 'bughistory.html', 11, false),
+array('modifier', 'date', 'bughistory.html', 15, false),)); ?><table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr bgcolor="#eeeeee">
+		<th>Who</th>
+		<th>What</th>
+		<th>Old Value</th>
+		<th>New Value</th>
+		<th>When</th>
+	</tr>
+	<?php if (isset($this->_sections["event"])) unset($this->_sections["event"]);
+$this->_sections["event"]['name'] = "event";
+$this->_sections["event"]['loop'] = is_array($this->_tpl_vars['history']) ? count($this->_tpl_vars['history']) : max(0, (int)$this->_tpl_vars['history']);
+$this->_sections["event"]['show'] = true;
+$this->_sections["event"]['max'] = $this->_sections["event"]['loop'];
+$this->_sections["event"]['step'] = 1;
+$this->_sections["event"]['start'] = $this->_sections["event"]['step'] > 0 ? 0 : $this->_sections["event"]['loop']-1;
+if ($this->_sections["event"]['show']) {
+    $this->_sections["event"]['total'] = $this->_sections["event"]['loop'];
+    if ($this->_sections["event"]['total'] == 0)
+        $this->_sections["event"]['show'] = false;
+} else
+    $this->_sections["event"]['total'] = 0;
+if ($this->_sections["event"]['show']):
+
+            for ($this->_sections["event"]['index'] = $this->_sections["event"]['start'], $this->_sections["event"]['iteration'] = 1;
+                 $this->_sections["event"]['iteration'] <= $this->_sections["event"]['total'];
+                 $this->_sections["event"]['index'] += $this->_sections["event"]['step'], $this->_sections["event"]['iteration']++):
+$this->_sections["event"]['rownum'] = $this->_sections["event"]['iteration'];
+$this->_sections["event"]['index_prev'] = $this->_sections["event"]['index'] - $this->_sections["event"]['step'];
+$this->_sections["event"]['index_next'] = $this->_sections["event"]['index'] + $this->_sections["event"]['step'];
+$this->_sections["event"]['first']      = ($this->_sections["event"]['iteration'] == 1);
+$this->_sections["event"]['last']       = ($this->_sections["event"]['iteration'] == $this->_sections["event"]['total']);
+?>
+		<tr<?php if (!($this->_sections['event']['iteration'] % 2)  ): ?> class="alt" bgcolor="#dddddd"<?php endif; ?>>
+			<td><?php echo $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['history'][$this->_sections['event']['index']]['login']); ?>
+</td>
+			<td><?php echo $this->_tpl_vars['history'][$this->_sections['event']['index']]['changed_field']; ?>
+</td>
+			<td>&nbsp;<?php echo $this->_tpl_vars['history'][$this->_sections['event']['index']]['old_value']; ?>
+</td>
+			<td>&nbsp;<?php echo $this->_tpl_vars['history'][$this->_sections['event']['index']]['new_value']; ?>
+</td>
+			<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['history'][$this->_sections['event']['index']]['created_date'], DATE_FORMAT); ?>
+ <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['history'][$this->_sections['event']['index']]['created_date'], TIME_FORMAT); ?>
+</td>
+		</tr>
+	<?php endfor; else: ?>
+		<tr>
+			<td colspan="5" align="center"><?php echo $this->_tpl_vars['STRING']['nobughistory']; ?>
+</td>
+		</tr>
+	<?php endif; ?>
+</table>
+<br>
+<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=show&bugid=<?php echo $GLOBALS['HTTP_GET_VARS']['bugid']; ?>
+">Back to bug #<?php echo $GLOBALS['HTTP_GET_VARS']['bugid']; ?>
+</a>
+<br>
+<br>

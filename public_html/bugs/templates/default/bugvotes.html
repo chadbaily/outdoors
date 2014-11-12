@@ -1,0 +1,20 @@
+<table border="0" cellspacing="2" cellpadding="2">
+	<tr bgcolor="#eeeeee">
+		<th>Who</th>
+		<th>When</th>
+	</tr>
+	{section name=vote loop=$votes}
+		<tr{if $smarty.section.vote.iteration is even} class="alt" bgcolor="#dddddd"{/if}>
+			<td>{$votes[vote].login|maskemail}</td>
+			<td>{$votes[vote].created_date|date:DATE_FORMAT} {$votes[vote].created_date|date:TIME_FORMAT}</td>
+		</tr>
+	{sectionelse}
+		<tr>
+			<td colspan="2" align="center">{$STRING.no_votes}</td>
+		</tr>
+	{/section}
+</table>
+<br>
+<a href="{$smarty.server.PHP_SELF}?op=show&bugid={$smarty.get.bugid}">Back to bug #{$smarty.get.bugid}</a>
+<br>
+<br>

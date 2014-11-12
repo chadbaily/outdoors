@@ -1,0 +1,430 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-05 13:09:39
+         compiled from bugdisplay.html */ ?>
+<?php $this->_load_plugins(array(
+array('function', 'assign', 'bugdisplay.html', 1, false),
+array('function', 'project_js', 'bugdisplay.html', 15, false),
+array('function', 'build_select', 'bugdisplay.html', 96, false),
+array('function', 'math', 'bugdisplay.html', 188, false),
+array('modifier', 'stripslashes', 'bugdisplay.html', 71, false),
+array('modifier', 'maskemail', 'bugdisplay.html', 91, false),
+array('modifier', 'date', 'bugdisplay.html', 93, false),
+array('modifier', 'htmlspecialchars', 'bugdisplay.html', 127, false),
+array('modifier', 'number_format', 'bugdisplay.html', 189, false),
+array('modifier', 'format_comments', 'bugdisplay.html', 235, false),
+array('modifier', 'nl2br', 'bugdisplay.html', 235, false),)); ?><?php $this->_assign_smarty_interface(); ?>
+<?php if (! $GLOBALS['HTTP_SESSION_VARS']['uid']): ?><?php $this->_plugins['function']['assign'][0](array('var' => "disabled",'value' => 'onClick="alertNoChange();"'), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+<?php else: ?><?php $this->_plugins['function']['assign'][0](array('var' => "disabled",'value' => ""), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+<?php endif; ?>
+<script type="text/JavaScript">
+<!--
+	warningString = '<?php echo $this->_tpl_vars['STRING']['logintomodify']; ?>
+';
+	warnedAlready = false;
+
+	versions = new Array();
+	closedversions = new Array();
+	components = new Array();
+	versions['All'] = new Array(new Array('','All'));
+	closedversions['All'] = new Array(new Array('','All'));
+	components['All'] = new Array(new Array('','All'));
+	<?php $this->_plugins['function']['project_js'][0](array('no_all' => true), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+
+	<?php echo '
+	function updateMenus(f) {
+	  	sel = f.project_id[f.project_id.selectedIndex].text;
+	  	f.version_id.length = versions[sel].length;
+	  	for (var x = 0; x < versions[sel].length; x++) {
+	    	f.version_id.options[x].value = versions[sel][x][0];
+	    	f.version_id.options[x].text = versions[sel][x][1];
+				f.version_id.selectedIndex = 0;
+	  	}
+
+	  	f.to_be_closed_in_version_id.length = closedversions[sel].length;
+	  	for (var x = 0; x < closedversions[sel].length; x++) {
+	    	f.to_be_closed_in_version_id.options[x].value = closedversions[sel][x][0];
+	    	f.to_be_closed_in_version_id.options[x].text = closedversions[sel][x][1];
+				f.to_be_closed_in_version_id.selectedIndex = 0;
+	  	}
+
+	  	f.closed_in_version_id.length = closedversions[sel].length;
+	  	for (var x = 0; x < closedversions[sel].length; x++) {
+	    	f.closed_in_version_id.options[x].value = closedversions[sel][x][0];
+	    	f.closed_in_version_id.options[x].text = closedversions[sel][x][1];
+				f.closed_in_version_id.selectedIndex = 0;
+	  	}
+
+	  	f.component_id.length = components[sel].length;
+	  	for (var x = 0; x < components[sel].length; x++) {
+	    	f.component_id.options[x].value = components[sel][x][0];
+	    	f.component_id.options[x].text = components[sel][x][1];
+				f.component_id.selectedIndex = 0;
+	  	}
+	}
+
+	function popupAtt(id) {
+		window.open(\'attachment.php?use_js=1&bugid=\'+id, \'ewin\', \'dependent=yes,width=350,height=200,scrollbars=1\');
+		return false;
+	}
+
+	function alertNoChange() {
+		if (!warnedAlready) {
+			alert(warningString);
+			warnedAlready = true;
+		}
+	}
+	'; ?>
+
+//-->
+</script>
+<form action="bug.php" method="post">
+    <input type="hidden" name="op" value="update">
+    <input type="hidden" name="bugid" value="<?php echo $this->_tpl_vars['bug_id']; ?>
+">
+    <input type="hidden" name="projectid" value="<?php echo $this->_tpl_vars['project_id']; ?>
+">
+    <input type="hidden" name="last_modified_date" value="<?php echo $this->_tpl_vars['last_modified_date']; ?>
+">
+    <input type="hidden" name="pos" value="<?php echo $this->_smarty_vars['request']['pos']; ?>
+">
+    <table border="0" width="100%">
+	<tr>
+	    <td>Bug <b>#<?php echo $this->_tpl_vars['bug_id']; ?>
+</b> - <?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['title']); ?>
+ - <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ReturnTo']; ?>
+ <a href="query.php"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['BugList']; ?>
+</a></td>
+		<td align="right">
+<?php if ($this->_tpl_vars['prevbug']): ?>
+		    <b><a href="bug.php?op=show&bugid=<?php echo $this->_tpl_vars['prevbug']; ?>
+&pos=<?php echo $this->_tpl_vars['prevpos']; ?>
+"><?php echo $this->_tpl_vars['STRING']['previous_bug']; ?>
+</a></b>
+<?php endif; ?>
+<?php if ($this->_tpl_vars['prevbug'] && $this->_tpl_vars['nextbug']): ?>
+		    |
+<?php endif; ?>
+<?php if ($this->_tpl_vars['nextbug']): ?>
+		    <b><a href="bug.php?op=show&bugid=<?php echo $this->_tpl_vars['nextbug']; ?>
+&pos=<?php echo $this->_tpl_vars['nextpos']; ?>
+"><?php echo $this->_tpl_vars['STRING']['next_bug']; ?>
+</a></b>
+<?php endif; ?>
+	    </td>
+	</tr>
+<?php if ($this->_tpl_vars['error']['status']): ?>
+	<tr><td class="error"><?php echo $this->_tpl_vars['error']['status']; ?>
+</td></tr>
+<?php endif; ?>
+    </table>
+    <table border="0" width="100%" cellspacing="0" cellpadding="2">
+	<tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Reporter']; ?>
+:</td>
+	    <td><b><?php echo $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['reporter']); ?>
+</b></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Created']; ?>
+:</td>
+	    <td><b><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['created_date'], DATE_FORMAT); ?>
+</b></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Project']; ?>
+:</td>
+	    <td><select name="project_id" onChange="updateMenus(this.form)" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "project",'selected' => $this->_tpl_vars['project_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Priority']; ?>
+:</td>
+	    <td><select name="priority" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "priority",'selected' => $this->_tpl_vars['priority']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Component']; ?>
+:</td>
+	    <td><select name="component_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "component",'selected' => $this->_tpl_vars['component_id'],'project' => $this->_tpl_vars['project_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Severity']; ?>
+:</td>
+	    <td><select name="severity_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "severity",'selected' => $this->_tpl_vars['severity_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Version']; ?>
+:</td>
+	    <td><select name="version_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "version",'selected' => $this->_tpl_vars['version_id'],'project' => $this->_tpl_vars['project_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['OS']; ?>
+:</td>
+	    <td><select name="os_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "os",'selected' => $this->_tpl_vars['os_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ToBeClosedInVersion']; ?>
+</td>
+	    <td><select name="to_be_closed_in_version_id" <?php echo $this->_tpl_vars['disabled']; ?>
+>
+		    <option value="0"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ChooseOne']; ?>
+</option>
+		    <?php $this->_plugins['function']['build_select'][0](array('box' => "version",'selected' => $this->_tpl_vars['to_be_closed_in_version_id'],'project' => $this->_tpl_vars['project_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Database']; ?>
+:</td>
+	    <td><select name="database_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "database",'selected' => $this->_tpl_vars['database_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ClosedInVersion']; ?>
+</td>
+	    <td><select name="closed_in_version_id" <?php echo $this->_tpl_vars['disabled']; ?>
+>
+		    <option value="0"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ChooseOne']; ?>
+</option>
+		    <?php $this->_plugins['function']['build_select'][0](array('box' => "version",'selected' => $this->_tpl_vars['closed_in_version_id'],'project' => $this->_tpl_vars['project_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Site']; ?>
+</td>
+	    <td><select name="site_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "site",'selected' => $this->_tpl_vars['site_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Summary']; ?>
+:</td>
+	    <td><input type="text" size="30" maxlength="100" name="title" value="<?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['title'])); ?>
+" <?php echo $this->_tpl_vars['disabled']; ?>
+></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Status']; ?>
+:</td>
+	    <td><select name="status_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "status",'selected' => $this->_tpl_vars['status_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php if ($this->_tpl_vars['url']): ?><a href="<?php echo $this->_tpl_vars['url']; ?>
+">URL</a><?php else: ?>URL<?php endif; ?>:</td>
+	    <td><input type="text" size="30" maxlength="255" name="url" value="<?php echo $this->_tpl_vars['url']; ?>
+" <?php echo $this->_tpl_vars['disabled']; ?>
+></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Resolution']; ?>
+:</td>
+	    <td><select name="resolution_id" <?php echo $this->_tpl_vars['disabled']; ?>
+><option value="0"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ResolutionNone']; ?>
+</option><?php $this->_plugins['function']['build_select'][0](array('box' => "resolution",'selected' => $this->_tpl_vars['resolution_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr><tr>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['AssignedTo']; ?>
+:</td>
+	    <td><select name="assigned_to" <?php echo $this->_tpl_vars['disabled']; ?>
+><option value="0"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['AssignedToNobody']; ?>
+</option><?php $this->_plugins['function']['build_select'][0](array('box' => "owner",'selected' => $this->_tpl_vars['assigned_to']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	    <td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['AddCC']; ?>
+:</td>
+	    <td><input type="text" name="add_cc" <?php echo $this->_tpl_vars['disabled']; ?>
+></td>
+	</tr><tr>
+	    <td colspan="2" valign="top">
+<?php if (!empty ( $this->_tpl_vars['error']['add_dep'] )): ?><div class="error"><?php echo $this->_tpl_vars['error']['add_dep']; ?>
+</div><?php endif; ?>
+		<?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['BugDependency']; ?>
+: <?php echo $this->_tpl_vars['bug_dependencies']; ?>
+<br>
+		<?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['AddDependency']; ?>
+: <input type="text" name="add_dependency" size="5" <?php echo $this->_tpl_vars['disabled']; ?>
+><br>
+		<?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['RemoveDependency']; ?>
+: <input type="text" name="del_dependency" size="5" <?php echo $this->_tpl_vars['disabled']; ?>
+><br><br></td>
+	    <td colspan="2" valign="top">
+		<?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['RemoveSelectedCC']; ?>
+:<br>
+		<select name="remove_cc[]" size="5" style="width: 15em" multiple <?php echo $this->_tpl_vars['disabled']; ?>
+><?php $this->_plugins['function']['build_select'][0](array('box' => "bug_cc",'selected' => $this->_tpl_vars['bug_id']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select></td>
+	</tr>
+    </table>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+	<tr>
+	    <td valign="top"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['AdditionalComments']; ?>
+:<br><br>
+		<textarea name="comments" rows="6" cols="55" wrap="virtual" <?php echo $this->_tpl_vars['disabled']; ?>
+><?php echo $GLOBALS['HTTP_POST_VARS']['comments']; ?>
+</textarea>
+		<br><br>
+		<div align="right">
+<?php if ($GLOBALS['HTTP_SESSION_VARS']['uid']): ?>
+		    <input type="submit" value="Submit">
+<?php else: ?>
+			<?php echo $this->_tpl_vars['STRING']['logintomodify']; ?>
+
+<?php endif; ?>
+		</div></td>
+	</tr><tr>
+	    <td><table border="0" cellpadding="0" width="100%">
+		    <tr>
+			<td colspan="2"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Attachments']; ?>
+:</td>
+			<td colspan="3" align="right"><a href="attachment.php?bugid=<?php echo $this->_tpl_vars['bug_id']; ?>
+" onClick="return popupAtt(<?php echo $this->_tpl_vars['bug_id']; ?>
+)"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['CreateAttachment']; ?>
+</a></td>
+		    </tr><tr>
+			<td colspan="5" height="2" bgcolor="#ffffff"><spacer type="block" height="2" width="2"></td>
+		    </tr><tr>
+			<td bgcolor="#cccccc" align="center"><b><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Name']; ?>
+</b></td>
+			<td width="60" bgcolor="#cccccc" align="center"><b><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Size']; ?>
+</b></a></td>
+			<td width="150" bgcolor="#cccccc" align="center"><b><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Type']; ?>
+</b></a></td>
+			<td width="80" bgcolor="#cccccc" align="center"><b><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Created']; ?>
+</b></a></td>
+			<td width="80" bgcolor="#cccccc" align="center">&nbsp;</a></td>
+		    </tr><tr>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+		    </tr>
+<?php if (isset($this->_sections["attachment"])) unset($this->_sections["attachment"]);
+$this->_sections["attachment"]['name'] = "attachment";
+$this->_sections["attachment"]['loop'] = is_array($this->_tpl_vars['attachments']) ? count($this->_tpl_vars['attachments']) : max(0, (int)$this->_tpl_vars['attachments']);
+$this->_sections["attachment"]['show'] = true;
+$this->_sections["attachment"]['max'] = $this->_sections["attachment"]['loop'];
+$this->_sections["attachment"]['step'] = 1;
+$this->_sections["attachment"]['start'] = $this->_sections["attachment"]['step'] > 0 ? 0 : $this->_sections["attachment"]['loop']-1;
+if ($this->_sections["attachment"]['show']) {
+    $this->_sections["attachment"]['total'] = $this->_sections["attachment"]['loop'];
+    if ($this->_sections["attachment"]['total'] == 0)
+        $this->_sections["attachment"]['show'] = false;
+} else
+    $this->_sections["attachment"]['total'] = 0;
+if ($this->_sections["attachment"]['show']):
+
+            for ($this->_sections["attachment"]['index'] = $this->_sections["attachment"]['start'], $this->_sections["attachment"]['iteration'] = 1;
+                 $this->_sections["attachment"]['iteration'] <= $this->_sections["attachment"]['total'];
+                 $this->_sections["attachment"]['index'] += $this->_sections["attachment"]['step'], $this->_sections["attachment"]['iteration']++):
+$this->_sections["attachment"]['rownum'] = $this->_sections["attachment"]['iteration'];
+$this->_sections["attachment"]['index_prev'] = $this->_sections["attachment"]['index'] - $this->_sections["attachment"]['step'];
+$this->_sections["attachment"]['index_next'] = $this->_sections["attachment"]['index'] + $this->_sections["attachment"]['step'];
+$this->_sections["attachment"]['first']      = ($this->_sections["attachment"]['iteration'] == 1);
+$this->_sections["attachment"]['last']       = ($this->_sections["attachment"]['iteration'] == $this->_sections["attachment"]['total']);
+?>
+		    <tr title="<?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['description']); ?>
+"<?php if (!($this->_sections['attachment']['iteration'] % 2)  ): ?> class="alt" bgcolor="#dddddd"<?php endif; ?>>
+			<td><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['file_name']); ?>
+</td>
+			<td align="right">
+    <?php if ($this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['file_size'] > 1024): ?>
+	<?php $this->_plugins['function']['math'][0](array('equation' => "(round(x) / 1024 * 100) / 100",'x' => $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['file_size'],'assign' => "file_size"), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+	<?php echo $this->_run_mod_handler('number_format', true, $this->_tpl_vars['file_size']); ?>
+k
+    <?php else: ?>
+	<?php echo $this->_run_mod_handler('number_format', true, $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['file_size']); ?>
+b
+    <?php endif; ?>
+			</td>
+			<td align="center"><?php echo $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['mime_type']; ?>
+</td>
+			<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+			<td align="center"><a href='attachment.php?attachid=<?php echo $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['attachment_id']; ?>
+'>View</a>
+    <?php if (isset ( $this->_tpl_vars['perm'] ) && $this->_tpl_vars['perm']->have_perm ( 'Administrator' )): ?>
+			    | <a href='attachment.php?del=<?php echo $this->_tpl_vars['attachments'][$this->_sections['attachment']['index']]['attachment_id']; ?>
+' onClick="return confirm('<?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['SureDeleteAttachment']; ?>
+');"><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</a>
+    <?php endif; ?>
+			</td>
+		    </tr>
+<?php endfor; else: ?>
+		    <tr>
+			<td colspan="5" align="center"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['NoAttachments']; ?>
+</td>
+		    </tr>
+<?php endif; ?>
+		    <tr>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+			<td bgcolor="#000000" height="1"><spacer type="block" height="1" width="1"></td>
+		    </tr><tr>
+			<td colspan="5" height="2" bgcolor="#ffffff"><spacer type="block" height="2" width="2"></td>
+		    </tr>
+		</table></td>
+	</tr>
+    </table>
+</form>
+<div align="center" class="bugdisplaylinks">
+<?php if (!empty ( $this->_tpl_vars['error']['vote'] )): ?><div class="error"><?php echo $this->_tpl_vars['error']['vote']; ?>
+</div><?php endif; ?>
+    <b><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=vote&bugid=<?php echo $this->_tpl_vars['bug_id']; ?>
+" onClick="if (<?php echo $this->_tpl_vars['already_voted']; ?>
+) <?php echo '{ alert (\''; ?>
+<?php echo $this->_tpl_vars['STRING']['already_voted']; ?>
+<?php echo '\'); return false; }'; ?>
+"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['VoteForThisBug']; ?>
+</a></b> |
+    <b><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=viewvotes&bugid=<?php echo $this->_tpl_vars['bug_id']; ?>
+"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ViewVotes']; ?>
+ (<?php echo $this->_tpl_vars['num_votes']; ?>
+) <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ForThisBug']; ?>
+</a></b> |
+    <b><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=history&bugid=<?php echo $this->_tpl_vars['bug_id']; ?>
+"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['ViewBugActivity']; ?>
+</a></b> |
+    <b><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=print&bugid=<?php echo $this->_tpl_vars['bug_id']; ?>
+"><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['PrintableView']; ?>
+</a></b>
+</div>
+<br><br>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+	<td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Comments']; ?>
+:</td>
+    </tr><tr class="alt">
+	<td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['PostedBy']; ?>
+: <?php echo $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['reporter']); ?>
+ <br>
+	    <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Date']; ?>
+: <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['created_date'], TIME_FORMAT); ?>
+ <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['DateOn']; ?>
+ <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['created_date'], DATE_FORMAT); ?>
+</td>
+    </tr><tr>
+	<td><?php echo $this->_run_mod_handler('nl2br', true, $this->_run_mod_handler('format_comments', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['description']))); ?>
+ <br><br></td>
+    </tr>
+    <?php if (isset($this->_sections["comment"])) unset($this->_sections["comment"]);
+$this->_sections["comment"]['name'] = "comment";
+$this->_sections["comment"]['loop'] = is_array($this->_tpl_vars['comments']) ? count($this->_tpl_vars['comments']) : max(0, (int)$this->_tpl_vars['comments']);
+$this->_sections["comment"]['show'] = true;
+$this->_sections["comment"]['max'] = $this->_sections["comment"]['loop'];
+$this->_sections["comment"]['step'] = 1;
+$this->_sections["comment"]['start'] = $this->_sections["comment"]['step'] > 0 ? 0 : $this->_sections["comment"]['loop']-1;
+if ($this->_sections["comment"]['show']) {
+    $this->_sections["comment"]['total'] = $this->_sections["comment"]['loop'];
+    if ($this->_sections["comment"]['total'] == 0)
+        $this->_sections["comment"]['show'] = false;
+} else
+    $this->_sections["comment"]['total'] = 0;
+if ($this->_sections["comment"]['show']):
+
+            for ($this->_sections["comment"]['index'] = $this->_sections["comment"]['start'], $this->_sections["comment"]['iteration'] = 1;
+                 $this->_sections["comment"]['iteration'] <= $this->_sections["comment"]['total'];
+                 $this->_sections["comment"]['index'] += $this->_sections["comment"]['step'], $this->_sections["comment"]['iteration']++):
+$this->_sections["comment"]['rownum'] = $this->_sections["comment"]['iteration'];
+$this->_sections["comment"]['index_prev'] = $this->_sections["comment"]['index'] - $this->_sections["comment"]['step'];
+$this->_sections["comment"]['index_next'] = $this->_sections["comment"]['index'] + $this->_sections["comment"]['step'];
+$this->_sections["comment"]['first']      = ($this->_sections["comment"]['iteration'] == 1);
+$this->_sections["comment"]['last']       = ($this->_sections["comment"]['iteration'] == $this->_sections["comment"]['total']);
+?>
+    <tr class="alt">
+	<td><?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['PostedBy']; ?>
+: <?php echo $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['comments'][$this->_sections['comment']['index']]['login']); ?>
+ <br>
+	    <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['Date']; ?>
+: <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['comments'][$this->_sections['comment']['index']]['created_date'], TIME_FORMAT); ?>
+ <?php echo $this->_tpl_vars['STRING']['BUGDISPLAY']['On']; ?>
+ <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['comments'][$this->_sections['comment']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+    </tr><tr>
+	<td><?php echo $this->_run_mod_handler('nl2br', true, $this->_run_mod_handler('format_comments', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['comments'][$this->_sections['comment']['index']]['comment_text']))); ?>
+ <br><br></td>
+    </tr>
+    <?php endfor; endif; ?>
+</table>

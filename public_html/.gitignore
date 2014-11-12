@@ -1,0 +1,5 @@
+gallery/
+WEBALIZER_REPORTS/
+*.log
+*.bak
+*.lock

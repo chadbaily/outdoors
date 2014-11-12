@@ -1,0 +1,51 @@
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="who"
+        tag-name="input" />
+    <element
+        name="subject"
+        pre-processing="trim,ucfirst"
+        element-id="subject" />
+    <element
+        name="message"
+        pre-processing="trim"
+        element-id="message" />
+</config>
+
+<table width="100%">
+  <tr>
+    <td width="10%">Subject</td>
+    <td><input type="text" style="width:100%" name="subject" id="subject" /></td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>
+      <textarea cols="40" style="width:100%" rows="10" name="message" id="message">
+      </textarea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      Send message to:
+      <input type="radio" name="who" id="all" value="all" />
+      <label for="all">Everyone</label>
+      <input type="radio" name="who" id="joined" value="joined" checked="1" />
+      <label for="joined">Non-waitlisted</label>
+      <input type="radio" name="who" id="waitlisted" value="waitlisted" />
+      <label for="waitlisted">Waitlisted only</label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+    <input type="submit" value="Send Message" />
+    </td>
+  </tr>
+</table>
+</form>

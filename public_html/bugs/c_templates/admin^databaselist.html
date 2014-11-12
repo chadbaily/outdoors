@@ -1,0 +1,98 @@
+<?php /* Smarty version 2.3.0, created on 2005-01-16 09:12:23
+         compiled from admin/databaselist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/databaselist.html', 25, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+';
+	<?php echo '
+
+	function popupDatabase(id) {
+		window.open(me + \'?op=edit&use_js=1&database_id=\'+id, \'ewin\', \'dependent=yes,width=350,height=300,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<b>&nbsp;<?php echo $this->_tpl_vars['STRING']['databaselist']; ?>
+</b> - <a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=edit&database_id=0" onClick="popupDatabase(0); return false;"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ <?php echo $this->_tpl_vars['STRING']['database']; ?>
+</a>
+			<hr size="1">
+			<table border="0" cellpadding="2" cellspacing="1" width="100%">
+				<tr>
+					<th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+"><?php echo $this->_tpl_vars['STRING']['name']; ?>
+</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['sortorder']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['sortorder']['url']; ?>
+"><?php echo $this->_tpl_vars['STRING']['sortorder']; ?>
+</a></th>
+					<th>Delete</th>
+				</tr>
+				<?php if (isset($this->_sections["database"])) unset($this->_sections["database"]);
+$this->_sections["database"]['name'] = "database";
+$this->_sections["database"]['loop'] = is_array($this->_tpl_vars['databases']) ? count($this->_tpl_vars['databases']) : max(0, (int)$this->_tpl_vars['databases']);
+$this->_sections["database"]['show'] = true;
+$this->_sections["database"]['max'] = $this->_sections["database"]['loop'];
+$this->_sections["database"]['step'] = 1;
+$this->_sections["database"]['start'] = $this->_sections["database"]['step'] > 0 ? 0 : $this->_sections["database"]['loop']-1;
+if ($this->_sections["database"]['show']) {
+    $this->_sections["database"]['total'] = $this->_sections["database"]['loop'];
+    if ($this->_sections["database"]['total'] == 0)
+        $this->_sections["database"]['show'] = false;
+} else
+    $this->_sections["database"]['total'] = 0;
+if ($this->_sections["database"]['show']):
+
+            for ($this->_sections["database"]['index'] = $this->_sections["database"]['start'], $this->_sections["database"]['iteration'] = 1;
+                 $this->_sections["database"]['iteration'] <= $this->_sections["database"]['total'];
+                 $this->_sections["database"]['index'] += $this->_sections["database"]['step'], $this->_sections["database"]['iteration']++):
+$this->_sections["database"]['rownum'] = $this->_sections["database"]['iteration'];
+$this->_sections["database"]['index_prev'] = $this->_sections["database"]['index'] - $this->_sections["database"]['step'];
+$this->_sections["database"]['index_next'] = $this->_sections["database"]['index'] + $this->_sections["database"]['step'];
+$this->_sections["database"]['first']      = ($this->_sections["database"]['iteration'] == 1);
+$this->_sections["database"]['last']       = ($this->_sections["database"]['iteration'] == $this->_sections["database"]['total']);
+?>
+				<tr<?php if (!($this->_sections['database']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=edit&database_id=<?php echo $this->_tpl_vars['databases'][$this->_sections['database']['index']]['database_id']; ?>
+" onClick="popupDatabase(<?php echo $this->_tpl_vars['databases'][$this->_sections['database']['index']]['database_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['databases'][$this->_sections['database']['index']]['database_name']); ?>
+</a></td>
+					<td align="center"><?php echo $this->_tpl_vars['databases'][$this->_sections['database']['index']]['sort_order']; ?>
+</td>
+					<td align="center">
+						<?php if (! $this->_tpl_vars['databases'][$this->_sections['database']['index']]['bug_count']): ?>
+							<a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=del&database_id=<?php echo $this->_tpl_vars['databases'][$this->_sections['database']['index']]['database_id']; ?>
+" onClick="return confirm('<?php echo $this->_tpl_vars['STRING']['suredeletedb']; ?>
+')"><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</a>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,6 @@
+Dear {NAME},
+
+We missed you on a recent adventure, '{TITLE}'.  We understand if you couldn't make it, but we wanted to remind you that sometimes waitlisted members could have gone if we'd known you weren't going to be there (did you try withdrawing online?) We would appreciate it if you could email this trip's leader at {LEADER_EMAIL} and let us know why you couldn't make it.  Have a great day and we hope to see you again soon!
+ 
+Thanks,
+The Officers

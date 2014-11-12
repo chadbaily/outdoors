@@ -1,0 +1,12 @@
+php_value include_path "../:../classes:../controllers:../utility"
+php_value magic_quotes_gpc "Off"
+php_value register_globals "Off"
+php_value allow_call_time_pass_reference "On"
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 http://www.outdoorsatuva.org
+ErrorDocument 403 http://www.outdoorsatuva.org
+
+AddType application/x-httpd-php .html
+#AddType application/x-httpd-php4 .xml
+RewriteEngine off

@@ -1,0 +1,5 @@
+Dear {C_FULL_NAME},
+
+Thank you for joining {CLUB_NAME}!  You have chosen the {MEMBERSHIP} membership plan.
+
+As soon as we process everything and activate your membership, we'll send you an email welcoming you to the club.

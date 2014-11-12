@@ -1,0 +1,7 @@
+<form class="action" onSubmit="document.location=this.elements[0].options[this.elements[0].selectedIndex].value; return false;">
+  <select>
+    <option value="">Choose An Action</option>{actions:}
+    <option value="{BASE}/members/{PAGE}/{c_title}/{OBJECT}">{c_summary}</option>{:actions}
+  </select>
+  <input type="submit" value="Go">
+</form>

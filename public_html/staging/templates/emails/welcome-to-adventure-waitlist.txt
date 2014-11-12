@@ -1,0 +1,12 @@
+Dear {C_FULL_NAME},
+
+You have joined the waitlist for adventure '{C_TITLE}'.  
+
+If you'd like full details on the adventure, you can click on the following
+link: {BASEURL}/members/adventure/read/{T_ADVENTURE}
+
+If someone withdraws and you are at the top of the waitlist, you will be moved
+off the waitlist.  You will get an email notifying you if this happens.
+
+Good luck,
+{LEADER_NAME}

@@ -1,0 +1,207 @@
+-- 0.9.1 -- 4 Jan 2003
+: Fixed bugs with PostgreSQL
+
+-- 0.9.0 -- 25 Oct 2002
+: Replaced the mail function with one that encodes (i18n support).
+: Added four additional fields for tracking bug information: Database type
+  and version, Environment, Closed Version, To-be-closed Version.
+: Removed English text from templates for better localization.
+: Added option for sending emails MIME-encapsulated.
+: Cleaned up HTML.
+: Added list of saved queries to the home page and an option to disable that
+  list.
+: Updated translations.
+: Cleaned up printing of bug detail page.
+: Added required files from PEAR (DB.php, etc.) and Smarty to the distribution.
+: Improved compatibility with IIS.
+: Fixed various small bugs.
+
+-- 0.8.2 -- 8 May 2002
+: Fixed bugs with ordering by dates in the bug list, self-referencing URLs
+  pointing to php.exe on windows, errors with the attachment list when not
+  logged in, forming the CC list when mailing bug changes, listing CCs on the
+  bug form, scrollbars on the popup pages, logging in from the account creation
+  page, and resetting the project id when editing a bug of an inactive project.
+: Fixed session problems with PHP 4.0.6.
+: Added some database connection error handling.
+
+-- 0.8.1 -- 13 Apr 2002
+: Fixed bugs with version and component creation.
+: Bug fixed with displaying both created date and last modified date in the bug
+  list.
+
+-- 0.8.0 -- 11 Apr 2002
+: Switched database abstraction layer to PEAR::DB.
+: Added bug dependencies.
+: Added Oracle 8.1.x support.
+: Added "Remember me" functionality.
+: Fixed bugs with losing login info.
+: Added detailed project stats to the home page (configurable by the admin).
+: New translations: Estonian (Alvar Soome), Italian (Gaetano Giunta), and
+  Slovenian (Klemen Zagar).
+: Added the ability for users to choose not to receive bug update emails.
+: Added ability to configure color schemes from the configuration page and
+  updated the "black" scheme.
+: Switched template class to smarty templates.
+: Fixed a bug with being able to go directly to a bug that should not be
+  available because of project group restrictions.
+: Added the ability to delete components and versions not referenced by bugs.
+: Made compatible with JpGraph 1.6.1
+: Fixed other minor bugs.
+
+-- 0.7.2 -- 14 Mar 2002
+: Bugs were fixed with project restrictions and front-page summary info.
+
+-- 0.7.1 -- 13 Mar 2002
+: Bugs were fixed with installation and upgrading.
+
+-- 0.7.0 -- 11 Mar 2002
+: Removed the requirement for register_globals = on in PHP settings.
+: Added dynamic select boxes to the bug form for changing component and version
+  information when selecting a different project.
+: Added bug voting
+: Added a filter for active and inactive users in the admin user list
+: Prettied up the default template
+: Fixed some bugginess with the restricted projects
+: Fixed a bug in the multi-page listing of the project admin
+: Allow Statuses, Severities, Resolutions, and OSes to be deleted that aren't
+  referenced by bugs.
+
+-- 0.6.2 -- 27 Dec 2001
+: Improved compatibility with Opera and IIS.
+: Fixed a bug with logging in.
+
+-- 0.6.1 -- 20 Dec 2001
+: Fixed bugs with the admin tools and buq query.
+
+-- 0.6.0 -- 15 Dec 2001
+: Fixed a bug with old queries being retained when submitting a new query.
+: Moved session, auth, and database classes into the package.
+: Added Previous and Next links for moving to other bugs in the bug list
+  from the bug display page.
+: Added a link to return to the bug list from the bug display page.
+: Added quick query links from the bug summary table on the home page (when
+  not using jpgraph) and as a clickable image map (when using jpgraph).
+: Updated code using jpgraph for jpgraph 1.4.
+: Fixed a bug with the language selection not being updated when changed on
+  the configuration page.
+: Multiple bugs related to the bug query page fixed.
+: Fixed a rendering problem with bug comments.
+: Added the ability to create user groups and restrict project visibility based
+  on those groups.
+: When a bug is filed against a component with an owner, that owner will be
+  assigned the bug and receive an email about the bug.
+: Fixed a bug preventing users from being assigned to the User group when
+  created.
+: Fixed a bug with the download option of the installation process.
+: Change the label on the login box from Email to Login if configuration
+  option EMAIL_IS_LOGIN is not true.
+
+-- 0.5.1 -- 11 Nov 2001
+: Fixed a bug (introduced in 0.5.0) with severity color not being pulled in
+  with the bug list database query.
+
+-- 0.5.0 -- 9 Nov 2001
+: Fixed a bug with the bug history update.
+: Added web-based installation.
+: Added on option for choosing whether bugs can be changed by anyone or only by
+	the bug reporter, bug owner, managers, or admins.
+: Added a printable view for bugs.
+: Added an upgrade script to upgrade from the last major version.
+: Added an option to disable newaccount.php, thus preventing users from
+  creating accounts for themselves.
+
+-- 0.4.0 -- 18 Oct 2001
+: Improved the CSS file to make choosing different color schemes easier.
+: Consolidated the two separate templates directories into one tree.
+: Fixed a bug with the OS table creation.
+: Moved configuration information to the database; dropped the configure script.
+: Added the ability to search by login as well as email.
+: First release of documentation.
+
+-- 0.3.3 -- 2 Oct 2001
+: Added the ability to enter cvs:filename.ext or cvs:path/filename.ext:v.vv
+  into the bug comments and have that linked to a CVS web interface.
+: Fixed bugs with project administration, account creation, and the initial
+  database installation.
+
+-- 0.3.2 -- 28 Sep 2001
+: Added patch and patch instructions for page.inc (in PHPlib).
+: Tried to make the configure script a little more portable.
+: Users can now add CCs to bug change notifications.
+: Fixed some bugs with bug updating.
+
+-- 0.3.1 -- 17 Sep 2001
+: Fixed the perm and group checks.
+: Fixed a bug when selecting an OS in the bug query.
+: Included the latest options in the configure script.
+
+-- 0.3.0 -- 15 Sep 2001
+: Converted database schema to lower-case to ease DB portability.
+: Added postgres table creation schema.
+: Added the option to color rows in the bug list according to severity.
+: Changed the columns in the bug list to be dynamic and user-configurable.
+: Improved the configure script and added the configure_db script.
+: Changed the user - group - permission scheme.
+: Improved project creation in the admin tools.
+: Added French, Russian, Norwegian, Swedish, German and Portuguese translations.
+: Added option for the login name to not be the email address.
+: Added the option to use a table name prefix (like phpbt_) in the database.
+: Charset was added to each language file, and that charset is included in mail
+  headers.
+
+-- 0.2.1 -- 14 Aug 2001
+: Bugfix to the configure script
+: Updated the installation instructions
+: Added stats on bugs reported by and assigned to the user on every page
+
+-- 0.2.0 -- 11 Aug 2001
+: Allow for browsing the bugs without logging in.
+: Started reporting.
+: Started using jpgraph (optional) for showing summary charts.
+: Added options for hiding and masking email addresses to avoid spambots.
+: Added a dialog-based configure script.
+: Added file attachments to bugs.
+
+-- 0.1.7 -- 31 July 2001
+: Fixed bugs with valid_email() in admin/user.php
+: Added table definition for BugHistory table in createdb.sql
+: Added option to store passwords encrypted in the database.
+
+-- 0.1.6 -- 23 July 2001
+: Fixed the bug of not setting the creation date when creating a new version
+: Fixed the bug of not displaying the correct version in bug display
+: Remove the comments from the notification email if no comments were added when the bug is changed
+: Added a link on the login page to open a new account
+: Added "Email my password" functionality
+
+-- 0.1.5 -- 13 July 2001
+: Get rid of the logout link entirely if not logged in
+: Starting on the user page - allow for password changes
+: Added link for personal bug list to query form
+: Allow users to save queries
+: Added bug history
+
+-- 0.1.4 -- 1 July 2001
+: Fixed table reference bug in bug.php
+: Added update collision checking
+: Changed	the URL field label to a link if there is a URL in the field
+: Highlight the sorted column
+: Display the currently logged in user if logged in
+
+-- 0.1.3 -- 3 Feb 2001
+: Added mail notification of changes to bugs
+: Added logout link and page
+: Database changes - see the bottom of createdb.sql for the queries
+
+-- 0.1.2 -- 26 Dec 2000
+: Added selection of project, version, and component on the query page
+: Added user validation when updating a bug
+: Fixed "That bug does not exist" error display
+
+-- 0.1.1 -- 25 Dec 2000
+: Added localization (except for database related stuff, such as Resolutions and
+  Statuses).
+: Added form field validations on the admin side.
+
+-- 0.1.0 -- 23 Dec 2000 -- Initial Release

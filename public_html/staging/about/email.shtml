@@ -1,0 +1,71 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Email List Policy</h1>
+
+<p>The main purpose of the outdoors-club list is for outdoor and club-related
+email. If the email is in keeping with our
+<a href="index.php">mission statement</a>, and you feel that it is
+something that 500 or more other members would benefit from reading, then go
+ahead, send the email, and help build our outdoor community.  Please ask the
+officers if you are in doubt.  We are not super-strict, but we do want to keep
+our club focused on the things mentioned in our mission statement.  Here are
+some rough guidelines:</p>
+
+<h3>Appropriate emails include:</h3>
+
+<ul>
+  <li>Anything involving the outdoors</li>
+  <li>Notices about outdoorsy presentations</li>
+  <li>Information about Skyline Drive, the Blue Ridge Parkway, conditions of
+    local rivers and hikes, etc.</li>
+  <li>Non club related trips (i.e. anyone want to join me on a hike to...)</li>
+  <li>Looking for climbing partners, running partners, someone to go on a
+    spur-of-the-moment hike or other activity</li>
+</ul>
+
+<p>This list is not exhaustive.  All of these items build our community
+and are related to our mission.
+<p>
+<h3>Inappropriate emails are those which are
+not outdoorsy and not related to our mission, such as:</h3>
+
+<ul>
+  <li>Looking for a ride home</li>
+  <li>Advertising anything for sale (use the classified ads section of the website to sell your outdoorsy gear) </li>
+  <li>Advertising other groups or organizations (please <a href="about/contact.shtml">contact the officers</a> if you have questions)</li>
+  <li>Commentary on outside issues such as politics or world events</li>
+  <li>Elections or endorsements</li>
+  <li>Announcements of non-outdoorsy social activities or sports teams (parties, looking for people to join an intramural team, etc.)</li>
+  <li>Porn, jokes, chain letters</li>
+</ul>
+
+<br>
+
+<h2>Email Writing Guidelines</h2>
+
+<p>Please keep your email <b>short and to the point</b>.  If you need to make it
+long, it's probably better to just mention the main point of the email in one
+or two sentences, and then give your name and contact information so people can
+get in touch with you directly to find out more.  Please follow these
+guidelines:</p>
+
+<ul>
+  <li>Keep it short.  Remember that you are emailing 500+ people.</li>
+  <li>DO NOT SHOUT.  EVER.  THIS IS SHOUTING.</li>
+  <li>Don't use lots of exclamation points, either!!!</li>
+  <li>Create a relevant, short subject.</li>
+</ul>
+
+<p>Here is a sample email:</p>
+
+<blockquote style="border:1px solid gray; padding: 5px">
+Subject:Climb at Rocky Top Thursday<br>
+<br>
+I'm going climbing at Rocky Top Thursday at 5:00 PM.  Contact Morgan Jones at
+<script>document.write(email('morgan', 'jones.com))</script>, or 123-4567,
+if you want to ride along.
+</blockquote>
+
+<p>If you're not sure about an email you want to send, please <a
+href="about/contact.shtml">ask the officers</a>.</p>
+<!--#include virtual="footer.html" -->

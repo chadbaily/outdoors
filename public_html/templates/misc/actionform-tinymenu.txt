@@ -1,0 +1,1 @@
+<a href="#" title="Click for Actions" onClick="tinyMenu(this, '{PAGE}', {OBJECT}, 'tiny{PAGE}{OBJECT}', [{actions:}['{c_title}', '{c_summary}'],{:actions}]); return false;">&raquo;</a><div class="tinyMenu" id="tiny{PAGE}{OBJECT}"></div>

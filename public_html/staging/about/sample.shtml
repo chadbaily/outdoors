@@ -1,0 +1,6 @@
+<!--#include virtual="header.html" -->
+<h1>Sample Page</h1>
+
+<p>This is a sample page for you to copy for your "about" part of your website.</p>
+
+<!--#include virtual="footer.html" -->

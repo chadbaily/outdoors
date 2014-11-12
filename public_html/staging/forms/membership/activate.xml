@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    error-element="error-element"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="totalcost"
+        element-id="totalcost"
+        data-type="number" />
+    <element
+        name="begin"
+        element-id="begin"
+        data-type="date" />
+    <element
+        name="expire"
+        element-id="expire"
+        data-type="date" />
+</config>
+
+<table class="cleanHeaders">
+  <tr>
+    <th>Name</th>
+    <th>Total Cost</th>
+    <th>Begin</th>
+    <th>Expire</th>
+  </tr>
+
+  <tr hidden="1" id="error-element">
+    <td> </td>
+    <td class="error">Must be numeric</td>
+    <td class="error">YYYY-MM-DD</td>
+    <td class="error">YYYY-MM-DD</td>
+  </tr>
+  <tr>
+    <td>{C_TITLE}</td>
+    <td><input type="text" size="5" id="totalcost" name="totalcost" /></td>
+    <td>
+      <input type="text" size="10" id="begin" name="begin" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'begin', 'beginSpan', 2004, 2010, 'Y-m-d');" />
+      <div id="beginSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+      </td>
+    <td>
+      <input type="text" size="10" id="expire" name="expire" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'expire', 'expireSpan', 2004, 2010, 'Y-m-d');" />
+      <div id="expireSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="4">
+      <input type="submit" value="Activate Membership" />
+    </td>
+  </tr>
+</table>
+
+</form>

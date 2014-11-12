@@ -1,0 +1,103 @@
+<?php /* Smarty version 2.3.0, created on 2005-01-16 09:12:22
+         compiled from admin/oslist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/oslist.html', 26, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+';
+	<?php echo '
+		
+	function popupOS(id) {
+		window.open(me + \'?op=edit&use_js=1&os_id=\'+id, \'ewin\', \'dependent=yes,width=350,height=300,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+  <tr>
+    <td valign="top">
+      <b>&nbsp;<?php echo $this->_tpl_vars['page_title']; ?>
+</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&os_id=0" onClick="popupOS(0); return false;"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ OS</a>
+      <hr size="1">
+      <table border="0" cellpadding="2" cellspacing="1" width="100%">
+        <tr>
+          <th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+">Name</a></th>
+          <th class="<?php echo $this->_tpl_vars['headers']['regex']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['regex']['url']; ?>
+">Regex</a></th>
+          <th class="<?php echo $this->_tpl_vars['headers']['sortorder']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['sortorder']['url']; ?>
+">Sort Order</a></th>
+					<th>Delete</th>
+        </tr>
+        <?php if (isset($this->_sections["os"])) unset($this->_sections["os"]);
+$this->_sections["os"]['name'] = "os";
+$this->_sections["os"]['loop'] = is_array($this->_tpl_vars['oses']) ? count($this->_tpl_vars['oses']) : max(0, (int)$this->_tpl_vars['oses']);
+$this->_sections["os"]['show'] = true;
+$this->_sections["os"]['max'] = $this->_sections["os"]['loop'];
+$this->_sections["os"]['step'] = 1;
+$this->_sections["os"]['start'] = $this->_sections["os"]['step'] > 0 ? 0 : $this->_sections["os"]['loop']-1;
+if ($this->_sections["os"]['show']) {
+    $this->_sections["os"]['total'] = $this->_sections["os"]['loop'];
+    if ($this->_sections["os"]['total'] == 0)
+        $this->_sections["os"]['show'] = false;
+} else
+    $this->_sections["os"]['total'] = 0;
+if ($this->_sections["os"]['show']):
+
+            for ($this->_sections["os"]['index'] = $this->_sections["os"]['start'], $this->_sections["os"]['iteration'] = 1;
+                 $this->_sections["os"]['iteration'] <= $this->_sections["os"]['total'];
+                 $this->_sections["os"]['index'] += $this->_sections["os"]['step'], $this->_sections["os"]['iteration']++):
+$this->_sections["os"]['rownum'] = $this->_sections["os"]['iteration'];
+$this->_sections["os"]['index_prev'] = $this->_sections["os"]['index'] - $this->_sections["os"]['step'];
+$this->_sections["os"]['index_next'] = $this->_sections["os"]['index'] + $this->_sections["os"]['step'];
+$this->_sections["os"]['first']      = ($this->_sections["os"]['iteration'] == 1);
+$this->_sections["os"]['last']       = ($this->_sections["os"]['iteration'] == $this->_sections["os"]['total']);
+?>
+        <tr<?php if (!($this->_sections['os']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+          <td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&os_id=<?php echo $this->_tpl_vars['oses'][$this->_sections['os']['index']]['os_id']; ?>
+" onClick="popupOS(<?php echo $this->_tpl_vars['oses'][$this->_sections['os']['index']]['os_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['oses'][$this->_sections['os']['index']]['os_name']); ?>
+</a></td>
+          <td>&nbsp;<?php echo $this->_tpl_vars['oses'][$this->_sections['os']['index']]['regex']; ?>
+</td>
+          <td align="center"><?php echo $this->_tpl_vars['oses'][$this->_sections['os']['index']]['sort_order']; ?>
+</td>
+					<td align="center">
+						<?php if (! $this->_tpl_vars['oses'][$this->_sections['os']['index']]['bug_count']): ?>
+						<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=del&os_id=<?php echo $this->_tpl_vars['oses'][$this->_sections['os']['index']]['os_id']; ?>
+" onClick="return confirm('Are you sure you want to delete this OS?')">Delete</a>
+						<?php endif; ?>
+					</td>
+        </tr>
+        <?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+      </table>
+			<br>
+			<div class="info">
+				OSes with a Sort Order = 0 will not be selectable by users
+				<br>
+				Only those OSes that have no bugs referencing them can be deleted
+			</div>
+    </td>
+	</tr>
+</table>

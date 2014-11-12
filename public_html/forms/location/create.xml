@@ -1,0 +1,102 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="ucwords"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        pre-processing="trim"
+        element-id="description" />
+    <element
+        name="zip-code"
+        element-id="zip-code" />
+    <element
+        type="array"
+        name="activity"
+        tag-name="input" />
+</config>
+
+<table width="100%">
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Title</td>
+    <td><input maxlength="100" type="text" name="title" id="title" size="60" style="width:400px" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Description.  Be specific!  Give directions, travel times, 
+    where to park, what there is to do there,
+    and anything else that people might want to know.  It's important to think
+    of this location as existing on its own; people will look at it without 
+    referring to an adventure.
+    </td>
+    <td>
+      <textarea name="description" id="description" rows="6" cols="40" style="width:400px">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="zip-code-data-error">
+    <td colspan="2" class="error">
+    This field must contain only numbers.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Zip Code</td>
+    <td>
+      <input type="text" name="zip-code" id="zip-code" />
+      <a href="http://zip4.usps.com/zip4/citytown_zip.htm" target="_blank">Look up a Zip Code</a>
+      for weather forecasts
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Choose any number of activities that you might do at this location.  This
+      will help to classify locations and make them easier to search, and
+      generally more useful all around.  People will want to look up a list of
+      locations for day hiking or caving, for instance.  This is how that lookup
+      will be performed.
+    </td>
+    <td>
+      <table width="100%">
+        {ACTIVITY_ROW:}
+        <tr>{ACTIVITY:}
+          <td><input type="checkbox" name="activity[]" value="{C_UID}" id="activity{C_UID}" /></td>
+          <td width="{WIDTH}%"><label style="font-size:80%" for="activity{C_UID}">{C_TITLE|htmlspecialchars}</label></td>{:ACTIVITY}
+        </tr>
+        {:ACTIVITY_ROW}
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Location" />
+    </td>
+  </tr>
+
+</table>
+</form>

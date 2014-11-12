@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+    <element
+        required="1"
+        name="name"
+        element-id="name" />
+    <element
+        required="1"
+        data-type="email"
+        name="owner-address"
+        element-id="owner-address" />
+    <element
+        required="1"
+        data-type="email"
+        name="mgmt-address"
+        element-id="mgmt-address" />
+    <element
+        name="password"
+        element-id="password" />
+    <element
+        required="1"
+        data-type="email"
+        name="list-address"
+        element-id="list-address" />
+    <element
+        required="1"
+        name="type"
+        element-id="type" />
+    <element
+        name="subject-prefix"
+        element-id="subject-prefix" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><input type="text" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input type="text" name="description" id="description" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="name-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>The name of the list, as known by the list software. For example,
+    social-club.</td>
+    <td>
+      <input type="text" name="name" id="name" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="owner-address-error">
+    <td colspan="2" class="error">
+    This field is required and must be an email address.
+    </td>
+  </tr>
+  <tr>
+    <td>The owner's email address: the address of the person that owns the email
+    list, and from which the email list management software will accept list
+    management commands.</td>
+    <td>
+      <input type="text" name="owner-address" id="owner-address" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="mgmt-address-error">
+    <td colspan="2" class="error">
+    This field is required and must be an email address.
+    </td>
+  </tr>
+  <tr>
+    <td>The email address to which list commands should be sent. For example,
+    majordomo@domain.org</td>
+    <td>
+      <input type="text" name="mgmt-address" id="mgmt-address" />
+    </td>
+  </tr>
+
+  <tr>
+    <td>List password</td>
+    <td>
+      <input type="text" name="password" id="password" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="list-address-error">
+    <td colspan="2" class="error">
+    This field is required and must be an email address.
+    </td>
+  </tr>
+  <tr>
+    <td>The email address to use when you want to send something to the list
+  members. For example, adventures@domain.org.</td>
+    <td>
+      <input type="text" name="list-address" id="list-address" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="type-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>List type</td>
+    <td>
+      <select name="type" id="type">
+        <option value="">Choose One</option>
+        <option value="MajordomoList">Majordomo</option>
+        <option value="MailmanList">Mailman</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>The string with which to prefix all messages</td>
+    <td>
+      <input type="text" name="subject-prefix" id="subject-prefix" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Email List" />
+    </td>
+  </tr>
+</table>
+</form>

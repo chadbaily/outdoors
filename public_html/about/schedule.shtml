@@ -1,0 +1,122 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa's Upcoming Meetings</h1>
+
+<p>Outdoors at UVa doesn't hold many &ldquo;club meetings,&rdquo; because we're
+focused on being in the outdoors (see our <a
+href="index.php">Mission Statement</a>).  We use our website and
+email list to manage the club, and the officers mostly communicate via email.
+Meetings are not mandatory and you are not required to attend them in order to
+join the club. However, we do hold several large information sessions every year.
+</p>
+
+<!--
+<p>We are not currently planning any more information sessions; we held our major interest
+meetings in the fall and won't hold any more until next fall.  However,
+you can always join the club by clicking the link at left.  We remain active
+all year long.  </p>
+-->
+
+<h2>Last Updated September 2014</h2>
+
+<p>Please note the date this page was last updated. If we are no longer in the same semester
+(or we or on break from school), it is safe to assume the information is out of date.</p>
+
+<p>The following table lists our scheduled events:</p>
+
+<table class="top ruled compact cleanHeaders">
+  <tr>
+    <th>Meeting</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Date & Time</th>
+  </tr>
+
+<!--  <tr class="odd">
+    <td nowrap="1"><FONT COLOR=NAVY><B>Monday Gatherings</B></FONT></td>
+    <td><FONT COLOR=NAVY><B>Newcomb Hall, Main Lounge</B></FONT></td>
+    <td><FONT COLOR=NAVY>This is a chance for club members to meet each other 
+	and socialize.  Members can discuss past trips, ideas for future trips, 
+	environmental events, social events, or just about anything!  
+	It's completely informal and members are welcome to bring friends 
+	interested in the club too.  Some of the club officers will be there, 
+	and you're welcome to ask questions and give us feedback.</FONT>
+    </td>
+    <td nowrap="1"><B><FONT COLOR=NAVY>Mondays, 6:30 - 7:00 PM</B></FONT><br>
+        </td>  
+</tr>
+-->
+
+<!--  <tr>
+    <td nowrap="1">Information/Signup <br> Session II</td>
+    <td> Wilson 301 </td>
+    <td> 
+    Want to learn more about Outdoors at UVa? Come to this brief info session to learn i
+	how the club works, how to join, and about upcoming adventures. Ready to join the
+	club and get outside? You can sign up and pay dues at the meeting (cash, check, or
+	credit card accepted). Remember, dues are $50 for a 12-month membership and $30 for
+	a 5-month membership.
+	</td>
+    <td nowrap="1">August 28, 2014 <br> 7:00-9:00pm
+	</td>
+  </tr>
+
+<tr>
+ <td nowrap="1">Trip Leader <br> Workshop</td>
+ <td> Chemistry 304 </td>
+ <td>
+ Now that you are part of the club, and perhaps have gone on some trips, you might
+ be itching to lead some trips, but aren't sure how. This is the place for you to
+ learn about leading trips. Remember, anyone can lead a trip, even if you don't have
+ a car! 
+ </td>
+ <td nowrap="1">September 8, 2014 <br> 7:00-9:00pm
+ </td>
+</tr>
+-->
+
+ <!-- <tr>
+    <td nowrap="1">Winter Activities Fair</td>
+    <td>Newcomb Hall Ballroom</td>
+    <td>If you missed the fall Activites Fair, the winter Activities Fair is another chance for people to find
+    out about us.  We have a table and staff it with several officers who can
+    tell you anything you want to know about the club.
+    </td>
+    <td nowrap="1">11:00am-2:00pm <br> January 21, 2014
+  </tr> -->
+
+  <tr>
+  <td nowrap="1">Gear Room</td>
+	  <td>Brick Wall by Echols Dorm</td>
+	  <td>Officers meet members weekly to allow members access to the gear room, so that they may check out 
+	  (and check in!) gear on a regular basis. Reimbursements are typically available at these "meetings". 
+	  If you need to hand in waivers and dues, you may do so at these meetings. Be punctual seeing as the 
+	  group rarely waits more than a couple minutes before venturing to the gear room itself. Regular gear 
+	  rooms will start on September 1, 2014 and end December 6, 2014. Outside of these dates, email the 
+	  officers to meet with them. 
+  </td>
+  <td nowrap="1">Mondays 5:00pm <br> Wednesdays 5:30pm <br> <br> Thursday/Friday <br> by appointment <br>
+   (email the officers) </td>
+</tr>
+
+
+   <tr class="odd">
+    <td nowrap="1">Officer Meetings</td>
+    <td>TBD</td>
+    <td>The officers will hold officer meetings this year as needed. Officer meetings
+	are generally closed meetings, but you may always notify us of an issue, and if
+	necessary we can include you in a meeting.
+
+    </td>
+    <td nowrap="1">TBD</td>
+  </tr>
+
+
+
+</table>
+
+<p><b>If you can't attend the information sessions</b>, don't worry.  They are
+just for convenience anyway!  You can <b>always</b> join by clicking the "Join"
+link at left.</p>
+
+<!--#include virtual="footer.html" -->

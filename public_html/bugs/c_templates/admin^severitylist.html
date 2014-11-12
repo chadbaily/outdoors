@@ -1,0 +1,103 @@
+<?php /* Smarty version 2.3.0, created on 2005-01-16 09:12:04
+         compiled from admin/severitylist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/severitylist.html', 26, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+';
+	<?php echo '
+		
+	function popupSeverity(id) {
+		window.open(me + \'?op=edit&use_js=1&severity_id=\'+id, \'ewin\', \'dependent=yes,width=350,height=300,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<b>&nbsp;<?php echo $this->_tpl_vars['page_title']; ?>
+</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&severity_id=0" onClick="popupSeverity(0); return false;"><?php echo $this->_tpl_vars['TITLE']['addseverity']; ?>
+</a>
+			<hr size="1">
+			<table border="0" cellpadding="2" cellspacing="1" width="100%">
+				<tr>
+					<th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+">Name</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['description']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['description']['url']; ?>
+">Description</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['sortorder']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['sortorder']['url']; ?>
+">Sort Order</a></th>
+					<th>Delete</th>
+				</tr>
+				<?php if (isset($this->_sections["severity"])) unset($this->_sections["severity"]);
+$this->_sections["severity"]['name'] = "severity";
+$this->_sections["severity"]['loop'] = is_array($this->_tpl_vars['severities']) ? count($this->_tpl_vars['severities']) : max(0, (int)$this->_tpl_vars['severities']);
+$this->_sections["severity"]['show'] = true;
+$this->_sections["severity"]['max'] = $this->_sections["severity"]['loop'];
+$this->_sections["severity"]['step'] = 1;
+$this->_sections["severity"]['start'] = $this->_sections["severity"]['step'] > 0 ? 0 : $this->_sections["severity"]['loop']-1;
+if ($this->_sections["severity"]['show']) {
+    $this->_sections["severity"]['total'] = $this->_sections["severity"]['loop'];
+    if ($this->_sections["severity"]['total'] == 0)
+        $this->_sections["severity"]['show'] = false;
+} else
+    $this->_sections["severity"]['total'] = 0;
+if ($this->_sections["severity"]['show']):
+
+            for ($this->_sections["severity"]['index'] = $this->_sections["severity"]['start'], $this->_sections["severity"]['iteration'] = 1;
+                 $this->_sections["severity"]['iteration'] <= $this->_sections["severity"]['total'];
+                 $this->_sections["severity"]['index'] += $this->_sections["severity"]['step'], $this->_sections["severity"]['iteration']++):
+$this->_sections["severity"]['rownum'] = $this->_sections["severity"]['iteration'];
+$this->_sections["severity"]['index_prev'] = $this->_sections["severity"]['index'] - $this->_sections["severity"]['step'];
+$this->_sections["severity"]['index_next'] = $this->_sections["severity"]['index'] + $this->_sections["severity"]['step'];
+$this->_sections["severity"]['first']      = ($this->_sections["severity"]['iteration'] == 1);
+$this->_sections["severity"]['last']       = ($this->_sections["severity"]['iteration'] == $this->_sections["severity"]['total']);
+?>
+				<tr<?php if (!($this->_sections['severity']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&severity_id=<?php echo $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['severity_id']; ?>
+" onClick="popupSeverity(<?php echo $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['severity_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['severity_name']); ?>
+</a></td>
+					<td>&nbsp;<?php echo $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['severity_desc']; ?>
+</td>
+					<td align="center"><?php echo $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['sort_order']; ?>
+</td>
+					<td align="center">
+						<?php if (! $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['bug_count']): ?>
+							<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=del&severity_id=<?php echo $this->_tpl_vars['severities'][$this->_sections['severity']['index']]['severity_id']; ?>
+" onClick="return confirm('Are you sure you want to delete this severity?')">Delete</a>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div class="info">
+				Severities with a Sort Order = 0 will not be selectable by users
+				<br>
+				Only those Severities that have no bugs referencing them can be deleted
+			</div>
+		</td>
+	</tr>
+</table>

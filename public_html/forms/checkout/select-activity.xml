@@ -1,0 +1,22 @@
+<form name="theform" id="the-form" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        required="1"
+        name="activity"
+        element-id="activity" />
+</config>
+
+<p>Show gear frequently checked out for
+<select name="activity" id="activity" onChange="this.form.submit()">
+  <option value="0">Select one</option>{option:}
+  <option value="{c_uid}">{c_title}</option>{:option}
+</select>
+</p>
+
+</form>

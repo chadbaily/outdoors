@@ -1,0 +1,88 @@
+<form name="theform" id="theform" method="GET" >
+    <input type="hidden" name="go" id="go" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="go"
+    form-id="theform">
+    <element
+        name="email"
+        element-id="email" />
+    <element
+        name="name"
+        element-id="name" />
+    <element
+        name="limit"
+        element-id="limit" />
+    <element
+        name="sort"
+        element-id="sort" />
+    <element
+        name="offset"
+        element-id="offset" />
+    {HIDDEN:}
+    <element
+        name="view_inactive"
+        element-id="view_inactive" />
+    <element
+        name="view_private"
+        element-id="view_private" />
+    {:HIDDEN}
+</config>
+
+<fieldset>
+<legend>Filtering Options</legend>
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Filter by</th>
+    <td>
+      Name <input type="text" name="name" id="name" />
+      Email <input type="text" name="email" id="email" />
+    </td>
+  </tr>
+  <tr>
+    <th>View</th>
+    <td>
+    <input type="text" name="limit" id="limit" size="3" value="30" />
+    results per page,
+
+    <select name="offset" id="offset" class="compact">
+    </select>
+
+    Sort by
+
+    <select name="sort" id="sort" class="compact">
+      <option value="last_name" selected="1">last name</option>
+      <option value="first_name">first name</option>
+      <option value="email">email</option>
+      <option value="phone_number">phone number</option>
+      <option value="screenname">screen name</option>
+      <option value="uid">member ID</option>
+      <option value="abbreviation">chat type</option>
+    </select>
+
+    </td>
+  </tr>
+
+{HIDDEN:}
+  <tr>
+    <th>Options</th>
+    <td>
+        <input type="checkbox" name="view_private" id="view_private" value="1" />
+        <label for="view_private">View hidden records</label>
+        <input type="checkbox" name="view_inactive" id="view_inactive" value="1" />
+        <label for="view_inactive">View inactive members</label>
+    </td>
+  </tr>
+{:HIDDEN}
+
+  <tr>
+    <td colspan="2" align="right"><input type="submit" value="Go"/></td>
+  </tr>
+</table>
+
+</fieldset>
+
+</form>

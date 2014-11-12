@@ -1,0 +1,18 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 13:24:54
+         compiled from error.html */ ?>
+<table width="100%">
+	<tr>
+		<td align="center">
+			<?php if ($this->_tpl_vars['iserror']): ?>
+				<div class="error"><?php echo $this->_tpl_vars['text']; ?>
+</div>
+			<?php else: ?>
+				<?php echo $this->_tpl_vars['text']; ?>
+
+			<?php endif; ?>
+			<br>
+			<br>
+			<a href="javascript:history.go(-1)">Back</a>
+		</td>
+	</tr>
+</table>

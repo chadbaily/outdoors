@@ -1,0 +1,54 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="error"
+    form-id="theform">
+{CONFIGS}{BOOL_CONFIG:}
+    <element
+        required="1"
+        name="question{C_UID}"
+        tag-name="input" />{:BOOL_CONFIG}{TEXT_CONFIG:}
+    <element
+        required="1"
+        name="question{C_UID}"
+        element-id="question{C_UID}" />{:TEXT_CONFIG}
+</config>
+
+<table>
+
+  <tr hidden="1" id="error">
+    <td colspan="2" class="error">
+    All fields are required.  Please complete the form.
+    </td>
+  </tr>
+
+{ELEMENTS}
+
+{TEXT:}
+  <tr>
+    <td>{C_TEXT}</td>
+    <td><input type="text" name="question{C_UID}" id="question{C_UID}" /></td>
+  </tr>{:TEXT}
+{BOOL:}
+  <tr>
+    <td>{C_TEXT}</td>
+    <td>
+      <input type="radio" name="question{C_UID}" id="question{C_UID}" value="1" />
+      <label for="question{C_UID}">Yes</label>
+      <input type="radio" name="question{C_UID}" id="question{C_UID}-0" value="0" />
+      <label for="question{C_UID}-0">No</label>
+    </td>
+  </tr>{:BOOL}
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Update Answers" />
+    </td>
+  </tr>
+
+</table>
+</form>

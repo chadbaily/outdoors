@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="GET" action="members/adventure/view_report/{OBJECT}">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="question"
+        tag-name="input" />
+</config>
+
+  <p class="compact">View:
+    <select name="status" id="status" onchange="this.form.submit()">
+      <option selected="1" value="default">Joined</option>
+      <option value="waitlisted">Waitlisted</option>
+      <option value="">Both</option>
+    </select>
+    Show questions
+    <input type="radio" name="question" id="question0" value="0" onclick="this.form.submit()" checked="true"/>
+    <label for="question0">none</label>
+    <input type="radio" name="question" id="question2" value="_H" onclick="this.form.submit()" />
+    <label for="question2">horizontal</label>
+    <input type="radio" name="question" id="question1" value="_V" onclick="this.form.submit()" />
+    <label for="question1">vertical</label>
+  </p>
+
+</form>

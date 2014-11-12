@@ -1,0 +1,20 @@
+Most of these pages basically handle all actions that it is possible to take on
+a given database object.  For example, 'account.php' handles everything it is
+possible to do with an account.  However, the code for each action is kept
+separately, in /pages/account.
+
+Some pages include another file to handle an action based on the action's ID
+number, such as 1, which translates to 'read' so you should look in the
+appropriate subdirectory for a file named 'read.php' that handles the action.
+Other pages are more general, such as 'join.php' which will not try to translate
+an action code into an action name, but will just try to directly include the
+file with the same name as the 'action' parameter in the URL.
+
+These files are all included from ../index.php as determined by the 'page'
+parameter in the URL.
+
+There is an exception to this subdirectory structure.  Files in common/ are often
+used by all sorts of different files.
+
+Please read & understand common/include-file.php to understand more about how
+these files are included and what they do with the content they generate.

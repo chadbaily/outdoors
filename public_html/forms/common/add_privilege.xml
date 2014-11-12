@@ -1,0 +1,123 @@
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        required="1"
+        name="what_granted_to"
+        element-id="what_granted_to" />
+    <element
+        name="who_granted_to"
+        element-id="who_granted_to" />
+    <element
+        required="1"
+        name="action"
+        element-id="action" />
+    <element
+        required="1"
+        name="what_relates_to"
+        element-id="what_relates_to" />
+    <element
+        required="1"
+        name="related_table"
+        element-id="related_table" />
+    <element
+        name="related_uid"
+        element-id="related_uid" />
+        
+</config>
+
+<table class="top">
+    
+    <tr hidden="1" id="what_granted_to-error">
+        <td colspan="2" class="error">This field is required.</td>
+    </tr>
+    <tr>
+        <td>Choose what to grant this privilege to:</td>
+        <td>
+            <select name="what_granted_to" id="what_granted_to">
+                <option value="">Choose One</option>
+                <option value="user">A User</option>
+                <option value="group">A Group</option>
+                <option value="owner">The Object's Owner</option>
+                <option value="owner_group">The Object's Group</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Choose who to grant this privilege to (which user or group,
+            depending on what you selected above).  If you selected <b>The Object's
+            Owner</b> or <b>The Object's Group</b> above, you can leave this blank.
+        </td>
+        <td>
+            <input type="text" name="who_granted_to" id="who_granted_to" />
+        </td>
+    </tr>
+
+    <tr hidden="1" id="action-error">
+        <td colspan="2" class="error">This field is required.</td>
+    </tr>
+    <tr>
+        <td>Choose the action that the privilege will grant.  Note that many
+            actions are only defined on certain types of objects, so your
+            privilege may be meaningless if you permit an action that doesn't
+            apply to the object anyway.</td>
+        <td>
+            <select name="action" id="action">
+                <option value="">Choose One</option>{ACTION:}
+                <option value="{C_UID}">{C_SUMMARY}</option>{:ACTION}
+            </select>
+        </td>
+    </tr>
+
+    <tr hidden="1" id="what_relates_to-error">
+        <td colspan="2" class="error">This field is required.</td>
+    </tr>
+    <tr>
+        <td>Choose what the privilege applies to:</td>
+        <td>
+            <select name="what_relates_to" id="what_relates_to">
+                <option value="">Choose One</option>
+                <option value="object">A Single Object</option>
+                <option value="table">A Database Table</option>
+                <option value="global">All Objects in a Database Table</option>
+                <option value="self">A Member's Own Self</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr hidden="1" id="related_table-error">
+        <td colspan="2" class="error">This field is required.</td>
+    </tr>
+    <tr>
+        <td>Choose the table that the privilege applies to:</td>
+        <td>
+            <select name="related_table" id="related_table">
+                <option value="">Choose One</option>{TABLE:}
+                <option value="{C_NAME}">{C_NAME}</option>{:TABLE}
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Enter the UID of the object in the table that the privilege applies to.  This
+            is only required if you chose <b>A Single Object</b> above.
+        </td>
+        <td>
+            <input type="text" name="related_uid" id="related_uid" />
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="right"><input type="submit" value="Add Privilege"
+                />
+        </td>
+    </tr>
+
+</table>
+</form>

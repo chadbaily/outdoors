@@ -1,0 +1,21 @@
+# Emergency Fix by pair Networks - Fri May  4 15:18:10 2012
+RewriteEngine on
+RewriteCond %{QUERY_STRING} ^[^=]*$
+RewriteCond %{QUERY_STRING} %2d|- [NC]
+RewriteRule .? - [F,L]
+
+Options -Indexes
+DirectoryIndex index.php
+
+#AuthType Basic
+#AuthName "Officers Only"
+#AuthUserFile /usr/home/at/public_html/about/application/.htpasswd
+#Require user officers
+
+Action application/x-pair-php5 /cgi-sys/php5.cgi
+AddType application/x-pair-php5 .php 
+
+RewriteEngine on
+RewriteRule ^members/([a-z_]+)/([a-z_\-]+)/([0-9]+) /staging/index.php?page=$1&action=$2&object=$3 [QSA]
+RewriteRule ^members/([a-z_]+)/([a-z_\-]+) /staging/index.php?page=$1&action=$2 [QSA]
+RewriteRule ^members/([a-z_]+) /staging/index.php?page=$1 [QSA]

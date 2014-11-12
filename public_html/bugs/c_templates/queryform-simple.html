@@ -1,0 +1,160 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 13:26:09
+         compiled from queryform-simple.html */ ?>
+<?php $this->_load_plugins(array(
+array('function', 'project_js', 'queryform-simple.html', 9, false),
+array('function', 'build_select', 'queryform-simple.html', 35, false),)); ?><script type="text/JavaScript">
+<!-- 
+versions = new Array();
+components = new Array();
+closedversions = new Array();
+versions['All'] = new Array(new Array('','All'));
+components['All'] = new Array(new Array('','All'));
+closedversions['All'] = new Array(new Array('','All'));
+<?php $this->_plugins['function']['project_js'][0](array(), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+
+<?php echo '
+function updateMenus(f) {
+  sel = f.projects[f.projects.selectedIndex].text;
+  f.versions.length = versions[sel].length;
+  for (var x = 0; x < versions[sel].length; x++) {
+    f.versions.options[x].value = versions[sel][x][0];
+    f.versions.options[x].text = versions[sel][x][1];
+  }
+  f.components.length = components[sel].length;
+  for (var x = 0; x < components[sel].length; x++) {
+    f.components.options[x].value = components[sel][x][0];
+    f.components.options[x].text = components[sel][x][1];
+  }
+}
+'; ?>
+
+//-->
+</script>
+    <form method="get" action="query.php" name="query">
+      <table>
+				<tr valign="baseline">
+					<td valign="top"><b><?php echo $this->_tpl_vars['STRING']['QUERY']['Project']; ?>
+:</b></td>
+					<td valign="top">
+						<select name="projects" onChange="updateMenus(this.form)">
+							<option value=''><?php echo $this->_tpl_vars['STRING']['QUERY']['opt_All']; ?>
+</option>
+							<?php $this->_plugins['function']['build_select'][0](array('box' => "project"), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+						</select>
+					</td>
+				</tr>
+				<tr valign="baseline">
+					<td valign="top"><b><?php echo $this->_tpl_vars['STRING']['QUERY']['Version']; ?>
+:</b></td>
+					<td valign="top">
+						<select name="versions"><option value=''><?php echo $this->_tpl_vars['STRING']['QUERY']['opt_All']; ?>
+</option></select>
+					</td>
+				</tr>
+				<tr valign="baseline">
+					<td valign="top"><b><?php echo $this->_tpl_vars['STRING']['QUERY']['Component']; ?>
+:</b></td>
+					<td valign="top">
+						<select name="components"><option value=''><?php echo $this->_tpl_vars['STRING']['QUERY']['opt_All']; ?>
+</option></select>
+					</td>
+				</tr>
+				<tr valign="baseline">
+					<td valign="top"><b><?php echo $this->_tpl_vars['STRING']['QUERY']['Status']; ?>
+:</b></td>
+					<td valign="top">
+						<select name="status[]" multiple size="7"><?php $this->_plugins['function']['build_select'][0](array('box' => "status"), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select>
+					</td>
+				</tr>
+				<tr valign="baseline">
+					<td valign="top"><b><?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy']; ?>
+:</b></td>
+					<td valign="top">
+						<select name="order">
+        			<option value="bug_id">
+          			<?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy_BugNumber']; ?>
+
+        			</option>
+        			<option selected value="severity.sort_order">
+          			<?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy_Severity']; ?>
+
+        			</option>
+        			<option value="reporter">
+          			<?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy_Reporter']; ?>
+
+        			</option>
+        			<option value="status.sort_order">
+          			<?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy_Status']; ?>
+
+        			</option>
+        			<option value="priority">
+          			<?php echo $this->_tpl_vars['STRING']['QUERY']['SortBy_Priority']; ?>
+
+        			</option>
+      			</select>
+						<select name="sort">
+							<option selected value="asc"><?php echo $this->_tpl_vars['STRING']['QUERY']['SortAsc']; ?>
+</option>
+							<option value="desc"><?php echo $this->_tpl_vars['STRING']['QUERY']['SortDesc']; ?>
+</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<br>
+			<?php if ($GLOBALS['HTTP_SESSION_VARS']['uid']): ?>
+				<?php echo $this->_tpl_vars['STRING']['QUERY']['SaveThisQueryAs']; ?>
+: <input maxlength="40" type="text" name="savedqueryname">
+				<br><br>
+			<?php endif; ?>
+      <input type="hidden" name="op" value="doquery">
+			<input type="reset" value="<?php echo $this->_tpl_vars['STRING']['QUERY']['ResetBackToDefaultQuery']; ?>
+">
+			<input type="submit" value="<?php echo $this->_tpl_vars['STRING']['QUERY']['SubmitQuery']; ?>
+"> 
+			<?php if (count ( $this->_tpl_vars['queries'] )): ?>
+				<br><br>
+				<b><?php echo $this->_tpl_vars['STRING']['QUERY']['SavedQueries']; ?>
+</b>
+				<br>
+				<?php if (isset($this->_sections["query"])) unset($this->_sections["query"]);
+$this->_sections["query"]['name'] = "query";
+$this->_sections["query"]['loop'] = is_array($this->_tpl_vars['queries']) ? count($this->_tpl_vars['queries']) : max(0, (int)$this->_tpl_vars['queries']);
+$this->_sections["query"]['show'] = true;
+$this->_sections["query"]['max'] = $this->_sections["query"]['loop'];
+$this->_sections["query"]['step'] = 1;
+$this->_sections["query"]['start'] = $this->_sections["query"]['step'] > 0 ? 0 : $this->_sections["query"]['loop']-1;
+if ($this->_sections["query"]['show']) {
+    $this->_sections["query"]['total'] = $this->_sections["query"]['loop'];
+    if ($this->_sections["query"]['total'] == 0)
+        $this->_sections["query"]['show'] = false;
+} else
+    $this->_sections["query"]['total'] = 0;
+if ($this->_sections["query"]['show']):
+
+            for ($this->_sections["query"]['index'] = $this->_sections["query"]['start'], $this->_sections["query"]['iteration'] = 1;
+                 $this->_sections["query"]['iteration'] <= $this->_sections["query"]['total'];
+                 $this->_sections["query"]['index'] += $this->_sections["query"]['step'], $this->_sections["query"]['iteration']++):
+$this->_sections["query"]['rownum'] = $this->_sections["query"]['iteration'];
+$this->_sections["query"]['index_prev'] = $this->_sections["query"]['index'] - $this->_sections["query"]['step'];
+$this->_sections["query"]['index_next'] = $this->_sections["query"]['index'] + $this->_sections["query"]['step'];
+$this->_sections["query"]['first']      = ($this->_sections["query"]['iteration'] == 1);
+$this->_sections["query"]['last']       = ($this->_sections["query"]['iteration'] == $this->_sections["query"]['total']);
+?>
+					<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?<?php echo $this->_tpl_vars['queries'][$this->_sections['query']['index']]['saved_query_string']; ?>
+"><?php echo $this->_tpl_vars['queries'][$this->_sections['query']['index']]['saved_query_name']; ?>
+</a> (<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=delquery&queryid=<?php echo $this->_tpl_vars['queries'][$this->_sections['query']['index']]['saved_query_id']; ?>
+&form=simple" onClick="return confirm('<?php echo $this->_tpl_vars['STRING']['QUERY']['SureDeleteSavedQuery']; ?>
+');"><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</a>)<br>
+				<?php endfor; endif; ?>
+			<?php endif; ?>
+    </form>
+		<br>
+		<?php echo $this->_tpl_vars['STRING']['QUERY']['GoToThe']; ?>
+ <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=query&form=advanced"><?php echo $this->_tpl_vars['STRING']['QUERY']['AdvancedQueryPage']; ?>
+</a>

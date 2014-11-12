@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        data-type="number"
+        name="amount-paid"
+        element-id="amount-paid" />
+    <element
+        required="1"
+        data-type="datetime"
+        name="joined"
+        element-id="joined" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="amount-paid-error">
+    <td colspan="2" class="error">
+    This field is required and must contain a number.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Amount Paid</td>
+    <td>
+      <input type="text" name="amount-paid" id="amount-paid" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="joined-error">
+    <td colspan="2" class="error">
+    This field is required and must be in the format YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Date Joined</td>
+    <td>
+      <input type="text" maxlength="19" name="joined" id="joined" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'joined', 'chooserSpan', 2004, 2010, 'Y-m-d H:i:s');" />
+      <div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>

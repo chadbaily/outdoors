@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Example:
+# bash$ ./setup sc_ localhost socialclub socialclub onyx
+
+echo "This script will create a set of tables for SocialClub."
+echo "It will DELETE existing tables!  Are you sure you want to do that?"
+echo "Hit Enter to continue, Ctrl-C to stop."
+read
+
+if [ $5 ]
+then
+    # Pipe the files through sed and replace the table
+    # aliases with real table names, then feed the results to mysql.
+    echo "Dropping tables..." \
+    && sed -e "s/\[_]/$1/g" drop.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Creating tables..." \
+    && sed -e "s/\[_]/$1/g" create.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Inserting initial data..." \
+    && sed -e "s/\[_]/$1/g" initialize.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Inserting privileges..." \
+    && sed -e "s/\[_]/$1/g" privileges.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Inserting foreign key meta-data..." \
+    && sed -e "s/\[_]/$1/g" foreign-keys.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Inserting implemented actions..." \
+    && sed -e "s/\[_]/$1/g" implemented-actions.sql | mysql -h$2 -u$4 -p$5 $3 \
+    && echo "Done!"
+else
+    echo "Usage: ./setup <tableprefix> <host> <db> <user> <pw>"
+fi

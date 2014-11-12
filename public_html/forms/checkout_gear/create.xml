@@ -1,0 +1,47 @@
+<form name="theform" id="theform" method="POST" action="members/checkout_gear/create">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+    <input type="hidden" name="checkout" id="checkout" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        data-type="integer"
+        required="1"
+        name="qty"
+        element-id="qty" />
+    <element
+        name="description"
+        element-id="description" />
+    <element
+        name="category"
+        required="1"
+        element-id="category" />
+    <element
+        name="checkout"
+        element-id="checkout" />
+</config>
+
+  <p hidden="1" class="error" id="qty-error">Quantity is required and must be an
+  integer.</p>
+
+  <fieldset>
+  <legend>Add by Category</legend>
+    <select name="category" id="category">
+      <option value="">Choose a Category</option>{group:}
+      <optgroup label="{cat_title|htmlspecialchars}">{type:}
+        <option value="{c_uid}">{c_title|htmlspecialchars} ({available} avail)</option>{:type}
+      </optgroup>{:group}{types}
+    </select>
+    Qty:
+    <input type="text" name="qty" id="qty" size="2" />
+    Description:
+    <input type="text" name="description" id="description" maxlength="100" />
+    <br />
+    <input type="submit" value="Add Gear" />
+  </fieldset>
+
+</form>
+

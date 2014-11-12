@@ -1,0 +1,48 @@
+		&nbsp;<b>{$page_title}</b>
+		<hr size="1">
+		{if $error}<div class="error">{$error}</div>{/if}
+		<form action="{$smarty.server.PHP_SELF}" method="post">
+		<table border="0">
+			<input type="hidden" name="do" value="component">
+			<input type="hidden" name="component_id" value="{$component_id}">
+			<input type="hidden" name="project_id" value="{$project_id}">
+			<input type="hidden" name="use_js" value="{$smarty.request.use_js}">
+			<tr>
+				<td valign="top">
+					Name:
+				</td>
+				<td valign="top">
+					<input type="text" name="component_name" value="{$component_name|stripslashes|htmlspecialchars}">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					Description:
+				</td>
+				<td valign="top">
+					<textarea name="component_desc" cols="40" rows="10">{$component_desc|stripslashes|htmlspecialchars}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					Owner:
+				</td>
+				<td valign="top">
+					<select name="owner"><option value="0">None</option>{build_select box=owner selected=$owner}</select>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					Active:
+				</td>
+				<td valign="top">
+					<input type="checkbox" name="active" value="1" {if $active or not $component_id}checked{/if}>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="Submit">
+				</td>
+			</tr>
+		</table>
+		</form>

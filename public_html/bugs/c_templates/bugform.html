@@ -1,0 +1,82 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 13:35:59
+         compiled from bugform.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'bugform.html', 13, false),
+array('modifier', 'htmlspecialchars', 'bugform.html', 13, false),
+array('function', 'build_select', 'bugform.html', 16, false),)); ?><form action="bug.php" method="post">
+    <input type="hidden" name="bugid" value="0">
+    <input type="hidden" name="project" value="<?php echo $this->_tpl_vars['project']; ?>
+">
+    <input type="hidden" name="op" value="do">
+    <table border="0">
+<?php if ($this->_tpl_vars['error']): ?>
+	<tr>
+	    <td colspan="2" class="error"><?php echo $this->_tpl_vars['error']; ?>
+</td>
+	</tr>
+<?php endif; ?>
+	<tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Project']; ?>
+:</td>
+	    <td><?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['projectname'])); ?>
+</td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Version']; ?>
+:</td>
+	    <td><select name="version"><?php $this->_plugins['function']['build_select'][0](array('box' => "version",'selected' => $this->_tpl_vars['version'],'project' => $this->_tpl_vars['project']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Summary']; ?>
+:</td>
+	    <td><input type="text" size="50" maxlength="100" name="title"
+		value="<?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['title'])); ?>
+"></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Description']; ?>
+:</td>
+	    <td><textarea name="description" cols="50" rows="8"
+		wrap=virtual><?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['description'])); ?>
+</textarea></td>
+	</tr><tr>
+	    <td align="right" valign="top">URL:</td>
+	    <td><input type="text" size="30" maxlength="255" name="url" value="<?php echo $this->_tpl_vars['url']; ?>
+"></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Severity']; ?>
+:</td>
+	    <td><select name="severity"><?php $this->_plugins['function']['build_select'][0](array('box' => "severity",'selected' => $this->_tpl_vars['severity']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Priority']; ?>
+:</td>
+	    <td><select name="priority"><?php $this->_plugins['function']['build_select'][0](array('box' => "priority",'selected' => $this->_tpl_vars['priority']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Component']; ?>
+:</td>
+	    <td><select name="component"><?php $this->_plugins['function']['build_select'][0](array('box' => "component",'selected' => $this->_tpl_vars['component'],'project' => $this->_tpl_vars['project']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Database']; ?>
+:</td>
+	    <td><select name="database"><?php $this->_plugins['function']['build_select'][0](array('box' => "database",'selected' => $this->_tpl_vars['database']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['Site']; ?>
+:</td>
+	    <td><select name="site"><?php $this->_plugins['function']['build_select'][0](array('box' => "site",'selected' => $this->_tpl_vars['site']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['OS']; ?>
+:</td>
+	    <td><select name="os"><?php $this->_plugins['function']['build_select'][0](array('box' => "os",'selected' => $this->_tpl_vars['os']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+		</select></td>
+	</tr><tr>
+	    <td align="right" valign="top"><?php echo $this->_tpl_vars['STRING']['BUGFORM']['AddAnother']; ?>
+:</td>
+		<td valign="top"><input type="checkbox" name="another" value="1"></td>
+	</tr>
+    </table>
+    <input type="submit" name="submit" value="<?php echo $this->_tpl_vars['STRING']['BUGFORM']['Submit']; ?>
+">
+</form>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="subject"
+        required="1"
+        pre-processing="titlecase"
+        element-id="subject" />
+    <element
+        name="message"
+        pre-processing="trim"
+        required="1"
+        element-id="message" />
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+    <element
+        required="1"
+        name="group"
+        element-id="group" />
+    {FORCE:}
+    <element
+        name="force"
+        element-id="force" />
+    {:FORCE}
+</config>
+
+<table width="100%">
+
+  <tr hidden="1" id="subject-error">
+    <td colspan="2" class="error">The subject is required.</td>
+  </tr>
+  <tr>
+    <td width="10%">Subject</td>
+    <td><input type="text" style="width:100%" name="subject" id="subject" /></td>
+  </tr>
+
+  <tr hidden="1" id="message-error">
+    <td colspan="2" class="error">You must enter a message.</td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>
+      <textarea cols="40" style="width:100%" rows="10" name="message" id="message">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="category-error">
+    <td colspan="2" class="error">You must choose a category.</td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>
+      <select name="category" id="category">
+        <option value="">Choose a Category</option>{option:}
+        <option value="{c_uid}">{c_title}</option>{:option}
+      </select>
+    </td>
+  </tr>
+  <tr hidden="1" id="group-error">
+    <td colspan="2" class="error">You must choose a group.</td>
+  </tr>
+  <tr>
+    <td>Send to</td>
+    <td>
+      <select name="group" id="group">
+        <option value="">Choose a Group</option>{group:}
+        <option value="{group_id}">{group_name}s</option>{:group}
+      </select>
+      {FORCE:}
+      <input name="force" id="force" type="checkbox" value="1" />
+      <label for="force">Send even if member doesn't want email?</label>
+      {:FORCE}
+    </td>
+  </tr>
+</table>
+
+      <input type="submit" value="Send Message" />
+</form>

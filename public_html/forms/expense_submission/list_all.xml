@@ -1,0 +1,45 @@
+<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+</config>
+
+<table>
+  <tr>
+    <td>Filter by: </td>
+    <td>
+
+    <select name="status" id="status" onChange="this.form.submit()" >
+      <option value="">[All Statuses]</option>{STATUS:}
+      <option value="{id}">{c_title}</option>{:STATUS}
+    </select>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Date range:</td>
+    <td>
+
+    <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+    To
+    <input type="text" id="end" name="end" maxlength="10" size="10" />
+    <input type="submit" value="Go" />
+
+    </td>
+  </tr>
+</table>
+
+</form>

@@ -1,0 +1,81 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa's Upcoming Meetings</h1>
+
+<p>Outdoors at UVa doesn't hold many &ldquo;club meetings,&rdquo; because we're
+focused on being in the outdoors (see our <a
+href="index.php">Mission Statement</a>).  We use our website and
+email list to manage the club, and the officers mostly communicate via email.
+Meetings are not mandatory and you are not required to attend them in order to
+join the club. However, we do hold several large meetings every year.</p>
+
+<!--
+<p>We are not currently planning any meetings; we held our major interest
+meetings in the fall and won't hold any more meetings till next fall.  However,
+you can always join the club by clicking the link at left.  We remain active
+all year long.</p>
+--> 
+
+<p>The following table lists our scheduled events:</p>
+
+<table class="top ruled compact cleanHeaders">
+  <tr>
+    <th>Meeting</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Date</th>
+  </tr>
+
+  <tr>
+    <td nowrap="1">Activities Fair</td>
+    <td>McIntire Amphitheater</td>
+    <td>The fall Activities Fair is one of the best chances for people to find
+    out about us.  We have a table and staff it with several officers who can
+    tell you anything you want to know about the club.
+    </td>
+    <td nowrap="1">Tue Aug 22, 2006<br>
+        10:00 AM - 4:00 PM</td>
+  </tr>
+
+  <tr class="odd">
+    <td nowrap="1">Information Session I</td>
+    <td>Cabell Hall, Room 311 </td>
+    <td>This information session is designed to give you an overview of who we
+    are, what we do, and why we're the best deal in town.  We'll show
+    pictures of past trips and introduce the officers.  Don't miss it &mdash;
+    the trip pictures are stunning.  Afterwards we'll hold a sign-up session in
+    a nearby library to assist everyone getting signed up and activated, so
+    bring cash or a checkbook if you want to join.  This will be the fastest,
+    easiest way to become a club member.
+    </td>
+    <td nowrap="1">Thur Aug 24, 2006<br>
+        7:00 - 8:00 PM</td>
+  </tr>
+
+  <tr>
+    <td nowrap="1">Information Session II</td>
+    <td>Minor Hall, Room 125</td>
+    <td>This information session is the same as the first one, for those who can't
+    make it on Aug. 24th.
+    </td>
+    <td nowrap="1">Mon Aug 28, 2006<br>
+        7:00 - 8:00 PM</td>
+  </tr>
+
+  <tr class="odd">
+    <td nowrap="1">Officer Meetings</td>
+    <td>TBD</td>
+    <td>The officers will hold several officer meetings this year, but we
+    haven't yet decided when.  When we schedule these, we'll post them and
+    announce them to the club mailing list so anyone can attend.
+    </td>
+    <td nowrap="1">TBD</td>
+  </tr>
+
+</table>
+
+<p><b>If you can't attend the information sessions</b>, don't worry.  They are
+just for convenience anyway!  You can <b>always</b> join by clicking the "Join"
+link at left.</p>
+
+<!--#include virtual="footer.html" -->

@@ -1,0 +1,33 @@
+		&nbsp;<b>{$page_title}</b>
+		<hr size="1">
+		{if $error}<div class="error">{$error}</div>{/if}
+		<form action="{$smarty.server.PHP_SELF}" method="post">
+		<table border="0">
+			<input type="hidden" name="do" value="version">
+			<input type="hidden" name="version_id" value="{$version_id}">
+			<input type="hidden" name="project_id" value="{$project_id}">
+			<input type="hidden" name="use_js" value="{$smarty.request.use_js}">
+			<tr>
+				<td valign="top">
+					Name:
+				</td>
+				<td valign="top">
+					<input type="text" name="version_name" value="{$version_name|stripslashes|htmlspecialchars}">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					Active:
+				</td>
+				<td valign="top">
+					<input type="checkbox" name="active" value="1" {if $active or not $version_id}checked{/if}>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="Submit">
+				</td>
+			</tr>
+		</table>
+		</form>
+

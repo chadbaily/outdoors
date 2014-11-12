@@ -1,0 +1,164 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+
+
+    <element
+        required="1"
+        name="street"
+        pre-processing="ucwords"
+        element-id="street"
+        />
+    <element
+        required="1"
+        name="city"
+        pre-processing="ucwords"
+        element-id="city"
+        />
+    <element
+        required="1"
+        name="state"
+        pre-processing="strtolower,ucfirst"
+        element-id="state"
+        />
+    <element
+        required="1"
+        data-type="number"
+        name="zip"
+        element-id="zip"
+        />
+
+    <element
+        data-type="number"
+        name="areaCode"
+        error-element="phone-error"
+        required="1"
+        element-id="areaCode"
+        />
+    <element
+        data-type="number"
+        name="exchange"
+        error-element="phone-error"
+        required="1"
+        element-id="exchange"
+        />
+    <element
+        data-type="number"
+        error-element="phone-error"
+        name="number"
+        element-id="number"
+        required="1"
+        />
+
+    <element
+        tag-name="input"
+        name="membership-plan"
+        required="1" />
+
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<fieldset>
+<legend>Contact Information</legend>
+
+<p>Please ensure that we have your current address and phone number:</p>
+
+<table width="100%">
+
+  <tr>
+    <td colspan="3">Address</td>
+  </tr>
+
+  <tr hidden="1" id="street-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td width="10"> </td>
+    <td>Street</td>
+    <td><input maxlength="60" type="text" name="street" id="street" /></td>
+  </tr>
+
+  <tr hidden="1" id="city-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>City</td>
+    <td><input maxlength="60" type="text" name="city" id="city" /></td>
+  </tr>
+
+  <tr hidden="1" id="state-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>State</td>
+    <td><input type="text" name="state" id="state" maxlength="2" /></td>
+  </tr>
+
+  <tr hidden="1" id="zip-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required and should only contain numbers.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Zip Code</td>
+    <td><input maxlength="60" type="text" name="zip" id="zip" /></td>
+  </tr>
+
+  <tr hidden="1" id="phone-error">
+    <td colspan="3" class="error">Please enter only numbers in the boxes
+    below.</td>
+  </tr>
+  <tr>
+    <td colspan="2">Phone Number</td>
+    <td nowrap="true">
+        (<input type="text" maxlength="3" size="3" name="areaCode" id="areaCode" />)
+        <input type="text" maxlength="3" size="3" name="exchange" id="exchange" /> -
+        <input type="text" maxlength="4" size="4" name="number" id="number" />
+    </td>
+  </tr>
+
+</table>
+
+</fieldset>
+
+<fieldset>
+<legend>Choose a Membership Plan</legend>
+
+<p class="error" hidden="1" id="membership-plan-error">This field is required.</p>
+
+<table width="100%" class="top ruled compact cleanHeaders">
+  <tr>
+    <th colspan="2">Membership Plan</th>
+    <th nowrap="true">Begin/Expire Dates</th>
+    <th>Cost</th>
+  </tr>{plan:}
+  <tr>
+    <td>
+      <input type="radio" name="membership-plan" id="membership-plan{c_uid}" value="{c_uid}" />
+    </td>
+    <td>
+      <label for="membership-plan{c_uid}"><b>{c_title|htmlspecialchars}:</b>  {c_description|htmlspecialchars}</label>
+    </td>
+    <td nowrap="true">{c_begin_date} to {c_expiration_date}</td>
+    <td>${c_total_cost}</td>
+  </tr>{:plan}
+</table>
+
+</fieldset>
+
+<p align="right"><input type="submit" value="Proceed to Next Step" /></p>
+
+</form>

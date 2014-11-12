@@ -1,0 +1,32 @@
+<?php
+ini_set('include_path',
+        "/usr/www/users/at:/usr/www/users/at/classes:/usr/www/users/at/controllers:/usr/www/users/at/utility:/usr/www/users/at/includes/");
+header("Content-Type: text/xml");
+include_once("../includes/setup.php");
+echo '<?xml version="1.0"?>'. "\n";
+echo '<rss version="2.0">' . "\n";
+echo "<channel>\n\n";
+
+echo "<title>Outdoors at UVA</title>\n";
+echo "\t<description>A list of upcoming trips being led by Outdoors at UVA members</description>\n";
+echo "\t<link>http://www.outdoorsatuva.org/members/main/member-home</link>\n\n";
+
+# Get upcoming adventures
+$cmd = $obj['conn']->createCommand();
+$cmd->loadQuery("../sql/adventure/select-top-upcoming.sql");
+$cmd->addParameter("active", $cfg['status_id']['active']);
+$cmd->addParameter("number", 10);
+$cmd->addParameter("member", 56);
+$result = $cmd->executeReader();
+while ($row = $result->fetchRow()) {
+    $datestr = date('M j',strtotime($row[c_start_date]));
+    echo "<item>\n\t<title>$datestr : {$row['c_title']}</title>\n";
+    echo "\t<description>$datestr</description>\n";
+    echo "\t<link>http://www.outdoorsatuva.org/members/adventure/read/{$row['c_uid']}</link>\n</item>\n";
+    $wrapper = Template::block($wrapper, "UPCOMING",
+        $row + array("img" => ($row['fav'] > 0 ? $favImg : "")));
+}
+
+
+echo "</channel>\n</rss>\n";
+?>

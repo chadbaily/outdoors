@@ -1,0 +1,67 @@
+<form name="login-form" id="login-form" method="POST">
+    <input type="hidden" name="login-form-name" id="login-form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="login-form-name"
+    form-id="login-form">
+    <element
+        name="user"
+        data-type="email"
+        required="1"
+        element-id="user" />
+    <element
+        name="pass"
+        required="1"
+        element-id="pass" />
+</config>
+
+<h1>Please Log In</h1>
+
+<p>You must log in to view this page.  If you have lost your password, you may
+<a href='members/main/retrieve-password'>retrieve your password</a>.  If you
+aren't a member, you need to <a href='members/join'>join the club</a>.</p>
+
+<table>
+  <tr hidden="1" id="user-error">
+    <td colspan="2" class="error">You must enter a valid email address.</td>
+  </tr>
+  {USER:}
+  <tr>
+    <td colspan="2" class="error">Sorry, that user isn't in the database.</td>
+  </tr>
+  {:USER}
+  <tr>
+    <td>Email Address</td>
+    <td><input type="text" name="user" id="user" /></td>
+  </tr>
+  <tr hidden="1" id="pass-error">
+    <td colspan="2" class="error">You must enter your password.</td>
+  </tr>
+  {PASSWORD:}
+  <tr>
+    <td colspan="2" class="error">Sorry, that is not the correct password.</td>
+  </tr>
+  {:PASSWORD}
+  <tr>
+    <td>Password</td>
+    <td><input type="password" name="pass" id="pass" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+    <input type="submit" value="Log In" />
+    </td>
+  </tr>
+</table>
+
+<p class="tiny">This site requires cookies.  If you keep getting logged out,
+    please check your browser's cookie settings and any ad-blocking software you
+    may have installed.</p>
+
+<script>
+window.onload = function() {
+    document.forms[0].elements['user'].focus();
+}
+</script>
+</form>

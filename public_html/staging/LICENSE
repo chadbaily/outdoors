@@ -1,0 +1,67 @@
+This file is the license for SocialClub.  SocialClub's homepage is
+http://socialclub.sourceforge.net.
+
+With the following exceptions, SocialClub is licensed under the GNU General
+Public License.  A copy of the license is included in the file COPYING.  Please
+read it.
+
+Exceptions:
+
+Third-party software is included with SocialClub.  SocialClub merely
+redistributes this third-party content for your convenience, and makes no
+claims or warranties about their suitability for use.  Each is licensed as
+noted below:
+
+PHP Pdf Creation
+
+    This third-party project is also hosted on Sourceforge, and is in the
+    public domain.  You can find out more at
+    http://sourceforge.net/projects/pdf-php/ SocialClub merely redistributes a
+    modified version of this code and does not claim ownership.  The following
+    files are from PHP Pdf Creation:
+
+    * utility/EasyPdf.php
+    * utility/Pdf.php
+    * The entire contents of utility/fonts
+
+Smiley Icons
+
+    The smiley icons are from the Mozilla Thunderbird project.  The Mozilla
+    Foundation makes them available under the Mozilla Public License.
+    SocialClub merely redistributes these icons and does not claim ownership.
+    The following files are considered smiley icons:
+
+    * assets/smiley-cool.png
+    * assets/smiley-cry.png
+    * assets/smiley-embarassed.png
+    * assets/smiley-foot-in-mouth.png
+    * assets/smiley-frown.png
+    * assets/smiley-innocent.png
+    * assets/smiley-kiss.png
+    * assets/smiley-laughing.png
+    * assets/smiley-money-mouth.png
+    * assets/smiley-sealed.png
+    * assets/smiley-smile.png
+    * assets/smiley-surprised.png
+    * assets/smiley-tiny.png
+    * assets/smiley-tongue-out.png
+    * assets/smiley-undecided.png
+    * assets/smiley-wink.png
+    * assets/smiley-yell.png
+    * assets/smiley.png
+
+
+Chat Icons
+
+    Chat icons are the properties of their respective owners.  SocialClub
+    merely redistributes these files and does not claim ownership.  The
+    following files are considered chat icons:
+
+    * assets/AIM-tiny.png
+    * assets/AIM.png
+    * assets/ICQ-tiny.png
+    * assets/ICQ.png
+    * assets/MSN-tiny.png
+    * assets/MSN.png
+    * assets/YM-tiny.png
+    * assets/YM.png

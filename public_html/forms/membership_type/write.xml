@@ -1,0 +1,220 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+    <element
+        name="flexible"
+        element-id="flexible" />
+    <element
+        name="private"
+        element-id="private" />
+    <element
+        data-type="date"
+        name="begin-date"
+        required-unless="flexible"
+        element-id="begin-date" />
+    <element
+        data-type="date"
+        name="expiration-date"
+        required-unless="flexible"
+        element-id="expiration-date" />
+    <element
+        data-type="date"
+        name="show-date"
+        element-id="show-date" />
+    <element
+        data-type="date"
+        name="hide-date"
+        element-id="hide-date" />
+    <element
+        data-type="integer"
+        name="units-granted"
+        required-if="flexible"
+        element-id="units-granted" />
+    <element
+        name="unit"
+        required-if="flexible"
+        element-id="unit" />
+    <element
+        required="1"
+        data-type="number"
+        name="unit-cost"
+        element-id="unit-cost" />
+    <element
+        required="1"
+        data-type="number"
+        name="total-cost"
+        element-id="total-cost" />
+</config>
+
+<table width="100%" class="top">
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">Title</td>
+    <td width="50%"><input maxlength="100" style="width:100%" type="text" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input type="text" maxlength="255" style="width:100%" name="description" id="description" />
+    </td>
+  </tr>
+
+  <tr>
+    <td>Private (don't show on join page)</td>
+    <td>
+      <input type="checkbox" name="private" id="private" value="1" />
+      <label for="private">This plan is private</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Flexible (the begin/expiration date are based on when the member's
+    current memberships expire and how much time this membership type grants the
+    member).</td>
+    <td>
+      <input type="checkbox" name="flexible" id="flexible" value="1" />
+      <label for="flexible">This is a flexible plan</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="show-date-error">
+    <td colspan="2" class="error">This value must be a date in the form
+    YYYY-MM-DD</td>
+  </tr>
+
+  <tr>
+    <td>Date to start displaying on join form</td>
+    <td>
+      <input type="text" size="10" maxlength="10" name="show-date" id="show-date" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'show-date', 'showDateSpan', 2004, 2020, 'Y-m-d');" />
+      <div id="showDateSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="hide-date-error">
+    <td colspan="2" class="error">This value must be a date in the form
+    YYYY-MM-DD</td>
+  </tr>
+
+  <tr>
+    <td>Date to stop displaying</td>
+    <td>
+      <input type="text" size="10" maxlength="10" name="hide-date" id="hide-date" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'hide-date', 'hideDateSpan', 2004, 2020, 'Y-m-d');" />
+      <div id="hideDateSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="begin-date-error">
+    <td colspan="2" class="error">This value must be a date in the form
+    YYYY-MM-DD, and is required unless this is a flexible plan.</td>
+  </tr>
+
+  <tr>
+    <td>Date membership begins (not necessary if this is a flexible plan)</td>
+    <td>
+      <input type="text" size="10" maxlength="10" name="begin-date" id="begin-date" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'begin-date', 'beginDateSpan', 2004, 2020, 'Y-m-d');" />
+      <div id="beginDateSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="expiration-date-error">
+    <td colspan="2" class="error">This value must be a date in the form
+    YYYY-MM-DD, and is required unless this is a flexible plan.</td>
+  </tr>
+
+  <tr>
+    <td>Date membership expires (not necessary if this is a flexible plan)</td>
+    <td>
+      <input type="text" size="10" maxlength="10" name="expiration-date" id="expiration-date" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'expiration-date', 'expSpan', 2004, 2020, 'Y-m-d');" />
+      <div id="expSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="units-granted-error">
+    <td class="error" colspan="2">This value must be an integer and is required
+    if this is a flexible plan.</td>
+  </tr>
+
+  <tr>
+    <td>Units of time granted (only necessary if this is a flexible plan)</td>
+    <td>
+      <input type="text" size="10" name="units-granted" id="units-granted" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="unit-error">
+    <td class="error" colspan="2">This value is required if this is a flexible plan.</td>
+  </tr>
+
+  <tr>
+    <td>Unit of time (only necessary if this is a flexible plan)</td>
+    <td>
+      <select name="unit" id="unit">
+        <option value="">Choose One</option>
+        <option value="month">Month</option>
+        <option value="day">Day</option>
+        <option value="year">Year</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="unit-cost-error">
+    <td colspan="2" class="error">This value must be a number</td>
+  </tr>
+
+  <tr>
+    <td>Unit Cost</td>
+    <td>
+      <input type="text" size="10" name="unit-cost" id="unit-cost" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="total-cost-error">
+    <td colspan="2" class="error">This value must be a number</td>
+  </tr>
+
+  <tr>
+    <td>Total Cost</td>
+    <td>
+      <input type="text" size="10" name="total-cost" id="total-cost" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,12 @@
+Dear {C_FULL_NAME},
+
+Welcome to {CLUB_NAME}!  We have activated your online membership.  You may now login to the online system at {BASEURL}.  The following are details of your membership:
+
+Membership:      {TITLE}
+Begin Date:      {C_BEGIN_DATE|_date_format,'M j, Y'}
+Expiration Date: {C_EXPIRATION_DATE|_date_format,'M j, Y'}
+Amount Received: ${C_AMOUNT_PAID}
+
+Log on to the website by clicking on the "Member's Area" link at {BASEURL} and check out what's coming up, let us know what you're interested in, search for other members, edit your profile and settings, and more!
+
+Our email list is run on an opt-out basis.  Right now, you're set to receive all emails so you won't miss out on anything.  You can choose not to receive certain types of email by logging in to the website and looking for a link on the member home page.  You should become familiar with this page, as it is your central resource in the club.

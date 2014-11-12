@@ -1,0 +1,49 @@
+<script language="JavaScript">
+<!--
+	var me = '{$smarty.server.PHP_SELF}';
+	{literal}
+		
+	function popupGroup(id) {
+		window.open(me + '?op=edit&use_js=1&group_id='+id, 'ewin', 'dependent=yes,width=250,height=150,scrollbars=1');
+	}
+	{/literal}
+// -->
+</script>
+<table border="0" width="100%">
+  <tr>
+    <td valign="top">
+      <b>&nbsp;{$page_title}</b> - <a href="{$smarty.server.PHP_SELF}?op=edit&group_id=0" onClick="popupGroup(0); return false;">{$STRING.addnew} Group</a>
+      <hr size="1">
+      <table border="0" width="100%">
+        <tr>
+          <th class="{$headers.name.class}"><a href="{$headers.name.url}">Name</a></th>
+          <th class="{$headers.count.class}"><a href="{$headers.count.url}">Users</a></th>
+					<th>&nbsp;</th>
+        </tr>
+        {section name=group loop=$groups}
+        <tr{if $smarty.section.group.iteration is even} class="alt"{/if}>
+          <td><a href="{$smarty.server.PHP_SELF}?op=edit&group_id={$groups[group].group_id}" onClick="popupGroup({$groups[group].group_id}); return false;">{$groups[group].group_name|stripslashes}</a></td>
+          <td align="center">{$groups[group].count}</td>
+					<td align="center">
+						{if $groups[group].locked}
+							Locked
+						{else}
+							<a href="{$smarty.server.PHP_SELF}?op=del&group_id={$groups[group].group_id}" onClick="return confirm('This will remove all user assignments to this group and the group itself.  Continue?')">Delete</a> | 
+							<a href="{$smarty.server.PHP_SELF}?op=purge&group_id={$groups[group].group_id}" onClick="return confirm('This will remove all user assignments to this group.  Continue?')">Purge</a>
+						{/if}
+					</td>
+        </tr>
+        {/section}
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					{$first} - {$last} of {$total}
+						<br>
+						{if $pages ne "1"}[ {$pages} ]{/if}
+  					<br>
+					</td>
+				</tr>
+      </table>
+    </td>
+	</tr>
+</table>

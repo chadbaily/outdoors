@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="trim"
+        element-id="title" />
+    <element
+        required="1"
+        name="yearinschool"
+        pre-processing="trim"
+        element-id="yearinschool" />
+    <element
+        required="1"
+        name="yearsleft"
+        data-type="number"
+        element-id="yearsleft" />
+    <element
+        required="1"
+        name="club"
+        pre-processing="trim"
+        element-id="club" />
+    <element
+        required="1"
+        name="leadership"
+        pre-processing="trim"
+        element-id="leadership" />
+    <element
+        required="0"
+        name="climbing"
+        pre-processing="trim"
+        element-id="climbing" />
+    <element
+        required="0"
+        name="kayaking"
+        pre-processing="trim"
+        element-id="kayaking" />
+    <element
+        required="0"
+        name="biking"
+        pre-processing="trim"
+        element-id="biking" />
+    <element
+        required="0"
+        name="hiking"
+        pre-processing="trim"
+        element-id="hiking" />
+    <element
+        required="0"
+        name="caving"
+        pre-processing="trim"
+        element-id="caving" />
+    <element
+        required="0"
+        name="snowsports"
+        pre-processing="trim"
+        element-id="snowsports" />
+    <element
+        required="0"
+        name="other"
+        pre-processing="trim"
+        element-id="other" />
+    <element
+        required="1"
+        name="whyofficer"
+        pre-processing="trim"
+        element-id="whyofficer" />
+    <element
+        name="purchasing"
+        element-id="purchasing" />
+    <element
+        name="treasurer"
+        element-id="treasurer" />
+    <element
+        name="quartermaster"
+        element-id="quartermaster" />
+    <element
+        name="advisor"
+        element-id="advisor" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+<hr />
+<h2>Personal Information</h2>
+<table width="100%">
+  <tr>
+    <td width="20%">Full Name:</td>
+    <td>{C_FULL_NAME}</td>
+  </tr>
+
+  <tr>
+    <td width="20%">E-mail Address:</td>
+    <td>{C_EMAIL}</td>
+  </tr>
+  
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.  Be creative!
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%">Application Title:</td>
+    <td>
+      <input type="text" id="title" name="title" maxlength="50" />
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%">Year in School:</td>
+    <td>
+      <input type="text" id="yearinschool" name="yearinschool" maxlength="50" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="yearsleft-data-error">
+    <td colspan="2" class="error">
+    This must be a number.  
+    </td>
+  </tr>
+
+  <tr hidden="1" id="yearsleft-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%">Years left at UVa or Charlottesville (expected):</td>
+    <td>
+      <input type="text" id="yearsleft" name="yearsleft" />
+    </td>
+  </tr>
+</table>
+<hr />
+<h2>Experience</h2>
+
+<table width="100%">
+
+  <tr hidden="1" id="club-error">
+    <td class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>What outdoor-related clubs have you been involved in?<br />
+    (Boy Scouts, NOLS, High school clubs, etc.)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="club" wrap="soft" id="club" rows="6" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="leadership-error">
+    <td class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>List and describe any leadership positions in any clubs or organizations</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="leadership" wrap="soft" id="leadership" rows="6" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <h3>List your experiences in the following activities</h3>
+      <p class="notice">We do not expect you to be an expert at any or all of these activities!
+      Please include <i>any</i> (and all) information that you think is important.
+      Elaborate if possible!</p>
+      <p class="notice">Leave blank if no experience</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Climbing:<br />(List whether you do sport/top rope/trad and what level for each)</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="climbing" wrap="soft" id="climbing" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Kayaking:<br />(List what rivers you can paddle and class you feel comfortable on)</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="kayaking" wrap="soft" id="kayaking" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Mountain Biking:</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="biking" wrap="soft" id="biking" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Hiking/Backpacking:</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="hiking" wrap="soft" id="hiking" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Caving:</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="caving" wrap="soft" id="caving" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Snowsports:</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="snowsports" wrap="soft" id="snowsports" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Other:<br />(such as environmental service, etc.)</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="other" wrap="soft" id="other" rows="3" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+</table>
+  <hr />
+  <h2>Officer Information</h2>
+<table width="100%">
+
+  <tr hidden="1" id="whyofficer-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">Why do you want to be an officer? What can you add to the Club? How can the Club be improved?</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <textarea name="whyofficer" wrap="soft" id="whyofficer" rows="6" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">What duties would you be interested in? <p class="notice">Check all that apply</p></td>
+  </tr>
+  <tr>
+    <td width="20%">Purchasing Gear</td>
+    <td>
+      <input type="checkbox" name="purchasing" id="purchasing" value="1" />
+    </td>
+  </tr>
+  <tr>
+    <td width="20%">Treasurer</td>
+    <td>
+      <input type="checkbox" name="treasurer"  id="treasurer"  value="1" />
+    </td>
+  </tr>
+  <tr>
+    <td width="20%">Quartermaster <br />(handling gear)</td>
+    <td>
+      <input type="checkbox" name="quartermaster" id="quartermaster" value="1" />
+    </td>
+  </tr>
+  <tr>
+    <td width="20%">Advising Leaders</td>
+    <td>
+      <input type="checkbox" name="advisor" id="advisor" value="1" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Submit Application" />
+    </td>
+  </tr>
+
+</table>
+</form>

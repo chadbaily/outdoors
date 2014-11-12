@@ -1,0 +1,122 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="ucwords"
+        element-id="title" />
+    <element
+        required="1"
+        name="street"
+        pre-processing="ucwords"
+        element-id="street" />
+    <element
+        required="1"
+        name="city"
+        pre-processing="ucwords"
+        element-id="city" />
+    <element
+        required="1"
+        name="state"
+        pre-processing="strtolower,ucfirst"
+        element-id="state" />
+    <element
+        required="1"
+        name="zip"
+        data-type="integer"
+        element-id="zip" />
+    <element
+        required="1"
+        name="country"
+        element-id="country" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><input maxlength="60" type="text" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="street-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Street</td>
+    <td>
+      <input maxlength="60" type="text" name="street" id="street" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="city-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td>
+      <input maxlength="60" type="text" name="city" id="city" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="state-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td>
+      <input type="text" name="state" maxlength="2" id="state" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="zip-error">
+    <td colspan="2" class="error">
+    This field is required and must be a number.
+    </td>
+  </tr>
+  <tr>
+    <td>ZIP Code:</td>
+    <td>
+      <input maxlength="20" type="text" name="zip" id="zip" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="country-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Country:</td>
+    <td>
+      <input maxlength="60" type="text" name="country" id="country" value="US" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>

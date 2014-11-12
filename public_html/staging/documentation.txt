@@ -1,0 +1,82 @@
+%CLASSES FOLDER
+There are two basic classes: database_object and paypal_ipn.  The following
+all extend database_object
+----------------------------------------------------------------------
+absence
+activity
+activity_category
+address
+adventure
+adventure_activity
+answer
+application
+attendee
+chat
+chat_type
+checkout
+checkout_gear
+checkout_item
+classified_ad
+comment
+condition
+database_object
+email_list
+expense
+expense_category
+expense_report
+expense_report_note
+expense_submission
+expense_submission_expense
+interest
+item
+item_category
+item_feature
+item_note
+item_type
+item_type_feature
+location
+location_activity
+member
+member_note
+membership
+membership_type
+optout
+payment
+phone_number
+phone_number_type
+privilege
+question
+rating
+report
+subscription
+table
+transaction
+--------------------------------------------------
+adventure_comment extends comment
+
+
+%ABOUT FOLDER	  	  	 	folder with pages describing what the club is all about
+activities.shtml			page describing the activities that the club does. link under "home" tab (index.php -> pages/main.php -> pages/main/default.php -> templates/main/default.php)
+application		     		folder containing officer applications
+application.shtml	       		officer application page (WHERE ON WEBSITE) (CHAIN FROM INDEX.PHP)
+contact.shtml				"contact us" page from link at bottom of each page and under "home" tab (CHAIN FROM INDEX.PHP)
+copyright-terms-privacy.shtml		"Copyright (C) Outdoors at UVA", "Terms of Use", and "Privacy Policy" link at bottom of each page (CHAIN FROM INDEX.PHP)
+discounts.shtml				page explaining member discounts from main page -> benefits -> discounts at local merchants
+electronic-services-agreement.shtml	"Terms of Use" at bottom of page -> "electronic services agreement"
+email.shtml				describes regulations for sending emails to the club (member home page -> "email the club list" -> "email policy")
+equipment.shtml				equipment policy description (main page -> how the club works -> borrow our high-quality gear)
+faq.shtml				FAQ under "home" tab
+footer.html				footer at bottom of every page
+header.html				header at top of every page 
+how-it-works.shtml			describes how the club works, "how the club works" tab under home
+images					folder containing pictures
+index.php				contains text for "home" page
+makepage.pl				generates officer application file from application form
+officer*				various versions of the officers description page
+policies.shtml				*****COULD NOT FIND A REFERENCE TO THIS FILE
+schedule.shtml				*****NEEDS TO BE UPDATED list of meeting times ("upcoming meetings" tab under home)
+
+
+The following command finds all the files containing the expression in
+quotes. please don't delete it
+find . -type f -exec grep "join the club" -i -H {} \;

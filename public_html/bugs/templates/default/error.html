@@ -1,0 +1,14 @@
+<table width="100%">
+	<tr>
+		<td align="center">
+			{if $iserror}
+				<div class="error">{$text}</div>
+			{else}
+				{$text}
+			{/if}
+			<br>
+			<br>
+			<a href="javascript:history.go(-1)">Back</a>
+		</td>
+	</tr>
+</table>

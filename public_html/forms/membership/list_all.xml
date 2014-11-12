@@ -1,0 +1,24 @@
+<form name="theform" id="the-form" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="start"
+        element-id="start" />
+</config>
+
+<fieldset>
+<legend>Filtering Options</legend>
+
+<p>Newer than
+<input type="text" size="10" name="start" id="start" />
+<input type="submit" value="Go" />
+</p>
+
+</fieldset>
+
+</form>

@@ -1,0 +1,20 @@
+<form name="theform" id="the-form" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="title"
+        element-id="title" />
+</config>
+
+Filter by
+<input type="text" name="title" id="title" value="[title]"
+    onFocus="if(this.value=='[title]')this.value='';"
+    onBlur="if(this.value=='')this.value='[title]';"/>
+<input type="submit" value="Go" />
+
+</form>

@@ -1,0 +1,148 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+    <input type="hidden" name="report" id="report" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+    <element
+        required="1"
+        name="adventure"
+        element-id="adventure" />
+    <element
+        required="1"
+        name="date"
+        data-type="date"
+        element-id="date" />
+    <element
+        required="1"
+        name="merchant"
+        element-id="merchant" />
+    <element
+        required="1"
+        data-type="number"
+        name="amount"
+        element-id="amount" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+    <element
+        name="report"
+        element-id="report" />
+</config>
+
+<script>
+function populate(obj) {
+    val = obj.options[obj.selectedIndex].text;
+    obj.form.elements['date'].value = val.substr(val.length - 10);
+    obj.form.elements['adventure'].value = val.substr(0, val.length - 13);
+}
+</script>
+
+<p>You can use this menu to pre-populate some fields below.
+<select onChange="populate(this)" class="compact" >
+  <option value="">Choose An Adventure</option>{adventure:}
+  <option value="{c_uid}">{c_title|htmlspecialchars} - {c_start_date|_date_format,'Y-m-d'}</option>{:adventure}
+</select>
+</p>
+
+<table class="top">
+
+  <tr hidden="1" id="category-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Category</td>
+    <td>
+      <select name="category" id="category" >
+        <option value="">Choose a Category</option>{category:}
+        <option value="{c_uid}">{c_title|htmlspecialchars}</option>{:category}
+      </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="adventure-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Adventure (or other description of what the expense is for)</td>
+    <td>
+      <input type="text" name="adventure" id="adventure" maxlength="100" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="date-error">
+    <td colspan="2" class="error">
+    This field is required and must be a date in the form YYYY-MM-DD.
+    </td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td>
+      <input type="text" name="date" id="date" maxlength="10" />
+      <img alt="Calendar" title="Calendar"
+        src="assets/cal.gif" width="16" height="16" border="0"
+        onClick="showChooser(this, 'date', 'startSpan', 2004, 2020, 'Y-m-d');" />
+        <div class="dateChooser" id="startSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="amount-error">
+    <td colspan="2" class="error">
+    This field is required and must be numeric.
+    </td>
+  </tr>
+  <tr>
+    <td>Amount.  If this is money you owe, enter a negative amount.</td>
+    <td>
+      <input type="text" name="amount" id="amount" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="merchant-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Merchant</td>
+    <td>
+      <input type="text" name="merchant" id="merchant" maxlength="30" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Memo (Ex: Gas for 1 car, 300 miles)</td>
+    <td>
+      <input type="text" name="description" id="description" maxlength="60" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+
+</table>
+
+</form>

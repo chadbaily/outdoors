@@ -1,0 +1,115 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa's Upcoming Meetings</h1>
+
+<p>Outdoors at UVa doesn't hold many &ldquo;club meetings,&rdquo; because we're
+focused on being in the outdoors (see our <a
+href="index.php">Mission Statement</a>).  We use our website and
+email list to manage the club, and the officers mostly communicate via email.
+Meetings are not mandatory and you are not required to attend them in order to
+join the club. However, we do hold several large information sessions every year.
+</p>
+
+<!--
+<p>We are not currently planning any more information sessions; we held our major interest
+meetings in the fall and won't hold any more until next fall.  However,
+you can always join the club by clicking the link at left.  We remain active
+all year long.  </p>
+-->
+
+<p>The following table lists our scheduled events:</p>
+
+<table class="top ruled compact cleanHeaders">
+  <tr>
+    <th>Meeting</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Date</th>
+  </tr>
+
+<!--  <tr class="odd">
+    <td nowrap="1"><FONT COLOR=NAVY><B>Monday Gatherings</B></FONT></td>
+    <td><FONT COLOR=NAVY><B>Newcomb Hall, Main Lounge</B></FONT></td>
+    <td><FONT COLOR=NAVY>This is a chance for club members to meet each other 
+	and socialize.  Members can discuss past trips, ideas for future trips, 
+	environmental events, social events, or just about anything!  
+	It's completely informal and members are welcome to bring friends 
+	interested in the club too.  Some of the club officers will be there, 
+	and you're welcome to ask questions and give us feedback.</FONT>
+    </td>
+    <td nowrap="1"><B><FONT COLOR=NAVY>Mondays, 6:30 - 7:00 PM</B></FONT><br>
+        </td>  
+</tr>
+-->
+
+
+  <tr class="odd">
+    <td nowrap="1">Fall Activities Fair</td>
+    <td>Newcomb Hall</td>
+    <td>The fall Activities Fair is one of the best chances for people to find
+    out about us.  We have a table and staff it with several officers who can
+    tell you anything you want to know about the club.
+    </td>
+    <td nowrap="1">TBD, Fall 2008<br>
+        TBD<br>
+	</td>
+  </tr>
+
+  <tr>
+    <td nowrap="1">Information Session I</td>
+    <td>Minor Hall 125 </td>
+    <td>This information session is designed to give you an overview of who we
+    are, what we do, and why we're the best deal in town.  We'll show
+    pictures of past trips and introduce the officers.  Don't miss it &mdash;
+    the trip pictures are stunning.  Afterwards we'll hold a sign-up session in
+    a nearby library to assist everyone getting signed up and activated, so
+    bring cash or a checkbook if you want to join.  This will be the fastest,
+    easiest way to become a club member.
+    </td>
+    <td nowrap="1">TBD, Fall 2008<br>
+        TBD<br>
+	</td>
+  </tr>
+
+ <tr class="odd">
+    <td nowrap="1">Information Session II</td>
+    <td>Wilson Hall 301</td>
+    <td>This information session is the same as the first one, for those who can't
+    make it.
+    </td>
+    <td nowrap="1">Wednesday, September 3, 2008<br>
+        7:00-8:00PM<br>
+	</td>
+  </tr>
+
+
+  <tr>
+    <td nowrap="1">Winter Activities Fair</td>
+    <td>Newcomb Hall Ballroom</td>
+    <td>If you missed the fall Activites Fair, the winter Activities Fair is another chance for people to find
+    out about us.  We have a table and staff it with several officers who can
+    tell you anything you want to know about the club.
+    </td>
+    <td nowrap="1">Thursday, January 24, 2008<br>
+        12:00-5:00pm</td>
+  </tr>
+
+   <tr class="odd">
+    <td nowrap="1">Officer Meetings</td>
+    <td>TBD</td>
+    <td>The officers will hold officer meetings this year as needed, but we
+    haven't yet decided when.  When we schedule these, we'll post them and
+    announce them to the club mailing list.
+    </td>
+    <td nowrap="1">TBD</td>
+  </tr>
+
+
+
+</table>
+
+<p><b>If you can't attend the information sessions</b>, don't worry.  They are
+just for convenience anyway!  You can <b>always</b> join by clicking the "Join"
+link at left.</p>
+
+<!--#include virtual="footer.html" -->

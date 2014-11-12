@@ -1,0 +1,60 @@
+<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="type"
+        element-id="type" />
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="category"
+        element-id="category" />
+    <element
+        name="count"
+        element-id="count" />
+    <element
+        name="sort"
+        element-id="sort" />
+    <element
+        name="offset"
+        element-id="offset" />
+</config>
+
+Filter by: 
+
+<select name="category" id="category" class="compact">
+  <option value="">[All Categories]</option>{CAT:}
+  <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:CAT}
+</select>
+
+<select name="type" id="type" class="compact">
+  <option value="">[All Item Types]</option>{GROUP:}
+  <optgroup label="{CAT_TITLE|htmlspecialchars}">{TYPE:}
+    <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:TYPE}
+  </optgroup>{:GROUP}{TYPES}
+</select>
+
+<select name="status" id="status" class="compact">
+  <option value="">[All Statuses]</option>{status:}
+  <option value="{c_uid}">{c_title}</option>{:status}
+</select>
+
+<br />
+View <input type="text" name="count" id="count" size="3" /> per page
+
+<select name="sort" id="sort" class="compact">{sort:}
+  <option value="{title}">Sort by {title}</option>{:sort}
+</select>
+
+<select name="offset" id="offset" class="compact">{offset:}
+  <option value="{page}">Page {page} of {pages}</option>{:offset}
+</select>
+
+<input type="submit" value="Go" />
+</form>
