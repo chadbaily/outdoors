@@ -1,0 +1,104 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@initial release of checkin/checkout system
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.1 2004/11/20 15:17:47 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/checkout/read.php");
+
+# Display information about the current checkout
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/checkout/select-gear.sql");
+$cmd->addParameter("checkout", $cfg['object']);
+$result =& $cmd->executeReader();
+if ($result->numRows()) {
+    $template = Template::unhide($template, "somegear");
+    while ($row =& $result->fetchRow()) {
+        $template = Template::block($template, "gear", $row);
+    }
+}
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/checkout/select-items.sql");
+$cmd->addParameter("checkout", $cfg['object']);
+$result =& $cmd->executeReader();
+if ($result->numRows()) {
+    $template = Template::unhide($template, "someitems");
+    while ($row =& $result->fetchRow()) {
+        $template = Template::block($template, "item", $row);
+    }
+}
+
+$member =& new member();
+$member->select($object->getMember());
+
+$res['content'] = Template::replace($template, array(
+    "name" => $member->getFullName()));
+$res['title'] = "Items Checked Out to " . $member->getFullName();
+
+?>
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.3 2004/11/04 21:21:54 at Exp $
+d28 11
+d43 1
+a43 1
+    $template = Template::unhide($template, "some");
+a46 3
+}
+else {
+    $template = Template::unhide($template, "none");
+@
+

@@ -1,0 +1,466 @@
+head	1.14;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.14
+date	2005.02.08.12.30.43;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.23.12.57.41;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.06.17.55.43;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.06.01.54.56;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.22.20.29.57;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.20.18.19.51;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.14
+log
+@fix redirect
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: search.php,v 1.13 2005/02/07 18:49:28 at Exp $
+ *
+ * Search the member directory by first name, last name, or email address.
+ */
+
+$template = file_get_contents("templates/member/search.php");
+
+# Create a form for the user to enter criteria in...
+$formT = file_get_contents("forms/member/search.xml");
+# Add a list of the member's adventures to the form
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/list_all-joined.sql");
+$cmd->addParameter("member", $cfg['user']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formT = Template::block($formT, "ADVENTURE",
+        array_change_key_case($row, 1));
+}
+
+$form =& new XMLForm(Template::finalize($formT), true);
+$form->snatch();
+$form->validate();
+if ($form->isValid()) {
+    # Display the list of members that match the criteria
+    # Sanitize the form input and query
+    $field = preg_replace("/[^\w]/", "", $form->getValue("field"));
+    $contains = preg_replace("/[^\w\d\._'@@ ]/", "", $form->getValue("contains"));
+    $adventure = $form->getValue("adventure");
+
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/member/search.sql");
+    $cmd->addParameter("member", $cfg['user']);
+    $cmd->addParameter("status", $cfg['status_id']['waitlisted']);
+    $cmd->addParameter("hide_info", 
+        (($obj['user']->isRootUser() || $obj['user']->isInGroup("leader"))
+            ? 0 : 1));
+    if ($contains) {
+        $cmd->addParameter($field, $contains);
+    }
+    if (intval($adventure)) {
+        $cmd->addParameter("adventure", $adventure);
+    }
+    # Restricted members (those whose only group is 'member') can't see private members...
+    if (count($obj['user']->getChildren("member_group", "c_member")) <= 1
+        && $obj['user']->isInGroup("member"))
+    {
+        $cmd->addParameter("private", $cfg['flag']['private']);
+    }
+    # These parameters are just to set values so they aren't hardcoded.
+    $cmd->addParameter("email_private", $cfg['flag']['email_private']);
+    $cmd->addParameter("private", $cfg['flag']['private']);
+    $cmd->addParameter("primary", $cfg['flag']['primary']);
+    $cmd->addParameter("status", $cfg['status_id']['active']);
+
+    # Query the database.  
+    $result =& $cmd->executeReader();
+    if ($result->numRows() == 1) {
+        $row =& $result->fetchRow();
+        # Go directly to the member details page
+        redirect("$cfg[base_url]/members/member/read/$row[c_uid]");
+    }
+    if ($result->numRows() >0) {
+        $template = Template::unhide($template, "SOME");
+        while ($row = $result->fetchRow()) {
+            # Plug members into the template.
+            $template = Template::block($template, "ROW", 
+                array_change_key_case($row, 1));
+        }
+    }
+    else {
+        $template = Template::unhide($template, "NONE");
+    }
+
+}
+
+$template = Template::replace($template, array(
+    "FORM" => $form->toString()));
+
+# Create the output
+$res['title'] = "Search Member Directory";
+$res['content'] = $template;
+
+?>
+@
+
+
+1.13
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.12 2004/10/23 12:57:41 at Exp $
+d79 1
+a79 1
+        redirect("members/member/read/$row[c_uid]");
+@
+
+
+1.12
+log
+@change class names to match table names, use getChildren()
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.11 2004/10/07 17:41:50 at Exp $
+d79 1
+a79 2
+        redirect("members.php?page=member&action={$cfg['action_id']['read']}"
+            . "&object=$row[c_uid]");
+@
+
+
+1.11
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.10 2004/10/06 17:55:43 at Exp $
+d63 3
+a65 1
+    if (count($obj['user']->getGroups()) <= 1 && $obj['user']->isInGroup("member")) {
+@
+
+
+1.10
+log
+@comm -> cmd
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.9 2004/10/06 01:54:56 at Exp $
+d77 1
+a77 1
+        Utility::redirect("members.php?page=member&action={$cfg['action_id']['read']}"
+@
+
+
+1.9
+log
+@clean up query code
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.8 2004/09/22 20:29:57 at Exp $
+d30 4
+a33 4
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/adventure/list_all-joined.sql");
+$comm->addParameter("member", $cfg['user']);
+$result =& $comm->executeReader();
+d49 5
+a53 5
+    $comm =& $obj['conn']->createCommand();
+    $comm->loadQuery("sql/queries/member/search.sql");
+    $comm->addParameter("member", $cfg['user']);
+    $comm->addParameter("status", $cfg['status_id']['waitlisted']);
+    $comm->addParameter("hide_info", 
+d57 1
+a57 1
+        $comm->addParameter($field, $contains);
+d60 1
+a60 1
+        $comm->addParameter("adventure", $adventure);
+d64 1
+a64 1
+        $comm->addParameter("private", $cfg['flag']['private']);
+d67 4
+a70 4
+    $comm->addParameter("email_private", $cfg['flag']['email_private']);
+    $comm->addParameter("private", $cfg['flag']['private']);
+    $comm->addParameter("primary", $cfg['flag']['primary']);
+    $comm->addParameter("status", $cfg['status_id']['active']);
+d73 1
+a73 1
+    $result =& $comm->executeReader();
+@
+
+
+1.8
+log
+@when only one result, go directly to the member details page
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.7 2004/09/20 20:38:40 at Exp $
+d33 2
+a34 2
+$results =& $comm->executeReader();
+while ($row =& $results->fetchRow()) {
+@
+
+
+1.7
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.6 2004/09/08 22:45:37 at Exp $
+d74 6
+@
+
+
+1.6
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.5 2004/08/20 18:19:51 at Exp $
+d35 1
+a35 1
+    $formT = Template::replaceWithinBlock($formT, "ADVENTURE",
+d75 1
+a75 1
+        $template = Template::unhideBlock($template, "SOME");
+d78 1
+a78 1
+            $template = Template::replaceWithinBlock($template, "ROW", 
+d83 1
+a83 1
+        $template = Template::unhideBlock($template, "NONE");
+d88 1
+a88 1
+$template = Template::replaceValues($template, array(
+@
+
+
+1.5
+log
+@added the ability to search by attendees of past adventures, and put the query into a SQL file
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.4 2004/08/06 18:49:26 at Exp $
+d25 1
+a25 1
+$wrapper = file_get_contents("templates/member/search-wrapper.php");
+d53 3
+d66 5
+d75 1
+a75 1
+        $wrapper = Template::unhideBlock($wrapper, "SOME");
+d78 1
+a78 1
+            $wrapper = Template::replaceWithinBlock($wrapper, "ROW", 
+d83 1
+a83 1
+        $wrapper = Template::unhideBlock($wrapper, "NONE");
+d88 1
+a88 1
+$wrapper = Template::replaceValues($wrapper, array(
+d93 1
+a93 1
+$res['content'] = $wrapper;
+@
+
+
+1.4
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.3 2004/07/26 02:12:31 at Exp $
+d28 12
+a39 1
+$form =& new XMLForm("forms/member/search.xml");
+d44 15
+a58 8
+    # Sanitize the form input
+    $field = $form->getValue("field");
+    $field = preg_replace("/[^\w]/", "", $field);
+    $contains = $form->getValue("contains");
+    $contains = preg_replace("/[^\w\s\d]/", "", $contains);
+    $query = "select c_first_name, c_last_name, c_uid "
+        . "from [_]member where $field like '%$contains%'";
+    
+d61 1
+a61 1
+        $query .= " and (c_flags & {$cfg['flag']['private']}) = 0";
+a62 1
+    $query .= " order by c_last_name";
+d65 1
+a65 1
+    $result = $obj['conn']->query($query);
+@
+
+
+1.3
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.2 2004/07/20 14:21:23 at Exp $
+a23 5
+
+# Check permissions.
+if (!$obj['security']->isAllowedOnTable($cfg['action'], $obj['user'], "[_]member")) {
+    $obj['security']->notAllowedOnTable($cfg['action'], $obj['user'], "[_]member");
+}
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d26 2
+a27 2
+if (!$obj['security']->isAllowedOnTable($cfg['action'], $obj['user'], "t_member")) {
+    $obj['security']->notAllowedOnTable($cfg['action'], $obj['user'], "t_member");
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.6 2004/05/30 01:42:18 baron Exp $
+d44 1
+a44 1
+        . "from t_member where $field like '%$contains%'";
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

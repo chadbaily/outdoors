@@ -1,0 +1,307 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.23.12.47.18;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.06.14.16.32;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.12.27.56;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: auto-unsubscribe-expired-members.php,v 1.6 2004/10/06 14:16:32 at Exp $
+ */
+
+include_once("subscription.php");
+
+# Check that the user has correct permissions
+if (!$obj['user']->isInGroup('root')) {
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$template =
+file_get_contents("templates/admin/auto-unsubscribe-expired-members.php");
+
+# Get a list of subscriptions that belong to members that have no memberships 
+# with expiration dates in the future.
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/subscription/select-expired.sql");
+$result =& $cmd->executeReader();
+
+if ($result->numRows()) {
+    $template = Template::unhide($template, "SOME");
+    while ($row = $result->fetchRow()) {
+        $subscription =& new subscription();
+        $subscription->initFromRow($row);
+        $subscription->delete(TRUE);
+        $template = Template::block($template, "ROW",
+            array_change_key_case($row, 1));
+    }
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+$res['title'] = "Unsubscribe Expired Members";
+
+?>
+@
+
+
+1.6
+log
+@cmd -> comm
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-unsubscribe-expired-members.php,v 1.5 2004/09/20 20:38:39 at Exp $
+d23 1
+a23 1
+include_once("Subscription.php");
+d43 1
+a43 1
+        $subscription =& new Subscription();
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-unsubscribe-expired-members.php,v 1.4 2004/09/08 12:27:56 at Exp $
+d36 3
+a38 3
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/subscription/select-expired.sql");
+$result =& $comm->executeReader();
+@
+
+
+1.4
+log
+@updates to match new coding
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-unsubscribe-expired-members.php,v 1.3 2004/08/25 11:43:32 at Exp $
+d41 1
+a41 1
+    $template = Template::unhideBlock($template, "SOME");
+d46 1
+a46 1
+        $template = Template::replaceWithinBlock($template, "ROW",
+d51 1
+a51 1
+    $template = Template::unhideBlock($template, "NONE");
+@
+
+
+1.3
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 8
+ * $Id: auto-unsubscribe-expired-members.php,v 1.2 2004/07/20 14:21:23 at Exp $
+ *
+ * This script checks for members that need to be unsubscribed from the email
+ * lists because they no longer have active memberships.
+ *
+ * This script is accessible from a web browser, because there's not a good way
+ * to run Perl or PHP scripts from a Cron job on the SCS server.  The cron job
+ * just uses wget to invoke this page.
+d23 1
+a23 1
+include_once("EmailList.php");
+d31 2
+a32 12
+# Log that the page was accessed
+$time = date("Y-m-d H:i:s");
+$userid = $_COOKIE['user'];
+$login = $_COOKIE['loggedin'];
+$logMessage = "
+[$time] This page was accessed.
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User Cookie:   $userid
+Login Cookie:  $login
+";
+error_log($logMessage, 3, $error_log);
+d36 12
+a47 47
+$subscriptions = array();
+$result = $db->query("select su.*
+       from [_]subscription as su
+       inner join [_]member as me on su.c_owner = me.c_uid
+       inner join [_]membership as ms on me.c_uid = ms.c_member
+       inner join [_]membership_type as mt on ms.c_type = mt.c_uid
+       group by su.c_uid
+       having max(c_expiration_date) < current_date");
+
+while ($row = $result->fetchRow()) {
+    $subscription =& new Subscription();
+    $subscription->initFromRow($row);
+    $subscriptions[$row['c_uid']] = $subscription;
+}
+
+if (count($subscriptions)) {
+
+    # Log the subscriptions that are in the list to delete
+    $subscriptionUIDs = implode(",", array_keys($subscriptions));
+    $time = date("Y-m-d H:i:s");
+    $logMessage = "
+[$time] The following subscriptions belong to members with expired memberships:
+($subscriptionUIDs)
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User Cookie:   $userid
+Login Cookie:  $login
+";
+    error_log($logMessage, 3, $error_log);
+
+    # A list of email lists to use in the next step
+    $emailLists = array();
+
+    foreach ($subscriptions as $key => $sub) {
+        if (!isset($emailLists[$sub->getList()])) {
+            $emailLists[$sub->getList()] 
+                = EmailList::getConcreteEmailList($sub->getList());
+        }
+
+        # Send the unsubscribe-me email
+        $emailLists[$sub->getList()]->unsubscribe(
+                $sub->getEmail(),
+                $sub->getPassword());
+        
+        # Delete the subscription and so on
+        $sub->delete(TRUE);
+
+a48 4
+
+    $contents = "<h1>Success</h1>"
+        . "<p>All subscriptions were successfully deleted.</p>";
+
+d51 1
+a51 3
+    $contents = "<h1>No Subscriptions to Delete</h1>"
+        . "<p>There are no members with expired memberships that need to "
+        . "be unsubscribed.</p>";
+d54 2
+a55 1
+$tabbedBox->setContents($contents);
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-unsubscribe-expired-members.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d33 3
+a35 2
+if (!$security->isInGroup($user, $group_id['root'])) {
+    $security->notAllowedOnPage($user);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-unsubscribe-expired-members.php,v 1.3 2004/05/30 01:42:05 baron Exp $
+d54 4
+a57 4
+       from t_subscription as su
+       inner join t_member as me on su.c_owner = me.c_uid
+       inner join t_membership as ms on me.c_uid = ms.c_member
+       inner join t_membership_type as mt on ms.c_type = mt.c_uid
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

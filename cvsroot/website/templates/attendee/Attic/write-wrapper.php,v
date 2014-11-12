@@ -1,0 +1,64 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.14.03;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Edit Attendee</h1>
+
+<p>You are editing an attendee record.</p>
+
+<p class="notice">In general, this is a very bad idea, because there is a
+complicated relationship between the amount an attendee paid, the adventure fee,
+refunds, debts, etc etc etc.  The attendee really only <b>records</b> the amount
+paid for the trip, and is used for later reference when withdrawing or refunding
+or whatever.  <b>You only need to change this if it's inaccurate.</b>  Do not
+change it thinking you are adjusting the charges to the member's account,
+because you aren't.</p>
+
+{BOX}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

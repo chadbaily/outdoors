@@ -1,0 +1,44 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@remove spurious semicolons
+@
+text
+@select c_child_col from [_]foreign_key
+where c_parent_table = {parent,char}
+    and c_child_table = {child,char}
+    and ({key,char} is null or {key,char} = c_child_col)
+@
+
+
+1.1
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d4 1
+a4 1
+    and ({key,char} is null or {key,char} = c_child_col);
+@
+

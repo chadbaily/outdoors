@@ -1,0 +1,29 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.07.19.16.45.44;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Calendar stuff
+@
+text
+@<h1>Calendar of Events</h1>
+
+<p>This page shows events for the given time period.  Click on an adventure's
+name to view details.</p>
+
+{CALENDAR}
+@

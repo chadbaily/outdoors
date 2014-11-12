@@ -1,0 +1,606 @@
+head	1.12;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2005.01.16.02.06.12;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.12.28.14.50.48;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.23.12.57.41;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.09.03.06.09;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.24.03.26.46;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.18.14.43.58;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.18.14.33.19;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.06.17.00.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@add member/view_waitlist action
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.11 2004/12/28 14:50:48 at Exp $
+ */
+
+$template = file_get_contents("templates/member/read.php");
+
+# Decide what to show, based on who's logged in.  This is in addition to the
+# normal privileges that apply.  The variables are named after what they will
+# allow: $showAll will allow everything to be seen (not to be confused with 
+# "show this to all people").
+$self = $obj['user']->equals($object);
+$showAll = ($self || $obj['user']->isRootUser() 
+    || $obj['user']->isInGroup("root"));
+$showMost = $showAll
+    || $obj['user']->isInGroup("leader")
+    || $obj['user']->isInGroup("officer");
+
+# The ultimate decision: whether to show anything at all
+if ($showMost || !$object->getFlag("private")) {
+    $template = Template::unhide($template, "ALL");
+
+    # Insert the member's information into the template
+    $template = Template::block($template, "MEMBER",
+        $object->getVarArray(), false);
+
+    # Insert the member's address into the template
+    $addr =& $object->getPrimaryAddress();
+    if ($addr && ($showMost || !$addr->getFlag("private"))) {
+        $template = Template::block($template, "ADDRESS",
+            $addr->getVarArray(), false);
+        $template = Template::unhide($template, array("ADDRESS"));
+        if ($self && count($object->getChildren("address", "c_owner")) > 1) {
+            $template = Template::unhide($template, array("ADDR_ALL"));
+        }
+    }
+
+    # Insert the member's phone numbers into the template
+    $showPhones = false;
+    foreach ($object->getChildren("phone_number", "c_owner") as $num) {
+        if ($showMost || !$num->getFlag("private")) {
+            $template = Template::block($template, "PHONE",
+                $num->getVarArray());
+            $showPhones = true;
+        }
+    }
+    if ($showPhones) {
+        $template = Template::unhide($template, array(
+            "PHONES"));
+        if ($self && count($object->getChildren("phone_number", "c_owner")) > 1) {
+            $template = Template::unhide($template, array(
+                "PHONE_ALL"));
+        }
+    }
+
+    # Get a list of adventures the member participated in
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/adventure/select-by-member.sql");
+    $cmd->addParameter("member", $cfg['object']);
+    $cmd->addParameter("status", $cfg['status_id']['default']);
+    $cmd->addParameter("end", date('Y-m-d', time()));
+    $result =& $cmd->executeReader();
+    $count = 0;
+    if ($result->numRows()) {
+        while ($row =& $result->fetchRow()) {
+            $template = Template::block($template, "ROW",
+                array_change_key_case($row, 1)
+                + array("CLASS" => (($count++ % 2) ? "odd" : "even")));
+        }
+        $template = Template::unhide($template, "ADV");
+    }
+
+    # Insert the member's chat identities into the template
+    $showChats = false;
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/chat/select.sql");
+    $cmd->addParameter("member", $cfg['object']);
+    $result =& $cmd->executeReader();
+    while ($row =& $result->fetchRow()) {
+        if ($showMost || !$row["private"]) {
+            $template = Template::block($template, "CHAT", $row);
+            $showChats = true;
+        }
+    }
+    if ($showChats) {
+        $template = Template::unhide($template, "IDENTITIES");
+        if ($self && count($object->getChildren("chat", "c_owner")) > 1) {
+            $template = Template::unhide($template, array(
+                "CHAT_ALL"));
+        }
+    }
+
+    # Unhide parts of the template
+    if ($showMost) {
+        $template = Template::unhide($template, array(
+            "GENDER", "BIRTHDATE"));
+    }
+    if ($showAll) {
+        $template = Template::unhide($template, array(
+            "PASSWORD"));
+    }
+    if ($showAll || !$object->getFlag("email_private")) {
+        $template = Template::unhide($template, array(
+            "EMAIL"));
+    }
+
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Member Details: " . $object->getFullName();
+
+?>
+@
+
+
+1.11
+log
+@don't show adventures in the future
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.10 2004/10/27 21:40:29 at Exp $
+d77 1
+@
+
+
+1.10
+log
+@shrink-wrapped the actions form
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.9 2004/10/23 12:57:41 at Exp $
+d77 1
+@
+
+
+1.9
+log
+@change class names to match table names, use getChildren()
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.8 2004/09/20 20:38:40 at Exp $
+a23 6
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "OPTION",
+        array_change_key_case($action, 1));
+}
+@
+
+
+1.8
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.7 2004/09/09 03:06:09 at Exp $
+d34 1
+a34 1
+# "show this to all people).
+d56 1
+a56 1
+        if ($self && count($object->getAddresses()) > 1) {
+d63 1
+a63 1
+    foreach ($object->getPhoneNumbers() as $num) {
+d73 1
+a73 1
+        if ($self && count($object->getPhoneNumbers()) > 1) {
+d108 1
+a108 1
+        if ($self && count($object->getChats()) > 1) {
+@
+
+
+1.7
+log
+@added chat icons
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.6 2004/09/08 22:45:37 at Exp $
+d27 1
+a27 1
+    $template = Template::replaceWithinBlock($template, "OPTION",
+d44 1
+a44 1
+    $template = Template::unhideBlock($template, "ALL");
+d47 1
+a47 1
+    $template = Template::replaceWithinBlock($template, "MEMBER",
+d53 1
+a53 1
+        $template = Template::replaceWithinBlock($template, "ADDRESS",
+d55 1
+a55 1
+        $template = Template::unhideBlock($template, array("ADDRESS"));
+d57 1
+a57 1
+            $template = Template::unhideBlock($template, array("ADDR_ALL"));
+d65 1
+a65 1
+            $template = Template::replaceWithinBlock($template, "PHONE",
+d71 1
+a71 1
+        $template = Template::unhideBlock($template, array(
+d74 1
+a74 1
+            $template = Template::unhideBlock($template, array(
+d87 1
+a87 1
+            $template = Template::replaceWithinBlock($template, "ROW",
+d91 1
+a91 1
+        $template = Template::unhideBlock($template, "ADV");
+d102 1
+a102 1
+            $template = Template::replaceWithinBlock($template, "CHAT", $row);
+d107 1
+a107 1
+        $template = Template::unhideBlock($template, "IDENTITIES");
+d109 1
+a109 1
+            $template = Template::unhideBlock($template, array(
+d116 1
+a116 1
+        $template = Template::unhideBlock($template, array(
+d120 1
+a120 1
+        $template = Template::unhideBlock($template, array(
+d124 1
+a124 1
+        $template = Template::unhideBlock($template, array(
+d130 1
+a130 1
+    $template = Template::unhideBlock($template, "NONE");
+@
+
+
+1.6
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.5 2004/08/24 03:26:46 at Exp $
+a92 2
+
+
+@
+
+
+1.5
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.4 2004/08/18 14:43:58 at Exp $
+d23 1
+a23 3
+# Create templates
+$wrapper = file_get_contents("templates/member/read-wrapper.php");
+$box = file_get_contents("templates/member/read-box.php");
+d27 1
+a27 1
+    $box = Template::replaceWithinBlock($box, "OPTION",
+d44 1
+a44 1
+    $box = Template::unhideBlock($box, "ALL");
+d46 2
+a47 2
+    # Insert the member's information into the box
+    $box = Template::replaceWithinBlock($box, "MEMBER",
+d50 1
+a50 1
+    # Insert the member's address into the box
+d53 1
+a53 1
+        $box = Template::replaceWithinBlock($box, "ADDRESS",
+d55 1
+a55 1
+        $box = Template::unhideBlock($box, array("ADDRESS"));
+d57 1
+a57 1
+            $box = Template::unhideBlock($box, array("ADDR_ALL"));
+d61 1
+a61 1
+    # Insert the member's phone numbers into the box
+d65 1
+a65 1
+            $box = Template::replaceWithinBlock($box, "PHONE",
+d71 1
+a71 1
+        $box = Template::unhideBlock($box, array(
+d74 1
+a74 1
+            $box = Template::unhideBlock($box, array(
+d87 1
+a87 1
+            $wrapper = Template::replaceWithinBlock($wrapper, "ROW",
+d91 1
+a91 1
+        $wrapper = Template::unhideBlock($wrapper, "ADV");
+d96 1
+a96 1
+    # Insert the member's chat identities into the box
+d104 1
+a104 1
+            $box = Template::replaceWithinBlock($box, "CHAT", $row);
+d109 1
+a109 1
+        $box = Template::unhideBlock($box, array("CHATS"));
+d111 1
+a111 1
+            $box = Template::unhideBlock($box, array(
+d118 1
+a118 1
+        $box = Template::unhideBlock($box, array(
+d122 1
+a122 1
+        $box = Template::unhideBlock($box, array(
+d126 1
+a126 1
+        $box = Template::unhideBlock($box, array(
+d132 1
+a132 1
+    $box = Template::unhideBlock($box, "NONE");
+d135 2
+a136 8
+# Plug it all into the templates
+$res['tab'] = "Details";
+$res['content'] = $box;
+include_once("tabbed-boxes/member-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content'],
+    "C_FULL_NAME" => $object->getFullName()));
+$res['title'] = "View Member Details";
+@
+
+
+1.4
+log
+@styling changes to tables
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/08/18 14:33:19 at Exp $
+d28 3
+a30 5
+$actions =& $obj['security']->getAllowedObjectActions($object, $obj['user']);
+foreach ($actions as $key => $action) {
+    $box = Template::replaceWithinBlock($box, "OPTION", array(
+        "C_UID" => $action->getUID(),
+        "C_TITLE" => $action->getSummary()));
+@
+
+
+1.3
+log
+@unhide the birthdate for self, root, officer, and leader
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.2 2004/08/06 17:00:00 at Exp $
+d88 1
+d92 2
+a93 1
+                array_change_key_case($row, 1));
+d144 2
+a145 1
+    "BOX" => $res['content'],));
+@
+
+
+1.2
+log
+@fixed problems with privacy logic by removing the 'hidden' flag from existence
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d42 3
+a44 1
+$showMost = $showAll || $obj['user']->isInGroup("leader");
+d121 1
+a121 1
+            "GENDER"));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.8 2004/05/30 01:42:18 baron Exp $
+d36 3
+a38 1
+# normal privileges that apply.
+d44 17
+a60 14
+# Insert the member's information into the box
+$box = Template::replaceWithinBlock($box, "MEMBER",
+    $object->getVarArray(), false);
+
+# Insert the member's address into the box
+$addr =& $object->getPrimaryAddress();
+if ($addr && ($showMost || !$addr->getFlag("private"))) {
+    $box = Template::replaceWithinBlock($box, "ADDRESS",
+        $addr->getVarArray(), false);
+    $box = Template::unhideBlock($box, array(
+        "ADDRESS", "PASSWORD", "MARITAL"));
+    if ($self && count($object->getAddresses()) > 1) {
+        $box = Template::unhideBlock($box, array(
+            "ADDR_ALL"));
+a61 1
+}
+d63 8
+a70 7
+# Insert the member's phone numbers into the box
+$showPhones = false;
+foreach ($object->getPhoneNumbers() as $num) {
+    if ($showMost || $num->getFlag("private")) {
+        $box = Template::replaceWithinBlock($box, "PHONE",
+            $num->getVarArray());
+        $showPhones = true;
+d72 1
+a72 5
+}
+if ($showPhones) {
+    $box = Template::unhideBlock($box, array(
+        "PHONES"));
+    if ($self && count($object->getPhoneNumbers()) > 1) {
+d74 5
+a78 1
+            "PHONE_ALL"));
+a79 1
+}
+d81 11
+a91 9
+# Get a list of adventures the member participated in
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/select-by-member.sql");
+$cmd->addParameter("member", $cfg['object']);
+$result =& $cmd->executeReader();
+if ($result->numRows()) {
+    while ($row =& $result->fetchRow()) {
+        $wrapper = Template::replaceWithinBlock($wrapper, "ROW",
+            array_change_key_case($row, 1));
+a92 2
+    $wrapper = Template::unhideBlock($wrapper, "ADV");
+}
+d96 33
+a128 12
+# Insert the member's chat identities into the box
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/chat/select.sql");
+$cmd->addParameter("member", $cfg['object']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $box = Template::replaceWithinBlock($box, "CHAT", $row);
+}
+if ($showMost && $result->numRows()) {
+    $box = Template::unhideBlock($box, array(
+        "CHAT_ALL"));
+}
+a129 4
+# Unhide parts of the template
+if ($showMost) {
+    $box = Template::unhideBlock($box, array(
+        "GENDER"));
+d131 2
+a132 3
+if ($showAll) {
+    $box = Template::unhideBlock($box, array(
+        "PASSWORD"));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,216 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.21.20.54.20;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Report.php,v 1.2 2004/07/20 14:11:06 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+
+class Report extends DatabaseObject {
+    // {{{declarations
+    var $c_title = null; // String
+    var $c_description = null; // String
+    var $c_query = null; // String
+    var $c_instructions = null; // String
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Report() {
+        global $cfg;
+        $this->DatabaseObject();
+        $this->table = "[_]report";
+    } //}}}
+
+    /* {{{execute
+     * This method returns a recordset with the results of the report.
+     */
+    function execute() {
+        global $obj;
+        return $obj['conn']->query($this->c_query);
+    } //}}}
+
+    /* {{{getParameters
+     * returns an associative array of parameters, with their names pointing to
+     * their datatypes.
+     */
+    function getParameters() {
+        $matches = array();
+        $result = array();
+        preg_match_all ("/\{.*?\}/", $this->c_query, $matches);
+        foreach ($matches[0] as $match) {
+            list($key, $val) = explode(",", str_replace("{", "", str_replace("}", "", $match)));
+            $result[$key] = $val;
+        }
+        return $result;
+    } //}}}
+
+    /* {{{replaceParameter
+     * A parameter is embedded in the query in the form {name,datatype} and must
+     * be replaced before execution.
+     */
+    function replaceParameter($name, $value) {
+        $this->c_query = preg_replace("/\\\{$name,.*?\}/", $value, $this->c_query);
+    } //}}}
+
+    /* {{{getTitle
+     *
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+
+    /* {{{setTitle
+     *
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getDescription
+     *
+     */
+    function getDescription() {
+        return $this->c_description;
+    } //}}}
+
+    /* {{{setDescription
+     *
+     */
+    function setDescription($value) {
+        $this->c_description = $value;
+    } //}}}
+
+    /* {{{getQuery
+     *
+     */
+    function getQuery() {
+        return $this->c_query;
+    } //}}}
+
+    /* {{{setQuery
+     *
+     */
+    function setQuery($value) {
+        $this->c_query = $value;
+    } //}}}
+
+    /* {{{getInstructions
+     *
+     */
+    function getInstructions() {
+        return $this->c_instructions;
+    } //}}}
+
+    /* {{{setInstructions
+     *
+     */
+    function setInstructions($value) {
+        $this->c_instructions = $value;
+    } //}}}
+
+    /* {{{checkForAlter
+     * Returns an array of any bad words in the query.
+     */
+    function checkForAlter() {
+        $badWords = str_replace(" ", "\b|\b",
+            "INSERT UPDATE DELETE TRUNCATE REPLACE CREATE DROP ALTER RENAME"
+            . " EXPLAIN DESCRIBE OPTIMIZE ANALYZE FLUSH RESET PURGE KILL SHOW"
+            . " GRANT REVOKE");
+        $matches = array();
+        preg_match_all("/\b$badWords\b/i", $this->c_query, $matches);
+        return $matches[0];
+    } //}}}
+
+}
+?>
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Report.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Report.php,v 1.4 2004/05/30 01:41:56 baron Exp $
+d39 1
+a39 1
+        $this->table = "t_report";
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

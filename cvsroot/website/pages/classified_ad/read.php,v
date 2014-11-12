@@ -1,0 +1,110 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.23.12.53.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.22.16.27.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shrink-wrapped the actions form
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.2 2004/10/23 12:53:36 at Exp $
+ */
+
+include_once("status.php");
+
+# Create templates
+$template = file_get_contents("templates/classified_ad/read.php");
+
+$template = $object->insertIntoTemplate($template);
+$status =& new status();
+$status->select($object->getStatus());
+$member =& new member();
+$member->select($object->getOwner());
+$res['content'] = Template::replace($template, array(
+    "STATUS" => $status->getTitle(),
+    "OWNER" => $member->getFullName()));
+$res['title'] = "View Ad Details";
+
+?>
+@
+
+
+1.2
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1 2004/09/22 16:27:56 at Exp $
+a26 6
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "ACTIONS",
+        array_change_key_case($action, 1));
+}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.2 2004/09/20 20:38:40 at Exp $
+d23 1
+a23 1
+include_once("Status.php");
+d35 1
+a35 1
+$status =& new Status();
+d37 1
+a37 1
+$member =& new Member();
+@
+

@@ -1,0 +1,217 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.21.21.10.38;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.17.16.40.29;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.09.02.16.59;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.15.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>View Extended Properties</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<fieldset>
+<legend>General Properties</legend>
+
+<table class="collapsed elbowroom verticalHeaders">
+
+  <tr>
+    <th>Type</th><td>{PAGE}</td>
+  </tr>
+
+  <tr>
+    <th nowrap>Unique Identifier</th><td>{OBJECT}</td>
+  </tr>
+
+  <tr>
+    <th>Database Table</th><td>{PAGE}</td>
+  </tr>
+
+  <tr>
+    <th>Owner</th><td><a
+    href="members/member/read/{C_OWNER}">{OWNER_FIRST_NAME}
+    {OWNER_LAST_NAME}</a></td>
+  </tr>
+
+  <tr>
+    <th>Creator</th><td><a
+    href="members/member/read/{C_CREATOR}">{CREATOR_FIRST_NAME}
+    {CREATOR_LAST_NAME}</a></td>
+  </tr>
+
+  <tr>
+    <th>Group</th><td><a
+    href="members/group/read/{C_GROUP}">{GROUP}<a>
+    This is the group that owns the object.  Do not confuse this with
+    a member's group membership.  They are totally separate.</td>
+  </tr>
+
+  <tr>
+    <th>Created</th><td>{C_CREATED_DATE}</td>
+  </tr>
+
+  <tr>
+    <th>Last Modified</th><td>{C_LAST_MODIFIED}</td>
+  </tr>
+
+  <tr>
+    <th>Status</th><td><a
+    href="members/status/read/{C_STATUS}">{STATUS}</td>
+  </tr>
+
+</table>
+
+</fieldset>
+<fieldset>
+<legend>Unix Permissions</legend>
+
+<p>The system stores information about who is allowed to do what to this
+object.  The object's UNIX-style permissions are {C_UNIXPERMS|decoct} octal, which
+translates to {C_UNIXPERMS|decbin} in binary.</p>
+
+<table class="borders collapsed">
+
+  <tr>
+    <td></td><th>Owner</th><th>Group</th><th>Other</th>
+  </tr>
+
+  <tr>
+    <th>Read</th><td>{OWNER_READ}</td><td>{GROUP_READ}</td><td>{OTHER_READ}</td>
+  </tr>
+
+  <tr>
+    <th>Write</th><td>{OWNER_WRITE}</td><td>{GROUP_WRITE}</td><td>{OTHER_WRITE}</td>
+  </tr>
+
+  <tr>
+    <th>Delete</th><td>{OWNER_DELETE}</td><td>{GROUP_DELETE}</td><td>{OTHER_DELETE}</td>
+  </tr>
+
+</table>
+</fieldset>
+
+</div>
+@
+
+
+1.4
+log
+@change class names to be the same as table names
+@
+text
+@d27 1
+a27 1
+    href="members.php?page=member&action={ACTION_READ}&object={C_OWNER}">{OWNER_FIRST_NAME}
+d33 1
+a33 1
+    href="members.php?page=member&action={ACTION_READ}&object={C_CREATOR}">{CREATOR_FIRST_NAME}
+d39 1
+a39 1
+    href="members.php?page=group&action={ACTION_READ}&object={C_GROUP}">{GROUP}<a>
+d54 1
+a54 1
+    href="members.php?page=status&action={ACTION_READ}&object={C_STATUS}">{STATUS}</td>
+@
+
+
+1.3
+log
+@styling changes
+@
+text
+@d14 1
+a14 1
+    <th>Type</th><td>{OBJECT_TYPE}</td>
+d22 1
+a22 1
+    <th>Database Table</th><td>{TABLE}</td>
+@
+
+
+1.2
+log
+@double tabs removed
+@
+text
+@d10 2
+a11 1
+<table>
+d14 1
+a14 1
+    <td>Type</td><td>{OBJECT_TYPE}</td>
+d18 1
+a18 1
+    <td nowrap>Unique Identifier</td><td>{OBJECT}</td>
+d22 1
+a22 1
+    <td>Database Table</td><td>{TABLE}</td>
+d26 1
+a26 1
+    <td>Owner</td><td><a
+d32 1
+a32 1
+    <td>Creator</td><td><a
+d38 1
+a38 1
+    <td>Group</td><td><a
+d45 1
+a45 1
+    <td>Created</td><td>{C_CREATED_DATE}</td>
+d49 1
+a49 1
+    <td>Last Modified</td><td>{C_LAST_MODIFIED}</td>
+d53 1
+a53 1
+    <td>Status</td><td><a
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@a7 4
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+
+@
+

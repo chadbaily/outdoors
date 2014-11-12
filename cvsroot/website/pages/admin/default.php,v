@@ -1,0 +1,173 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.01.19.55.54;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.26.45;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: default.php,v 1.4 2004/09/01 19:55:54 at Exp $
+ *
+ * This is the default page for the Admin Tasks tab.
+ */
+
+# Check permissions.  Only members of the "root", "treasurer", or "officer"  
+# groups are allowed to access this page.
+if (!$obj['user']->isRootUser()
+        && !$obj['user']->isInGroup('treasurer')
+        && !$obj['user']->isInGroup('officer')) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$contents = file_get_contents("templates/admin/default.php");
+
+if ($obj['user']->isRootUser()
+        || $obj['user']->isInGroup('treasurer')) {
+    $contents = Template::unhide($contents, "ACTIVATE");
+}
+
+if ($obj['user']->isRootUser()) {
+    $contents = Template::unhide($contents, "DBCOMMON");
+}
+
+$res['content'] = $contents;
+
+?>
+@
+
+
+1.4
+log
+@added links for activating members
+@
+text
+@d20 1
+a20 1
+ * $Id: default.php,v 1.3 2004/08/25 11:43:32 at Exp $
+d39 1
+a39 1
+    $contents = Template::unhideBlock($contents, "ACTIVATE");
+d43 1
+a43 1
+    $contents = Template::unhideBlock($contents, "DBCOMMON");
+@
+
+
+1.3
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: default.php,v 1.2 2004/08/24 03:26:45 at Exp $
+d36 5
+@
+
+
+1.2
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: default.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d31 2
+a32 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: default.php,v 1.4 2004/05/30 01:42:06 baron Exp $
+a34 12
+
+if ($obj['user']->isRootUser()) {
+    $contents = Template::unhideBlock($contents, "MEMBERSHIP_TYPE");
+}
+
+if ($obj['user']->isRootUser()
+        || $obj['user']->isInGroup('officer')) {
+    $contents = Template::unhideBlock($contents, "ACTIVITY");
+    $contents = Template::unhideBlock($contents, "ACTION");
+    $contents = Template::unhideBlock($contents, "GROUP");
+    $contents = Template::unhideBlock($contents, "STATUS");
+}
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

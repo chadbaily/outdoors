@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.14.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Chat Identities</h1>
+
+<p>The following is a list of all chat identities in the database:</p>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Type</th>
+    <th>Screen Name</th>
+    <th>Primary?</th>
+  </tr>{ITEM:}
+  <tr>
+    <td>
+      <a href="members/member/read/{T_MEMBER}">{C_FULL_NAME}</a>
+    </td>
+    <td>{C_TITLE}</td>
+    <td>
+      <a
+      href="members/chat/{T_CHAT}">{C_SCREENNAME}</a>
+    </td>
+    <td>{C_PRIMARY}</td>
+    </tr>{:ITEM}
+</table>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d14 1
+a14 1
+      <a href="members.php?page=member&action={ACTION_READ}&object={T_MEMBER}">{C_FULL_NAME}</a>
+d19 1
+a19 1
+      href="members.php?page=chat&action={ACTION_READ}&object={T_CHAT}">{C_SCREENNAME}</a>
+@
+

@@ -1,0 +1,255 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.21.20.37.54;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.12.19.19.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.12.12.44.24;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.09.21.14.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.14.17.26;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@nix word wrapping
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: EmailListManager.php,v 1.6 2004/10/12 19:19:40 at Exp $
+ */
+
+include_once("Email.php");
+
+class EmailListManager {
+
+    function sendMassEmail($user, $subject, $message, $category) {
+        global $obj;
+
+        $email =& new Email();
+        $email->setFrom($user->getFullName() . " <" . $user->getEmail() . ">");
+        $email->addTo($user->getFullName() . " <" . $user->getEmail() . ">");
+        if (strpos($subject, "Outdoors: ") == FALSE) {
+            $subject = "Outdoors: $subject";
+        }
+        $email->setSubject($subject);
+        $email->setBody($message);
+        $email->addHeader("X-Outdoors-Category", $category);
+        $email->addHeader("X-Outdoors-Email", "true");
+        $email->loadFooter("templates/emails/main-footer.txt");
+        $email->setWordWrap(false);
+
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/misc/select-opted-out-emails.sql");
+        $cmd->addParameter("category", $category);
+        $cmd->addParameter("member", $user->getUID());
+        $result =& $cmd->executeReader();
+        while ($row =& $result->fetchRow()) {
+            $email->addBCC($row['c_email']);
+        }
+
+        $email->send();
+    }
+
+}
+
+?>
+@
+
+
+1.6
+log
+@change listname prefix for nospamming
+@
+text
+@d20 1
+a20 1
+ * $Id: EmailListManager.php,v 1.5 2004/10/12 12:44:24 at Exp $
+d41 1
+a41 2
+        $email->setWordWrap(true);
+        $email->setWordWrapWidth(76);
+@
+
+
+1.5
+log
+@change to actually send the message
+@
+text
+@d20 1
+a20 1
+ * $Id: EmailListManager.php,v 1.4 2004/10/09 21:14:33 at Exp $
+d33 2
+a34 2
+        if (strpos($subject, "[Outdoors]") == FALSE) {
+            $subject = "[Outdoors] $subject";
+@
+
+
+1.4
+log
+@release email system
+@
+text
+@d20 1
+a20 1
+ * $Id: EmailListManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+d53 1
+a53 2
+        //$email->send();
+        echo "<pre>" . $email->toString() . "</pre>";
+@
+
+
+1.3
+log
+@not needed; this was for OASC in the absence of Mailman lists
+@
+text
+@d22 3
+d27 1
+a27 1
+    function &getActiveEmails() {
+d30 19
+a48 11
+        $emails = array();
+
+        $result =& $obj['conn']->query("select "
+            . "me.c_email, concat(me.c_first_name, ' ', me.c_last_name) as name "
+            . "from [_]member as me "
+            . "inner join [_]membership as ms on ms.c_member = me.c_uid "
+            . "inner join [_]status as st on ms.c_status = st.c_uid "
+            . "where st.c_title = 'active' "
+            . "and ms.c_begin_date <= current_date "
+            . "and ms.c_expiration_date >= current_date "
+            . "group by ms.c_uid");
+d50 1
+a50 1
+            $emails[$row['c_email']] = $row['name'];
+a51 2
+        return $emails;
+    }
+d53 2
+a54 20
+    function &getSubscribedEmails() {
+        global $obj;
+        global $cfg;
+
+        $emails = array();
+
+        $result =& $obj['conn']->query("select "
+            . "me.c_email, concat(me.c_first_name, ' ', me.c_last_name) as name "
+            . "from [_]member as me "
+            . "inner join [_]membership as ms on ms.c_member = me.c_uid "
+            . "inner join [_]status as st on ms.c_status = st.c_uid "
+            . "where st.c_title = 'active' "
+            . "and ms.c_begin_date <= current_date "
+            . "and ms.c_expiration_date >= current_date "
+            . "and me.c_flags & {$cfg['flag']['receive_email']} "
+            . "group by ms.c_uid");
+        while ($row =& $result->fetchRow()) {
+            $emails[$row['c_email']] = $row['name'];
+        }
+        return $emails;
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: EmailListManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: EmailListManager.php,v 1.3 2004/05/30 01:41:57 baron Exp $
+d31 3
+a33 3
+            . "from t_member as me "
+            . "inner join t_membership as ms on ms.c_member = me.c_uid "
+            . "inner join t_status as st on ms.c_status = st.c_uid "
+d52 3
+a54 3
+            . "from t_member as me "
+            . "inner join t_membership as ms on ms.c_member = me.c_uid "
+            . "inner join t_status as st on ms.c_status = st.c_uid "
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

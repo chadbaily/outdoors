@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@delete [_]item_feature
+from [_]item_feature as ia
+    inner join [_]item as it on it.c_uid = ia.c_item
+where it.c_type = {item_type,int}
+    and ia.c_name = {attr_name,char}
+@

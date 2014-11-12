@@ -1,0 +1,78 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.16.02.06.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Waitlist Report for {C_FULL_NAME}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{some:}
+
+<p>{C_FULL_NAME} has been waitlisted on the following adventures:</p>
+
+<table class="ruled collapsed compact elbowroom cleanHeaders">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Date</th>
+  </tr>
+{row:}
+  <tr>
+    <td>
+      <a href="members/adventure/read/{c_uid}">{c_title}</a>
+    </td>
+    <td>
+      <a href="members/location/read/{loc_uid}">{loc_title}</a>
+    </td>
+    <td nowrap>{c_start_date|_date_format,'M j, Y'}</td>
+  </tr>{:row}
+</table>
+{:some}
+
+{none:}
+<p class="notice">This member has not been waitlisted on any adventures.</p>
+{:none}
+
+</div>
+@
+
+
+1.1
+log
+@add member/view_waitlist action
+@
+text
+@d21 1
+a21 1
+      <a href="members.php?page=adventure&object={c_uid}&action={ACTION_READ}">{c_title}</a>
+d24 1
+a24 1
+      <a href="members.php?page=location&object={loc_uid}&action={ACTION_READ}">{loc_title}</a>
+@
+

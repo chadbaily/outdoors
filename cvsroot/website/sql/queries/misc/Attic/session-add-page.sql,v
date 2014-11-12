@@ -1,0 +1,57 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.11.08.18.29.41;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.07.02.49.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@move session queries to sql/queries/session
+@
+text
+@insert into [_]session_page
+    (
+     c_created_date,
+     c_session,
+     c_member,
+     c_method,
+     c_page,
+     c_action,
+     c_object
+    )
+    values
+    (
+     now(),
+     {session,int},
+     {member,int},
+     {method,char,4},
+     {page,char,20},
+     {action,char,40},
+     {object,int}
+    )
+@
+
+
+1.1
+log
+@add session-tracking to website
+@
+text
+@@
+

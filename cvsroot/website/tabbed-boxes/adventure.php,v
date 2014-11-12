@@ -1,0 +1,219 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.23.13.07.52;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.22.01.19.01;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.19.51.21;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.13.16.47.03;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.09.23.36.56;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.09.02.13.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@use getChildren()
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: adventure.php,v 1.5 2004/09/22 01:19:01 at Exp $
+ */
+
+include_once("JoinAdventureManager.php");
+
+$attending = JoinAdventureManager::checkIfMemberIsAttending(
+    $object, $obj['user']);
+$now = date("Y-m-d H:i:s");
+
+if ($now > $object->getStartDate()) {
+    $obj['tabbed_box']->deleteTab('Edit Questions');
+}
+
+if ($attending || $now > $object->getSignupDate()
+        || ($object->getOwner() == $cfg['user'] && $object->getStatus()
+        != $cfg['status_id']['inactive'])) {
+    $obj['tabbed_box']->deleteTab('Join');
+}
+
+if ($object->getStatus() != $cfg['status_id']['active']
+        || $now >= $object->getStartDate()
+        || count($object->getChildren("attendee"))) {
+    $obj['tabbed_box']->deleteTab('Deactivate');
+}
+
+if (!$attending
+        || $object->getStatus() == $cfg['status_id']['active']
+        || $now >= $object->getStartDate()) {
+    $obj['tabbed_box']->deleteTab('Activate');
+}
+
+if (!$attending
+        || $object->getOwner() == $cfg['user']
+        || $now >= $object->getStartDate()) {
+    $obj['tabbed_box']->deleteTab('Withdraw');
+}
+
+if (!JoinAdventureManager::memberIsWaitlisted($object, $obj['user'])) {
+    $obj['tabbed_box']->deleteTab('View Waitlist');
+}
+
+if ($now >= $object->getSignupDate()) {
+    $obj['tabbed_box']->deleteTab('Announce');
+}
+
+if ($now < $object->getEndDate() || !$attending) {
+    $obj['tabbed_box']->deleteTab('Comment');
+}
+
+if ($now >= $object->getStartDate()) {
+    $obj['tabbed_box']->deleteTab('Edit');
+}
+
+$obj['tabbed_box']->deleteTab('Cancel');
+$obj['tabbed_box']->deleteTab('Choose Activities');
+
+?>
+@
+
+
+1.5
+log
+@get rid of the Deactivate tab after people join
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure.php,v 1.4 2004/09/20 19:51:21 at Exp $
+d41 1
+a41 1
+        || count($object->getAttendees())) {
+@
+
+
+1.4
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure.php,v 1.3 2004/09/13 16:47:03 at Exp $
+d40 2
+a41 1
+        || $now >= $object->getStartDate()) {
+@
+
+
+1.3
+log
+@fix typo
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure.php,v 1.2 2004/09/09 23:36:56 at Exp $
+d27 1
+a27 1
+$now =& new DateTime();
+d29 1
+a29 1
+if ($now->compareTo($object->getStartDate()) > 0) {
+d33 1
+a33 1
+if ($attending || $now->compareTo($object->getSignupDate()) > 0
+d40 1
+a40 1
+        || $now->compareTo($object->getStartDate()) >= 0) {
+d46 1
+a46 1
+        || $now->compareTo($object->getStartDate()) >= 0) {
+d52 1
+a52 1
+        || $now->compareTo($object->getStartDate()) >= 0) {
+d60 1
+a60 1
+if ($now->compareTo($object->getSignupDate()) >= 0) {
+d64 1
+a64 1
+if ($now->compareTo($object->getEndDate()) < 1 || !$attending) {
+d68 1
+a68 1
+if ($now->compareTo($object->getStartDate()) >= 0) {
+@
+
+
+1.2
+log
+@remove Comment tab if you haven't attended
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure.php,v 1.1 2004/09/09 02:13:14 at Exp $
+d30 1
+a30 1
+    $obj['tabbed_box']->deleteTab('Edit &Questions');
+@
+
+
+1.1
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure-read.php,v 1.2 2004/08/24 03:26:46 at Exp $
+d64 1
+a64 1
+if ($now->compareTo($object->getEndDate()) < 1) {
+@
+

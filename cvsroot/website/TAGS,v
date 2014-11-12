@@ -1,0 +1,47 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.10.01.31.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@The following files are tagged with special tags in CVS:
+
+.htaccess
+Tagged with 'test' tag.  Requires HTTP auth to keep casual users from using the
+test or staging sites.
+
+assets/stylesheet.css
+Tagged with 'test' tag.  Makes the page have a thick red border to alert you
+that you're not on the main site.
+
+members.php
+Tagged with 'test' tag.  Implements error handling and reporting instead of
+spitting errors back to the browser.
+
+config.php
+Tagged with 'test' tag.  Controls which DB tables the system uses.
+
+members.php, index.php
+Tagged with 'maintenance' tag.  When updated to this branch, the site just
+displays a message about being down for maintenance.
+
+templates/main/main.php
+Tagged with 'test' tag, but not used -- the assets/stylesheet.css file, when
+stuck to 'test' branch, will create the thick red border.
+@

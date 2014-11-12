@@ -1,0 +1,110 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.18.13.44.04;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.18.03.52.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.04.16.08.16;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@add c_deleted column to database tables
+@
+text
+@-- You may need to refresh the _qty tables depending
+-- on whether you need the 'available' column
+select
+    cat.c_uid as cat_uid,
+    cat.c_title as cat_title,
+    it.c_uid,
+    it.c_title,
+    ciq.c_qty - ciq.c_qty_out - cgq.c_qty as available
+from [_]item_type as it
+    inner join [_]item_category as cat on cat.c_uid = it.c_category
+    left outer join [_]checkout_gear_qty as cgq on cgq.c_type = it.c_uid
+    left outer join [_]checkout_item_qty as ciq on ciq.c_type = it.c_uid
+where ({cat,int} is null or it.c_category = {cat,int})
+    and it.c_deleted <> 1
+    and cat.c_deleted <> 1
+order by cat_title, it.c_title
+@
+
+
+1.4
+log
+@change columns to signed integers to avoid overflows when quantities go negative
+@
+text
+@d14 2
+@
+
+
+1.3
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d8 1
+a8 3
+    cast(ciq.c_qty
+        - ciq.c_qty_out
+        - cgq.c_qty as signed) as available
+@
+
+
+1.2
+log
+@group options by type in select menu
+@
+text
+@d1 2
+d7 4
+a10 1
+    it.c_title
+d13 2
+@
+
+
+1.1
+log
+@organize item types by category
+@
+text
+@d2 4
+a5 1
+    it.*
+d7 1
+d9 1
+a9 1
+order by c_title
+@
+

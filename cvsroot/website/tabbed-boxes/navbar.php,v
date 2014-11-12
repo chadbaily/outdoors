@@ -1,0 +1,527 @@
+head	1.19;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.19
+date	2005.03.24.03.04.30;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2005.01.14.17.15.08;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.10.15.19.57.36;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.15.11.53.16;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.07.03.14.51;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.02.00.22.26;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.01.23.27.34;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.01.21.02.27;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.01.20.58.14;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.23.14.02.00;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.22.16.28.50;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.22.12.47.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.22.12.46.36;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.21.48.29;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.14.13.29.48;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.03.12.45.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.19
+log
+@change link to member resources page
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: navbar.php,v 1.18 2005/02/07 18:50:32 at Exp $
+ */
+
+include_once("TreeNavbar.php");
+
+$obj['navbar'] =& new TreeNavbar();
+
+# ==============================================================
+
+$obj['navbar']->addNode("index.php", "Home");
+$obj['navbar']->addNode("index.php?page=faq", "FAQ", "Home");
+$obj['navbar']->addNode("index.php?page=contact", "Contact Us", "Home");
+$obj['navbar']->addNode("index.php?page=schedule", "Upcoming Meetings", "Home");
+
+$obj['navbar']->addNode("index.php?page=activities", "Activities");
+$obj['navbar']->addNode("index.php?page=schedule", "Upcoming Meetings", "Activities");
+$obj['navbar']->addNode("members/main/past-adventures",
+        "Past Adventures", "Activities");
+$obj['navbar']->addNode("/gallery/' target='_blank",
+        "Photo Gallery", "Activities");
+
+$obj['navbar']->addNode("index.php?page=how-it-works", "How the Club Works");
+$obj['navbar']->addNode("index.php?page=schedule", "Upcoming Meetings", "How the Club Works");
+$obj['navbar']->addNode("index.php?page=policies&action=discounts",
+        "Discounts", "How the Club Works");
+$obj['navbar']->addNode("index.php?page=policies&action=equipment",
+        "Borrowing Gear", "How the Club Works");
+$obj['navbar']->addNode("index.php?page=contact",
+        "Contact Us", "How the Club Works");
+
+$obj['navbar']->addNode("members/join", "Join Outdoors at UVa");
+
+$obj['navbar']->addNode("index.php?page=officers", "Club Officers");
+$obj['navbar']->addNode("index.php?page=contact", "Contact Us", "Club Officers");
+$obj['navbar']->addNode("index.php?page=schedule", "Upcoming Meetings", "Club Officers");
+
+$obj['navbar']->addNode("index.php?page=policies", "Club Policies");
+$obj['navbar']->addNode("index.php?page=policies&action=equipment",
+        "Equipment Policy", "Club Policies");
+$obj['navbar']->addNode("index.php?page=policies&action=discounts",
+        "Member Discounts", "Club Policies");
+$obj['navbar']->addNode("index.php?page=policies&action=electronic-services-agreement",
+        "Electronic Services Agreement", "Club Policies");
+$obj['navbar']->addNode("index.php?page=policies&action=email",
+        "Email Policy", "Club Policies");
+$obj['navbar']->addNode("index.php?page=policies&action=copyright-terms-privacy",
+        "Legal Notices", "Club Policies");
+
+$obj['navbar']->addNode("members/main/member-home", "Member's Area");
+$obj['navbar']->addNode("members/adventure", "Adventures", "Member's Area");
+$obj['navbar']->addNode("members/member", "Members", "Member's Area");
+$obj['navbar']->addNode("resources/", "Member Resources", "Member's Area");
+$obj['navbar']->addNode("members/profile", "Profile", "Member's Area");
+$obj['navbar']->addNode("members/classified_ad/list_all", "Classified Ads", "Member's Area");
+$obj['navbar']->addNode("members/decision/list_all", "Officer Policies", "Member's Area");
+$obj['navbar']->addNode("members/main/inventory", "Inventory", "Member's Area");
+
+# Add additional tabs depending on who's logged in
+if (isset($obj['user'])) {
+
+    if ( $obj['user']->isRootUser()
+            || $obj['user']->isInGroup('officer')
+            || $obj['user']->isInGroup('leader')
+            || $obj['user']->isInGroup('treasurer') ) {
+        $obj['navbar']->addNode("members/report", "Reports", "Member's Area");
+    }
+
+    if ( $obj['user']->isRootUser()
+            || $obj['user']->isInGroup('leader')
+            || $obj['user']->isInGroup('officer')
+            || $obj['user']->isInGroup('treasurer')) {
+        $obj['navbar']->addNode("members/expense_report", "Expenses", "Member's Area");
+    }
+
+    if ( $obj['user']->isRootUser()
+            || $obj['user']->isInGroup('officer')
+            || $obj['user']->isInGroup('treasurer') ) {
+        $obj['navbar']->addNode("members/admin", "Admin Tasks", "Member's Area");
+    }
+
+}
+
+# Set the active node
+$obj['navbar']->setActiveNode($res['navbar']);
+
+?>
+@
+
+
+1.18
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.17 2005/01/14 17:15:08 at Exp $
+d71 1
+a71 12
+$obj['navbar']->addNode("members/resources", "Member Resources",
+            "Member's Area");
+    $obj['navbar']->addNode("members/classified_ad/list_all",
+           "Classified Ads", "Member's Area/Member Resources");
+    $obj['navbar']->addNode("members/resources/links",
+           "Links", "Member's Area/Member Resources");
+    $obj['navbar']->addNode("members/resources/leading",
+           "Leading Trips", "Member's Area/Member Resources");
+    $obj['navbar']->addNode("members/resources/officer-info",
+           "Becoming an Officer", "Member's Area/Member Resources");
+    $obj['navbar']->addNode("members/resources/trip-main",
+           "Trip Checklists", "Member's Area/Member Resources");
+d73 1
+@
+
+
+1.17
+log
+@make inventory visible to everyone; allow quartermasters and officers to check stuff in and out.
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.16 2004/11/20 15:17:47 at Exp $
+d36 1
+a36 1
+$obj['navbar']->addNode("members.php?page=main&action=past-adventures",
+d50 1
+a50 1
+$obj['navbar']->addNode("members.php?page=join", "Join Outdoors at UVa");
+d68 4
+a71 4
+$obj['navbar']->addNode("members.php?page=main&action=member-home", "Member's Area");
+$obj['navbar']->addNode("members.php?page=adventure", "Adventures", "Member's Area");
+$obj['navbar']->addNode("members.php?page=member", "Members", "Member's Area");
+$obj['navbar']->addNode("members.php?page=resources", "Member Resources",
+d73 1
+a73 1
+    $obj['navbar']->addNode("members.php?page=classified_ad&action={ACTION_LIST_ALL}",
+d75 1
+a75 1
+    $obj['navbar']->addNode("members.php?page=resources&action=links",
+d77 1
+a77 1
+    $obj['navbar']->addNode("members.php?page=resources&action=leading",
+d79 1
+a79 1
+    $obj['navbar']->addNode("members.php?page=resources&action=officer-info",
+d81 1
+a81 1
+    $obj['navbar']->addNode("members.php?page=resources&action=trip-main",
+d83 3
+a85 3
+$obj['navbar']->addNode("members.php?page=profile", "Profile", "Member's Area");
+$obj['navbar']->addNode("members.php?page=decision&action={ACTION_LIST_ALL}", "Officer Policies", "Member's Area");
+$obj['navbar']->addNode("members.php?page=main&action=inventory", "Inventory", "Member's Area");
+d94 1
+a94 1
+        $obj['navbar']->addNode("members.php?page=report", "Reports", "Member's Area");
+d101 1
+a101 1
+        $obj['navbar']->addNode("members.php?page=expense_report", "Expenses", "Member's Area");
+d107 1
+a107 1
+        $obj['navbar']->addNode("members.php?page=admin", "Admin Tasks", "Member's Area");
+@
+
+
+1.16
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.15 2004/10/28 01:41:36 at Exp $
+d85 1
+a107 7
+    }
+
+
+    if ( $obj['user']->isRootUser()
+            || $obj['user']->isInGroup('officer')
+            || $obj['user']->isInGroup('quartermaster')) {
+        $obj['navbar']->addNode("members.php?page=main&action=inventory", "Inventory", "Member's Area");
+@
+
+
+1.15
+log
+@batch commit of changes for expense reports
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.14 2004/10/15 19:57:36 at Exp $
+d113 1
+a113 1
+        $obj['navbar']->addNode("members.php?page=item", "Inventory", "Member's Area");
+@
+
+
+1.14
+log
+@show policies tab to everyone
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.13 2004/10/15 11:53:16 at Exp $
+d94 7
+@
+
+
+1.13
+log
+@new gallery location
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.12 2004/10/07 03:14:51 at Exp $
+d84 1
+a101 4
+    if ( $obj['user']->isRootUser()
+            || $obj['user']->isInGroup('officer')) {
+        $obj['navbar']->addNode("members.php?page=decision&action={ACTION_LIST_ALL}", "Officer Policies", "Member's Area");
+    }
+@
+
+
+1.12
+log
+@unhide policies tab
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.11 2004/10/02 00:22:26 at Exp $
+d38 1
+a38 1
+$obj['navbar']->addNode("http://outdoors.student.virginia.edu/gallery/' target='_blank",
+@
+
+
+1.11
+log
+@hide decisions tab
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.10 2004/10/01 23:27:34 at Exp $
+d103 1
+a103 1
+        //$obj['navbar']->addNode("members.php?page=decision&action={ACTION_LIST_ALL}", "Officer Policies", "Member's Area");
+@
+
+
+1.10
+log
+@show inventory to officers, quartermasters
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.9 2004/10/01 21:02:27 at Exp $
+d103 1
+a103 1
+        $obj['navbar']->addNode("members.php?page=decision&action={ACTION_LIST_ALL}", "Officer Policies", "Member's Area");
+@
+
+
+1.9
+log
+@change Inventory link to point to pages/item.php
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.8 2004/10/01 20:58:14 at Exp $
+d104 5
+@
+
+
+1.8
+log
+@add inventory tab
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.7 2004/09/23 14:02:00 at Exp $
+d104 1
+a104 1
+        $obj['navbar']->addNode("members.php?page=inventory", "Inventory", "Member's Area");
+@
+
+
+1.7
+log
+@move the profile navbutton down below Member Resources
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.6 2004/09/22 16:28:50 at Exp $
+a70 1
+// $obj['navbar']->addNode("members.php?page=inventory", "Inventory", "Member's Area");
+d99 6
+@
+
+
+1.6
+log
+@changes for the classified ads
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.5 2004/09/22 12:47:39 at Exp $
+d72 1
+a72 3
+$obj['navbar']->addNode("members.php?page=profile", "Profile", "Member's Area");
+if (isset($obj['user'])) {
+    $obj['navbar']->addNode("members.php?page=resources", "Member Resources",
+d84 1
+a84 1
+}
+@
+
+
+1.5
+log
+@remove Admin Tasks for leaders
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.4 2004/09/22 12:46:36 at Exp $
+d76 2
+@
+
+
+1.4
+log
+@comment out Inventory, make Reports visible to leaders
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.3 2004/09/20 21:48:29 at Exp $
+d93 6
+a99 1
+        $obj['navbar']->addNode("members.php?page=report", "Reports", "Member's Area");
+d101 1
+@
+
+
+1.3
+log
+@added Inventory tab
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.2 2004/09/14 13:29:48 at Exp $
+d71 1
+a71 1
+$obj['navbar']->addNode("members.php?page=inventory", "Inventory", "Member's Area");
+d91 1
+@
+
+
+1.2
+log
+@added FAQ page
+@
+text
+@d20 1
+a20 1
+ * $Id: navbar.php,v 1.1 2004/09/03 12:45:36 at Exp $
+d71 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: main.php,v 1.11 2004/08/27 15:13:48 at Exp $
+d30 1
+@
+

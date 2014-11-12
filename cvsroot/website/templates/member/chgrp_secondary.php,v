@@ -1,0 +1,128 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.31.20.47.07;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.21.21.12.59;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.21.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<h1>Change Group Memberships for {C_FULL_NAME}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{SUCCESS:}
+<p class="notice">Your changes were saved.</p>
+{:SUCCESS}
+
+<p>Choose groups that {C_FULL_NAME} should belong to:</p>
+
+<form method="POST" action="members/member/chgrp_secondary/{T_MEMBER}">
+<input type="hidden" name="posted" value="1">
+
+<p>
+{GROUP:}
+  <input type="checkbox" name="groups[]" value="{c_uid}" id="group{c_uid}" {CHECKED}>
+  <a title="View details for this group" href="members/group/read/{c_uid}">&raquo;</a>
+  <label for="group{c_uid}"><b>{c_title}</b> {c_description}</label><br>
+{:GROUP}
+</p>
+
+<p>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Save">
+</p>
+
+</form>
+
+</div>
+@
+
+
+1.3
+log
+@add the 'wheel' user group
+@
+text
+@d14 1
+a14 1
+<form method="POST" action="members.php?page=member&action={ACTION_CHGRP_SECONDARY}&object={T_MEMBER}">
+d20 1
+a20 1
+  <a title="View details for this group" href="members.php?page=group&action={ACTION_READ}&object={c_uid}">&raquo;</a>
+@
+
+
+1.2
+log
+@no table for layout
+@
+text
+@d19 3
+a21 3
+  <input type="checkbox" name="groups[]" value="{C_UID}" id="group{C_UID}" {CHECKED}>
+  <a title="View details for this group" href="members.php?page=group&action={ACTION_READ}&object={C_UID}">&raquo;</a>
+  <label for="group{C_UID}"><b>{C_TITLE}</b> {C_DESCRIPTION}</label><br>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d17 1
+a17 1
+<table width="100%">
+d19 3
+a21 8
+  <tr>
+    <td>
+      <input type="checkbox" name="groups[]" value="{C_UID}" id="group{C_UID}" {CHECKED}>
+    </td>
+    <td><a title="View details for this group" href="members.php?page=group&action={ACTION_READ}&object={C_UID}">&raquo;</a>
+      <label for="group{C_UID}"><b>{C_TITLE}</b> {C_DESCRIPTION}</label>
+    </td>
+  </tr>
+d23 7
+a29 7
+  <tr>
+    <td colspan='2' align='right'>
+      <input type="reset" value="Reset">
+      <input type="submit" value="Save">
+    </td>
+  </tr>
+</table>
+@
+

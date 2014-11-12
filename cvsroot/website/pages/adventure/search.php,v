@@ -1,0 +1,324 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2004.10.23.12.51.27;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.20.13.24.58;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.19.12.16.29;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.15.16.10.55;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.25.23.25.12;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: search.php,v 1.7 2004/09/20 20:38:39 at Exp $
+ */
+
+include_once("location.php");
+
+# Make templates for the page and for the form...
+$template = file_get_contents("templates/adventure/search.php");
+$formT = file_get_contents("forms/adventure/search.xml");
+
+# Add locations to the template
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]location");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formT = Template::block($formT, "LOC",
+        array_change_key_case($row, 1));
+}
+
+# Add leaders to the template
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/leaders.sql");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formT = Template::block($formT, "LEADER",
+        array_change_key_case($row, 1));
+}
+
+# Add activities to the template
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]activity");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formT = Template::block($formT, "ACT",
+        array_change_key_case($row, 1));
+}
+
+# Parse the template into a form
+$form =& new XMLForm(Template::finalize($formT), TRUE);
+
+# Grab the form data from the browser
+$form->snatch();
+$form->validate();
+
+# The form must be valid AND we must have at least one criterion by which to
+# search.
+if ($form->isValid()
+        && ($form->getValue("title")
+            || $form->getValue("location")
+            || $form->getValue("leader")
+            || $form->getValue("activity")
+            || $form->getValue("start"))) {
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/adventure/search.sql");
+
+    # Add parameters one at a time, if they were specified
+    if ($form->getValue("title")) {
+        $title = $form->getValue("title");
+        $cmd->addParameter("title", "%"
+            . preg_replace("/[^\w ]/", "", $form->getValue("title")) . "%");
+    }
+
+    if ($form->getValue("location") && intval($form->getValue("location"))) {
+        $cmd->addParameter("destination", intval($form->getValue("location")));
+    }
+
+    if ($form->getValue("leader") && intval($form->getValue("leader"))) {
+        $cmd->addParameter("leader", intval($form->getValue("leader")));
+    }
+
+    if ($form->getValue("activity") && intval($form->getValue("activity"))) {
+        $cmd->addParameter("activity", intval($form->getValue("activity")));
+    }
+
+    if ($form->getValue("start")) {
+        $cmd->addParameter("start", $form->getValue("start"));
+        $cmd->addParameter("end", $form->getValue("end"));
+    }
+
+    $result =& $cmd->executeReader();
+
+    if ($result->numRows()) {
+        $template = Template::unhide($template, "SOME");
+        while ($row = $result->fetchRow()) {
+            # Plug adventures into the template.
+            $template = Template::block($template, "ROW",
+                array_change_key_case($row, 1));
+        }
+    }
+    else {
+        $template = Template::unhide($template, "NONE");
+    }
+}
+
+# Display the form
+$res['title'] = "Search Adventures";
+$res['content'] = Template::replace($template, array(
+    "FORM" => $form->toString()));
+
+?>
+@
+
+
+1.7
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.6 2004/09/08 22:45:37 at Exp $
+d23 1
+a23 1
+include_once("Location.php");
+@
+
+
+1.6
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.5 2004/08/20 13:24:58 at Exp $
+d36 1
+a36 1
+    $formT = Template::replaceWithinBlock($formT, "LOC",
+d45 1
+a45 1
+    $formT = Template::replaceWithinBlock($formT, "LEADER",
+d56 1
+a56 1
+    $formT = Template::replaceWithinBlock($formT, "ACT",
+d105 1
+a105 1
+        $template = Template::unhideBlock($template, "SOME");
+d108 1
+a108 1
+            $template = Template::replaceWithinBlock($template, "ROW",
+d113 1
+a113 1
+        $template = Template::unhideBlock($template, "NONE");
+d119 1
+a119 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.5
+log
+@added a space as an allowable character in searches
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.4 2004/08/19 12:16:29 at Exp $
+d26 1
+a26 1
+$wrapper = file_get_contents("templates/adventure/search-wrapper.php");
+d105 1
+a105 1
+        $wrapper = Template::unhideBlock($wrapper, "SOME");
+d108 1
+a108 1
+            $wrapper = Template::replaceWithinBlock($wrapper, "ROW",
+d113 1
+a113 1
+        $wrapper = Template::unhideBlock($wrapper, "NONE");
+d119 1
+a119 1
+$res['content'] = Template::replaceValues($wrapper, array(
+@
+
+
+1.4
+log
+@added the ability to search by leader
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.3 2004/08/15 16:10:55 at Exp $
+d82 1
+a82 1
+            . preg_replace("/[^\w]/", "", $form->getValue("title")) . "%");
+@
+
+
+1.3
+log
+@changed title
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.2 2004/07/25 23:25:12 at Exp $
+d40 9
+d72 1
+d87 4
+@
+
+
+1.2
+log
+@added table-name prefixes to sql query
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d104 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.8 2004/05/30 01:42:09 baron Exp $
+d32 1
+a32 1
+$cmd->addParameter("table", "t_location");
+d43 1
+a43 1
+$cmd->addParameter("table", "t_activity");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

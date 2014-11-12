@@ -1,0 +1,146 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.11.02.20.01.09;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.21.20.54.45;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@collapse the applies_to_object and applies_to_table flags into one
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: table.php,v 1.1 2004/10/21 20:54:45 at Exp $
+ */
+
+include_once("object.php");
+
+class table extends object{
+    // {{{declarations
+    var $name;
+    // An array, not an object!
+    var $allowedActions;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function table($name) {
+        $this->Object();
+        $this->name = $name;
+    } //}}}
+
+    /* {{{getVarArray
+     *
+     */
+    function &getVarArray($htmlDisplay = FALSE) {
+        return array("T_TABLE" => $this->name);
+    } //}}}
+
+    /* {{{getName
+     * Gets the table's name.
+     */
+    function getName() {
+        return $this->name;
+    } //}}}
+
+    /* {{{setName
+     * Sets the table's name.
+     */
+    function setName($value) {
+        $this->name = $value;
+    } //}}}
+
+    /* {{{getUID
+     */
+    function getUID() {
+        return $this->getName();
+    } //}}}
+
+    function initAllowedActions() {
+        global $obj;
+        global $cfg;
+        $this->allowedActions = array();
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/privilege/select-allowed-table-actions.sql");
+        $cmd->addParameter("member", $cfg['user']);
+        $cmd->addParameter("table", $this->name);
+        $cmd->addParameter("applies_to_object", $cfg['flag']['applies_to_object']);
+        $cmd->addParameter("root_group", $cfg['root_uid']);
+        $result =& $cmd->executeReader();
+        while ($row = $result->fetchRow()) {
+            $this->allowedActions[$row['c_uid']] = $row;
+        }
+    }
+
+    function &getAllowedActions($refresh = false) {
+        if (!isset($this->allowedActions) or $refresh) {
+            $this->initAllowedActions();
+        }
+        return $this->allowedActions;
+    }
+
+    function permits(/*int*/ $action) {
+        return array_key_exists($action, $this->getAllowedActions());
+    }
+
+    /* {{{insertIntoTemplate
+     * Automagically inserts the object into a template.  
+     */
+    function insertIntoTemplate($templateText, $repeat = FALSE, $htmlDisplay = FALSE) {
+        $array =& $this->getVarArray($htmlDisplay);
+        return Template::replace($templateText, $array, $repeat);
+    } //}}}
+
+}
+?>
+@
+
+
+1.1
+log
+@classes moved to files that match the database table names
+@
+text
+@d20 1
+a20 1
+ * $Id: table.php,v 1.5 2004/10/06 14:14:33 at Exp $
+d75 1
+a75 1
+        $cmd->addParameter("applies_to_table", $cfg['flag']['applies_to_table']);
+@
+

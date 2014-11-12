@@ -1,0 +1,274 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.25.15.44.12;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.11.11.15.26.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.29.01.13.37;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<!-- title=Leader's Manual -->
+<!-- navbar=Member's Area/Member Resources/Leading Trips -->
+
+<h1>Leader's Manual</h1>
+
+<p>Please e-mail the officers to make sure that the adventure you want to lead
+is feasible, gear will be available, and there aren&rsquo;t any conflicts.
+Please do not post an adventure without first consulting the officers, since we
+do not want, for example, 5 kayaking adventures to go out at the same time, or
+an adventure that may not be in keeping with the club's mission.  The officer's
+e-mail list is <A
+HREF="mailto:outdoors-officers@@virginia.edu">outdoors-officers@@virginia.edu</A>.</p>
+
+<p>There are special rules for <a
+href="members/resources/climbing-permissions">climbing</a> and
+<a href="members/resources/trip-cave">caving</a> adventures, so
+be sure to read them before creating one.</p>
+
+<h1>1 Equipment</h1>
+
+<p>Before you create your adventure, email the officers with a list of the
+equipment you think you will need so that we can make sure we own that gear, and
+that it isn&rsquo;t already reserved for another adventure. If we don&rsquo;t
+own the gear, or don&rsquo;t have enough for your adventure, we still might  be
+able to work something out, so email us with your adventure idea anyway.</p>
+
+<h2>1.1 Obtaining Gear</h2>
+
+
+<p>To obtain gear, you must e-mail the officers at least several days in advance
+(<A
+HREF="mailto:outdoors-officers@@virginia.edu">outdoors-officers@@virginia.edu</A>)
+to set up a time for them to open the gear room for you. If members will be
+borrowing gear, it is better that they do it with you, so that we can do it all
+at once. Be sure to let the members know when you will be getting gear. If they
+are not available when you go to get gear, then you can tell them to contact the
+officers.</p>
+
+<h2>1.2 Returning Gear</h2>
+
+<p>You must also set up a return time with the officers.  You must return the
+gear within a week.</p>
+
+<p class="notice">Please, do not go to the gear room without an officer.  Do not
+leave gear outside for an officer to pick up (if it's stolen, you're still
+responsible for it).  And if you arrive at the gear room and the officer
+isn't outside to meet you, do not try to get inside.  Any of these things could
+get us into trouble with the Housing Division, which has been a serious problem
+in the past.</p>
+
+<h1>2 Setting up the Adventure Online</h1>
+
+<p>You should already have leader capabilities, however, if you cannot find the
+link to create an adventure or need any other help, e-mail the officers.</p>
+
+<p>To start, sign in to the website, click on &ldquo;Adventures&rdquo; at left,
+and you should see a &ldquo;Create an adventure&rdquo; link.  Follow this link
+and fill out all of the information on the page, following the directions
+below.</p>
+
+<h2>2.1 Details</h2>
+
+<p>Your details should include:</p>
+
+<UL>
+
+    <LI><B>Specific details on the adventure</B> &mdash; make it interesting and
+    mention if it&rsquo;s only for beginners or experts and what you&rsquo;re
+    going to be doing.  This is your sales pitch, so try not to make it
+    boring.</li>
+
+    <LI><B>What the participant must bring</B> &mdash; this is usually clothes
+    or any personal gear.  Also, include any extra money that people need to
+    bring (like lunch or something).</li>
+
+    <LI><B>What Outdoors at UVA provides &mdash;</B> this is usually tents,
+    sleeping bags, etc.  You&rsquo;ve already emailed the officers about
+    requesting gear, so you know what we can provide.</li>
+
+    <LI><B>Related Links &mdash;</B> If you have a link that is useful for
+    people to see, copy and paste it into the adventure description.</li>
+
+</UL>
+
+<p>Please also select the types of activities that your adventure falls into.
+This does a lot of things behind the scenes for us.</p>
+
+<h2>2.2 Questions</h2>
+
+<p>After completing the details section, you will go to the &ldquo;Edit
+Questions&rdquo; page.  The  most common questions (for this type of adventure)
+appear.  You can copy these into your adventure, or add your own.  To add your
+own, fill out the question in the appropriate box, select whether it is a
+true/false question or just a free response one, and then hit &ldquo;Create
+Question.&rdquo;</p>
+
+<p>Ask any relevant questions here.  These may include whether the members need
+a sleeping bag/pad, whether they have a tent and how many it sleeps, and whether
+they need any other gear.  Also, you should ask any questions that are
+prerequisites for the adventure, such as &ldquo;what rivers have you
+paddled&rdquo; or &ldquo;what level climbing routes can you do (5.xx).&rdquo;
+Don&rsquo;t forget to ask if anyone can drive (it should be in the most common
+questions section).</p>
+
+<p class="notice">Every adventure should include the question, &ldquo;<B>Please
+note all medical conditions (this is confidential)</b>.&rdquo;</p>
+
+<h2>2.3 Joining</h2>
+
+<p>You must join the adventure to activate it.  Click on join, fill out the
+questions and join the adventure yourself.  You cannot withdraw from your own
+adventure, since you are the leader.</p>
+
+<h2>2.4 Activating</h2>
+
+<p>Once you are satisfied with the adventure, email the officers so that we can
+take a quick look and make sure everything is good. When the officers have
+approved go ahead and activate it by clicking on the &ldquo;Activate&rdquo; tab.
+This will make the adventure visible to everyone who looks on the website.</p>
+
+<h2>2.5 Announcing</h2>
+
+<p>Look over your adventure description and questions before announcing it.  To
+see your description as others will see it, click on &ldquo;Details&rdquo;.
+Once you are satisfied, click on &ldquo;Announce&rdquo; and announce the
+adventure.  This will send an email to the members.  You are now done creating
+your adventure!</p>
+
+<h2>2.6 Viewing the Adventure Report</h2>
+
+<p>Once people have started signing up, you will want to check people&rsquo;s
+responses to questions and see who is signed up.  To do this, sign in to the
+website, go to &ldquo;Adventures I am leading&rdquo; and click on View Report.
+The report shows you all the information you need to know about the attendees,
+and gives you radio buttons to manage the waitlist, etc etc.</p>
+
+<p>You can also use this page to mark someone absent if they don't show up
+later.  Please contact any absent attendees first and ask them about why they
+didn't show up, then mark them absent and make a note of why.  This can help
+future leaders avoid deadbeats.</p>
+
+<h2>2.7 Other</h2>
+
+<p>You can use the tabs at the top of the adventure details page to do other
+tasks such as emailing the attendees, but if you need to do something that's not
+shown in the tabs, look in the drop-down box on the &ldquo;Details&rdquo; page
+and see what's available.  For example, you can deactivate an adventure to hide
+it from the members, if you decide you activated it too soon.</p>
+
+<h1>3 Expenses</h1>
+
+<p>The leader pays for all expenses at first, and the club will reimburse the
+leader upon completion of the adventure.  To be reimbursed, you must fill out an
+<a href="members/expense_report">expense report</a>, gather ALL
+receipts and then email the officers email list to coordinate meeting the
+treasurer to get reimbursed.  You must have the expense report filled out, all
+gas forms filled out, and all receipts with you in order to get reimbursed (the
+most important receipts are the lodging receipts, so please don&rsquo;t
+lose these!).</p>
+
+<h2>3.1 Food</h2>
+
+<p>During the school year, Outdoors at UVA will pay for all the gas, lodging,
+and food on a Club adventure.  The club will pay the following for meals:</p>
+
+<ul>
+ <li>$2/person for breakfast</li>
+ <li>$4/person for lunch </li>
+ <li>$6/person for dinner </li>
+</ul>
+
+<p>Please check the <a href="members/decision">officer policies page</a>
+for more details on what we will pay for.</p>
+
+<h2>3.2 Participation Fees</h2>
+
+<p>The participation fee is made up of fees the club does not pay. You won't
+have extra fees on most adventures, but sometimes an adventure will have some
+other costs associated with it such as an activities fee or equipment rental
+(skydiving, for example); contact the officers to find out how you should handle
+this.</p>
+
+<h2>3.3 Lodging Fees</h2>
+
+<p>The club will reimburse you for all lodging fees.  Since you want to be
+reimbursed after the adventure, please hold on to the receipts and if they
+don&rsquo;t give you one, ask them to make one.</p>
+
+<h2>3.4 Gas</h2>
+
+<p>You need to pay your drivers for gas, and then the club will reimburse you.
+Follow the instructions on the 
+<a href="/pub-files/GasReceiptFormc">Gas Receipt Form</a>.</p>
+@
+
+
+1.3
+log
+@add crosslinks, check grammar
+@
+text
+@d15 2
+a16 2
+href="members.php?page=resources&action=climbing-permissions">climbing</a> and
+<a href="members.php?page=resources&action=trip-cave">caving</a> adventures, so
+d154 1
+a154 1
+<a href="members.php?page=expense_report">expense report</a>, gather ALL
+d172 1
+a172 1
+<p>Please check the <a href="members.php?page=decision">officer policies page</a>
+d193 1
+a193 1
+<a href="/pub-files/GasReceiptForm.doc">Gas Receipt Form</a>.</p>
+@
+
+
+1.2
+log
+@add climbing permissions
+@
+text
+@d14 4
+a17 2
+<p>There are <a href="members.php?page=resources&action=climbing-permissions">special
+rules</a> for climbing adventures, so be sure to read them before creating one.</p>
+@
+
+
+1.1
+log
+@added leader's manual
+@
+text
+@d14 3
+@
+

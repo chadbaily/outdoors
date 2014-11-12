@@ -1,0 +1,148 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.13;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Decision.php,v 1.1 2004/10/07 03:09:13 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+
+class Decision extends DatabaseObject {
+    // {{{declarations
+    var $c_category = null;
+    var $c_title = null;
+    var $c_text = null;
+    var $decisionXrefs = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Decision() {
+        $this->DatabaseObject();
+        $this->table = "[_]decision";
+        $this->cascadeFunctions[] = "getDecisionXrefs";
+    } //}}}
+
+    /* {{{getCategory
+     *
+     */
+    function getCategory() {
+        return $this->c_category;
+    } //}}}
+    
+    /* {{{setCategory
+     *
+     */
+    function setCategory($value) {
+        $this->c_category = $value;
+    } //}}}
+
+    /* {{{getTitle
+     *
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+    
+    /* {{{setTitle
+     *
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getText
+     *
+     */
+    function getText() {
+        return $this->c_text;
+    } //}}}
+    
+    /* {{{setText
+     *
+     */
+    function setText($value) {
+        $this->c_text = $value;
+    } //}}}
+
+    /* {{{getDecisionXrefs
+     */
+    function getDecisionXrefs($refresh = FALSE) {
+        if (is_null($this->decisionXrefs) || $refresh) {
+            $this->initDecisionXrefs();
+        }
+        return $this->decisionXrefs;
+    } //}}}
+
+    /* {{{initDecisionXrefs
+     */
+    function initDecisionXrefs() {
+        global $obj;
+        global $cfg;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->decisionXrefs = array();
+        $result = $obj['conn']->query("select * from [_]decision_xref where c_decision=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->decisionXrefs[$row['c_uid']] =& new DecisionXref();
+            $this->decisionXrefs[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+}
+?>
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d20 1
+a20 1
+ * $Id: Decision.php,v 1.3 2004/09/24 17:39:46 at Exp $
+@
+

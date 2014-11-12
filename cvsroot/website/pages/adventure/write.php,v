@@ -1,0 +1,473 @@
+head	1.12;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2005.02.01.15.45.48;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.12.28.14.44.45;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.23.12.51.27;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.20.21.05.34;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.18.15.21.11;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.18.02.40.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@table prefixes
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: write.php,v 1.11 2005/01/30 20:48:40 at Exp $
+ */
+
+include_once("location.php");
+
+$template = file_get_contents("templates/adventure/write.php");
+
+# Ensure that the adventure's start date is in the future and the adventure
+# is not cancelled or deleted.
+if (date("Y-m-d H:i:s") >= $object->getStartDate()) {
+    $template = Template::unhide($template, "DATE");
+    $error = true;
+}
+if ($object->getStatus() === $cfg['status_id']['deleted']
+    || $object->getStatus() === $cfg['status_id']['cancelled'])
+{
+    $template = Template::unhide($template, "STATUS");
+    $error = true;
+}
+
+# Create the form.
+$formTemplate = file_get_contents("forms/adventure/write.xml");
+
+# Get a list of all locations in the DB.
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]location");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+# Add the locations to the drop-down menus.
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block(
+        $formTemplate, array("DEPART","DEST"), 
+        array_change_key_case($row, 1));
+}
+
+# Turn the form template into a form and XML-parse it
+# (Don't finalize it before replacing common variables)
+$formTemplate = preg_replace("/\{ACTION_([^}]+)\}/e",
+    "\$cfg['action_id'][ strtolower('\\1') ]", $formTemplate);
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+
+# Put the adventure's information into the form
+$form->setValue("title", $object->getTitle());
+$form->setValue("description", $object->getDescription());
+$form->setValue("departure", $object->getDeparture());
+$form->setValue("destination", $object->getDestination());
+$form->setValue("attendees", $object->getMaxAttendees());
+$form->setValue("fee", $object->getFee());
+$form->setValue("start", $object->c_start_date);
+$form->setValue("end", $object->c_end_date);
+$form->setValue("signup", $object->c_signup_date);
+
+# Validate the form
+$form->snatch();
+$form->validate();
+
+$error = false;
+
+# The adventure's size can be reduced, but not if it's full, and not to less
+# than the number of people that are already joined.
+$newSize = $form->getValue("attendees");
+$oldSize = $object->getMaxAttendees();
+if ($newSize < $oldSize && $newSize < count($object->getAttendees("default"))) {
+    $template = Template::unhide($template, "TOO_SMALL");
+    $template = Template::replace($template,
+        array("SIZE" => count($object->getAttendees("default"))));
+    $error = true;
+}
+
+if (!$error && $form->isValid()) {
+    # Update the adventure with the form information
+    $object->setTitle($form->getValue("title"));
+    $object->setDescription($form->getValue("description"));
+    $object->setDeparture($form->getValue("departure"));
+    $object->setDestination($form->getValue("destination"));
+    $object->setMaxAttendees($form->getValue("attendees"));
+    $object->setFee($form->getValue("fee"));
+    $object->setStartDate($form->getValue("start"));
+    $object->setEndDate($form->getValue("end"));
+    $object->setSignupDate($form->getValue("signup"));
+
+    # Save the modified adventure
+    $object->update();
+
+    # If the adventure's size was increased, let some members off the waitlist
+    # if necessary
+    if ($newSize > $oldSize
+            && $newSize > count($object->getAttendees("default"))
+            && count($object->getAttendees("waitlisted")))
+    {
+        $added = false;
+        for ($i = count($object->getAttendees("default")); $i < $newSize; $i++) {
+            $member = JoinAdventureManager::removeFirstWaitlistedMember($object);
+            if (!is_null($member)) {
+                $added = true;
+                $template = Template::block($template, "MEMBER",
+                    $member->getVarArray());
+            }
+        }
+        if ($added) {
+            $template = Template::unhide($template, "ADDED");
+        }
+    }
+
+    $template = Template::unhide($template, "SUCCESS");
+}
+else {
+    $template = Template::replace($template,
+        array("FORM" => $form->toString()));
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Edit Adventure Details";
+
+?>
+@
+
+
+1.11
+log
+@add c_deleted column to database tables
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.10 2004/12/28 14:44:45 at Exp $
+d46 1
+a46 1
+$cmd->addParameter("table", "location");
+@
+
+
+1.10
+log
+@fix braindeadness calling undefined functions
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.9 2004/10/23 12:51:27 at Exp $
+d44 5
+a48 2
+$result =& $obj['conn']->query("select c_uid, c_title from [_]location where"
+    . " c_status <> {$cfg['status_id']['deleted']} order by c_title");
+@
+
+
+1.9
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.8 2004/09/20 21:05:34 at Exp $
+d80 1
+a80 1
+if ($newSize < $oldSize && $newSize < count($object->getFullAttendees())) {
+d83 1
+a83 1
+        array("SIZE" => count($object->getFullAttendees())));
+d105 2
+a106 2
+            && $newSize > count($object->getFullAttendees())
+            && count($object->getWaitlist()))
+d109 1
+a109 1
+        for ($i = count($object->getFullAttendees()); $i < $newSize; $i++) {
+@
+
+
+1.8
+log
+@fix code that moves members off the waitlist when the size is increased
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.7 2004/09/20 20:38:39 at Exp $
+d23 1
+a23 1
+include_once("Location.php");
+@
+
+
+1.7
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.6 2004/09/20 20:07:04 at Exp $
+d104 4
+a107 1
+    if ($newSize > $oldSize && $newSize > count($object->getFullAttendees())) {
+a109 1
+            $added = true;
+d112 1
+@
+
+
+1.6
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.5 2004/09/18 15:21:11 at Exp $
+d30 1
+a30 1
+    $template = Template::unhideBlock($template, "DATE");
+d36 1
+a36 1
+    $template = Template::unhideBlock($template, "STATUS");
+d48 1
+a48 1
+    $formTemplate = Template::replaceWithinBlock(
+d81 2
+a82 2
+    $template = Template::unhideBlock($template, "TOO_SMALL");
+    $template = Template::replaceValues($template,
+d110 1
+a110 1
+                $template = Template::replaceWithinBlock($template, "MEMBER",
+d115 1
+a115 1
+            $template = Template::unhideBlock($template, "ADDED");
+d119 1
+a119 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d122 1
+a122 1
+    $template = Template::replaceValues($template,
+@
+
+
+1.5
+log
+@use the new getFullAttendees from Member.php
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.4 2004/09/18 02:40:22 at Exp $
+d29 1
+a29 2
+$now =& new DateTime();
+if ($now->compareTo($object->getStartDate()) >= 0) {
+d95 3
+a97 3
+    $object->setStartDate(new DateTime($form->getValue("start")));
+    $object->setEndDate(new DateTime($form->getValue("end")));
+    $object->setSignupDate(new DateTime($form->getValue("signup")));
+@
+
+
+1.4
+log
+@moved a lot of the controller code into the attendee and adventure pages
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.3 2004/09/08 22:45:37 at Exp $
+a78 9
+$attendees = $object->getAttendees();
+$currentSize = count($attendees);
+$numFullMembers = 0;
+foreach ($object->getAttendees(TRUE) as $key => $attendee) {
+    if ($attendee->getStatus() == $cfg['status_id']['default']) {
+        ++$numFullMembers;
+    }
+}
+
+d81 1
+a81 1
+if ($newSize < $oldSize && $newSize < $currentSize) {
+d83 2
+a84 1
+    $template = Template::replaceValues($template, array("SIZE" => $currentSize));
+d105 1
+a105 1
+    if ($newSize > $oldSize && $newSize > $numFullMembers) {
+d107 1
+a107 1
+        for ($i = $numFullMembers; $i < $newSize; $i++) {
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d81 7
+a87 1
+$numFullMembers = count(JoinAdventureManager::getAttendingMembers($object));
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d25 1
+a25 2
+$wrapper = file_get_contents("templates/adventure/write-wrapper.php");
+$box = file_get_contents("templates/adventure/write-box.php");
+d31 1
+a31 1
+    $wrapper = Template::unhideBlock($wrapper, "DATE");
+d37 1
+a37 1
+    $wrapper = Template::unhideBlock($wrapper, "STATUS");
+d85 2
+a86 2
+    $box = Template::unhideBlock($box, "TOO_SMALL");
+    $box = Template::replaceValues($box, array("SIZE" => $currentSize));
+d113 1
+a113 1
+                $box = Template::replaceWithinBlock($box, "MEMBER",
+d118 1
+a118 1
+            $box = Template::unhideBlock($box, "ADDED");
+d122 1
+a122 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d125 1
+a125 1
+    $box = Template::replaceValues($box,
+d129 1
+a129 5
+$res['content'] = $box;
+$res['tab'] = "Edit";
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($object->insertIntoTemplate($wrapper), array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.5 2004/05/30 01:42:09 baron Exp $
+d46 1
+a46 1
+$result =& $obj['conn']->query("select c_uid, c_title from t_location where"
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

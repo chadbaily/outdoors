@@ -1,0 +1,166 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.18.18.38.06;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.29.20.07.30;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.06.17.37.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>Create an Adventure</h1>
+
+{ERROR:} 
+<p class="error">You cannot remain private and create an adventure.  Please <a
+href="members/profile#privacy">edit your profile</a> so
+adventure attendees will be able to view your contact information!</p> 
+{:ERROR}
+
+{INSTRUCTIONS:}
+
+<p>Follow this process to create an adventure:</p>
+
+<ol>
+  <li>Have you read the <a href="members/resources/leaders-manual">leader's
+  manual</a>?  It explains lots of things you need to know.</li>
+  <li>Create the adventure with the form below.  The adventure isn't visible at
+  this point.</li>
+  <li>Add questions to it.</li>
+  <li>Join it yourself.</li>
+  <li>If you want, you can ask the officers to inspect it before you activate it.</li>
+  <li>Activate it (it is now visible to members).</li>
+  <li>(Optional) announce it to the mailing list.</li>
+</ol>
+
+<p>Be sure to put full details into the adventure's description.  You should
+let your attendees know what to bring and what the club will provide, and
+anything else they need to be prepared.</p>
+
+<p class="notice">Don't paste text from a word processor.  It'll insert funny
+characters that won't come out right.  If you want to draft your description,
+use Notepad or another plain-text editor.</p>
+
+<p class="notice">Look for the locations you need in the pulldown menus below.
+If you don't see them, click on the link to create a new location, <b>then
+refresh this page</b>.</p>
+
+{:INSTRUCTIONS}
+
+{FUTURE:}
+<p class='error'>Your adventure's signup deadline is not in the future.
+You cannot create this adventure.</p>
+{:FUTURE}
+
+{FORM}
+@
+
+
+1.4
+log
+@add instructions; link to leader's manual
+@
+text
+@d5 1
+a5 1
+href="members.php?page=profile#privacy">edit your profile</a> so
+d14 1
+a14 1
+  <li>Have you read the <a href="members.php?page=resources&action=leaders-manual">leader's
+@
+
+
+1.3
+log
+@clarify and restyle
+@
+text
+@d14 2
+d20 1
+@
+
+
+1.2
+log
+@moved all privacy settings to the default profile page
+@
+text
+@d11 1
+a11 7
+<p>Use this page to create an adventure.  You will first create the adventure,
+then associate questions with it (more about this on the next page), then review
+it to make sure it's correct, then activate it so all members can see it and
+join it.</p>
+
+<p>Be sure to put full details into the adventure's description.  You may
+need to let your attendees know</p>
+d14 6
+a19 2
+  <li>What to bring</li>
+  <li>What the club will provide</li>
+d22 7
+a28 6
+<p class="notice">It is best <b>not</b> to paste from a program such as
+Microsoft Word or any other semi-advanced editor.  These editors may insert
+funny characters, such as curly quotes and em dashes, that won't display well in
+email programs, and then your adventure description will be full of characters
+like <tt>&amp;#8211;</tt>.  You should use a plain-text editor such as Notepad
+if you want to compose your adventure's text ahead of time.</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+href="members.php?page=profile&action=update">edit your profile</a> so
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

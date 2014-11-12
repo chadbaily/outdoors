@@ -1,0 +1,165 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.01.19.09.58;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.31.21.28.33;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.27.23.13.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@upgrade to the expense system
+@
+text
+@<h1>Edit Expense Report</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use this page to add expenses to your report.  When you are done, click the
+"Submit" tab above.  You can use the &raquo; link next to each expense to delete
+or edit an expense.</p>
+
+{some:}
+<p>The following are all expenses for this report:</p>
+
+<script src="assets/tinymenu.js"></script>
+
+<table class="borders collapsed compact top">
+  <tr>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Category</th>
+    <th>Adventure</th>
+    <th>Merchant</th>
+    <th>Amount</th>
+  </tr>{expense:}
+  <tr>
+    <td>
+      {actions,expense,{c_uid},tinymenu,1}
+      {c_description}
+    </td>
+    <td nowrap>{c_expense_date}</td>
+    <td>{cat_title}</td>
+    <td>{c_adventure}</td>
+    <td>{c_merchant}</td>
+    <td align="right">${c_amount}</td>
+  </tr>{:expense}
+  <tr>
+    <th colspan="5">Total</th>
+    <td align="right"><b>${total}</b></td>
+  </tr>
+</table>
+
+{:some}
+
+{none:}
+<p class="notice">This report has no expenses.</p>
+{:none}
+
+<fieldset>
+<legend>Add Expenses</legend>
+
+<p>Use this form to add an expense to your report.</p>
+
+{FORM}
+
+</fieldset>
+
+</div>
+@
+
+
+1.4
+log
+@put instructions on the page instead of in the form
+@
+text
+@d9 1
+a9 1
+"Accept" tab above.  You can use the &raquo; link next to each expense to delete
+@
+
+
+1.3
+log
+@add tiny action menus
+@
+text
+@d8 4
+d52 1
+a52 2
+<p>Use this form to add an expense to your report.  When you are done, click the
+"Accept" tab above.</p>
+@
+
+
+1.2
+log
+@batch commit of changes for expense reports
+@
+text
+@d11 2
+d24 2
+a25 4
+      <div style="float:right; margin-left:2px;">
+        [<a href="members.php?page=expense&object={c_uid}&action={ACTION_DELETE}">delete</a>]
+      </div>
+      <div>{c_description}</div>
+d27 1
+a27 1
+    <td>{c_expense_date}</td>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d21 6
+a26 1
+    <td>{c_description}</td>
+d29 1
+a29 1
+    <td>{ad_title}</td>
+d42 1
+a42 1
+<p class="notice">There are no expenses on this report yet.</p>
+d45 5
+a49 1
+<p>Use this form to add an expense to your report:</p>
+d52 2
+@
+

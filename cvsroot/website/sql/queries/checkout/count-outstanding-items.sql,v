@@ -1,0 +1,89 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.17.21.31.47;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@remove spurious semicolons
+@
+text
+@select count(distinct ci.c_uid) + count(distinct cg.c_uid) as count
+from [_]checkout as co
+    left outer join [_]checkout_item as ci
+        on ci.c_checkout = co.c_uid
+        and ci.c_status = {checked_out,int}
+        and ci.c_deleted <> 1
+    left outer join [_]checkout_gear as cg
+        on cg.c_checkout = co.c_uid
+        and cg.c_status = {checked_out,int}
+        and cg.c_deleted <> 1
+where co.c_uid = {checkout,int}
+    and co.c_deleted <> 1
+group by co.c_uid
+@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@d13 1
+a13 1
+group by co.c_uid;
+@
+
+
+1.2
+log
+@the behavior was correct for its current use, but might have created a bug in the future
+@
+text
+@d4 3
+a6 1
+        on ci.c_checkout = co.c_uid and ci.c_status = {checked_out,int}
+d8 3
+a10 1
+        on cg.c_checkout = co.c_uid and cg.c_status = {checked_out,int}
+d12 1
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d1 1
+a1 1
+select count(ci.c_uid) + count(cg.c_uid) as count
+@
+

@@ -1,0 +1,150 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.11.02.20.05.28;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.31.21.30.19;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.27.21.39.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@<h1>View Expense Report</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Member</th>
+    <td>{member}</td>
+  </tr>
+  <tr>
+    <th>Created</th>
+    <td>{c_created_date|_date_format,'M j, Y'}</td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td>{status}</td>
+  </tr>
+</table>
+
+{some:}
+<p>The following are all expenses for this report.  Light-blue rows are expenses
+for which we can seek Student Council reimbursement.</p>
+
+<style type="text/css">
+tr.expense128 td {
+    background: #dfe4ee;
+}
+</style>
+
+<table class="borders collapsed compact top">
+  <tr>
+    <th>Category</th>
+    <th>Date</th>
+    <th>Adventure</th>
+    <th>Description</th>
+    <th>Merchant</th>
+    <th>Amount</th>
+  </tr>{expense:}
+  <tr class="expense{c_flags}">
+    <td>{cat_title}</td>
+    <td nowrap>{c_expense_date}</td>
+    <td>{c_adventure}</td>
+    <td>{c_description}</td>
+    <td>{c_merchant}</td>
+    <td align="right">${c_amount}</td>
+  </tr>{:expense}
+  <tr>
+    <th colspan="5">Total</th>
+    <td align="right"><b>${total}</b></td>
+  </tr>
+</table>
+
+{:some}
+
+{none:}
+<p class="notice">There are no expenses on this report.</p>
+{:none}
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.3
+log
+@nowrap dates
+@
+text
+@d24 8
+a31 1
+<p>The following are all expenses for this report:</p>
+d35 1
+a35 1
+    <th>Description</th>
+a36 1
+    <th>Category</th>
+d38 1
+d42 2
+a43 2
+  <tr>
+    <td>{c_description}</td>
+a44 1
+    <td>{cat_title}</td>
+d46 1
+@
+
+
+1.2
+log
+@batch commit of changes for expense reports
+@
+text
+@d37 1
+a37 1
+    <td>{c_expense_date}</td>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d8 15
+d39 1
+a39 1
+    <td>{ad_title}</td>
+@
+

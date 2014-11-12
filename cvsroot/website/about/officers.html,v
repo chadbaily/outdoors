@@ -1,0 +1,687 @@
+head	1.19;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.19
+date	2005.04.18.03.05.34;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2005.02.01.04.18.49;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.11.14.15.08.59;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.11.09.02.42.00;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.11.07.05.49.52;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.09.14.13.29.48;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.09.14.02.31.16;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.19.11.37.22;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.12.14.12.53;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.06.02.32.49;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.06.02.26.50;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.07.30.01.10.14;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.07.30.00.45.34;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.07.28.00.52.04;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.27.02.17.41;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.27.02.03.14;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.27.02.01.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.27.01.54.51;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.19
+log
+@Added Lindsey to Officers Page
+@
+text
+@<!-- title=Outdoors at UVa Officers -->
+<!-- navbar=Club Officers -->
+
+<h1>Outdoors at UVa Officers</h1>
+
+<p>If you have a question for the officers, please check our <a
+href="index.php?page=faq">frequently asked questions</a> page first.  If that
+doesn't help, please <a href="index.php?page=contact">contact us
+directly</a>.</p>
+
+<style type="text/css">
+.officertable img {margin-top:13px}
+</style>
+<table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
+
+<tr> 
+   <td valign=top><img src="images/officer_lindsey.jpg"  alt="Lindsey Brown"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Lindsey Brown</b></dt>
+      <dd>Vice-President, <script>document.write(email('lmb5r',
+'virginia.edu'))</script></dd>
+   </dl>
+I have been in a relationship with the outdoors since first year, 
+and I am completely in love.  Sure, sometimes the trail gets rocky 
+or rainy, but that just makes the sun shine brighter, the water 
+taste better, and the views more stunning.  I also seriously think 
+that you could eat dining hall food around the campfire and it will 
+taste like a gourmet meal. Oh – and s’mores (enough said)!! Other than 
+backpacking and hiking, I also enjoy climbing and a good trail run 
+because “seven days without running makes one weak”!  So let me know 
+if you need a good place to backpack or just want to run around a bit!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr> 
+   <td valign=top><img src="images/officer_rick.jpg"  alt="Rick Evans"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Rick Evans</b></dt>
+      <dd>Vice-President, <script>document.write(email('rre3g',
+'virginia.edu'))</script></dd>
+   </dl>
+  For the past several years I have had a difficult time 
+  keeping myself out of the local backcountry.  Although I
+love adventure in all of its many forms, hiking,
+backpacking, and climbing compose my outdoor hubris.  Some
+people derive contentment from the Bible and entrust their
+faith in God. I have a backpack and boots- and seek
+contentment from the mountains I climb- thanks to their
+brilliant and shimmering beauty.  I dream of one day front
+pointing the icy slopes of the Karakoram and the
+Cordillera Blanca, and all of the other great ranges of
+the world.  But, until then, I am eager to explore the
+beautiful natural world that surrounds us here in C?ville.
+Feel free to e-mail me if you ever have any questions
+about leading backpacking or hiking trips- especially
+those that are remote, uncharted, and dangerously foolish;
+for these are my favorite kinds!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+   <td valign=top><img src="images/officer_sophie.jpg"  alt="Sophie Johnson"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Sophie Johnson</b></dt>
+      <dd>Co-President, <script>document.write(email('sophie',
+'virginia.edu'))</script></dd>
+   </dl>
+   Even though I get pretty excited about wearing orange 
+   vests while picking up trash on the club's adopted 
+   highway, climbing definitely wins as my favorite thing to 
+   do.  I also like kayaking, hiking, scuba diving, cross 
+   country and downhill skiing, hanging out on the beach, 
+   eating good food...  <br>
+   If there's ever a trip you want to see, definitely email 
+   me or all the officers for help in getting it going!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+   <td valign=top><img src="images/officer_katrina.jpg" width="150" height="209" alt="Katrina Salmons"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Katrina Salmons</b></dt>
+      <dd>Vice-President
+      <script>document.write(email('ks2wf', 'virginia.edu'))</script>,
+      </dd>
+   </dl>
+
+    I am compulsively, magnetically attracted to rock.  I love rock and it loves
+    me.  When I was little I would beg my dad to take me bouldering, I would
+    dream up places we'd never been.  And, now thanks to our fabulous Outdoors
+    Club I can climb any time I want.  Currently I've been doing a lot of sport
+    climbing, but hopefully soon I'll be getting into trad!  When I can&rsquo;t
+    climb I might decide to camp in the woods, take a hike, clean up a highway,
+    or just watch the stars.  And lastly, my love of rock is balanced by a crazy
+    fear of the water. 
+
+     </td>
+    </tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr> 
+   <td valign=top><img src="images/officer_baron.jpg" alt="Baron Schwartz"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Baron Schwartz</b></dt>
+      <dd>HttpKangaroo, Product of Natural Subselection, and Vi Expert.
+      <script>document.write(email('baron', 'sequent.org'))</script>,
+      </dd>
+   </dl>
+   Hi!  I've been involved with the club since its revival a few years ago.  I'm
+   now graduated, but I live in Charlottesville and have had such good times and
+   met so many awesome people through the club that I stick around and plan to
+   keep on doing it.  I work on the website a good bit, because I'm a programmer
+   and it's so much fun to work on something that I'm not getting told to do!  I
+   love hiking and running, camping and hiking, skiing and hiking, and just
+   about everything else we do and hiking.  I also love just going out and looking at the
+   stars or something.  I've been known to be hard-core but I don't need to in
+   order to be happy. 
+     </td>
+    </tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+   <td valign=top><img src="images/officer_marc.jpg"  alt="Marc Schwartz"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Marc Schwartz</b></dt>
+      <dd>Vice-President, <script>document.write(email('mas5pg',
+'virginia.edu'))</script></dd>
+   </dl>
+   I've been an avid cyclist, backpacker, skier, and
+whitewater enthusiast for many years; since coming to UVA
+I've added climbing, high altitude mountaineering/glacier
+travel, and skydiving to the list, while ice-climbing is a
+hopeful prospect for the near future. I also pride myself
+in being able to plow through a vermonster in record time.
+Email me anytime if I can be of some help, or if you want
+to do something crazy, I'm in.
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+     <td valign=top><img src="images/officer_aarash.jpg" alt="Aarash Sofla"></td>
+     <td valign=top width="100%"> 
+      <dl> 
+       <dt><b>Aarash Sofla</b></dt>
+       <dd> Co-President / Head Climbing Instructor, <script>document.write(email('rock',
+'virginia.edu'))</script></dd>
+      </dl>
+      For 10 years before coming to UVa I was barely seen in towns on weekends.
+      Moving around hot deserts to crevassed glaciers, boulders to big walls, 
+      seaside to high altitude. My favorites are alpine climbing, high altitude
+      mountaineering, aid climbing and recently skydiving. In 1999 I was 
+      certified as a climbing trainer and mountain guide. Here in the club I 
+      serve as a climbing instructor-advisor. We think to have the best climbing
+      team of Virginia here at UVa. Let's do it.
+     </td>
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+   <td valign=top><img src="images/officer_case.jpg"  alt="Case Taintor"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Case Taintor</b></dt>
+      <dd>Co-President, <script>document.write(email('CaseT',
+'virginia.edu'))</script></dd>
+   </dl>
+I've had a love for the outdoors ever since I got poison ivy all over my chest from a misfortunate accident.  I'm from Chattanooga, Tennessee -- where everyone either climbs or paddles.  I chose paddling and I haven't regretted it yet (much to the chagrin of my climbing colleagues here).  Shoot me an e-mail if you want to hit up some rivers around here.  I also have a love affair with the bicycle and just love being outdoors.  If you want to lead a trip, don't hesitate to let me, or any of the other officers know so we can give you the hook up.
+
+</td>
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Past Officers</b></dt>
+      <dd>Former presidents are in bold.</dd>
+   </dl>
+   <ul>
+    <li>Emily Anderson (2001-2002)</li>
+    <li><b>Chris Bachmann</b> (2001-2003)</li>
+    <li>Dave Clark (2001-2004)</li>
+    <li>Kahlil Detrich (2003-2004)</li>
+    <li>Deryn Goodwin  (2001-2002)</li>
+    <li><b>Thiago Ize</b>     (2001-2004)</li>
+    <li><b>Matt Rosefsky</b>  (2001-2004)</li>
+    <li>Jeff Scherr    (2001-2003)</li>
+    <li>Jim Sumner     (2003-2004)</li>
+    <li>David Wade     (2003-2004)</li>
+   </ul>
+</td>
+</tr>
+   
+</tbody> 
+</table>
+@
+
+
+1.18
+log
+@Added Marc and Rick as officers
+@
+text
+@d17 26
+@
+
+
+1.17
+log
+@change Katrina's image
+@
+text
+@d17 32
+d121 24
+@
+
+
+1.16
+log
+@typo
+@
+text
+@d41 1
+a41 1
+   <td valign=top><img src="images/officer_karina.jpg" alt="Katrina Salmons"></td>
+@
+
+
+1.15
+log
+@Removed Dave, Added Katrina (with link to future pic)
+@
+text
+@d49 10
+a58 1
+	I am compulsively, magnetically attracted to rock.  I love rock and it loves me.  When I was little I would beg my dad to take me bouldering, I would dream up places we'd never been.  And, now thanks to our fabulous Outdoors Club I can climb any time I want.  Currently I've been doing a lot of sport climbing, but hopefully soon I'll be getting into trad!  When I can?t climb I might decide to camp in the woods, take a hike, clean up a highway, or just watch the stars.  And lastly, my love of rock is balanced by a crazy fear of the water. 
+@
+
+
+1.14
+log
+@added FAQ page
+@
+text
+@d17 1
+a17 1
+   <td valign=top><img src="images/officer_dave.JPG"  alt="Dave Clark"></td>
+d20 2
+a21 2
+      <dt><b>Dave Clark</b></dt>
+      <dd>Vice-President, <script>document.write(email('dclark',
+d24 8
+a31 3
+
+
+</td>
+a39 1
+
+d41 1
+a41 1
+   <td valign=top><img src="images/officer_sophie.jpg"  alt="Sophie Johnson"></td>
+d44 4
+a47 3
+      <dt><b>Sophie Johnson</b></dt>
+      <dd>Co-President, <script>document.write(email('sophie',
+'virginia.edu'))</script></dd>
+d49 3
+a51 9
+   Even though I get pretty excited about wearing orange 
+   vests while picking up trash on the club's adopted 
+   highway, climbing definitely wins as my favorite thing to 
+   do.  I also like kayaking, hiking, scuba diving, cross 
+   country and downhill skiing, hanging out on the beach, 
+   eating good food...  <br>
+   If there's ever a trip you want to see, definitely email 
+   me or all the officers for help in getting it going!
+</tr>
+d59 1
+d140 1
+@
+
+
+1.13
+log
+@updated Baron's descr
+@
+text
+@d6 4
+a9 3
+<p> To contact all the officers, usually the preferred way of contacting us,
+    send an email to
+    <script>document.write(email('outdoors-officers','virginia.edu'))</script>.</p>
+@
+
+
+1.12
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d64 3
+a66 3
+      <dd> Webzingdangadooby, President of Vice, <script>document.write(email('baron',
+'sequent.org'))</script>,
+        882-0768</dd>
+@
+
+
+1.11
+log
+@added Outdoors at UVa
+@
+text
+@d2 1
+a2 1
+<!-- tab=Club Officers -->
+@
+
+
+1.10
+log
+@changed my description and moved contact link to top of page
+@
+text
+@d4 1
+a4 1
+<h1>Club Officers</h1>
+@
+
+
+1.9
+log
+@ok -- JPG is not equal to jpg -- changed
+@
+text
+@d6 4
+d68 9
+a76 1
+   Hi!  I've been involved with the club since its revival a few years ago.  I'm now graduated, but I live in Charlottesville and have had such good times and met so many awesome people through the club that I stick around and plan to keep on doing it.  I work on the website a good bit, because I'm a programmer and it's so much fun to work on something that I'm not getting told to do!  I love hiking and running, camping and hiking, skiing and just about everything else we do.  I also love just going out and looking at the stars or something.  I've been known to be hard-core but I don't need to in order to be happy. 
+a149 14
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top></td>
+   <td valign=top width="100%"> 
+   
+    To contact all the officers, usually the preferred way of contacting us, send an email
+    to <script>document.write(email('outdoors-officers','virginia.edu'))</script>.
+</tr>
+
+@
+
+
+1.8
+log
+@Changed the reference to dave's pic
+@
+text
+@d12 1
+a12 1
+   <td valign=top><img src="images/officer_dave.jpg"  alt="Dave Clark"></td>
+@
+
+
+1.7
+log
+@added styling to nudge images vertically
+@
+text
+@d12 1
+a12 1
+   <td valign=top><img src="images/officer_DClark.jpg"  alt="Dave Clark"></td>
+@
+
+
+1.6
+log
+@removed thiago from listing, and highlighted former presidents
+@
+text
+@d6 4
+a9 1
+<table cellspacing=4 cellpadding=0 width="100%" border=0>
+d153 1
+a153 1
+</table>@
+
+
+1.5
+log
+@final page -- made it look prettier, added past officers, etc.
+@
+text
+@a28 19
+   <td valign=top><img src="images/officer_thiago_02-03.jpg"  alt="Thiago Ize"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b> Thiago Ize</b></dt>
+      <dd>Vice-President, <script>document.write(email('thiago',
+'virginia.edu'))</script> , 243-0442</dd>
+   </dl>
+   When I'm not bathing in the warm gentle radiation of my monitors, I'll brave
+   that big yellow thing in the sky to go climbing and cycling. One day I hope to 
+   achieve full Geekness just like Mr. Webzingdangadooby!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr> 
+d119 1
+d123 1
+a123 1
+    <li>Chris Bachmann (2001-2003)</li>
+d126 2
+a127 1
+    <li>Matt Rosefsky  (2001-2004)</li>
+@
+
+
+1.4
+log
+@yea -- i didn't know what i was doing -- tried to revert -- failed!  hah
+@
+text
+@d9 1
+d21 6
+d29 1
+d41 5
+d48 1
+d66 7
+d84 5
+d91 1
+d109 7
+d126 1
+d134 1
+d138 11
+a148 3
+      <dd>People who have served their time making this the club it is today!</dd>
+List of past officers
+
+d151 6
+d164 4
+a167 1
+</tr>@
+
+
+1.3
+log
+@i don't know what i'm doing -- changed table sizing
+@
+text
+@d6 2
+@
+
+
+1.2
+log
+@removed references to pictures, for now -- since the layout looks very cool and the picture's descriptions were getting in the way --added the past officers, although no names are listed yet
+@
+text
+@a5 2
+<table cellspacing=4 cellpadding=0 width="100%" border=0>
+
+@
+
+
+1.1
+log
+@this is basically a re-hash of the current officers page -- just seeing how it looks to see if a new design is in order
+@
+text
+@a8 1
+   <td valign=top><img src="images/officer_DClark.jpg"  alt="Dave Clark"></td>
+d19 1
+a19 5
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+a21 1
+   <td valign=top><img src="images/officer_thiago_02-03.jpg"  alt="Thiago Ize"></td>
+a31 5
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+a34 1
+   <td valign=top><img src="images/officer_sophie.jpg"  alt="Sophie Johnson"></td>
+a49 6
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+a51 1
+   <td valign=top><img src="images/officer_baron.jpg" alt="Baron Schwartz"></td>
+a61 5
+    <tr> 
+     <td valign=top colspan="2"> 
+      <hr noshade size="1" width="100%">
+     </td>
+</tr>
+a64 1
+     <td valign=top><img src="images/officer_aarash.jpg" alt="Aarash Sofla"></td>
+a79 5
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+a81 1
+   <td valign=top><img src="images/officer_case.jpg"  alt="Case Taintor"></td>
+d96 10
+@
+

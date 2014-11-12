@@ -1,0 +1,110 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.20.04.53;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@limit input to what the database can accept
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="screen-name"
+        element-id="screen-name" />
+    <element
+        required="1"
+        name="type"
+        element-id="type" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="screen-name-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Screen Name</td>
+    <td><input maxlength="100" type="text" name="screen-name" id="screen-name" /></td>
+  </tr>
+
+  <tr hidden="1" id="type-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Type:</td>
+    <td>
+      <select name="type" id="type">
+        <option value="">Choose One</option>{TYPE:}
+        <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:TYPE}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d32 1
+a32 1
+    <td><input type="text" name="screen-name" id="screen-name" /></td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

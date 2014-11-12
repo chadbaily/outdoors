@@ -1,0 +1,153 @@
+head	1.7;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.15.11.53.16;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.08.23.20.27;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.19.11.48.53;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.19.11.48.14;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.19.11.46.43;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.19.11.44.30;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.18.14.22.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@new gallery location
+@
+text
+@<h1>Outdoors at UVa's Past Adventures</h1>
+
+<p>The following list of adventures is retrieved live from the Outdoors at UVa
+database and shows all adventures Outdoors at UVa has led in the past year.  As
+you can see, Outdoors at UVa is an extremely active organization!  We also have
+a <a target="_blank" href="/gallery/">photo
+gallery of past adventures</a> on the web for your browsing pleasure.</p>
+
+<table class="ruled compact collapsed cleanHeaders">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Date</th>
+  </tr>
+{ROW:}
+  <tr{CLASS}>
+    <td>
+      {C_TITLE}
+    </td>
+    <td>
+      {LOC_TITLE}
+    </td>
+    <td nowrap>{C_START_DATE|_date_format,'M j, Y'}</td>
+  </tr>
+{:ROW}
+</table>
+@
+
+
+1.6
+log
+@styling changes
+@
+text
+@d6 1
+a6 1
+a <a target="_blank" href="http://outdoors.student.virginia.edu/gallery/">photo
+@
+
+
+1.5
+log
+@typo
+@
+text
+@d9 1
+a9 1
+<table class="ruled compact collapsed">
+@
+
+
+1.4
+log
+@added Outdoors at UVa
+@
+text
+@d3 5
+a7 5
+<p>The following list of adventures is retrieved live from Outdoors at UVa database and
+shows all adventures Outdoors at UVa has led in the past year.  As you can see,
+Outdoors at UVa is an extremely active organization!  We also have a <a target="_blank"
+href="http://outdoors.student.virginia.edu/gallery/">photo gallery of past
+adventures</a> on the web for your browsing pleasure.</p>
+@
+
+
+1.3
+log
+@added Outdoors at UVa
+@
+text
+@d3 3
+a5 3
+<p>The following list of adventures is retrieved live from our database and
+shows all adventures we've led in the past year.  As you can see,
+we are an extremely active organization!  We also have a <a target="_blank"
+@
+
+
+1.2
+log
+@added keywords
+@
+text
+@d1 1
+a1 1
+<h1>Past Adventures</h1>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d4 4
+a7 2
+actually represents all adventures we've led in the past year.  As you can see,
+we are an extremely active organization!</p>
+@
+

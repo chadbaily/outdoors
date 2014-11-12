@@ -1,0 +1,242 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.06.17.55.09;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.06.01.54.56;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.22.02.56.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@comm -> cmd
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: search.php,v 1.4 2004/10/06 01:54:56 at Exp $
+ */
+
+$template = file_get_contents("templates/location/search.php");
+
+# Create a form for the user to enter criteria in...
+$formT = file_get_contents("forms/location/search.xml");
+# Add a list of activities to the form
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]activity");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formT = Template::block($formT, "ACTIVITY",
+        array_change_key_case($row, 1));
+}
+
+$form =& new XMLForm(Template::finalize($formT), true);
+$form->snatch();
+$form->validate();
+if ($form->isValid()) {
+    # Sanitize the form input and query
+    $title = preg_replace("/[^\w\d ]/", "", $form->getValue("title"));
+    $activity = $form->getValue("activity");
+
+    # Query the database.  
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/location/search.sql");
+    if ($title) {
+        $cmd->addParameter("title", $title);
+    }
+    if (intval($activity)) {
+        $cmd->addParameter("activity", $activity);
+    }
+    $result =& $cmd->executeReader();
+    if ($result->numRows() >0) {
+        # Choose which format to plug the results into: list, or table showing #
+        # of that type of adventure that went there?
+        if ($activity) {
+            $template = Template::delete($template, "TITLE");
+            $template = Template::unhide($template, "ACTIVITY");
+        }
+        else {
+            $template = Template::delete($template, "ACTIVITY");
+            $template = Template::unhide($template, "TITLE");
+        }
+        while ($row = $result->fetchRow()) {
+            # Plug locations into the template.
+            $template = Template::block($template, "ROW", 
+                array_change_key_case($row, 1));
+        }
+    }
+    else {
+        $template = Template::unhide($template, "NONE");
+    }
+}
+
+$res['content'] = Template::replace($template, array(
+    "FORM" => $form->toString()));
+$res['title'] = "Search Locations";
+
+?>
+@
+
+
+1.4
+log
+@clean up query code
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.3 2004/09/20 20:38:40 at Exp $
+d28 5
+a32 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/generic-select.sql");
+$comm->addParameter("table", "[_]activity");
+$comm->addParameter("orderby", "c_title");
+$result =& $comm->executeReader();
+d47 2
+a48 2
+    $comm =& $obj['conn']->createCommand();
+    $comm->loadQuery("sql/queries/location/search.sql");
+d50 1
+a50 1
+        $comm->addParameter("title", $title);
+d53 1
+a53 1
+        $comm->addParameter("activity", $activity);
+d55 1
+a55 1
+    $result =& $comm->executeReader();
+@
+
+
+1.3
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d32 2
+a33 2
+$results =& $comm->executeReader();
+while ($row =& $results->fetchRow()) {
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.1 2004/08/22 02:56:28 at Exp $
+d34 1
+a34 1
+    $formT = Template::replaceWithinBlock($formT, "ACTIVITY",
+d60 2
+a61 2
+            $template = Template::deleteBlock($template, "TITLE");
+            $template = Template::unhideBlock($template, "ACTIVITY");
+d64 2
+a65 2
+            $template = Template::deleteBlock($template, "ACTIVITY");
+            $template = Template::unhideBlock($template, "TITLE");
+d69 1
+a69 1
+            $template = Template::replaceWithinBlock($template, "ROW", 
+d74 1
+a74 1
+        $template = Template::unhideBlock($template, "NONE");
+d78 1
+a78 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: search.php,v 1.5 2004/08/20 18:19:51 at Exp $
+d23 1
+a23 1
+$wrapper = file_get_contents("templates/location/search-wrapper.php");
+d60 2
+a61 2
+            $wrapper = Template::deleteBlock($wrapper, "TITLE");
+            $wrapper = Template::unhideBlock($wrapper, "ACTIVITY");
+d64 2
+a65 2
+            $wrapper = Template::deleteBlock($wrapper, "ACTIVITY");
+            $wrapper = Template::unhideBlock($wrapper, "TITLE");
+d69 1
+a69 1
+            $wrapper = Template::replaceWithinBlock($wrapper, "ROW", 
+d74 1
+a74 1
+        $wrapper = Template::unhideBlock($wrapper, "NONE");
+a75 2
+#FIXME echo "<pre>" . $comm->preparedQuery . "</pre>";
+
+d78 1
+a78 1
+$wrapper = Template::replaceValues($wrapper, array(
+a79 2
+
+# Create the output
+a80 1
+$res['content'] = $wrapper;
+@
+

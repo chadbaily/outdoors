@@ -1,0 +1,41 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.23.13.04.20;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.24.19.57.26;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@insert into [_]item_attribute
+    (c_owner, c_creator, c_created_date, c_item, c_name, c_value)
+    select {owner,int}, {owner,int}, now(), {to,int}, c_name, c_value
+    from [_]item_attribute where c_item = {from,int}
+@
+
+
+1.1
+log
+@copy an item's attributes when copying it
+@
+text
+@@
+

@@ -1,0 +1,27 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.11.08.18.25.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@insert into [_]session (c_created_date, c_member, c_ip)
+select now(), me.c_uid, {ip,char,15}
+from [_]member as me
+where me.c_email = {user,char,60}
+@

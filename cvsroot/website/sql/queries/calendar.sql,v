@@ -1,0 +1,91 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.15.12.26.59;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.19.16.47.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    ad.c_start_date,
+    ad.c_end_date,
+    ad.c_title,
+    ad.c_description,
+    ad.c_uid
+from [_]adventure as ad
+inner join [_]status as st on st.c_uid = ad.c_status
+where ((ad.c_start_date >= {start,date,,,0} and ad.c_start_date <= {end,date,,,0})
+    or (ad.c_end_date >= {start,date,,,0} and ad.c_end_date <= {end,date,,,0}))
+    and st.c_title = 'active'
+    and ad.c_deleted <> 1
+order by ad.c_start_date
+@
+
+
+1.3
+log
+@show only active adventures
+@
+text
+@d12 1
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d2 11
+a12 9
+    c_start_date,
+    c_end_date,
+    c_title,
+    c_description,
+    c_uid
+from [_]adventure
+where (c_start_date >= {start,date,,,0} and c_start_date <= {end,date,,,0})
+    or (c_end_date >= {start,date,,,0} and c_end_date <= {end,date,,,0})
+order by c_start_date
+@
+
+
+1.1
+log
+@Calendar stuff
+@
+text
+@d7 1
+a7 1
+from t_adventure
+@
+

@@ -1,0 +1,99 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.08.23.19.23;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.24.21.09.25;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.23.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.22.02.56.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Search Locations</h1>
+
+{FORM}
+
+{NONE:}
+<p class="notice">Sorry, no matches found.</p>
+{:NONE}
+
+{TITLE:}
+<ol>{ROW:}
+  <li><a href="members.php?page=location&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a></li>{:ROW}
+</ol>
+{:TITLE}
+
+{ACTIVITY:}
+
+<p>This view shows the number of adventures of the selected type that have gone
+to each location, so you can see how popular it is as a destination for the
+selected activity.</p>
+
+<table>
+  <tr>
+    <th>Title</th><th>#Adventures</th>
+  </tr>
+  <tr>{ROW:}
+    <td>
+      <a href="members.php?page=location&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+    </td>
+    <td>{C_COUNT}</td>
+  </tr>{:ROW}
+</table>
+{:ACTIVITY}
+@
+
+
+1.3
+log
+@added explanation
+@
+text
+@@
+
+
+1.2
+log
+@removed stupid sentence
+@
+text
+@d16 5
+@
+
+
+1.1
+log
+@init
+@
+text
+@a2 2
+<p>Use this form to search for locations:</p>
+
+@
+

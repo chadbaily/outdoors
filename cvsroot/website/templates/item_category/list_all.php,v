@@ -1,0 +1,58 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.31.15.20.46;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Item Categories</h1>
+
+<p>The following is a list of all item categories in the database:</p>
+
+<table class="borders collapsed elbowroom">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>{category:}
+  <tr>
+    <td>
+      {c_uid}
+    </td>
+    <td>
+      <a href="members/item_category/{c_uid}">{c_title}</a>
+    </td>
+  </tr>{:category}
+</table>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d15 1
+a15 1
+      <a href="members.php?page={PAGE}&object={c_uid}&action={ACTION_READ}">{c_title}</a>
+@
+

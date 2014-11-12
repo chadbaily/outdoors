@@ -1,0 +1,80 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.15.23;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@{CONFIRM:}
+<p>Please read the above instructions carefully, then choose an action
+below:</p>
+{:CONFIRM}
+
+{FORM:}
+<form action="members.php?page={PAGE}&action={ACTION_DELETE}&object={OBJECT}" method="POST">
+
+<p><b>Cascade the delete to related items?</b></p>
+<input type="radio" name="cascade" id="cascade1" value="1"><label for="cascade1">Cascade</label><br>
+<input type="radio" name="cascade" id="cascade0" value="0"><label for="cascade0">Don't cascade</label>
+
+<p><b>Really delete, or just mark as deleted?</b></p>
+<input type="radio" name="delete" id="delete1" value="1"><label for="delete1">Delete</label><br>
+<input type="radio" name="delete" id="delete0" value="0"><label for="delete0">Don't delete</label>
+
+<p><input type="submit" name="continue" value="Continue"></p>
+
+</form>
+
+{:FORM}
+
+{DELETE:}
+<p class="notice">You have deleted the object from the database.</p>
+{:DELETE}
+
+{MARK:}
+<p class="notice">You have marked the item as deleted in the database.</p>
+{:MARK}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

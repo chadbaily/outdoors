@@ -1,0 +1,93 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.01.30.21.50.42;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.26.13.38.20;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.19.17.52.04;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@remove spurious semicolon
+@
+text
+@-- Selects membership types that the current user does not already have.  These
+-- are then valid options for renewing.  Flexible membership types are not
+-- included, since a member can have many memberships of a flexible type.
+-- Parameters: private, flexible, member
+select
+    mt.c_uid, mt.c_title, mt.c_description, mt.c_begin_date, mt.c_expiration_date, mt.c_total_cost,
+    case when (not(mt.c_flags & {flexible,int}) and ms.c_uid is not null)
+        then 1
+        else 0
+    end as already_has
+from [_]membership_type as mt
+    left outer join [_]membership as ms on mt.c_uid = ms.c_type
+        and ms.c_member = {member,int}
+        and ms.c_deleted <> 1
+where not(mt.c_flags & {private,int})
+    and (
+        (mt.c_flags & {flexible,int})
+        or current_date between mt.c_show_date and mt.c_hide_date
+        )
+    and mt.c_deleted <> 1
+@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@d19 1
+a19 1
+        );
+@
+
+
+1.2
+log
+@added some columns needed for cost, dates etc
+@
+text
+@d12 3
+a14 1
+    left outer join [_]membership as ms on mt.c_uid = ms.c_type and ms.c_member = {member,int}
+d20 1
+@
+
+
+1.1
+log
+@added de-duping support by simply graying out choices when a member has a membership of that type already
+@
+text
+@d6 1
+a6 1
+    mt.c_uid, mt.c_title, mt.c_total_cost,
+@
+

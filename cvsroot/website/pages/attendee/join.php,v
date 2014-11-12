@@ -1,0 +1,278 @@
+head	1.9;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2004.11.03.21.49.09;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.23.12.52.51;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.29.01.45.08;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.02.38.25;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@use attendee's status to determine waitlisting, instead of hitting the DB again
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: join.php,v 1.8 2004/10/23 12:52:51 at Exp $
+ *
+ * Purpose: lets a leader join a waitlisted attendee onto an adventure.  Follows 
+ * the same logic as the process for joining from the waitlist...
+ */
+
+include_once("JoinAdventureManager.php");
+
+$adventure =& new adventure();
+$adventure->select($object->getAdventure());
+$member =& new member();
+$member->select($object->getMember());
+
+$template = file_get_contents("templates/attendee/join.php");
+$template = $member->insertIntoTemplate(
+    $adventure->insertIntoTemplate($template));
+
+$error = false;
+
+# Ensure that the member isn't already attending this adventure
+if ($object->getStatus() != $cfg['status_id']['waitlisted']) {
+    $template = Template::unhide($template, "ALREADY");
+    $error = true;
+}
+
+if (!$error && getval('continue')) {
+    $object->setStatus($cfg['status_id']['default']);
+    $object->update();
+    JoinAdventureManager::sendJoinConfirmation($member, $adventure,
+        $object->getStatus());
+    $template = Template::unhide($template, "SUCCESS");
+}
+elseif (!$error) {
+    $template = Template::unhide($template, "CONFIRM");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Move Attendee Off Waitlist";
+
+?>
+@
+
+
+1.8
+log
+@change class names to match table names; use getChildren(); merge code from AbsenceManager
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.7 2004/10/07 17:41:47 at Exp $
+d48 2
+a49 1
+    JoinAdventureManager::sendJoinConfirmation($member, $adventure);
+@
+
+
+1.7
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.6 2004/09/29 01:45:08 at Exp $
+d28 1
+a28 1
+$adventure =& new Adventure();
+d30 1
+a30 1
+$member =& new Member();
+@
+
+
+1.6
+log
+@don't mess with the join date
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.5 2004/09/20 20:38:39 at Exp $
+d45 1
+a45 1
+if (!$error && Utility::getval('continue')) {
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.4 2004/09/20 18:26:50 at Exp $
+a45 1
+    $object->setJoinedDate(date("Y-m-d H:i:s"));
+@
+
+
+1.4
+log
+@use uppercase H for 24-hour time
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.3 2004/09/18 02:38:25 at Exp $
+d41 1
+a41 1
+    $template = Template::unhideBlock($template, "ALREADY");
+d50 1
+a50 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d53 1
+a53 1
+    $template = Template::unhideBlock($template, "CONFIRM");
+@
+
+
+1.3
+log
+@added joined_date column
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d46 1
+a46 1
+    $object->setJoinedDate(date("Y-m-d h:i:s"));
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d46 4
+a49 2
+    # Do it
+    JoinAdventureManager::joinWaitlistedAttendee($object);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.5 2004/05/30 01:42:10 baron Exp $
+d33 3
+a35 5
+$wrapper = file_get_contents("templates/attendee/join-wrapper.php");
+$box = file_get_contents("templates/attendee/join-box.php");
+$wrapper = $object->insertIntoTemplate(
+    $member->insertIntoTemplate(
+    $adventure->insertIntoTemplate($wrapper)));
+d41 1
+a41 1
+    $box = Template::unhideBlock($box, "ALREADY");
+d48 1
+a48 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d51 1
+a51 1
+    $box = Template::unhideBlock($box, "CONFIRM");
+d54 1
+a54 5
+$res['tab'] = "Join";
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/attendee-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

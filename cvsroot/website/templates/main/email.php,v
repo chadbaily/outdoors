@@ -1,0 +1,54 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.12.19.19.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@change listname prefix for nospamming
+@
+text
+@<h1>Email Club Members</h1>
+
+{initial:}
+<p>Use the form below to send a message to club members (please follow the <a
+href="index.php?page=policies&amp;action=email">email policy</a>).  You don't
+need to put <b>Outdoors:</b> in front of the subject; this is added automatically.</p>
+
+{form}
+{:initial}
+
+{success:}
+<p class="notice">Your message has been sent.  Do not refresh this page or it
+will send again.</p>
+{:success}
+@
+
+
+1.1
+log
+@release email system
+@
+text
+@d6 1
+a6 1
+need to put [Outdoors] in front of the subject; this is added automatically.</p>
+@
+

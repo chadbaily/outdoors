@@ -1,0 +1,170 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.09.02.13.14;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: common-properties.php,v 1.2 2004/09/03 20:38:24 at Exp $
+ *
+ * This file creates a tabbed box for the various "property" pages of an
+ * object; mostly, these things are administrative functions and users will
+ * never see them.  The tabbed box currently has two rows of tabs.  It's not
+ * necessary to set the tab from the file that includes this one; it's already
+ * set depending on the action.
+ */
+
+include_once("TabbedBox.php");
+
+$obj['inner_box']=& new TabbedBox();
+
+# First Row
+
+$obj['inner_box']->addTab('&Details',
+        "members.php?page={PAGE}&action={ACTION_READ}&object={OBJECT}",
+        0,
+        "View details for this object");
+$obj['inner_box']->addTab('P&roperties',
+        "members.php?page={PAGE}&action={ACTION_STAT}&object={OBJECT}",
+        0,
+        "View properties for this object");
+$obj['inner_box']->addTab('Edit &Properties',
+        "members.php?page={PAGE}&action={ACTION_CHMETA}&object={OBJECT}",
+        0,
+        "Edit this object's properties");
+$obj['inner_box']->addTab('Set &Flags', 
+        "members.php?page={PAGE}&action={ACTION_SET_FLAGS}&object={OBJECT}",
+        0,
+        "View and set this object's flags");
+$obj['inner_box']->addTab('De&lete', 
+        "members.php?page={PAGE}&action={ACTION_DELETE}&object={OBJECT}",
+        0,
+        "Delete this object");
+
+# Second Row
+$obj['inner_box']->addTab('Cha&nge Owner',
+        "members.php?page={PAGE}&action={ACTION_CHOWN}&object={OBJECT}",
+        1,
+        "Change this object's owner");
+$obj['inner_box']->addTab('Change &Group',
+        "members.php?page={PAGE}&action={ACTION_CHGRP}&object={OBJECT}",
+        1,
+        "Change the group that owns this object");
+$obj['inner_box']->addTab('&Change Permissions', 
+        "members.php?page={PAGE}&action={ACTION_CHMOD}&object={OBJECT}",
+        1,
+        "Edit this object's Unix-style permissions");
+$obj['inner_box']->addTab('Pr&ivileges',
+        "members.php?page={PAGE}&action={ACTION_VIEW_ACL}&object={OBJECT}",
+        1,
+        "View the privileges defined on this object");
+$obj['inner_box']->addTab('Add Pri&vilege',
+        "members.php?page={PAGE}&action={ACTION_ADD_PRIVILEGE}&object={OBJECT}",
+        1,
+        "Add a privilege to this object's Access Control List");
+
+# Set the active tab based on the action taken
+$tabActions = array(
+        $cfg['action_id']['read'] => "Details",
+        $cfg['action_id']['stat'] => "Properties",
+        $cfg['action_id']['view_acl'] => "Privileges",
+        $cfg['action_id']['delete'] => "Delete",
+        $cfg['action_id']['chmeta'] => "Edit Properties",
+        $cfg['action_id']['chmod'] => "Change Permissions",
+        $cfg['action_id']['chgrp'] => "Change Group",
+        $cfg['action_id']['chown'] => "Change Owner",
+        $cfg['action_id']['set_flags'] => "Set Flags",
+        $cfg['action_id']['add_privilege'] => "Add Privilege",
+        $cfg['action_id']['write'] => "Edit"
+    );
+$obj['inner_box']->setActiveTab($tabActions[$cfg['action']]);
+$obj['inner_box']->setContents($res['content']);
+
+$res['content'] = $obj['inner_box']->toString();
+
+?>
+@
+
+
+1.2
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: common-properties.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: common-properties.php,v 1.5 2004/05/30 01:42:24 baron Exp $
+a31 2
+$obj['inner_box']->setTemplate("templates/misc/tabbed-box-horizontal.php");
+$obj['inner_box']->setClassPrefix("");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

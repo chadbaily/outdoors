@@ -1,0 +1,980 @@
+head	1.35;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.35
+date	2005.02.13.01.04.55;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2005.02.11.13.17.16;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2004.11.12.21.22.03;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2004.11.09.14.50.12;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.10.25.16.45.57;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.10.12.16.40.16;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.09.23.03.31.07;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.09.22.16.28.50;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.09.20.18.11.13;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.09.09.14.43.50;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.09.09.14.40.47;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.09.09.02.24.12;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.09.08.23.20.27;	author at;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.09.02.12.43.03;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.08.31.22.31.30;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.08.25.11.44.16;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.08.24.03.24.31;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.08.20.13.29.29;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.08.18.20.16.56;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.08.18.19.58.29;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.08.18.15.53.07;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.18.15.29.58;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.17.21.53.09;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.17.11.56.23;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.16.21.20.06;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.16.18.57.31;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.04.13.04.04;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.04.01.44.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.01.23.49.11;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.19.16.45.44;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.19.12.22.55;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.35
+log
+@fix typo
+@
+text
+@<h1>Member Home Page</h1>
+
+{NEED_TO_RENEW:}
+<p class="notice">Your membership is expiring in {DAYS_LEFT} days.  You should
+<a href="members/join/renew">renew your membership</a> now!</p>
+{:NEED_TO_RENEW}
+
+<table class="top collapsed">
+  <tr>
+
+    <td width="60%" style="padding-right:10px">
+      Please <a href="members/main/feedback">give us
+      feedback</a> on this website.  If you want to do something outdoors,
+      consider leading the trip yourself &mdash; it's <a
+      href="members/resources/leading">easy and we'll help
+      you</a>!  If you don't want to lead it, ask the officers about it or <a
+      href="members/main/email">email the club list</a> (please
+      follow the <a href="index.php?page=policies&amp;action=email">email
+      policy</a>).
+    </td>
+
+    <td width="40%">
+      <a href="/gallery/"><img class="thumbnail-left"
+      src="images/climber-1.jpg" alt="Check out the photo galleries!"
+      width="100" height="75"></a> Check out the <a href="/gallery/">photo
+      galleries</a>.  If you have photos, email the officers.  (You
+      can post photos from your own trips in the Member Trips gallery).</p>
+    </td>
+
+  </tr>
+  <tr>
+    <td width="60%" style="padding-right:10px">
+
+      <!-- Begin Upcoming Adventures -->
+      <h4 class="boxed">Upcoming Adventures</h4>
+      <table class="compact collapsed elbowroom" width="100%">
+        {UPCOMING:}<tr>
+          <td>{IMG}</td>
+          <td nowrap>{C_START_DATE|_date_format,'M j'}</td>
+          <td>
+            <a href="members/adventure/read/{C_UID}">{C_TITLE}</a><br>
+          </td>
+        </tr>{:UPCOMING}
+      </table>
+      <div align="right" class="tiny">
+        <a href="members/adventure">More Adventures</a> |
+        <a href="members/adventure/list_all?criteria=joined">Adventures You've Attended</a> |
+        <a href="members/calendar">Calendar of Events</a>
+        <br>
+        <img src="assets/smiley-tiny.png" height="12" width="12" alt="Favorites"> These upcoming adventures match your
+        <a href="members/member/choose_activities/{MEMBER}">interests</a>.
+      </div>
+      <!-- End Upcoming Adventures -->
+
+      <!-- Begin Classified Ads -->
+      <h4 class="boxed">Classifieds</h4>
+      <table class="compact collapsed elbowroom" width="100%">{CLASSIFIEDS:}
+        <tr>
+          <td>
+            <a href="members/classified_ad/read/{C_UID}">{C_TITLE}</a><br>
+          </td>
+        </tr>{:CLASSIFIEDS}
+      </table>
+      <div align="right" class="tiny">
+        <a href="members/classified_ad/list_all">View All</a> |
+        <a href="members/classified_ad/create">Post an Ad</a>
+      </div>
+      <!-- End Classified Ads -->
+
+      <!-- Begin Favorite Locations -->
+      <h4 class="boxed">Popular Locations By Activity Type</h4>
+      {CHOOSE_INTERESTS:}
+      <p class="notice">Hey you!  You need to 
+      <a href="members/member/choose_activities/{MEMBER}">choose
+      your interests</a> and then I can show you something cool here.</p>
+      {:CHOOSE_INTERESTS}
+      {FAV_LOCATIONS:}
+      <div class="tiny">These are the most popular destinations for your favorite
+      activities.</div>
+      <table class="compact elbowroom collapsed ruled cleanHeaders" width="100%">
+        <tr>
+          <th>#trips</th>
+          <th>Activity</th>
+          <th>Location</th>
+        </tr>{POP_LOC:}
+        <tr class='{CLASS}'>
+          <td>{NUM}</td>
+          <td>{AC_TITLE}</td>
+          <td><a href="members/location/read/{LOC_UID}">{LOC_TITLE}</a></td>
+        </tr>{:POP_LOC}
+      </table>
+      <div align="right" class="tiny">
+        {MORE_ACTIVITIES:}
+        <a href="members/main/member-home?limit=1000">Show more</a> |
+        {:MORE_ACTIVITIES}
+        <a href="members/location/list_all">All Locations</a> |
+        <a href="members/location/search">Search Locations</a> |
+        <a href="members/member/choose_activities/{MEMBER}">Choose Interests</a>
+      </div>
+      {:FAV_LOCATIONS}
+      <!-- End Favorite Locations -->
+
+      <!-- Begin Calendar -->
+
+      <h4 class="boxed">Calendar of Events</h4>
+
+      <p>Days that are bold have adventures scheduled.  To see the full
+      calendar, <a href="members/calendar">click
+      here</a>.</p>
+
+      <div align="center">
+      {CALENDAR}
+      </div>
+
+      <!-- End Calendar -->
+
+    </td>
+    <td width="40%">
+
+      <!-- Begin Search Form -->
+      <h4 class="boxed">Search</h4>
+      <form action="members/member/search" method="POST">
+        <p>Search for members by first name:<br>
+        <input type="hidden" name="form-name" id="form-name" value="1" />
+        <input type="hidden" name="field" value="c_first_name">
+        <input type="text" name="contains" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <form action="members/adventure/search" method="POST">
+        <p>Search for adventures by title:<br>
+        <input type="hidden" name="form-name" id="form-name" value="1" />
+        <input type="text" name="title" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <form action="members/location/search" method="POST">
+        <p>Search for locations by title:<br>
+        <input type="hidden" name="form-name" id="form-name" value="1" />
+        <input type="text" name="title" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <!-- End Search Form -->
+
+      <h4 class="boxed">Your Profile (<a href="members/profile">Manage</a>)</h4>
+
+      <h5>Addresses</h5>
+      <div class="indented">
+      {ADDRESS:}
+      - <a href="members/address/read/{T_ADDRESS}">{C_TITLE}</a><br>
+      &raquo; <a href="members/address/write/{T_ADDRESS}">update</a><br>
+      {:ADDRESS}
+      &raquo; <a href="members/address">manage addresses</a><br>
+      </div>
+
+      <h5>Phone Numbers</h5>
+      <div class="indented">
+      {PHONE:}
+      - <a href="members/phone_number/read/{T_PHONE_NUMBER}">{C_PHONE_NUMBER}</a><br>
+      &raquo; <a href="members/phone_number/write/{T_PHONE_NUMBER}">update</a><br>
+      {:PHONE}
+      &raquo; <a href="members/phone_number">manage phone numbers</a><br>
+      </div>
+
+      <h5>Chat Identities</h5>
+      <div class="indented">
+      {CHAT:}
+      - <a
+        href="members/chat/read/{T_CHAT}">{C_SCREENNAME}</a> ({C_ABBREVIATION})<br>
+      &raquo; <a href="members/chat/write/{T_CHAT}">update</a><br>
+      {:CHAT}
+      &raquo; <a href="members/chat">manage chat identities</a><br>
+      </div>
+
+      <h5>Other</h5>
+      <div class="indented">
+      &raquo; <a href="members/member/optout/{MEMBER}">opt out of emails</a><br>
+      &raquo; <a href="members/member/change_password/{MEMBER}">change your password</a><br>
+      &raquo; <a href="members/member/choose_activities/{MEMBER}">choose favorite activities</a><br>
+      &raquo; <a href="members/subscription/list_owned_by">your email list subscriptions</a><br>
+      &raquo; <a href="members/member/view_history/{MEMBER}">view membership history</a><br>
+      &raquo; <a href="members/join/renew">renew your membership</a><br>
+      </div>
+
+    </td>
+  </tr>
+</table>
+@
+
+
+1.34
+log
+@fix link
+@
+text
+@d74 1
+a74 1
+      <a href="members/member/choose_activties/{MEMBER}">choose
+@
+
+
+1.33
+log
+@friendlyurls
+@
+text
+@d74 1
+a74 1
+      <a href="members/member/choose_activies/{MEMBER}">choose
+@
+
+
+1.32
+log
+@tweak the photo gallery text
+@
+text
+@d5 1
+a5 1
+<a href="members.php?page=join&action=renew">renew your membership</a> now!</p>
+d12 1
+a12 1
+      Please <a href="members.php?page=main&action=feedback">give us
+d15 1
+a15 1
+      href="members.php?page=resources&amp;action=leading">easy and we'll help
+d17 1
+a17 1
+      href="members.php?page=main&action=email">email the club list</a> (please
+d41 1
+a41 1
+            <a href="members.php?page=adventure&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a><br>
+d46 3
+a48 3
+        <a href="members.php?page=adventure">More Adventures</a> |
+        <a href="members.php?page=adventure&action={ACTION_LIST_ALL}&criteria=joined">Adventures You've Attended</a> |
+        <a href="members.php?page=calendar">Calendar of Events</a>
+d51 1
+a51 1
+        <a href="members.php?page=member&action={ACTION_CHOOSE_ACTIVITIES}&object={MEMBER}">interests</a>.
+d60 1
+a60 1
+            <a href="members.php?page=classified_ad&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a><br>
+d65 2
+a66 2
+        <a href="members.php?page=classified_ad&action={ACTION_LIST_ALL}">View All</a> |
+        <a href="members.php?page=classified_ad&action={ACTION_CREATE}">Post an Ad</a>
+d74 1
+a74 1
+      <a href="members.php?page=member&action={ACTION_CHOOSE_ACTIVITIES}&object={MEMBER}">choose
+d89 1
+a89 1
+          <td><a href="members.php?page=location&action={ACTION_READ}&object={LOC_UID}">{LOC_TITLE}</a></td>
+d94 1
+a94 1
+        <a href="members.php?page=main&action=member-home&limit=1000">Show more</a> |
+d96 3
+a98 3
+        <a href="members.php?page=location&action={ACTION_LIST_ALL}">All Locations</a> |
+        <a href="members.php?page=location&action={ACTION_SEARCH}">Search Locations</a> |
+        <a href="members.php?page=member&action={ACTION_CHOOSE_ACTIVITIES}&object={MEMBER}">Choose Interests</a>
+d108 1
+a108 1
+      calendar, <a href="members.php?page=calendar">click
+d122 1
+a122 1
+      <form action="members.php?page=member&action={ACTION_SEARCH}" method="POST">
+d130 1
+a130 1
+      <form action="members.php?page=adventure&action={ACTION_SEARCH}" method="POST">
+d137 1
+a137 1
+      <form action="members.php?page=location&action={ACTION_SEARCH}" method="POST">
+d146 1
+a146 1
+      <h4 class="boxed">Your Profile (<a href="members.php?page=profile">Manage</a>)</h4>
+d151 2
+a152 2
+      - <a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a><br>
+      &raquo; <a href="members.php?page=address&action={ACTION_WRITE}&object={T_ADDRESS}">update</a><br>
+d154 1
+a154 1
+      &raquo; <a href="members.php?page=address">manage addresses</a><br>
+d160 2
+a161 2
+      - <a href="members.php?page=phone_number&action={ACTION_READ}&object={T_PHONE_NUMBER}">{C_PHONE_NUMBER}</a><br>
+      &raquo; <a href="members.php?page=phone_number&action={ACTION_WRITE}&object={T_PHONE_NUMBER}">update</a><br>
+d163 1
+a163 1
+      &raquo; <a href="members.php?page=phone_number">manage phone numbers</a><br>
+d170 2
+a171 2
+        href="members.php?page=chat&action={ACTION_READ}&object={T_CHAT}">{C_SCREENNAME}</a> ({C_ABBREVIATION})<br>
+      &raquo; <a href="members.php?page=chat&action={ACTION_WRITE}&object={T_CHAT}">update</a><br>
+d173 1
+a173 1
+      &raquo; <a href="members.php?page=chat">manage chat identities</a><br>
+d178 6
+a183 6
+      &raquo; <a href="members.php?page=member&object={MEMBER}&action={ACTION_OPTOUT}">opt out of emails</a><br>
+      &raquo; <a href="members.php?page=member&action={ACTION_CHANGE_PASSWORD}&object={MEMBER}">change your password</a><br>
+      &raquo; <a href="members.php?page=member&action={ACTION_CHOOSE_ACTIVITIES}&object={MEMBER}">choose favorite activities</a><br>
+      &raquo; <a href="members.php?page=subscription&action={ACTION_LIST_OWNED_BY}">your email list subscriptions</a><br>
+      &raquo; <a href="members.php?page=member&action={ACTION_VIEW_HISTORY}&object={MEMBER}">view membership history</a><br>
+      &raquo; <a href="members.php?page=join&action=renew">renew your membership</a><br>
+@
+
+
+1.31
+log
+@add link to photo galleries on the homepage
+@
+text
+@d23 5
+a27 5
+      <a href="/gallery/">
+      <img class="thumbnail-right" src="images/climber-1.jpg" alt="Check out the
+      photo galleries!" width="100" height="75"></a>
+      Check out the <a href="/gallery/">photo galleries</a>.  If you have any
+      photos to post, email the officers.</p>
+@
+
+
+1.30
+log
+@make adventure days bold on calendar
+@
+text
+@a2 9
+<p>Please <a href="members.php?page=main&action=feedback">give us feedback</a>
+on this website.  If you want to do something outdoors, consider
+leading the trip yourself &mdash; it's <a
+href="members.php?page=resources&amp;action=leading">easy and we'll help
+you</a>!  If you don't want to lead it, ask the officers about it or <a
+href="members.php?page=main&action=email">email the
+club list</a> (please follow the <a
+href="index.php?page=policies&amp;action=email">email policy</a>).</p>
+
+d9 22
+@
+
+
+1.29
+log
+@lowercase an o
+@
+text
+@d94 1
+a94 1
+      <p>Days that are highlighted have adventures scheduled.  To see the full
+@
+
+
+1.28
+log
+@release email system
+@
+text
+@d165 1
+a165 1
+      &raquo; <a href="members.php?page=member&object={MEMBER}&action={ACTION_OPTOUT}">Opt out of emails</a><br>
+@
+
+
+1.27
+log
+@fixed broken classifieds table
+@
+text
+@d7 3
+a9 2
+you</a>!  If you don't want to lead it, ask the officers about it or email the
+club list (please follow the <a
+d165 1
+@
+
+
+1.26
+log
+@changes for the classified ads
+@
+text
+@d43 3
+a45 2
+      <table class="compact collapsed elbowroom" width="100%">
+        {CLASSIFIEDS:}<tr>
+@
+
+
+1.25
+log
+@make smiley on homepage smaller
+@
+text
+@d41 14
+@
+
+
+1.24
+log
+@styling for upcoming adventures
+@
+text
+@d36 1
+a36 1
+        <img src="assets/smiley.png" height="18" width="18" alt="Favorites"> These upcoming adventures match your
+@
+
+
+1.23
+log
+@styling so IE will float the table instead of clearing it past the navbar
+@
+text
+@d16 2
+a17 2
+<table cellspacing="0">
+  <tr valign="top">
+@
+
+
+1.22
+log
+@change from hearts to smileys
+@
+text
+@d16 1
+a16 1
+<table width="100%" cellspacing="0">
+@
+
+
+1.21
+log
+@styling changes
+@
+text
+@d23 1
+a23 1
+        {UPCOMING:}<tr class="{CLASS}">
+d36 1
+a36 1
+        <img src="assets/heart.png" height="14" width="15" alt="Favorites"> These upcoming adventures match your
+@
+
+
+1.20
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d25 1
+a25 1
+          <td>{C_START_DATE|_date_format,'M j'}</td>
+@
+
+
+1.19
+log
+@added a prompt to choose interests
+@
+text
+@d21 1
+a21 1
+      <h4>Upcoming Adventures</h4>
+d42 1
+a42 1
+      <h4>Popular Locations By Activity Type</h4>
+d51 1
+a51 1
+      <table class="compact elbowroom collapsed ruled" width="100%">
+d76 1
+a76 1
+      <h4>Calendar of Events</h4>
+d92 1
+a92 1
+      <h4>Search</h4>
+d117 1
+a117 1
+      <h4>Your Profile (<a href="members.php?page=profile">Manage</a>)</h4>
+@
+
+
+1.18
+log
+@styling on favorite-locations table templates/main
+@
+text
+@d43 6
+d71 2
+a72 1
+      <!-- End Favorite Adventures -->
+@
+
+
+1.17
+log
+@added more links to do stuff
+@
+text
+@d45 1
+a45 1
+      <table class="compact elbowroom collapsed" width="100%">
+@
+
+
+1.16
+log
+@updated to match the new privilege scheme: privileges moved out of SecurityManager and into SQL query
+@
+text
+@d62 1
+d144 2
+a145 2
+      &raquo; <a href="members.php?page=subscription&action={ACTION_LIST_OWNED_BY}">email list subscriptions</a><br>
+      &raquo; <a href="members.php?page=member&action={ACTION_VIEW_HISTORY}&object={MEMBER}">membership history</a><br>
+@
+
+
+1.15
+log
+@added adventure search form to homepage
+@
+text
+@d100 7
+@
+
+
+1.14
+log
+@added styling to the upcoming adventures table
+@
+text
+@d84 1
+a84 2
+      <h4>Search the Member Directory</h4>
+      <p>Search for members by first name:</p>
+d86 1
+d91 8
+@
+
+
+1.13
+log
+@changed styling on favorite-adventures table
+@
+text
+@d22 2
+a23 2
+      <table>
+        {UPCOMING:}<tr>
+d45 1
+a45 1
+      <table class="compact elbowroom collapsed">
+@
+
+
+1.12
+log
+@shortened the first sentences and made it more active
+@
+text
+@d45 1
+a45 1
+      <table class="compact">
+d50 2
+a51 2
+        </tr>
+        <tr>{POP_LOC:}
+@
+
+
+1.11
+log
+@removed the 'Show More' link after it's clicked on
+@
+text
+@d3 6
+a8 6
+<p>Please <a href="members.php?page=main&action=feedback">give us
+feedback</a> on this website.  If you're interested in doing something outdoors,
+please ask the officers about it (would you consider leading the adventure
+yourself?  It's <a
+href="members.php?page=resources&amp;action=leading">easy and we'll
+help you</a>!) or email the club list (please follow the <a
+@
+
+
+1.10
+log
+@change color of days in calendar, and make past adventure links grayed out
+@
+text
+@d58 1
+d60 1
+@
+
+
+1.9
+log
+@added a days-to-renewal notice to member home page
+@
+text
+@d68 1
+a68 1
+      <p>Days that are colored green have adventures scheduled.  To see the full
+@
+
+
+1.8
+log
+@added link to renew membership
+@
+text
+@d11 5
+@
+
+
+1.7
+log
+@removed some feel frees and added some links
+@
+text
+@d123 1
+@
+
+
+1.6
+log
+@clarified wording on location-by-interest link
+@
+text
+@d3 7
+a9 4
+<p>Feel free to <a href="members.php?page=main&action=feedback">give us
+feedback</a> on this website.  If you're interested in doing something
+outdoors, feel free to ask the officers about it (would you consider leading the
+adventure yourself?) or email the club list (please follow the email policy).</p>
+@
+
+
+1.5
+log
+@reformat popular locations
+@
+text
+@d50 1
+a50 1
+        <a href="members.php?page=main&action=member-home&limit=1000">All Activities</a> |
+@
+
+
+1.4
+log
+@fixed path to heart image
+@
+text
+@d37 12
+a48 4
+      {POP_LOC:}
+        {NUM} trips for {AC_TITLE}:
+        <a href="members.php?page=location&action={ACTION_READ}&object={LOC_UID}">{LOC_TITLE}</a><br>
+        {:POP_LOC}
+@
+
+
+1.3
+log
+@Calendar stuff
+@
+text
+@d28 1
+a28 1
+        <img src="/assets/heart.png"> These upcoming adventures match your
+@
+
+
+1.2
+log
+@Added a bunch of enhancements to the default profile page
+@
+text
+@d56 3
+a58 57
+      <table align="center" class="borders compact">
+        <caption>May 2004</caption>
+        <tr>
+          <th width="25">Sun</th>
+          <th width="25">Mon</th>
+          <th width="25">Tue</th>
+          <th width="25">Wed</th>
+          <th width="25">Thu</th>
+          <th width="25">Fri</th>
+          <th width="25">Sat</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>30</td>
+          <td>31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d28 1
+a28 1
+        <img src="/assets/heart.png"> These upcoming adventures match your 
+d32 1
+a32 1
+  
+d113 1
+a113 1
+      
+d115 1
+a115 1
+  
+d130 2
+a131 2
+      <h4>Your Profile</h4>
+      
+a136 1
+      &raquo; <a href="members.php?page=profile&action=primary">select primary address</a><br>
+a145 1
+      &raquo; <a href="members.php?page=profile&action=primary">select primary phone number</a><br>
+a155 1
+      &raquo; <a href="members.php?page=profile&action=primary">select primary chat identity</a><br>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

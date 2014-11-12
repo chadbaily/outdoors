@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.43.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    me.c_full_name,
+    mn.*
+from [_]member_note as mn
+    inner join [_]member as me on mn.c_creator = me.c_uid
+where c_member = {member,int}
+    and mn.c_deleted <> 1
+    and me.c_deleted <> 1
+order by mn.c_created_date
+@
+
+
+1.1
+log
+@add ability to view member notes
+@
+text
+@d7 2
+@
+

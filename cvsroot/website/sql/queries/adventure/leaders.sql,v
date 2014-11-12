@@ -1,0 +1,64 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.19.12.16.17;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@remove spurious semicolons
+@
+text
+@-- Gets a list of everyone who has ever led an adventure
+select
+    distinct me.c_uid, c_full_name
+from [_]member as me
+    inner join [_]adventure as ad on ad.c_owner = me.c_uid
+    inner join [_]status as st on ad.c_status = st.c_uid
+where st.c_title = 'active'
+    and ad.c_deleted <> 1
+    and me.c_deleted <> 1
+order by me.c_last_name, me.c_first_name
+@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@d10 1
+a10 1
+order by me.c_last_name, me.c_first_name;
+@
+
+
+1.1
+log
+@init
+@
+text
+@d8 2
+@
+

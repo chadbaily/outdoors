@@ -1,0 +1,267 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.02.38.25;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Attendee.php,v 1.3 2004/09/18 02:38:25 at Exp $
+ */
+
+// {{{require statements
+include_once("DatabaseObject.php");
+include_once("Answer.php");
+include_once("Absence.php");
+// }}}
+
+class Attendee extends DatabaseObject {
+    // {{{declarations
+    var $c_adventure = null; // Adventure
+    var $c_member = null; // Member
+    var $c_amount_paid = null; // Amount that attendee paid for the adventure
+    var $c_joined_date = null;
+    var $absences;
+    var $answers;  // Answers that this attendee gave to the adventure's
+                   // questions
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Attendee() {
+        global $cfg;
+        $this->DatabaseObject();
+        $this->table = "[_]attendee";
+        $this->cascadeFunctions[] = "getAnswers";
+        $this->cascadeFunctions[] = "getAbsences";
+    } //}}}
+
+    /* {{{getAdventure
+     *
+     */
+    function getAdventure() {
+        return $this->c_adventure;
+    } //}}}
+
+    /* {{{setAdventure
+     *
+     */
+    function setAdventure($value) {
+        $this->c_adventure = $value;
+    } //}}}
+
+    /* {{{getMember
+     *
+     */
+    function getMember() {
+        return $this->c_member;
+    } //}}}
+
+    /* {{{setMember
+     *
+     */
+    function setMember($value) {
+        $this->c_member = $value;
+    } //}}}
+
+    /* {{{getAmountPaid
+     */
+    function getAmountPaid() {
+        return $this->c_amount_paid;
+    } //}}}
+
+    /* {{{setAmountPaid
+     */
+    function setAmountPaid($value) {
+        $this->c_amount_paid = $value;
+    } //}}}
+
+    /* {{{getJoinedDate
+     */
+    function getJoinedDate() {
+        return $this->c_joined_date;
+    } //}}}
+
+    /* {{{setJoinedDate
+     */
+    function setJoinedDate($value) {
+        $this->c_joined_date = $value;
+    } //}}}
+
+    /* {{{initAbsences
+     * You don't need to call this explicitly.  Instead, just use
+     * getAbsences().
+     */
+    function initAbsences() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->absences = array();
+        $result =& $obj['conn']->query("select * from [_]absence "
+        . " where c_attendee = $this->c_uid");
+        while ($row =& $result->fetchRow()) {
+            $this->absences[$row['c_question']] =& new Absence();
+            $this->absences[$row['c_question']]->initFromRow($row);
+        }
+
+    } //}}}
+
+    /* {{{initAnswers
+     * You don't need to call this explicitly.  Instead, just use
+     * getAnswers().  NOTE that this function doesn't return the answers keyed
+     * on their c_uid, like most similar functions do!  Instead, it returns them
+     * keyed on the question's uid, so you can easily look up the answer to a
+     * question given the question's uid.
+     */
+    function initAnswers() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->answers = array();
+        $result =& $obj['conn']->query("select an.* from [_]answer as an"
+                . " inner join [_]question as qu on an.c_question = qu.c_uid"
+                . " where an.c_member = $this->c_member "
+                . " and qu.c_adventure = $this->c_adventure "
+                . " order by qu.c_uid");
+        while ($row = $result->fetchRow()) {
+            $answer =& new Answer();
+            $answer->initFromRow($row);
+            $this->answers[$row['c_question']] = $answer;
+        }
+
+    } //}}}
+
+    /* {{{getAnswers
+     * This function automatically calls initAnswers() as needed.  If you know
+     * the answers have changed and you want to refresh them, call this
+     * function with a TRUE parameter.
+     */
+    function getAnswers($refresh = FALSE) {
+        if (is_null($this->answers) or $refresh) {
+            $this->initAnswers();
+        }
+        return $this->answers;
+    } //}}}
+
+    /* {{{getAbsences
+     * This function automatically calls initAbsences() as needed.  If you know
+     * the absences have changed and you want to refresh them, call this
+     * function with a TRUE parameter.
+     */
+    function getAbsences($refresh = FALSE) {
+        if (!isset($this->absences) or $refresh) {
+            $this->initAbsences();
+        }
+        return $this->absences;
+    } //}}}
+
+}
+?>
+@
+
+
+1.3
+log
+@added joined_date column
+@
+text
+@d20 1
+a20 1
+ * $Id: Attendee.php,v 1.2 2004/07/20 14:11:06 at Exp $
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Attendee.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+d34 1
+d89 12
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Attendee.php,v 1.4 2004/05/30 01:41:52 baron Exp $
+d45 1
+a45 1
+        $this->table = "t_attendee";
+d98 1
+a98 1
+        $result =& $obj['conn']->query("select * from t_absence "
+d118 2
+a119 2
+        $result =& $obj['conn']->query("select an.* from t_answer as an"
+                . " inner join t_question as qu on an.c_question = qu.c_uid"
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

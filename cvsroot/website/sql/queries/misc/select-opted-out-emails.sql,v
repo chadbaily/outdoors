@@ -1,0 +1,53 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select distinct me.c_email
+from [_]member as me
+    inner join [_]membership as ms on ms.c_member = me.c_uid
+    inner join [_]status as st on ms.c_status = st.c_uid
+    left outer join [_]optout as op on op.c_member = me.c_uid
+        and op.c_category = {category,int}
+        and op.c_deleted <> 1
+where st.c_title = 'active'
+    and ms.c_begin_date <= current_date
+    and ms.c_expiration_date >= current_date
+    and ms.c_deleted <> 1
+    and me.c_deleted <> 1
+    and op.c_uid is null
+    and ({member,int} is null or me.c_uid <> {member,int})
+@
+
+
+1.1
+log
+@release email system
+@
+text
+@d7 1
+d11 2
+@
+

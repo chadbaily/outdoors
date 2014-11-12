@@ -1,0 +1,116 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.47.48;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.10.03.36.08;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.02.20.05.26;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<form name="theform" id="theform" method="GET" >
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="category"
+        element-id="category" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+    <element
+        name="reimbursable"
+        element-id="reimbursable" />
+    <element
+        name="status"
+        element-id="status" />
+</config>
+
+<table class="collapsed verticalHeaders">
+  <tr>
+    <td>Filter by</td>
+    <td>
+        <select name="category" id="category" onChange="this.form.submit()">
+          <option value="">[Summary]</option>{cat:}
+          <option value="{c_uid}">{c_title}</option>{:cat}
+        </select>
+        <select name="reimbursable" id="reimbursable" onChange="this.form.submit()">
+          <option value="">Both</option>
+          <option value="128">Reimbursable</option>
+          <option value="0">Non-Reimbursable</option>
+        </select>
+        <select name="status" id="status" onChange="this.form.submit()">
+          <option value="">Both</option>
+          <!-- HARDCODED status -->
+          <option value="12">Submitted to StudCo</option>
+          <option value="1">Not Submitted to StudCo</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Date range</td>
+    <td>
+        <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+        To
+        <input type="text" id="end" name="end" maxlength="10" size="10" />
+        <input type="submit" value="Go" />
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.2
+log
+@upgrade to the expense system
+@
+text
+@d1 1
+a1 1
+<form name="theform" id="theform" method="GET" action="members.php">
+a2 2
+    <input type="hidden" name="page" value="expense" />
+    <input type="hidden" name="action" value="4" />
+@
+
+
+1.1
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@d23 3
+d40 6
+@
+

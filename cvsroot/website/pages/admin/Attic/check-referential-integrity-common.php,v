@@ -1,0 +1,264 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.23.12.47.35;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.20.21.25.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@moved to check-foreign-keys.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: check-referential-integrity-common.php,v 1.5 2004/09/20 20:38:39 at Exp $
+ *
+ * This page checks referential integrity for the common attributes of all
+ * database objects, such as owner and creator.
+ */
+
+# Check permissions.  Only members of the "root" groups are allowed to access
+# this page.
+if (!$obj['user']->isRootUser()) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$wrapper = file_get_contents("templates/admin/check-integrity.php");
+$contents = "";
+
+# Query the database for a list of all tables to check.
+$tables = array();
+$result =& $obj['conn']->query("select * from [_]table");
+while ($row =& $result->fetchRow(DB_FETCHMODE_ORDERED)) {
+    $tables[$row[0]] =& $row[0];
+}
+
+# A model query, which we will use to build actual queries later.
+$modelQuery =
+    "select child.c_uid, child.{FOREIGN}
+    from {CHILD} as child
+    left outer join {PARENT} as parent on child.{FOREIGN} = parent.c_uid
+    where parent.c_uid is null";
+
+# Build an array of all the different ways we want to query the database.  Each
+# element of the array is an array with three values: CHILD, which is the table
+# we want to check, FOREIGN, which is the column that points to a c_uid in the
+# parent table, and PARENT, which is the name of the parent table.
+#
+# Basically, what we are doing here is defining all the foreign key relations
+# in the database.
+$queryParams = array();
+
+# Queries to check the owner, group, creator, and status
+$things = array(
+    "c_owner" => "[_]member",
+    "c_group" => "[_]group",
+    "c_creator" => "[_]member",
+    "c_status" => "[_]status");
+foreach ($tables as $t => $table) {
+    foreach ($things as $foreign => $parent) {
+        $queryParams[] = array($table, $foreign, $parent);
+    }
+}
+
+# Query the database and format each result as a list
+$numBadTables = 0;
+$numBadRows = 0;
+foreach ($queryParams as $key => $query) {
+    $result = $obj['conn']->query(Template::replace($modelQuery, array(
+        "CHILD" => $query[0],
+        "FOREIGN" => $query[1],
+        "PARENT" => $query[2])));
+
+    if ($result->numRows() > 0) {
+        $numBadTables++;
+        $contents .= "<p>The following rows in <tt>$query[0]</tt> are orphaned:</p>";
+        while ($row = $result->fetchRow()) {
+            $numBadRows++;
+            $keys = array_keys($row);
+            $contents .= "\n<div style='padding-left:20px'>"
+                . "<input type='checkbox' name='$query[0][]'"
+                . " value='$row[c_uid]' id='$query[0]$row[c_uid]'>"
+                . "\n<label for='$query[0]$row[c_uid]'>Row $row[c_uid]:"
+                . " <tt>$query[1]</tt> = {$row[$query[1]]}</label></div>";
+        }
+    }
+}
+
+if ($numBadTables > 0) {
+    $wrapper = Template::replace($wrapper, array(
+        "NUMROWS" => $numBadRows,
+        "RESULTS" => $contents,
+        "NUMTABLES" => $numBadTables));
+    $wrapper = Template::unhide($wrapper, "SOME");
+}
+else {
+    $wrapper = Template::unhide($wrapper, "NONE");
+}
+
+$res['content'] = $wrapper;
+$res['title'] = "Check Common Properties";
+
+?>
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-common.php,v 1.4 2004/08/25 11:43:32 at Exp $
+@
+
+
+1.4
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-common.php,v 1.3 2004/08/20 21:25:24 at Exp $
+d76 1
+a76 1
+    $result = $obj['conn']->query(Template::replaceValues($modelQuery, array(
+d97 1
+a97 1
+    $wrapper = Template::replaceValues($wrapper, array(
+d101 1
+a101 1
+    $wrapper = Template::unhideBlock($wrapper, "SOME");
+d104 1
+a104 1
+    $wrapper = Template::unhideBlock($wrapper, "NONE");
+@
+
+
+1.3
+log
+@fixed code still assuming t_ table prefixes
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-common.php,v 1.2 2004/07/26 02:12:31 at Exp $
+d30 2
+a31 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.2
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-common.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d36 1
+a36 2
+# Query the database for a list of all tables to check.  Tables that should not
+# get checked are in an array in the 'if' clause...
+d38 1
+a38 1
+$result =& $obj['conn']->query("show tables like 't\_%'");
+d40 1
+a40 3
+    if (!in_array($row[0], array('[_]table', '[_]implemented_action', '[_]flag', '[_]unixperm'))) {
+        $tables[$row[0]] =& $row[0];
+    }
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-common.php,v 1.5 2004/05/30 01:42:05 baron Exp $
+d41 1
+a41 1
+    if (!in_array($row[0], array('t_table', 't_implemented_action', 't_flag', 't_unixperm'))) {
+d64 4
+a67 4
+    "c_owner" => "t_member",
+    "c_group" => "t_group",
+    "c_creator" => "t_member",
+    "c_status" => "t_status");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

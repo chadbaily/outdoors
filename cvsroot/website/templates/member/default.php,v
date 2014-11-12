@@ -1,0 +1,79 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.11.09.17.53.44;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1><img src="images/walnut-creek-1.jpg" class="thumbnail-right" width="300" height="225" alt="Biking at Walnut Creek">Members</h1>
+
+<p>Choose an action:</p>
+
+<ol>
+  <li><a href="members/member/list_all">View Member Directory</a></li>
+  <li><a href="members/member/search">Search Member Directory</a></li>
+</ol>
+@
+
+
+1.2
+log
+@more images on default pages
+@
+text
+@d6 2
+a7 2
+  <li><a href="members.php?page=member&action={ACTION_LIST_ALL}">View Member Directory</a></li>
+  <li><a href="members.php?page=member&action={ACTION_SEARCH}">Search Member Directory</a></li>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+<h1>Members</h1>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

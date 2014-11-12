@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.22.16.27.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@<h1>Create a Classified Ad</h1>
+
+<p>Use this form to create a new classfied ad.  Try to keep it to the point, and
+use key phrases like "WTB" or "For Sale" in the title.</p>
+
+<p class="notice">Notice: these classified ads are for outdoorsy things only,
+    such as buying and selling gear.  This is not a dating service or a place to
+    find rides home for break.  If your ad doesn't fit into the strictly
+    outdoorsy category, please either ask the officers for guidance or check out
+    the UVA newsgroups (uva-want-ads is a great one).</p>
+
+{FORM}
+@

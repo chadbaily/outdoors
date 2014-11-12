@@ -1,0 +1,135 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.01.31.00.16.54;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.09.03.06.09;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.03.13.49.29;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@fix table alias
+@
+text
+@select
+    ch.c_uid as T_CHAT,
+    ch.c_screenname as C_SCREENNAME,
+    ty.c_title as C_TYPE,
+    ty.c_abbreviation as C_ABBREVIATION,
+    case when (ch.c_flags & fl.c_bitmask) <> 0 then 1 else 0 end as private
+from [_]chat as ch
+    inner join [_]chat_type as ty on ch.c_type = ty.c_uid
+    inner join [_]flag as fl on fl.c_title = "private"
+where ch.c_owner = {member,int}
+    and ch.c_deleted <> 1
+    and ty.c_deleted <> 1
+@
+
+
+1.5
+log
+@add c_deleted column to database tables
+@
+text
+@d12 1
+a12 1
+    and ct.c_deleted <> 1
+@
+
+
+1.4
+log
+@added chat icons
+@
+text
+@d7 1
+a7 2
+from
+    [_]chat as ch
+d10 3
+a12 2
+where
+    ch.c_owner = {member,int}
+@
+
+
+1.3
+log
+@select privacy prefs
+@
+text
+@d5 1
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d4 2
+a5 1
+    ty.c_title as C_TYPE
+d9 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d6 2
+a7 2
+    t_chat as ch
+    inner join t_chat_type as ty on ch.c_type = ty.c_uid
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

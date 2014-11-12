@@ -1,0 +1,49 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@insert into [_]item_feature (c_owner, c_creator, c_created_date, c_item, c_name, c_value)
+    select {owner,int}, {owner,int}, now(), {to,int}, c_name, c_value
+    from [_]item_feature
+    where c_item = {from,int}
+        and c_deleted <> 1
+@
+
+
+1.1
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d1 1
+a1 2
+insert into [_]item_feature
+    (c_owner, c_creator, c_created_date, c_item, c_name, c_value)
+d3 3
+a5 1
+    from [_]item_feature where c_item = {from,int}
+@
+

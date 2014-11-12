@@ -1,0 +1,118 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.10.03.36.08;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: list_all.php,v 1.1 2004/11/02 20:05:27 at Exp $
+ */
+
+$res['title'] = "List All Transactions";
+$template = file_get_contents("templates/transaction/list_all.php");
+
+# Create the filter for category and type
+
+$formTemplate = file_get_contents("forms/transaction/list_all.xml");
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]expense_category");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "cat", $row);
+}
+
+# Create the form
+$form =& new XmlForm(Template::finalize($formTemplate), true);
+$form->snatch();
+$template = Template::replace($template, array("FORM" => $form->toString()));
+
+if (!$form->getValue("category")) {
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/transaction/summarize.sql");
+    $cmd->addParameter("us", $cfg['root_uid']);
+    if ($form->getValue("begin")) {
+        $cmd->addParameter("begin", date("Y-m-d", strtotime($form->getValue("begin"))));
+    }
+    if ($form->getValue("end")) {
+        $cmd->addParameter("end", date("Y-m-d", strtotime($form->getValue("end"))));
+    }
+    if ($form->getValue("name")) {
+        $cmd->addParameter("name", $form->getValue("name"));
+    }
+    $result =& $cmd->executeReader();
+    if ($result->numRows()) {
+        $template = Template::unhide($template, "GENERIC");
+        $template = Template::delete($template, "BY_TYPE");
+    }
+}
+else {
+    # Exec the query.
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/transaction/select-by-category.sql");
+    $cmd->addParameter("category", $form->getValue('category'));
+    if ($form->getValue("begin")) {
+        $cmd->addParameter("begin", date("Y-m-d", strtotime($form->getValue("begin"))));
+    }
+    if ($form->getValue("end")) {
+        $cmd->addParameter("end", date("Y-m-d", strtotime($form->getValue("end"))));
+    }
+    if ($form->getValue("name")) {
+        $cmd->addParameter("name", $form->getValue("name"));
+    }
+    $result =& $cmd->executeReader();
+    if ($result->numRows()) {
+        $template = Template::unhide($template, "BY_TYPE");
+        $template = Template::delete($template, "GENERIC");
+    }
+}
+
+
+if ($result->numRows()) {
+    while ($row =& $result->fetchRow()) {
+        $template = Template::block($template, "row", $row);
+    }
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+
+?>
+@

@@ -1,0 +1,71 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.19.35.04;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@not needed
+@
+text
+@<h1>Success</h1>
+
+<p>You have successfully renewed your membership.</p>
+
+<p>What now?  Well, here's the procedure.
+<ol>
+  <li>Print out your <a href="members.php?page=join&action=print-waiver">
+  liability waiver</a>. If this doesn't work, installing  
+  <a href="http://www.adobe.com/products/acrobat/readstep2.html"> Adobe Acrobat</a>, 
+  or using  a school computer should fix the problem.</li>
+  <li>Send it in, with your dues (see the waiver for how much you owe and where
+  to send it)</li>
+  <li>When we receive all the paperwork and your dues, we will activate your
+  new membership and you will get an email message.</li>
+</ol>
+
+<p>Remember, you <b>must</b> print, sign, and send us your liability waiver with
+your dues.  Follow the instructions on the waiver itself.  <a
+href="members.php?page=join&action=print-waiver">Click here</a> to print
+your waiver and instructions.</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

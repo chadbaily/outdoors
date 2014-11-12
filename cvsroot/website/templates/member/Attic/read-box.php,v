@@ -1,0 +1,196 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.09.08.23.21.11;	author at;	state dead;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.24.03.24.31;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.06.17.00.00;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.19.22.12.31;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@{ALL:}
+{MEMBER:}
+<table class="top">
+  <tr>
+    <td>Name:</td>
+    <td>{C_FULL_NAME}</td>
+  </tr>{EMAIL:}
+  <tr>
+    <td>Email:</td>
+    <td><a href="mailto:{C_EMAIL}">{C_EMAIL}</a></td>
+  </tr>{:EMAIL}{BIRTHDATE:}
+  <tr>
+    <td>Birthdate:</td>
+    <td>{C_BIRTH_DATE|_date_format,'M j, Y'}</td>
+  </tr>{:BIRTHDATE}{GENDER:}
+  <tr>
+    <td>Gender:</td>
+    <td>{C_GENDER}</td>
+  </tr>{:GENDER}{PASSWORD:}
+  <tr>
+    <td>Password:</td>
+    <td>{C_PASSWORD}</td>
+  </tr>{:PASSWORD}{:MEMBER}{ADDRESS:}
+  <tr>
+    <td><hr size="1" noshade></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Address
+      {ADDR_ALL:}
+        <br><a href="members.php?page=address&action={ACTION_LIST_OWNED_BY}">&raquo; all addresses</a>
+      {:ADDR_ALL}
+    </td>
+    <td>
+      <a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a>
+      <br>{C_STREET}
+      <br>{C_CITY}, {C_STATE} {C_ZIP}
+    </td>
+  </tr>{:ADDRESS}{PHONES:}
+  <tr>
+    <td><hr size="1" noshade></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      Phone Numbers
+      {PHONE_ALL:}
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+      {:PHONE_ALL}
+    </td>
+    <td>{PHONE:}
+      <div><a href="members.php?page=phone_number&object={T_PHONE_NUMBER}&action={ACTION_READ}">&raquo;</a> {C_PHONE_NUMBER}</div>{:PHONE}
+    </td>
+  </tr>{:PHONES}{CHATS:}
+  <tr>
+    <td><hr size="1" noshade></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      Chat Identities
+      {CHAT_ALL:}
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+      {:CHAT_ALL}
+    </td>
+    <td>{CHAT:}
+      <div><a href="members.php?page=chat&object={T_CHAT}&action={ACTION_READ}">&raquo;</a> {C_SCREENNAME} ({C_TYPE})</div>{:CHAT}
+    </td>
+  {:CHATS}
+</table>
+
+<form action="members.php" method="GET">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <input type="hidden" name="page" value="{PAGE}">
+  <select name="action">
+  <option value="">Choose an Action</option>
+  {OPTION:}
+  <option value="{C_UID}">{C_SUMMARY}</option>{:OPTION}
+  </select>
+  <input type="submit" value="Go">
+</form>
+{:ALL}
+{NONE:}
+<p class="notice">Sorry, but this member has chosen to remain entirely
+private.</p>
+{:NONE}
+@
+
+
+1.4
+log
+@updated to match the new privilege scheme: privileges moved out of SecurityManager and into SQL query
+@
+text
+@@
+
+
+1.3
+log
+@fixed problems with privacy logic by removing the 'hidden' flag from existence
+@
+text
+@d78 1
+a78 1
+  <option value="{C_UID}">{C_TITLE}</option>{:OPTION}
+@
+
+
+1.2
+log
+@un-colspanned <hr>
+@
+text
+@d1 1
+d54 1
+a54 1
+  </tr>{:PHONES}{CHAT_ALL:}
+d60 6
+a65 1
+    <td>Chat Identities</td>
+d69 1
+a69 1
+  {:CHAT_ALL}
+d82 5
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d24 2
+a25 1
+    <td colspan="2"><hr size="1" noshade></td>
+d40 2
+a41 1
+    <td colspan="2"><hr size="1" noshade></td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,137 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.20.04.53;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@limit input to what the database can accept
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="ucwords"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        pre-processing="ucfirst"
+        element-id="description" />
+    <element
+        required="1"
+        name="query"
+        element-id="query" />
+    <element
+        name="instructions"
+        element-id="instructions" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><input maxlength="100" type="text" style="width:100%" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input maxlength="255" type="text" style="width:100%" name="description" id="description" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="query-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Query text</td>
+    <td>
+      <textarea name="query" id="query" rows="5" cols="60"> </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Instructions.  This field is optional; use it to describe to users how
+    they should fill in any parameters when running the report.</td>
+    <td>
+      <textarea name="instructions" id="instructions" rows="5" cols="60"> </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 1
+d17 1
+d37 1
+a37 1
+    <td><input type="text" name="title" id="title" /></td>
+d48 1
+a48 1
+      <input type="text" name="description" id="description" />
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

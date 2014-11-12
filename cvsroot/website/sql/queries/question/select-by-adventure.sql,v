@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.18.02.37.46;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@-- Select all questions for a given adventure
+select
+    c_text,
+    c_uid,
+    c_type
+from [_]question
+where c_adventure = {adventure,int}
+    and c_deleted <> 1
+order by [_]question.c_created_date
+@
+
+
+1.1
+log
+@init
+@
+text
+@d8 1
+@
+

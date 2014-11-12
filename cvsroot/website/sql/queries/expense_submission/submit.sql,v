@@ -1,0 +1,29 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@update [_]expense as ex
+    inner join [_]expense_submission_expense as ese on ex.c_uid = ese.c_expense
+    inner join [_]expense_submission as es on es.c_uid = ese.c_submission
+set ex.c_status = {submitted,int},
+    es.c_status = {submitted,int}
+where es.c_uid = {submission,int}
+@

@@ -1,0 +1,398 @@
+head	1.11;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.11
+date	2005.02.07.18.45.27;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.11.10.21.20.10;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.15.11.53.16;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.03.21.35.46;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.24.18.36.32;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.19.13.17.43;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.19.11.37.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.08.05.51.41;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.08.04.43.28;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.11
+log
+@friendlyurls
+@
+text
+@<!-- title=Outdoors at UVa Activities -->
+<!-- navbar=Activities -->
+
+<h1>Outdoors at UVa Activities</h1>
+
+<p>Outdoors at UVa regularly plans adventures for many different types of
+activities.  Below are descriptions of some of our more popular activities.  If
+you would like to see more photos of past trips we've led, please visit our <a
+target="_blank" href="/gallery/">photo
+gallery of past adventures</a>.  You can also see a year's worth of <a
+href="members/main/past-adventures">past adventures</a> to get a
+feeling for what we do and how often.  We will also have several <a
+href="index.php?page=schedule">informational meetings</a> so you can learn about
+who we are and what we do.</p>
+
+<h2>Climbing</h2>
+
+<p><a href="javascript:imageWindow('redrock.jpg');"><img
+src="images/redrock-thumb.jpg" class="thumbnail-right" height="150"
+width="100"></a>We have an extremely active group of climbers who lead trips regularly.  We
+lead trips for beginning, intermediate, and advanced climbers.  Charlottesville
+is within easy driving distance of great climbing; we frequently drive to Little
+Stony Man Cliffs on the Blue Ridge Parkway, Seneca Rocks in West Virginia, and the New River Gorge.  
+
+<a href="javascript:imageWindow('new-river-gorge.jpg')"><img
+src="images/new-river-gorge-thumb.jpg" class="thumbnail-left"></a>We 
+also lead lots of bouldering trips, and we're near the best
+indoor climbing gym on the East Coast, so we go there frequently too.  We've
+even led trips out West.  Our climbers have been all over the world, including
+the Italian Alps and Denali, and one of our leaders plans to summit Mount
+Everest soon.</p>
+
+<p>Why is climbing so popular?  If you haven't been climbing, you haven't
+experienced the adrenaline thrill, the amazing sense of accomplishment, and the
+glorious tired-but-happy feeling at the end of the day.  If you have, you need
+no explanation.</p>
+
+<h2 style="clear:both">Watersports</h2>
+
+<p><a href="javascript:imageWindow2('rafting.jpg');"><img
+src="images/rafting-thumb.jpg" class="thumbnail-left" height="100"
+width="150"></a>Charlottesville is next door to whitewater heaven.  The Gauley
+River is world-famous for its intense whitewater rafting (the world
+championships were held there recently).  We've also got the New River, the
+James, and the Rivanna for excellent tubing, whitewater and ocean kayaking, and
+canoeing, and we're close to the Great Dismal Swamp and Virginia Beach.  Walnut
+Creek Park is just outside of town, and we have held many beginner kayaking
+classes there.</p>
+
+<p><a href="javascript:imageWindow2('sea-kayaking.jpg');"><img
+src="images/sea-kayaking-thumb.jpg" class="thumbnail-right" height="100"
+width="150"></a>We have a very experienced whitewater kayak instructor who leads
+more trips than anyone else in the club, so if you want to get wet, you will
+have the chance!  If you're not that intense about watersports, perhaps you'd
+like to take an afternoon hike and swim in a pool at the base of a waterfall.
+The Shenandoah National Park is loaded with waterfalls and swimming holes, and
+we lead hikes there often.</p>
+
+<h2 style="clear:both">Hiking, Trail Running, and Backpacking</h2>
+
+<p><a href="javascript:imageWindow2('hiking.jpg');"><img
+src="images/hiking-thumb.jpg" class="thumbnail-left" height="100"
+width="150"></a>Hiking is one of our most popular activities.  Charlottesville
+is right next to the Shenandoah National Park, which has hundreds of miles of <a
+href="javascript:imageWindow2('hiking-2.jpg');"><img
+src="images/hiking-2-thumb.jpg" class="thumbnail-right" height="100"
+width="150"></a> loop trails, making it great for anything from afternoon or day
+hikes to weekend backpacking trips.  The Appalachian Trail also runs through the
+park.  Charlottesville itself is circled by the Rivanna Trail, which is popular
+for running and biking, and UVa's Observatory Mountain is crisscrossed with
+running and cycling trails as well.  We're also very close to the Dolly Sods
+Wilderness Area, which is amazingly beautiful and makes an awesome weekend
+backpacking trip; or Old Rag, which is well known for its beauty.</p>
+
+<h2 style="clear:both">Caving</h2>
+
+<p> <a href="javascript:imageWindow2('caving-2.jpg');"><img
+src="images/caving-2-thumb.jpg" class="thumbnail-right" height="100"
+width="150"></a> The Appalachian Mountains are full of caves.  In fact, Western
+<a href="javascript:imageWindow2('caving.jpg');"><img
+src="images/caving-thumb.jpg" class="thumbnail-left" height="100"
+width="150"></a> Virginia and West Virginia are known world-wide for the sheer
+number of caves.  Popular caves include Breathing Cave, Marshall's Cave, Trout
+and New Trout, and Aqua.  Caving is completely different from any other sport
+because of the environment.  Caves stay the same temperature year-round, which
+makes them feel warm in the winter and cool in the summer.  Appalachian caves
+vary from wet to dry, and there is a wide range of difficulty levels.</p>
+
+<h2 style="clear:both">Volunteering</h2>
+
+<p><a href="javascript:imageWindow2('volunteering.jpg');"><img
+src="images/volunteering-thumb.jpg" class="thumbnail-right" height="100"
+width="150"></a>Club members are very involved in maintaining and giving back to
+the outdoors they appreciate so much.  We currently maintain a section of a
+highway through the Adopt-A-Highway program, and regularly participate in river
+cleanups and trail maintenance.  Members also participate in charity events such
+as 5k runs for various causes and working with underprivileged children in
+challenging activities such as high ropes courses.</p>
+
+<h2 style="clear:both">Horseback Riding</h2>
+
+<p><a href="javascript:imageWindow2('horseback.jpg');"> <img
+src="images/horseback-thumb.jpg" class="thumbnail-left" height="100"
+width="150"></a> There are lots of places around to go horseback riding, and
+it's a very popular activity with our members.  Our horseback riding trips fill
+up faster than any other trips we organize!</p>
+
+<p>We often drive to Master's Inn near Lynchburg.  Master's Inn has proven to be
+our most popular destination for horseback riding; members love it.  If you want
+to go horseback riding, keep your eyes on the email list and reserve a spot
+before the trip fills up!</p>
+
+<h2 style="clear:both">Skiing, Snowboarding, and Snow Tubing</h2>
+
+<p>
+<a href="javascript:imageWindow('skiing-2.jpg');"><img
+src="images/skiing-2-thumb.jpg" class="thumbnail-left" height="150"
+width="100"></a>
+Charlottesville is near two popular ski resorts, Wintergreen and Massanutten,
+<a href="javascript:imageWindow('skiing.jpg');"><img
+src="images/skiing-thumb.jpg" class="thumbnail-right" height="150"
+width="100"></a>
+and many members go skiing on a weekly basis during snow season.  We're also a
+couple of hours from Snowshoe in West Virginia, which is known as the best
+skiing on the East Coast, and we typically organize several large trips there
+every winter.  Since the club pays for most of the lodging and food, these trips
+end up being very inexpensive and lots of fun.  We usually go on Friday night,
+head out to the slopes Saturday, then come back to a big house (or two) and cook
+a fantastic dinner, then play cards and talk till late and go skiing again on
+Sunday.  We've also organized trips to Vermont, and members have skied all over
+the United States and world.</p>
+
+<h2 style="clear:both">Biking</h2>
+
+<p><a href="javascript:imageWindow('biking.jpg');"><img
+src="images/biking-thumb.jpg" class="thumbnail-left" height="150"
+width="100"></a> Charlottesville itself is a popular biking destination for both
+mountain and road biking.  Observatory Mountain, which is next to UVa, has miles
+<a href="javascript:imageWindow2('biking-2.jpg');"><img
+src="images/biking-2-thumb.jpg" class="thumbnail-right" height="100"
+width="150"></a>
+of trails for biking, and Charlottesville boasts the Rivanna Trail too, which is
+close to you no matter where you are.  There are also lots of parks, such as
+Walnut Creek, which has miles and miles of bike trails ranging from easy fun to
+very challenging.  The club owns extremely nice bikes, and they're free for
+members to borrow.  We lead biking trips very frequently; most are afternoon
+rides just to get out on the trail, but occasionally we organize something
+longer, and we do road trips as well.  Some members also compete in races, such
+as 150-mile races; if you are a biker, there is a lot to do around
+Charlottesville.</p>
+
+<h2 style="clear:both">Other</h2>
+
+<p>The club leads many other adventures not listed above.  In the past several
+years, we've led skydiving and hang-gliding adventures, had lots of potlucks, <a
+href="javascript:imageWindow2('snake.jpg');"><img src="images/snake.jpg"
+class="thumbnail-right" height="100" width="150"></a> chili cookouts, high-ropes
+courses, movie nights, snow football games, ice cream socials, and more.  The
+members-only mailing list is your resource for inviting others to take part in
+outdoorsy activities, so if you feel moved to go trail running or take an
+afternoon bike ride and want someone to do it with, there's almost always
+someone eager to do it with you (with over 300 members, it's a good bet that
+someone will respond).  You never know what you'll find &mdash; such as this
+beautiful snake resting in a waist-high tree at Dolly Sods.  In general, if you
+love nature and the outdoors, you are liable to find someone who's got similar
+interests!</p>
+@
+
+
+1.10
+log
+@IE fixes
+@
+text
+@d11 1
+a11 1
+href="members.php?page=main&action=past-adventures">past adventures</a> to get a
+@
+
+
+1.9
+log
+@new gallery location
+@
+text
+@d16 1
+a16 1
+<h2 style="clear:both">Climbing</h2>
+@
+
+
+1.8
+log
+@added a note about joining
+@
+text
+@d9 1
+a9 1
+target="_blank" href="http://outdoors.student.virginia.edu/gallery/">photo
+@
+
+
+1.7
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d16 1
+a16 1
+<h2>Climbing</h2>
+d38 1
+a38 1
+<h2>Watersports</h2>
+d59 1
+a59 1
+<h2>Hiking, Trail Running, and Backpacking</h2>
+d75 1
+a75 1
+<h2>Caving</h2>
+d89 1
+a89 1
+<h2>Volunteering</h2>
+d100 1
+a100 1
+<h2>Horseback Riding</h2>
+d113 1
+a113 1
+<h2>Skiing, Snowboarding, and Snow Tubing</h2>
+d133 1
+a133 1
+<h2>Biking</h2>
+d152 1
+a152 1
+<h2>Other</h2>
+@
+
+
+1.6
+log
+@added tabs and links and the public schedule page
+@
+text
+@d2 1
+a2 1
+<!-- tab=Activities -->
+@
+
+
+1.5
+log
+@added link to past adventures
+@
+text
+@d12 3
+a14 1
+feeling for what we do and how often.</p>
+@
+
+
+1.4
+log
+@added Outdoors at UVa
+@
+text
+@d10 3
+a12 1
+gallery of past adventures</a>.</p>
+@
+
+
+1.3
+log
+@spelling changes
+@
+text
+@d1 1
+a1 1
+<!-- title=Activities -->
+d8 3
+a10 2
+you would like to see more photos of past trips we've led, please visit our
+photo galleries.</p>
+@
+
+
+1.2
+log
+@updated spelling
+@
+text
+@d7 1
+a7 1
+activites.  Below are descriptions of some of our more popular activites.  If
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d125 1
+a125 1
+Sunday.  We've also organized trips to Vermont, and members have skiied all over
+d155 1
+a155 1
+outdoorsy activites, so if you feel moved to go trail running or take an
+d159 1
+a159 1
+beatiful snake resting in a waist-high tree at Dolly Sods.  In general, if you
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

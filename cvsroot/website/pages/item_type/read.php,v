@@ -1,0 +1,168 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.23.12.56.31;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.04.13.43.20;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@shrink-wrapped the actions form
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.5 2004/10/23 12:56:31 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/item_type/read.php");
+
+# Get info on the category
+$cat =& new item_category();
+$cat->select($object->getCategory());
+$template = Template::replace($template, array(
+    "CAT_TITLE" => $cat->getTitle()));
+
+# Add all the attributes to the template
+foreach ($object->getChildren("item_type_feature") as $attr) {
+    $template = Template::block($template, "ATTR",
+        array("C_NAME" => $attr->getName()));
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Item Type: " . $object->getTitle();
+
+?>
+@
+
+
+1.5
+log
+@edit_attributes -> edit_features, change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.4 2004/10/04 13:43:20 at Exp $
+a35 6
+}
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "ACTIONS",
+        array_change_key_case($action, 1));
+@
+
+
+1.4
+log
+@change title
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/10/03 22:49:56 at Exp $
+d27 1
+a27 1
+$cat =& new ItemCategory();
+d33 1
+a33 1
+foreach ($object->getAttributes() as $attr) {
+@
+
+
+1.3
+log
+@organize item types by category
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.2 2004/09/20 20:38:40 at Exp $
+d45 1
+a45 1
+$res['title'] = "ItemType: " . $object->getTitle();
+@
+
+
+1.2
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1 2004/09/19 02:48:34 at Exp $
+d25 6
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d28 1
+a28 1
+    $template = Template::replaceWithinBlock($template, "ATTR",
+d34 1
+a34 1
+    $template = Template::replaceWithinBlock($template, "ACTIONS",
+@
+

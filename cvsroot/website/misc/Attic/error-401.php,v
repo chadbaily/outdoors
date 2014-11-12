@@ -1,0 +1,221 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.07.25.20.47.26;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.05.30.03.31.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@moved to authorize/
+@
+text
+@<?
+/* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker foldcolumn=2 tw=80 wrap:
+ * +----------------------------------------------------------------------+
+ * | Copyright (c) 2003 Baron Schwartz.  This software is licensed under  |
+ * | the terms of the GNU GPL.  See http://www.gnu.org for details.       |
+ * +----------------------------------------------------------------------+
+ * | Authors: Baron Schwartz <baron at sequent dot org>                   |
+ * +----------------------------------------------------------------------+
+ *
+ * $Id: error-401.php,v 1.2 2004/05/30 03:31:22 at Exp $
+ */
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+  <title>Not Authorized</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link rel="stylesheet" href="assets/stylesheet.css" type="text/css">
+  <script type="text/javascript" src="assets/script.js" language="javascript"></script>
+  <script type="text/javascript" src="assets/date-chooser.js" language="javascript"></script>
+</head>
+
+<body>
+
+<table width="800" style="border:1px solid #252" cellspacing="0" cellpadding="0">
+  <tbody>
+    <!-- Header -->
+    <tr>
+      <td colspan="2" height="100"><img src="images/header.jpg"></td>
+    </tr>
+    <!-- End Header -->
+
+    <!-- Body -->
+    <tr>
+<td valign="top" style="padding-top:25px">
+<!-- Begin Vertical Tabbed Box -->
+<table class="tabVertical" cellspacing="0" cellpadding="0" width="150">
+  <tbody>
+      <!-- Begin Vertical Tabs -->
+     
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="/">Home</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="index.php?page=activities">Activities</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="index.php?page=how-it-works">How&nbsp;the&nbsp;Club&nbsp;Works</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="members.php?page=join">Join&nbsp;Outdoors&nbsp;at&nbsp;UVa</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="index.php?page=officers">Club&nbsp;Officers</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="index.php?page=policies">Club&nbsp;Policies</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr>
+        <tr>
+          <td class="Vinactive" width="100%">
+            <a title="" accesskey="" href="members.php?page=main&action=member-home">Member's&nbsp;Area</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="spacer"><img src="/assets/spacer.gif" height="6"></td>
+        </tr> 
+      <!-- End Vertical Tabs -->
+  </tbody>
+</table>
+</td>
+<td style="padding:5px" width="650" valign="top">
+  <!-- Begin Vertical Tabbed Box Contents -->
+  <h1>Not Authorized</h1>
+
+<p>You must log in to view this page.  If you have lost your password, you may
+<a href='members.php?page=main&action=retrieve-password'>retrieve
+your password</a>.  If you aren't a member, you need to <a
+href='members.php?page=join'>join the club</a>.</p>
+
+
+  <!-- End Vertical Tabbed Box Contents -->
+</td>
+<!-- End Vertical Tabbed Box -->
+
+
+
+
+
+
+    <!-- End Body -->
+
+  </tbody>
+</table>
+
+
+<p class="copyright">
+
+<a href="index.php?page=policies&action=copyright-terms-privacy">Copyright &copy; Outdoors at UVa</a> |
+<a href="index.php?page=policies&action=copyright-terms-privacy">Terms of Use</a> | 
+<a href="index.php?page=policies&action=copyright-terms-privacy">Privacy Policy</a> |
+<a href="index.php?page=contact">Contact Us</a>
+</p>
+
+
+</body>
+</html>
+@
+
+
+1.2
+log
+@fixed some absolute paths in the templates
+@
+text
+@d10 1
+a10 1
+ * $Id: error-401.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d10 1
+a10 1
+ * $Id: error-401.php,v 1.5 2004/05/29 03:56:43 baron Exp $
+d137 4
+a140 4
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Copyright &copy; Outdoors at UVa</a> |
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Terms of Use</a> | 
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Privacy Policy</a> |
+<a href="/index.php?page=contact">Contact Us</a>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

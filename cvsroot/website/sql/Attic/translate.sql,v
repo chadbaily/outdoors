@@ -1,0 +1,397 @@
+head	1.10;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2005.01.30.16.57.37;	author at;	state dead;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.12.14.17.24;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.12.14.14.05;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.05.01.01.57;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.03.13.42.36;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.02.00.16.29;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.01.23.40.55;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.30.02.12.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.30.01.38.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.26.02.13.13;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@not needed anymore
+@
+text
+@delete from [_]absence;
+delete from [_]address;
+delete from [_]adventure;
+delete from [_]answer;
+delete from [_]attendee;
+delete from [_]location;
+delete from [_]phone_number;
+delete from [_]member;
+delete from [_]membership;
+delete from [_]membership_type;
+delete from [_]email_list;
+delete from [_]subscription;
+
+insert into [_]absence
+(c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_status, c_attendee, c_comment, c_severity) 
+select 
+c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_status, c_attendee, c_comment, c_severity
+from transfer_absence where c_status = 1;
+
+insert into [_]address
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_street, c_city, c_state, c_zip, c_country, c_flags)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_street, c_city, c_state, c_zip, c_country, 512
+from transfer_address where c_status = 1;
+
+insert into [_]adventure
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_fee,
+    c_max_attendees, c_signup_date, c_title, c_description, c_start_date,
+    c_end_date, c_departure, c_destination, c_status)
+select
+    ta.c_uid, ta.c_owner, ta.c_creator, ta.c_created_date, ta.c_last_modified, c_fee,
+    c_max_attendees, c_signup_deadline, ta.c_title, ta.c_description, ta.c_start,
+    c_end, c_departure, c_destination, st.c_uid
+from transfer_adventure as ta
+    inner join transfer_status as tst on ta.c_status = tst.c_uid
+    inner join [_]status as st on st.c_title = tst.c_title
+    where ta.c_status <> 2;
+
+insert into [_]answer
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_question,
+    c_member, c_answer_text)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_question,
+    c_member, c_answer_text
+from transfer_answer where c_status = 1;
+
+insert into [_]attendee
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_adventure,
+    c_member, c_amount_paid)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_adventure,
+    c_member, c_amount_paid
+from transfer_attendee where c_status <> 2;
+
+insert into [_]email_list
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_description, c_name, c_password, c_owner_address, c_mgmt_address,
+    c_list_address, c_type, c_subject_prefix)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_description, c_list_name, c_password, c_owner_address, 
+    c_management_address, c_list_address, c_list_type, c_subject_prefix
+from transfer_email_list;
+
+insert into [_]location
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_description, c_zip_code)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_title,
+    c_description, case when c_zip_code is not null then c_zip_code else "" end
+from transfer_location where c_status = 1;
+
+insert into [_]member
+    (c_uid, c_created_date, c_last_modified, c_email, c_password, c_first_name,
+    c_last_name, c_full_name, c_birth_date, c_gender)
+select
+    c_uid, c_created_date, c_last_modified, c_email, c_password, c_first_name,
+    c_last_name, concat(c_first_name, ' ', c_last_name), c_birth_date, c_gender
+from transfer_member where c_status <> 2;
+
+update [_]member
+    inner join transfer_member on [_]member.c_uid = transfer_member.c_uid
+    set [_]member.c_flags = [_]member.c_flags ^ 1 where c_stay_private = "1";
+
+update [_]member
+    inner join transfer_member on [_]member.c_uid = transfer_member.c_uid
+    set [_]member.c_flags = [_]member.c_flags ^ 8 where c_is_student = "1";
+
+-- Give members the privilege to choose their interests, change their password
+insert into [_]privilege(c_what_granted_to, c_who_granted_to, c_action,
+        c_what_relates_to, c_related_table, c_related_uid)
+select 'user', me.c_uid, ac.c_uid, 'object', '[_]member', me.c_uid
+from [_]member as me
+inner join [_]action as ac on ac.c_title in ('change_password', 'choose_activities',
+        'view_history');
+
+insert into [_]member_group (c_member, c_related_group)
+select c_member, c_related_group from transfer_member_group;
+
+insert into [_]member_group (c_member, c_related_group)
+select c_uid, c_primary_group from transfer_member;
+
+insert into [_]phone_number (
+    c_owner, c_creator, c_created_date, c_type, c_title,
+    c_country_code, c_area_code, c_exchange, c_number, c_extension,
+    c_phone_number, c_flags)
+select
+    c_owner, c_creator, c_created_date, c_type, c_title,
+    "", c_area_code, c_exchange, c_number, "",
+    concat('(', c_area_code, ') ', c_exchange, '-', c_number), 512
+from transfer_phone_number where c_status <> 2;
+
+insert into [_]question(
+    c_owner, c_creator, c_created_date, c_adventure, c_type, c_text)
+select
+    c_owner, c_creator, c_created_date, c_adventure, c_type, c_text
+from transfer_question where c_status <> 2;
+
+insert into [_]membership_type (
+    c_uid,
+    c_owner,
+    c_creator,
+    c_created_date,
+    c_title,
+    c_description,
+    c_begin_date,
+    c_expiration_date,
+    c_show_date,
+    c_hide_date,
+    c_units_granted,
+    c_unit,
+    c_unit_cost,
+    c_total_cost)
+select
+    c_uid,
+    c_owner,
+    c_creator,
+    c_created_date,
+    c_title,
+    c_description,
+    c_begin_date,
+    c_expiration_date,
+    c_start_signup,
+    c_end_signup,
+    0,
+    "",
+    0,
+    c_fee
+from transfer_membership_type where c_status <> 2;
+
+insert into [_]membership (
+    c_created_date,
+    c_status,
+    c_member,
+    c_type,
+    c_begin_date,
+    c_expiration_date,
+    c_units_granted,
+    c_unit,
+    c_total_cost,
+    c_amount_paid)
+select
+    ms.c_created_date,
+    st.c_uid,
+    c_member,
+    c_membership_type,
+    mt.c_begin_date,
+    mt.c_expiration_date,
+    mt.c_units_granted,
+    mt.c_unit,
+    mt.c_total_cost,
+    mt.c_total_cost
+from
+    transfer_membership as ms
+    inner join transfer_status as tr_status on tr_status.c_uid = ms.c_status
+    inner join [_]status as st on st.c_title = tr_status.c_title
+    inner join [_]membership_type as mt on ms.c_membership_type = mt.c_uid;
+
+insert into [_]subscription(
+    c_owner, c_creator, c_created_date, c_last_modified, c_list, c_email,
+    c_password)
+select
+    c_owner, c_creator, c_created_date, c_last_modified, c_list, c_email,
+    c_password
+from transfer_subscription;
+
+@
+
+
+1.9
+log
+@added view_history permission too
+@
+text
+@@
+
+
+1.8
+log
+@added default permissions for all members to change their passwords and select their interests
+@
+text
+@d96 2
+a97 1
+inner join [_]action as ac on ac.c_title in ('change_password', 'choose_activities');
+@
+
+
+1.7
+log
+@removed interests and activities
+@
+text
+@d91 7
+@
+
+
+1.6
+log
+@import more stuff
+@
+text
+@a0 2
+delete from [_]activity;
+delete from [_]interest;
+a13 8
+insert into [_]activity
+(c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_status, c_title)
+select
+c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_status, 
+case when c_description like "%(%" then concat(c_title, " ", c_description)
+when c_description = "" then c_title
+else concat(c_title, " (", c_description, ")") end from transfer_activity;
+
+a65 7
+
+insert into [_]interest
+    (c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_member,
+    c_activity)
+select
+    c_uid, c_owner, c_creator, c_created_date, c_last_modified, c_member,
+    c_activity from transfer_interest;
+@
+
+
+1.5
+log
+@imported activities and interests
+@
+text
+@d2 2
+d5 4
+d13 2
+d67 10
+d189 9
+@
+
+
+1.4
+log
+@added primary group
+@
+text
+@d1 1
+d8 8
+d58 7
+@
+
+
+1.3
+log
+@removed nulls
+@
+text
+@d77 3
+@
+
+
+1.2
+log
+@don't import deleted items
+@
+text
+@d119 3
+a121 3
+    null,
+    null,
+    null,
+@
+
+
+1.1
+log
+@init
+@
+text
+@d11 1
+a11 1
+from transfer_absence;
+d19 1
+a19 1
+from transfer_address;
+d31 2
+a32 1
+    inner join [_]status as st on st.c_title = tst.c_title;
+d40 1
+a40 1
+from transfer_answer;
+d48 1
+a48 1
+from transfer_attendee;
+d56 1
+a56 1
+from transfer_location;
+d64 1
+a64 1
+from transfer_member;
+d85 1
+a85 1
+from transfer_phone_number;
+d91 1
+a91 1
+from transfer_question;
+d123 1
+a123 1
+from transfer_membership_type;
+@
+

@@ -1,0 +1,77 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.26.13;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Questions</h1>
+
+<p>The following is a list of all questions that you own.</p>
+
+{SOME:}
+<table>
+  <tr>
+    <th>Adventure</th><th>Text</th><th>Type</th>
+  </tr>
+  <tr>{ITEM:}
+    <td>
+      <a href="members.php?page=adventure&action={ACTION_READ}&object={T_ADVENTURE}">{AD_TITLE}</a>
+    </td>
+    <td>
+      <a href="members.php?page=question&action={ACTION_READ}&object={T_QUESTION}">{C_TEXT}</a>
+    </td>
+    <td>{C_TYPE}</td>
+  </tr>{:ITEM}
+</table>
+{:SOME}
+
+{:SOME}
+
+{NONE:}
+<p class="notice">You do not own any questions.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

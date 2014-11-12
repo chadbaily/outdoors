@@ -1,0 +1,72 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.09.20.49.10;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.28.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Subscriptions</h1>
+
+<p>You are subscribed to the following email lists:</p>
+
+{SOME:}
+<ol>{ITEM:}
+  <li><a href="members/subscription/read/{SUB_UID}">{C_TITLE}</a></li>{:ITEM}
+</ol>
+{:SOME}
+
+{NONE:}
+<p class="notice">You are not subscribed to any lists.</p>
+{:NONE}
+@
+
+
+1.2
+log
+@make language more graceful
+@
+text
+@d7 1
+a7 1
+  <li><a href="members.php?page=subscription&object={SUB_UID}&action={ACTION_READ}">{C_TITLE}</a></li>{:ITEM}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d3 1
+a3 1
+<p>The following is a list of all subscriptions that you own.</p>
+d12 1
+a12 1
+<p class="notice">You do not own any subscriptions.</p>
+@
+

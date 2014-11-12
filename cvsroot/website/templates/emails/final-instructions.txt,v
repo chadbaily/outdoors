@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.08.19.18.04.02;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tweaks to text: make it less confusing and more correct
+@
+text
+@Dear {C_FULL_NAME},
+
+Thank you for joining {CLUB_NAME}!  You have chosen the {MEMBERSHIP} membership
+plan.
+
+As soon as we receive and process your payment and signed liability waiver,
+we'll send you an email welcoming you to the club.  If you didn't print your
+liability waiver, you can log back into the website and it will redirect you to
+a page with information about how to do this.
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d3 2
+a4 1
+Thank you for joining {CLUB_NAME}!  You have chosen the {MEMBERSHIP} membership plan.
+d6 4
+a9 1
+As soon as we receive and process your payment and signed liability waiver, we'll send you an email welcoming you to the club.
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

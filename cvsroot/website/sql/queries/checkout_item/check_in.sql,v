@@ -1,0 +1,45 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@remove spurious semicolons
+@
+text
+@update [_]checkout_item as ci
+    inner join [_]item as it on it.c_uid = ci.c_item
+set it.c_status = {status,int},
+    ci.c_status = {status,int}
+where ci.c_uid = {checkout_item,int}
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d5 1
+a5 1
+where ci.c_uid = {checkout_item,int};
+@
+

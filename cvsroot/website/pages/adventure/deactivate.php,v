@@ -1,0 +1,234 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.09.20.50.11;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@allow deactivating at any time
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: deactivate.php,v 1.5 2004/10/07 17:41:47 at Exp $
+ */
+
+$template = file_get_contents("templates/adventure/deactivate.php");
+
+$error = false;
+
+# Make sure the adventure isn't already active
+if ($object->getStatus() != $cfg['status_id']['active']) {
+    $template = Template::unhide($template, "INACTIVE");
+    $error = true;
+}
+
+if (!$error && getval('continue')) {
+    $object->setStatus($cfg['status_id']['inactive']);
+    $object->update();
+    # Show confirmation page
+    $template = Template::unhide($template, "SUCCESS");
+}
+elseif (!$error) {
+    $template = Template::unhide($template, "CONFIRM");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Deactivate Adventure";
+
+?>
+@
+
+
+1.5
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: deactivate.php,v 1.4 2004/09/20 20:38:39 at Exp $
+a29 13
+    $error = true;
+}
+
+# Ensure that the adventure's signup deadline is in the future
+$now = date("Y-m-d H:i:s");
+if ($now >= $object->getSignupDate()) {
+    $template = Template::unhide($template, "DEADLINE");
+    $error = true;
+}
+
+# Make sure the adventure's start date is in the future
+if ($now >= $object->getStartDate()) {
+    $template = Template::unhide($template, "START");
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: deactivate.php,v 1.3 2004/09/20 20:07:04 at Exp $
+d46 1
+a46 1
+if (!$error && Utility::getval('continue')) {
+@
+
+
+1.3
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: deactivate.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d29 1
+a29 1
+    $template = Template::unhideBlock($template, "INACTIVE");
+d36 1
+a36 1
+    $template = Template::unhideBlock($template, "DEADLINE");
+d42 1
+a42 1
+    $template = Template::unhideBlock($template, "START");
+d50 1
+a50 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d53 1
+a53 1
+    $template = Template::unhideBlock($template, "CONFIRM");
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: deactivate.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d27 1
+a27 1
+# Make sure the adventure ist already active
+d34 2
+a35 2
+$now =& new DateTime();
+if ($now->compareTo($object->getSignupDate()) >= 0) {
+d41 1
+a41 2
+$now =& new DateTime();
+if ($now->compareTo($object->getStartDate()) >= 0) {
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: deactivate.php,v 1.5 2004/05/30 01:42:07 baron Exp $
+d23 1
+a23 2
+$wrapper = file_get_contents("templates/adventure/deactivate-wrapper.php");
+$box = file_get_contents("templates/adventure/deactivate-box.php");
+d29 1
+a29 1
+    $box = Template::unhideBlock($box, "INACTIVE");
+d36 1
+a36 1
+    $box = Template::unhideBlock($box, "DEADLINE");
+d43 1
+a43 1
+    $box = Template::unhideBlock($box, "START");
+d51 1
+a51 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d54 1
+a54 1
+    $box = Template::unhideBlock($box, "CONFIRM");
+d57 1
+a57 6
+$res['content'] = $object->insertIntoTemplate($box);
+$res['tab'] = "Deactivate";
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content'],
+    "C_TITLE" => $object->getTitle()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

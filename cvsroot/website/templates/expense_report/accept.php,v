@@ -1,0 +1,104 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.12.04.21.51.48;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.02.20.05.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Accept Expense Report</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>The following are all expenses for this report.  Check the checkbox next to
+any that are reimbursable by Student Council and submit the form.  <b>Note: by
+accepting this expense report, you are recording transactions in the database 
+saying that you have paid for these expenses.  If you haven't written a check
+for all of these expenses, please correct the expense report before accepting
+it.</b></p>
+
+<script src="assets/tinymenu.js"></script>
+
+<form method="POST" action="members/expense_report/accept/{OBJECT}">
+
+<table class="cleanHeaders compact top">
+  <tr>
+    <th colspan="2">Description</th>
+    <th>Date</th>
+    <th>Category</th>
+    <th>Adventure</th>
+    <th>Merchant</th>
+    <th>Amount</th>
+  </tr>{expense:}
+  <tr>
+    <td>
+      <input type="checkbox" name="expense[]" value="{c_uid}" id="expense{c_uid}">
+    </td>
+    <td>
+      {actions,expense,{c_uid},tinymenu,1}
+      <label for="expense{c_uid}">{c_description}</label>
+    </td>
+    <td nowrap>{c_expense_date}</td>
+    <td>{cat_title}</td>
+    <td>{c_adventure}</td>
+    <td>{c_merchant}</td>
+    <td align="right">${c_amount}</td>
+  </tr>{:expense}
+</table>
+
+<input type="submit" value="Accept this Report" name="submitted" >
+
+</form>
+
+</div>
+@
+
+
+1.2
+log
+@create transactions; move some of the expense/expense_report functionality into transactions
+@
+text
+@d17 1
+a17 1
+<form method="POST" action="members.php?page={PAGE}&action={ACTION_ACCEPT}&object={OBJECT}">
+@
+
+
+1.1
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@d9 5
+a13 1
+any that are reimbursable by Student Council and submit the form.</p>
+@
+

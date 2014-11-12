@@ -1,0 +1,49 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select count(*)
+from [_]item as it
+    left outer join [_]checkout_item as co
+        on co.c_item = it.c_uid
+        and co.c_checkout = {checkout,int}
+        and co.c_deleted <> 1
+where it.c_uid = {item,int}
+    and it.c_status = {checked_in,int}
+    and co.c_uid is null
+    and it.c_deleted <> 1
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d6 1
+d10 1
+@
+

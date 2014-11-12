@@ -1,0 +1,287 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.41;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.18.14.24.50;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@get rid of utility/Utility.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: execute.php,v 1.4 2004/09/20 20:38:41 at Exp $
+ */
+
+$template = file_get_contents("templates/report/execute.php");
+
+$execute = true;
+$datatypes = array(
+    "number" => "Example: 293",
+    "date" => "Example: 2003-12-12",
+    "words" => "Example: \'This is a sentence\'",
+    "email" => "Example: " . $obj['user']->getEmail(), 
+    "datetime" => "Example: 2003-12-12 5:00 PM",
+    "" => "Enter anything you wish"
+    );
+
+$params = $object->getParameters();
+if (count($params)) {
+
+    # This report has parameters that must be replaced.  We'll need to generate
+    # a form and validate it.  This form won't get output to the browser; it's
+    # only used to validate the data the user submits.
+
+    $formTemplate = file_get_contents("forms/report/execute.xml");
+    foreach ($params as $name => $datatype) {
+        # Add the parameter's name and datatype to the page
+        $template = Template::block($template, "ITEM", 
+                array("DATA" => "<tt>$datatype</tt> $datatypes[$datatype]"));
+        # Add the parameter to the form
+        $formTemplate = Template::block($formTemplate, "CONFIG",
+            array("NAME" => $name, "TYPE" => $datatype));
+        $formTemplate = Template::block($formTemplate, "ELEMENT",
+            array("NAME" => $name));
+    }
+
+    # Finalize the template and create the form from it
+    $form =& new XmlForm(Template::finalize($formTemplate), true);
+    $form->snatch();
+    $form->validate();
+
+    if (!$form->isValid()) {
+        $execute = false;
+        $template = Template::unhide($template, "PARAMS");
+        $template = Template::replace($template, 
+                array("C_INSTRUCTIONS" => $object->getInstructions()));
+
+        # Replace parameters in the query with HTML form elements and present to
+        # the user.  Make the form elements on the fly; this is plain HTML form
+        # stuff now, not fancy XML form stuff.
+        $string = $object->insertIntoTemplate(file_get_contents("templates/report/execute-form.php"));
+        $string = Template::replace($string, array(
+            "QUERY" => highlightSql(htmlspecialchars($object->getQuery()))));
+        foreach ($params as $name => $datatype) {
+            $value = htmlspecialchars($form->getValue($name));
+            $elem = "<input type=\"text\" "
+                . "title=\"$datatypes[$datatype]\" "
+                . "class=\"parameter\" name=\"$name\" value=\"$value\">";
+            $string = str_replace("\{$name,$datatype}", $elem, $string);
+        }
+        $template = Template::replace($template, array("FORM" => $string));
+    }
+    else {
+        $execute = true;
+        # Replace parameters in the query with the form's values and execute
+        foreach ($params as $name => $datatype) {
+            $object->replaceParameter($name, $form->getValue($name));
+        }
+    }
+}
+if ($execute) {
+    $template = Template::unhide($template, "RESULTS");
+    $result =& $object->execute();
+    # The rest of the page is simple.  Just print out headers and rows
+    $header = true;
+    $count = 0;
+    while ($row =& $result->fetchRow()) {
+        if ($header) {# This only happens once... print out a header row
+            $header = false;
+            $template = Template::replace($template, array(
+                "HEADER" => "<tr><th>" . implode("</th><th>", array_keys($row))
+                    . "</th></tr>"));
+        }
+        $template = Template::replace($template, array(
+            "ROW" => "<tr class='" . (($count++ % 2) ? "even" : "odd")
+            . "'><td>" . implode("</td><td>", $row) . "</td></tr>"), 1);
+    }
+    $template = Template::replace($template, array(
+        "COUNT" => $result->numRows()));
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "View Report Results";
+
+?>
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: execute.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d70 1
+a70 1
+            "QUERY" => Utility::highlightSql(htmlspecialchars($object->getQuery()))));
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: execute.php,v 1.2 2004/08/18 14:24:50 at Exp $
+d45 1
+a45 1
+        $template = Template::replaceWithinBlock($template, "ITEM", 
+d48 1
+a48 1
+        $formTemplate = Template::replaceWithinBlock($formTemplate, "CONFIG",
+d50 1
+a50 1
+        $formTemplate = Template::replaceWithinBlock($formTemplate, "ELEMENT",
+d61 2
+a62 2
+        $template = Template::unhideBlock($template, "PARAMS");
+        $template = Template::replaceValues($template, 
+d69 1
+a69 1
+        $string = Template::replaceValues($string, array(
+d78 1
+a78 1
+        $template = Template::replaceValues($template, array("FORM" => $string));
+d89 1
+a89 1
+    $template = Template::unhideBlock($template, "RESULTS");
+d97 1
+a97 1
+            $template = Template::replaceValues($template, array(
+d101 1
+a101 1
+        $template = Template::replaceValues($template, array(
+d105 1
+a105 1
+    $template = Template::replaceValues($template, array(
+@
+
+
+1.2
+log
+@added styling for alternating row colors in tables
+@
+text
+@d20 1
+a20 1
+ * $Id: execute.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d23 1
+a23 3
+# Create templates
+$wrapper = file_get_contents("templates/report/execute-wrapper.php");
+$box = file_get_contents("templates/report/execute-box.php");
+d45 1
+a45 1
+        $box = Template::replaceWithinBlock($box, "ITEM", 
+d61 2
+a62 2
+        $box = Template::unhideBlock($box, "PARAMS");
+        $box = Template::replaceValues($box, 
+d78 1
+a78 1
+        $box = Template::replaceValues($box, array("FORM" => $string));
+d89 1
+a89 1
+    $box = Template::unhideBlock($box, "RESULTS");
+d97 1
+a97 1
+            $box = Template::replaceValues($box, array(
+d101 1
+a101 1
+        $box = Template::replaceValues($box, array(
+d105 1
+a105 1
+    $box = Template::replaceValues($box, array(
+d109 1
+a109 6
+# Plug it all into the templates
+$res['tab'] = "Execute";
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/report-read.php");
+$res['content'] = Template::replaceValues($object->insertIntoTemplate($wrapper), array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: execute.php,v 1.4 2004/05/30 01:42:22 baron Exp $
+d95 1
+d104 2
+a105 1
+            "ROW" => "<tr><td>" . implode("</td><td>", $row) . "</td></tr>"), 1);
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

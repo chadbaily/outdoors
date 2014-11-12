@@ -1,0 +1,690 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.08.05.51.41;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.08.04.48.18;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.06.08.21.19.35;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.06.08.15.32.10;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Outdoors at UVa Constitution -->
+<!-- navbar=Club Policies/Constitution -->
+
+<h1>Outdoors at UVa Constitution </h1>
+
+<ol>
+<li><a href="#articleI">Mission Statement</a></li>
+<li><a href="#articleII">Guiding Principles for Club Officers</a></li>
+<li><a href="#articleIII">Membership</a></li>
+<li><a href="#articleIV">Organization</a></li>
+<li><a href="#articleV">Trips</a></li>
+<li><a href="#articleVI">Meetings</a></li>
+<li><a href="#articleVII">Finances</a></li>
+<li><a href="#articleVIII">Decisions</a></li>
+<li><a href="#articleIX">Amendments</a></li>
+</ol>
+
+<h2 id="articleI">Article I: Mission Statement</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr><td>
+
+<p>Outdoors at UVa is a group of students and community members united
+by their desire to enjoy outdoor activities with friends, while promoting
+safety, preserving the outdoors for future enjoyment, educating others about
+outdoor activities, and developing leadership skills.</p>
+
+</td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p><b>Educating others about outdoor activities</b> originally read <b>educating
+others about nature</b>, but we believe this was too broad.  Our focus is on
+activities in the outdoors.  <b>Preserving the outdoors for future enjoyment</b>
+originally read <b>promoting safety and environmental preservation</b>, but we
+thought this had a tone of imposing an obligation on members.  We want to avoid
+the sense that we think our members have an obligation, and instead encourage
+our members to preserve while they enjoy.</p>
+
+</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleII">Article II: Guiding Principles for Club Officers</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>These principles exist to guide Outdoors at UVa officers in making wise
+decisions that uphold the spirit of the Constitution.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td>
+
+<p>1. Outdoors at UVa has but one purpose, which along with a statement of our
+values, is defined in our Mission Statement.</p>
+
+</td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>We believe that a single purpose is vital to avoid dilution of our mission.
+We have expanded our purpose in the past to include charity events, and feel
+that this was an unsuccessful experiment.  It burdened the officers, caused a
+club-wide debate, and in the end we believe did not benefit anyone.  Officers
+did not always agree whether a given event was a charity, and if so, how much to
+fund it.  This was a huge distraction from our primary focus on outdoors
+activities.</p>
+
+<p>There are a number of organizations that address other interests.  For
+example, there are two service fraternities at UVa, there is Student
+Environmental Action, and many local organizations such as TradeLocal.  We do
+not wish to dilute our purpose by trying to bring elements of such other
+missions into ours, however related the missions may be.  Instead, we try to do
+one thing and do it well: have fun in the outdoors.</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>2. Outdoors at UVa should be autonomous, except in matters affecting UVa
+or the UVa Student Council as a whole.  As a Contracted Independent
+Organization, we must work within the parameters established by the UVa Student
+Council.  However, as a group, our group conscience is our sole
+authority.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>The officers are entrusted to protect the best interests of the whole club.
+No officer governs absolutely; the officers always try to reach consensus on
+issues according to their group conscience.</p>
+
+<p>We feel that not all club members are competent to make good decisions about
+how the club is run.  We have tried taking issues to members for a vote before,
+and we felt that the members were not informed enough, even though we tried to
+prepare them.  Many of the issues can only be grasped by someone who has been an
+officer for some time.</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>3. We have no opinion on external issues, thus our name should never be
+drawn into public controversy.  Other groups provide appropriate places for
+people to be involved in such issues.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>We do not ignore external issues; we just do not want to take a stance on
+them as an organization.  Members are free to take a stance as they wish.
+Members are even free to lead adventures that express their opinions &mdash; for
+example, attending a conference on environmental issues.  Members who want to
+participate in such activities are free to do so.</p>
+
+<p>We also recognize that as an organization, we have a vested interest in some
+external issues such as cleanliness of the outdoors we want to enjoy.  We do
+not, however, have a group opinion about specific issues.  Instead we encourage
+our members to preserve the outdoors as they enjoy it responsibly, educate
+themselves about issues, and be good citizens.  We leave it to the members to
+take individual action to safeguard the group's interests.  Members may do this
+within the club, for example by leading trips to clean up a river.  We also want
+to distinguish between interests we have as a group &mdash; such as a clean
+environment &mdash; and specific issues, which people may have opinions on.  We
+want to stay away from opinions, because they are personal and there is no right
+or wrong.</p>
+
+<p>In the spirit of cooperation, we may approve email messages informing our
+members what other organizations are doing, as long as it meets our usual email
+list criteria: it must be primarily outdoorsy.  We need to be especially
+vigilant about enforcing a no-politics policy.</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>4. We should never lend our name to, assist, or endorse any other
+enterprise, lest problems of money, property, or prestige distract us from our
+mission.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>We do not, as a group, endorse any other entities or take a stance on what
+they do.  However, we recognize that our members, as individuals, may be
+interested in these other entities, and we encourage people to branch out.  This
+is partially motivated by a desire for our members to safeguard our group
+interests.  We want to foster a spirit of cooperation with other entities,
+especially among UVa CI Os like ourselves, but we need to be careful not to
+appear as though we are endorsing them.</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>5. We should remain financially and materially independent, to avoid
+becoming indebted or obligated to an external interest.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>We do not want to become part of a good-old-boys club where we scratch
+someone's back and they scratch ours.  We want to avoid this in publicity,
+financial, and other ways; for example, we don't want to rely on someone else's
+equipment, especially in return for some service or other benefit (except for
+individual trips, of course).  No quid pro quo!</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>6. We may turn to professionals for assistance with matters outside our
+expertise, but our officers should never be compensated for their position or
+services.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>There are times when we will need help from a professional, such as a lawyer,
+but as a group we should remain volunteers ourselves.</p>
+
+<p>We distinguish between officers and those who lead trips; a person may do
+both, but the roles should not be confused.  Professional experience can enhance
+a person's ability to fulfill either role, and we welcome those with expertise.
+However, we do not want anyone to view Outdoors at UVa as part of his or her
+profession.  As officers, we receive no compensation for what we do.  Leaders
+may be incited to lead adventures, but we want our organization to run on
+contributions of time and talent from its members.</p>
+
+</td>
+#annotation -->
+
+</tr>
+<tr>
+
+<td><p>7. Notwithstanding other Principles, we are part of a UVa and larger
+community, and we do not wish to insulate ourselves unnecessarily.  We may
+cooperate with other groups when it is appropriate and serves our mission.  We
+accept support from UVa Student Council.  We also accept and arrange member and
+group discounts from vendors and local businesses, when it is in accord with
+these Principles.</p></td>
+
+<!-- #annotation
+<td class="annotation">
+
+<p>We believe that obtaining discounts for members and as a group benefits our
+group.  However, we need to be careful to keep our group interests in the
+forefront, and not let ourselves be swayed by an offer that compromises any of
+our Principles.</p>
+
+</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleIII">Article III: Membership</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleIV">Article IV: Organization</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Outdoors at UVa is governed by officers, who are divided into
+Co-Presidents and others.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. The officers exist to make business and policy decisions and to act as
+a liaison between Outdoors at UVa and the UVa Student Council.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>3. Co-Presidents must be University of Virginia students, as required by
+the UVa Student Council.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>4. There can be a maximum of three Co-Presidents.  If there are fewer than
+three Co-Presidents at any given time, the vacant seat should be filled.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>5. Co-Presidents are chosen by (an executive decision???)</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>6. Other officers fulfill various purposes such as maintaining the club
+website and assisting members with gear.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>7. Officership is by invitation, and the current group of officers
+determines who to accept to a position as an officer.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>8. The officer's email list is for officers only.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleV">Article V: Trips</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleVI">Article VI: Meetings</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleVII">Article VII: Finances</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleVIII">Article VIII: Decisions</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+
+<h2 id="articleIX">Article IX: Amendments</h2>
+
+<table class="annotated">
+
+<!-- #annotation
+<tr>
+<th>Text</th>
+<th>Annotation</th>
+</tr>
+#annotation -->
+
+<tr>
+
+<td><p>1. Membership is open to all.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+<tr>
+
+<td><p>2. Memberships are offered for certain lengths of time and with varying
+dues.  Everyone must pay the membership dues.</p></td>
+
+<!-- #annotation
+<td class="annotation">&nbsp;</td>
+#annotation -->
+
+</tr>
+
+</table>
+@
+
+
+1.4
+log
+@spelling changes
+@
+text
+@d2 1
+a2 2
+<!-- tab=Club Policies -->
+<!-- subtab=Constitution -->
+@
+
+
+1.3
+log
+@spelling corrections
+@
+text
+@d121 1
+a121 1
+No officer governs absolutely; the officers always try to reach concensus on
+d184 1
+a184 1
+especially among UVa CIOs like ourselves, but we need to be careful not to
+d226 1
+a226 1
+may be incented to lead adventures, but we want our organization to run on
+@
+
+
+1.2
+log
+@reorganized and filled in the outline
+@
+text
+@d316 1
+a316 1
+a liason between Outdoors at UVa and the UVa Student Council.</p></td>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d1 1
+a1 1
+<!-- title=Outdoors at UVa Constitution and Bylaws -->
+d5 1
+a5 1
+<h1>Outdoors at UVa Constitution and Bylaws</h1>
+d7 51
+a57 1
+<h2>Guiding Principles for Club Officers</h2>
+d70 2
+a71 2
+<td><p>Preamble: These principles exist to guide Outdoors at UVa officers in
+making wise decisions that uphold the spirit of the Constitution.</p></td>
+d83 1
+a83 6
+values, is defined in our Mission Statement:</p>
+
+<blockquote>Outdoors at UVa is a group of students and community members united
+by their desire to enjoy outdoor activities with friends, while promoting
+safety, preserving the outdoors for future enjoyment, educating others about
+outdoor activities, and developing leadership skills.</blockquote>
+a104 9
+<p>We have worded our Mission Statement to mean specific things.  <b>Educating
+others about outdoor activities</b> originally read <b>educating others about
+nature</b>, but we believe this was too broad.  Our focus is on activities in
+the outdoors.  <b>Preserving the outdoors for future enjoyment</b> originally
+read <b>promoting safety and environmental preservation</b>, but we thought this
+had a tone of imposing an obligation on members.  We want to avoid the sense
+that we think our members have an obligation, and instead encourage our members
+to preserve while they enjoy.</p>
+
+d122 1
+a122 2
+issues according to their group conscience.  See the Constitution for an
+explanation of our decision-making process.</p>
+d126 3
+a128 3
+and we felt that the members were not informed enough, even though we tried hard
+to prepare them.  Many of the issues can only be grasped by someone who has been
+an officer for some time.</p>
+d251 303
+@
+

@@ -1,0 +1,70 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        pre-processing="titlecase"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+    <element
+        required="1"
+        name="text"
+        element-id="text" />
+</config>
+
+<p>Title.  Phrase the title as a question if possible.  For example,
+&quot;Does the Club pay for Park Passes?&quot;</p>
+<p hidden="1" id="title-error" class="error">This field is required.</p>
+
+<p><input type="text" name="title" id="title" style="width:100%" maxlength="100"/></p>
+
+<p>Text</p>
+<p hidden="1" id="text-error" class="error">This field is required.</p>
+
+<textarea name="text" id="text" style="width:100%" rows="8">
+</textarea>
+
+<p>Category:</p>
+<p hidden="1" id="category-error" class="error">This field is required.</p>
+
+<select name="category" id="category">
+  <option value="">Choose One</option>{OPTION:}
+  <option value="{C_UID}">{C_TITLE}</option>{:OPTION}
+</select>
+
+<p><input type="submit" value="Save Changes" /></p>
+
+</form>
+@

@@ -1,0 +1,74 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.22.16.27.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Classified Ads</h1>
+
+<p>You can also <a href="members/classified_ad/list_owned_by">view your own
+ads</a> or <a href="members/classified_ad/create">create a new
+ad</a>.</p>
+
+{SOME:}
+<table class="cleanHeaders compact top">{ROW:}
+  <tr>
+    <th>Posted By</th>
+    <th>{C_TITLE}</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="members/member/read/{C_OWNER}">{C_FULL_NAME}</a><br>
+      <a href="mailto:{C_EMAIL}">{C_EMAIL}</a><br>
+      {C_CREATED_DATE|_date_format,'M j, Y'}
+    </td>
+    <td>{C_TEXT|nl2br|_linkify|htmlspecialchars}</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>{:ROW}
+</table>
+{:SOME}
+
+{NONE:}
+<p>There are no ads at this time.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d3 2
+a4 3
+<p>You can also <a
+href="members.php?page=classified_ad&action={ACTION_LIST_OWNED_BY}">view your own
+ads</a> or <a href="members.php?page=classified_ad&action={ACTION_CREATE}">create a new
+d15 1
+a15 1
+      <a href="members.php?page=member&action={ACTION_READ}&object={C_OWNER}">{C_FULL_NAME}</a><br>
+@
+

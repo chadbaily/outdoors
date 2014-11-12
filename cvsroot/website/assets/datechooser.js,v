@@ -1,0 +1,666 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.09.18.28.33;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.01.01.22.34;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.30.01.11.50;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.29.00.24.18;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.28.13.26.12;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@use uppercase H for 24-hour time
+@
+text
+@/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: datechooser.js,v 1.5 2004/09/09 18:28:33 at Exp $
+ */
+
+// Shows or hides the date chooser on the page
+function showChooser(obj, inputId, divId, start, end, format) {
+    if (document.getElementById) {
+        var input = document.getElementById(inputId);
+        var div = document.getElementById(divId);
+        if (input !== undefined && div !== undefined) {
+            if (input.DateChooser === undefined) {
+                input.DateChooser = new DateChooser(input, div, start, end, format);
+            }
+            input.DateChooser.setDate(Date.parseIsoDate(input.value));
+            if (input.DateChooser.isVisible()) {
+                input.DateChooser.hide();
+            }
+            else {
+                input.DateChooser.show();
+            }
+        }
+    }
+}
+
+// Sets a date on the object attached to 'inputId'
+function dateChooserSetDate(inputId, value) {
+    var input = document.getElementById(inputId);
+    if (input !== undefined && input.DateChooser !== undefined) {
+        input.DateChooser.setDate(Date.parseIsoDate(value));
+        if (input.DateChooser.isTimeChooser()) {
+            var theForm = input.form;
+            var prefix = input.DateChooser._prefix;
+            input.DateChooser.setTime(
+                parseInt(theForm.elements[prefix + 'hour'].options[
+                    theForm.elements[prefix + 'hour'].selectedIndex].value)
+                    + parseInt(theForm.elements[prefix + 'ampm'].options[
+                    theForm.elements[prefix + 'ampm'].selectedIndex].value),
+                parseInt(theForm.elements[prefix + 'min'].options[
+                    theForm.elements[prefix + 'min'].selectedIndex].value));
+        }
+        input.value = input.DateChooser.getValue();
+        input.DateChooser.hide();
+    }
+}
+
+// The callback function for when someone changes the pulldown menus on the date
+// chooser
+function dateChooserDateChange(theForm, prefix) {
+    var input = document.getElementById(
+        theForm.elements[prefix + 'inputId'].value);
+    var newDate = new Date(
+        theForm.elements[prefix + 'year'].options[
+            theForm.elements[prefix + 'year'].selectedIndex].value,
+        theForm.elements[prefix + 'month'].options[
+            theForm.elements[prefix + 'month'].selectedIndex].value,
+        1);
+    // Try to preserve the day of month (watch out for months with 31 days)
+    newDate.setDate(Math.max(1, Math.min(newDate.getDaysInMonth(),
+                    input.DateChooser._date.getDate())));
+    input.DateChooser.setDate(newDate);
+    if (input.DateChooser.isTimeChooser()) {
+        input.DateChooser.setTime(
+            parseInt(theForm.elements[prefix + 'hour'].options[
+                theForm.elements[prefix + 'hour'].selectedIndex].value)
+                + parseInt(theForm.elements[prefix + 'ampm'].options[
+                theForm.elements[prefix + 'ampm'].selectedIndex].value),
+            parseInt(theForm.elements[prefix + 'min'].options[
+                theForm.elements[prefix + 'min'].selectedIndex].value));
+    }
+    input.DateChooser.show();
+}
+
+// Gets the absolute position on the page of the element passed in
+function getAbsolutePosition(obj) {
+    var result = [0, 0];
+    while (obj != null) {
+        result[0] += obj.offsetTop;
+        result[1] += obj.offsetLeft;
+        obj = obj.offsetParent;
+    }
+    return result;
+}
+
+// Pads a value to a length of two, with leading zeroes
+function zeroPad(val) {
+    return ((val + "").length == 2 ? val : "0" + val);
+}
+
+// Date static variables
+Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+Date.monthNames =
+   ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"];
+Date.dayNames =
+   ["Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"];
+
+// Returns a new Date; if it can't parse the ISO date, just today
+Date.parseIsoDate = function(dateString) {
+    var result = new Date();
+    var re = /^(\d\d\d\d)-(\d\d)-(\d\d)( (\d\d):(\d\d):(\d\d))?$/;
+    var match = dateString.match(re);
+    if (match != null) {
+        if (match[5] != null && match[5] != '') {
+            result = new Date(
+                parseInt(match[1], 10),
+                parseInt(match[2], 10) - 1,
+                parseInt(match[3], 10),
+                parseInt(match[5], 10),
+                parseInt(match[6], 10),
+                parseInt(match[7], 10));
+        }
+        else {
+            result = new Date(
+                parseInt(match[1], 10),
+                parseInt(match[2], 10) - 1,
+                parseInt(match[3], 10));
+        }
+    }
+    return result;
+}
+
+// Formats a date in the format specified
+Date.prototype.dateFormat = function(format) {
+    var result = "";
+    for (var i = 0; i < format.length; ++i) {
+        result += this.dateToString(format.charAt(i));
+    }
+    return result;
+}
+
+// Formats a date as a string in the same way as PHP's date() function,
+// mostly.
+Date.prototype.dateToString = function(character) {
+    switch (character) {
+    case "Y":
+        return this.getFullYear();
+    case "m":
+        return zeroPad(this.getMonth() + 1);
+    case "d":
+        return zeroPad(this.getDate());
+    case "H":
+        return zeroPad(this.getHours());
+    case "i":
+        return zeroPad(this.getMinutes());
+    case "s":
+        return zeroPad(this.getSeconds());
+    default:
+        return character;
+    }
+}
+
+// Returns true if a year is a leap year
+Date.prototype.isLeapYear = function() {
+    var year = this.getFullYear();
+    return ((year & 3) == 0 && (year % 100 || (year % 400 == 0 && year)));
+}
+
+// Returns the day of the week of the month's first day
+Date.prototype.getFirstDayOfMonth = function() {
+    var day = (this.getDay() - (this.getDate() - 1)) % 7;
+    return (day < 0) ? (day + 7) : day;
+}
+
+// Returns the day of the week of the month's last day
+Date.prototype.getLastDayOfMonth = function() {
+    var day = (this.getDay() + (Date.daysInMonth[this.getMonth()] - this.getDate())) % 7;
+    return (day < 0) ? (day + 7) : day;
+}
+
+// Returns the number of days in the given month
+Date.prototype.getDaysInMonth = function() {
+    // Figure out if this is a leap year, and adjust February accordingly
+    Date.daysInMonth[1] = this.isLeapYear() ? 29 : 28;
+    return Date.daysInMonth[this.getMonth()];
+}
+
+// DateChooser constructor
+function DateChooser(input, div, start, end, format) {
+    this._input = input;
+    this._div = div;
+    this._start = start;
+    this._end = end;
+    this._format = format;
+    this._date = new Date();
+    this._isTimeChooser = (format == "Y-m-d H:i:s");
+    // Choose a random prefix for all pulldown menus
+    this._prefix = "";
+    var letters = ["a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l",
+        "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    for (var i = 0; i < 10; ++i) {
+        this._prefix += letters[Math.floor(Math.random() * letters.length)];
+    }
+}
+
+// DateChooser prototype variables
+DateChooser.prototype._isVisible = false;
+
+// Returns true if the chooser is currently visible
+DateChooser.prototype.isVisible = function() {
+    return this._isVisible;
+}
+
+// Returns true if the chooser is to allow choosing the time as well as the date
+DateChooser.prototype.isTimeChooser = function() {
+    return this._isTimeChooser;
+}
+
+// Gets the value, as a formatted string, of the date attached to the chooser
+DateChooser.prototype.getValue = function() {
+    return this._date.dateFormat(this._format);
+}
+
+// Hides the chooser
+DateChooser.prototype.hide = function() {
+    this._div.style.visibility = "hidden";
+    this._div.style.display = "none";
+    this._div.innerHTML = "";
+    this._isVisible = false;
+}
+
+// Shows the chooser on the page
+DateChooser.prototype.show = function() {
+    this._div.style.display = "block";
+    this._div.style.visibility = "visible";
+    this._div.style.position = "absolute";
+    var inputPos = getAbsolutePosition(this._input);
+    this._div.style.top = (inputPos[0] + this._input.offsetHeight) + "px";
+    this._div.style.left = (inputPos[1] + this._input.offsetWidth) + "px";
+    this._div.innerHTML = this.createChooserHtml();
+    this._isVisible = true;
+}
+
+// Sets the date to what is in the input box
+DateChooser.prototype.initializeDate = function() {
+    if (this._input.value != null && this._input.value != "") {
+        this._date = Date.parseIsoDate(this._input.value);
+    }
+    else {
+        this._date = new Date();
+    }
+}
+
+// Sets the date attached to the chooser
+DateChooser.prototype.setDate = function(date) {
+    this._date = date;
+}
+
+// Sets the time portion of the date attached to the chooser
+DateChooser.prototype.setTime = function(hour, minute) {
+    this._date.setHours(hour);
+    this._date.setMinutes(minute);
+}
+
+// Creates the HTML for the whole chooser
+DateChooser.prototype.createChooserHtml = function() {
+    var formHtml = "<input type=\"hidden\" name=\""
+        + this._prefix + "inputId\" value=\""
+        + this._input.attributes['id'].value + "\">"
+        + "\r\n  <select name=\"" + this._prefix 
+        + "month\" onChange=\"dateChooserDateChange(this.form, '"
+        + this._prefix + "');\">";
+    for (var mon in Date.monthNames) {
+        formHtml += "\r\n    <option value=\"" + mon + "\""
+            + (mon == this._date.getMonth() ? " selected=\"1\"" : "")
+            + ">" + Date.monthNames[mon] + "</option>";
+    }
+    formHtml += "\r\n  </select>\r\n  <select name=\""
+        + this._prefix + "year\" onChange=\"dateChooserDateChange(this.form, '"
+        + this._prefix + "');\">";
+    for (var i = this._start; i <= this._end; ++i) {
+        formHtml += "\r\n    <option value=\"" + i + "\""
+            + (i == this._date.getFullYear() ? " selected=\"1\"" : "")
+            + ">" + i + "</option>";
+    }
+    formHtml += "\r\n  </select>";
+    formHtml += this.createCalendarHtml();
+    if (this._isTimeChooser) {
+        formHtml += this.createTimeChooserHtml();
+    }
+    return formHtml;
+}
+
+// Creates the extra HTML needed for choosing the time
+DateChooser.prototype.createTimeChooserHtml = function() {
+    // Add hours
+    var result = "\r\n  <select name=\"" + this._prefix + "hour\">";
+    for (var i = 0; i < 12; ++i) {
+        result += "\r\n    <option value=\"" + i + "\""
+            + (((this._date.getHours() % 12) == i) ? " selected=\"1\">" : ">")
+            + i + "</option>";
+    }
+    // Add extra entry for 12:00
+    result += "\r\n    <option value=\"0\">12</option>";
+    result += "\r\n  </select>";
+    // Add minutes
+    result += "\r\n  <select name=\"" + this._prefix + "min\">";
+    for (var i = 0; i < 60; i += 15) {
+        result += "\r\n    <option value=\"" + i + "\""
+            + ((this._date.getMinutes() == i) ? " selected=\"1\">" : ">")
+            + zeroPad(i) + "</option>";
+    }
+    result += "\r\n  </select>";
+    // Add AM/PM
+    result += "\r\n  <select name=\"" + this._prefix + "ampm\">";
+    result += "\r\n    <option value=\"0\""
+        + (this._date.getHours() < 12 ? " selected=\"1\">" : ">")
+        + "AM</option>";
+    result += "\r\n    <option value=\"12\""
+        + (this._date.getHours() >= 12 ? " selected=\"1\">" : ">")
+        + "PM</option>";
+    result += "\r\n  </select>";
+    return result;
+}
+
+// Creates the HTML for the actual calendar part of the chooser
+DateChooser.prototype.createCalendarHtml = function() {
+    var result = "\r\n<table cellspacing=\"0\" class=\"dateChooser\">"
+        + "\r\n  <tr><th>S</th><th>M</th><th>T</th>"
+        + "<th>W</th><th>T</th><th>F</th><th>S</th></tr>\r\n  <tr>";
+    // Fill up the days of the week until we get to the first day of the month
+    var firstDay = this._date.getFirstDayOfMonth();
+    var lastDay = this._date.getLastDayOfMonth();
+    if (firstDay != 0) {
+        result += "<td colspan=\"" + firstDay + "\">&nbsp;</td>";
+    }
+    // Fill in the days of the month
+    var i = 0;
+    while (i < this._date.getDaysInMonth()) {
+        if (((i++ + firstDay) % 7) == 0) {
+            result += "</tr>\r\n  <tr>";
+        }
+        var thisDay = new Date(
+            this._date.getFullYear(),
+            this._date.getMonth(), i);
+        var js = '"dateChooserSetDate(\''
+            + this._input.attributes['id'].value + "', '"
+            + thisDay.dateFormat(this._format) + '\');"'
+        result += "\r\n    <td class=\"dateChooserActive"
+            // If the date is the currently chosen date, highlight it
+            + (i == this._date.getDate() ? " dateChooserActiveToday" : "")
+            + "\" onClick=" + js + ">" + i + "</td>";
+    }
+    // Fill in any days after the end of the month
+    if (lastDay != 6) {
+        result += "<td colspan=\"" + (6 - lastDay) + "\">&nbsp;</td>";
+    }
+    return result + "\r\n  </tr>\r\n</table>";
+}
+@
+
+
+1.5
+log
+@added highlighting to the currently chosen day, and fixed a bug in parseIsoDate also
+@
+text
+@d19 1
+a19 1
+ * $Id: datechooser.js,v 1.4 2004/09/01 01:22:34 at Exp $
+d174 1
+a174 1
+    case "h":
+d218 1
+a218 1
+    this._isTimeChooser = (format == "Y-m-d h:i:s");
+@
+
+
+1.4
+log
+@fixed bug with parsing dates: must not set month to a month with 30 days when the current date is 31
+@
+text
+@d19 1
+a19 1
+ * $Id: datechooser.js,v 1.3 2004/08/30 01:11:50 at Exp $
+d68 1
+a68 1
+    input.DateChooser.setDate(new Date(
+d73 5
+a77 1
+        1));
+a135 3
+        result.setDate(parseInt(match[3], 10));
+        result.setMonth(parseInt(match[2], 10) - 1);
+        result.setFullYear(parseInt(match[1], 10));
+d137 7
+a143 3
+            result.setSeconds(parseInt(match[7], 10));
+            result.setMinutes(parseInt(match[6], 10));
+            result.setHours(parseInt(match[5], 10));
+d146 4
+a149 3
+            result.setSeconds(0);
+            result.setMinutes(0);
+            result.setHours(0);
+d371 4
+a374 2
+        result += "\r\n    <td class=\"dateChooserActive\" onClick="
+            + js + ">" + i + "</td>";
+@
+
+
+1.3
+log
+@added comments and header
+@
+text
+@d19 1
+a19 1
+ * $Id: members.php,v 1.1.1.1.2.1 2004/08/24 03:30:18 at Exp $
+d101 1
+d132 2
+a134 2
+        result.setMonth(parseInt(match[2], 10) - 1);
+        result.setDate(parseInt(match[3], 10));
+d136 2
+a138 2
+            result.setMinutes(parseInt(match[6], 10));
+            result.setSeconds(parseInt(match[7], 10));
+d141 2
+a143 2
+            result.setMinutes(0);
+            result.setSeconds(0);
+@
+
+
+1.2
+log
+@checkpoint: started work on hour-of-day stuff
+@
+text
+@d1 22
+d42 1
+d45 12
+a56 4
+    if (input !== undefined) {
+        input.value = value;
+        if (input.DateChooser !== undefined) {
+            input.DateChooser.hide();
+d58 2
+d63 2
+d76 2
+a77 2
+            theForm.elements[prefix + 'hour'].options[
+                theForm.elements[prefix + 'hour'].selectedIndex].value
+d80 2
+a81 2
+            theForm.elements[prefix + 'min'].options[
+                theForm.elements[prefix + 'min'].selectedIndex].value);
+d86 1
+d97 4
+d148 1
+d157 2
+a159 2
+    // Formats a date as a string in the same way as PHP's date() function,
+    // mostly.
+d164 1
+a164 3
+        return (this.getMonth() < 9)
+            ? ("0" + (this.getMonth() + 1))
+            : (this.getMonth() + 1);
+d166 1
+a166 3
+        return (this.getDate() < 10)
+            ? ("0" + this.getDate())
+            : this.getDate();
+d168 1
+a168 3
+        return (this.getHours() < 10)
+            ? ("0" + this.getHours())
+            : this.getHours();
+d170 1
+a170 3
+        return (this.getMinutes() < 10)
+            ? ("0" + this.getMinutes())
+            : this.getMinutes();
+d172 1
+a172 3
+        return (this.getSeconds() < 10)
+            ? ("0" + this.getSeconds())
+            : this.getSeconds();
+d178 1
+d184 1
+d190 1
+d196 1
+d203 1
+d224 1
+a224 1
+// DateChooser prototype functions
+d229 1
+d234 6
+d247 1
+d259 1
+a261 1
+        // Try to initialize the date to what is in the input box
+d269 1
+d274 1
+d280 1
+d309 1
+d311 1
+d318 2
+d321 1
+d326 1
+a326 1
+            + i + "</option>";
+d329 1
+d334 1
+a334 1
+    result += "\r\n    <option value=\"0\""
+d341 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d30 3
+a32 2
+function dateChooserDateChange(theForm) {
+    var input = document.getElementById(theForm.elements['dateChooserInputId'].value);
+d34 4
+a37 2
+        theForm.elements['dateChooserYear'].options[theForm.elements['dateChooserYear'].selectedIndex].value,
+        theForm.elements['dateChooserMonth'].options[theForm.elements['dateChooserMonth'].selectedIndex].value,
+d39 9
+d61 24
+d123 3
+a125 1
+        return (this.getMonth() < 9) ? ("0" + (this.getMonth() + 1)) : (this.getMonth() + 1);
+d127 15
+a141 1
+        return (this.getDate() < 10) ? ("0" + this.getDate()) : this.getDate();
+d175 8
+a187 24
+// Date static variables
+Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+Date.monthNames =
+   ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"];
+Date.dayNames =
+   ["Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"];
+
+d193 4
+d217 1
+a217 1
+        // Try to initialize the date to what's in the input box
+d229 5
+d235 2
+a236 1
+    var formHtml = "<input type=\"hidden\" name=\"dateChooserInputId\" value=\""
+d238 3
+a240 1
+        + "\r\n  <select name=\"dateChooserMonth\" onChange=\"dateChooserDateChange(this.form);\">";
+d246 3
+a248 1
+    formHtml += "\r\n  </select>\r\n  <select name=\"dateChooserYear\" onChange=\"dateChooserDateChange(this.form);\">";
+d256 3
+d262 26
+d304 5
+a308 2
+        var thisDay = new Date(this._date.getFullYear(), this._date.getMonth(), i);
+        var js = '"dateChooserSetDate(\'' + this._input.attributes['id'].value + "', '"
+d310 2
+a311 1
+        result += "\r\n    <td class=\"dateChooserActive\" onClick=" + js + ">" + i + "</td>";
+@
+

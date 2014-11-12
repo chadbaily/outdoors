@@ -1,0 +1,44 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select sum(ex.c_amount) as total
+from [_]expense as ex
+    inner join [_]expense_submission_expense as ese on ex.c_uid = ese.c_expense
+where c_submission = {submission,int}
+    and ex.c_deleted <> 1
+    and ese.c_deleted <> 1
+@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@d5 2
+@
+

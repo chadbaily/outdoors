@@ -1,0 +1,88 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.18.02.38.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.14.03;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Join Attendee</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>You are joining <b>{C_FULL_NAME}</b> to adventure <b>{C_TITLE}</b>.</p>
+
+{SUCCESS:}
+<p class="notice">You have successfully joined this attendee onto this adventure.</p>
+{:SUCCESS}
+
+{ALREADY:}
+<p class="error">This attendee is already attending this adventure.</p>
+{:ALREADY}
+
+{CONFIRM:}
+<p>Please confirm that you wish to move this attendee off the waitlist and onto
+the adventure's roster.</p>
+<form action="members/attendee/join/{OBJECT}" method="GET">
+<input type="submit" name="continue" value="Continue">
+</form>
+{:CONFIRM}
+
+</div>
+@
+
+
+1.2
+log
+@added joined_date column
+@
+text
+@d21 1
+a21 4
+<form action="members.php" method="GET">
+<input type="hidden" name="page" value="{PAGE}">
+<input type="hidden" name="action" value="{ACTION_JOIN}">
+<input type="hidden" name="object" value="{OBJECT}">
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d22 1
+a22 1
+<input type="hidden" name="page" value="attendee">
+d24 1
+a24 1
+<input type="hidden" name="object" value="{T_ATTENDEE}">
+@
+

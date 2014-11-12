@@ -1,0 +1,52 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.12.16.43.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    ad.c_uid,
+    ad.c_title,
+    ad.c_start_date, 
+    lo.c_title as loc_title,
+    lo.c_uid as loc_uid
+from [_]adventure as ad
+    inner join [_]location as lo on ad.c_destination = lo.c_uid
+    inner join [_]status as st on ad.c_status = st.c_uid
+where ad.c_start_date >= now()
+    and st.c_title = "inactive"
+    and ad.c_deleted <> 1
+    and lo.c_deleted <> 1
+order by ad.c_start_date
+@
+
+
+1.1
+log
+@added a page that shows inactive adventures, and made the default status to 'inactive' when creating an adventure
+@
+text
+@d12 2
+@
+

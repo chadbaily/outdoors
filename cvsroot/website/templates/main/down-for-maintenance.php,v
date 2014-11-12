@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.09.23.09.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@added message about being down for maintenance
+@
+text
+@<!-- title=Down For Maintenance -->
+<h1>Down For Maintenance</h1>
+
+<p>The website is down for maintenance and should be back in operation in just a
+few minutes.</p>
+@

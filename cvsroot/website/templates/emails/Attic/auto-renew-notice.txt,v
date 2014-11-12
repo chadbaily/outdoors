@@ -1,0 +1,58 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.19.35.04;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@not needed
+@
+text
+@Hello,
+
+This is an automatically-generated message to inform you that your new membership has been automatically activated.  
+
+Since club policy states that Club Bux do not roll over from one membership to the next, the website has removed any unused Club Bux from your account and credited you the Club Bux from your new membership.  You had renewed your membership, but it had been put into 'pending' status because we didn't want to activate it while you still had Club Bux to use from your old membership.
+
+If you see anything inconsistent with your account, please let us know.
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,88 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.47.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.10.03.36.08;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+</config>
+
+<table>
+  <tr>
+    <td>Filter by: </td>
+    <td>
+
+    <select name="status" id="status" onChange="this.form.submit()" >
+      <option value="">[All Statuses]</option>{STATUS:}
+      <option value="{id}">{c_title}</option>{:STATUS}
+    </select>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Date range:</td>
+    <td>
+
+    <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+    To
+    <input type="text" id="end" name="end" maxlength="10" size="10" />
+    <input type="submit" value="Go" />
+
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@d1 1
+a1 1
+<form name="theform" id="theform" method="GET" action="members.php">
+a2 2
+    <input type="hidden" name="page" value="expense_submission" />
+    <input type="hidden" name="action" value="4" />
+@
+

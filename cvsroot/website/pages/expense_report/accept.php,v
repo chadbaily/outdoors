@@ -1,0 +1,328 @@
+head	1.9;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2005.01.10.03.36.08;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.12.04.21.51.48;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.11.02.20.05.27;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.01.19.06.10;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.28.17.32.54;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.28.17.01.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: accept.php,v 1.8 2005/02/07 18:49:28 at Exp $
+ */
+
+# The lifecycle of an expense report is in its statuses.  It goes from default
+# to pending to paid.  At each step a note is added.  When it goes from default
+# to pending, its owner is set to root so the original owner can no longer edit
+# it (and the expenses themselves are chowned root).  When it goes from pending
+# to paid, the treasurer can mark the expenses as reimbursable.
+
+if (isset($_POST['submitted'])) {
+    if (is_array($_POST['expense'])) {
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/expense/mark-reimbursable.sql");
+        foreach ($_POST['expense'] as $id) {
+            $cmd->addParameter("expense", $id);
+            $cmd->executeNonQuery();
+        }
+    }
+
+    # Add transactions to record that the expenses were paid
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/expense_report/accept-to-paid.sql");
+    $cmd->addParameter("report", $cfg['object']);
+    $cmd->addParameter("member", $cfg['user']);
+    $cmd->addParameter("from", $cfg['root_uid']);
+    $cmd->executeNonQuery();
+
+    $object->setStatus($cfg['status_id']['paid']);
+    $object->addNote();
+    $object->update();
+}
+
+if ($object->getStatus() != $cfg['status_id']['pending']
+    || isset($_POST['submitted']))
+{
+    redirect("$cfg[base_url]/members/expense_report/read/$cfg[object]");
+}
+
+$template = file_get_contents("templates/expense_report/accept.php");
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/expense_report/select-expenses.sql");
+$cmd->addParameter("report", $cfg['object']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $template = Template::block($template, "expense", $row);
+}
+
+$res['content'] = $template;
+$res['title'] = "Accept Expense Report";
+
+?>
+@
+
+
+1.8
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.7 2005/01/10 03:36:08 at Exp $
+d55 1
+a55 1
+    redirect("members/expense_report/read/$cfg[object]");
+@
+
+
+1.7
+log
+@upgrade to the expense system
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.6 2004/12/04 21:51:48 at Exp $
+d55 1
+a55 2
+    redirect("members.php?page=expense_report&action={$cfg['action_id']['read']}"
+        . "&object=$cfg[object]");
+@
+
+
+1.6
+log
+@create transactions; move some of the expense/expense_report functionality into transactions
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.5 2004/11/02 20:05:27 at Exp $
+a22 2
+require_once("Email.php");
+
+d26 12
+a37 6
+# it.
+if ($object->getStatus() == $cfg['status_id']['default']) {
+    $object->setStatus($cfg['status_id']['pending']);
+    $object->setOwner($cfg['root_uid']);
+    $object->addNote();
+    $object->update();
+d39 1
+a39 1
+    # Chown root all the expenses
+d41 1
+a41 1
+    $cmd->loadQuery("sql/queries/expense_report/accept-to-pending.sql");
+d43 2
+a44 1
+    $cmd->addParameter("owner", $cfg['root_uid']);
+d47 8
+a54 13
+    # Send an email to the treasurer!
+    $email =& new Email();
+    $email->setBody($obj['user']->getFullName(). " has entered a new expense "
+        . "report for you to review and accept at $cfg[site_url]$cfg[base_url]"
+        . "/members.php?page=expense_report&object=$cfg[object]&action="
+        . "{$cfg['action_id']['read']}");
+    foreach($cfg['treasurer_email'] as $e) {
+        $email->addTo($e);
+    }
+    $email->addHeader("X-Expense-Report", 1);
+    $email->setFrom($obj['user']->getEmail());
+    $email->setSubject("New Expense Report");
+    $email->send();
+a57 11
+elseif ($object->getStatus() == $cfg['status_id']['pending']) {
+    # Allow the treasurer the chance to mark the expenses as reimbursable
+    if (isset($_POST['submitted'])) {
+        if (is_array($_POST['expense'])) {
+            $cmd =& $obj['conn']->createCommand();
+            $cmd->loadQuery("sql/queries/expense/mark-reimbursable.sql");
+            foreach ($_POST['expense'] as $id) {
+                $cmd->addParameter("expense", $id);
+                $cmd->executeNonQuery();
+            }
+        }
+d59 7
+a65 30
+        # Add transactions to record that the expenses were paid
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/expense_report/accept-to-paid.sql");
+        $cmd->addParameter("report", $cfg['object']);
+        $cmd->addParameter("member", $cfg['user']);
+        $cmd->addParameter("from", $cfg['root_uid']);
+        $cmd->executeNonQuery();
+
+        $object->setStatus($cfg['status_id']['paid']);
+        $object->addNote();
+        $object->update();
+        redirect("members.php?page=expense_report&action={$cfg['action_id']['read']}"
+            . "&object=$cfg[object]");
+    }
+    else {
+        $template = file_get_contents("templates/expense_report/accept.php");
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/expense_report/select-expenses.sql");
+        $cmd->addParameter("report", $cfg['object']);
+        $result =& $cmd->executeReader();
+        while ($row =& $result->fetchRow()) {
+            $template = Template::block($template, "expense", $row);
+        }
+        $res['content'] = $template;
+        $res['title'] = "Accept Expense Report";
+    }
+}
+else {
+    redirect("members.php?page=expense_report&action={$cfg['action_id']['read']}"
+        . "&object=$cfg[object]");
+d67 3
+@
+
+
+1.5
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.4 2004/11/01 19:06:10 at Exp $
+d34 8
+d69 9
+@
+
+
+1.4
+log
+@add more than one person to the treasurer's list
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.3 2004/10/28 17:32:54 at Exp $
+d47 2
+d51 32
+a82 3
+    $object->setStatus($cfg['status_id']['paid']);
+    $object->addNote();
+    $object->update();
+a83 2
+redirect("members.php?page=expense_report&action={$cfg['action_id']['read']}"
+    . "&object=$cfg[object]");
+@
+
+
+1.3
+log
+@fix syntax error
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.2 2004/10/28 17:01:00 at Exp $
+d40 4
+a43 1
+    $email->addTo($cfg['treasurer_email']);
+@
+
+
+1.2
+log
+@email treasurer when report is accepted
+@
+text
+@d20 1
+a20 1
+ * $Id: accept.php,v 1.1 2004/10/28 01:41:36 at Exp $
+d36 1
+a36 1
+    $email->setBody($obj['user']->getFullName() " has entered a new expense "
+@
+
+
+1.1
+log
+@batch commit of changes for expense reports
+@
+text
+@d20 1
+a20 1
+ * $Id: delete.php,v 1.2 2004/10/07 17:41:50 at Exp $
+d23 2
+d34 10
+@
+

@@ -1,0 +1,133 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.08.22.36.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.30.01.15.19;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@styling
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    error-element="error-element"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="totalcost"
+        element-id="totalcost"
+        data-type="number" />
+    <element
+        name="begin"
+        element-id="begin"
+        data-type="date" />
+    <element
+        name="expire"
+        element-id="expire"
+        data-type="date" />
+</config>
+
+<table class="cleanHeaders">
+  <tr>
+    <th>Name</th>
+    <th>Total Cost</th>
+    <th>Begin</th>
+    <th>Expire</th>
+  </tr>
+
+  <tr hidden="1" id="error-element">
+    <td> </td>
+    <td class="error">Must be numeric</td>
+    <td class="error">YYYY-MM-DD</td>
+    <td class="error">YYYY-MM-DD</td>
+  </tr>
+  <tr>
+    <td>{C_TITLE}</td>
+    <td><input type="text" size="5" id="totalcost" name="totalcost" /></td>
+    <td>
+      <input type="text" size="10" id="begin" name="begin" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'begin', 'beginSpan', 2004, 2010, 'Y-m-d');" />
+      <div id="beginSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+      </td>
+    <td>
+      <input type="text" size="10" id="expire" name="expire" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'expire', 'expireSpan', 2004, 2010, 'Y-m-d');" />
+      <div id="expireSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="4">
+      <input type="submit" value="Activate Membership" />
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.2
+log
+@date chooser stuff
+@
+text
+@d24 1
+a24 1
+<table>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d41 12
+a52 2
+    <td><input type="text" size="10" id="begin" name="begin" /></td>
+    <td><input type="text" size="10" id="expire" name="expire" /></td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

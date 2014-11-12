@@ -1,0 +1,143 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.30.23.03.06;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.21.21.12.05;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<h1>Final Steps</h1>
+
+<p>Your inactive membership has been saved in the database.  All you need to do
+at this point is print and sign the <a
+href="members/join/print-waiver">liability waiver</a>, and send it in with your
+dues.  <b>Please follow the instructions on the waiver</b>.</p>
+
+<p>You will need <a
+href="http://www.adobe.com/products/acrobat/readstep2.html">Adobe Reader</a> or
+similar software to view and print the liability waiver.  To print your
+liability waiver, <a href="members/join/print-waiver">click here</a>.</p>
+
+<p>We'll activate your membership and send you a welcome email as soon as we
+receive everything.</p>
+
+<h2>Amount Due</h2>
+
+<p>Please send payment (instructions are on the waiver) for your membership.
+The following is a list of your inactive memberships saved in the database.  If
+you see an old membership here, you can <a
+href="members/join/delete-old">delete unwanted memberships</a>.</p>
+
+<table align="center" class="cleanHeaders" width="400">
+  <tr>
+    <th>Membership</th>
+    <th>Amount Due</th>
+  </tr>{MEMBERSHIPS:}
+  <tr>
+    <td>{C_TITLE}</td>
+    <td align="right">${C_TOTAL_COST}</td>
+  </tr>{:MEMBERSHIPS}
+  <tr>
+    <td colspan="2"><hr noshade="true" size="1"></td>
+  </tr>
+  <tr>
+    <td><b>Total Amount Due</b></td>
+    <td align="right"><b>${TOTAL|number_format,2}</b></td>
+  </tr>
+</table>
+@
+
+
+1.3
+log
+@allow members to delete memberships that are keeping them from joining with a new membership -- bug 176
+@
+text
+@d4 3
+a6 4
+at this point is print and sign the 
+<a href="members.php?page=join&action=print-waiver">liability waiver</a>, and
+send it in with your dues.  <b>Please follow the instructions on the
+waiver</b>.</p>
+d8 4
+a11 4
+<p>You will need 
+<a href="http://www.adobe.com/products/acrobat/readstep2.html">Adobe Reader</a>
+or similar software to view and print the liability waiver.  To print your liability waiver,
+<a href="members.php?page=join&action=print-waiver">click here</a>.</p>
+d21 1
+a21 1
+href="members.php?page=join&action=delete-old">delete unwanted memberships</a>.</p>
+@
+
+
+1.2
+log
+@shorten page, add table styling
+@
+text
+@d20 3
+a22 1
+The following is a list of your inactive memberships saved in the database.</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 4
+The following is a list of your inactive memberships saved in the database.  If
+you have paid for one of these memberships or if it shouldn't be there for some
+other reason, please let us know (it's fine to include a note with your waiver)
+and we'll take care of the problem.</p>
+d22 1
+a22 1
+<table align="center" width="400">
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

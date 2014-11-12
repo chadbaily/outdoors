@@ -1,0 +1,143 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.02.41.52;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.09.15.08.47;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.09.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@shrink-wrapped the actions form
+@
+text
+@<h1>Activity {C_TITLE}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Title</th>
+    <td>{C_TITLE}</td>
+  </tr>
+  <tr>
+    <th>Category</th>
+    <td>{cat_title}</td>
+  </tr>
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.5
+log
+@release email system
+@
+text
+@d19 1
+a19 9
+<form action="members.php" method="GET" class="action">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+    <option value="">Choose An Action</option>{ACTIONS:}
+    <option value="{C_UID}">{C_SUMMARY}</a>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.4
+log
+@simplify 'Other actions' form
+@
+text
+@d13 4
+d19 1
+a19 1
+<form action="members.php" method="GET">
+@
+
+
+1.3
+log
+@put some magic variables into templates and reformatted tabular displays
+@
+text
+@a17 1
+  <p>You may take the following actions on this object:</p>
+d19 1
+a19 1
+    <option value="">Choose One</option>{ACTIONS:}
+@
+
+
+1.2
+log
+@styling changes to make display consistently beautiful
+@
+text
+@d10 1
+a10 1
+    <th>Title:</th>
+d16 1
+a16 1
+  <input type="hidden" name="page" value="activity">
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+<table>
+d10 1
+a10 2
+    <td>Title:
+    </td>
+@
+

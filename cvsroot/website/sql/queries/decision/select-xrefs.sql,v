@@ -1,0 +1,46 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    de.c_uid,
+    de.c_title
+from [_]decision as de
+    inner join [_]decision_xref as xr on de.c_uid = xr.c_xref
+where xr.c_decision = {decision,int}
+    and xr.c_deleted <> 1
+    and de.c_deleted <> 1
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d7 2
+@
+

@@ -1,0 +1,228 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.09.22.51.34;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.19.15.58.43;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@not needed
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: ActivateMembershipManager.php,v 1.3 2004/08/19 15:58:43 at Exp $
+ */
+// {{{require statements
+include_once("MembershipType.php");
+include_once("Email.php");
+//}}}
+
+class ActivateMembershipManager {
+
+    /* {{{getListOfInactiveMembers
+     *
+     */
+    function &getListOfInactiveMembers() {
+        global $obj;
+        global $cfg;
+
+        $query = "select m.* from [_]member as m, [_]membership as"
+            . " ms, [_]membership_type as mt where m.c_uid=ms.c_member and "
+            . " ms.c_type=mt.c_uid and ms.c_status="
+            . "{$cfg[status_id][inactive]}"
+            . " order by c_last_name, c_first_name";
+        $result =& $obj['conn']->query($query);
+
+        $members = array();
+        while ($row = $result->fetchRow()) {
+            $members[$row['c_uid']] =& new Member();
+            $members[$row['c_uid']]->initFromRow($row);
+        }
+        return $members;
+    } //}}}
+
+    /* {{{getInactiveMemberships
+     * Returns a recordset
+     */
+    function &getInactiveMemberships(&$member) {
+        global $obj;
+        global $cfg;
+
+        # Find the max date of the member's currently active memberships; if
+        # there are none, use today's date.
+        $result =& $obj['conn']->query("select "
+            . "coalesce(max(c_expiration_date), current_date) as max_date "
+            . "from [_]membership where c_member = $member->c_uid "
+            . "and c_status = {$cfg['status_id']['active']}");
+        $row = $result->fetchRow();
+        $start = "'$row[max_date]'";
+
+        return $obj['conn']->query("select ms.c_uid, mt.c_title, ms.c_total_cost,
+            case 
+                when (mt.c_flags & {$cfg['flag']['flexible']}) then $start
+                else ms.c_begin_date
+            end as c_begin_date,
+            case
+                when (mt.c_flags & {$cfg['flag']['flexible']}) then case
+                    when ms.c_unit = 'day' then date_add($start, interval ms.c_units_granted day)
+                    when ms.c_unit = 'month' then date_add($start, interval ms.c_units_granted month)
+                    when ms.c_unit = 'year' then date_add($start, interval ms.c_units_granted year)
+                end
+                else ms.c_expiration_date
+            end as c_expiration_date
+            from [_]membership_type as mt
+            inner join [_]membership as ms on ms.c_type = mt.c_uid
+            where ms.c_member = $member->c_uid
+            and ms.c_status = {$cfg['status_id']['inactive']}");
+    } //}}}
+
+    /* {{{activateMembership
+     */
+    function activateMembership(/*Member*/&$member,
+            /*int*/ $id, $begin, $expiration, $amount){
+        global $cfg;
+        $membership =& new Membership($id);
+        $membership->select($id);
+        $member->addNote("Activated membership $id from $begin to $expiration, "
+            . "amount $" . number_format($amount, 2) 
+            . " (original amount: $" . $membership->getTotalCost() . ")");
+        $membership->setStatus($cfg['status_id']['active']);
+        $membership->setBeginDate(new DateTime($begin));
+        $membership->setExpirationDate(new DateTime($expiration));
+        $membership->setTotalCost(number_format($amount, 2));
+        $membership->update();
+    } //}}}
+
+    /* {{{sendActivationNotice
+     */
+    function subscribe(&$member) {
+        global $obj;
+        global $cfg;
+
+        $comm =& $obj['conn']->createCommand();
+        $comm->loadQuery("");
+        $comm->addParameter("member", $member->getUID());
+        $comm->addParameter("list", $cfg['']);
+
+        $msg =& new Email();
+        $msg->setBody($member->insertIntoTemplate(
+            file_get_contents("templates/emails/activation-notice.txt")));
+        $msg->addTo($member->getEmail());
+        $msg->setFrom($cfg['club_admin_email_name']);
+        $msg->addHeader("Return-Path", $cfg['club_admin_email']);
+        $msg->addBCC($cfg['club_admin_email']);
+        $msg->setSubject("Welcome to $cfg[club_name]!");
+        $msg->send();
+    } //}}}
+
+}
+
+?>
+@
+
+
+1.3
+log
+@susbscribe member when activating membership
+@
+text
+@d20 1
+a20 1
+ * $Id: ActivateMembershipManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: ActivateMembershipManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d105 1
+a105 1
+    function sendActivationNotice(&$member) {
+d108 5
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: ActivateMembershipManager.php,v 1.6 2004/05/30 01:41:57 baron Exp $
+d36 2
+a37 2
+        $query = "select m.* from t_member as m, t_membership as"
+            . " ms, t_membership_type as mt where m.c_uid=ms.c_member and "
+d62 1
+a62 1
+            . "from t_membership where c_member = $member->c_uid "
+d80 2
+a81 2
+            from t_membership_type as mt
+            inner join t_membership as ms on ms.c_type = mt.c_uid
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

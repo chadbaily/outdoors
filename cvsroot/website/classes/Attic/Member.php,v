@@ -1,0 +1,740 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.09.21.14.33;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.19.47.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.07.14.11.00;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Member.php,v 1.6 2004/10/09 21:14:33 at Exp $
+ */
+
+// {{{require statements
+include_once("DatabaseObject.php");
+include_once("Interest.php");
+include_once("Membership.php");
+include_once("Address.php");
+include_once("Chat.php");
+include_once("Optout.php");
+include_once("Group.php");
+include_once("MemberGroup.php");
+include_once("MemberNote.php");
+include_once("Adventure.php");
+// }}}
+
+class Member extends DatabaseObject {
+    // {{{declarations
+    var $c_first_name = null;
+    var $c_last_name = null;
+    var $c_full_name = null;
+    var $c_gender = null;
+    var $c_email = null;
+    var $c_password = null;
+    var $c_birth_date = null;
+
+    // Arrays of user-defined types
+    var $groups;                // Group
+    var $memberGroups;          // MemberGroup
+    var $interests;             // Interest 
+    var $memberships;           // Membership 
+    var $memberNotes;           // MemberNote 
+    var $phoneNumbers;          // PhoneNumber
+    var $addresses;             // Address
+    var $chats;                 // Chat
+    var $optouts;               // Optout
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Member() {
+        global $cfg;
+
+        $this->DatabaseObject();
+        $this->table = "[_]member";
+
+        $this->cascadeFunctions[] = "getInterests";
+        $this->cascadeFunctions[] = "getAddresses";
+        $this->cascadeFunctions[] = "getPhoneNumbers";
+        $this->cascadeFunctions[] = "getMemberships";
+        $this->cascadeFunctions[] = "getMemberGroups";
+        $this->cascadeFunctions[] = "getChats";
+        $this->cascadeFunctions[] = "getMemberNotes";
+    } //}}}
+
+    /* {{{insert
+     *
+     */
+    function insert() {
+        // Make sure this is valid for the DB
+        $this->setGender($this->getGender());
+        return $this->doInsert();
+    } //}}}
+
+    /* {{{update
+     *
+     */
+    function update() {
+        // Do some setup... make sure this is valid for the DB
+        $this->setGender($this->getGender());
+        $this->doUpdate();
+    } //}}}
+
+    /* {{{initInterests
+     * Initializes all the member's Interests.  You don't need to call this
+     * directly; just call getInterests().
+     */
+    function initInterests() {
+        global $obj;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->interests = array();
+        $result = $obj['conn']->query("select * from [_]interest where c_member=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->interests[$row['c_uid']] =& new Interest();
+            $this->interests[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initAddresses
+     * Initializes all the member's Addresses.  You don't need to call this
+     * directly; just call getAddresses().
+     */
+    function initAddresses() {
+        global $obj;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->addresses = array();
+        $result = $obj['conn']->query("select * from [_]address where "
+                . "c_owner=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->addresses[$row['c_uid']] =& new Address();
+            $this->addresses[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initOptouts
+     */
+    function initOptouts() {
+        global $obj;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->optouts = array();
+        $result = $obj['conn']->query("select * from [_]optout where c_member=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->optouts[$row['c_uid']] =& new Optout();
+            $this->optouts[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initChats
+     * Initializes all the member's Chats.  You don't need to call this
+     * directly; just call getChats().
+     */
+    function initChats() {
+        global $obj;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->chats = array();
+        $result = $obj['conn']->query("select * from [_]chat where "
+                . "c_owner=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->chats[$row['c_uid']] =& new Chat();
+            $this->chats[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initPhoneNumbers
+     * Initializes all the member's PhoneNumbers.  You don't need to call this
+     * directly; just call getPhoneNumbers().
+     */
+    function initPhoneNumbers() {
+        global $obj;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->phoneNumbers = array();
+        $result = $obj['conn']->query("select * from [_]phone_number "
+                . " where c_owner=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->phoneNumbers[$row['c_uid']] =& new PhoneNumber();
+            $this->phoneNumbers[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initMemberships
+     * Initializes all the member's Memberships.  You don't need to call this
+     * directly; just call getMemberships().
+     */
+    function initMemberships() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->memberships = array();
+        $result = $obj['conn']->query("select * from [_]membership "
+                . "where c_member=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->memberships[$row['c_uid']] =& new Membership();
+            $this->memberships[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initMemberNotes
+     * Initializes all the member's MemberNotes.  You don't need to call this
+     * directly; just call getMemberNotes().
+     */
+    function initMemberNotes() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->memberNotes = array();
+        $result = $obj['conn']->query("select * from [_]member_note "
+                . "where c_member=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->memberNotes[$row['c_uid']] =& new MemberNote();
+            $this->memberNotes[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initMemberGroups
+     * You don't need to call this directly.  Just call getMemberGroups().
+     */
+    function initMemberGroups() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->memberGroups = array();
+        $result =& $obj['conn']->query("select * from [_]member_group "
+            . "where c_member = $this->c_uid");
+        while ($row =& $result->fetchRow()) {
+            $this->memberGroups[$row['c_uid']] =& new MemberGroup();
+            $this->memberGroups[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initGroups
+     * You don't need to call this directly.  Just call getGroups().
+     */
+    function initGroups() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->groups = array();
+        $result =& $obj['conn']->query("select gr.* from [_]group as gr "
+            . "inner join [_]member_group as mg on mg.c_related_group = gr.c_uid "
+            . "where mg.c_member = $this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->groups[$row['c_uid']] =& new Group();
+            $this->groups[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{addNote
+     * Adds a MemberNote to the member
+     */
+    function addNote($noteText) {
+        global $cfg;
+        $note =& new MemberNote();
+        if (!isset($cfg['user'])) {
+            $note->setOwner($cfg['root_uid']);
+            $note->setCreator($cfg['root_uid']);
+        }
+        $note->setMember($this->c_uid);
+        $note->setNote($noteText);
+        $note->insert();
+    } //}}}
+    
+    /* {{{selectFromEmail
+     * Selects the member based on email address rather than primary key.
+     */
+    function selectFromEmail($email) {
+        global $obj;
+        $result =& $obj['conn']->query("select * from $this->table where c_email='$email'");
+        if ($result->numRows() > 0) {
+            $row =& $result->fetchRow();
+            $this->initFromRow($row);
+            return $this->c_uid;
+        }
+        return 0;
+    } //}}}
+    
+    /* {{{getFullName
+     */
+    function getFullName() {
+        return $this->c_full_name;
+    } //}}}
+
+    /* {{{prepFullName
+     * This is "private" in that it should only be called from within this
+     * class.  When someone updates the first or last name, this ought to get
+     * updated too.
+     */
+    function prepFullName() {
+        $this->c_full_name = "$this->c_first_name $this->c_last_name";
+    } //}}}
+
+    /* {{{getFirstName
+     *
+     */
+    function getFirstName() {
+        return $this->c_first_name;
+    } //}}}
+    
+    /* {{{setFirstName
+     *
+     */
+    function setFirstName($value) {
+        $this->c_first_name = $value;
+        $this->prepFullName();
+    } //}}}
+
+    /* {{{getLastName
+     *
+     */
+    function getLastName() {
+        return $this->c_last_name;
+    } //}}}
+
+    /* {{{setLastName
+     *
+     */
+    function setLastName($value) {
+        $this->c_last_name = $value;
+        $this->prepFullName();
+    } //}}}
+
+    /* {{{getGender
+     *
+     */
+    function getGender() {
+        return ($this->c_gender == 'm' ? 'm' : 'f');
+    } //}}}
+
+    /* {{{setGender
+     *
+     */
+    function setGender($value) {
+        $this->c_gender = ( strcasecmp($value, 'm') < 0 ? 'f' : 'm');
+    } //}}}
+
+    /* {{{getEmail
+     *
+     */
+    function getEmail() {
+        return $this->c_email;
+    } //}}}
+    
+    /* {{{setEmail
+     *
+     */
+    function setEmail($value) {
+        $this->c_email = $value;
+    } //}}}
+
+    /* {{{getPassword
+     *
+     */
+    function getPassword() {
+        return $this->c_password;
+    } //}}}
+
+    /* {{{setPassword
+     *
+     */
+    function setPassword($value) {
+        $this->c_password = $value;
+    } //}}}
+
+    /* {{{getBirthDate
+     *
+     */
+    function getBirthDate() {
+        return $this->c_birth_date;
+    } //}}}
+
+    /* {{{setBirthDate
+     *
+     */
+    function setBirthDate($value) {
+        $this->c_birth_date = date("Y-m-d", strtotime($value));
+    } //}}}
+
+    /* {{{getPrimaryAddress
+     * May return null if there is no primary address.
+     */
+    function &getPrimaryAddress() {
+        global $obj;
+        global $cfg;
+        $result =& $obj['conn']->query("select * from [_]address "
+            . "where c_owner = $this->c_uid "
+            . "and c_flags & {$cfg['flag']['primary']}");
+        if ($result->numRows()) {
+            $address =& new Address();
+            $address->initFromRow($result->fetchRow());
+            return $address;
+        }
+    } //}}}
+
+    /* {{{getPrimaryPhoneNumber
+     * May return null if there is no primary phone number.
+     */
+    function &getPrimaryPhoneNumber() {
+        global $obj;
+        global $cfg;
+        $result =& $obj['conn']->query("select * from [_]phone_number "
+          . "where c_owner = $this->c_uid "
+          . "and c_flags & {$cfg['flag']['primary']}");
+        if ($result->numRows()) {
+            $num =& new PhoneNumber();
+            $num->initFromRow($result->fetchRow());
+            return $num;
+        }
+    } //}}}
+
+    /* {{{getPrimaryChat
+     * May return null if there is no primary chat
+     */
+    function &getPrimaryChat() {
+        global $obj;
+        global $cfg;
+        $result =& $obj['conn']->query("select * from [_]chat "
+          . "where c_owner = $this->c_uid "
+          . "and c_flags & {$cfg['flag']['primary']}");
+        if ($result->numRows()) {
+            $chat =& new Chat();
+            $chat->initFromRow($result->fetchRow());
+            return $chat;
+        }
+    } //}}}
+
+    /* {{{getMemberGroups
+     * You don't need to call initMemberGroups(), since it is automatically
+     * called as needed.  If you want the cached list of groups to be
+     * refreshed, call this method with a TRUE parameter.
+     */
+    function &getMemberGroups($refresh = FALSE) {
+        if (!isset($this->memberGroups) or $refresh) {
+            $this->initMemberGroups();
+        }
+        return $this->memberGroups;
+    } //}}}
+
+    /* {{{getGroups
+     * You don't need to call initGroups(), since it is automatically
+     * called as needed.  If you want the cached list of groups to be
+     * refreshed, call this method with a TRUE parameter.
+     */
+    function &getGroups($refresh = FALSE) {
+        if (!isset($this->groups) or $refresh) {
+            $this->initGroups();
+        }
+        return $this->groups;
+    } //}}}
+
+    /* {{{getInterests
+     * You don't need to call initInterests(), since it will be
+     * called automatically as needed.  If you want the cached list of
+     * interests to be refreshed, call this method with a TRUE parameter.
+     */
+    function &getInterests($refresh = FALSE) {
+        if (!isset($this->interests) or $refresh) {
+            $this->initInterests();
+        }
+        return $this->interests;
+    } //}}}
+
+    /* {{{getAddresses
+     * You don't need to call initAddresses(), since it will be called
+     * automatically as needed.  If you want the cached list of addresses to
+     * be refreshed, call this method with a TRUE parameter.
+     */
+    function &getAddresses($refresh = FALSE) {
+        if (!isset($this->addresses) or $refresh) {
+            $this->initAddresses();
+        }
+        return $this->addresses;
+    } //}}}
+
+    /* {{{getOptouts
+     */
+    function &getOptouts($refresh = FALSE) {
+        if (!isset($this->optouts) or $refresh) {
+            $this->initOptouts();
+        }
+        return $this->optouts;
+    } //}}}
+
+    /* {{{getChats
+     * You don't need to call initChats(), since it will be called
+     * automatically as needed.  If you want the cached list of phone numbers to
+     * be refreshed, call this method with a TRUE parameter.
+     */
+    function &getChats($refresh = FALSE) {
+        if (!isset($this->chats) or $refresh) {
+            $this->initChats();
+        }
+        return $this->chats;
+    } //}}}
+
+    /* {{{getPhoneNumbers
+     * You don't need to call initPhoneNumbers(), since it will be called
+     * automatically as needed.  If you want the cached list of phone numbers to
+     * be refreshed, call this method with a TRUE parameter.
+     */
+    function &getPhoneNumbers($refresh = FALSE) {
+        if (!isset($this->phoneNumbers) or $refresh) {
+            $this->initPhoneNumbers();
+        }
+        return $this->phoneNumbers;
+    } //}}}
+
+    /* {{{getMemberships
+     * You don't need to call initMemberships(), since it will be called
+     * automatically as needed.  If you want the cached list of memberships to
+     * be refreshed, call this method with a TRUE parameter.
+     */
+    function &getMemberships($refresh = FALSE) {
+        if (!isset($this->memberships) or $refresh) {
+            $this->initMemberships();
+        }
+        return $this->memberships;
+    } //}}}
+
+    /* {{{getMemberNotes
+     * You don't need to call initMemberNotes(), since it will be called
+     * automatically as needed.  If you want the cached list to
+     * be refreshed, call this method with a TRUE parameter.
+     */
+    function &getMemberNotes($refresh = FALSE) {
+        if (!isset($this->memberNotes) or $refresh) {
+            $this->initMemberNotes();
+        }
+        return $this->memberNotes;
+    } //}}}
+
+    /* {{{isRootUser
+     * Returns true if the member is a root user.
+     */
+    function isRootUser() {
+        global $cfg;
+        return ($this->c_uid == $cfg['root_uid'] 
+            || $this->isInGroup("root"));
+    } //}}}
+
+    /* {{{isInGroup
+     * Returns true if the member is in $group.  $group can be either the
+     * integer c_uid or the string c_title of the group.
+     */
+    function isInGroup($group) {
+        global $cfg;
+        return in_array(
+            (is_numeric($group) ? intval($group) : $cfg['group_id'][$group]), 
+            array_keys($this->getGroups()));
+    } //}}}
+
+}
+?>
+@
+
+
+1.6
+log
+@release email system
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.5 2004/09/20 19:47:28 at Exp $
+@
+
+
+1.5
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.4 2004/09/07 14:11:00 at Exp $
+d29 1
+d55 1
+d127 14
+d462 9
+@
+
+
+1.4
+log
+@cascaded to MemberNotes
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.3 2004/09/03 20:38:24 at Exp $
+a250 9
+    /* {{{isUnderAge
+     * Returns true if the member is under 18 years old.
+     */
+    function isUnderAge() {
+        $birthDate =& $this->getBirthDate();
+        $plus18 = $birthDate->addYears(18);
+        return ($plus18->compareTo(new DateTime()) > 0); 
+    } //}}}
+
+d342 1
+a342 1
+        return new DateTime($this->c_birth_date);
+d348 2
+a349 3
+    function setBirthDate(/*DateTime*/ $value) {
+        Utility::checkType("DateTime", $value, __LINE__, __FILE__);
+        $this->c_birth_date = $value->toString("Y-m-d");
+@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.2 2004/07/20 14:11:06 at Exp $
+d50 1
+d71 1
+d175 16
+d492 12
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+d210 4
+a213 2
+        $note->setOwner($cfg['root_uid']);
+        $note->setCreator($cfg['root_uid']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Member.php,v 1.8 2004/05/30 01:41:53 baron Exp $
+d62 1
+a62 1
+        $this->table = "t_member";
+d99 1
+a99 1
+        $result = $obj['conn']->query("select * from t_interest where c_member=$this->c_uid");
+d115 1
+a115 1
+        $result = $obj['conn']->query("select * from t_address where "
+d132 1
+a132 1
+        $result = $obj['conn']->query("select * from t_chat where "
+d149 1
+a149 1
+        $result = $obj['conn']->query("select * from t_phone_number "
+d165 1
+a165 1
+        $result = $obj['conn']->query("select * from t_membership "
+d180 1
+a180 1
+        $result =& $obj['conn']->query("select * from t_member_group "
+d195 2
+a196 2
+        $result =& $obj['conn']->query("select gr.* from t_group as gr "
+            . "inner join t_member_group as mg on mg.c_related_group = gr.c_uid "
+d348 1
+a348 1
+        $result =& $obj['conn']->query("select * from t_address "
+d364 1
+a364 1
+        $result =& $obj['conn']->query("select * from t_phone_number "
+d380 1
+a380 1
+        $result =& $obj['conn']->query("select * from t_chat "
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

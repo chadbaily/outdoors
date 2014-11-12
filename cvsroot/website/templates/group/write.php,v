@@ -1,0 +1,42 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.08.23.17.08;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Edit Group Details</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>You are editing the details for group <b>{C_TITLE}</b>.</p>
+
+<p class="notice">DO NOT change a group's name unless you know EXACTLY what you
+are doing.</p>
+
+{SUCCESS:}
+<p class="notice">The group was successfully updated.</p>
+{:SUCCESS}
+
+{FORM}
+
+</div>
+@

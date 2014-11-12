@@ -1,0 +1,151 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.21.21.19.58;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.04.18.39.25;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.04.14.06.18;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.04.13.59.28;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.19.03.20.51;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@attribute -> feature
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="name"
+        data-type="regexp"
+        expression="/^[a-z_]+$/"
+        element-id="name" />
+</config>
+
+<p hidden="1" id="name-error" class="error"> This field is required and must
+only contain lowercase letters and underscores.</p>
+
+<p>Name (lowercase letters and underscores)
+<input type="text" name="name" id="name" size="10" maxlength="10"/>
+<script>
+window.onload = function() {
+    document.forms[0].elements['name'].select();
+}
+</script>
+<input type="submit" value="Add Feature" />
+</p>
+
+</form>
+@
+
+
+1.5
+log
+@focus form element on load
+@
+text
+@@
+
+
+1.4
+log
+@change item attributes to have a max length of 10, and reformat the entry screen
+@
+text
+@d23 5
+@
+
+
+1.3
+log
+@Attribute -> Feature
+@
+text
+@d18 2
+a19 1
+<table>
+d21 4
+a24 12
+  <tr hidden="1" id="name-error">
+    <td colspan="2" class="error">
+    This field is required and must only contain lowercase letters and
+    underscores.
+    </td>
+  </tr>
+  <tr>
+    <td>Name (lowercase letters and underscores)</td>
+    <td>
+      <input type="text" name="name" id="name" style="width:400px" maxlength="100"/>
+    </td>
+  </tr>
+a25 6
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Add Feature" />
+    </td>
+  </tr>
+</table>
+@
+
+
+1.2
+log
+@add note on how to enter attributes
+@
+text
+@d35 1
+a35 1
+    <input type="submit" value="Add Attribute" />
+@
+
+
+1.1
+log
+@init
+@
+text
+@d14 1
+a14 1
+        expression="/^[a-z]+$/"
+@
+

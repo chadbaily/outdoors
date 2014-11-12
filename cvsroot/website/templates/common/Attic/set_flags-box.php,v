@@ -1,0 +1,84 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.15.23;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<p>Use this page to set true/false flag values on an object.  You can set any
+flag that's defined, but it may not have any meaning for the object you're
+setting it on.  Be careful about unsetting flags; some of the flags are member
+preferences and so forth.</p>
+
+{DIRTY:}
+<p class="notice">This object's flags have been updated.</p>
+{:DIRTY}
+
+<form action="members.php?page={PAGE}&action={ACTION_SET_FLAGS}&object={OBJECT}" method="POST">
+<input type="hidden" name="posted" value="1">
+
+<table>
+  {FLAG:}
+  <tr>
+    <td>
+      <input type="checkbox" name="flags[]" value="{C_TITLE}" id="flag{C_TITLE}"
+      {CHECKED}>
+    </td>
+    <td>
+      <label for="flag{C_TITLE}">{C_TITLE}</label>
+    </td>
+  </tr>
+  {:FLAG}
+  <tr>
+    <td colspan="2" align="right">
+      <input type="reset" value="Reset">
+      <input type="submit" value="Update Flags">
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

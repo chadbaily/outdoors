@@ -1,0 +1,67 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.08.18.25.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>View Sessions</h1>
+
+{form}
+
+<p>The following sessions matched your criteria:</p>
+
+<table class="borders collapsed compact">
+  <tr>
+    <th>Date</th>
+    <th>Member</th>
+    <th>Page Count</th>
+    <th>IP Address</th>
+  <tr>{ROW:}
+  </tr>
+    <td>
+      <a href="members/admin/session/{c_uid}">{c_created_date}</a>
+    </td>
+    <td>
+      <a href="members/member/read/{c_member}">{c_full_name}</a>
+    </td>
+    <td>{c_pages}</td>
+    <td>{c_ip}</td>
+  </tr>{:ROW}
+</table>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d16 1
+a16 1
+      <a href="members.php?page=admin&action=view-session&object={c_uid}">{c_created_date}</a>
+d19 1
+a19 1
+      <a href="members.php?page=member&object={c_member}&action={ACTION_READ}">{c_full_name}</a>
+@
+

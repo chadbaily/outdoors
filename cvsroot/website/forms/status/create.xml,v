@@ -1,0 +1,105 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.18.02.41.04;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@whitespace
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td>
+      <input type="text" name="title" id="title" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input type="text" name="description" id="description" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Status" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d28 3
+a30 1
+    <td><input type="text" name="title" id="title" /></td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,198 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.20.20.38.41;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.20.31.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: write.php,v 1.3 2004/09/20 20:31:40 at Exp $
+ */
+
+$template = file_get_contents("templates/membership_type/write.php");
+
+$form =& new XmlForm("forms/membership_type/write.xml");
+$form->setValue("title", $object->getTitle());
+$form->setValue("description", $object->getDescription());
+$form->setValue("begin-date", $object->getBeginDate());
+$form->setValue("expiration-date", $object->getExpirationDate());
+$form->setValue("show-date", $object->getShowDate());
+$form->setValue("hide-date", $object->getHideDate());
+$form->setValue("units-granted", $object->getUnitsGranted());
+$form->setValue("unit", $object->getUnit());
+$form->setValue("unit-cost", $object->getUnitCost());
+$form->setValue("total-cost", $object->getTotalCost());
+if ($object->getFlag("private")) {
+    $form->setValue("private", 1);
+}
+if ($object->getFlag("flexible")) {
+    $form->setValue("flexible", 1);
+}
+
+# Now overwrite it with any data the user submitted.
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    
+    # Update the object
+    $object->setTitle($form->getValue("title"));
+    $object->setDescription($form->getValue("description"));
+    $object->setFlag("private", intval($form->getValue("private")));
+    $object->setFlag("flexible", intval($form->getValue("flexible")));
+    $object->setBeginDate($form->getValue("begin-date"));
+    $object->setExpirationDate($form->getValue("expiration-date"));
+    $object->setShowDate($form->getValue("show-date"));
+    $object->setHideDate($form->getValue("hide-date"));
+    $object->setUnitsGranted($form->getValue("units-granted"));
+    $object->setUnit($form->getValue("unit"));
+    $object->setUnitCost($form->getValue("unit-cost"));
+    $object->setTotalCost($form->getValue("total-cost"));
+    $object->update();
+
+    # Plug in a success message
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+$res['content'] = Template::replace($template,
+    array("FORM" => $form->toString()));
+$res['title'] = "Edit Membership Type";
+
+?>
+@
+
+
+1.3
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d65 1
+a65 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d68 1
+a68 1
+$res['content'] = Template::replaceValues($template,
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a24 6
+# Create and populate the form.
+$beginDate = $object->getBeginDate();
+$expirationDate = $object->getExpirationDate();
+$show = $object->getShowDate();
+$hide = $object->getHideDate();
+
+d28 4
+a31 4
+$form->setValue("begin-date", $beginDate->toString("Y-m-d"));
+$form->setValue("expiration-date", $expirationDate->toString("Y-m-d"));
+$form->setValue("show-date", $show->toString("Y-m-d"));
+$form->setValue("hide-date", $hide->toString("Y-m-d"));
+d54 4
+a57 4
+    $object->setBeginDate(new DateTime($form->getValue("begin-date")));
+    $object->setExpirationDate(new DateTime($form->getValue("expiration-date")));
+    $object->setShowDate(new DateTime($form->getValue("show-date")));
+    $object->setHideDate(new DateTime($form->getValue("hide-date")));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.6 2004/05/30 01:42:19 baron Exp $
+d23 1
+a23 2
+# Create template
+$wrapper = file_get_contents("templates/membership_type/write-wrapper.php");
+d71 1
+a71 1
+    $wrapper = Template::unhideBlock($wrapper, "SUCCESS");
+d74 2
+a75 6
+# Plug the form into the wrapper template and replace some other common stuff
+$res['content'] = $form->toString();
+$res['tab'] = "Edit";
+include_once("tabbed-boxes/generic-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

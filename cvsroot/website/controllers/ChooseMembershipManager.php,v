@@ -1,0 +1,238 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2005.02.07.18.47.02;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.21.21.04.23;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.04.18.13.06;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.20.20.38.38;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: ChooseMembershipManager.php,v 1.6 2005/02/07 18:47:02 at Exp $
+ */
+// {{{require statements
+include_once("membership_type.php");
+include_once("member.php");
+include_once("membership.php");
+include_once("privilege.php");
+include_once("Email.php");
+//}}}
+
+class ChooseMembershipManager{
+    /* {{{storeData
+     *
+     */
+    function storeData(&$form) {
+        global $cfg;
+        global $obj;
+
+        $mt = ($form->getValue("student") == "1")
+            ? $form->getValue("student-plan")
+            : $form->getValue("nonstudent-plan");
+
+        # Create a new membership
+        $type =& new membership_type();
+        $type->select($mt);
+        $mem =& new membership();
+        $mem->setOwner($cfg['root_uid']);
+        $mem->setType($mt);
+        $mem->setBeginDate($type->getBeginDate());
+        $mem->setExpirationDate($type->getExpirationDate());
+        $mem->setTotalCost($type->getTotalCost());
+        $mem->setUnitsGranted($type->getUnitsGranted());
+        $mem->setUnit($type->getUnit());
+        $mem->setMember($cfg['user']);
+        $mem->insert();
+
+        # Send an email to the member
+        $body = file_get_contents("templates/emails/final-instructions.txt");
+        $email =& new Email();
+        $email->setFrom($cfg['club_admin_email_name']);
+        $email->addHeader("Return-Path", $cfg['club_admin_email']);
+        $email->setSubject("Membership");
+        $email->addTo($obj['user']->getEmail());
+        $emailVals = array(
+            "C_FULL_NAME" => $obj['user']->getFullName(),
+            "MEMBERSHIP" => $type->getTitle(),
+            "FEE" => $type->getTotalCost());
+        $body = Template::replace($body, $emailVals);
+        $email->setBody(Template::finalize($body));
+        $email->send();
+
+        # Redirect the user to the next step!
+        redirect("$cfg[base_url]/members/join/final-instructions");
+    } //}}}
+
+}
+
+?>
+@
+
+
+1.6
+log
+@friendlyurls and set cookie at root level
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.5 2004/10/21 21:04:23 at Exp $
+d72 1
+a72 1
+        redirect("members/join/final-instructions");
+@
+
+
+1.5
+log
+@class names change to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.4 2004/10/07 17:41:47 at Exp $
+d72 1
+a72 1
+        redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.4
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.3 2004/10/04 18:13:06 at Exp $
+d23 4
+a26 4
+include_once("MembershipType.php");
+include_once("Member.php");
+include_once("Membership.php");
+include_once("Privilege.php");
+d42 2
+a43 2
+        # Create a new Membership
+        $type =& new MembershipType();
+d45 1
+a45 1
+        $mem =& new Membership();
+@
+
+
+1.3
+log
+@stop using the owner- address of the officers list as the club admin email, and stop BCCing messages all over the place
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.2 2004/09/20 20:38:38 at Exp $
+d72 1
+a72 1
+        Utility::redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.2
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a62 1
+        $email->addBCC($cfg['club_admin_email']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: ChooseMembershipManager.php,v 1.6 2004/05/30 01:41:57 baron Exp $
+d68 1
+a68 1
+        $body = Template::replaceValues($body, $emailVals);
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,88 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    su.c_uid as sub_uid,
+    su.c_email,
+    me.c_uid as me_uid,
+    me.c_full_name,
+    li.c_uid as li_uid,
+    li.c_title
+from [_]subscription as su
+    inner join [_]member as me on me.c_uid = su.c_owner
+    inner join [_]email_list as li on li.c_uid = su.c_list
+where su.c_owner = {owner,int,,,0,su.c_owner}
+    and su.c_deleted <> 1
+    and me.c_deleted <> 1
+    and li.c_deleted <> 1
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d8 1
+a8 2
+from
+    [_]subscription as su
+d12 3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d9 3
+a11 3
+    t_subscription as su
+    inner join t_member as me on me.c_uid = su.c_owner
+    inner join t_email_list as li on li.c_uid = su.c_list
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

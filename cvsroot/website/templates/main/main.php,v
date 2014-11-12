@@ -1,0 +1,392 @@
+head	1.14;
+access;
+symbols
+	test:1.7.0.2
+	init:1.1.1.1
+	socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.14
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.19.13.16.58;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.09.29.13.52.25;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.09.19.02.40.31;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.09.17.21.08.55;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.14.13.29.23;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.09.03.32.59;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.30.01.16.15;	author at;	state Exp;
+branches
+	1.7.2.1;
+next	1.6;
+
+1.6
+date	2004.08.19.11.44.30;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.16.12.45.27;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.16.12.00.45;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.06.08.15.32.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.05.30.03.31.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+1.7.2.1
+date	2004.09.02.11.38.22;	author at;	state Exp;
+branches;
+next	1.7.2.2;
+
+1.7.2.2
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.14
+log
+@friendlyurls
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+  <base href="{BASE}">
+  <title>{TITLE}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  <meta name="description" content="Outdoors at Uva is a student-run outdoors
+  club at the University of Virginia in Charlottesville, Virginia, with nearly
+  400 active members united by their desire to enjoy outdoor activities with
+  friends, while promoting safety and environmental preservation, educating
+  others about nature, and developing leadership skills.  Membership is open to
+  all.">
+
+  <meta name="keywords" content="outdoors, outdoor, outing, outside, hiking,
+  hike, backpacking, rock climbing, climb, caving, cave, spelunking, camp,
+  camping, bike, biking, bicycling, mountain, mountains, potluck, canoe,
+  canoeing, kayak, kayaking, rafting, white water rafting, tubing, scuba,
+  diving, ski, skiing, cross-country, snowboard, snowboarding, trail, waterfall,
+  creek, environmental conservation, social, student club, education, safety,
+  nature, environmental preservation, leadership, trad, sport, top rope, river,
+  University of Virginia, Charlottesville, Virginia, UVa, Outdoors at UVa,
+  Outdoors Club, Outing Club, UVa Outdoors, outdoor adventures, social
+  adventures, graduate student outdoors club, undergraduate outdoors club,
+  student outdoors club">
+
+  <link rel="stylesheet" href="assets/stylesheet.css" type="text/css">
+  <script type="text/javascript" src="assets/script.js" language="javascript"></script>
+  <script type="text/javascript" src="assets/combo-box.js" language="text/javascript"></script>
+  <script type="text/javascript" src="assets/datechooser.js" language="javascript"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header"><img alt="Outdoors at UVa" src="images/header01.jpg" width="799" height="100" alt="header"></div>
+
+<div id="navbar" class="navbar">
+{NAVBAR}
+</div>
+
+<div id="content">
+{CONTENT}
+</div>
+
+<!-- Make sure pages without much content don't cause the navbar to overflow the
+    containing box -->
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p class="copyright">
+{LOGOUT:}
+[{C_FULL_NAME}]
+<a href="members/main/logout">Log out</a> |
+{:LOGOUT}
+<a href="index.php?page=policies&action=copyright-terms-privacy">Copyright &copy; Outdoors at UVa</a> |
+<a href="index.php?page=policies&action=copyright-terms-privacy">Terms of Use</a> | 
+<a href="index.php?page=policies&action=copyright-terms-privacy">Privacy Policy</a> |
+<a href="index.php?page=contact">Contact Us</a> |
+<a href="{REQUEST_URI}&amp;print=true">Printable View</a>
+{UNHIDABLE}
+</p>
+
+
+</body>
+</html>
+@
+
+
+1.13
+log
+@change header image
+@
+text
+@d4 1
+d55 1
+a55 1
+<a href="members.php?page=main&action=logout">Log out</a> |
+@
+
+
+1.12
+log
+@change header image
+@
+text
+@d36 1
+a36 1
+<div id="header"><img alt="Outdoors at UVa" src="images/header03.jpg" width="799" height="100" alt="header"></div>
+@
+
+
+1.11
+log
+@add link to combo-box script
+@
+text
+@d36 1
+a36 1
+<div id="header"><img alt="Outdoors at UVa" src="images/header02.jpg" width="799" height="100" alt="header"></div>
+@
+
+
+1.10
+log
+@new header image
+@
+text
+@d28 1
+@
+
+
+1.9
+log
+@added printable option
+@
+text
+@d35 1
+a35 1
+<div id="header"><img src="images/header.jpg"></div>
+@
+
+
+1.8
+log
+@merged changes from test branch
+@
+text
+@d58 2
+a59 1
+<a href="index.php?page=contact">Contact Us</a>
+@
+
+
+1.7
+log
+@new datechooser script
+@
+text
+@d33 1
+a33 7
+<table width="800" style="border:1px solid #252" cellspacing="0" cellpadding="0">
+  <tbody>
+    <!-- Header -->
+    <tr>
+      <td colspan="2" height="100"><img src="images/header.jpg"></td>
+    </tr>
+    <!-- End Header -->
+d35 1
+a35 3
+    <!-- Body -->
+    {BODY}
+    <!-- End Body -->
+d37 3
+a39 2
+  </tbody>
+</table>
+d41 8
+@
+
+
+1.7.2.1
+log
+@added red border on test
+@
+text
+@d33 1
+a33 1
+<table width="800" style="border:15px solid red" cellspacing="0" cellpadding="0">
+@
+
+
+1.7.2.2
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d33 7
+a39 1
+<div id="wrapper">
+d41 3
+a43 1
+<div id="header"><img src="images/header.jpg"></div>
+d45 2
+a46 3
+<div id="navbar" class="navbar">
+{NAVBAR}
+</div>
+a47 8
+<div id="content">
+{CONTENT}
+</div>
+
+<!-- Make sure pages without much content don't cause the navbar to overflow the
+    containing box -->
+<div style="clear:both">&nbsp;</div>
+</div>
+@
+
+
+1.6
+log
+@added keywords
+@
+text
+@d28 1
+a28 1
+  <script type="text/javascript" src="assets/date-chooser.js" language="javascript"></script>
+@
+
+
+1.5
+log
+@added keywords and description to meta tags
+@
+text
+@d8 5
+a12 4
+  club at the University of Virginia with over 300 active members united by
+  their desire to enjoy outdoor activities with friends, while promoting safety
+  and environmental preservation, educating others about nature, and developing
+  leadership skills.  Membership is open to all.">
+d16 9
+a24 5
+  camping, bike, biking, bicycling, mountain, mountains, canoe, canoeing, kayak,
+  kayaking, rafting, white water rafting, tubing, scuba, diving, ski, skiing,
+  cross-country, snowboard, snowboarding, trail, waterfall, creek, environmental
+  conservation, social, student club, education, safety, nature, environmental
+  preservation, leadership, trad, sport, top rope, river">
+@
+
+
+1.4
+log
+@added keywords and description to meta tags
+@
+text
+@d19 1
+a19 1
+  preservation, leadership">
+@
+
+
+1.3
+log
+@added magic commenting system for unhiding named comments
+@
+text
+@d6 15
+a20 2
+  <meta name="description" content="{META}">
+  <meta name="keywords" content="{KEYWORDS}">
+@
+
+
+1.2
+log
+@fixed some absolute paths in the templates
+@
+text
+@d40 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d36 4
+a39 4
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Copyright &copy; Outdoors at UVa</a> |
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Terms of Use</a> | 
+<a href="/index.php?page=policies&action=copyright-terms-privacy">Privacy Policy</a> |
+<a href="/index.php?page=contact">Contact Us</a>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

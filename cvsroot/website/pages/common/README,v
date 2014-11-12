@@ -1,0 +1,44 @@
+head     1.1;
+branch   1.1.1;
+access   ;
+symbols  init:1.1.1.1 socialclub:1.1.1;
+locks    ; strict;
+comment  @# @;
+
+
+1.1
+date     2004.05.30.03.10.35;  author at;  state Exp;
+branches 1.1.1.1;
+next     ;
+
+1.1.1.1
+date     2004.05.30.03.10.35;  author at;  state Exp;
+branches ;
+next     ;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@This directory contains code for things that all objects can use.  Generally
+speaking, all you have to do is include the appropriate file from this
+directory, and let it do the work.  However, you DO have to do this much: create
+an object of the appropriate type and name it $object.  If you don't it'll
+break.  These pages also expect there to be a Member object called $user, who is
+the current user of the website.
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

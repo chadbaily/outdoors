@@ -1,0 +1,307 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.23.12.56.45;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.18.15.20.07;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.26.17.22.31;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.25.20.49.15;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@add c_deleted column to database tables
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ *
+ * $Id: join.php,v 1.7 2004/10/23 12:56:45 at Exp $
+ *
+ * Purpose: the main join page.
+ */
+
+$cfg['login_mode'] = "none";
+include("authorize.php");
+
+include_once("JoinManager.php");
+include_once("member.php");
+include_once("address.php");
+include_once("phone_number.php");
+include_once("chat.php");
+
+$wrapper = file_get_contents("templates/join/join.php");
+
+# Create the template for the form
+$formTemplate = file_get_contents("forms/join/join.xml");
+
+# Plug in some things from the database, such as IM types
+$result =& $obj['conn']->query("select * from [_]chat_type");
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "CHAT",
+        array_change_key_case($row, 1));
+}
+$result =& $obj['conn']->query("select * from [_]phone_number_type");
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "PHONE_TYPES",
+        array_change_key_case($row, 1));
+}
+
+# Plug membership-type choices into the form template.
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/membership_type/select-current-options.sql");
+$cmd->addParameter("flexible", $cfg['flag']['private']);
+$cmd->addParameter("private", $cfg['flag']['private']);
+$result =& $cmd->executeReader();
+
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "PLAN",
+        array_change_key_case($row, 1));
+}
+
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    if (JoinManager::checkIfMemberExists($form->getValue('emailAddress'))) {
+        $wrapper = Template::unhide($wrapper, "ERROR");
+    }
+    else {
+        # The form is valid, now create some objects and put them into the
+        # database.
+        JoinManager::createAndStoreObjects($form);
+
+        # The page has exited already, execution doesn't continue
+        exit;
+    }
+}
+
+$res['content'] = Template::replace($wrapper, array(
+    "FORM" => $form->toString()));
+
+
+?>
+@
+
+
+1.7
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.6 2004/09/20 20:38:40 at Exp $
+d52 5
+a56 6
+$result =& $obj['conn']->query("select * from [_]membership_type as mt
+    where not(mt.c_flags & {$cfg['flag']['private']})
+    and (
+        (mt.c_flags & {$cfg['flag']['flexible']})
+        or current_date between mt.c_show_date and mt.c_hide_date
+        )");
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.5 2004/09/18 15:20:07 at Exp $
+d29 4
+a32 4
+include_once("Member.php");
+include_once("Address.php");
+include_once("PhoneNumber.php");
+include_once("Chat.php");
+@
+
+
+1.5
+log
+@remove unreachable call to undefined function
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.4 2004/07/26 17:22:31 at Exp $
+d42 1
+a42 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "CHAT",
+d47 1
+a47 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "PHONE_TYPES",
+d60 1
+a60 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "PLAN",
+d71 1
+a71 1
+        $wrapper = Template::unhideBlock($wrapper, "ERROR");
+d83 1
+a83 1
+$res['content'] = Template::replaceValues($wrapper, array(
+@
+
+
+1.4
+log
+@Force logout
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.3 2004/07/25 20:49:15 at Exp $
+d78 1
+a78 4
+        # Send to the next step, choosing a membership type.  Set a cookie
+        # identifying the user by his/her c_uid in the DB.  This user is *not*
+        # officially logged in; s/he needs other cookies for this.
+        JoinManager::setCookieAndSendToNextStep();
+a79 1
+        # The page has exited, execution doesn't continue
+@
+
+
+1.3
+log
+@changed to use static calls
+@
+text
+@d5 1
+a5 1
+ * 
+d10 1
+a10 1
+ * 
+d15 1
+a15 1
+ * 
+d19 2
+a20 2
+ * 
+ * $Id: join.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d25 3
+d63 1
+a63 1
+            
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a30 1
+$manager =& new JoinManager();
+d67 1
+a67 1
+    if ($manager->checkIfMemberExists($form->getValue('emailAddress'))) {
+d73 1
+a73 1
+        $manager->createAndStoreObjects($form);
+d78 1
+a78 1
+        $manager->setCookieAndSendToNextStep();
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.11 2004/05/30 01:42:15 baron Exp $
+d38 1
+a38 1
+$result =& $obj['conn']->query("select * from t_chat_type");
+d43 1
+a43 1
+$result =& $obj['conn']->query("select * from t_phone_number_type");
+d50 1
+a50 1
+$result =& $obj['conn']->query("select * from t_membership_type as mt
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

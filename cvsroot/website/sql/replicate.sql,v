@@ -1,0 +1,269 @@
+head	1.8;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.01.30.21.55.50;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2005.01.10.03.40.48;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.11.01.01.52.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.26.16.31.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.23.13.06.36;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.05.22.12.04;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.22.13.17.07;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.19.01.45.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@update for newer tables
+@
+text
+@/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software.  You can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 2 of the License, or (at your option) any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: replicate.sql,v 1.7 2005/01/10 03:40:48 at Exp $
+ *
+ * NOTE you must not have an unmatched quote in your comments, or MySQL will
+ * barf.  The same goes for semicolons, parentheses etc.
+ *
+ * If you change this file, you are responsible for updating sql/initialize.sql
+ * and sql/upgrade.sql as well.  If you change this file, please also update the
+ * admin pages that check the database for bad data.
+ */
+
+insert into test_absence select * from t_absence;
+insert into test_action select * from t_action;
+insert into test_activity select * from t_activity;
+insert into test_activity_category select * from t_activity_category;
+insert into test_address select * from t_address;
+insert into test_adventure select * from t_adventure;
+insert into test_adventure_activity select * from t_adventure_activity;
+insert into test_adventure_comment select * from t_adventure_comment;
+insert into test_answer select * from t_answer;
+insert into test_attendee select * from t_attendee;
+insert into test_chat select * from t_chat;
+insert into test_chat_type select * from t_chat_type;
+insert into test_checkout select * from t_checkout;
+insert into test_checkout_gear select * from t_checkout_gear;
+insert into test_checkout_gear_qty select * from t_checkout_gear_qty;
+insert into test_checkout_item select * from t_checkout_item;
+insert into test_checkout_item_qty select * from t_checkout_item_qty;
+insert into test_classified_ad select * from t_classified_ad;
+insert into test_condition select * from t_condition;
+insert into test_decision select * from t_decision;
+insert into test_decision_category select * from t_decision_category;
+insert into test_decision_xref select * from t_decision_xref;
+insert into test_email_list select * from t_email_list;
+insert into test_expense select * from t_expense;
+insert into test_expense_category select * from t_expense_category;
+insert into test_expense_report select * from t_expense_report;
+insert into test_expense_report_note select * from t_expense_report_note;
+insert into test_expense_submission select * from t_expense_submission;
+insert into test_expense_submission_expense select * from t_expense_submission_expense;
+insert into test_flag select * from t_flag;
+insert into test_foreign_key select * from t_foreign_key;
+insert into test_group select * from t_group;
+insert into test_implemented_action select * from t_implemented_action;
+insert into test_interest select * from t_interest;
+insert into test_item select * from t_item;
+insert into test_item_category select * from t_item_category;
+insert into test_item_feature select * from t_item_feature;
+insert into test_item_note select * from t_item_note;
+insert into test_item_type select * from t_item_type;
+insert into test_item_type_feature select * from t_item_type_feature;
+insert into test_location select * from t_location;
+insert into test_location_activity select * from t_location_activity;
+insert into test_member select * from t_member;
+insert into test_member_group select * from t_member_group;
+insert into test_member_note select * from t_member_note;
+insert into test_membership select * from t_membership;
+insert into test_membership_type select * from t_membership_type;
+insert into test_optout select * from t_optout;
+insert into test_phone_number select * from t_phone_number;
+insert into test_phone_number_type select * from t_phone_number_type;
+insert into test_privilege select * from t_privilege;
+insert into test_question select * from t_question;
+insert into test_rating select * from t_rating;
+insert into test_report select * from t_report;
+insert into test_session select * from t_session;
+insert into test_session_page select * from t_session_page;
+insert into test_status select * from t_status;
+insert into test_subscription select * from t_subscription;
+insert into test_table select * from t_table;
+insert into test_transaction select * from t_transaction;
+insert into test_unixperm select * from t_unixperm;
+
+update test_table set c_name=concat("test_", substring(c_name, 3));
+update test_implemented_action set c_table=concat("test_", substring(c_table, 3))
+    where c_table <> "";
+update test_privilege set c_related_table=concat("test_", substring(c_related_table, 3));
+update test_foreign_key
+    set c_parent_table=concat("test_", substring(c_parent_table, 3)),
+    c_child_table=concat("test_", substring(c_child_table, 3));
+
+@
+
+
+1.7
+log
+@add activity category
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.6 2004/11/01 01:52:40 at Exp $
+d35 1
+a36 1
+insert into test_adventure_activity select * from t_adventure_activity;
+d41 6
+d48 3
+d52 6
+a58 3
+insert into test_expense_report select * from t_expense_report;
+insert into test_expense_category select * from t_expense_category;
+insert into test_expense select * from t_expense;
+d65 2
+a67 1
+insert into test_item_feature select * from t_item_feature;
+d72 1
+a73 1
+insert into test_member_group select * from t_member_group;
+d76 1
+d83 2
+d88 1
+d90 1
+d95 4
+a98 2
+update test_foreign_key set c_parent_table=concat("test_", substring(c_parent_table, 3));
+update test_foreign_key set c_child_table=concat("test_", substring(c_child_table, 3));
+@
+
+
+1.6
+log
+@merge changes for expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.5 2004/10/26 16:31:39 at Exp $
+d32 1
+@
+
+
+1.5
+log
+@tweaks to correctly populate the foreign keys
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.4 2004/10/23 13:06:36 at Exp $
+d43 3
+@
+
+
+1.4
+log
+@item_attribute -> item_feature
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.3 2004/10/05 22:12:04 at Exp $
+d43 1
+d73 2
+@
+
+
+1.3
+log
+@update for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.2 2004/09/22 13:17:07 at Exp $
+d49 2
+a50 2
+insert into test_item_attribute select * from t_item_attribute;
+insert into test_item_type_attribute select * from t_item_type_attribute;
+@
+
+
+1.2
+log
+@merged inventory system changes in
+@
+text
+@d19 1
+a19 1
+ * $Id: replicate.sql,v 1.1 2004/08/19 01:45:34 at Exp $
+d47 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d19 1
+a19 1
+ * $Id: drop.sql,v 1.1 2004/07/20 15:02:59 at Exp $
+d40 1
+d46 4
+@
+

@@ -1,0 +1,170 @@
+head	1.7;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.23.13.03.41;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.08.20.20.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.53.47;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.21.02.54.59;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.21.02.35.31;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@remove spurious semicolons
+@
+text
+@select
+    pr.c_uid,
+    pr.c_what_granted_to as c_who_type,
+    pr.c_who_granted_to as c_who_uid,
+    case
+        when (pr.c_what_granted_to = 'user') then coalesce(me.c_full_name, '--DNE--')
+        when (pr.c_what_granted_to = 'group') then coalesce(gr.c_title, '--DNE--')
+        when (pr.c_what_granted_to = 'owner_group') then coalesce(og.c_title, '--DNE--')
+        else 'none'
+    end as c_who,
+    pr.c_action,
+    ac.c_title as c_action_title,
+    pr.c_what_relates_to as c_granted_on,
+    pr.c_related_table as c_table,
+    pr.c_related_uid
+from [_]privilege as pr
+    inner join [_]action as ac on ac.c_uid = pr.c_action
+    inner join {table,none} as ob on ob.c_uid = {object,int}
+    left outer join [_]member as me
+        on pr.c_what_granted_to = 'user'
+        and pr.c_who_granted_to = me.c_uid
+        and me.c_deleted <> 1
+    left outer join [_]group as gr
+        on pr.c_what_granted_to = 'group'
+        and pr.c_who_granted_to = gr.c_uid
+        and gr.c_deleted <> 1
+    left outer join [_]group as og
+        on pr.c_what_granted_to = 'owner_group'
+        and ob.c_group = og.c_uid
+        and og.c_deleted <> 1
+where (
+        (pr.c_what_relates_to = 'object' and pr.c_related_uid = {object,int})
+        or (pr.c_what_relates_to in ('table', 'global'))
+        or (pr.c_what_relates_to = 'self' and pr.c_related_table = '[_]member'))
+    and pr.c_related_table = {table,varchar}
+    and pr.c_deleted <> 1
+    and {table,none}.c_deleted <> 1
+@
+
+
+1.6
+log
+@add c_deleted column to database tables
+@
+text
+@d35 1
+a35 1
+    and pr.c_related_table = {table,varchar};
+@
+
+
+1.5
+log
+@add more information to the display
+@
+text
+@d20 3
+a22 2
+        on pr.c_what_granted_to = 'user' and
+        pr.c_who_granted_to = me.c_uid
+d24 3
+a26 2
+        on pr.c_what_granted_to = 'group' and
+        pr.c_who_granted_to = gr.c_uid
+d28 3
+a30 2
+        on pr.c_what_granted_to = 'owner_group' and
+        ob.c_group = og.c_uid
+d36 2
+@
+
+
+1.4
+log
+@add 'self' privileges.
+@
+text
+@d8 1
+d18 1
+d25 3
+@
+
+
+1.3
+log
+@shortened and softened the message when it's a global privilege
+@
+text
+@d23 4
+a26 2
+where ((pr.c_what_relates_to = 'object' and pr.c_related_uid = {object,int})
+        or (pr.c_what_relates_to in ('table', 'global')))
+@
+
+
+1.2
+log
+@added some error-checking
+@
+text
+@d8 1
+a8 1
+        else 'illegal value'
+@
+
+
+1.1
+log
+@do the privilege stuff in a single query
+@
+text
+@d5 4
+a8 3
+    case when (pr.c_what_granted_to = 'user') then me.c_full_name
+        when (pr.c_what_granted_to = 'group') then gr.c_title
+        else null
+@
+

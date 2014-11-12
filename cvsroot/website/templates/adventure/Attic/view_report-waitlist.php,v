@@ -1,0 +1,63 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.29.01.56.52;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@merged into view_report.php
+@
+text
+@<h1>Waitlist Report</h1>
+
+<p>This report shows the waitlist for adventure 
+<a href="members.php?page=adventure&object={T_ADVENTURE}&action={ACTION_READ}">{C_TITLE}</a>.</p>
+
+{SOME:}
+<table class="ruled collapsed elbowroom">
+  <tr>
+    <th>#</th><th>Name</th><th>Joined Date</th><th>Actions</th>
+  </tr>
+{ROWS:}
+  <tr{CLASS}>
+    <td>{NUMBER}</td>
+    <td><a href="members.php?page=attendee&object={T_ATTENDEE}&action={ACTION_READ}">{C_FULL_NAME}</a></td>
+    <td>{C_CREATED_DATE|_date_format,'M j \a\t H:m:s'}</td>
+    <td>
+      <a href="members.php?page=attendee&object={T_ATTENDEE}&action={ACTION_JOIN}">Remove from waitlist</a>, 
+      <a href="members.php?page=attendee&object={T_ATTENDEE}&action={ACTION_VIEW_ANSWERS}">View answers</a>
+    </td>
+{:ROWS}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">There are no waitlisted attendees.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@@
+

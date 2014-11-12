@@ -1,0 +1,42 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select count(*) as num
+from [_]absence
+where c_attendee = {attendee,int}
+    and c_deleted <> 1
+@
+
+
+1.1
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d4 1
+@
+

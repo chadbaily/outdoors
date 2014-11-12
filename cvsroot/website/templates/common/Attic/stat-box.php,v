@@ -1,0 +1,145 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.08.23.15.23;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.18.14.24.50;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<fieldset>
+<legend>General Properties</legend>
+<table>
+
+  <tr>
+    <td>Type</td><td>{OBJECT_TYPE}</td>
+  </tr>
+
+  <tr>
+    <td nowrap>Unique Identifier</td><td>{OBJECT}</td>
+  </tr>
+
+  <tr>
+    <td>Database Table</td><td>{TABLE}</td>
+  </tr>
+
+  <tr>
+    <td>Owner</td><td><a
+    href="members.php?page=member&action={ACTION_READ}&object={C_OWNER}">{OWNER_FIRST_NAME}
+    {OWNER_LAST_NAME}</a></td>
+  </tr>
+
+  <tr>
+    <td>Creator</td><td><a
+    href="members.php?page=member&action={ACTION_READ}&object={C_CREATOR}">{CREATOR_FIRST_NAME}
+    {CREATOR_LAST_NAME}</a></td>
+  </tr>
+
+  <tr>
+    <td>Group</td><td><a
+    href="members.php?page=group&action={ACTION_READ}&object={C_GROUP}">{GROUP}<a>
+    This is the group that owns the object.  Do not confuse this with
+    a member's group membership.  They are totally separate.</td>
+  </tr>
+
+  <tr>
+    <td>Created</td><td>{C_CREATED_DATE}</td>
+  </tr>
+
+  <tr>
+    <td>Last Modified</td><td>{C_LAST_MODIFIED}</td>
+  </tr>
+
+  <tr>
+    <td>Status</td><td><a
+    href="members.php?page=status&action={ACTION_READ}&object={C_STATUS}">{STATUS}</td>
+  </tr>
+
+</table>
+
+</fieldset>
+<fieldset>
+<legend>Unix Permissions</legend>
+
+<p>The system stores information about who is allowed to do what to this
+object.  The object's UNIX-style permissions are {C_UNIXPERMS|decoct} octal, which
+translates to {C_UNIXPERMS|decbin} in binary.</p>
+
+<table class="borders collapsed">
+
+  <tr>
+    <td></td><th>Owner</th><th>Group</th><th>Other</th>
+  </tr>
+
+  <tr>
+    <th>Read</th><td>{OWNER_READ}</td><td>{GROUP_READ}</td><td>{OTHER_READ}</td>
+  </tr>
+
+  <tr>
+    <th>Write</th><td>{OWNER_WRITE}</td><td>{GROUP_WRITE}</td><td>{OTHER_WRITE}</td>
+  </tr>
+
+  <tr>
+    <th>Delete</th><td>{OWNER_DELETE}</td><td>{GROUP_DELETE}</td><td>{OTHER_DELETE}</td>
+  </tr>
+
+</table>
+</fieldset>
+@
+
+
+1.2
+log
+@added styling for alternating row colors in tables
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d59 1
+a59 1
+<table class="borders">
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,208 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.04.21.21.54;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.28.17.01.19;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.27.23.13.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: create.php,v 1.5 2005/02/07 18:49:28 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/expense/create.php");
+
+# Create the form and populate the category and adventure menus
+$formTemplate = file_get_contents("forms/expense/create.xml");
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/list_all-past.sql");
+$cmd->addParameter("start", date("Y-m-d", strtotime("3 months ago")));
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "adventure", $row);
+}
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]expense_category");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "category", $row);
+}
+
+$formTemplate = Template::replace($formTemplate, array(
+            "create" => $cfg['action_id']['create']));
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Add the new expense to the report, then redirect back to the report
+    $object =& new expense();
+    $object->setReport($form->getValue("report"));
+    $object->setCategory($form->getValue("category"));
+    $object->setAdventure($form->getValue("adventure"));
+    $object->setAmount($form->getValue("amount"));
+    $object->setMerchant($form->getValue("merchant"));
+    $object->setDescription($form->getValue("description"));
+    $object->setExpenseDate($form->getValue("date"));
+    $object->insert();
+    redirect("$cfg[base_url]/members/expense_report/write/" . $form->getValue("report"));
+}
+else {
+    # Re-display the form and force the user to fix the mistake.
+}
+
+$res['content'] = Template::replace($template, array(
+    "FORM" => $form->toString()));
+
+$res['title'] = "Add an Expense to a Report";
+
+?>
+@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.4 2004/11/04 21:21:54 at Exp $
+d63 1
+a63 1
+    redirect("members/expense_report/write/" . $form->getValue("report"));
+@
+
+
+1.4
+log
+@change to show all adventures for the last 3 months
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.3 2004/10/28 17:01:19 at Exp $
+d63 1
+a63 2
+    redirect("members.php?page=expense_report&action={$cfg['action_id']['write']}"
+        . "&object=" . $form->getValue("report"));
+@
+
+
+1.3
+log
+@change drop-down adventure menu to just populate two other fields
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.2 2004/10/28 01:41:36 at Exp $
+d30 2
+a31 2
+$cmd->loadQuery("sql/queries/adventure/list_all-joined.sql");
+$cmd->addParameter("member", $cfg['user']);
+@
+
+
+1.2
+log
+@batch commit of changes for expense reports
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.1 2004/10/27 23:13:11 at Exp $
+d30 2
+a31 2
+$cmd->loadQuery("sql/queries/adventure/list_all-owned.sql");
+$cmd->addParameter("owner", $cfg['user']);
+a53 3
+    require_once("adventure.php");
+    $adventure =& new adventure();
+    $adventure->select($form->getValue("adventure"));
+d57 1
+a57 1
+    $object->setAdventure($adventure->getTitle());
+d61 1
+a61 1
+    $object->setExpenseDate($adventure->getStartDate());
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.10 2004/10/23 12:56:02 at Exp $
+d60 1
+a60 1
+    $object->setAdventure($form->getValue("adventure"));
+a61 1
+    $object->setComment($form->getValue("comment"));
+@
+

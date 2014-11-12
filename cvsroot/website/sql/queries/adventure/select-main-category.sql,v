@@ -1,0 +1,48 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select ac.c_category, count(*) as num
+from [_]adventure_activity as aa
+    inner join [_]activity as ac on ac.c_uid = aa.c_activity
+where aa.c_adventure = {adventure,int}
+    and aa.c_deleted <> 1
+    and ac.c_deleted <> 1
+group by ac.c_category
+order by ac.c_category desc, num desc
+@
+
+
+1.1
+log
+@release email system
+@
+text
+@d4 3
+a6 1
+    where aa.c_adventure = {adventure,int}
+@
+

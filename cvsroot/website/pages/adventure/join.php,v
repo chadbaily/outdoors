@@ -1,0 +1,386 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2004.11.03.21.49.09;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.23.12.50.53;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.02.40.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@use attendee's status to determine waitlisting, instead of hitting the DB again
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: join.php,v 1.7 2004/10/23 12:50:53 at Exp $
+ *
+ * Purpose: lets a member join an adventure.
+ */
+
+$leader =& new member();
+$leader->select($object->getOwner());
+
+$template = file_get_contents("templates/adventure/join.php");
+$formTemplate = file_get_contents("forms/adventure/join.xml");
+$template = $object->insertIntoTemplate($template);
+$template = $leader->insertIntoTemplate($template);
+
+$error = false;
+
+# Ensure that the adventure's signup date is in the future
+if (date("Y-m-d H:i:s") >= $object->getSignupDate()) {
+    $template = Template::unhide($template, "DEADLINE");
+    $error = true;
+}
+
+# Ensure that the member isn't already attending this adventure
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user'])) {
+    $template = Template::unhide($template, "ALREADY");
+    $error = true;
+}
+
+# Ensure that either the member is the leader or the adventure is active
+if ($obj['user']->getUID() != $object->getOwner() 
+        && $object->getStatus() != $cfg['status_id']['active']) {
+    $template = Template::unhide($template, "INACTIVE");
+    $error = true;
+}
+
+$form = null;
+
+if (count($object->getChildren("question"))) {
+    # Add the adventure's questions to the form.
+    $formTemplate = JoinAdventureManager::addQuestionsToForm($formTemplate, $object);
+
+    # Create and validate the form
+    $form =& new XMLForm(Template::finalize($formTemplate), true);
+    $form->snatch();
+    $form->validate();
+}
+
+if (!$error && (($form && $form->isValid()) || !$form)) {
+    require_once("answer.php");
+
+    $attendee =& new attendee();
+    $attendee->setMember($cfg['user']);
+    $attendee->setAdventure($cfg['object']);
+    $attendee->setJoinedDate(date("Y-m-d H:i:s"));
+    if ($object->isFull()) {
+        $attendee->setStatus($cfg['status_id']['waitlisted']);
+    }
+    $attendee->setAmountPaid($object->getFee());
+    $attendee->insert();
+
+    if ($form) {
+        # Record the answers to the questions
+        foreach ($object->getChildren("question") as $key => $q) {
+            $answer =& new answer();
+            $answer->setQuestion($q->getUID());
+            $answer->setAttendee($attendee->getUID());
+            $answer->setAnswerText($form->getValue("question" . $q->getUID()));
+            $answer->insert();
+        }
+    }
+
+    # Send a confirmation email
+    JoinAdventureManager::sendJoinConfirmation($obj['user'], $object,
+        $attendee->getStatus());
+
+    # Show confirmation page
+    if ($attendee->getStatus() == $cfg['status_id']['waitlisted']) {
+        $template = Template::unhide($template, "WAITLIST");
+    }
+    else {
+        $template = Template::unhide($template, "SUCCESS");
+    }
+
+    if ($obj['user']->getUID() == $object->getOwner()
+        && $object->getStatus() != $cfg['status_id']['active'])
+    {
+        $template = Template::unhide($template, "ACTIVATE");
+    }
+}
+
+elseif (!$error) {
+    $template = Template::unhide($template, "INSTRUCTIONS");
+    $template = Template::replace($template, array("FORM" => $form->toString()));
+}
+
+$res['content'] = $template;
+$res['title'] = "Join Adventure";
+
+?>
+@
+
+
+1.7
+log
+@change table names to match class names; use getChildren(), join automatically when there are no questions
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.6 2004/09/20 20:38:39 at Exp $
+d91 2
+a92 1
+    JoinAdventureManager::sendJoinConfirmation($obj['user'], $object);
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.5 2004/09/20 20:07:04 at Exp $
+d25 1
+a25 1
+$leader =& new Member();
+d54 1
+a54 2
+# Add the adventure's questions to the form.
+$formTemplate = JoinAdventureManager::addQuestionsToForm($formTemplate, $object);
+d56 12
+a67 14
+# Create and validate the form
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+$form->snatch();
+$form->validate();
+
+if (!$error && $form->isValid()) {
+    # Record the answers to the questions
+    foreach ($object->getQuestions() as $key => $q) {
+        $answer =& new Answer();
+        $answer->setQuestion($q->getUID());
+        $answer->setMember($cfg['user']);
+        $answer->setAnswerText($form->getValue("question" . $q->getUID()));
+        $answer->insert();
+    }
+d69 1
+a69 1
+    $attendee =& new Attendee();
+a70 1
+    $attendee->setOwner($object->getOwner());
+d79 10
+a88 9
+    # Create a privilege to let the user view his/her answers
+    $priv =& new Privilege();
+    $priv->setWhatGrantedTo("user");
+    $priv->setWhoGrantedTo($cfg['user']);
+    $priv->setAction($cfg['action_id']['view_answers']);
+    $priv->setWhatRelatesTo("object");
+    $priv->setRelatedTable($attendee->getTable());
+    $priv->setRelatedUID($attendee->getUID());
+    $priv->insert();
+@
+
+
+1.5
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.4 2004/09/20 18:26:50 at Exp $
+d37 1
+a37 1
+    $template = Template::unhideBlock($template, "DEADLINE");
+d43 1
+a43 1
+    $template = Template::unhideBlock($template, "ALREADY");
+d50 1
+a50 1
+    $template = Template::unhideBlock($template, "INACTIVE");
+d98 1
+a98 1
+        $template = Template::unhideBlock($template, "WAITLIST");
+d101 1
+a101 1
+        $template = Template::unhideBlock($template, "SUCCESS");
+d107 1
+a107 1
+        $template = Template::unhideBlock($template, "ACTIVATE");
+d112 2
+a113 2
+    $template = Template::unhideBlock($template, "INSTRUCTIONS");
+    $template = Template::replaceValues($template, array("FORM" => $form->toString()));
+@
+
+
+1.4
+log
+@use uppercase H for 24-hour time
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.3 2004/09/18 02:40:22 at Exp $
+d35 2
+a36 3
+# Ensure that the adventure's start date is in the future
+$now =& new DateTime();
+if ($now->compareTo($object->getSignupDate()) >= 0) {
+@
+
+
+1.3
+log
+@moved a lot of the controller code into the attendee and adventure pages
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d77 1
+a77 1
+    $attendee->setJoinedDate(date("Y-m-d h:i:s"));
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d65 28
+a92 2
+    JoinAdventureManager::recordAnswers($obj['user'], $object, $form);
+    $status = JoinAdventureManager::addAttendeeToAdventure($obj['user'], $object);
+d98 1
+a98 1
+    if ($status == $cfg['status_id']['waitlisted']) {
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: join.php,v 1.5 2004/05/30 01:42:07 baron Exp $
+d28 1
+a28 3
+# Create templates
+$wrapper = file_get_contents("templates/adventure/join-wrapper.php");
+$box = file_get_contents("templates/adventure/join-box.php");
+d30 2
+a31 2
+$wrapper = $object->insertIntoTemplate($wrapper);
+$box = $object->insertIntoTemplate($leader->insertIntoTemplate($box));
+d38 1
+a38 1
+    $box = Template::unhideBlock($box, "DEADLINE");
+d44 1
+a44 1
+    $box = Template::unhideBlock($box, "ALREADY");
+d51 1
+a51 1
+    $box = Template::unhideBlock($box, "INACTIVE");
+d73 1
+a73 1
+        $box = Template::unhideBlock($box, "WAITLIST");
+d76 1
+a76 1
+        $box = Template::unhideBlock($box, "SUCCESS");
+d82 1
+a82 1
+        $box = Template::unhideBlock($box, "ACTIVATE");
+d87 2
+a88 2
+    $box = Template::unhideBlock($box, "INSTRUCTIONS");
+    $box = Template::replaceValues($box, array("FORM" => $form->toString()));
+d91 1
+a91 7
+$res['content'] = $box;
+$res['tab'] = "Join";
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content'],
+    "T_ADVENTURE" => $object->getUID(),
+    "C_TITLE" => $object->getTitle()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

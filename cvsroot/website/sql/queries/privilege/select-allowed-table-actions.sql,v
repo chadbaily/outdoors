@@ -1,0 +1,146 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.02.20.01.11;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.24.15.06.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.21.48;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.23.14.40.42;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@remove spurious semicolons
+@
+text
+@-- Selects a list of all actions that the member is allowed to do on the table.
+-- Parameters:
+--      member: The UID of the member.
+--      table:  The table in question.
+--      applies_to_object: flag
+--      root_group: The UID of the root group
+select ac.*
+from
+    [_]action as ac
+    -- Filter out actions that do not apply to this object type
+    inner join [_]implemented_action as ia
+        on ia.c_action = ac.c_uid and ia.c_table in({table,char}, '')
+    -- Privileges that apply to the table and grant the given action
+    -- Not an inner join because the action may be granted even if there is no
+    -- privilege granting it.  For example, root users can take all actions.
+    left outer join [_]privilege as pr
+        on pr.c_related_table = {table,char}
+            and pr.c_deleted <> 1
+            and pr.c_action = ac.c_uid
+            and pr.c_what_relates_to = 'table'
+    -- Groups that the member belongs to, which may be null if he doesn't belong
+    -- to any
+    left outer join [_]member_group as mg on mg.c_member = {member,int}
+        and mg.c_deleted <> 1
+where
+    -- The action must apply to tables (NOT apply to objects)
+    (ac.c_flags & {applies_to_object,int} = 0) and (
+        -- Members of the 'root' group are always allowed to do everything
+        mg.c_related_group = {root_group,int}
+        -- user privileges
+        or (pr.c_what_granted_to = 'user' and pr.c_who_granted_to = {member,int})
+        -- group privileges
+        or (pr.c_what_granted_to = 'group' and pr.c_who_granted_to = mg.c_related_group))
+order by ac.c_summary
+@
+
+
+1.5
+log
+@add c_deleted column to database tables
+@
+text
+@d34 1
+a34 1
+order by ac.c_summary;
+@
+
+
+1.4
+log
+@collapse the applies_to_object and applies_to_table flags into one
+@
+text
+@d18 1
+d24 1
+@
+
+
+1.3
+log
+@fixed invalid condition: joining onto [_]member_group's c_group instead of c_related_group.  Bah...
+@
+text
+@d5 1
+a5 1
+--      applies_to_table: flag
+d24 2
+a25 2
+    -- The action must apply to tables
+    (ac.c_flags & {applies_to_table,int} <> 0) and (
+@
+
+
+1.2
+log
+@still wrong, but want to checkpoint save it... forgive me, o ye gods of CVS
+@
+text
+@d12 1
+a12 2
+        on ia.c_action = ac.c_uid
+            and (ia.c_table = {table,char} or ia.c_table = '')
+d31 1
+a31 1
+        or (pr.c_who_granted_to = mg.c_group))
+@
+
+
+1.1
+log
+@init
+@
+text
+@d10 4
+d15 3
+a17 1
+    inner join [_]privilege as pr
+@
+

@@ -1,0 +1,118 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.23.12.54.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shrink-wrapped the actions form
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.2 2004/10/23 12:54:42 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/decision/read.php");
+
+# Add information about the category
+$cat =& new decision_category();
+$cat->select($object->getCategory());
+$template = Template::replace($template, array(
+    "CAT_TITLE" => $cat->getTitle()));
+
+# Add the cross-references
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/decision/select-xrefs.sql");
+$cmd->addParameter("decision", $cfg['object']);
+$result =& $cmd->executeReader();
+if ($result->numRows()) {
+    $template = Template::unhide($template, "XREFS");
+    while ($row =& $result->fetchRow()) {
+        $template = Template::block($template, "XREF",
+            array_change_key_case($row, 1));
+    }
+}
+
+if ($object->permits($cfg['action_id']['add_xref'])) {
+    $template = Template::unhide($template, "ADD_XREF");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = $object->getTitle();
+
+?>
+@
+
+
+1.2
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1 2004/10/07 03:09:14 at Exp $
+a46 6
+}
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "ACTIONS",
+        array_change_key_case($action, 1));
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/09/24 17:39:46 at Exp $
+d27 1
+a27 1
+$cat =& new DecisionCategory();
+@
+

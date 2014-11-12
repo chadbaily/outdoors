@@ -1,0 +1,485 @@
+head	1.12;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.23.12.51.27;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.09.15.47.52;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.31.22.31.30;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.25.02.54.48;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.24.03.26.45;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.18.14.56.48;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@shrink-wrapped the actions form
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.11 2004/10/23 12:51:27 at Exp $
+ */
+
+include_once("location.php");
+
+# Create a member object that's the leader
+$leader =& new member();
+$leader->select($object->getOwner());
+
+$now = date("Y-m-d H:i:s");
+
+$template = file_get_contents("templates/adventure/read.php");
+
+# If the member is attending the adventure, show a link to edit/view answers to
+# questions
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user'])
+        && $now < $object->getStartDate()) {
+    $obj['attendee'] = JoinAdventureManager::getAttendee($obj['user'], $object);
+    $template = Template::unhide($template, "VIEW_ANSWERS");
+    $template = Template::replace($template, array(
+        "ATTENDEE" => $obj['attendee']->getUID()));
+}
+
+# If the adventure is cancelled, display a message on the page
+if ($object->getStatus() == $cfg['status_id']['cancelled']) {
+    $template = Template::unhide($template, "CANCELLED");
+}
+
+# Get a list of locations so we can show their names instead of their ID
+# numbers in the location field...
+$result =& $obj['conn']->query("select * from [_]location "
+    . "where c_uid in ($object->c_destination, $object->c_departure)");
+$locations = array();
+while ($row =& $result->fetchRow()) {
+    $locations[$row['c_uid']] =& $row;
+}
+
+# If the member is allowed to comment, display links to do so
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user']) 
+        && $now > $object->getEndDate()
+        && !JoinAdventureManager::checkIfMemberCommented($object, $obj['user'])) {
+    $template = Template::unhide($template, "COMMENT_LINK");
+}
+
+# Plug in activity types for the adventure:
+$result =& $obj['conn']->query("select ac.* "
+    . "from [_]adventure_activity as aa "
+    . "inner join [_]activity as ac on ac.c_uid = aa.c_activity "
+    . "where aa.c_adventure = " . $cfg['object']);
+while ($row =& $result->fetchRow()) {
+    $template = Template::block($template, "CAT",
+        array_change_key_case($row, 1));
+}
+
+# If the adventure has any comments, display them
+$comment = Template::extract($template, "COMMENT");
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/comment-select-for-read.sql");
+$cmd->addParameter("adventure", $cfg['object']);
+$result =& $cmd->executeReader();
+
+while ($row =& $result->fetchRow()) {
+    $thisComment = Template::replace($comment,
+        array_change_key_case($row, 1));
+    if ($row['c_flags'] & $cfg['flag']['private']) {
+        $thisComment = Template::unhide($thisComment, "HIDE_NAME");
+    }
+    else {
+        $thisComment = Template::unhide($thisComment, "SHOW_NAME");
+    }
+    $template = Template::replace($template, array(
+        "COMMENT" => $thisComment), true);
+}
+
+if ($result->numRows()) {
+    $template = Template::unhide($template, "SOME");
+}
+
+if ($object->isFull()) {
+    $template = Template::unhide($template, "FULL");
+}
+
+$template = Template::replace($template, array(
+    "DESTINATION_TITLE" => $locations[$object->getDestination()]['c_title'],
+    "DESTINATION_ZIP" => $locations[$object->getDestination()]['c_zip_code'],
+    "DEPARTURE_TITLE" => $locations[$object->getDeparture()]['c_title']));
+
+# Show a link to the weather reports if the destination has a zip code
+if ($locations[$object->getDestination()]['c_zip_code']) {
+    $template = Template::unhide($template, "WEATHER");
+}
+
+$template = $object->insertIntoTemplate($template);
+$res['content'] = $leader->insertIntoTemplate($template);
+
+$res['title'] = "Adventure : "
+    . substr($object->getTitle(), 0, 45)
+    . (strlen($object->getTitle()) > 45 ? "..." : "");
+
+?>
+@
+
+
+1.11
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.10 2004/09/20 20:38:39 at Exp $
+a45 6
+}
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "OPTION",
+        array_change_key_case($action, 1));
+@
+
+
+1.10
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.9 2004/09/20 20:07:04 at Exp $
+d23 1
+a23 1
+include_once("Location.php");
+d26 1
+a26 1
+$leader =& new Member();
+@
+
+
+1.9
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.8 2004/09/09 15:47:52 at Exp $
+d38 2
+a39 2
+    $template = Template::unhideBlock($template, "VIEW_ANSWERS");
+    $template = Template::replaceValues($template, array(
+d45 1
+a45 1
+    $template = Template::unhideBlock($template, "CANCELLED");
+d50 1
+a50 1
+    $template = Template::replaceWithinBlock($template, "OPTION",
+d67 1
+a67 1
+    $template = Template::unhideBlock($template, "COMMENT_LINK");
+d76 1
+a76 1
+    $template = Template::replaceWithinBlock($template, "CAT",
+d88 1
+a88 1
+    $thisComment = Template::replaceValues($comment,
+d91 1
+a91 1
+        $thisComment = Template::unhideBlock($thisComment, "HIDE_NAME");
+d94 1
+a94 1
+        $thisComment = Template::unhideBlock($thisComment, "SHOW_NAME");
+d96 1
+a96 1
+    $template = Template::replaceValues($template, array(
+d101 1
+a101 1
+    $template = Template::unhideBlock($template, "SOME");
+d105 1
+a105 1
+    $template = Template::unhideBlock($template, "FULL");
+d108 1
+a108 1
+$template = Template::replaceValues($template, array(
+d115 1
+a115 1
+    $template = Template::unhideBlock($template, "WEATHER");
+@
+
+
+1.8
+log
+@removed link to edit your questions after the adventure has started
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.7 2004/09/08 22:45:37 at Exp $
+d29 1
+a29 2
+$now =& new DateTime();
+$past = ($now->compareTo($object->getEndDate()) > 0);
+d36 1
+a36 1
+        && $now->compareTo($object->getStartDate()) < 1) {
+d65 1
+a65 1
+        && $past
+@
+
+
+1.7
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.6 2004/08/31 22:31:30 at Exp $
+d36 2
+a37 1
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user']) && !$past) {
+@
+
+
+1.6
+log
+@styling on favorite-locations table templates/main
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.5 2004/08/25 02:54:48 at Exp $
+d32 1
+a32 3
+# Create templates
+$wrapper = file_get_contents("templates/adventure/read-wrapper.php");
+$box = file_get_contents("templates/adventure/read-box.php");
+d38 2
+a39 2
+    $wrapper = Template::unhideBlock($wrapper, "VIEW_ANSWERS");
+    $wrapper = Template::replaceValues($wrapper, array(
+d45 1
+a45 1
+    $box = Template::unhideBlock($box, "CANCELLED");
+d50 1
+a50 1
+    $box = Template::replaceWithinBlock($box, "OPTION",
+d67 1
+a67 1
+    $wrapper = Template::unhideBlock($wrapper, "COMMENT_LINK");
+d76 1
+a76 1
+    $box = Template::replaceWithinBlock($box, "CAT",
+d81 1
+a81 1
+$comment = Template::extract($wrapper, "COMMENT");
+d96 1
+a96 1
+    $wrapper = Template::replaceValues($wrapper, array(
+d101 1
+a101 1
+    $wrapper = Template::unhideBlock($wrapper, "SOME");
+a103 4
+# Put everything into the templates and display it
+$box = $object->insertIntoTemplate($box, FALSE, TRUE);
+$box = $leader->insertIntoTemplate($box);
+
+d105 1
+a105 1
+    $box = Template::unhideBlock($box, "FULL");
+d108 1
+a108 1
+$res['content'] = Template::replaceValues($box, array(
+d115 1
+a115 1
+    $res['content'] = Template::unhideBlock($res['content'], "WEATHER");
+d118 3
+a120 4
+$res['tab'] = "Details";
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']) + $object->getVarArray());
+@
+
+
+1.5
+log
+@don't let members comment more than once on an adventure; limit form input
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.4 2004/08/24 03:26:45 at Exp $
+d110 4
+a116 4
+    "IS_FULL" => (
+        $object->isFull()
+        ? "Filled; you may join the waitlist"
+        : "Not Filled"),
+d127 4
+a130 2
+    "BOX" => $res['content']));
+$res['title'] = "View Adventure Details";
+@
+
+
+1.4
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/08/18 14:56:48 at Exp $
+d66 3
+a68 1
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user']) && $past) {
+@
+
+
+1.3
+log
+@fixed bug: was checking to see if the leader had joined (stupid)
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d51 3
+a53 5
+$actions = $obj['security']->getAllowedObjectActions($object, $obj['user']);
+foreach ($actions as $key => $action) {
+    $box = Template::replaceWithinBlock($box, "OPTION", array(
+        "C_UID" => $action->getUID(),
+        "C_TITLE" => $action->getSummary()));
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d30 1
+d38 1
+a38 3
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user']) 
+    && $now->compareTo($object->getStartDate()) <= 0)
+{
+d68 1
+a68 1
+if (JoinAdventureManager::checkIfMemberIsAttending($object, $leader)) {
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.7 2004/05/30 01:42:08 baron Exp $
+d61 1
+a61 1
+$result =& $obj['conn']->query("select * from t_location "
+d75 2
+a76 2
+    . "from t_adventure_activity as aa "
+    . "inner join t_activity as ac on ac.c_uid = aa.c_activity "
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

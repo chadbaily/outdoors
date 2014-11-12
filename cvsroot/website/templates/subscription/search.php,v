@@ -1,0 +1,78 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.34;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.09.21.41.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Search Subscriptions</h1>
+
+{FORM}
+
+{SOME:}
+<table class="cleanHeaders verticalMargins">
+  <tr>
+    <th>Subscription</th>
+    <th>Email Address</th>
+    <th>Password</th>
+    <th>Owner</th>
+    <th>List</th>
+  </tr>{ROW:}
+  <tr>
+    <td>
+      <a href="members/subscription/read/{C_UID}">{C_UID}</a>
+    </td>
+    <td>{C_EMAIL}</td>
+    <td>{C_PASSWORD}</td>
+    <td>
+      <a href="members/member/read/{C_OWNER}">{C_FULL_NAME}</a>
+    </td>
+    <td>
+      <a href="members/email_list/read/{C_LIST}">{C_TITLE}</a>
+    </td>
+  </tr>{:ROW}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">No matches found.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d16 1
+a16 1
+      <a href="members.php?page=subscription&action={ACTION_READ}&object={C_UID}">{C_UID}</a>
+d21 1
+a21 1
+      <a href="members.php?page=member&action={ACTION_READ}&object={C_OWNER}">{C_FULL_NAME}</a>
+d24 1
+a24 1
+      <a href="members.php?page=email_list&action={ACTION_READ}&object={C_LIST}">{C_TITLE}</a>
+@
+

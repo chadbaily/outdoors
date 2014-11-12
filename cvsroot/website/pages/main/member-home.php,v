@@ -1,0 +1,556 @@
+head	1.17;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.17
+date	2004.10.23.12.57.19;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.09.22.16.28.50;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.09.20.18.11.13;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.09.09.02.24.12;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.09.02.12.43.03;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.18.20.16.56;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.18.19.58.29;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.18.15.29.58;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.17.11.56.23;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.04.13.03.36;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.04.01.44.16;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.26.12.10.03;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.00.31.43;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.19.16.45.44;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.17
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: member-home.php,v 1.16 2004/09/22 16:28:50 at Exp $
+ *
+ * Purpose: the member homepage that members see after they log in.
+ */
+
+include_once("authorize.php");
+include_once("EventCalendar.php");
+
+$wrapper = file_get_contents("templates/main/member-home.php");
+
+# Plug in address, phone, and chat stuff
+if (($address = $obj['user']->getPrimaryAddress()) != null) {
+    $wrapper = Template::block($wrapper, "ADDRESS",
+        $address->getVarArray(), false);
+}
+if (($phone = $obj['user']->getPrimaryPhoneNumber()) != null) {
+    $wrapper = Template::block($wrapper, "PHONE",
+        $phone->getVarArray(), false);
+}
+if (($chat = $obj['user']->getPrimaryChat()) != null) {
+    require_once("chat_type.php");
+    $type =& new chat_type();
+    $type->select($chat->getType());
+    $wrapper = Template::block($wrapper, "CHAT",
+        $chat->getVarArray() 
+        + array("C_ABBREVIATION" => $type->getAbbreviation()), 
+        false);
+}
+
+# Add a message if the member needs to renew within $days days
+$days = 30;
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/membership/needs-to-renew.sql");
+$cmd->addParameter("member", $cfg['user']);
+if (($daysLeft = $cmd->executeScalar()) < $days) {
+    $wrapper = Template::unhide($wrapper, "NEED_TO_RENEW");
+    $wrapper = Template::replace($wrapper,
+        array("DAYS_LEFT" => $daysLeft));
+}
+
+# Get upcoming adventures
+$favImg = "<img src='assets/smiley-tiny.png' width='12' height='12' "
+    . "title='This adventure matches your interests' "
+    . "alt='This adventure matches your interests'>";
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/select-top-upcoming.sql");
+$cmd->addParameter("number", 100);
+$cmd->addParameter("member", $cfg['user']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $wrapper = Template::block($wrapper, "UPCOMING",
+        array_change_key_case($row, 1)
+        + array("IMG" => (($row['fav'] > 0) ? $favImg : "")));
+}
+
+# Get recent classified ads
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/classified_ad/select-newest.sql");
+$cmd->addParameter("limit", 5);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $wrapper = Template::block($wrapper, "CLASSIFIEDS",
+        array_change_key_case($row, 1));
+}
+
+# Check if the member needs to choose interests
+if (count($obj['user']->getChildren("interest"))) {
+    $wrapper = Template::unhide($wrapper, "FAV_LOCATIONS");
+    # Get the most popular locations that match the user's interests
+    $limit = 5;
+    $count = 0;
+    $seen = array();
+    if (isset($_GET['limit']) && intval($_GET['limit']) > 0) {
+        $limit = intval($_GET['limit']);
+    }
+    else {
+        $wrapper = Template::unhide($wrapper, "MORE_ACTIVITIES");
+    }
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/location/select-by-interest.sql");
+    $cmd->addParameter("member", $cfg['user']);
+    # Not used anymore in the query -- needs a subselect
+    # $cmd->addParameter("limit", $limit);
+    $result =& $cmd->executeReader();
+    $evenOdd = 0;
+    while ($row =& $result->fetchRow() && $count < $limit) {
+        # The query itself can't return just one row per activity without using
+        # a subselect, and for that reason the 'limit' parameter is useless too.
+        # So we simulate the same effect here with $seen and $count:
+        if (!in_array($row['ac_title'], $seen)) {
+            $seen[] = $row['ac_title'];
+            $count++;
+            $wrapper = Template::block($wrapper, "POP_LOC",
+                array_change_key_case($row, 1)
+                + array("CLASS" => (($evenOdd++ % 2) ? "even" : "odd")));
+        }
+    }
+}
+else {
+    $wrapper = Template::unhide($wrapper, "CHOOSE_INTERESTS");
+}
+
+$wrapper = Template::replace($wrapper, array(
+    "CALENDAR" => EventCalendar::generateMonthView(
+        new DateTime(date("Y-m-01")), 25, false, true, true)));
+
+# Plug the user's ID into the page
+$wrapper = Template::replace($wrapper, array("MEMBER" => $cfg['user']));
+
+
+$res['navbar'] = "Member's Area/Member Home Page";
+$res['title'] = "Member Home Page";
+$res['content'] = $obj['user']->insertIntoTemplate($wrapper);
+
+?>
+@
+
+
+1.16
+log
+@changes for the classified ads
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.15 2004/09/20 20:38:40 at Exp $
+d40 2
+a41 1
+    $type =& new ChatType();
+d86 1
+a86 1
+if (count($obj['user']->getInterests())) {
+@
+
+
+1.15
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.14 2004/09/20 18:11:13 at Exp $
+d72 10
+@
+
+
+1.14
+log
+@make smiley on homepage smaller
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.13 2004/09/09 02:24:12 at Exp $
+d32 1
+a32 1
+    $wrapper = Template::replaceWithinBlock($wrapper, "ADDRESS",
+d36 1
+a36 1
+    $wrapper = Template::replaceWithinBlock($wrapper, "PHONE",
+d42 1
+a42 1
+    $wrapper = Template::replaceWithinBlock($wrapper, "CHAT",
+d54 2
+a55 2
+    $wrapper = Template::unhideBlock($wrapper, "NEED_TO_RENEW");
+    $wrapper = Template::replaceValues($wrapper,
+d69 1
+a69 1
+    $wrapper = Template::replaceWithinBlock($wrapper, "UPCOMING",
+d76 1
+a76 1
+    $wrapper = Template::unhideBlock($wrapper, "FAV_LOCATIONS");
+d85 1
+a85 1
+        $wrapper = Template::unhideBlock($wrapper, "MORE_ACTIVITIES");
+d101 1
+a101 1
+            $wrapper = Template::replaceWithinBlock($wrapper, "POP_LOC",
+d108 1
+a108 1
+    $wrapper = Template::unhideBlock($wrapper, "CHOOSE_INTERESTS");
+d111 1
+a111 1
+$wrapper = Template::replaceValues($wrapper, array(
+d116 1
+a116 1
+$wrapper = Template::replaceValues($wrapper, array("MEMBER" => $cfg['user']));
+@
+
+
+1.13
+log
+@change from hearts to smileys
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.12 2004/09/03 20:38:24 at Exp $
+d60 1
+a60 1
+$favImg = "<img src='assets/smiley.png' width='18' height='18' "
+@
+
+
+1.12
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.11 2004/09/02 12:43:03 at Exp $
+d60 1
+a60 1
+$favImg = "<img src='assets/heart.png' width='15' height='14' "
+a67 1
+$count = 0;
+d71 1
+a71 3
+        + array(
+            "IMG" => (($row['fav'] > 0) ? $favImg : ""),
+            "CLASS" => (($count++ %2) ? "even" : "odd")));
+@
+
+
+1.11
+log
+@added a prompt to choose interests
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.10 2004/08/18 20:16:56 at Exp $
+d122 1
+a122 4
+$res['usetab'] = true;
+$res['tabfile'] = "main.php";
+$res['tab'] = "Member's Area";
+$res['subtab'] = "Member Home Page";
+@
+
+
+1.10
+log
+@added styling to the upcoming adventures table
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.9 2004/08/18 19:58:29 at Exp $
+d77 32
+a108 6
+# Get the most popular locations that match the user's interests
+$limit = 5;
+$count = 0;
+$seen = array();
+if (isset($_GET['limit']) && intval($_GET['limit']) > 0) {
+    $limit = intval($_GET['limit']);
+d111 1
+a111 20
+    $wrapper = Template::unhideBlock($wrapper, "MORE_ACTIVITIES");
+}
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/location/select-by-interest.sql");
+$cmd->addParameter("member", $cfg['user']);
+# Not used anymore in the query -- needs a subselect
+# $cmd->addParameter("limit", $limit);
+$result =& $cmd->executeReader();
+$evenOdd = 0;
+while ($row =& $result->fetchRow() && $count < $limit) {
+    # The query itself can't return just one row per activity without using
+    # a subselect, and for that reason the 'limit' parameter is useless too.
+    # So we simulate the same effect here with $seen and $count:
+    if (!in_array($row['ac_title'], $seen)) {
+        $seen[] = $row['ac_title'];
+        $count++;
+        $wrapper = Template::replaceWithinBlock($wrapper, "POP_LOC",
+            array_change_key_case($row, 1)
+            + array("CLASS" => (($evenOdd++ % 2) ? "even" : "odd")));
+    }
+@
+
+
+1.9
+log
+@changed styling on favorite-adventures table
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.8 2004/08/18 15:29:58 at Exp $
+d68 1
+d72 3
+a74 1
+        + array("IMG" => ($row['fav'] > 0) ? $favImg : ""));
+@
+
+
+1.8
+log
+@removed the 'Show More' link after it's clicked on
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.7 2004/08/17 11:56:23 at Exp $
+d90 1
+d99 2
+a100 1
+            array_change_key_case($row, 1));
+@
+
+
+1.7
+log
+@added a days-to-renewal notice to member home page
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.6 2004/08/04 13:03:36 at Exp $
+d80 3
+@
+
+
+1.6
+log
+@removed an order-by clause and put it in the code to do the grouping better
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.5 2004/08/04 01:44:16 at Exp $
+d46 11
+@
+
+
+1.5
+log
+@sort of do the work of grouping that can't be don'e without an inner select on popular-location query
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.4 2004/07/26 12:10:03 at Exp $
+d66 1
+a66 1
+$activity = "";
+d79 3
+a81 3
+    # So we simulate the same effect here with $activity and $count:
+    if ($row['ac_title'] != $activity) {
+        $activity = $row['ac_title'];
+@
+
+
+1.4
+log
+@Fix calendar of events
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.3 2004/07/26 00:31:43 at Exp $
+d63 1
+a63 1
+# Get the 5 most popular locations that match the user's interests
+d65 2
+d73 2
+a74 1
+$cmd->addParameter("limit", $limit);
+d76 10
+a85 3
+while ($row =& $result->fetchRow()) {
+    $wrapper = Template::replaceWithinBlock($wrapper, "POP_LOC",
+        array_change_key_case($row, 1));
+@
+
+
+1.3
+log
+@fixes for database table prefixes
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.2 2004/07/19 16:45:44 at Exp $
+a77 1
+/*
+a80 1
+        */
+@
+
+
+1.2
+log
+@Calendar stuff
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.9 2004/06/10 13:21:36 baron Exp $
+d78 1
+d82 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: member-home.php,v 1.7 2004/05/30 01:42:17 baron Exp $
+d26 1
+d77 4
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

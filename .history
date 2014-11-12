@@ -1,0 +1,200 @@
+#+1365198782
+ls
+#+1365198784
+cd ..
+#+1365198784
+ls
+#+1365198795
+pwd
+#+1365198796
+cd bin
+#+1365198796
+ls
+#+1365198798
+vim send-email.pl
+#+1365198816
+mysql
+#+1365198829
+mysql -h "db57b.pair.com" ;
+#+1365198930
+ls
+#+1365198931
+pwd
+#+1365198936
+cd ..
+#+1365198937
+ls
+#+1365198941
+find ./ | grep css$
+#+1365198960
+find ./ | grep css$
+#+1365198985
+pwd
+#+1365198985
+ls
+#+1367780119
+ls
+#+1367780121
+hostname
+#+1367780127
+ping www4.g4.pair.com
+#+1367780544
+host outdoorsatuva.pairserver.com
+#+1367780580
+host 66.39.3.125
+#+1367780597
+host www4.g4.pair.com
+#+1367780682
+ls
+#+1367780684
+pwd
+#+1367780703
+pwd
+#+1367780704
+df -h
+#+1367780708
+df -h
+#+1367780736
+pwd
+#+1367780814
+whoami
+#+1367780816
+host
+#+1367780820
+hostname
+#+1367780831
+ping `hostname`
+#+1367780876
+ls
+#+1367780879
+cd public_html/
+#+1367780879
+ls
+#+1367780884
+vim .htaccess
+#+1367780944
+ls
+#+1367780953
+ls -lrt
+#+1367780958
+cd fcgi-bin/
+#+1367780958
+ls
+#+1367780963
+vim php.ini
+#+1367780967
+pwd
+#+1367781049
+vim ~/.bashrc
+#+1367781086
+vim ~/.bashrc
+#+1367781120
+vim ~/.bashrc
+#+1367781302
+source ~/.bashrc
+#+1367781304
+lv
+#+1367781311
+ls ~/
+#+1367781316
+ls -lrt ~/.bashrc
+#+1367781322
+vim ~/.bashrc
+#+1367781331
+vim ~/.profile
+#+1367781345
+vim ~/.bashrc
+#+1367781353
+vim ~/.bashrc
+#+1367781358
+vim ~/profile
+#+1367781364
+vim ~/.profile
+#+1367781494
+source ~/.bashrc
+#+1367781502
+source ~/.bashrc
+#+1367781507
+vim ~/.bashrc
+#+1367781512
+source ~/.bashrc
+#+1367781516
+vim ~/.bashrc
+#+1367781569
+source ~/.bashrc
+#+1367781573
+ec
+#+1367781578
+export PS1="blah"
+#+1367781583
+export
+#+1367781585
+man export
+#+1367781591
+export a="a"
+#+1367781597
+export a="a"
+#+1367781605
+export a="a"
+#+1367781607
+a="a"
+#+1367781613
+a="as"
+#+1367781615
+ls
+#+1367781617
+a=5
+#+1367781621
+echo $a
+#+1367781633
+vim ~/.bashrc
+#+1367781646
+source ~/.bashrc
+#+1367781660
+ls /usr/local/bin/
+#+1367781665
+ls /usr/local/bin/*
+#+1367781669
+ls /usr/local/bin/
+#+1367781671
+which export
+#+1367781674
+man export
+#+1367781702
+q
+#+1367781703
+ls
+#+1367781707
+ls /usr/local/bin
+#+1367781725
+export a="b"
+#+1367781726
+ls
+#+1367781727
+echo $a
+#+1367781731
+a=5
+#+1367781733
+echo $a
+#+1367781742
+ls
+#+1367781753
+a=5
+#+1367781773
+hostname
+#+1367781777
+a=5
+#+1367781779
+echo $a
+#+1367781802
+vim ./.bashrc
+#+1367781809
+vim ~/.bashrc
+#+1367781828
+echo $shell
+#+1367781900
+ls vim ~/.bashrc
+#+1367781906
+vim ~/.bashrc
+#+1367781914
+bash

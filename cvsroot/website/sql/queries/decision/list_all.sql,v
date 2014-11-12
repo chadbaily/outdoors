@@ -1,0 +1,64 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.02.02.07.04;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@table alias wrong
+@
+text
+@select
+    de.c_uid,
+    de.c_title,
+    de.c_text,
+    ca.c_title as c_category
+from [_]decision as de
+    inner join [_]decision_category as ca on ca.c_uid = de.c_category
+where de.c_deleted <> 1
+    and ca.c_deleted <> 1
+order by ca.c_title
+@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@d9 1
+a9 1
+    and dc.c_deleted <> 1
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d8 2
+@
+

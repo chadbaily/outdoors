@@ -1,0 +1,190 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.21.20.55.39;	author at;	state dead;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.38;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.23.49.15;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@not used anymore, code merged into pages/attendee/mark_absent.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: AbsenceManager.php,v 1.4 2004/09/20 20:38:38 at Exp $
+ */
+include_once("Email.php");
+
+class AbsenceManager {
+
+    /* {{{sendAbsenceEmail
+     *
+     */
+    function sendAbsenceEmail(&$member, &$adventure) {
+        global $obj;
+        global $cfg;
+
+        $leader =& new Member();
+        $leader->select($adventure->getOwner());
+
+        $emailTemplate = file_get_contents("templates/emails/absence.txt");
+
+        # Get a count of this member's absences
+        $query = "select count(*) as num from [_]absence, [_]attendee where"
+            . " [_]absence.c_attendee=t_attendee.c_uid and [_]attendee.c_member=" 
+            . $member->getUID();
+        $result = $obj['conn']->query($query);
+        $row = $result->fetchRow();
+        $num = $row['num'];
+
+        $email =& new Email();
+        $email->addTo($member->getEmail());
+        $email->setFrom($cfg['club_admin_email']);
+        $email->addCC($leader->getEmail());
+        $email->setSubject("Absence for '" . $adventure->getTitle() . "'");
+        $email->setBody(Template::replace($emailTemplate, array(
+            "LEADER_EMAIL" => $leader->getEmail(),
+            "NUM" => $num,
+            "TITLE" => $adventure->getTitle(),
+            "NAME" => $member->getFirstName(),
+            "MEMBER_NAME" => $member->getFullName()
+            )));
+        $email->setWordWrap(TRUE);
+        $email->loadFooter("templates/emails/footer.txt");
+        $email->send();
+    } //}}}
+
+}
+?>
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: AbsenceManager.php,v 1.3 2004/09/08 23:49:15 at Exp $
+@
+
+
+1.3
+log
+@simplified email sending when marking someone as absent
+@
+text
+@d20 1
+a20 1
+ * $Id: AbsenceManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+d51 1
+a51 1
+        $email->setBody(Template::replaceValues($emailTemplate, array(
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: AbsenceManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d29 1
+a29 1
+    function sendAbsenceEmail(&$member, &$adventure, $type) {
+d36 1
+a36 6
+        if ($type == "Short") {
+            $emailTemplate = file_get_contents("templates/emails/absence/short.php");
+        }
+        else {
+            $emailTemplate = file_get_contents("templates/emails/absence/long.php");
+        }
+d46 1
+a46 1
+        $email =& new Email($email_path);
+d59 1
+a59 1
+        $email->loadFooter("templates/emails/footer.php");
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: AbsenceManager.php,v 1.6 2004/05/30 01:41:56 baron Exp $
+d44 2
+a45 2
+        $query = "select count(*) as num from t_absence, t_attendee where"
+            . " t_absence.c_attendee=t_attendee.c_uid and t_attendee.c_member=" 
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

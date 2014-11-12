@@ -1,0 +1,150 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.20.20.38.41;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shortened template function names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: write.php,v 1.2 2004/09/08 22:45:37 at Exp $
+ */
+
+$template = file_get_contents("templates/status/write.php");
+$template = $object->insertIntoTemplate($template);
+
+# Create the form.
+$form =& new XmlForm("forms/status/write.xml");
+
+# Put the status's information into the form
+$form->setValue("title", $object->getTitle());
+$form->setValue("description", $object->getDescription());
+
+# Validate the form
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Update the status with the form information
+    $object->setTitle($form->getValue("title"));
+    $object->setDescription($form->getValue("description"));
+
+    # Save the modified status
+    $object->update();
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+$res['content'] = Template::replace($template, array(
+    "FORM" => $form->toString()));
+$res['title'] = "Edit Status Details";
+
+?>
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d44 1
+a44 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d47 1
+a47 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.4 2004/05/30 01:42:23 baron Exp $
+d23 2
+a24 3
+# Create templates
+$wrapper = file_get_contents("templates/status/write-wrapper.php");
+$box = file_get_contents("templates/status/write-box.php");
+d44 1
+a44 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d47 1
+a47 3
+# Plug it all into the templates
+$res['tab'] = "Edit";
+$res['content'] = Template::replaceValues($box, array(
+a48 3
+include_once("tabbed-boxes/generic-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+a49 5
+
+$wrapper = Template::replaceValues($object->insertIntoTemplate($wrapper),
+    array(
+        "BOX" => $res['content'],
+        "FORM" => $form->toString()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

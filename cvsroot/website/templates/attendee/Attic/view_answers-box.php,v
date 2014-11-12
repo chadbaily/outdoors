@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.14.03;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@{DEADLINE:}
+<p class='error'>This adventure's start date has already passed.  You may no
+longer change the answers to these questions.</p>
+{:DEADLINE}
+
+{INSTRUCTIONS:}
+<p> Please answer all of the following questions (if any) and submit the
+form to record your answers.</p>
+{:INSTRUCTIONS}
+
+{SUCCESS:}
+<p class="notice">Your answers were successfully updated.</p>
+{:SUCCESS}
+
+{FORM}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

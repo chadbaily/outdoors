@@ -1,0 +1,75 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.19.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Search Locations</h1>
+
+{FORM}
+
+{NONE:}
+<p class="notice">Sorry, no matches found.</p>
+{:NONE}
+
+{TITLE:}
+<ol>{ROW:}
+  <li><a href="members/location/read/{C_UID}">{C_TITLE}</a></li>{:ROW}
+</ol>
+{:TITLE}
+
+{ACTIVITY:}
+
+<p>This view shows the number of adventures of the selected type that have gone
+to each location, so you can see how popular it is as a destination for the
+selected activity.</p>
+
+<table class="cleanHeaders">
+  <tr>
+    <th>Title</th><th>#Adventures</th>
+  </tr>
+  <tr>{ROW:}
+    <td>
+      <a href="members/location/read/{C_UID}">{C_TITLE}</a>
+    </td>
+    <td>{C_COUNT}</td>
+  </tr>{:ROW}
+</table>
+{:ACTIVITY}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d11 1
+a11 1
+  <li><a href="members.php?page=location&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a></li>{:ROW}
+d27 1
+a27 1
+      <a href="members.php?page=location&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+@
+

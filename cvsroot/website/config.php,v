@@ -1,0 +1,2290 @@
+head	1.37;
+access;
+symbols
+	test:1.3.0.2
+	init:1.1.1.1
+	socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.37
+date	2005.02.09.21.03.43;	author at;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2005.02.09.15.20.36;	author at;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2005.01.31.21.00.04;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2005.01.31.01.05.24;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2005.01.20.01.29.49;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2005.01.10.22.33.02;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2005.01.10.21.24.46;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.12.28.16.00.34;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.11.10.21.43.23;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.11.08.20.10.25;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.11.08.20.08.07;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.11.08.18.30.32;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.11.07.02.53.20;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.11.01.19.14.23;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.11.01.01.05.06;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.10.28.17.05.37;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.10.23.14.21.06;	author at;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2004.10.23.13.48.02;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.10.23.13.22.09;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.10.15.16.21.04;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.10.07.17.45.20;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.10.04.18.15.23;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.09.10.01.45.59;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.09.09.03.43.19;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.08.26.14.16.09;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.08.26.14.01.10;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.25.17.03.43;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.25.12.09.50;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.25.11.48.50;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.19.18.16.02;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.19.16.02.16;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.19.13.18.41;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.15.02.20.35;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.21.12.51.55;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.06.08.18.13.32;	author at;	state Exp;
+branches
+	1.3.2.1;
+next	1.2;
+
+1.2
+date	2004.05.30.03.23.45;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+1.3.2.1
+date	2004.07.20.15.02.41;	author at;	state Exp;
+branches;
+next	1.3.2.2;
+
+1.3.2.2
+date	2004.07.25.20.36.32;	author at;	state Exp;
+branches;
+next	1.3.2.3;
+
+1.3.2.3
+date	2004.07.26.00.31.08;	author at;	state Exp;
+branches;
+next	1.3.2.4;
+
+1.3.2.4
+date	2004.07.30.01.08.58;	author at;	state Exp;
+branches;
+next	1.3.2.5;
+
+1.3.2.5
+date	2004.07.30.02.27.45;	author at;	state Exp;
+branches;
+next	1.3.2.6;
+
+1.3.2.6
+date	2004.08.02.00.29.44;	author at;	state Exp;
+branches;
+next	1.3.2.7;
+
+1.3.2.7
+date	2004.08.02.00.30.15;	author at;	state Exp;
+branches;
+next	1.3.2.8;
+
+1.3.2.8
+date	2004.08.03.06.08.56;	author at;	state Exp;
+branches;
+next	1.3.2.9;
+
+1.3.2.9
+date	2004.08.12.14.13.09;	author at;	state Exp;
+branches;
+next	1.3.2.10;
+
+1.3.2.10
+date	2004.08.14.23.10.53;	author at;	state Exp;
+branches;
+next	1.3.2.11;
+
+1.3.2.11
+date	2004.08.19.15.58.43;	author at;	state Exp;
+branches;
+next	1.3.2.12;
+
+1.3.2.12
+date	2004.08.24.03.25.09;	author at;	state Exp;
+branches;
+next	1.3.2.13;
+
+1.3.2.13
+date	2004.08.26.13.41.01;	author at;	state Exp;
+branches;
+next	1.3.2.14;
+
+1.3.2.14
+date	2004.09.02.11.08.14;	author at;	state Exp;
+branches;
+next	1.3.2.15;
+
+1.3.2.15
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.3.2.16;
+
+1.3.2.16
+date	2004.09.09.00.08.53;	author at;	state Exp;
+branches;
+next	1.3.2.17;
+
+1.3.2.17
+date	2004.10.04.18.13.06;	author at;	state Exp;
+branches;
+next	1.3.2.18;
+
+1.3.2.18
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.3.2.19;
+
+1.3.2.19
+date	2004.10.21.20.50.07;	author at;	state Exp;
+branches;
+next	1.3.2.20;
+
+1.3.2.20
+date	2004.10.23.12.43.27;	author at;	state Exp;
+branches;
+next	1.3.2.21;
+
+1.3.2.21
+date	2004.10.23.14.46.53;	author at;	state Exp;
+branches;
+next	1.3.2.22;
+
+1.3.2.22
+date	2004.10.27.21.41.12;	author at;	state Exp;
+branches;
+next	1.3.2.23;
+
+1.3.2.23
+date	2004.10.28.16.59.58;	author at;	state Exp;
+branches;
+next	1.3.2.24;
+
+1.3.2.24
+date	2004.10.31.21.28.32;	author at;	state Exp;
+branches;
+next	1.3.2.25;
+
+1.3.2.25
+date	2004.11.01.19.06.09;	author at;	state Exp;
+branches;
+next	1.3.2.26;
+
+1.3.2.26
+date	2004.11.07.02.49.28;	author at;	state Exp;
+branches;
+next	1.3.2.27;
+
+1.3.2.27
+date	2004.11.08.18.29.41;	author at;	state Exp;
+branches;
+next	1.3.2.28;
+
+1.3.2.28
+date	2004.11.09.14.12.42;	author at;	state Exp;
+branches;
+next	1.3.2.29;
+
+1.3.2.29
+date	2004.11.10.21.42.50;	author at;	state Exp;
+branches;
+next	1.3.2.30;
+
+1.3.2.30
+date	2004.12.28.15.57.33;	author at;	state Exp;
+branches;
+next	1.3.2.31;
+
+1.3.2.31
+date	2005.01.10.03.37.58;	author at;	state Exp;
+branches;
+next	1.3.2.32;
+
+1.3.2.32
+date	2005.01.31.01.04.44;	author at;	state Exp;
+branches;
+next	1.3.2.33;
+
+1.3.2.33
+date	2005.01.31.20.53.00;	author at;	state Exp;
+branches;
+next	1.3.2.34;
+
+1.3.2.34
+date	2005.02.09.20.58.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.37
+log
+@merge actionform changes over from test
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: config.php,v 1.36 2005/02/09 15:20:36 at Exp $
+ */
+
+# ------------------------------------------------------------------------------
+# Create functions in the global scope
+# ------------------------------------------------------------------------------
+# Define the file_get_contents() function if it's not defined for this version of PHP
+if (!function_exists("file_get_contents")) {
+    function file_get_contents($filename) {
+        return implode("", file($fileName));
+    }
+}
+
+/* {{{getval
+ * Get a sanitized version of a $_GET variable from a browser.
+ */
+function getval($key) {
+    if (isset($_GET[$key])) {
+        if (is_array($_GET[$key])) {
+            // build a new array and return it, sanitized
+            $toReturn = array();
+            while (list($key, $val) = each($_GET[$key])) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_GET[$key]); 
+    }
+} //}}}
+
+/* {{{postval
+ * Return a sanitized version of a browser's $_POST variable.
+ */
+function postval($key) {
+    if (isset($_POST[$key])) {
+        if (is_array($_POST[$key])) {
+            // build a new array and return it, sanitized
+            $temp = $_POST[$key];
+            $toReturn = array();
+            while (list($key, $val) = each($temp)) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_POST[$key]); 
+    }
+} //}}}
+
+/* {{{redirect
+ */
+function redirect($url) {
+    header("Location:$url");
+    exit;
+} //}}}
+
+
+/* {{{getRandomString
+ */
+function getRandomString($length, $dictionary = null) {
+    if (is_null ($dictionary)) {
+        $dictionary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    }
+    $dictionaryLength = strlen($dictionary);
+    $result = "";
+    for ($i = 0; $i < $length; ++$i) {
+        $result .= substr($dictionary, rand(0, $dictionaryLength - 1), 1);
+    }
+    return $result;
+} //}}}
+
+/* {{{highlightSql
+ */
+function highlightSql($sql) {
+    $gray = str_replace(" ", "\b|\b", 
+        "ALL AND BETWEEN CROSS EXISTS JOIN IN LIKE NOT OR NULL OUTER SOME");
+
+    $blue = str_replace(" ", "\b|\b", 
+        "ADD ALTER AS ASC BIGINT BINARY BY CASCADE CHAR CHARACTER CHECK"
+        . "COLLATE COLUMN COLUMNS CONNECTION CONSTRAINT CREATE CURRENT_DATE "
+        . "CURRENT_TIME CURSOR DATABASE DEC DECIMAL DECLARE DEFAULT DELETE DESC "
+        . "DESCRIBE CHANGE DISTINCT DROP ELSE ON EXPLAIN FALSE FOR FROM "
+        . "GRANT GROUP HASH HAVING IF IGNORE INDEX INNER INSERT "
+        . "INTERVAL INTO IS KEY LIMIT LOAD OPTIMIZE ORDER OUT RENAME REVOKE "
+        . "SELECT SET SHOW TABLE THEN TO TRUE TRUNCATE UNION UNIQUE UPDATE USE "
+        . "VALUES WHEN WHERE WHILE WITH");
+
+    $pink = str_replace(" ", "\b|\b", 
+        "CASE CURRENT_TIMESTAMP LEFT REPLACE RIGHT");
+
+    $sql = preg_replace("/('|\")(.*?)(\\1)/", "<tt style='color:red'>\\1\\2\\3</tt>", $sql);
+    $sql = preg_replace("/(\b$blue\b)/i", "<tt style='color:blue'>\\1</tt>", $sql);
+    $sql = preg_replace("/(\b$pink\b)/i", "<tt style='color:#FF00FF'>\\1</tt>", $sql);
+    return preg_replace("/(\b$gray\b)/i", "<tt style='color:gray'>\\1</tt>", $sql);
+} //}}}
+
+
+function titlecase($text) {
+    $articles = "to|at|in|it|the|from|for|and|of|on|or|a|this|by";
+    $bad = array("!!!");
+    $good = array("!");
+    return ucfirst(preg_replace("/\b($articles)\b/ie", 'strtolower("\\1");',
+        preg_replace("/\b([\w']+)\b/e", "ucfirst(strtolower('\\1'));",
+            str_replace($bad, $good, $text))));
+}
+
+function create_session($user) {
+    global $obj;
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/session/create.sql");
+    $cmd->addParameter("user", $user);
+    $cmd->addParameter("ip", $_SERVER["REMOTE_HOST"]);
+    $result =& $cmd->executeReader();
+    return intval($result->identity());
+}
+
+# Create a form that will allow selecting allowed actions on objects of the
+# given type, with the given ID using the given style.  Set $cache to true, to
+# avoid hitting the DB again; this will fetch the privileges once and then
+# re-use them, even for different objects.
+function actionform($class, $id, $style, $cache = false) {
+    global $object;
+    global $cfg;
+    static $privs;
+    static $cacheType;
+    if (!$cache || !is_array($privs) || $cacheType != $class) {
+        if (isset($object) 
+            && !is_array($privs)
+            && get_class($object) == $class
+            && $object->getUID() == $id)
+        {
+            # The object is already fetched from the DB.  No need to re-fetch it.
+            # Don't assign by reference; this is a static variable.  See the
+            # PHP manual.
+            $privs = $object->getAllowedActions();
+            $cacheType = $class;
+        }
+        elseif (!$cache || !is_array($privs) || $cacheType != $class) {
+            $cacheType = $class;
+            $obj =& new $class();
+            $obj->select($id);
+            # Don't assign by reference.
+            $privs = $obj->getAllowedActions();
+        }
+    }
+    $template = file_get_contents("templates/misc/actionform-$style.txt");
+    foreach ($privs as $action) {
+        $template = Template::block($template, "actions", $action);
+    }
+    return Template::replace($template, array(
+        "PAGE" => $class,
+        "BASE" => $cfg['base_url'],
+        "OBJECT" => $id));
+}
+
+function smiley($text) {
+    $find = array(
+        "/(?<!O):-?\\)/",
+        "/:-?\\(/",
+        "/;-?\\)/",
+        "/:-?P/",
+        "/:-?D/",
+        "/:-\\[/",
+        "#:-/#",
+        "/=-(O|0)/",
+        "/:-\\*/",
+        "/(>:o|&gt;:o)/",
+        "/8-?\\)/",
+        "/:-\\$/",
+        "/:-!/",
+        "/O:-?\\)/",
+        "/:'\\(/",
+        "/:-X/");
+
+    $replace = array(
+        "smile",
+        "frown",
+        "wink",
+        "tongue-out",
+        "laughing",
+        "embarassed",
+        "undecided",
+        "surprised",
+        "kiss",
+        "yell",
+        "cool",
+        "money-mouth",
+        "foot-in-mouth",
+        "innocent",
+        "cry",
+        "sealed");
+    foreach ($replace as $key => $val) {
+        $replace[$key] = "<img alt=\"\\0\" title=\"\\0\" height=\"18\" width=\"18\" src=\"assets/smiley-$val.png\">";
+    }
+    return preg_replace($find, $replace, $text);
+}
+
+# ------------------------------------------------------------------------------
+# Create the variables and stuff the individual pages need, including setting up
+# error handling and global variables.
+# ------------------------------------------------------------------------------
+ignore_user_abort();
+
+# -----------------------------------------------------------------------------
+# There are ONLY FOUR global variables,
+# $cfg $res, $err, and $obj.  $cfg holds config information, $res holds generated
+# content to send to the browser, and $obj holds global objects.  See the end of
+# this file for definitions of what's expected to be in the $res variable.  $err
+# holds a list of errors that can be spit out for debugging.
+# -----------------------------------------------------------------------------
+
+$cfg = array();
+$obj = array();
+$err = array();
+$res = array();
+
+# Set the level of error that should trigger something to happen.
+$cfg['error_types'] = array(
+          E_ERROR => "E_ERROR",
+          E_WARNING => "E_WARNING",
+          E_PARSE => "E_PARSE",
+          E_NOTICE => "E_NOTICE",
+          E_CORE_ERROR => "E_CORE_ERROR",
+          E_CORE_WARNING => "E_CORE_WARNING",
+          E_COMPILE_ERROR => "E_COMPILE_ERROR",
+          E_COMPILE_WARNING => "E_COMPILE_WARNING",
+          E_USER_ERROR => "E_USER_ERROR",
+          E_USER_WARNING => "E_USER_WARNING",
+          E_USER_NOTICE => "E_USER_NOTICE",
+          E_ALL => "E_ALL"
+     );
+error_reporting(E_ALL);
+# Define the levels of errors that I want to cause a webmaster email or log
+define("ERROR_EMAILING", E_ERROR | E_WARNING | E_PARSE | E_CORE_ERROR
+    | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR);
+define("ERROR_LOGGING", E_ALL);
+# Define a function to handle errors.  This will only handle user-defined
+# errors.  The built-in errors must be handled by the output buffering.
+set_error_handler("errorHandler");
+function errorHandler($errno, $errstr, $errfile, $errline) {
+    global $cfg;
+    $logMessage = "{$cfg['error_types'][$errno]} at line $errline "
+        ."in $errfile: $errstr"
+        . "\r\non page $_SERVER[REQUEST_URI]"
+        . "\r\nbrowser: $_SERVER[HTTP_USER_AGENT]";
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        $logMessage .= "\r\nreferred from $_SERVER[HTTP_REFERER]";
+    }
+    if (isset($cfg['user'])) {
+        $logMessage .= "\r\nuser: $cfg[user]";
+    }
+    if ((intval($errno) & ERROR_EMAILING) != 0) {
+        error_log($logMessage, 1, $cfg['webmaster_email']);
+    }
+    if ((intval($errno) & ERROR_LOGGING) != 0) {
+        error_log(date("Y-m-d h:i:s", time()) . $logMessage . "\r\n", 3, $cfg['error_log']);
+    }
+}
+
+# Call srand() just once per page invocation.
+srand ((double) microtime() * 1000000);
+
+# -----------------------------------------------------------------------------
+# Check for GET variables and store them in the $cfg array so there will be no
+# attempts to access undefined variables.  The 'object' is initialized from the
+# GET first, and if this fails from POST.
+# -----------------------------------------------------------------------------
+$cfg['action'] = isset($_GET['action']) ? $_GET['action'] : "";
+$cfg['page']   = isset($_GET['page'])   ? $_GET['page'] : "";
+
+$cfg['object'] = isset($_GET['object']) 
+    ? intval($_GET['object']) 
+    : (isset($_POST['object']) 
+        ? intval($_POST['object']) 
+        : 0);
+
+# This variable contains a list of things that can be unhidden in the current
+# page.
+$cfg['show'] = array();
+
+# -----------------------------------------------------------------------------
+# Paths and URLs.  These should NOT have a trailing slash.
+# -----------------------------------------------------------------------------
+
+# The base path on the filesystem where the website's files live
+$cfg['base_path'] = str_replace("\\", "/", dirname(__FILE__));
+
+# The address to the webserver that the site is hosted on.
+$cfg['site_url'] = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'];
+
+# The base URL to the site.
+$cfg['base_url'] = dirname($_SERVER['PHP_SELF']);
+if ($cfg['base_url'] == "/") {
+    $cfg['base_url'] = "";
+}
+
+# The path to any page file's action directory, assuming that $cfg[page] is
+# set... this is a safe assumption as long as this variable is only used from a
+# /pages/something page, which only runs if $cfg[page] is actually set.
+$cfg['page_path'] = "$cfg[base_path]/pages/$cfg[page]";
+
+# A magic value for the filename of the current page (this is the current
+# page that should be executed, NOT the same as any of the built-in PHP
+# variables).
+$cfg['page_file'] = "$cfg[base_path]/pages/$cfg[page].php";
+
+# Organization name.
+$cfg['club_name'] = "Outdoors at UVa";
+
+# The club's main email list
+$cfg['main_email_list'] = 1;
+
+# The email address for whoever's in charge of the club operation
+$cfg['club_admin_email'] = "outdoors-officers@@virginia.edu";
+$cfg['webmaster_email'] = "outdoors-webmaster@@virginia.edu";
+$cfg['treasurer_email'] = array("caset@@virginia.edu", "smj9g@@virginia.edu");
+$cfg['error_log'] = ".hterror";
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers" <outdoors-officers@@virginia.edu>';
+
+# Whether the system should send emails when requested to do so.
+$cfg['send_emails'] = true;
+
+# ------------------------------------------------------------------------------
+# Start output buffering and name a function to be called when the buffer is
+# ready for output to the browser.
+# ------------------------------------------------------------------------------
+ob_start('fatalErrorHandler');
+
+# ------------------------------------------------------------------------------
+# Define an error handling function.  This gets called in case the buffer, which
+# the system inspects before it flushes it to the browser, contains an error.
+# This is for "emergency" errors that the normal PHP error handling mechanisms
+# didn't catch, and is just an intervention to make sure *something* gets done
+# with the error besides just barfing all sorts of stuff out to the user.
+# ------------------------------------------------------------------------------
+function fatalErrorHandler(&$buffer) {
+    global $cfg;
+
+    if (ereg("error</b>:(.+)<br", $buffer, $regs)) {
+
+        # Build error message
+        $time = date("Y-m-d H:i:s");
+        $userid = serialize($cfg['auth']);
+
+        $logMessage = "
+            [$time] $regs[1]
+            URL:           $_SERVER[REQUEST_URI]
+            Referring URL: $_SERVER[HTTP_REFERER]
+            User Cookie:   $userid
+            ";
+        # Trim leading space off the message and log it
+        $logMessage = preg_replace('/(?m)^\s*/', "", $logMessage);
+        error_log($logMessage . "\r\n", 1, $cfg['webmaster_email']);
+        error_log($logMessage, 3, $cfg['error_log']);
+
+        # Display a friendly error message
+        return "<html><head><title>Error</title>
+            <link rel='stylesheet' href='assets/stylesheet.css'>
+        </head><body>
+        <h1>Fatal Error</h1>
+        <p>We're sorry, but there was a fatal error while processing your 
+        request.  You don't need to do anything.  The website has already
+        emailed the error to the webmasters.</p></body></html>";
+    }
+    else {
+        # All is well, so return the buffer itself; the buffer is safe to
+        # display to the user.
+        return $buffer;
+    }
+}
+
+# Login mode.  See the comments in the header of authorize/authorize.php.  Pages
+# that want to require someone to log in should include authorize.php.  The
+# login status indicates success or failure of the login attempt.  The
+# login_password indicates if the user entered the right password.  The
+# login_exists indicates if the email address even exists in the database.
+$cfg['login_mode'] = "full";
+$cfg['login_status'] = true;
+$cfg['login_password'] = true;
+$cfg['login_exists'] = true;
+
+# The user, session ID, and password
+if (isset($_COOKIE['auth'])) {
+    $cfg['auth'] = unserialize(base64_decode($_COOKIE['auth']));
+}
+else {
+    $cfg['auth'] = array("user" => "", "pass" => "", "session" => "");
+}
+
+# How to connect to the database
+$cfg['table_prefix'] = "t_";
+$cfg['db'] = array(
+    'persistent' => true,
+    'user' => 'at_w',
+    'pass' => 'At_w_12pass',
+    'db' => 'at_main1',
+    'host' => 'db57b.pair.com',
+    'debug' => false,
+    'dump' => false,
+    'errlevel' => E_USER_ERROR,
+    'prefix' => $cfg['table_prefix']);
+
+# UIDs for important members.
+$cfg['root_uid'] = 1;
+$cfg['studco_uid'] = 1226;
+
+# Holds a list of references to objects that have been 'visited' before.  This
+# is to avoid cycling when deciding which objects to delete (when cascading
+# deletes).
+$obj['visited-objects'] = array();
+
+# -----------------------------------------------------------------------------
+# Arrays of data that are initialized from the database.  These arrays could be
+# hard coded into the pages, but for flexibility it is better to retrieve them
+# from the database.  They enable you to refer to an action, status or group by
+# title instead of number.  Use them like $cfg['group_id']['root']
+# -----------------------------------------------------------------------------
+
+# The status codes, created from [_]status.
+$cfg['status_id'] = array();
+
+# Actions.  The codes are in the form title => uid, and the labels are in the
+# form uid => "human-readable-description".  The flipped codes are in reverse
+# order so you can look up the title from the uid.  Created from [_]action.
+$cfg['action_id'] = array();
+$cfg['action_summary'] = array();
+$cfg['action_title'] = array();
+
+# This is a list of actions that simply can't be done without an object.  It is
+# initialized from the c_flags field on [_]action in the database.
+$cfg['require_object_actions'] = array();
+
+# Usergroups, created from [_]group.
+$cfg['group_id'] = array();
+
+# Flags, set in an object's c_flags value.  Use getFlag($flagName) and
+# setFlag($flagName, bool) on any DatabaseObject class.  Populated from [_]flags.
+$cfg['flag'] = array();
+
+# Unix permission bitmasks, set in an object's c_unixperms and used the same as
+# flags.  Populated from [_]unixperms.
+$cfg['perm'] = array();
+
+# Tables in the database.  There are actually a few other tables that are "meta"
+# tables; these are the ones that hold information the PHP can manipulate in a
+# uniform way.
+$cfg['tables'] = array();
+
+# Require various classes
+include_once("table.php");
+include_once("Template.php");
+include_once("MySqlConnection.php");
+include_once("XmlForm.php");
+
+# You need to include this file after the ones above or PHP will throw an
+# "undefined class DatabaseObject" from Privilege.php
+include_once("member.php");
+
+# ------------------------------------------------------------------------------
+# The following indices are defined in the $res array:
+# Index         Meaning
+# -----         -------
+# title         Page title
+# content       Content that the page generates; higher-level pages can handle
+#               it as they see fit.
+# description   The description META tag
+# keywords      The keywords META tag
+# navbar        The navbar contents
+# tabs          The tabbed-box tabs HTML
+# ------------------------------------------------------------------------------
+$res['keywords'] = "";
+$res['description'] = "";
+$res['title'] = "";
+$res['navbar'] = "Home";
+$res['tabs'] = "";
+$res['meta'] = "";
+?>
+@
+
+
+1.36
+log
+@add browser to error log
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.35 2005/01/31 21:00:04 at Exp $
+d141 1
+d170 1
+@
+
+
+1.35
+log
+@up the error level for the DB
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.34 2005/01/31 01:05:24 at Exp $
+d260 2
+a261 1
+        . "\r\non page $_SERVER[REQUEST_URI]";
+@
+
+
+1.34
+log
+@fix action menu
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.33 2005/01/20 01:29:49 at Exp $
+d415 1
+@
+
+
+1.33
+log
+@fix error handling to actually report errors
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.32 2005/01/10 22:33:02 at Exp $
+d142 2
+a143 1
+    if (!$cache || !is_array($privs)) {
+d153 1
+d155 2
+a156 1
+        elseif (!$cache || !is_array($privs)) {
+@
+
+
+1.32
+log
+@change studco_uid
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.31 2005/01/10 21:24:46 at Exp $
+d245 1
+a245 1
+error_reporting(E_USER_ERROR);
+d250 2
+d351 1
+a351 1
+    if (ereg("(error</b>:)(.+)(<br)", $buffer, $regs)) {
+d355 1
+a355 1
+        $userid = base64_decode($_COOKIE['PHP_AUTH_USER']);
+d358 1
+a358 1
+            [$time] $regs[2]
+@
+
+
+1.31
+log
+@merge from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.30 2004/12/28 16:00:34 at Exp $
+d414 1
+a414 1
+$cfg['studco_uid'] = 3;
+@
+
+
+1.30
+log
+@merge 'meta' line from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.29 2004/11/10 21:43:23 at Exp $
+d414 1
+@
+
+
+1.29
+log
+@merge titlecase() changes from test
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.28 2004/11/08 20:10:25 at Exp $
+d484 1
+@
+
+
+1.28
+log
+@new NEW DB pass
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.27 2004/11/08 20:08:07 at Exp $
+d117 1
+a117 1
+    $articles = "to|at|in|it|the|from|for|and|of|on|or|a|this";
+d120 3
+a122 3
+    return preg_replace("/\b($articles)\b/ie", 'strtolower("\\1");',
+        preg_replace("/\b(\w+)\b/e", 'ucfirst(strtolower("\\1"));',
+            str_replace($bad, $good, $text)));
+@
+
+
+1.27
+log
+@change DB password
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.26 2004/11/08 18:30:32 at Exp $
+d405 1
+a405 1
+    'pass' => 'at_w_12pass',
+@
+
+
+1.26
+log
+@move session queries to sql/queries/session
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.25 2004/11/07 02:53:20 at Exp $
+d405 1
+a405 1
+    'pass' => 'kZUB9FJP',
+@
+
+
+1.25
+log
+@merge session-tracking changes from test
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.24 2004/11/01 19:14:23 at Exp $
+d128 1
+a128 1
+    $cmd->loadQuery("sql/queries/misc/create-session.sql");
+@
+
+
+1.24
+log
+@add multiple treasurer email addresses
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.23 2004/11/01 01:05:06 at Exp $
+a67 18
+/* {{{cookieval
+ * Return a sanitized version of a browser's $_COOKIE variable.
+ */
+function cookieval($key) {
+    if (isset($_COOKIE[$key])) {
+        if (is_array($_COOKIE[$key])) {
+            // build a new array and return it, sanitized
+            $temp = $_COOKIE[$key];
+            $toReturn = array();
+            while (list($key, $val) = each($temp)) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_COOKIE[$key]); 
+    }
+} //}}}
+
+d125 10
+d391 8
+@
+
+
+1.23
+log
+@merge changes for action menus as JavaScript; from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.22 2004/10/28 17:05:37 at Exp $
+d334 1
+a334 1
+$cfg['treasurer_email'] = "caset@@virginia.edu";
+@
+
+
+1.22
+log
+@merge actionforms code from test; add treasurer email
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.21 2004/10/23 14:21:06 at Exp $
+d143 5
+a147 1
+function actionform($class, $id, $style) {
+d149 18
+a166 9
+    $privs = array();
+    if (isset($object) && get_class($object) == $class && $object->getUID() == $id) {
+        # The object is already fetched from the DB.  No need to re-fetch it.
+        $privs =& $object->getAllowedActions();
+    }
+    else {
+        $obj =& new $class();
+        $obj->select($id);
+        $privs =& $obj->getAllowedActions();
+@
+
+
+1.21
+log
+@fix overly-eager smiley
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.20 2004/10/23 13:48:02 at Exp $
+d143 21
+d321 1
+@
+
+
+1.20
+log
+@put back stuff I deleted while merging from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.19 2004/10/23 13:22:09 at Exp $
+d151 1
+a151 1
+        "#:-?/#",
+@
+
+
+1.19
+log
+@merge changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.18 2004/10/15 16:21:04 at Exp $
+d219 5
+a223 1
+error_reporting(E_ALL);
+@
+
+
+1.18
+log
+@add more articles to titlecase()
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.17 2004/10/07 17:45:20 at Exp $
+d135 1
+a135 1
+    $articles = "be|to|at|in|it|if|the|from|for|and|of|on|or|a|this";
+d143 42
+d219 1
+a219 5
+error_reporting(E_USER_ERROR);
+# Define the levels of errors that I want to cause a webmaster email or log
+define("ERROR_EMAILING", E_ERROR | E_WARNING | E_PARSE | E_CORE_ERROR
+    | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR);
+define("ERROR_LOGGING", E_ALL);
+d419 1
+a419 1
+include_once("Table.php");
+d426 1
+a426 1
+include_once("Member.php");
+@
+
+
+1.17
+log
+@merge changes from test branch after getting rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.16 2004/10/04 18:15:23 at Exp $
+d135 1
+a135 1
+    $articles = "to|at|in|it|the|from|for|and|of|on|or|a|this";
+@
+
+
+1.16
+log
+@merged changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.15 2004/09/10 01:45:59 at Exp $
+d24 120
+a161 7
+# Define the file_get_contents() function if it's not defined for this version of PHP
+if (!function_exists("file_get_contents")) {
+    function file_get_contents($filename) {
+        return implode("", file($fileName));
+    }
+}
+
+a380 1
+include_once("Utility.php");
+@
+
+
+1.15
+log
+@added more info to error logs
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.14 2004/09/09 03:43:19 at Exp $
+d143 1
+a143 1
+$cfg['club_admin_email'] = "outdoors-officers-owner@@virginia.edu";
+d146 1
+a146 1
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers" <outdoors-officers-owner@@virginia.edu>';
+@
+
+
+1.14
+log
+@merged changes from the test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.13 2004/08/26 14:16:09 at Exp $
+d72 9
+a80 2
+    $logMessage = "{$cfg['error_types'][$errno]} at line $errline in $errfile: $errstr"
+        . "\r\n$_SERVER[REQUEST_URI]\r\n";
+d85 1
+a85 1
+        error_log(date("Y-m-d h:i:s", time()) . $logMessage, 3, $cfg['error_log']);
+@
+
+
+1.13
+log
+@added date, time, request URI to log messages
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.12 2004/08/26 14:01:10 at Exp $
+d42 1
+a42 1
+# Define the file() function if it's not defined for this version of PHP
+a277 9
+# tab           Which tab on a tabbed box to set active
+# subtab        Which subtab to set active
+# usetab        A variable a subordinate page sets to let a superior page know
+#               that its content should be included in a tabbed box.  Setting
+#               this implies that the subordinate page should also set the
+#               tabfile index, which tells the superior page which tabbed box to
+#               use.
+# tabfile       Which tabbed box include file to include from the tabbed-boxes
+#               directory
+d280 2
+d286 2
+a287 4
+$res['tab'] = "";
+$res['subtab'] = "";
+$res['usetab'] = false;
+$res['tabfile'] = "";
+@
+
+
+1.12
+log
+@added error logging
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.11 2004/08/25 17:03:43 at Exp $
+d72 2
+a73 1
+    $logMessage = "{$cfg['error_types'][$errno]} at line $errline in $errfile: $errstr";
+d75 1
+a75 1
+        error_log($logMessage . "\r\n", 1, $cfg['webmaster_email']);
+d78 1
+a78 1
+        error_log($logMessage . "\r\n", 3, $cfg['error_log']);
+@
+
+
+1.11
+log
+@added error handling through output buffering
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.10 2004/08/25 12:09:50 at Exp $
+d64 5
+a68 1
+error_reporting(E_ALL);
+d72 7
+a78 4
+    global $err;
+    $err[] = "{$cfg['error_types'][$errno]} at line $errline in $errfile: <pre>" 
+        .  htmlspecialchars($errstr) 
+        . "</pre>";
+d136 1
+a136 1
+$cfg['webmaster_email'] = "baron@@sequent.org";
+@
+
+
+1.10
+log
+@table prefix
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.9 2004/08/25 11:48:50 at Exp $
+d130 1
+d135 49
+@
+
+
+1.9
+log
+@merged changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.8 2004/08/19 18:16:02 at Exp $
+d146 1
+a146 1
+$cfg['table_prefix'] = "test_";
+@
+
+
+1.8
+log
+@removed a Test
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.7 2004/08/19 16:02:16 at Exp $
+d146 1
+d155 1
+a155 1
+    'prefix' => 't_');
+d197 5
+d204 1
+a204 1
+include_once("SecurityManager.php");
+@
+
+
+1.7
+log
+@merged from test
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.6 2004/08/19 13:18:41 at Exp $
+d130 1
+a130 1
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers (Test)" <outdoors-officers-owner@@virginia.edu>';
+@
+
+
+1.6
+log
+@merged changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.5 2004/08/15 02:20:35 at Exp $
+d123 3
+@
+
+
+1.5
+log
+@merged from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.4 2004/07/21 12:51:55 at Exp $
+d27 1
+@
+
+
+1.4
+log
+@added table prefixes
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3 2004/06/08 18:13:32 at Exp $
+d124 3
+a126 2
+$cfg['club_admin_email'] = "baron@@sequent.org";
+$cfg['club_admin_email_name'] = '"Baron Schwartz" <baron@@sequent.org>';
+d131 5
+a135 2
+# Login mode.  See the comments in the header of misc/authorize.php.  Pages that
+# want to require someone to log in should include authorize.php.
+d137 3
+d148 2
+d167 1
+a167 1
+# The status codes, created from {_}status.
+d172 1
+a172 1
+# order so you can look up the title from the uid.  Created from {_}action.
+d178 1
+a178 1
+# initialized from the c_flags field on {_}action in the database.
+d181 1
+a181 1
+# Usergroups, created from {_}group.
+d185 1
+a185 1
+# setFlag($flagName, bool) on any DatabaseObject class.  Populated from {_}flags.
+d189 1
+a189 1
+# flags.  Populated from {_}unixperms.
+@
+
+
+1.3
+log
+@added a $res[] entry
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.2 2004/05/30 03:23:45 at Exp $
+d140 2
+a141 1
+    'host' => 'db57b.pair.com');
+d158 1
+a158 1
+# The status codes, created from t_status.
+d163 1
+a163 1
+# order so you can look up the title from the uid.  Created from t_action.
+d169 1
+a169 1
+# initialized from the c_flags field on t_action in the database.
+d172 1
+a172 1
+# Usergroups, created from t_group.
+d176 1
+a176 1
+# setFlag($flagName, bool) on any DatabaseObject class.  Populated from t_flags.
+d180 1
+a180 1
+# flags.  Populated from t_unixperms.
+@
+
+
+1.3.2.1
+log
+@added prefix
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3 2004/06/08 18:13:32 at Exp $
+d140 1
+a140 2
+    'host' => 'db57b.pair.com',
+    'prefix' => 'test_');
+d157 1
+a157 1
+# The status codes, created from [_]status.
+d162 1
+a162 1
+# order so you can look up the title from the uid.  Created from [_]action.
+d168 1
+a168 1
+# initialized from the c_flags field on [_]action in the database.
+d171 1
+a171 1
+# Usergroups, created from [_]group.
+d175 1
+a175 1
+# setFlag($flagName, bool) on any DatabaseObject class.  Populated from [_]flags.
+d179 1
+a179 1
+# flags.  Populated from [_]unixperms.
+@
+
+
+1.3.2.2
+log
+@changed to use forms-based login instead of HTTP auth
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.1 2004/07/20 15:02:41 at Exp $
+d130 2
+a131 3
+# Login mode.  See the comments in the header of authorize/authorize.php.  Pages
+# that want to require someone to log in should include authorize.php.  The
+# login status indicates success or failure of the login attempt.
+a132 1
+$cfg['login_status'] = true;
+@
+
+
+1.3.2.3
+log
+@added debugging option to the sql connection
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.2 2004/07/25 20:36:32 at Exp $
+a142 1
+    'debug' => true,
+@
+
+
+1.3.2.4
+log
+@added 'dump' db option
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.3 2004/07/26 00:31:08 at Exp $
+a143 1
+    'dump' => false,
+@
+
+
+1.3.2.5
+log
+@added some parameters that govern login
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.4 2004/07/30 01:08:58 at Exp $
+d132 1
+a132 3
+# login status indicates success or failure of the login attempt.  The
+# login_password indicates if the user entered the right password.  The
+# login_exists indicates if the email address even exists in the database.
+a134 2
+$cfg['login_password'] = true;
+$cfg['login_exists'] = true;
+@
+
+
+1.3.2.6
+log
+@changed club admin email
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.5 2004/07/30 02:27:45 at Exp $
+d125 1
+a125 1
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers (Test)" <outdoors-officers@@virginia.edu>';
+@
+
+
+1.3.2.7
+log
+@changed club admin email
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.6 2004/08/02 00:29:44 at Exp $
+d124 1
+a124 1
+$cfg['club_admin_email'] = "outdoors-officers@@virginia.edu";
+@
+
+
+1.3.2.8
+log
+@Changed the admin email to outdoors-officers-owner@@virginia.edu
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.7 2004/08/02 00:30:15 at Exp $
+d124 1
+a124 1
+$cfg['club_admin_email'] = "outdoors-officers-owner@@virginia.edu";
+@
+
+
+1.3.2.9
+log
+@added webmaster email
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.8 2004/08/03 06:08:56 at Exp $
+a124 1
+$cfg['webmaster_email'] = "baron@@sequent.org";
+@
+
+
+1.3.2.10
+log
+@made variable match other var
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.9 2004/08/12 14:13:09 at Exp $
+d126 1
+a126 1
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers (Test)" <outdoors-officers-owner@@virginia.edu>';
+@
+
+
+1.3.2.11
+log
+@susbscribe member when activating membership
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.10 2004/08/14 23:10:53 at Exp $
+a26 1
+ignore_user_abort();
+a121 3
+
+# The club's main email list
+$cfg['main_email_list'] = 1;
+@
+
+
+1.3.2.12
+log
+@initialize a list of tables; table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.11 2004/08/19 15:58:43 at Exp $
+a145 1
+$cfg['table_prefix'] = "test_";
+d154 1
+a154 1
+    'prefix' => $cfg['table_prefix']);
+a195 5
+# Tables in the database.  There are actually a few other tables that are "meta"
+# tables; these are the ones that hold information the PHP can manipulate in a
+# uniform way.
+$cfg['tables'] = array();
+
+d198 1
+a198 1
+include_once("Table.php");
+@
+
+
+1.3.2.13
+log
+@comment
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.12 2004/08/24 03:25:09 at Exp $
+d42 1
+a42 1
+# Define the file_get_contents() function if it's not defined for this version of PHP
+@
+
+
+1.3.2.14
+log
+@turn off emails
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.13 2004/08/26 13:41:01 at Exp $
+d133 1
+a133 1
+$cfg['send_emails'] = false;
+@
+
+
+1.3.2.15
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.14 2004/09/02 11:08:14 at Exp $
+a230 1
+# navbar        The navbar contents
+a238 1
+$res['navbar'] = "Home";
+@
+
+
+1.3.2.16
+log
+@changes for tabbed-box and navbar stuff
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.15 2004/09/03 20:38:24 at Exp $
+d220 9
+a231 1
+# tabs          The tabbed-box tabs HTML
+d236 4
+a240 1
+$res['tabs'] = "";
+@
+
+
+1.3.2.17
+log
+@stop using the owner- address of the officers list as the club admin email, and stop BCCing messages all over the place
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.16 2004/09/09 00:08:53 at Exp $
+d128 1
+a128 1
+$cfg['club_admin_email'] = "outdoors-officers@@virginia.edu";
+d130 1
+a130 1
+$cfg['club_admin_email_name'] = '"Outdoors at UVa Officers (Test)" <outdoors-officers@@virginia.edu>';
+@
+
+
+1.3.2.18
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.17 2004/10/04 18:13:06 at Exp $
+a23 120
+# Create functions in the global scope
+# ------------------------------------------------------------------------------
+# Define the file_get_contents() function if it's not defined for this version of PHP
+if (!function_exists("file_get_contents")) {
+    function file_get_contents($filename) {
+        return implode("", file($fileName));
+    }
+}
+
+/* {{{getval
+ * Get a sanitized version of a $_GET variable from a browser.
+ */
+function getval($key) {
+    if (isset($_GET[$key])) {
+        if (is_array($_GET[$key])) {
+            // build a new array and return it, sanitized
+            $toReturn = array();
+            while (list($key, $val) = each($_GET[$key])) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_GET[$key]); 
+    }
+} //}}}
+
+/* {{{postval
+ * Return a sanitized version of a browser's $_POST variable.
+ */
+function postval($key) {
+    if (isset($_POST[$key])) {
+        if (is_array($_POST[$key])) {
+            // build a new array and return it, sanitized
+            $temp = $_POST[$key];
+            $toReturn = array();
+            while (list($key, $val) = each($temp)) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_POST[$key]); 
+    }
+} //}}}
+
+/* {{{cookieval
+ * Return a sanitized version of a browser's $_COOKIE variable.
+ */
+function cookieval($key) {
+    if (isset($_COOKIE[$key])) {
+        if (is_array($_COOKIE[$key])) {
+            // build a new array and return it, sanitized
+            $temp = $_COOKIE[$key];
+            $toReturn = array();
+            while (list($key, $val) = each($temp)) {
+                $toReturn[$key] = stripslashes($val);
+            }
+            return $toReturn;
+        }
+        return stripslashes($_COOKIE[$key]); 
+    }
+} //}}}
+
+/* {{{redirect
+ */
+function redirect($url) {
+    header("Location:$url");
+    exit;
+} //}}}
+
+
+/* {{{getRandomString
+ */
+function getRandomString($length, $dictionary = null) {
+    if (is_null ($dictionary)) {
+        $dictionary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    }
+    $dictionaryLength = strlen($dictionary);
+    $result = "";
+    for ($i = 0; $i < $length; ++$i) {
+        $result .= substr($dictionary, rand(0, $dictionaryLength - 1), 1);
+    }
+    return $result;
+} //}}}
+
+/* {{{highlightSql
+ */
+function highlightSql($sql) {
+    $gray = str_replace(" ", "\b|\b", 
+        "ALL AND BETWEEN CROSS EXISTS JOIN IN LIKE NOT OR NULL OUTER SOME");
+
+    $blue = str_replace(" ", "\b|\b", 
+        "ADD ALTER AS ASC BIGINT BINARY BY CASCADE CHAR CHARACTER CHECK"
+        . "COLLATE COLUMN COLUMNS CONNECTION CONSTRAINT CREATE CURRENT_DATE "
+        . "CURRENT_TIME CURSOR DATABASE DEC DECIMAL DECLARE DEFAULT DELETE DESC "
+        . "DESCRIBE CHANGE DISTINCT DROP ELSE ON EXPLAIN FALSE FOR FROM "
+        . "GRANT GROUP HASH HAVING IF IGNORE INDEX INNER INSERT "
+        . "INTERVAL INTO IS KEY LIMIT LOAD OPTIMIZE ORDER OUT RENAME REVOKE "
+        . "SELECT SET SHOW TABLE THEN TO TRUE TRUNCATE UNION UNIQUE UPDATE USE "
+        . "VALUES WHEN WHERE WHILE WITH");
+
+    $pink = str_replace(" ", "\b|\b", 
+        "CASE CURRENT_TIMESTAMP LEFT REPLACE RIGHT");
+
+    $sql = preg_replace("/('|\")(.*?)(\\1)/", "<tt style='color:red'>\\1\\2\\3</tt>", $sql);
+    $sql = preg_replace("/(\b$blue\b)/i", "<tt style='color:blue'>\\1</tt>", $sql);
+    $sql = preg_replace("/(\b$pink\b)/i", "<tt style='color:#FF00FF'>\\1</tt>", $sql);
+    return preg_replace("/(\b$gray\b)/i", "<tt style='color:gray'>\\1</tt>", $sql);
+} //}}}
+
+
+function titlecase($text) {
+    $articles = "to|at|in|it|the|from|for|and|of|on|or|a|this";
+    $bad = array("!!!");
+    $good = array("!");
+    return preg_replace("/\b($articles)\b/ie", 'strtolower("\\1");',
+        preg_replace("/\b(\w+)\b/e", 'ucfirst(strtolower("\\1"));',
+            str_replace($bad, $good, $text)));
+}
+
+# ------------------------------------------------------------------------------
+d42 7
+d203 1
+@
+
+
+1.3.2.19
+log
+@class names match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.18 2004/10/07 17:41:47 at Exp $
+d316 1
+a316 1
+include_once("table.php");
+d323 1
+a323 1
+include_once("member.php");
+@
+
+
+1.3.2.20
+log
+@smileys
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.19 2004/10/21 20:50:07 at Exp $
+a140 42
+}
+
+function smiley($text) {
+    $find = array(
+        "/(?<!O):-?\\)/",
+        "/:-?\\(/",
+        "/;-?\\)/",
+        "/:-?P/",
+        "/:-?D/",
+        "/:-\\[/",
+        "#:-?/#",
+        "/=-(O|0)/",
+        "/:-\\*/",
+        "/(>:o|&gt;:o)/",
+        "/8-?\\)/",
+        "/:-\\$/",
+        "/:-!/",
+        "/O:-?\\)/",
+        "/:'\\(/",
+        "/:-X/");
+
+    $replace = array(
+        "smile",
+        "frown",
+        "wink",
+        "tongue-out",
+        "laughing",
+        "embarassed",
+        "undecided",
+        "surprised",
+        "kiss",
+        "yell",
+        "cool",
+        "money-mouth",
+        "foot-in-mouth",
+        "innocent",
+        "cry",
+        "sealed");
+    foreach ($replace as $key => $val) {
+        $replace[$key] = "<img alt=\"\\0\" title=\"\\0\" height=\"18\" width=\"18\" src=\"assets/smiley-$val.png\">";
+    }
+    return preg_replace($find, $replace, $text);
+@
+
+
+1.3.2.21
+log
+@changes merged back from trunk
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.20 2004/10/23 12:43:27 at Exp $
+d151 1
+a151 1
+        "#:-/#",
+@
+
+
+1.3.2.22
+log
+@add a function to shrinkwrap the action forms
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.21 2004/10/23 14:46:53 at Exp $
+a140 21
+}
+
+function actionform($class, $id, $style) {
+    global $object;
+    $privs = array();
+    if (isset($object) && get_class($object) == $class && $object->getUID() == $id) {
+        # The object is already fetched from the DB.  No need to re-fetch it.
+        $privs =& $object->getAllowedActions();
+    }
+    else {
+        $obj =& new $class();
+        $obj->select($id);
+        $privs =& $obj->getAllowedActions();
+    }
+    $template = file_get_contents("templates/misc/actionform-$style.txt");
+    foreach ($privs as $action) {
+        $template = Template::block($template, "actions", $action);
+    }
+    return Template::replace($template, array(
+        "PAGE" => $class,
+        "OBJECT" => $id));
+@
+
+
+1.3.2.23
+log
+@add treasurer email
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.22 2004/10/27 21:41:12 at Exp $
+a305 1
+$cfg['treasurer_email'] = "caset@@virginia.edu";
+@
+
+
+1.3.2.24
+log
+@add tiny action menus
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.23 2004/10/28 16:59:58 at Exp $
+d143 1
+a143 5
+# Create a form that will allow selecting allowed actions on objects of the
+# given type, with the given ID using the given style.  Set $cache to true, to
+# avoid hitting the DB again; this will fetch the privileges once and then
+# re-use them, even for different objects.
+function actionform($class, $id, $style, $cache = false) {
+d145 9
+a153 18
+    static $privs;
+    if (!$cache || !is_array($privs)) {
+        if (isset($object) 
+            && !is_array($privs)
+            && get_class($object) == $class
+            && $object->getUID() == $id)
+        {
+            # The object is already fetched from the DB.  No need to re-fetch it.
+            # Don't assign by reference; this is a static variable.  See the
+            # PHP manual.
+            $privs = $object->getAllowedActions();
+        }
+        elseif (!$cache || !is_array($privs)) {
+            $obj =& new $class();
+            $obj->select($id);
+            # Don't assign by reference.
+            $privs = $obj->getAllowedActions();
+        }
+@
+
+
+1.3.2.25
+log
+@add more than one person to the treasurer's list
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.24 2004/10/31 21:28:32 at Exp $
+d319 1
+a319 1
+$cfg['treasurer_email'] = array("caset@@virginia.edu", "smj9g@@virginia.edu");
+@
+
+
+1.3.2.26
+log
+@add session-tracking to website
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.25 2004/11/01 19:06:09 at Exp $
+d68 18
+a142 10
+function create_session($user) {
+    global $obj;
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/misc/create-session.sql");
+    $cmd->addParameter("user", $user);
+    $cmd->addParameter("ip", $_SERVER["REMOTE_HOST"]);
+    $result =& $cmd->executeReader();
+    return intval($result->identity());
+}
+
+a333 8
+
+# The user, session ID, and password
+if (isset($_COOKIE['auth'])) {
+    $cfg['auth'] = unserialize(base64_decode($_COOKIE['auth']));
+}
+else {
+    $cfg['auth'] = array("user" => "", "pass" => "", "session" => "");
+}
+@
+
+
+1.3.2.27
+log
+@move session queries to sql/queries/session
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.26 2004/11/07 02:49:28 at Exp $
+d128 1
+a128 1
+    $cmd->loadQuery("sql/queries/session/create.sql");
+@
+
+
+1.3.2.28
+log
+@db pass change
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.27 2004/11/08 18:29:41 at Exp $
+d340 1
+a340 1
+    'pass' => 'At_w_12pass',
+@
+
+
+1.3.2.29
+log
+@fix a couple of cases titlecase() doesn't like
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.28 2004/11/09 14:12:42 at Exp $
+d117 1
+a117 1
+    $articles = "to|at|in|it|the|from|for|and|of|on|or|a|this|by";
+d120 3
+a122 3
+    return ucfirst(preg_replace("/\b($articles)\b/ie", 'strtolower("\\1");',
+        preg_replace("/\b([\w']+)\b/e", "ucfirst(strtolower('\\1'));",
+            str_replace($bad, $good, $text))));
+@
+
+
+1.3.2.30
+log
+@added an empty meta variable
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.29 2004/11/10 21:42:50 at Exp $
+a418 1
+$res['meta'] = "";
+@
+
+
+1.3.2.31
+log
+@upgrade to the expense system
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.30 2004/12/28 15:57:33 at Exp $
+a348 1
+$cfg['studco_uid'] = 3;
+@
+
+
+1.3.2.32
+log
+@fix action menu
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.31 2005/01/10 03:37:58 at Exp $
+d142 1
+a142 2
+    static $cacheType;
+    if (!$cache || !is_array($privs) || $cacheType != $class) {
+a151 1
+            $cacheType = $class;
+d153 1
+a153 2
+        elseif (!$cache || !is_array($privs) || $cacheType != $class) {
+            $cacheType = $class;
+@
+
+
+1.3.2.33
+log
+@increase the DB error level
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.32 2005/01/31 01:04:44 at Exp $
+a347 1
+    'errlevel' => E_USER_ERROR,
+@
+
+
+1.3.2.34
+log
+@fix IE problem with relative URIs in the form's action javascript
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.3.2.33 2005/01/31 20:53:00 at Exp $
+a140 1
+    global $cfg;
+a168 1
+        "BASE" => $cfg['base_url'],
+@
+
+
+1.2
+log
+@initial changes for DB and stuff
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d89 4
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: config.php,v 1.5 2004/05/30 01:41:50 baron Exp $
+d133 4
+a136 4
+    'user' => 'socialclub',
+    'pass' => 'onyx',
+    'db' => 'socialclub',
+    'host' => 'localhost');
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

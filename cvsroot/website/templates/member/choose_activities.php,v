@@ -1,0 +1,108 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.21.21.13.14;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.21.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Interests for {C_FULL_NAME}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use this page to choose activities that you're interested in.  This will
+enable the website to customize itself for you by showing you things you care
+about, and also lets the leaders know who's interested in what kinds of
+adventures.  Check the checkboxes next to the activities you're interested in,
+and then click Save Changes at the bottom of the form.</p>
+
+{SUCCESS:}
+<p class="notice">The interests were updated.</p>
+{:SUCCESS}
+
+<form action="members/member/choose_activities/{OBJECT}" method="POST">
+<input type="hidden" name="posted" value="1">
+
+<p>
+{INTEREST:}
+  <input type="checkbox" name="activities[]" value="{C_UID}" id="activity{C_UID}" {CHECKED}>
+  <label for="activity{C_UID}">{C_TITLE}</label><br>
+{:INTEREST}
+</p>
+
+<p>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Save Changes">
+</p>
+
+</form>
+
+</div>
+@
+
+
+1.2
+log
+@no table for layout
+@
+text
+@d18 1
+a18 1
+<form action="members.php?page=member&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}" method="POST">
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d21 11
+a31 18
+<table>
+  {INTEREST:}
+  <tr>
+    <td>
+      <input type="checkbox" name="activities[]" value="{C_UID}" id="activity{C_UID}" {CHECKED}>
+    </td>
+    <td>
+      <label for="activity{C_UID}">{C_TITLE}</label>
+    </td>
+  </tr>
+  {:INTEREST}
+  <tr>
+    <td colspan="2" align="right">
+      <input type="reset" value="Reset">
+      <input type="submit" value="Save Changes">
+    </td>
+  </tr>
+</table>
+@
+

@@ -1,0 +1,288 @@
+head	1.12;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.26.14.27.54;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.19.11.35.52;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.08.04.48.18;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.06.19.01.10;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.01.23.40.55;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.01.23.23.18;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.07.29.01.10.12;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.27.01.28.34;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.22.59.28;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.26.22.57.38;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.26.22.46.52;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Outdoors at UVa Equipment Policy -->
+<!-- navbar=Club Policies/Equipment Policy -->
+
+<h1>Outdoors at UVa Equipment Policy for Members</h1>
+
+<p>Outdoors at UVa has a large inventory of gear for all the outdoors activities that we do.  As a club member, you will be able to check out gear for a week at no charge.  Available gear includes:</p>
+
+<ul>
+ <li>Tents</li>
+ <li>Sleeping Bags/Pads</li>
+ <li>Backpacks</li>
+ <li>Climbing Harnesses and Shoes</li>
+ <li>Trad Rack, Quickdraws, and Dynamic Ropes</li>
+ <li>Stoves</li>
+ <li>Canoes</li>
+ <li>Kayaks</li>
+ <li>PFDs</li>
+ <li>Mountain Bikes</li>
+ <li>Caving Equipment</li>
+ <li>(Old) Cross Country Skis</li>
+</ul>
+
+<p>There are a few restrictions on gear check out.  These restrictions are:</p>
+
+<ul>
+
+ <li><b>You must not try to get gear yourself.</b>  If you go to the gear room
+ yourself and try to get in, or even get in the building, the Club will suffer
+ severe consequences.  We had problems in the past and very nearly lost our
+ gear-room privileges.  If you need to get or return gear, you <b>must</b>
+ coordinate it with the officers.</li>
+
+ <li>Official club trips take precedence!  From time to time, a trip will need
+ all the tents or sleeping bags.</li>
+
+ <li>All gear must be returned in a week, or we will impose a $5 per week late
+ fee.  If you would like to check out gear for a longer period, please ask the
+ officers.</li>
+
+ <li>Each member may check out <i>personal</i> gear for <b>one</b> non-member
+ friend. (e.g. one member cannot check out multiple tents, because a tent is not
+ personal gear)</li>
+
+</ul>
+
+<p>If you would like to check out gear, you must e-mail
+<script>document.write(email('outdoors-officers', 'virginia.edu'))</script> and
+set up a time to get into the gear room.  Please request gear as soon as you
+know you need it &mdash; please don't wait till the last minute!</p>
+@
+
+
+1.11
+log
+@clarifications
+@
+text
+@d2 1
+a2 2
+<!-- tab=Club Policies -->
+<!-- subtab=Equipment Policy -->
+@
+
+
+1.10
+log
+@added Outdoors at UVa
+@
+text
+@d27 1
+d33 12
+a44 3
+ <li>Official club trips take precedence!  From time to time, a trip will need all the tents or sleeping bags.</li>
+ <li>All gear must be returned in a week, or face a $5 per week late fee.  If you would like to check out gear for a longer period, please ask the officers.</li>
+ <li>Each member may check out <i>personal</i> gear for <b>one</b> non-member friend. (e.g. one member cannot check out multiple tents)</li>
+d47 4
+a50 1
+<p>If you would like to check out gear, you must e-mail <script>document.write(email('outdoors-officers', 'virginia.edu'))</script> and set up a time to get into the gear room.  Please request gear as soon as you know you need it -- please don't wait till the last minute!</p>
+@
+
+
+1.9
+log
+@spelling corrections
+@
+text
+@d5 1
+a5 1
+<h1>Equipment Policy for Members</h1>
+@
+
+
+1.8
+log
+@spelling and other gramatical changes
+@
+text
+@d32 1
+a32 1
+ <li>Official club trips take precendence!  From time to time, a trip will need all the tents or sleeping bags.</li>
+@
+
+
+1.7
+log
+@added primary group
+@
+text
+@d34 1
+a34 1
+ <li>Each member may check out <i>personal</i> gear for <b>one</b> non-member friend friend. (e.g. one member cannot check out multiple tents)</li>
+@
+
+
+1.6
+log
+@added some more climbing gear to list
+@
+text
+@d27 5
+@
+
+
+1.5
+log
+@added more equipment possibilities
+@
+text
+@d13 2
+a14 1
+ <li>Climbing Harnesses and Belay Device</li>
+@
+
+
+1.4
+log
+@removed the non-members part and took out redundant sentence
+@
+text
+@d19 2
+@
+
+
+1.3
+log
+@well -- fixed it this time
+@
+text
+@d24 2
+a25 4
+ <li>Official club trips take precendence!  From time to time, a trip will need all the tents or sleeping bags.  Therefore, no members may check out this gear for personal use.</li>
+ <li>All gear must be returned in a week, or face a $5 per week late fee.  If you would like to check out gear for a longer period, please ask the officers at <script>document.write(email('outdoors-officers', 'virginia.edu'))</script>.
+
+</li>
+a29 23
+
+<h2>Equipment Policy for Non-Members</h2>
+
+<p>Non-members are able to rent gear under certain circumstances.  The non-member <i>must</i> be going on a trip with a member.  If a member wishes to get gear for more than just one non-member friend, then the non-member must pay the following rental fees:</p>
+
+<ul>
+ <li>Tent 		$5</li>
+ <li>Tarp		$1</li>
+ <li>Sleeping bag	$4</li>
+ <li>Sleeping pad	$1</li>
+ <li>Backpack		$3</li>
+ <li>Stove (with fuel)	$3</li>
+ <li>Pans		$3</li>
+ <li>Climbing shoes	$3</li>
+ <li>Harness		$3</li>
+ <li>ATC and biner	$1</li>
+ <li>Chalk bag		$1</li>
+ <li>Helmet		$3</li>
+ <li>Canoe		$15</li>
+ <li>Kayak		$15</li>
+ <li>PFD		$4</li>
+ <li>Mountain Bike	$5 per day</li>
+</ul>
+@
+
+
+1.2
+log
+@fixed the emailing problem
+@
+text
+@d25 1
+a25 4
+ <li>All gear must be returned in a week, or face a $5 per week late fee.  If you would like to check out gear for a longer period, please ask the 
+
+<script>
+ document.write('a href="mailto:' + 'outdoors-officers' + '@@' + 'virginia.edu' + '">' + officers' + '</a>')</script>.
+d31 1
+a31 1
+<p>If you would like to check out gear, you must e-mail <a href="mailto:outdoors-officers@@virginia.edu>officers</a> and set up a time to get into the gear room.  Please request gear as soon as you know you need it -- please don't wait till the last minute!</p>
+@
+
+
+1.1
+log
+@First version of this -- wrote up what I think is important -- not quite finished
+@
+text
+@d25 6
+a30 1
+ <li>All gear must be returned in a week, or face a $5 per week late fee.  If you would like to check out gear for a longer period, please ask the <a href="mailto:outdoors-officers@@virginia.edu>officers</a>.</li>
+d34 1
+a34 1
+<p>If you would like to check out gear, you must e-mail the <a href="mailto:outdoors-officers@@virginia.edu>officers</a> and set up a time to get into the gear room.  Please request gear as soon as you know you need it -- please don't wait till the last minute!</p>
+@
+

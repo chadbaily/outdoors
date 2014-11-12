@@ -1,0 +1,63 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.28.01.41.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Your Expense Reports</h1>
+
+{SOME:}
+<table class="borders collapsed">
+  <tr>
+    <th>Date</th>
+    <th>Total</th>
+    <th>Status</th>
+  </tr>{report:}
+  <tr>
+    <td>
+      <a href="members/expense_report/read/{c_uid}">
+        {c_created_date|_date_format,'m/d/Y'}</a>
+    </td>
+    <td>{total}</td>
+    <td>{status_title}</td>
+  </tr>{:report}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">No matching records found.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@batch commit of changes for expense reports
+@
+text
+@d12 1
+a12 1
+      <a href="members.php?page={PAGE}&object={c_uid}&action={ACTION_READ}">
+@
+

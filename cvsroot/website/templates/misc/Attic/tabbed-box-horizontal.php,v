@@ -1,0 +1,76 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.23.41;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@deleted
+@
+text
+@
+<!-- Begin Tabbed Box -->
+<table cellpadding="0" cellspacing="0" border="0" width="0">
+  <tr>
+    <td>{ROWS}
+    </td>
+  </tr>
+</table>
+<div class="box" style="{STYLE}">
+<!-- Tabbed Box Contents -->
+{CONTENTS}
+<!-- End Tabbed Box Contents -->
+</div>
+<!-- End Tabbed Box -->
+
+{ROW:}
+      <table cellspacing="0" cellpadding="3" border="0" width="100%">
+        <tr>
+        {TABS}
+        </tr>
+      </table>{:ROW}
+{TAB:}
+          <td class="{CLASS}" align="center" width="{WIDTH}">
+            <a title="{TOOLTIP}" accesskey="{ACCESSKEY}" href="{LINK}">{LABEL}</a>
+          </td>{:TAB}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

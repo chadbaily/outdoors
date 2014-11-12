@@ -1,0 +1,94 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.08.23.11.19;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.12.15.53.04;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@{SUCCESS:}
+<p class="notice">This adventure's activities were updated.</p>
+{:SUCCESS}
+
+<form action="members.php?page=adventure&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}" method="POST">
+<input type="hidden" name="posted" value="1">
+
+<table>
+  {ACTIVITY:}
+  <tr>
+    <td>
+      <input type="checkbox" name="activities[]" value="{C_UID}" id="activity{C_UID}" {CHECKED}>
+    </td>
+    <td>
+      <label for="activity{C_UID}">{C_TITLE}</label>
+    </td>
+  </tr>
+  {:ACTIVITY}
+  <tr>
+    <td colspan="2" align="right">
+      <input type="reset" value="Reset">
+      <input type="submit" value="Save Changes">
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.2
+log
+@un-bolded titles
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d15 1
+a15 1
+      <label for="activity{C_UID}"><b>{C_TITLE}</b></label>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

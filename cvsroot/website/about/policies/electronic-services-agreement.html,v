@@ -1,0 +1,374 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.19.11.35.52;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Outdoors at UVa Electronic Services Agreement -->
+<!-- navbar=Club Policies/Electronic Services Agreement -->
+
+<h1>Outdoors at UVa Electronic Services Agreement</h1>
+
+<p>This Electronic Services Agreement supplements your General Release of
+Liability agreement and replaces any prior agreement between you and Outdoors
+club at the University of Virginia ("Outdoors") regarding your use of the
+Electronic Services. </p>
+
+<p><b>1. Use of Electronic Services:</b></p>
+
+<p><b>Scope of the Agreement.</b> This Electronic Services Agreement (the
+"Agreement") between you and Outdoors states the terms and conditions that
+govern your use of Outdoors' Electronic Services. It is part of your membership
+agreement. The term "we", when used below, means Outdoors. The term "Electronic
+Services" includes all of Outdoors' computer, telephonic, email or wireless
+services or systems.  This includes services and information accessible through
+Outdoors, or service providers used by Outdoors, including, but not limited to:
+Outdoors' website; Outdoors' computers and networks that are accessible
+externally; and any other computer, telephonic or wireless membership services
+or information system Outdoors provides to you, including successors to the
+systems described above.</p>
+
+<p><b>Services Provided.</b> Outdoors' Electronic Services allow you to sign up
+for membership; change personal information and preferences; view information of
+other members and let other members view information about you (including, but
+not limited to, email address, phone number, and birth date); view information
+about past or upcoming "adventures" (trips and activities); create, modify, post
+new adventures; sign up for or withdraw from upcoming adventures; posting
+post-adventure comments and photographs; and contacting officers.  The
+Electronic Services are accessible via computer, telephonic or wireless
+transmissions for use on compatible personal, home or small business computers,
+including Internet appliances with modems, terminals and network computers, as
+well as various wireless devices. You understand that in order for Outdoors'
+Electronic Services, including future services available from Outdoors, to
+perform to your satisfaction, or at all, you are solely responsible for the
+hardware, software or other technology you use to access Outdoors' Electronic
+Services. Outdoors will not be responsible for any service difficulties
+resulting from your failure to possess technology adequate to use Outdoors'
+Electronic Services to your satisfaction. </p>
+
+<p><b>Your Agreement.</b> By using Outdoors' Electronic Services, you agree to
+comply with the terms and conditions of this Agreement.  Outdoors has the right
+to modify or terminate this Agreement in any way at any time, and we may not
+provide you with notice of any modifications. You further agree to abide by any
+rules, procedures, standards, requirements or other conditions we may establish
+in connection with the use of our Electronic Services or any other electronic
+communications services made available by Outdoors. </p>
+
+<p><b>2. Risks of Electronic Services:</b></p>
+
+Access to the Electronic Services may be limited or unavailable during periods
+of peak demand, systems upgrades, maintenance or for other reasons. Outdoors
+will not be liable to you if you are unable to access your account information
+or request a transaction through the Electronic Services (See "Limitations of
+Liability").</p>
+
+<p><b>3. Information; No Warranty:</b></p>
+
+<p><b>Information.</b> Outdoors' Electronic Services make available certain
+information that has been independently obtained or has been obtained by
+Outdoors. Outdoors does not guarantee or certify the accuracy, completeness,
+timeliness or correct sequencing of the Information made available through
+Outdoors, the Information Providers or any other third party transmitting the
+Information (the "Information Transmitters"). You agree that neither Outdoors,
+the Information Providers nor the Information Transmitters shall be liable in
+any way for the accuracy, completeness, timeliness or correct sequencing of the
+Information, or for any decision made or action taken by you relying upon the
+Information. You further agree that neither Outdoors, the Information Providers
+nor the Information Transmitters will be liable in any way for the interruption
+of any data, Information or other aspect of Outdoors' Electronic Services. </p>
+
+<p><b>Disclaimer of Warranties.</b> There is no warranty of merchantability, no
+warranty of fitness for a particular use and no warranty of non-infringement.
+There is no other warranty of any kind, express or implied, regarding the
+information or any aspect of Outdoors' electronic services (including but not
+limited to information access and adventure signup or cancellation). </p>
+
+<p><b>4. Limitations of Liability:</b></p>
+
+<p><b>Limitation of Damages.</b> Outdoors, its officers and members, the
+information providers, information transmitters, and any other person involved
+in transmitting information will not be liable under any circumstances for any
+consequential, incidental, special or indirect damages even if you advise them
+of the possibility of such losses and damages.  As a condition to accessing or
+receiving the information, you expressly agree to waive any claim you may have
+against Outdoors, its officers and members, any information provider, or any
+other persons involved in transmitting any information Outdoors makes available
+to you. </p>
+
+<p>By accessing or receiving information, you agree that the liability of
+Outdoors, its officers and members, the information providers, or any other
+persons involved in transmitting information arising out of any legal claim
+(whether in contract, tort or otherwise) in any way connected with Outdoors'
+electronic services or information will not exceed the membership fee you paid.
+</p>
+
+<p>Some jurisdictions do not allow limitations on how long implied warranties
+last, the exclusion or limitation of incidental or consequential damages or the
+exclusion of certain implied warranties, so that these disclaimers and
+limitations may not apply to you.  This agreement gives you specific legal
+rights.  You may also have other rights which vary from jurisdiction to
+jurisdiction. </p>
+
+<p><b>No Liability for Events Outside of Entities' Direct Control.</b> Outdoors,
+its officers and members, the information providers, information transmitters,
+and any other person involved in transmitting information will not be liable for
+any loss that results from a cause over which that entity does not have direct
+control. Such causes include, but are not limited to, (1) the failure of
+electronic or mechanical equipment or communication lines; (2) telephone or
+other interconnect problems; (3) bugs, errors, configuration problems or the
+incompatibility of computer hardware or software; (4) the failure or
+unavailability of Internet access; (5) problems with Internet service providers
+or other equipment or services relating to your computer or network; (6)
+problems with intermediate computer or communications networks or facilities;
+(7) problems with data transmission facilities or your telephone, cable or
+wireless service; or (8) unauthorized access, theft, operator errors, severe
+weather, earthquakes, other natural disasters or labor disputes. Outdoors is
+also not responsible for any damage to your computer, software, modem,
+telephone, wireless device or other property resulting in any way from your use
+of Outdoors' Electronic Services. </p>
+
+<p><b>5. Consent to Email Communications and Opting Out:</b></p>
+
+<p>By entering into a membership agreement with Outdoors or by subscribing to a
+Outdoors Electronic Service, you are consenting to the receipt of electronic
+mail ("email") from us. We may send you emails about services and products we
+believe may be of interest to you. You may opt-out of future emails about
+products or services by following instructions on our website, or contained in
+an email that you receive from us. We reserve the right, however, to email you
+important information relating to your account. </p>
+
+<p><b>6. Use of Proprietary Information:</b></p>
+
+<p>The Information provided is the property of Outdoors, the Information
+Providers or their licensers and is protected by applicable copyright law. You
+agree not to reproduce, retransmit, disseminate, sell, distribute, publish,
+broadcast, circulate or commercially exploit the Information in any manner
+without the express written consent of Outdoors, the Information Providers or
+any other person with the authority to give such consent. You agree that you
+will not use the Information for any unlawful purpose. You further agree to
+comply with all reasonable written requests from Outdoors intended to protect
+the Information Providers' and Outdoors' respective rights in the Information
+and Electronic Services.</p>
+
+<p>You agree that Outdoors' Electronic Services may send email messages on your
+behalf, including making said messages appear as if they have been written by
+you, for Club business.</p>
+
+<p><b>7. Access, Passwords and Security:</b></p>
+
+<p>You will be responsible for the confidentiality and use of your access
+number(s), password(s) and account number(s). You agree not to hold Outdoors
+liable for any damages of any kind resulting from your decision to disclose your
+access number(s), password(s), or account number(s) to any third party,
+including but not limited to, entities that aggregate account information or
+website content, or persons who are or claim to be acting as your agent or
+proxy. If you inform Outdoors or Outdoors has reason to believe that the
+security of your account password may be or has been compromised, we have the
+right to terminate your use of Electronic Services. You will be responsible for
+all information entered through and under your access number(s), password(s) and
+account number(s), and any information so received by Outdoors will be deemed to
+have been received from you. You agree immediately to notify Outdoors if you
+become aware of: </p>
+
+<p>Any loss or theft of your access number(s), password(s) and/or account
+number(s); or any unauthorized use of any of your access number(s), password(s)
+and/or account number(s), or of the Electronic Services or any Information. </p>
+
+<p><b>8. Data Transmission:</b></p>
+
+<p>You acknowledge that data, including email and electronic communications, may
+be accessed by unauthorized third parties when communicated between you and
+Outdoors, Information Providers or Information Transmitters, using the Internet,
+other network communications facilities, telephone or any other electronic
+means. You agree to use software produced by third parties, including, but not
+limited to, "browser" software.  You understand that Outdoors website is not
+secure, that it does not use any data security protocol such as Secure Socket
+Layer (SSL) protocol or other protocols.  You acknowledge that Outdoors is not
+responsible for any compromise of data transmitted across computer networks or
+telecommunications facilities, including, but not limited to, the Internet. </p>
+
+<p><b>9. Use of Software, Programs, Applications or Other Devices to Access
+Electronic Services:</b></p>
+
+<p>With the exception of applications commonly known as web browser software, or
+other applications formally approved by Outdoors in writing, you agree not to
+use any software, program, application or any other device to access or log on
+to Outdoors' computer systems, website or proprietary software or to automate
+the process of obtaining, downloading, transferring or transmitting any content
+or information to or from Outdoors' computer systems, website or proprietary
+software. </p>
+
+<p><b>10. Subscription, Service, Use Fees:</b></p>
+
+<p>You agree to pay all subscription, service and use fees, if any, that you are
+charged by Outdoors or its designee for Outdoors' Electronic Services. You agree
+that these fees may be changed without notice. Outdoors reserves the right to
+enter into fee sharing arrangements with applicable Information Providers and
+Information Transmitters. </p>
+
+<p><b>11. Indemnification:</b></p>
+
+<p>You agree to defend, indemnify and hold Outdoors, its past and present
+officers and members, the Information Providers and the Information Transmitters
+harmless from and against any and all claims, losses, liability costs and
+expenses (including but not limited to attorneys' fees) arising from your
+violation of this Agreement, state or federal laws or regulations, or any third
+party's rights, including but not limited to infringement of any copyright,
+violation of any proprietary right and invasion of any privacy rights. This
+obligation will survive the termination of this Agreement. </p>
+
+<p><b>12. Our Ability to Terminate Electronic Services:</b></p>
+
+<p>Outdoors reserves the right to terminate your access to its Electronic
+Services or any portion of them in its sole discretion, without notice and
+without limitation, for any reason whatsoever.  Outdoors may terminate your
+access to its Electronic Services for reasons including, but not limited to, the
+unauthorized use of your account access information, breach of this Agreement,
+discontinuance of Outdoors' access to any Information or any other data from any
+Information Provider or termination of one or more agreements between Outdoors
+and Information Providers or Information Transmitters.  Outdoors, the
+Information Providers, and the Information Transmitters shall have no liability
+to you for terminating your access to Outdoors' Electronic Services. </p>
+
+<p><b>13. Electronic Communications:</b></p>
+
+<p>The Electronic Services you access by computer provide you with the
+capability to send electronic communications, such as email, directly to
+Outdoors and interact within applicable areas of the Electronic Services. You
+agree to the following terms with respect to your use of electronic
+communications through the Electronic Services: </p>
+
+<p>Outdoors shall be entitled, but is not obligated, to review or retain your
+electronic communications for, among other reasons, monitoring the quality of
+service you receive, your compliance with this Agreement and the security of the
+Electronic Services. Outdoors is entitled to disclose your electronic
+communications to the same extent it may disclose other information about you or
+your account(s) as provided elsewhere in your account agreement(s). In no event
+will Outdoors be liable for any costs, damages, expenses or any other
+liabilities incurred by you as a result of such activities by Outdoors; You will
+not use any electronic communication feature of the Electronic Services for any
+purpose that is unlawful, abusive, harassing, libelous, defamatory, obscene or
+threatening. You will not upload, post, reproduce or distribute any information,
+software or other material protected by copyright or any other intellectual
+property right (as well as rights of publicity and privacy) without first
+obtaining the permission of the owner of such rights; You will not in any way
+express or imply that the opinions in your electronic communications are
+endorsed by Outdoors without the prior written consent of Outdoors; If you use
+the Electronic Services that you access by computer, you agree to provide
+Outdoors with your email address, promptly provide Outdoors with any changes to
+your email address and accept electronic communications from Outdoors at the
+email address you specify; and You agree to be bound by any affirmance, assent
+or agreement you transmit through the Electronic Services you access by
+computer, including but not limited to any consent you give to receive
+communications from us solely through electronic transmission. You agree that,
+when in the future you click on an "I agree", "I consent" or other similarly
+worded "button" or entry field with your mouse, keystroke or other computer
+device, your agreement or consent will be legally binding and enforceable and
+the legal equivalent of your handwritten signature. </p>
+
+<p><b>14. Photographs and Videos:</b></p>
+
+<p>You authorize Outdoors to use, copy and distribute photographs or videos of
+you participating in Outdoors adventures, whether photographed or filmed by you
+or not, for Outdoors-related business including posting on the website.  You
+further authorize Outdoors to use, copy and distribute photographs or videos you
+take of Outdoors adventures and provide to Outdoors for Outdoors-related
+business. </p>
+
+<p><b>15. General:</b></p>
+
+<p>You acknowledge that, in providing you with the Electronic Services, Outdoors
+has relied upon your agreement to be bound by the terms of this Agreement and
+any user or license agreement(s) related to or accompanying Electronic
+Services-related software. You further acknowledge that you have read,
+understood and agreed to be bound by the terms of (i) the user license agreement
+of any Electronic Services-related software, and (ii) the terms of Outdoors'
+membership agreement(s) and any other agreement with Outdoors that applies to
+your account(s), all as currently in effect and amended from time to time. </p>
+
+<p><b>16. Modifications:</b></p>
+
+<p>This Agreement may be modified by Outdoors without written notice to you
+provided, however, that if Outdoors sends you written notice, via electronic
+communication or otherwise, of a modification, you confirm your acceptance of
+the modification by not closing and/or by continuing to use your account. </p>
+
+<p><b>17. Governing Law and Severability:</b></p>
+
+<p>This Agreement, and all future agreements you shall enter into with Outdoors,
+unless otherwise indicated on such other agreement, shall be governed by the law
+(but not the choice of law doctrines) of the state of Virginia. This is the case
+regardless of whether you reside or transact business with Outdoors in Virginia
+or elsewhere, except that arbitration provisions shall be governed by the
+Federal Arbitration Act.  Severability:  Any provision of this Electronic
+Services Agreement that is prohibited by, or unlawful or unenforceable under,
+Virginia law shall be ineffective only to the extent of such prohibition without
+invalidating the remaining provisions. </p>
+@
+
+
+1.2
+log
+@added Outdoors at UVa
+@
+text
+@d2 1
+a2 2
+<!-- tab=Club Policies -->
+<!-- subtab=Electronic Services Agreement -->
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+<!-- title=Electronic Services Agreement -->
+d5 1
+a5 1
+<h1>Electronic Services Agreement</h1>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

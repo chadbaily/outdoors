@@ -1,0 +1,85 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.11.18;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@{LEADER:}
+<p class='error'>This adventure's leader has not joined the adventure.  You
+cannot activate this adventure.  If you are the leader, you should <a
+href="members.php?page=adventure&object={OBJECT}&action={ACTION_JOIN}">join
+the adventure</a> first, then activate it.</p>
+{:LEADER}
+
+{ACTIVE:}
+<p class='error'>This adventure is already active.</p>
+{:ACTIVE}
+
+{START:}
+<p class='error'>This adventure's start date is not in the future.  You cannot
+activate this adventure.</p>
+{:START}
+
+{SUCCESS:}
+<p class="notice">This adventure has been activated and members can now join it.
+The only thing left to do is <a
+href="members.php?page=adventure&action={ACTION_ANNOUNCE}&object={OBJECT}">announce
+it</a> so people will know it's here.</p>
+{:SUCCESS}
+
+{CONFIRM:}
+<p>Please confirm that you wish to activate this adventure:</p>
+<form action="members.php" method="GET">
+<input type="hidden" name="page" value="adventure">
+<input type="hidden" name="action" value="{ACTION_ACTIVATE}">
+<input type="hidden" name="object" value="{OBJECT}">
+<input type="submit" name="continue" value="Continue">
+</form>
+{:CONFIRM}
+
+{FORM}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

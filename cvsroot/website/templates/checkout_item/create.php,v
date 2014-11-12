@@ -1,0 +1,51 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@initial release of checkin/checkout system
+@
+text
+@<h1>Add an Item to Check Out</h1>
+
+<p>Please fix the errors below and resubmit the form:</p>
+
+{notfound:}
+<p class="error">Sorry, that is not a valid item number, or that item is already
+checked out.</p>
+{:notfound}
+
+{form}
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d6 2
+a7 2
+<p class="error">Sorry &mdash; this item doesn't exist, is already checked out, or you
+have already chosen this item for checkout.</p>
+@
+

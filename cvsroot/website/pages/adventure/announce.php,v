@@ -1,0 +1,376 @@
+head	1.9;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2004.10.23.12.51.27;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.12.15.28.18;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.09.21.14.34;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.31.14.34.59;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: announce.php,v 1.8 2004/10/12 15:28:18 at Exp $
+ */
+
+include_once("EmailListManager.php");
+include_once("location.php");
+
+# Create templates
+$template = file_get_contents("templates/adventure/announce.php");
+$template = $object->insertIntoTemplate($template);
+
+$error = false;
+
+# Ensure that the adventure's start date is in the future
+if (date("Y-m-d H:i:s") >= $object->getStartDate()) {
+    $template = Template::unhide($template, "START");
+    $error = true;
+}
+
+# Ensure that the adventure is active.
+if ($object->getStatus() != $cfg['status_id']['active']) {
+    $template = Template::unhide($template, "ACTIVE");
+    $error = true;
+}
+
+if (!$error && getval('continue')) {
+    # Create some variables that we need
+    $leader =& new member();
+    $leader->select($object->getOwner());
+    $departure =& new location();
+    $departure->select($object->getDeparture());
+    $destination =& new location();
+    $destination->select($object->getDestination());
+
+    # Find the main category of the adventure, and use that as the email's
+    # category for opt-out purposes.
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/adventure/select-main-category.sql");
+    $cmd->addParameter("adventure", $cfg['object']);
+    $category = $cmd->executeScalar();
+    if (!$category) {
+        $category = 1;
+    }
+
+    # Create a template for the body of the email
+    $emailBody = file_get_contents("templates/emails/adventure-announce.txt");
+    $subject = "New Adventure: " . $object->getTitle();
+    $emailBody = $object->insertIntoTemplate($emailBody);
+    $emailBody = Template::replace($emailBody, array(
+        "LEADER_NAME" => $leader->getFullName(),
+        "LEADER_EMAIL" => $leader->getEmail(),
+        "DEPARTURE" => $departure->getTitle(),
+        "DESTINATION" => $destination->getTitle(),
+        "BASEURL" => $cfg['site_url'] . $cfg['base_url'],
+        "READ" => $cfg['action_id']['read'],
+        "JOIN" => $cfg['action_id']['join']));
+    EmailListManager::sendMassEmail($obj['user'], $subject, $emailBody, $category);
+    $template = Template::unhide($template, "SUCCESS");
+
+}
+elseif (!$error) {
+    $template = Template::unhide($template, "CONFIRM");
+}
+
+$res['content'] = $template;
+$res['title'] = "Announce Adventure";
+
+?>
+@
+
+
+1.8
+log
+@use default category if no activity types defined
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.7 2004/10/09 21:14:34 at Exp $
+d24 1
+a24 1
+include_once("Location.php");
+d46 1
+a46 1
+    $leader =& new Member();
+d48 1
+a48 1
+    $departure =& new Location();
+d50 1
+a50 1
+    $destination =& new Location();
+@
+
+
+1.7
+log
+@release email system
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.6 2004/10/07 17:41:47 at Exp $
+d59 18
+a77 19
+    if ($category) {
+        # Create a template for the body of the email
+        $emailBody = file_get_contents("templates/emails/adventure-announce.txt");
+        $subject = "New Adventure: " . $object->getTitle();
+        $emailBody = $object->insertIntoTemplate($emailBody);
+        $emailBody = Template::replace($emailBody, array(
+            "LEADER_NAME" => $leader->getFullName(),
+            "LEADER_EMAIL" => $leader->getEmail(),
+            "DEPARTURE" => $departure->getTitle(),
+            "DESTINATION" => $destination->getTitle(),
+            "BASEURL" => $cfg['site_url'] . $cfg['base_url'],
+            "READ" => $cfg['action_id']['read'],
+            "JOIN" => $cfg['action_id']['join']));
+        EmailListManager::sendMassEmail($obj['user'], $subject, $emailBody, $category);
+        $template = Template::unhide($template, "SUCCESS");
+    }
+    else {
+        $template = Template::unhide($template, "NOCAT");
+    }
+@
+
+
+1.6
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.5 2004/09/20 20:38:39 at Exp $
+d23 1
+a23 2
+include_once("Email.php");
+include_once("EmailList.php");
+d53 26
+a78 27
+    # Create a template for the body of the email
+    $emailBody = file_get_contents("templates/emails/adventure-announce.txt");
+
+    # Find out the email address of the main email list
+    $emailList =& new EmailList();
+    $emailList->select($cfg['main_email_list']);
+
+    $email =& new Email();
+    $email->setFrom('"' . $leader->getFullName() . '"<' . $leader->getEmail() . ">");
+    $email->addTo('"' . $leader->getFullName() . '"<' . $leader->getEmail() . ">");
+    $email->addTo($emailList->getListAddress());
+    $email->addHeader("Return-Path", $leader->getEmail());
+    $email->addHeader("Reply-To", $leader->getEmail());
+    $email->setSubject("New Adventure! " . $object->getTitle());
+    $emailBody = $object->insertIntoTemplate($emailBody);
+    $email->setBody(Template::replace($emailBody, array(
+        "LEADER_NAME" => $leader->getFullName(),
+        "LEADER_EMAIL" => $leader->getEmail(),
+        "DEPARTURE" => $departure->getTitle(),
+        "DESTINATION" => $destination->getTitle(),
+        "BASEURL" => $cfg['site_url'] . $cfg['base_url'],
+        "READ" => $cfg['action_id']['read'],
+        "JOIN" => $cfg['action_id']['join'])));
+    $email->setWordWrap(TRUE);
+    $email->loadFooter("templates/emails/footer.txt");
+    $email->send();
+    $template = Template::unhide($template, "SUCCESS");
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.4 2004/09/20 20:07:04 at Exp $
+d45 1
+a45 1
+if (!$error && Utility::getval('continue')) {
+@
+
+
+1.4
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d35 1
+a35 1
+    $template = Template::unhideBlock($template, "START");
+d41 1
+a41 1
+    $template = Template::unhideBlock($template, "ACTIVE");
+d69 1
+a69 1
+    $email->setBody(Template::replaceValues($emailBody, array(
+d80 1
+a80 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d83 1
+a83 1
+    $template = Template::unhideBlock($template, "CONFIRM");
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.2 2004/08/31 14:34:59 at Exp $
+d34 1
+a34 2
+$now =& new DateTime();
+if ($now->compareTo($object->getStartDate()) >= 0) {
+@
+
+
+1.2
+log
+@send to email list instead of managing list in the DB
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a25 1
+include_once("EmailListManager.php");
+d28 2
+a29 3
+$wrapper = file_get_contents("templates/adventure/announce-wrapper.php");
+$wrapper = $object->insertIntoTemplate($wrapper);
+$box = file_get_contents("templates/adventure/announce-box.php");
+d36 1
+a36 1
+    $box = Template::unhideBlock($box, "START");
+d42 1
+a42 1
+    $box = Template::unhideBlock($box, "ACTIVE");
+d81 1
+a81 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d84 1
+a84 1
+    $box = Template::unhideBlock($box, "CONFIRM");
+d87 1
+a87 6
+# Plug it all into the templates
+$res['tab'] = "Announce";
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: announce.php,v 1.5 2004/05/30 01:42:06 baron Exp $
+d24 1
+d60 4
+d67 1
+a70 5
+    # TODO: Replace this by sending to the list?
+    foreach (EmailListManager::getSubscribedEmails() as $addr => $name) {
+        $email->addBCC($addr);
+    }
+
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

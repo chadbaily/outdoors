@@ -1,0 +1,107 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.23.12.54.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: list_all.php,v 1.1 2004/10/07 03:09:14 at Exp $
+ */
+
+# Create template
+$template = file_get_contents("templates/decision/list_all.php");
+
+$obj['table'] =& new table("[_]$cfg[page]");
+if ($obj['table']->permits($cfg['action_id']['create'])) {
+    $template = Template::unhide($template, "CREATE");
+}
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/decision/list_all.sql");
+$result =& $cmd->executeReader();
+
+if ($result->numRows()) {
+    $chunk = Template::extract($template, "CHUNK");
+    $template = Template::delete($template, "CHUNK");
+    $thisCat = "";
+    $thisChunk = "";
+
+    while ($row =& $result->fetchRow()) {
+        if ($row['c_category'] != $thisCat) {
+            $thisCat = $row['c_category'];
+            $template = Template::replace($template,
+                array("CATEGORY" => $thisChunk), 1);
+            $thisChunk = Template::replace($chunk, array(
+                "CATEGORY_NAME" => $row['c_category']));;
+        }
+
+        $thisChunk = Template::block($thisChunk, "ROW",
+            array_change_key_case($row, 1));
+    }
+    $template = Template::replace($template,
+        array("CATEGORY" => $thisChunk), 1);
+
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+$res['title'] = "Officer Decisions";
+
+?>
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.1 2004/09/22 16:27:56 at Exp $
+d26 1
+a26 1
+$obj['table'] =& new Table("[_]$cfg[page]");
+@
+

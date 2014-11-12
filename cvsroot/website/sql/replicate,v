@@ -1,0 +1,65 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.21.55.50;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.11.09.17.53.44;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.19.01.45.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@update for newer tables
+@
+text
+@#!/usr/local/bin/bash
+
+sed -e "s/\[_]/test_/g" drop.sql | mysql
+sed -e "s/\[_]/test_/g" create.sql | mysql
+sed -e "s/\[_]/test_/g" replicate.sql | mysql
+@
+
+
+1.2
+log
+@more images on default pages
+@
+text
+@d3 3
+a5 3
+sed -e "s/\[_]/test_/g" drop.sql | mysql -uat -hdb57b.pair.com at_main1
+sed -e "s/\[_]/test_/g" create.sql | mysql -uat -hdb57b.pair.com at_main1
+sed -e "s/\[_]/test_/g" replicate.sql | mysql -uat -hdb57b.pair.com at_main1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d3 3
+a5 3
+sed -e "s/\[_]/test_/g" drop.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+sed -e "s/\[_]/test_/g" create.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+sed -e "s/\[_]/test_/g" replicate.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+@
+

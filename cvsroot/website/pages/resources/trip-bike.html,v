@@ -1,0 +1,93 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.02.02.47.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.02.02.45.51;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Mountain Biking Trip Sheet -->
+<!-- navbar=Member's Area/Member Resources/Trip Checklists -->
+
+<h1>General Mountain Biking Trip Checklist</h1>
+
+<p>Charlottesville is a great location for mountain biking. This area offers some of the best single track in the East. Right in town are the O-hill trails with its numerous technical ups and downs. Walnut Creek Park is only 10 miles south of here and offers great single track for all levels, as does Panorama Farms which is only 10 miles northwest of the University. </p>
+
+<h2>Required Gear</h2>
+
+<p>Mountain bikers must wear a helmet at all times while biking!</p>
+
+<h2>Suggested Gear</h2>
+
+<p>You are advised to carry:</p>
+
+<ul>
+ <li>Extra tube</li>
+ <li>Patch kit</li>
+ <li>Multi-function tool kit</li>
+ <li>First-aid kit</li>
+ <li>Trail map</li>
+ <li>Extra water</li>
+</ul> 
+
+<p><b>These items are especially important if you are leading an adventure.</b>  It is also advised that a leader know basic bike maintenance, such as how to fix a flat or adjust the brakes.  You are also advised to always ride with another person, but this is not required.</p>
+
+<h2>Possible Dangers</h2>
+
+<p>The most common injuries associated with road riding/commuting result from accidents involving automobiles, or sometimes pedestrians, other cyclists, or animals. Trail riding usually involves riding on narrow surfaces with numerous obstacles including rocks, trees, and steep inclines on loose surfaces. Cuts and scrapes often result from falls, though severe landings sometimes result in paralysis or death. <b>ALWAYS WHERE A HELMET</b> whenever riding a bike. Long, hot rides in the summer can result in heat exhaustion, hyperthermia, and/or dehydration. <b>You should always be well hydrated before a ride, and take plenty of water with you on a ride.</b></p>
+
+<h2>Borrowing a club bike</h2>
+
+<p>The club has 5 nice front suspension Gary Fisher mountain bikes. There are 3 medium sized frames, 1 small, and 1 large frame. These bikes are used for trail riding and road riding adventures, as well as bike maintenance work shops. The club also owns 5 helmets, 5 water bottles, an air pump, various maintenance supplies, 1 trunk rack and 1 hatch back rack for bike transport. As a member you are welcome to sign out a bike for 1 week during the school year, and 2 weeks during the summer, as long as they are available. It is advised to always bike with someone else, but is not required for signing out a bike.</p>
+
+<p><center><font size=+2><b>HAPPY TRAILS!</b></font></center></p>
+
+@
+
+
+1.2
+log
+@didn't notice it after first inspection -- changed title to the correct title
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Trip Checklists -->
+@
+
+
+1.1
+log
+@first version
+@
+text
+@d1 1
+a1 1
+<!-- title=Kayaking Trip Sheet -->
+@
+

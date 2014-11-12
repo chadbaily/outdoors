@@ -1,0 +1,107 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.21.21.12.16;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.19.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Choose Activity Types</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use this page to choose activities that you could do at <b>{C_TITLE}</b>.
+This helps us tailor the website to user needs.  Check the checkboxes next to
+the activities you'd do at this location, then click Save Changes at the bottom
+of the form.</p>
+
+{SUCCESS:}
+<p class="notice">The location's activity types were updated.</p>
+{:SUCCESS}
+
+<form action="members/location/choose_activities/{OBJECT}" method="POST">
+<input type="hidden" name="posted" value="1">
+
+<p>
+{ACTIVITY:}
+  <input type="checkbox" name="activities[]" value="{C_UID}" id="activity{C_UID}" {CHECKED}>
+  <label for="activity{C_UID}">{C_TITLE}</label><br>
+{:ACTIVITY}
+</p>
+
+<p>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Save Changes">
+</p>
+
+</form>
+
+</div>
+@
+
+
+1.2
+log
+@no table for layout
+@
+text
+@d17 1
+a17 1
+<form action="members.php?page=location&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}" method="POST">
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d20 11
+a30 18
+<table>
+  {ACTIVITY:}
+  <tr>
+    <td>
+      <input type="checkbox" name="activities[]" value="{C_UID}" id="activity{C_UID}" {CHECKED}>
+    </td>
+    <td>
+      <label for="activity{C_UID}">{C_TITLE}</label>
+    </td>
+  </tr>
+  {:ACTIVITY}
+  <tr>
+    <td colspan="2" align="right">
+      <input type="reset" value="Reset">
+      <input type="submit" value="Save Changes">
+    </td>
+  </tr>
+</table>
+@
+

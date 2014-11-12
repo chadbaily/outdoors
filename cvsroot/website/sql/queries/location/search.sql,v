@@ -1,0 +1,104 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.21.02.48;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.22.02.55.48;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@remove spurious semicolons
+@
+text
+@select
+    lo.c_uid,
+    lo.c_title,
+    count(distinct aa.c_adventure) as c_count
+from [_]location as lo
+    left outer join [_]location_activity as la
+        on la.c_location = lo.c_uid
+        and la.c_deleted <> 1
+    left outer join [_]adventure as ad on ad.c_destination = lo.c_uid
+        and ad.c_deleted <> 1
+    left outer join [_]adventure_activity as aa
+        on aa.c_adventure = ad.c_uid
+        and aa.c_activity = la.c_activity
+        and aa.c_deleted <> 1
+where ({title,char} is null or lo.c_title like concat('%', {title,char}, '%'))
+    and ({activity,int} is null or la.c_activity = {activity,int})
+    and lo.c_deleted <> 1
+group by lo.c_uid, lo.c_title
+order by c_count desc
+@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@d19 1
+a19 1
+order by c_count desc;
+@
+
+
+1.2
+log
+@fixed, I think
+@
+text
+@d8 1
+d10 1
+d12 3
+a14 1
+        on aa.c_adventure = ad.c_uid and aa.c_activity = la.c_activity
+d17 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d4 1
+a4 1
+    sum(case when (aa.c_uid is null) then 0 else 1 end) as c_count
+d7 2
+a8 1
+        on la.c_location = lo.c_uid and la.c_activity = {activity,int}
+d10 1
+a10 1
+        on aa.c_activity = {activity,int}
+d13 2
+a14 2
+group by lo.c_uid
+order by lo.c_title;
+@
+

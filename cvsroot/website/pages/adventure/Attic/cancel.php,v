@@ -1,0 +1,257 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.23.12.48.08;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@not needed
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: cancel.php,v 1.5 2004/10/07 17:41:47 at Exp $
+ *
+ * Cancel the adventure and refund all attendees, but don't withdraw them.
+ */
+
+include_once("Email.php");
+
+$template = file_get_contents("templates/adventure/cancel.php");
+
+$error = false;
+
+# Make sure the adventure's start date is in the future
+if (date("Y-m-d H:i:s") >= $object->getStartDate()) {
+    $template = Template::unhide($template, "START");
+    $error = true;
+}
+
+# Ensure that the adventure is active
+if ($object->getStatus() != $cfg['status_id']['active']) {
+    $template = Template::unhide($template, "NOTACTIVE");
+    $error = true;
+}
+
+if (!$error && getval('continue')) {
+
+    # Mark the adventure as cancelled
+    $object->setStatus($cfg['status_id']['cancelled']);
+    $object->update();
+
+    # Delete all questions for the adventure.  The attendees' answers should be
+    # deleted in cascading fashion.
+    foreach ($object->getQuestions() as $key => $question) {
+        $question->delete(true, true);
+    }
+
+    # Create a template for the body of the email
+    $emailBody = file_get_contents("templates/emails/adventure-cancel.txt");
+
+    # Create an email message
+    $leader =& new Member();
+    $leader->select($object->getOwner());
+    $email =& new Email();
+    $email->setFrom($leader->getEmail());
+    $email->addTo($leader->getEmail());
+    $email->setSubject("Adventure Cancelled: " 
+        . substr($object->getTitle(), 0, 40));
+    $emailBody = $object->insertIntoTemplate($emailBody);
+    $email->setBody(Template::replace($emailBody, array(
+        "LEADER_NAME" => $leader->getFullName())));
+    $email->setWordWrap(TRUE);
+    $email->loadFooter("templates/emails/footer.txt");
+
+    # Add the attendees to the BCC of the email
+    foreach ($object->getAttendees() as $key => $att) {
+        if ($att->getStatus() == $cfg['status_id']['default']) {
+            $mem =& new Member();
+            $mem->select($att->getMember());
+            $email->addBCC($mem->getEmail());
+        }
+    }
+
+    $email->send();
+
+    # Show confirmation text
+    $template = Template::unhide($template, "SUCCESS");
+}
+elseif (!$error) {
+    $template = Template::unhide($template, "CONFIRM");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Cancel Adventure";
+
+?>
+@
+
+
+1.5
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: cancel.php,v 1.4 2004/09/20 20:38:39 at Exp $
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: cancel.php,v 1.3 2004/09/20 20:07:04 at Exp $
+d43 1
+a43 1
+if (!$error && Utility::getval('continue')) {
+@
+
+
+1.3
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: cancel.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d33 1
+a33 1
+    $template = Template::unhideBlock($template, "START");
+d39 1
+a39 1
+    $template = Template::unhideBlock($template, "NOTACTIVE");
+d67 1
+a67 1
+    $email->setBody(Template::replaceValues($emailBody, array(
+d84 1
+a84 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d87 1
+a87 1
+    $template = Template::unhideBlock($template, "CONFIRM");
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: cancel.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d32 1
+a32 2
+$now =& new DateTime();
+if ($now->compareTo($object->getStartDate()) >= 0) {
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: cancel.php,v 1.5 2004/05/30 01:42:06 baron Exp $
+d27 1
+a27 2
+$wrapper = file_get_contents("templates/adventure/cancel-wrapper.php");
+$box = file_get_contents("templates/adventure/cancel-box.php");
+d34 1
+a34 1
+    $box = Template::unhideBlock($box, "START");
+d40 1
+a40 1
+    $box = Template::unhideBlock($box, "NOTACTIVE");
+d85 1
+a85 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d88 1
+a88 1
+    $box = Template::unhideBlock($box, "CONFIRM");
+d91 1
+a91 6
+$res['content'] = $object->insertIntoTemplate($box);
+$res['tab'] = "Cancel";
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content'],
+    "C_TITLE" => $object->getTitle()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

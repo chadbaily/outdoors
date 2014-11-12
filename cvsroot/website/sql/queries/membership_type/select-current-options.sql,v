@@ -1,0 +1,31 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.30.20.49.05;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@add c_deleted column to database tables
+@
+text
+@select *
+from [_]membership_type as mt
+where not(mt.c_flags & {private,int})
+    and (
+        (mt.c_flags & {flexible,int})
+        or current_date between mt.c_show_date and mt.c_hide_date
+        )
+    and mt.c_deleted <> 1
+@

@@ -1,0 +1,3055 @@
+head	1.66;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.66
+date	2005.01.31.20.47.07;	author at;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2005.01.12.03.27.17;	author at;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2005.01.12.03.16.23;	author at;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2005.01.10.03.41.21;	author at;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2004.11.08.16.44.45;	author at;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2004.11.04.15.02.36;	author at;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2004.11.02.22.33.31;	author at;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2004.11.02.22.20.43;	author at;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2004.11.02.20.01.09;	author at;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2004.11.01.01.55.17;	author at;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2004.11.01.01.52.40;	author at;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2004.10.28.01.40.34;	author at;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2004.10.23.14.52.32;	author at;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2004.10.23.13.06.20;	author at;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2004.10.13.01.20.25;	author at;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2004.10.11.00.47.39;	author at;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2004.10.11.00.40.03;	author at;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2004.10.10.23.47.18;	author at;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2004.10.09.22.11.57;	author at;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2004.10.08.20.34.48;	author at;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2004.10.07.03.40.17;	author at;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2004.10.06.22.37.14;	author at;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2004.10.06.13.57.14;	author at;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2004.10.05.13.00.08;	author at;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2004.10.04.13.10.10;	author at;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2004.10.04.13.04.21;	author at;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2004.10.04.12.42.20;	author at;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2004.10.02.00.10.56;	author at;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2004.09.22.16.41.04;	author at;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2004.09.22.13.17.07;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2004.09.19.02.56.37;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2004.09.09.22.58.27;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2004.09.09.22.56.36;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2004.09.09.21.46.26;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.09.09.16.11.18;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.09.09.15.18.58;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.09.09.00.08.29;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.09.08.22.52.14;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.09.07.12.19.10;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.09.02.12.28.07;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.08.25.12.04.26;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.08.24.15.05.45;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.08.22.23.04.20;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.08.20.21.24.58;	author at;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2004.08.20.19.43.44;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.08.20.18.19.51;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.08.19.18.57.33;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.08.19.18.51.34;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.08.16.21.59.46;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.08.16.13.17.51;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.08.15.16.10.37;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.08.12.15.52.41;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.08.12.15.42.33;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.06.18.15.39;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.06.17.49.11;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.06.17.38.17;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.06.16.59.03;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.04.20.35.08;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.03.13.48.17;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.02.00.54.29;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.25.23.30.51;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.19.17.39.51;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.66
+log
+@add the 'wheel' user group
+@
+text
+@/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ *
+ * This program is free software.  You can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 2 of the License, or (at your option) any
+ * later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ *
+ * $Id: initialize.sql,v 1.65 2005/01/14 15:08:49 at Exp $
+ *
+ */
+
+insert into [_]table
+    (c_name)
+    values
+    ("[_]absence"),
+    ("[_]action"),
+    ("[_]activity"),
+    ("[_]activity_category"),
+    ("[_]address"),
+    ("[_]adventure"),
+    ("[_]adventure_activity"),
+    ("[_]adventure_comment"),
+    ("[_]answer"),
+    ("[_]attendee"),
+    ("[_]chat"),
+    ("[_]chat_type"),
+    ("[_]checkout"),
+    ("[_]checkout_gear"),
+    ("[_]checkout_item"),
+    ("[_]classified_ad"),
+    ("[_]condition"),
+    ("[_]decision"),
+    ("[_]decision_category"),
+    ("[_]decision_xref"),
+    ("[_]email_list"),
+    ("[_]expense"),
+    ("[_]expense_category"),
+    ("[_]expense_report"),
+    ("[_]expense_report_note"),
+    ("[_]expense_submission"),
+    ("[_]expense_submission_expense"),
+    ("[_]group"),
+    ("[_]interest"),
+    ("[_]item"),
+    ("[_]item_note"),
+    ("[_]item_feature"),
+    ("[_]item_category"),
+    ("[_]item_type_feature"),
+    ("[_]item_type"),
+    ("[_]location"),
+    ("[_]location_activity"),
+    ("[_]member"),
+    ("[_]member_group"),
+    ("[_]member_note"),
+    ("[_]membership"),
+    ("[_]membership_type"),
+    ("[_]optout"),
+    ("[_]phone_number"),
+    ("[_]phone_number_type"),
+    ("[_]privilege"),
+    ("[_]question"),
+    ("[_]rating"),
+    ("[_]report"),
+    ("[_]status"),
+    ("[_]subscription"),
+    ("[_]transaction");
+
+-- These values must NOT be changed.  They define the bitmasks that give meaning
+-- to the c_unixperms column on tables.  They are in descending order to match
+-- the way you would read the bits (from left to right).
+insert into [_]unixperm
+    (c_title, c_bitmask)
+    values
+    ("owner_read",  256),
+    ("owner_write", 128),
+    ("owner_delete", 64),
+    ("group_read",   32),
+    ("group_write",  16),
+    ("group_delete",  8),
+    ("other_read",    4),
+    ("other_write",   2),
+    ("other_delete",  1);
+
+-- These values must NOT be changed.  They define various bitmasks on lots of
+-- different objects, via the c_flags column.
+insert into [_]flag (c_title, c_bitmask) values
+    ("private",                   1),
+    ("email_private",             2),
+    ("imported",                  4),
+    ("student",                   8),
+    ("flexible",                 16),
+    ("has_photo",                32),
+    ("receive_email",            64),
+    ("reimbursable",            128),
+    ("applies_to_object",       256),
+    ("primary",                 512),
+    ("member_agreement",       1024),
+    ("generic",                2048);
+
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description) values
+      (now(), 'read', "View Details", '&Details', 'Read and display the contents of an object'),
+      (now(), 'write', "Edit or Update", 'Edit', 'Edit (modify or update) the object'),
+      (now(), 'delete', "De&lete", '', 'Delete the object or mark it as deleted'),
+      (now(), 'list_all', 'List All Objects', "List All Objects", 'List all objects of the given type'),
+      (now(), 'list_owned_by', 'List Objects I Own', "List Objects I Own", 'List all objects of the given type that the member owns'),
+      (now(), 'view_history', "View History", 'Histor&y', 'View a history of the object'),
+      (now(), 'create', "Create", 'Create', 'Create an object of the given type'),
+      (now(), 'activate', "Activate", 'A&ctivate', 'Activate the object'),
+      (now(), 'deactivate', "Deactivate", "Deactiv&ate", 'Deactivate the object'),
+      (now(), 'join', "Join", "&Join", 'Join the adventure'),
+      (now(), 'copy', 'Copy Object', 'Cop&y', "Make another object with identical data"),
+      (now(), 'withdraw', "Withdraw", '&Withdraw', 'The opposite of join'),
+      (now(), 'edit_questions', "Edit Questions", 'Edit &Questions', 'Create or edit questions for an adventure'),
+      (now(), 'choose_activities', "Choose Activities", 'C&hoose Activities', 'Choose which type(s) of activity applies to this adventure'),
+      (now(), 'view_report', "View Report", "View Re&port", 'View a report on attendees'),
+      (now(), 'announce', "Announce", "A&nnounce", 'Announce the adventure to the main email list'),
+      (now(), 'stat', "View Properties", 'P&roperties', "View meta-data about an object, such as its owner and date of creation"),
+      (now(), 'chmod', "Change Permissions", "&Change Permissions", 'Change Unix-style permissions for an object'),
+      (now(), 'chgrp', "Change Group", "Change &Group", "Change the object's primary group"),
+      (now(), "chown", "Change Owner", "Cha&nge Owner", "Change the object's owner"),
+      (now(), "chmeta", "Change Meta-Data", "Edit &Properties", "Change the object's attributes, such as status, owner, and so forth"),
+      (now(), "view_acl", "View ACL", "View &ACL", "View the object's Access Control List (Privileges)"),
+      (now(), 'chgrp_secondary', "Change Group Memberships", "Change Group Memberships", "Change the member's secondary groups"),
+      (now(), 'search', "Search", "Search", "Search the objects, possibly by different criteria"),
+      (now(), "change_password", "Change Password", "Change &Password", "Change a member's password"),
+      (now(), "view_waitlist", "View Waitlist", "View Wait&list", "View the adventure's waitlist"),
+      (now(), "execute", "Execute", "E&xecute", "Execute the object (mostly used for reports)"),
+      (now(), "email_attendees", "Email Attendees", "Emai&l Attendees", "Email all attendees for an adventure"),
+      (now(), "waitlist", "Waitlist", "W&aitlist", "Move an attendee onto an adventure's waitlist"),
+      (now(), "mark_absent", "Mark Absent", "Mar&k Absent", "Mark an attendee as absent from an adventure"),
+      (now(), "view_absences", "View Absences", "View A&bsences", "View all times this member has been absent from an adventure"),
+      (now(), "view_members", "View Members", "View &Members", "View members that belong to this group"),
+      (now(), "view_notes", "View Notes", "View &Notes", "View notes on the object"),
+      (now(), "view_answers", "View Answers", "View An&swers", "View answers to the questions for this adventure"),
+      (now(), "comment", "Comment", "Commen&t", "Comment on this item"),
+      (now(), "set_flags", "Set Flags", "Set &Flags", "Set preference flags on this item"),
+      (now(), "cancel", "Cancel", "Cancel", "Cancel"),
+      (now(), "add_privilege", "Add Privilege", "Add Pri&vilege", "Add Privilege"),
+      (now(), "subscribe", "Subscribe", "Subscribe", "Subscribe"),
+      (now(), "su", "Switch User", "&Switch User", "Become another member"),
+      (now(), "edit_features", "Edit Features", "Edit Feat&ures", "Edit the object's features"),
+      (now(), 'add_xref', "Add X-Ref", 'Add &X-Ref', 'Add a cross-reference'),
+      (now(), "unsubscribe", "Unsubscribe", "&Unsubscribe", "Unsubscribe"),
+      (now(), 'optout', "Opt Out", '&Opt Out', 'Opt out of emails'),
+      (now(), 'submit', "Submit", '&Submit', 'Submit an Expense Report'),
+      (now(), 'accept', "Accept", '&Accept', 'Accept an Expense Report');
+
+update [_]action as ac
+    inner join [_]flag as fl on fl.c_title = 'applies_to_object'
+set ac.c_flags = ac.c_flags | fl.c_bitmask
+    where ac.c_title not in ('list_all', 'list_owned_by', 'create', 'search');
+
+insert into [_]decision_category (c_created_date, c_title)
+    values (now(), "General");
+
+insert into [_]expense_category (c_title)
+    values
+    ("Food"),
+    ("Gas"),
+    ("Lodging"),
+    ("Other"),
+    ("Registration Fee"),
+    ("Equipment"),
+    ("Membership Dues"),
+    ("Rental Fee"),
+    ("Postage"),
+    ("Participation Fee"),
+    ("Equipment Repair");
+
+-- Specify which actions should appear on the 'generic' set of tabs, and which
+-- should appear on the tabs specific to the object:
+
+update [_]action, [_]flag set c_flags = c_flags | c_bitmask
+where [_]action.c_title in ("stat", "chmod", "chmeta", "delete",
+        "view_acl", "chgrp", "chown", "set_flags", "add_privilege")
+    and [_]flag.c_title = 'generic';
+
+update [_]action, [_]flag, [_]flag as object_flag set c_flags = c_flags | [_]flag.c_bitmask
+where [_]action.c_title not in ("chmod", "chmeta", "delete", "add_xref",
+        "view_acl", "chgrp", "chown", "set_flags", "add_privilege")
+    and [_]flag.c_title = 'specific'
+    and object_flag.c_title = 'applies_to_object';
+
+update [_]action set c_row = 1 where c_title in ("chmod", "chgrp", "chown",
+        "view_acl", "add_privilege");
+
+-- Adventure ratings
+
+insert into [_]rating
+    (c_title)
+    values
+    ("Poor"), ("Fair"), ("Average"), ("Good"), ("Excellent");
+
+insert into [_]address
+    (c_title, c_street, c_city, c_state, c_zip, c_country, c_flags)
+    select
+    "Main Club Address", "SocialClub", "SomeTown", "VA",
+    12345, "US", c_bitmask
+    from [_]flag where c_title = "primary";
+
+insert into [_]phone_number_type
+    (c_owner, c_created_date, c_title, c_description, c_abbreviation)
+    values
+    (1, now(), "Default", "Default phone number type", ""),
+    (1, now(), "Cell", "Cellular phone", "(c)"),
+    (1, now(), "Work", "Work phone", "(w)"),
+    (1, now(), "School", "School phone", "(sch)"),
+    (1, now(), "Home", "Home phone", "(h)");
+
+insert into [_]phone_number
+    (c_title, c_country_code, c_area_code, c_exchange, c_number,
+    c_flags, c_phone_number)
+    select
+        "Main Club Phone Number", "1", "123", "456", "7890",
+        c_bitmask, "(123) 456-7890"
+    from [_]flag where c_title = 'primary';
+
+-- Making a group private means it does not show up as an option in
+-- chmod_secondary unless you are a root user.
+insert into [_]group
+    (c_owner, c_created_date, c_title, c_description, c_flags)
+    values
+    (1, now(), "root", "Administrative user (use with caution!)", 1),
+    (1, now(), "officer", "Club officer", 0),
+    (1, now(), "treasurer", "Responsible for finances, can activate members", 0),
+    (1, now(), "leader", "Can create and lead adventures", 0),
+    (1, now(), "quartermaster", "Manages equipment and inventory", 0),
+    (1, now(), "member", "Ordinary member of the Club", 0),
+    (1, now(), "guest", "Restricted user for demonstration purposes", 0),
+    (1, now(), "wheel", "Allowed to take the su (switch user) action (caution!)", 1);
+
+insert into [_]email_list
+    (c_owner, c_created_date, c_title, c_description, c_name, c_password,
+    c_owner_address, c_mgmt_address, c_list_address, c_type, c_subject_prefix)
+    values
+    (
+        1,
+        now(),
+        "Main Outdoors List",
+        "Outdoors club main mailing list.  Subscribe to this list to find out about adventures.",
+        "outdoors-club",
+        "N/A",
+        "outdoors-club-owner@@virginia.edu",
+        "outdoors-club-request@@virginia.edu",
+        "outdoors-club@@virginia.edu",
+        "MailmanList",
+        ""
+    ),
+    (
+        1,
+        now(),
+        "Officer List",
+        "Outdoors officer list (officers only).",
+        "outdoors-officers",
+        "N/A",
+        "outdoors-officers-owner@@virginia.edu",
+        "outdoors-officers-request@@virginia.edu",
+        "outdoors-officers@@virginia.edu",
+        "MailmanList",
+        ""
+    ),
+    (
+        1,
+        now(),
+        "Outdoors Webmasters List",
+        "Outdoors Webmasters List.",
+        "outdoors-webmaster",
+        "N/A",
+        "outdoors-webmaster-owner@@virginia.edu",
+        "outdoors-webmaster-request@@virginia.edu",
+        "outdoors-webmaster@@virginia.edu",
+        "MailmanList",
+        ""
+    );
+
+insert into [_]activity_category
+    (c_created_date, c_title)
+    values
+    (now(), "Everything Else"),
+    (now(), "Biking"),
+    (now(), "Camping and Backpacking"),
+    (now(), "Climbing"),
+    (now(), "Day Hiking and Running"),
+    (now(), "Service"),
+    (now(), "Winter Sports"),
+    (now(), "Water Sports");
+
+insert into [_]condition
+    (c_owner, c_created_date, c_title, c_rank, c_description)
+    values
+    (1, now(), "unknown", 0, "Unknown"),
+    (1, now(), "unsafe", 1, "Unsafe"),
+    (1, now(), "unusable", 2, "Unusable"),
+    (1, now(), "poor", 3, "Extremely poor condition"),
+    (1, now(), "dirty", 4, "Dirty condition"),
+    (1, now(), "fair", 5, "Fair condition"),
+    (1, now(), "good", 6, "Good condition"),
+    (1, now(), "excellent", 7, "Almost mint, but not quite"),
+    (1, now(), "mint", 8, "Absolutely factory new, except not brand new"),
+    (1, now(), "brand_new", 9, "Brand new");
+
+insert into [_]status
+    (c_owner, c_created_date, c_title, c_description)
+    values
+    (1, now(), "default", "The item exists"),
+    (1, now(), "deleted", "The item is marked as deleted"),
+    (1, now(), "inactive", "The item is inactive"),
+    (1, now(), "active", "The item is active"),
+    (1, now(), "waitlisted", "The member is on the adventure's waitlist"),
+    (1, now(), "cancelled", "The object (probably an adventure) is cancelled"),
+    (1, now(), "pending", "The object is pending, such as a membership that is pending activation"),
+    (1, now(), "paid", "The object is paid for"),
+    (1, now(), "checked_out", "The object is checked out"),
+    (1, now(), "checked_in", "The object is checked in"),
+    (1, now(), "missing", "The object is missing or lost"),
+    (1, now(), "submitted", "The object has been submitted");
+
+insert into [_]item_category
+    (c_created_date, c_title)
+    values
+    (now(), "No Category");
+
+insert into [_]member
+    (c_created_date, c_status, c_first_name, c_last_name, c_email, c_password,
+    c_gender, c_birth_date, c_full_name, c_flags)
+    select now(), c_uid, "Club", "Manager", "admin@@socialclub.org", "root",
+      "m", '2001-01-01', "Club Manager", c_bitmask
+    from [_]status inner join [_]flag
+    where [_]status.c_title = "active" and [_]flag.c_title = "private";
+insert into [_]member
+    (c_created_date, c_status, c_first_name, c_last_name, c_email, c_password,
+    c_gender, c_birth_date, c_full_name, c_flags)
+    select now(), c_uid, "Guest", "Guest", "guest@@socialclub.org", "guest",
+      "m", '2000-01-01', "Guest Guest", c_bitmask
+    from [_]status inner join [_]flag
+    where [_]status.c_title = "active" and [_]flag.c_title = "private";
+insert into [_]member
+    (c_created_date, c_status, c_first_name, c_last_name, c_email, c_password,
+    c_gender, c_birth_date, c_full_name, c_flags)
+    select now(), c_uid, "Student", "Council", "studentcouncil", "",
+      "m", '2001-01-01', "Student Council", c_bitmask
+    from [_]status inner join [_]flag
+    where [_]status.c_title = "active" and [_]flag.c_title = "private";
+
+insert into [_]chat_type
+    (c_owner, c_created_date, c_title, c_abbreviation, c_description)
+    values
+    (1, now(), "AIM", "AIM", "AOL Instant Messenger"),
+    (1, now(), "Yahoo! Messenger", "YM", "Yahoo! Messenger"),
+    (1, now(), "MSN Messenger", "MSN", "MSN Messenger"),
+    (1, now(), "ICQ", "ICQ", "ICQ");
+
+insert into [_]membership_type
+    (c_owner, c_created_date, c_title, c_description, c_flags,
+    c_begin_date, c_expiration_date, c_show_date, c_hide_date,
+    c_units_granted, c_unit, c_unit_cost, c_total_cost)
+    values
+    ( -- Lifetime membership for system accounts
+      1,
+      now(),
+      "Lifetime membership",
+      "Membership for system accounts such as root",
+      1,
+      '2000-01-01',
+      '2020-01-01',
+      '0000-00-00',
+      '0000-00-00',
+      0,
+      'month',
+      0.00,
+      0.00);
+
+insert into [_]membership
+    (c_created_date, c_status, c_member, c_type, c_begin_date, c_expiration_date)
+    select now(), st.c_uid, me.c_uid, mt.c_uid, mt.c_begin_date, mt.c_expiration_date
+    from [_]status as st, [_]member as me, [_]membership_type as mt
+    where st.c_title = "active"
+        and me.c_email in ("admin@@socialclub.org", "guest@@socialclub.org")
+        and mt.c_title = "Lifetime Membership";
+
+insert into [_]activity
+    (c_created_date, c_title)
+    values
+    (now(), "Biking (Mountain)"),
+    (now(), "Biking (Road)"),
+    (now(), "Camping"),
+    (now(), "Canoeing"),
+    (now(), "Caving"),
+    (now(), "Climbing (Bouldering)"),
+    (now(), "Climbing (Indoor Bouldering)"),
+    (now(), "Climbing (Indoor Sport)"),
+    (now(), "Climbing (Indoor Top Rope)"),
+    (now(), "Climbing (Indoor)"),
+    (now(), "Climbing (Sport)"),
+    (now(), "Climbing (Top Rope)"),
+    (now(), "Climbing (Trad)"),
+    (now(), "Disc (Frisbee) Golf"),
+    (now(), "Fishing"),
+    (now(), "Hang gliding"),
+    (now(), "High ropes and challenge courses"),
+    (now(), "Highway Cleanup"),
+    (now(), "Hiking (Backpacking)"),
+    (now(), "Hiking (Day Hikes)"),
+    (now(), "Horseback Riding"),
+    (now(), "Hot air ballooning"),
+    (now(), "Kayaking (Instruction Only)"),
+    (now(), "Kayaking (River)"),
+    (now(), "Kayaking (Sea)"),
+    (now(), "Kayaking (Whitewater)"),
+    (now(), "Picnics"),
+    (now(), "River Tubing"),
+    (now(), "Sailing"),
+    (now(), "Scuba diving"),
+    (now(), "Service Projects"),
+    (now(), "Skiing (Cross-Country)"),
+    (now(), "Skiing (Downhill)"),
+    (now(), "Skydiving"),
+    (now(), "Snow Tubing"),
+    (now(), "Snowboarding"),
+    (now(), "Snowshoeing"),
+    (now(), "Social Events, Potlucks, etc."),
+    (now(), "Stargazing "),
+    (now(), "Sunbathing"),
+    (now(), "Swimming"),
+    (now(), "Whitewater rafting");
+
+/* Create correspondences between tables and actions to say which actions apply
+ * to which tables.
+ */
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]checkout", c_uid from [_]action
+    where c_title in ("accept");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_report", c_uid from [_]action
+    where c_title in ("submit", "accept");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_submission", c_uid from [_]action
+    where c_title in ("submit", "accept");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]adventure", c_uid from [_]action
+    where c_title in ("join", "withdraw", "edit_questions", "choose_activities",
+        "view_report", "announce", "activate", "deactivate", "email_attendees",
+        "comment", "view_waitlist");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]attendee", c_uid from [_]action
+    where c_title in ("withdraw", "join", "waitlist", "mark_absent", "list_debts",
+        "view_answers");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]item_type", c_uid from [_]action
+    where c_title in ("edit_features");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]item", c_uid from [_]action
+    where c_title in ("edit_features", "view_notes");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]location", c_uid from [_]action
+    where c_title in ("choose_activities");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]membership", c_uid from [_]action
+    where c_title in ("activate");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]member", c_uid from [_]action
+    where c_title in ("chgrp_secondary", "view_absences", "su",
+        "change_password", "view_history", "choose_activities", "view_notes",
+        "optout");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]report", c_uid from [_]action
+    where c_title in ("execute");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]group", c_uid from [_]action
+    where c_title in ("view_members");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]subscription", c_uid from [_]action
+    where c_title in ("unsubscribe");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]email_list", c_uid from [_]action
+    where c_title in ("subscribe", "view_members");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]classified_ad", c_uid from [_]action
+    where c_title in ("deactivate");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]decision", c_uid from [_]action
+    where c_title in ("add_xref");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_report", c_uid from [_]action
+    where c_title in ("accept", "view_notes");
+
+-- These actions apply to ALL tables
+insert into [_]implemented_action (c_table, c_action)
+    select "", c_uid from [_]action
+    where c_title in ("read", "write", "delete", "list_all", "list_owned_by",
+        "create", "stat", "chmod", "chgrp", "chown", "chmeta", "view_acl",
+        "set_flags", "copy", "add_privilege", "search");
+@
+
+
+1.65
+log
+@initial release of checkin/checkout system
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.64 2005/01/12 03:27:17 at Exp $
+d95 16
+d229 2
+d232 1
+a232 1
+    (c_owner, c_created_date, c_title, c_description)
+d234 8
+a241 7
+    (1, now(), "root", "Administrative user (use with caution!)"),
+    (1, now(), "officer", "Club officer"),
+    (1, now(), "treasurer", "Responsible for finances, can activate members"),
+    (1, now(), "leader", "Can create and lead adventures"),
+    (1, now(), "quartermaster", "Manages equipment and inventory"),
+    (1, now(), "member", "Ordinary member of the Club"),
+    (1, now(), "guest", "Restricted user for demonstration purposes");
+@
+
+
+1.64
+log
+@insert foreign keys for expense_submission, expense_submission_expense
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.63 2005/01/12 03:16:23 at Exp $
+d38 3
+a78 86
+
+--------------------------------------------------------------------------------
+-- Define foreign keys.  Insert rows for properties that every table has: owner,
+-- creator, group, status
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_owner"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_creator"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]group", c_name, "c_uid", "c_group"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]status", c_name, "c_uid", "c_status"
+    from [_]table;
+
+--------------------------------------------------------------------------------
+-- Insert rows for other foreign keys in the database.
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    values
+    ("[_]activity",             "[_]adventure_activity",    "c_uid",    "c_activity"),
+    ("[_]activity",             "[_]interest",              "c_uid",    "c_activity"),
+    ("[_]activity",             "[_]location_activity",     "c_uid",    "c_activity"),
+    ("[_]activity_category",    "[_]optout",                "c_uid",    "c_category"),
+    ("[_]activity_category",    "[_]activity",              "c_uid",    "c_category"),
+    ("[_]adventure",            "[_]adventure_comment",     "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]adventure_activity",    "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]attendee",              "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]question",              "c_uid",    "c_adventure"),
+    ("[_]attendee",             "[_]absence",               "c_uid",    "c_attendee"),
+    ("[_]attendee",             "[_]answer",                "c_uid",    "c_attendee"),
+    ("[_]chat_type",            "[_]chat",                  "c_uid",    "c_type"),
+    ("[_]condition",            "[_]item",                  "c_uid",    "c_condition"),
+    ("[_]condition",            "[_]item_note",             "c_uid",    "c_condition"),
+    ("[_]decision_category",    "[_]decision",              "c_uid",    "c_category"),
+    ("[_]decision",             "[_]decision_xref",         "c_uid",    "c_decision"),
+    ("[_]decision",             "[_]decision_xref",         "c_uid",    "c_xref"),
+    ("[_]email_list",           "[_]subscription",          "c_uid",    "c_list"),
+    ("[_]expense_report",       "[_]expense",               "c_uid",    "c_report"),
+    ("[_]expense_report",       "[_]expense_report_note",   "c_uid",    "c_report"),
+    ("[_]status",               "[_]expense_report_note",   "c_uid",    "c_new_status"),
+    ("[_]expense_category",     "[_]expense",               "c_uid",    "c_category"),
+    ("[_]member",               "[_]expense_report",        "c_uid",    "c_member"),
+    ("[_]group",                "[_]member_group",          "c_uid",    "c_related_group"),
+    ("[_]item",                 "[_]item_note",             "c_uid",    "c_item"),
+    ("[_]item",                 "[_]item_feature",          "c_uid",    "c_item"),
+    ("[_]item_category",        "[_]item_type",             "c_uid",    "c_category"),
+    ("[_]item_type",            "[_]item",                  "c_uid",    "c_type"),
+    ("[_]item_type",            "[_]item_type_feature",     "c_uid",    "c_type"),
+    ("[_]location",             "[_]adventure",             "c_uid",    "c_departure"),
+    ("[_]location",             "[_]adventure",             "c_uid",    "c_destination"),
+    ("[_]location",             "[_]location_activity",     "c_uid",    "c_location"),
+    ("[_]member",               "[_]answer",                "c_uid",    "c_member"),
+    ("[_]member",               "[_]attendee",              "c_uid",    "c_member"),
+    ("[_]member",               "[_]interest",              "c_uid",    "c_member"),
+    ("[_]member",               "[_]member_group",          "c_uid",    "c_member"),
+    ("[_]member",               "[_]member_note",           "c_uid",    "c_member"),
+    ("[_]member",               "[_]membership",            "c_uid",    "c_member"),
+    ("[_]member",               "[_]optout",                "c_uid",    "c_member"),
+    ("[_]membership_type",      "[_]membership",            "c_uid",    "c_type"),
+    ("[_]phone_number_type",    "[_]phone_number",          "c_uid",    "c_type"),
+    ("[_]question",             "[_]answer",                "c_uid",    "c_question"),
+    ("[_]rating",               "[_]adventure_comment",     "c_uid",    "c_rating"),
+    ("[_]expense_submission",   "[_]expense_submission_expense", "c_uid", "c_submission"),
+    ("[_]expense",              "[_]expense_submission_expense", "c_uid", "c_expense"),
+    ("[_]category",             "[_]transaction",           "c_uid",    "c_category"),
+    ("[_]member",               "[_]transaction",           "c_uid",    "c_from"),
+    ("[_]member",               "[_]transaction",           "c_uid",    "c_to");
+
+-------------------------------------------------------------------------------
+-- Done inserting foreign keys.
+-------------------------------------------------------------------------------
+
+d422 4
+@
+
+
+1.63
+log
+@merge upgrade.sql changes into create.sql and initialize.sql, and move privileges into privileges.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.62 2005/01/10 03:41:21 at Exp $
+d151 6
+a156 25
+    ("[_]rating",               "[_]adventure_comment",     "c_uid",    "c_rating");
+-- These values, once inserted into the database, must NOT be changed.  They
+-- define the bitmask values that give meaning to the c_flags column on tables.
+insert into [_]flag
+    (c_title, c_bitmask)
+    values
+    ("private",               1),
+    ("email_private",         2),
+    -- Imported from the old 2002 database
+    ("imported",              4),
+    ("student",               8),
+    -- the next is whether or not a membership has fixed start/end dates
+    ("flexible",              16),
+    ("has_photo",             32),
+    ("receive_email",         64),
+    ("reimbursable",          128),
+    -- For actions
+    ("applies_to_object",     256),
+    -- useful for specifying a primary address, primary phone number etc
+    ("primary",               512),
+    -- Whether or not the member agreed to various forms
+    ("member_agreement",      1024),
+    -- Mostly used for actions: determines whether it is an action that only the
+    -- administrators are interested in
+    ("generic",               2048);
+@
+
+
+1.62
+log
+@upgrade to expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.61 2004/11/08 16:44:45 at Exp $
+d48 2
+d73 3
+a75 1
+    ("[_]subscription");
+d242 1
+a381 449
+-- -----------------------------------------------------------------------------
+-- TABLE PRIVILEGES: apply to the given table itself, so the last
+-- argument is a 0 because it's not applicable to table privileges
+-- -----------------------------------------------------------------------------
+
+-- For members to list_owned_by
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "member"
+      and ac.c_title = "list_owned_by"
+      and ta.c_name in ("[_]address", "[_]location", "[_]phone_number",
+      "[_]subscription", "[_]chat", "[_]classified_ad");
+
+-- For members to list_all
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "member"
+      and ac.c_title = "list_all"
+      and ta.c_name in ("[_]adventure", "[_]activity", "[_]interest", "[_]member",
+      "[_]location", "[_]email_list", "[_]classified_ad");
+
+-- For members to search
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "member"
+      and ac.c_title = "search"
+      and ta.c_name in ("[_]adventure", "[_]member", "[_]location");
+
+-- For officers to search
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "officer"
+      and ac.c_title = "search"
+      and ta.c_name in ("[_]subscription");
+
+-- Default permissions for create for members
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "member"
+      and ac.c_title = "create"
+      and ta.c_name in ("[_]address", "[_]interest", "[_]phone_number",
+          "[_]answer", "[_]attendee", "[_]chat", "[_]classified_ad");
+
+-- Default permissions for create for leaders
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "leader"
+      and ac.c_title = "create"
+      and ta.c_name in ("[_]adventure", "[_]location", "[_]question");
+
+-- Allow officers to list all
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title = "list_all"
+      and ta.c_name in ("[_]report", "[_]status", "[_]action", "[_]group",
+          "[_]expense", "[_]expense_report");
+
+-- Allow leaders to list all
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("leader")
+      and ac.c_title = "list_all"
+      and ta.c_name in ("[_]report");
+
+-- For officers and leaders to list_owned_by
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer", "leader")
+      and ac.c_title = "list_owned_by"
+      and ta.c_name in ("[_]adventure");
+
+-- For quartermasters on condition
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]condition";
+
+-- For quartermasters on item
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]item";
+
+-- For quartermasters on item_type
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]item_type";
+
+-- For officers on item
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "officer"
+      and ac.c_title in("list_all")
+      and ta.c_name = "[_]item";
+
+-- Officers can create and list all decisions
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "officer"
+      and ac.c_title in("list_all", "create")
+      and ta.c_name in ("[_]decision");
+
+-- Members can list all decisions
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "member"
+      and ac.c_title in("list_all")
+      and ta.c_name in ("[_]decision");
+
+-- For leaders to create expenses
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "leader"
+      and ac.c_title in ("create")
+      and ta.c_name in ("[_]expense");
+
+-- For leaders to list_owned_by and create expense reports
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "leader"
+      and ac.c_title in ("list_owned_by", "create")
+      and ta.c_name in ("[_]expense_report");
+
+-- For treasurers to create, list_owned_by, and list_all expense reports
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "treasurer"
+      and ac.c_title in ("create", "list_owned_by", "list_all")
+      and ta.c_name in ("[_]expense_report");
+
+-- ---------------------------------------------------------------------
+-- GROUP GLOBAL PRIVILEGES: allow members of the group to take the action
+-- on any object in the named table
+-- ---------------------------------------------------------------------
+
+-- Write permissions for officers
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("write")
+      and ta.c_name in ("[_]member", "[_]address", "[_]chat", "[_]phone_number");
+
+-- For officers on members
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("chgrp_secondary", "view_history")
+      and ta.c_name in ("[_]member");
+
+-- For members on adventures
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("member")
+      and ac.c_title in("join", "withdraw", "view_waitlist", "comment")
+      and ta.c_name in ("[_]adventure");
+
+-- For treasurers on members
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("treasurer")
+      and ac.c_title in("activate")
+      and ta.c_name in ("[_]membership");
+
+-- For leaders on members
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("leader")
+      and ac.c_title in("view_absences")
+      and ta.c_name in ("[_]member");
+
+-- For leaders on absences
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("leader")
+      and ac.c_title in("read")
+      and ta.c_name in ("[_]absence");
+
+-- For officers and leaders on locations
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer", "leader")
+      and ac.c_title in("choose_activities")
+      and ta.c_name in ("[_]location");
+
+-- For officers on groups
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("view_members")
+      and ta.c_name in ("[_]group");
+
+-- For officers on adventures
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("view_report")
+      and ta.c_name in ("[_]adventure");
+
+-- For officers on email lists
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("view_members")
+      and ta.c_name in ("[_]email_list");
+
+-- For quartermasters on items
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("copy", "view_notes", "edit_features")
+      and ta.c_name = "[_]item";
+
+-- For quartermasters on item_types
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("edit_features")
+      and ta.c_name = "[_]item_type";
+
+-- Officers can add cross-references to decisions.
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("officer")
+      and ac.c_title in("add_xref")
+      and ta.c_name in ("[_]decision");
+
+-- Members can read decisions.
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("member")
+      and ac.c_title in("read")
+      and ta.c_name in ("[_]decision");
+
+-- For treasurers to accept and view_notes on expense reports
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("treasurer")
+      and ac.c_title in("accept", "view_notes")
+      and ta.c_name in ("[_]expense_report");
+
+-- ---------------------------------------------------------------------
+-- GROUP OBJECT PRIVILEGES: Allow any member of the group to take the
+-- action on the object
+-- ---------------------------------------------------------------------
+
+-- For members of the "member" group to subscribe to the main mailing list.
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", 6, ac.c_uid, "object", ta.c_name, 1
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("subscribe")
+      and ta.c_name in ("[_]email_list");
+
+-- ---------------------------------------------------------------------
+-- GLOBAL OWNER PRIVILEGES: Allow the owner of an object to take the
+-- action on the object (applies to every object in the table).
+-- ---------------------------------------------------------------------
+
+-- For [_]adventure
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("activate", "deactivate", "edit_questions",
+        "choose_activities", "view_report", "announce", "email_attendees")
+      and ta.c_name in ("[_]adventure");
+
+-- For [_]subscription
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("unsubscribe")
+      and ta.c_name in ("[_]subscription");
+
+-- For [_]classified_ad
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("deactivate")
+      and ta.c_name in ("[_]classified_ad");
+
+-- For [_]attendee
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("view_answers")
+      and ta.c_name in ("[_]attendee");
+
+-- For leaders to submit their own expense reports
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("submit")
+      and ta.c_name in ("[_]expense_report");
+
+-- ---------------------------------------------------------------------
+-- GROUP OWNER PRIVILEGES: Allow members in the group that owns the
+-- object to do the specified action.
+-- ---------------------------------------------------------------------
+
+-- copy the question to a new adventure
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner_group", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("copy")
+      and ta.c_name in ("[_]question");
+
+-- For [_]attendee
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner_group", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("waitlist", "withdraw", "join", "mark_absent", "view_answers")
+      and ta.c_name in ("[_]attendee");
+
+-- ---------------------------------------------------------------------
+-- SELF PRIVILEGES: Allow members to take the given actions on themselves.
+-- ---------------------------------------------------------------------
+
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "self", '[_]member', 0
+    from [_]action as ac, [_]group as gr
+    where ac.c_title in("view_history", "choose_activities", "change_password",
+            "optout")
+      and gr.c_title in ("member");
+
+-- ---------------------------------------------------------------------
+-- Done inserting privileges.
+-- ---------------------------------------------------------------------
+
+d409 2
+a410 1
+    (1, now(), "missing", "The object is missing or lost");
+d431 7
+d524 8
+@
+
+
+1.61
+log
+@let officers see expenses
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.60 2004/11/04 15:02:36 at Exp $
+d777 1
+a777 1
+-- For leaders to accept their own expense reports
+d783 1
+a783 1
+    where ac.c_title in("accept")
+@
+
+
+1.60
+log
+@add expense category
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.59 2004/11/02 22:33:31 at Exp $
+d453 2
+a454 1
+      and ta.c_name in ("[_]report", "[_]status", "[_]action", "[_]group");
+@
+
+
+1.59
+log
+@bring tables up to date with reality
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.58 2004/11/02 22:20:43 at Exp $
+d259 2
+a260 1
+    ("Participation Fee");
+@
+
+
+1.58
+log
+@collapse 'specific' bitmask flag into 'generic'
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.57 2004/11/02 20:01:09 at Exp $
+d45 1
+d47 1
+a47 2
+    ("[_]expense_category"),
+    ("[_]expense_report_category"),
+@
+
+
+1.57
+log
+@collapse the applies_to_object and applies_to_table flags into one
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.56 2004/11/01 01:55:17 at Exp $
+d162 1
+a162 1
+    ("unused1",               128),
+d171 1
+a171 2
+    ("generic",               2048),
+    ("specific",              4096);
+@
+
+
+1.56
+log
+@merge additional expense categories into initialize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.55 2004/11/01 01:52:40 at Exp $
+d162 2
+a163 2
+    -- the next two are for actions, and SHOULD BE MUTUALLY EXCLUSIVE
+    ("applies_to_table",      128),
+d194 51
+a244 47
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description, c_flags) values
+      (now(), 'read', "View Details", '&Details', 'Read and display the contents of an object', 256),
+      (now(), 'write', "Edit or Update", 'Edit', 'Edit (modify or update) the object', 256),
+      (now(), 'delete', "De&lete", '', 'Delete the object or mark it as deleted', 256),
+      (now(), 'list_all', 'List All Objects', "List All Objects", 'List all objects of the given type', 128),
+      (now(), 'list_owned_by', 'List Objects I Own', "List Objects I Own", 'List all objects of the given type that the member owns', 128),
+      (now(), 'view_history', "View History", 'Histor&y', 'View a history of the object', 256),
+      (now(), 'create', "Create", 'Create', 'Create an object of the given type', 128),
+      (now(), 'activate', "Activate", 'A&ctivate', 'Activate the object', 256),
+      (now(), 'deactivate', "Deactivate", "Deactiv&ate", 'Deactivate the object', 256),
+      (now(), 'join', "Join", "&Join", 'Join the adventure', 256),
+      (now(), 'copy', 'Copy Object', 'Cop&y', "Make another object with identical data", 256),
+      (now(), 'withdraw', "Withdraw", '&Withdraw', 'The opposite of join', 256),
+      (now(), 'edit_questions', "Edit Questions", 'Edit &Questions', 'Create or edit questions for an adventure', 256),
+      (now(), 'choose_activities', "Choose Activities", 'C&hoose Activities', 'Choose which type(s) of activity applies to this adventure', 256),
+      (now(), 'view_report', "View Report", "View Re&port", 'View a report on attendees', 256),
+      (now(), 'announce', "Announce", "A&nnounce", 'Announce the adventure to the main email list', 256),
+      (now(), 'stat', "View Properties", 'P&roperties', "View meta-data about an object, such as its owner and date of creation", 256),
+      (now(), 'chmod', "Change Permissions", "&Change Permissions", 'Change Unix-style permissions for an object', 256),
+      (now(), 'chgrp', "Change Group", "Change &Group", "Change the object's primary group", 256),
+      (now(), "chown", "Change Owner", "Cha&nge Owner", "Change the object's owner", 256),
+      (now(), "chmeta", "Change Meta-Data", "Edit &Properties", "Change the object's attributes, such as status, owner, and so forth", 256),
+      -- Shouldn't apply to a table
+      (now(), "view_acl", "View ACL", "View &ACL", "View the object's Access Control List (Privileges)", 256),
+      (now(), 'chgrp_secondary', "Change Group Memberships", "Change Group Memberships", "Change the member's secondary groups", 256),
+      (now(), 'search', "Search", "Search", "Search the objects, possibly by different criteria", 128),
+      (now(), "change_password", "Change Password", "Change &Password", "Change a member's password", 256),
+      (now(), "view_waitlist", "View Waitlist", "View Wait&list", "View the adventure's waitlist", 256),
+      (now(), "execute", "Execute", "E&xecute", "Execute the object (mostly used for reports)", 256),
+      (now(), "email_attendees", "Email Attendees", "Emai&l Attendees", "Email all attendees for an adventure", 256),
+      (now(), "waitlist", "Waitlist", "W&aitlist", "Move an attendee onto an adventure's waitlist", 256),
+      (now(), "mark_absent", "Mark Absent", "Mar&k Absent", "Mark an attendee as absent from an adventure", 256),
+      (now(), "view_absences", "View Absences", "View A&bsences", "View all times this member has been absent from an adventure", 256),
+      (now(), "view_members", "View Members", "View &Members", "View members that belong to this group", 256),
+      (now(), "view_notes", "View Notes", "View &Notes", "View notes on the object", 256),
+      (now(), "view_answers", "View Answers", "View An&swers", "View answers to the questions for this adventure", 256),
+      (now(), "comment", "Comment", "Commen&t", "Comment on this item", 256),
+      (now(), "set_flags", "Set Flags", "Set &Flags", "Set preference flags on this item", 256),
+      (now(), "cancel", "Cancel", "Cancel", "Cancel", 256),
+      (now(), "add_privilege", "Add Privilege", "Add Pri&vilege", "Add Privilege", 256),
+      (now(), "subscribe", "Subscribe", "Subscribe", "Subscribe", 256),
+      (now(), "su", "Switch User", "&Switch User", "Become another member", 256),
+      (now(), "edit_features", "Edit Features", "Edit Feat&ures", "Edit the object's features", 256),
+      (now(), 'add_xref', "Add X-Ref", 'Add &X-Ref', 'Add a cross-reference', 256),
+      (now(), "unsubscribe", "Unsubscribe", "&Unsubscribe", "Unsubscribe", 256),
+      (now(), 'optout', "Opt Out", '&Opt Out', 'Opt out of emails', 256),
+      (now(), 'accept', "Accept", '&Accept', 'Accept an Expense Report', 256);
+@
+
+
+1.55
+log
+@merge changes for expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.54 2004/10/28 01:40:34 at Exp $
+d247 10
+a256 1
+    ("Food"), ("Gas"), ("Lodging"), ("Other");
+@
+
+
+1.54
+log
+@comments and whitespace
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.53 2004/10/23 14:52:32 at Exp $
+d44 4
+d123 5
+d239 2
+a240 1
+      (now(), 'optout', "Opt Out", '&Opt Out', 'Opt out of emails', 256);
+d245 4
+d522 30
+d697 10
+d763 9
+d1003 4
+@
+
+
+1.53
+log
+@merge upgrade.sql into create/initialize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.52 2004/10/23 13:06:20 at Exp $
+d237 1
+d242 1
+d246 3
+a248 2
+and [_]flag.c_title = 'specific'
+and object_flag.c_title = 'applies_to_object';
+d251 2
+@
+
+
+1.52
+log
+@item_attribute -> item_feature
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.51 2004/10/13 01:20:25 at Exp $
+d111 1
+d694 9
+@
+
+
+1.51
+log
+@change title on activity category
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.50 2004/10/11 00:47:39 at Exp $
+d226 1
+a226 1
+      (now(), "edit_attributes", "Edit Features", "Edit Feat&ures", "Edit the object's features", 256),
+d492 10
+d614 1
+a614 1
+      and ac.c_title in("copy", "view_notes", "edit_attributes")
+d624 1
+a624 1
+      and ac.c_title in("edit_attributes")
+d637 10
+a665 9
+-- For [_]attendee
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("waitlist", "withdraw", "join", "mark_absent", "view_answers")
+      and ta.c_name in ("[_]attendee");
+
+d708 9
+d882 1
+a882 1
+    where c_title in ("edit_attributes");
+d886 1
+a886 1
+    where c_title in ("edit_attributes", "view_notes");
+@
+
+
+1.50
+log
+@merge changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.49 2004/10/11 00:40:03 at Exp $
+d339 1
+a339 1
+    (now(), "Hiking and Running"),
+@
+
+
+1.49
+log
+@merge changes over from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.48 2004/10/10 23:47:18 at Exp $
+d853 1
+a853 1
+        "cancel", "comment", "view_waitlist");
+@
+
+
+1.48
+log
+@merge changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.47 2004/10/09 22:11:57 at Exp $
+d69 69
+d163 4
+@
+
+
+1.47
+log
+@merge changes in for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.46 2004/10/08 20:34:48 at Exp $
+d48 1
+a48 1
+    ("[_]item_attribute"),
+d50 1
+a50 1
+    ("[_]item_type_attribute"),
+@
+
+
+1.46
+log
+@add 'self' privileges for changing password, choosing activity, and viewing history
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.45 2004/10/07 03:40:17 at Exp $
+d29 1
+d59 1
+d155 2
+a156 1
+      (now(), "unsubscribe", "Unsubscribe", "&Unsubscribe", "Unsubscribe", 256);
+d259 12
+d632 3
+a634 2
+    from [_]action as ac, [_]table as ta, [_]group as gr
+    where ac.c_title in("view_history", "choose_activities", "change_password")
+d806 2
+a807 1
+        "change_password", "view_history", "choose_activities", "view_notes");
+@
+
+
+1.45
+log
+@merge decisions system in
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.44 2004/10/06 22:37:14 at Exp $
+d595 6
+a600 2
+-- For [_]question, allow all members of the group that owns the objects (leader)
+-- to copy the object to a new adventure
+d609 15
+a623 1
+-- Done inserting privileges
+@
+
+
+1.44
+log
+@order conditions by rank
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.43 2004/10/06 13:57:14 at Exp $
+d39 3
+d152 1
+d155 3
+d165 1
+a165 1
+where [_]action.c_title not in ("chmod", "chmeta", "delete",
+d394 10
+d529 10
+d793 4
+@
+
+
+1.43
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.42 2004/10/05 13:00:08 at Exp $
+d581 1
+a581 1
+    (c_owner, c_created_date, c_title, c_description)
+d583 10
+a592 7
+    (1, now(), "unusable", "Unusable or dangerous"),
+    (1, now(), "poor", "Extremely poor condition"),
+    (1, now(), "fair", "Fair condition"),
+    (1, now(), "good", "Good condition"),
+    (1, now(), "excellent", "Almost mint, but not quite"),
+    (1, now(), "mint", "Absolutely factory new, except not brand new"),
+    (1, now(), "brand_new", "Brand new");
+@
+
+
+1.42
+log
+@add access key to Copy action
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.41 2004/10/04 13:10:10 at Exp $
+d601 4
+a604 1
+    (1, now(), "paid", "The object is paid for");
+@
+
+
+1.41
+log
+@sync with list of tables
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.40 2004/10/04 13:04:21 at Exp $
+d117 1
+a117 1
+      (now(), 'copy', 'Copy Object', 'Copy', "Make another object with identical data", 256),
+@
+
+
+1.40
+log
+@add [_]item_category
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.39 2004/10/04 12:42:20 at Exp $
+d49 1
+@
+
+
+1.39
+log
+@merged changes from upgrade.sql to create and initialize scripts
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.38 2004/10/02 00:10:56 at Exp $
+d45 1
+@
+
+
+1.38
+log
+@merge in changes for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.37 2004/09/24 17:39:46 at Exp $
+d600 5
+@
+
+
+1.37
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.36 2004/09/22 16:41:04 at Exp $
+d345 40
+d489 20
+@
+
+
+1.36
+log
+@changes for classified ads
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.35 2004/09/22 13:17:07 at Exp $
+d146 1
+a146 1
+      (now(), "edit_attributes", "Edit Attributes", "Edit Attri&butes", "Edit the object's attributes", 256),
+@
+
+
+1.35
+log
+@merged inventory system changes in
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.34 2004/09/19 02:56:37 at Exp $
+d37 1
+d261 1
+a261 1
+      "[_]subscription", "[_]chat");
+d272 1
+a272 1
+      "[_]location", "[_]email_list");
+d303 1
+a303 1
+          "[_]answer", "[_]attendee", "[_]chat");
+d497 9
+d689 4
+@
+
+
+1.34
+log
+@changes for the inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.33 2004/09/09 22:58:27 at Exp $
+d507 11
+@
+
+
+1.33
+log
+@added a privilege that will let any member unsubscribe on a subscription s/he owns
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.32 2004/09/09 22:56:36 at Exp $
+d37 1
+d41 5
+d137 1
+d145 1
+d587 1
+d602 1
+d633 8
+d651 1
+a651 1
+        "change_password", "view_history", "choose_activities");
+@
+
+
+1.32
+log
+@added unsubscribe as an action, and matched the labels up on actions with the values in the database
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.31 2004/09/09 21:46:26 at Exp $
+d478 9
+@
+
+
+1.31
+log
+@added officer-search privilege on subscription table
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.30 2004/09/09 16:11:18 at Exp $
+d101 6
+a106 6
+      (now(), 'list_all', '', "List All Objects", 'List all objects of the given type', 128),
+      (now(), 'list_owned_by', '', "List Objects I Own", 'List all objects of the given type that the member owns', 128),
+      (now(), 'view_history', "View History", 'View Histor&y', 'View a history of the object', 256),
+      (now(), 'create', "Create", '&Create', 'Create an object of the given type', 128),
+      (now(), 'activate', "Activate", 'Activate', 'Activate the object', 256),
+      (now(), 'deactivate', "Deactivate", "Deactivate", 'Deactivate the object', 256),
+d108 1
+a108 1
+      (now(), 'copy', 'Copy Object', '', "Make another object with identical data", 256),
+d111 2
+a112 2
+      (now(), 'choose_activities', "Choose Activities", 'Choose Activities', 'Choose which type(s) of activity applies to this adventure', 256),
+      (now(), 'view_report', "View Report", "View Report", 'View a report on attendees', 256),
+d120 1
+a120 1
+      (now(), "view_acl", "View ACL", "Pr&ivileges", "View the object's Access Control List (Privileges)", 256),
+d124 2
+a125 2
+      (now(), "view_waitlist", "View Waitlist", "View W&aitlist", "View the adventure's waitlist", 256),
+      (now(), "execute", "Execute", "Execute", "Execute the object (mostly used for reports)", 256),
+d128 1
+a128 1
+      (now(), "mark_absent", "Mark Absent", "Mark A&bsent", "Mark an attendee as absent from an adventure", 256),
+d130 3
+a132 3
+      (now(), "view_members", "View Members", "View Mem&bers", "View members that belong to this group", 256),
+      (now(), "view_answers", "View Answers", "View Answers", "View answers to the questions for this adventure", 256),
+      (now(), "comment", "Comment", "Comment", "Comment on this item", 256),
+d137 2
+a138 1
+      (now(), "su", "Switch User", "Switch &User", "Become another member", 256);
+d633 4
+@
+
+
+1.30
+log
+@add rows as tinyint to actions
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.29 2004/09/09 15:18:58 at Exp $
+d238 1
+a238 1
+-- TABLE PRIVILEGES: apply to all objects in the given table, so the last
+d273 10
+@
+
+
+1.29
+log
+@semicolon to comma
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.28 2004/09/09 00:08:29 at Exp $
+d150 2
+@
+
+
+1.28
+log
+@moved SQL to part of another query
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.27 2004/09/08 22:52:14 at Exp $
+d78 1
+a78 1
+    ("generic",               2048);
+@
+
+
+1.27
+log
+@added label and row to actions
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.26 2004/09/07 12:19:10 at Exp $
+a377 10
+-- For leaders on attendees
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("leader")
+      and ac.c_title in("view_answers")
+      and ta.c_name in ("[_]attendee");
+
+d453 1
+a453 1
+    where ac.c_title in("waitlist", "withdraw", "join", "mark_absent")
+@
+
+
+1.26
+log
+@allow leaders to view answers for any attendee
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.25 2004/09/02 12:28:07 at Exp $
+d75 5
+a79 1
+    ("member_agreement",      1024);
+d97 22
+a118 22
+insert into [_]action (c_created_date, c_title, c_summary, c_description, c_flags) values
+      (now(), 'read', "View Details", 'Read and display the contents of an object', 256),
+      (now(), 'write', "Edit or Update", 'Edit (modify or update) the object', 256),
+      (now(), 'delete', "Delete", 'Delete the object or mark it as deleted', 256),
+      (now(), 'list_all', "List All Objects", 'List all objects of the given type', 128),
+      (now(), 'list_owned_by', "List Objects I Own", 'List all objects of the given type that the member owns', 128),
+      (now(), 'view_history', "View History", 'View a history of the object', 256),
+      (now(), 'create', "Create", 'Create an object of the given type', 128),
+      (now(), 'activate', "Activate", 'Activate the object', 256),
+      (now(), 'deactivate', "Deactivate", 'Deactivate the object', 256),
+      (now(), 'join', "Join", 'Join the adventure', 256),
+      (now(), 'copy', 'Copy Object', "Make another object with identical data", 256),
+      (now(), 'withdraw', "Withdraw", 'The opposite of join', 256),
+      (now(), 'edit_questions', "Edit Questions", 'Create or edit questions for an adventure', 256),
+      (now(), 'choose_activities', "Choose Activities", 'Choose which type(s) of activity applies to this adventure', 256),
+      (now(), 'view_report', "View Report", 'View a report on attendees', 256),
+      (now(), 'announce', "Announce", 'Announce the adventure to the main email list', 256),
+      (now(), 'stat', "View Properties", "View meta-data about an object, such as its owner and date of creation", 256),
+      (now(), 'chmod', "Change Permissions", 'Change Unix-style permissions for an object', 256),
+      (now(), 'chgrp', "Change Group", "Change the object's primary group", 256),
+      (now(), "chown", "Change Owner", "Change the object's owner", 256),
+      (now(), "chmeta", "Change Meta-Data", "Change the object's attributes, such as status, owner, and so forth", 256),
+d120 30
+a149 18
+      (now(), "view_acl", "View ACL", "View the object's Access Control List (Privileges)", 256),
+      (now(), 'chgrp_secondary', "Change Group Memberships", "Change the member's secondary groups", 256),
+      (now(), 'search', "Search", "Search the objects, possibly by different criteria", 128),
+      (now(), "change_password", "Change Password", "Change a member's password", 256),
+      (now(), "view_waitlist", "View Waitlist", "View the adventure's waitlist", 256),
+      (now(), "execute", "Execute", "Execute the object (mostly used for reports)", 256),
+      (now(), "email_attendees", "Email Attendees", "Email all attendees for an adventure", 256),
+      (now(), "waitlist", "Waitlist", "Move an attendee onto an adventure's waitlist", 256),
+      (now(), "mark_absent", "Mark Absent", "Mark an attendee as absent from an adventure", 256),
+      (now(), "view_absences", "View Absences", "View all times this member has been absent from an adventure", 256),
+      (now(), "view_members", "View Members", "View members that belong to this group", 256),
+      (now(), "view_answers", "View Answers", "View answers to the questions for this adventure", 256),
+      (now(), "comment", "Comment", "Comment on this item", 256),
+      (now(), "set_flags", "Set Flags", "Set preference flags on this item", 256),
+      (now(), "cancel", "Cancel", "Cancel", 256),
+      (now(), "add_privilege", "Add Privilege", "Add Privilege", 256),
+      (now(), "subscribe", "Subscribe", "Subscribe", 256),
+      (now(), "su", "Switch User", "Become another member", 256);
+@
+
+
+1.25
+log
+@added action view_members for [_]email_list
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.24 2004/08/25 12:04:26 at Exp $
+d361 10
+@
+
+
+1.24
+log
+@added members ability to comment on adventure
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.23 2004/08/24 15:05:45 at Exp $
+d402 10
+d417 1
+a417 1
+-- For members of the "member" group to subscribe and tho the main mailing list.
+d607 1
+a607 1
+    where c_title in ("subscribe");
+@
+
+
+1.23
+log
+@added search as an action that applies to all tables, and removed it from specific tables
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.22 2004/08/22 23:04:20 at Exp $
+d339 1
+a339 1
+      and ac.c_title in("join", "withdraw", "view_waitlist")
+@
+
+
+1.22
+log
+@made the 'search' action apply to locations
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.21 2004/08/20 21:24:58 at Exp $
+d576 1
+a576 1
+    where c_title in ("choose_activities", "search");
+d604 1
+a604 1
+        "set_flags", "copy", "add_privilege");
+@
+
+
+1.21
+log
+@removed table that doesn't exist
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.20 2004/08/20 19:43:44 at Exp $
+d221 1
+a221 1
+-- argument is a 0 becasue it's not applicable to table privileges
+d254 1
+a254 1
+      and ta.c_name in ("[_]adventure", "[_]member");
+d576 1
+a576 1
+    where c_title in ("choose_activities");
+@
+
+
+1.20
+log
+@added the su action
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.19 2004/08/20 18:19:51 at Exp $
+a44 1
+    ("[_]membership_history"),
+@
+
+
+1.19
+log
+@added the ability to search by attendees of past adventures, and put the query into a SQL file
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.18 2004/08/19 18:57:33 at Exp $
+d133 2
+a134 1
+      (now(), "subscribe", "Subscribe", "Subscribe", 256);
+d585 1
+a585 1
+    where c_title in ("chgrp_secondary", "view_absences",
+@
+
+
+1.18
+log
+@found a use for an unused bit
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.17 2004/08/19 18:51:34 at Exp $
+d312 10
+d329 1
+a329 1
+      and ac.c_title in("chgrp_secondary")
+@
+
+
+1.17
+log
+@updated activities
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.16 2004/08/16 21:59:46 at Exp $
+d63 2
+a64 1
+    ("unused1",               4),
+@
+
+
+1.16
+log
+@added privileges
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.15 2004/08/16 13:17:51 at Exp $
+d507 1
+a507 2
+    (now(), "Backpacking"),
+    (now(), "Biking (General)"),
+a508 1
+    (now(), "Biking (Mountain)"),
+d512 6
+a517 1
+    (now(), "Climbing (General)"),
+a518 1
+    (now(), "Climbing (Sport)"),
+a519 2
+    (now(), "Climbing (Bouldering)"),
+    (now(), "Climbing (Indoor)"),
+d524 1
+a524 1
+    (now(), "Hiking (General)"),
+d528 1
+a528 1
+    (now(), "Kayaking (General)"),
+d530 1
+a531 1
+    (now(), "Kayaking (Sea)"),
+d533 1
+a535 1
+    (now(), "Skiing (General)"),
+d539 1
+d542 1
+a543 2
+    (now(), "River Tubing"),
+    (now(), "Snow Tubing"),
+@
+
+
+1.15
+log
+@added some more privileges for the officers and leaders
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.14 2004/08/15 16:10:37 at Exp $
+d284 1
+a284 1
+      and ta.c_name in ("[_]report", "[_]status", "[_]action");
+@
+
+
+1.14
+log
+@edited activites
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.13 2004/08/12 15:52:41 at Exp $
+d276 1
+a276 1
+-- Allow officers and leaders to list all reports
+d282 11
+a292 1
+    where gr.c_title in ("leader", "officer")
+@
+
+
+1.13
+log
+@change to interests
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.12 2004/08/12 15:42:33 at Exp $
+d498 1
+d512 2
+a513 1
+    (now(), "High ropes and challenge courses "),
+d516 1
+a516 1
+    (now(), "Horseback trail riding"),
+d524 1
+@
+
+
+1.12
+log
+@added privs to let officers and leaders choose activities for locations
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.11 2004/08/06 18:15:39 at Exp $
+d498 2
+a499 2
+    (now(), "Mountain Biking"),
+    (now(), "Road Biking"),
+d503 6
+d512 2
+a513 1
+    (now(), "Hiking"),
+d516 4
+a520 2
+    (now(), "River / whitewater kayaking"),
+    (now(), "Rock climbing"),
+d522 3
+a524 3
+    (now(), "Sea kayaking"),
+    (now(), "Cross-Country Skiing"),
+    (now(), "Downhill Skiing"),
+@
+
+
+1.11
+log
+@made applies_to_object and applies_to_table mutually exclusive
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.10 2004/08/06 17:49:11 at Exp $
+d350 10
+@
+
+
+1.10
+log
+@made permission apply to officers and leaders, not members and leaders
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.9 2004/08/06 17:38:17 at Exp $
+d69 1
+a69 1
+    -- the next two are for actions
+d103 8
+a110 8
+      (now(), 'join', "Join", 'Join the adventure', 384),
+      (now(), 'copy', 'Copy Object', "Make another object with identical data", 384),
+      (now(), 'withdraw', "Withdraw", 'The opposite of join', 384),
+      (now(), 'edit_questions', "Edit Questions", 'Create or edit questions for an adventure', 384),
+      (now(), 'choose_activities', "Choose Activities", 'Choose which type(s) of activity applies to this adventure', 384),
+      (now(), 'view_report', "View Report", 'View a report on attendees', 384),
+      (now(), 'announce', "Announce", 'Announce the adventure to the main email list', 384),
+      (now(), 'stat', "View Properties", "View meta-data about an object, such as its owner and date of creation", 384),
+d115 2
+a116 1
+      (now(), "view_acl", "View ACL", "View the object's Access Control List (Privileges)", 384),
+d119 1
+a119 1
+      (now(), "change_password", "Change Password", "Change a member's password", 384),
+@
+
+
+1.9
+log
+@fixed conflict
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.8 2004/08/06 16:59:03 at Exp $
+d291 1
+a291 1
+    where gr.c_title in ("member", "leader")
+@
+
+
+1.8
+log
+@removed the 'hidden' flag
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.7 2004/08/04 20:35:08 at Exp $
+a261 4
+<<<<<<< initialize.sql
+      and ta.c_name in ("[_]address", "[_]interest", "[_]phone_number",
+          "[_]answer", "[_]attendee");
+=======
+a263 1
+>>>>>>> 1.6
+@
+
+
+1.7
+log
+@Added a couple of activities
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.4 2004/07/25 23:30:51 at Exp $
+d63 1
+a63 1
+    ("hidden",                4),
+d443 1
+a443 1
+    where [_]status.c_title = "active" and [_]flag.c_title = "hidden";
+d450 1
+a450 1
+    where [_]status.c_title = "active" and [_]flag.c_title = "hidden";
+@
+
+
+1.6
+log
+@add more privileges
+@
+text
+@d4 1
+a4 1
+ * 
+d9 1
+a9 1
+ * 
+d14 1
+a14 1
+ * 
+d18 3
+a20 2
+ * 
+ * $Id: initialize.sql,v 1.5 2004/08/02 00:54:29 at Exp $
+d66 1
+a66 1
+    ("flexible",              16), 
+d141 1
+a141 1
+    "Main Club Address", "SocialClub", "SomeTown", "VA", 
+d157 1
+a157 1
+    select 
+d228 1
+a228 1
+    where gr.c_title = "member" 
+d239 1
+a239 1
+    where gr.c_title = "member" 
+d250 1
+a250 1
+    where gr.c_title = "member" 
+d262 5
+a266 1
+      and ta.c_name in ("[_]address", "[_]interest", "[_]phone_number", 
+d268 1
+d390 1
+a390 1
+-- GLOBAL OWNER PRIVILEGES: Allow the owner of an object to take the 
+d426 2
+a427 2
+    (c_owner, c_created_date, c_title, c_description) 
+    values 
+d439 2
+a440 2
+    c_gender, c_birth_date, c_full_name, c_flags) 
+    select now(), c_uid, "Club", "Manager", "admin@@socialclub.org", "root", 
+d447 1
+a447 1
+    select now(), c_uid, "Guest", "Guest", "guest@@socialclub.org", "guest", 
+d480 1
+a480 1
+insert into [_]membership 
+d484 1
+a484 1
+    where st.c_title = "active" 
+d516 2
+@
+
+
+1.5
+log
+@added privilege to let members list all locations
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.4 2004/07/25 23:30:51 at Exp $
+d36 1
+d52 2
+a53 1
+    ("[_]status");
+d229 2
+a230 1
+      and ta.c_name in ("[_]address", "[_]location", "[_]phone_number");
+d241 1
+a241 1
+      "[_]location");
+d262 1
+a262 1
+          "[_]answer", "[_]attendee");
+@
+
+
+1.4
+log
+@added table-name prefixes
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.3 2004/07/20 14:38:22 at Exp $
+d237 2
+a238 1
+      and ta.c_name in ("[_]adventure", "[_]activity", "[_]interest", "[_]member");
+@
+
+
+1.3
+log
+@added prefix names to tables
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.2 2004/07/19 17:39:51 at Exp $
+d25 27
+a51 27
+    ("t_absence"),
+    ("t_action"),
+    ("t_activity"),
+    ("t_address"),
+    ("t_adventure"),
+    ("t_adventure_activity"),
+    ("t_adventure_comment"),
+    ("t_answer"),
+    ("t_attendee"),
+    ("t_chat"),
+    ("t_chat_type"),
+    ("t_group"),
+    ("t_interest"),
+    ("t_location"),
+    ("t_member"),
+    ("t_member_group"),
+    ("t_member_note"),
+    ("t_membership"),
+    ("t_membership_history"),
+    ("t_membership_type"),
+    ("t_phone_number"),
+    ("t_phone_number_type"),
+    ("t_privilege"),
+    ("t_question"),
+    ("t_rating"),
+    ("t_report"),
+    ("t_status");
+d227 1
+a227 1
+      and ta.c_name in ("t_address", "t_location", "t_phone_number");
+d237 1
+a237 1
+      and ta.c_name in ("t_adventure", "t_activity", "t_interest", "t_member");
+d247 1
+a247 1
+      and ta.c_name in ("t_adventure", "t_member");
+d257 2
+a258 2
+      and ta.c_name in ("t_address", "t_interest", "t_phone_number", 
+          "t_answer", "t_attendee");
+d268 1
+a268 1
+      and ta.c_name in ("t_adventure", "t_location", "t_question");
+d278 1
+a278 1
+      and ta.c_name in ("t_report");
+d288 1
+a288 1
+      and ta.c_name in ("t_adventure");
+d303 1
+a303 1
+      and ta.c_name in ("t_member");
+d313 1
+a313 1
+      and ta.c_name in ("t_adventure");
+d323 1
+a323 1
+      and ta.c_name in ("t_membership");
+d333 1
+a333 1
+      and ta.c_name in ("t_member");
+d343 1
+a343 1
+      and ta.c_name in ("t_absence");
+d353 1
+a353 1
+      and ta.c_name in ("t_group");
+d363 1
+a363 1
+      and ta.c_name in ("t_adventure");
+d377 1
+a377 1
+      and ta.c_name in ("t_email_list");
+d391 1
+a391 1
+      and ta.c_name in ("t_attendee");
+d401 1
+a401 1
+      and ta.c_name in ("t_adventure");
+d411 1
+a411 1
+      and ta.c_name in ("t_question");
+d513 1
+a513 1
+    select "t_adventure", c_uid from [_]action
+d519 1
+a519 1
+    select "t_attendee", c_uid from [_]action
+d524 1
+a524 1
+    select "t_location", c_uid from [_]action
+d528 1
+a528 1
+    select "t_membership", c_uid from [_]action
+d532 1
+a532 1
+    select "t_member", c_uid from [_]action
+d537 1
+a537 1
+    select "t_report", c_uid from [_]action
+d541 1
+a541 1
+    select "t_group", c_uid from [_]action
+d545 1
+a545 1
+    select "t_email_list", c_uid from [_]action
+@
+
+
+1.2
+log
+@changed a bit: has_photo replaces unused3
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d22 1
+a22 1
+insert into t_table
+d55 1
+a55 1
+insert into t_flag
+d77 1
+a77 1
+insert into t_unixperm
+d90 1
+a90 1
+insert into t_action (c_created_date, c_title, c_summary, c_description, c_flags) values
+d130 1
+a130 1
+insert into t_rating
+d135 1
+a135 1
+insert into t_address
+d140 1
+a140 1
+    from t_flag where c_title = "primary";
+d142 1
+a142 1
+insert into t_phone_number_type
+d151 1
+a151 1
+insert into t_phone_number
+d157 1
+a157 1
+    from t_flag where c_title = 'primary';
+d159 1
+a159 1
+insert into t_group
+d170 1
+a170 1
+insert into t_email_list
+d220 1
+a220 1
+insert into t_privilege
+d224 1
+a224 1
+    from t_group as gr, t_action as ac, t_table as ta
+d230 1
+a230 1
+insert into t_privilege
+d234 1
+a234 1
+    from t_group as gr, t_action as ac, t_table as ta
+d240 1
+a240 1
+insert into t_privilege
+d244 1
+a244 1
+    from t_group as gr, t_action as ac, t_table as ta
+d250 1
+a250 1
+insert into t_privilege
+d254 1
+a254 1
+    from t_group as gr, t_action as ac, t_table as ta
+d261 1
+a261 1
+insert into t_privilege
+d265 1
+a265 1
+    from t_group as gr, t_action as ac, t_table as ta
+d271 1
+a271 1
+insert into t_privilege
+d275 1
+a275 1
+    from t_group as gr, t_action as ac, t_table as ta
+d281 1
+a281 1
+insert into t_privilege
+d285 1
+a285 1
+    from t_group as gr, t_action as ac, t_table as ta
+d296 1
+a296 1
+insert into t_privilege
+d300 1
+a300 1
+    from t_group as gr, t_action as ac, t_table as ta
+d306 1
+a306 1
+insert into t_privilege
+d310 1
+a310 1
+    from t_group as gr, t_action as ac, t_table as ta
+d316 1
+a316 1
+insert into t_privilege
+d320 1
+a320 1
+    from t_group as gr, t_action as ac, t_table as ta
+d326 1
+a326 1
+insert into t_privilege
+d330 1
+a330 1
+    from t_group as gr, t_action as ac, t_table as ta
+d336 1
+a336 1
+insert into t_privilege
+d340 1
+a340 1
+    from t_group as gr, t_action as ac, t_table as ta
+d346 1
+a346 1
+insert into t_privilege
+d350 1
+a350 1
+    from t_group as gr, t_action as ac, t_table as ta
+d356 1
+a356 1
+insert into t_privilege
+d360 1
+a360 1
+    from t_group as gr, t_action as ac, t_table as ta
+d371 1
+a371 1
+insert into t_privilege
+d375 1
+a375 1
+    from t_action as ac, t_table as ta
+d384 2
+a385 2
+-- For t_attendee
+insert into t_privilege
+d389 1
+a389 1
+    from t_action as ac, t_table as ta
+d393 2
+a394 2
+-- For t_adventure
+insert into t_privilege
+d398 1
+a398 1
+    from t_action as ac, t_table as ta
+d403 1
+a403 1
+-- For t_question, allow all members of the group that owns the objects (leader)
+d405 1
+a405 1
+insert into t_privilege
+d409 1
+a409 1
+    from t_action as ac, t_table as ta
+d415 1
+a415 1
+insert into t_status
+d427 1
+a427 1
+insert into t_member
+d432 3
+a434 3
+    from t_status inner join t_flag
+    where t_status.c_title = "active" and t_flag.c_title = "hidden";
+insert into t_member
+d439 2
+a440 2
+    from t_status inner join t_flag
+    where t_status.c_title = "active" and t_flag.c_title = "hidden";
+d442 1
+a442 1
+insert into t_chat_type
+d450 1
+a450 1
+insert into t_membership_type
+d470 1
+a470 1
+insert into t_membership 
+d473 1
+a473 1
+    from t_status as st, t_member as me, t_membership_type as mt
+d478 1
+a478 1
+insert into t_activity
+d512 2
+a513 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_adventure", c_uid from t_action
+d518 2
+a519 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_attendee", c_uid from t_action
+d523 2
+a524 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_location", c_uid from t_action
+d527 2
+a528 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_membership", c_uid from t_action
+d531 2
+a532 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_member", c_uid from t_action
+d536 2
+a537 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_report", c_uid from t_action
+d540 2
+a541 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_group", c_uid from t_action
+d544 2
+a545 2
+insert into t_implemented_action (c_table, c_action)
+    select "t_email_list", c_uid from t_action
+d549 2
+a550 2
+insert into t_implemented_action (c_table, c_action)
+    select "", c_uid from t_action
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d19 1
+a19 1
+ * $Id: initialize.sql,v 1.17 2004/05/30 03:08:37 baron Exp $
+d64 1
+a64 1
+    ("unused3",               32),
+d72 1
+a72 2
+    ("member_agreement",      1024),
+    ("has_photo",             2048);
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

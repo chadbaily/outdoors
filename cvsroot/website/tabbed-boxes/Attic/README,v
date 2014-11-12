@@ -1,0 +1,55 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.02.13.14;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@Tabbed boxes are expected to fully prepare their output, because these files
+will only be called after the proper context is set up for them.  The content of
+the tabbed box is stored in $res['content'] and the tab to activate is in
+$res['tab'].
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

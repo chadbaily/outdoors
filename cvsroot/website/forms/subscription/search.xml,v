@@ -1,0 +1,45 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.09.21.41.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="email"
+        required="1"
+        element-id="email" />
+</config>
+
+<p id="email-error" hidden="1" class="error">This field is required.</p>
+
+<p>Show subscriptions where the email address contains</p>
+<input type="text" name="email" id="email" />
+
+<input type="submit" value="Go" />
+
+</form>
+@

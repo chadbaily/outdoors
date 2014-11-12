@@ -1,0 +1,71 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@remove spurious semicolons
+@
+text
+@select
+    cg.c_uid,
+    cg.c_qty,
+    cg.c_description,
+    ic.c_title as ic_title,
+    it.c_title as it_title,
+    st.c_title as st_title
+from [_]checkout_gear as cg
+    inner join [_]item_type as it on it.c_uid = cg.c_type
+    inner join [_]item_category as ic on ic.c_uid = it.c_category
+    inner join [_]status as st on st.c_uid = cg.c_status
+where cg.c_checkout = {checkout,int}
+    and cg.c_deleted <> 1
+    and it.c_deleted <> 1
+    and ic.c_deleted <> 1
+    and ({status,int} is null or cg.c_status = {status,int})
+order by ic.c_title, it.c_title
+@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@d17 1
+a17 1
+order by ic.c_title, it.c_title;
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d13 3
+@
+

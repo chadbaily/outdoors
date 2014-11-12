@@ -1,0 +1,171 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.09.15.08.47;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.10.40;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>View Address Details</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Owner</th>
+    <td><a href="members/member/read/{T_MEMBER}">{C_FULL_NAME}</a></td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <td>{C_TITLE}</td>
+  </tr>
+  <tr>
+    <th>Street</th>
+    <td>{C_STREET}</td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td>{C_CITY}</td>
+  </tr>
+  <tr>
+    <th>State</th>
+    <td>{C_STATE}</td>
+  </tr>
+  <tr>
+    <th>Zip Code</th>
+    <td>{C_ZIP}</td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td>{C_COUNTRY}</td>
+  </tr>
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.4
+log
+@shrink-wrapped the actions form
+@
+text
+@d11 1
+a11 1
+    <td><a href="members.php?page=member&action={ACTION_READ}&object={T_MEMBER}">{C_FULL_NAME}</a></td>
+@
+
+
+1.3
+log
+@simplify 'Other actions' form
+@
+text
+@d39 1
+a39 9
+<form action="members.php" method="GET">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+    <option value="">Choose An Action</option>{ACTIONS:}
+    <option value="{C_UID}">{C_SUMMARY}</a>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.2
+log
+@styling changes to make display consistently beautiful
+@
+text
+@a41 1
+  <p>You may take the following actions on this object:</p>
+d43 1
+a43 1
+    <option value="">Choose One</option>{ACTIONS:}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+<table>
+d10 5
+a14 2
+    <td>Title:
+    </td>
+d18 1
+a18 2
+    <td>Street:
+    </td>
+d22 2
+a23 4
+    <td>City:
+    </td>
+    <td>{C_CITY}
+    </td>
+d26 2
+a27 4
+    <td>State:
+    </td>
+    <td>{C_STATE}
+    </td>
+d30 2
+a31 4
+    <td>Zip Code:
+    </td>
+    <td>{C_ZIP}
+    </td>
+d34 2
+a35 4
+    <td>Country:
+    </td>
+    <td>{C_COUNTRY}
+    </td>
+@
+

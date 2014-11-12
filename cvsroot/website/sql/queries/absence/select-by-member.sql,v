@@ -1,0 +1,85 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@select ad.c_title, ab.c_uid, ab.c_severity, ab.c_comment
+from [_]absence as ab
+    inner join [_]attendee as at on ab.c_attendee = at.c_uid
+    inner join [_]adventure as ad on at.c_adventure = ad.c_uid
+where at.c_member = {member,int}
+    and at.c_deleted <> 1
+    and ab.c_deleted <> 1
+    and ad.c_deleted <> 1
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d1 2
+a2 3
+select ad.c_title, ab.c_uid,
+    ab.c_severity, ab.c_comment
+    from [_]absence as ab
+d5 4
+a8 1
+    where at.c_member = {member,int}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d3 3
+a5 3
+    from t_absence as ab
+    inner join t_attendee as at on ab.c_attendee = at.c_uid
+    inner join t_adventure as ad on at.c_adventure = ad.c_uid
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

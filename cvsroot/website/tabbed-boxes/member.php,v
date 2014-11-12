@@ -1,0 +1,68 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.16.02.06.14;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.09.02.13.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add member/view_waitlist action
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: member.php,v 1.1 2004/09/09 02:13:14 at Exp $
+ */
+
+$obj['tabbed_box']->deleteTab('Change Group Memberships');
+$obj['tabbed_box']->deleteTab('Choose Activities');
+$obj['tabbed_box']->deleteTab('View Waitlist');
+
+?>
+@
+
+
+1.1
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure-read.php,v 1.2 2004/08/24 03:26:46 at Exp $
+d25 1
+@
+

@@ -1,0 +1,458 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2005.02.07.18.47.48;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.29.20.07.28;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.24.13.24.49;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.10.20.58.46;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.30.01.15.19;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@friendlyurls
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="titlecase"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        pre-processing="trim"
+        element-id="description" />
+    <element
+        required="1"
+        name="start"
+        data-type="datetime"
+        compare-to-id="end"
+        compare-type="less"
+        element-id="start" />
+    <element
+        required="1"
+        name="end"
+        data-type="datetime"
+        element-id="end" />
+    <element
+        required="1"
+        name="signup"
+        data-type="datetime"
+        compare-to-id="start"
+        compare-type="lessequal"
+        element-id="signup" />
+    <element
+        required="1"
+        name="departure"
+        element-id="departure" />
+    <element
+        required="1"
+        name="destination"
+        element-id="destination"
+        />
+    <element
+        required="1"
+        name="fee"
+        data-type="number"
+        element-id="fee"
+        />
+    <element
+        required="1"
+        name="attendees"
+        data-type="number"
+        element-id="attendees"
+        />
+    <element
+        type="array"
+        name="activity"
+        tag-name="input" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table width="100%">
+
+  <tr hidden="1" id="departure-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%">Departure location</td>
+    <td>
+      <select id="departure" name="departure">
+      <option value="">Choose one</option>
+      {DEPART:}
+      <option value="{C_UID}">{C_TITLE|htmlspecialchars|substr,0,60}</option>
+      {:DEPART}
+      </select>
+      <a href="members/location/create"
+        target="_blank">Create New</a>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="destination-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Destination location</td>
+    <td>
+      <select id="destination" name="destination">
+      <option value="">Choose one</option>
+      {DEST:}
+      <option value="{C_UID}">{C_TITLE|htmlspecialchars|substr,0,60}</option>
+      {:DEST}
+      </select>
+      <a href="members/location/create"
+        target="_blank">Create New</a>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Title</td>
+    <td><input type="text" name="title" id="title" size="60" 
+        maxlength="255" style="width:100%" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Description</td>
+    <td>
+      <textarea name="description" wrap="soft" id="description" rows="16" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-comparison-error">
+    <td colspan="2" class="error">
+    The start date must be before the end date.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-data-error">
+    <td colspan="2" class="error">
+    Please enter the start date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Start date and time</td>
+    <td>
+    <input type="text" name="start" id="start" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'start', 'startSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="startSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="end-data-error">
+    <td colspan="2" class="error">
+    Please enter the end date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="end-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>End date and time</td>
+    <td>
+    <input type="text" name="end" id="end" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'end', 'endSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="endSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-comparison-error">
+    <td colspan="2" class="error">
+    The signup date must not be after the start date.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-data-error">
+    <td colspan="2" class="error">
+    Please enter the signup date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Signup/withdraw deadline</td>
+    <td>
+    <input type="text" name="signup" id="signup" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'signup', 'signupSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="signupSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="fee-data-error">
+    <td colspan="2" class="error">
+    This field must contain a number.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="fee-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Fee</td>
+    <td>
+      <input type="text" name="fee" id="fee" value="" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="attendees-data-error">
+    <td colspan="2" class="error">
+    This field must contain a number.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="attendees-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Maximum # of attendees</td>
+    <td>
+      <input type="text" name="attendees" id="attendees" value="" />
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Choose all activities you think this adventure fits
+      into.  This will help to classify adventures and make it possible to
+      search for adventures of a certain type.
+    </td>
+    <td>
+      <table width="100%" class="top compact">
+        {ACTIVITY_ROW:}
+        <tr>{ACTIVITY:}
+          <td><input type="checkbox" class="compact" name="activity[]" value="{C_UID}" id="activity{C_UID}" /></td>
+          <td width="{WIDTH}%"><label for="activity{C_UID}">{C_TITLE|htmlspecialchars}</label></td>{:ACTIVITY}
+        </tr>
+        {:ACTIVITY_ROW}
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+    You are ready to go to the next step, adding questions to the adventure.
+    Your adventure won't be posted until you join it yourself, activate it, and (optionally)
+    announce it to the mailing list.
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Go to Next Step" />
+    </td>
+  </tr>
+
+</table>
+</form>
+@
+
+
+1.6
+log
+@clarify and restyle
+@
+text
+@d86 1
+a86 1
+      <a href="members.php?page=location&amp;action={ACTION_CREATE}"
+d106 1
+a106 1
+      <a href="members.php?page=location&amp;action={ACTION_CREATE}"
+@
+
+
+1.5
+log
+@added titlecase
+@
+text
+@d270 1
+a270 1
+          <td><input type="checkbox" name="activity[]" value="{C_UID}" id="activity{C_UID}" /></td>
+d279 8
+d288 1
+a288 1
+    <input type="submit" value="Create Adventure" />
+@
+
+
+1.4
+log
+@use uppercase H for 24-hour time
+@
+text
+@d13 1
+a13 1
+        pre-processing="ucwords"
+@
+
+
+1.3
+log
+@styling change
+@
+text
+@d162 1
+a162 1
+      onClick="showChooser(this, 'start', 'startSpan', 2004, 2020, 'Y-m-d h:i:s');" />
+d186 1
+a186 1
+      onClick="showChooser(this, 'end', 'endSpan', 2004, 2020, 'Y-m-d h:i:s');" />
+d216 1
+a216 1
+      onClick="showChooser(this, 'signup', 'signupSpan', 2004, 2020, 'Y-m-d h:i:s');" />
+@
+
+
+1.2
+log
+@date chooser stuff
+@
+text
+@d267 1
+a267 1
+      <table width="100%">
+d271 1
+a271 1
+          <td width="{WIDTH}%"><label style="font-size:80%" for="activity{C_UID}">{C_TITLE|htmlspecialchars}</label></td>{:ACTIVITY}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d160 5
+a164 4
+    <a href="javascript:show_calendar('theform.start', null, null, true);">
+     <img alt="[.]" src="assets/cal.gif" 
+       width="16" height="16" border="0" />
+    </a>
+d184 5
+a188 4
+    <a href="javascript:show_calendar('theform.end', null, null, true);">
+     <img alt="[.]" src="assets/cal.gif" 
+       width="16" height="16" border="0" />
+    </a>
+d214 5
+a218 4
+    <a href="javascript:show_calendar('theform.signup', null, null, true);">
+     <img alt="[.]" src="assets/cal.gif" 
+       width="16" height="16" border="0" />
+    </a>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

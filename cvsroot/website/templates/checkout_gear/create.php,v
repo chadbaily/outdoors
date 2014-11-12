@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.19.23.00.51;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@fix bug 200: check qty in stock when creating a checkout_gear
+@
+text
+@<h1>Select Gear</h1>
+
+<p>Please fix the errors noted below and resubmit:</p>
+
+{tooMuch:}
+<p class="error">You cannot check out more gear than is available.</p>
+{:tooMuch}
+
+{form}
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d5 4
+@
+

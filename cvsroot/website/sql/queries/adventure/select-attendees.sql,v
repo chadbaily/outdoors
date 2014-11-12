@@ -1,0 +1,61 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@remove spurious semicolons
+@
+text
+@select
+    att.*
+from [_]attendee as att
+where att.c_adventure = {adventure,int}
+    and ({status,int} is null or att.c_status = {status,int})
+    and att.c_deleted <> 1
+order by att.c_joined_date
+@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@d7 1
+a7 1
+order by att.c_joined_date;
+@
+
+
+1.1
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d6 1
+@
+

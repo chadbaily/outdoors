@@ -1,0 +1,72 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.16.17.52.56;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add some notes
+@
+text
+@<h1>Create a New Item</h1>
+
+<p>Use this form to create a new item.  Another (possibly better) way to do this
+is to find an existing item that's the same category and type as your item, and
+matches it as closely as possible as far as features, purchase date, etc.
+Then use the "copy" action on that item, and edit the resulting copy's
+features as needed.</p>
+
+<p><b>Please note</b> that the quantity field below should not be used to
+indicate when we get another item.  We need to track items individually, and
+create new items for each item when we get new ones or lose old ones.  Use the
+quantity field only when the item is not trackable individually, as in the case
+of AA batteries or similar.</p>
+
+{FORM}
+@
+
+
+1.2
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d5 1
+a5 1
+matches it as closely as possible as far as attributes, purchase date, etc.
+d8 6
+@
+
+
+1.1
+log
+@init
+@
+text
+@d3 5
+a7 1
+<p>Use this form to create a new item.</p>
+@
+

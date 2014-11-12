@@ -1,0 +1,198 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.12.28.15.21.08;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.07.14.35.07;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.21.02.51.39;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@add c_deleted column to database tables
+@
+text
+@select 
+    me.c_uid as c_uid,
+
+    -- Whether the person entered the correct password
+    case when (
+        me.c_password = {password,char,30}
+        )
+    then 1
+    else 0
+    end as password_correct,
+
+    -- Total number of memberships for the member
+    count(ms.c_uid) as total,
+    -- Total number of activated memberships that have begun and not yet expired
+    -- for this member.  These are memberships that will allow the member to log
+    -- in.
+    sum(
+        case when (
+            ms.c_uid is not null
+            and st.c_title = 'active'
+            and ms.c_begin_date <= current_date
+            and ms.c_expiration_date >= current_date
+            )
+        then 1
+        else 0
+        end
+    ) as valid,
+
+    -- Total number of expired memberships for the member.  These are
+    -- memberships that have been activated but the expiration date has
+    -- passed.
+    sum(
+        case when (
+            ms.c_uid is not null and ms.c_expiration_date < current_date
+        )
+        then 1
+        else 0
+        end
+    ) as expired,
+
+    -- Total number of inactive memberships for the member.  These are
+    -- memberships that are either inactive or the begin date has not yet
+    -- arrived.
+    sum(
+        case when (
+            ms.c_uid is not null and (
+                st.c_title = 'inactive' and ms.c_expiration_date > current_date
+            )
+        )
+        then 1
+        else 0
+        end
+    ) as pending,
+
+    current_timestamp
+
+from [_]member as me
+    left outer join [_]membership as ms on me.c_uid = ms.c_member
+        and ms.c_deleted <> 1
+    left outer join [_]status as st on ms.c_status = st.c_uid
+where me.c_email = {email,char,60}
+    and me.c_deleted <> 1
+group by me.c_uid
+@
+
+
+1.5
+log
+@check DB server for time differences and abort if there is > 30 sec difference
+@
+text
+@d58 3
+a60 2
+left outer join [_]membership as ms on me.c_uid = ms.c_member
+left outer join [_]status as st on ms.c_status = st.c_uid
+d62 1
+@
+
+
+1.4
+log
+@change sum(case()) to count()
+@
+text
+@d53 3
+a55 1
+    ) as pending
+@
+
+
+1.3
+log
+@fixes to count of pending memberships
+@
+text
+@d13 1
+a13 9
+    sum(
+        case when (
+            ms.c_uid is not null
+            )
+        then 1
+        else 0
+        end
+    ) as total,
+
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d42 1
+a42 3
+            ms.c_uid is not null and (
+                st.c_title = 'active' and ms.c_expiration_date < current_date
+            )
+d55 1
+a55 1
+                st.c_title <> 'active' or ms.c_begin_date > current_date
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d65 3
+a67 3
+from t_member as me
+left outer join t_membership as ms on me.c_uid = ms.c_member
+left outer join t_status as st on ms.c_status = st.c_uid
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

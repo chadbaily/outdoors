@@ -1,0 +1,162 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.09.02.13.14;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.26.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: common-read.php,v 1.3 2004/09/03 20:38:24 at Exp $
+ *
+ * This page expects an object called $cfg['object'] that it can use to check
+ * permissions and so forth.  It's expected that this page will be included from
+ * another tabbed-box page, so it doesn't actually do anything but set up a
+ * tabbed box called $obj['inner_box'] that the other tabbed-box page can take
+ * and add to.
+ */
+
+include_once("TabbedBox.php");
+
+$obj['inner_box'] =& new TabbedBox();
+
+if ($object->permits($cfg['action_id']['read'])) {
+    $obj['inner_box']->addTab('&Details',
+            "members.php?page={PAGE}&action={ACTION_READ}&object={OBJECT}",
+            0,
+            "View details for this object");
+}
+
+if ($object->permits($cfg['action_id']['stat'])) {
+    $obj['inner_box']->addTab('P&roperties',
+            "members.php?page={PAGE}&action={ACTION_STAT}&object={OBJECT}",
+            0,
+            "View properties for this object");
+}
+
+if ($object->permits($cfg['action_id']['write'])) {
+    $obj['inner_box']->addTab('Edi&t',
+            "members.php?page={PAGE}&action={ACTION_WRITE}&object={OBJECT}",
+            0,
+            "Edit or update this object");
+}
+
+if ($object->tablePermits($cfg['action_id']['create'])) {
+    $obj['inner_box']->addTab('&Create',
+            "members.php?page={PAGE}&action={ACTION_CREATE}&object={OBJECT}",
+            0,
+            "Create a new " . DatabaseObject::tableToType($object->getTable()));
+}
+
+?>
+@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: common-read.php,v 1.2 2004/08/24 03:26:46 at Exp $
+@
+
+
+1.2
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: common-read.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a31 2
+$obj['inner_box']->setTemplate("templates/misc/tabbed-box-horizontal.php");
+$obj['inner_box']->setClassPrefix("");
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: common-read.php,v 1.5 2004/05/30 01:42:24 baron Exp $
+d35 1
+a35 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['read'], $obj['user'], $object)) {
+d42 1
+a42 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['stat'], $obj['user'], $object)) {
+d49 1
+a49 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['write'], $obj['user'], $object)) {
+d56 1
+a56 1
+if ($obj['security']->isAllowedOnTable($cfg['action_id']['create'], $obj['user'], $object->getTable())) {
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

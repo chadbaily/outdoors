@@ -1,0 +1,172 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.47.48;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.19.23.00.51;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.18.03.52.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.16.16.19.02;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.48;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<form name="multipleForm" id="multipleForm" method="POST" action="members/checkout_gear/create">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="multipleForm">
+    <element
+        name="activity"
+        element-id="activity" />
+    <element
+        name="checkout"
+        element-id="checkout" />{config:}
+    <element
+        name="gear{c_uid}"
+        element-id="gear{c_uid}" />
+    <element
+        required-if="gear{c_uid}"
+        name="gear{c_uid}qty"
+        data-type="integer"
+        error-element="gear{c_uid}-error"
+        compare-to-id="gear{c_uid}avail"
+        compare-type="lessequal"
+        element-id="gear{c_uid}qty" />
+    <element
+        name="gear{c_uid}description"
+        error-element="gear{c_uid}-error"
+        element-id="gear{c_uid}description" />
+    <element    
+        name="gear{c_uid}avail"
+        data-type="integer"
+        required="1"
+        element-id="gear{c_uid}avail" />
+    {:config}
+</config>
+
+<input type="hidden" name="multiple" value="1" />
+<input type="hidden" name="checkout" id="checkout" />
+<input type="hidden" name="activity" id="activity" />
+
+<fieldset>
+<legend>Add in Bulk</legend>
+
+<table class="cleanHeaders" style="width:95%">
+  <tr>
+    <th colspan="2">Type</th>
+    <th style="width:80px">Qty Avail</th>
+    <th style="width:30px">Qty</th>
+    <th style="width:100px">Description</th>
+  </tr>{common:}
+  <tr id="gear{c_uid}-error" hidden="1">
+    <td class="error" colspan="5">Quantity is required and must be an integer.
+    You cannot check out more than is available.</td>
+  </tr>
+  <tr>
+    <td style="width:30px">
+      <input type="hidden" name="gear{c_uid}avail" value="{available}" id="gear{c_uid}avail" />
+      <input type="checkbox" name="gear{c_uid}" value="{c_uid}" id="gear{c_uid}" />
+      <input type="hidden" name="gear[]" value="{c_uid}" />
+    </td>
+    <td>
+      <label for="gear{c_uid}">{ic_title} &#187; {ty_title}</label>
+    </td>
+    <td>{available}</td>
+    <td>
+      <input type="text" name="gear{c_uid}qty" id="gear{c_uid}qty" size="3" style="width:30px"/>
+    </td>
+    <td>
+      <input type="text" name="gear{c_uid}description" id="gear{c_uid}description" maxlength="100" style="width:100px"/>
+    </td>
+  </tr>{:common}
+</table>
+
+<input type="submit" value="Add Gear" />
+
+</fieldset>
+
+</form>
+@
+
+
+1.4
+log
+@fix bug 200: check qty in stock when creating a checkout_gear
+@
+text
+@d1 1
+a1 1
+<form name="multipleForm" id="multipleForm" method="POST" action="members.php?page=checkout_gear&amp;action=7">
+@
+
+
+1.3
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d23 2
+d30 5
+d53 2
+a54 1
+    <td class="error" colspan="4">Quantity is required and must be an integer.</td>
+d58 1
+@
+
+
+1.2
+log
+@bug 195: set checkout_gear status to checked_out by default
+@
+text
+@d41 1
+d54 1
+a54 1
+      <label for="gear{c_uid}">{ic_title} &#187; {it_title}</label>
+d56 1
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d53 1
+a53 1
+      <label for="gear{c_uid}">{ic_title} &gt; {it_title}</label>
+@
+
