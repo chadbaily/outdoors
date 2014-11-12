@@ -1,0 +1,7 @@
+#!/usr/local/bin/bash
+
+echo "#!/usr/local/bin/bash" > /tmp/mergedir
+diff --brief --recursive $1 $2 | grep -v CVS | awk '/differ/ {print "vimdiff " $2 " " $4 ";"}' >> /tmp/mergedir
+chmod +x /tmp/mergedir
+/tmp/mergedir
+rm /tmp/mergedir

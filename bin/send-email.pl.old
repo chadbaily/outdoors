@@ -1,0 +1,61 @@
+#!/usr/local/bin/perl
+use strict;
+require DBI;
+
+# Make sure nobody else is running
+open(FILE, ">> /usr/home/at/bin/lock.txt");
+flock(FILE, 2);
+
+sub send_mail {
+    my ($from, $to, $subject, $message) = @_;
+    $message =~ s/^\./../g;
+
+    open(MAIL,"|/var/qmail/bin/qmail-inject") || die('Could not open MAIL');
+    print MAIL <<"%%%";
+From: $from
+To: $to
+Subject: $subject
+
+$message
+%%%
+
+    close(MAIL);
+}
+
+my $dbh = DBI->connect("DBI:mysql:database=at_main1;host=db57b.pair.com",
+    "at", "At_12_pass") || die("Can't connect to DB: $!");
+my $prep = $dbh->prepare("select e.c_uid, m.c_email, e.c_subject, e.c_message "
+    . "from m_email as e "
+    . "inner join m_email_recipient as r on r.c_email = e.c_uid "
+    . "inner join m_member as m on e.c_owner = m.c_uid "
+    . "where r.c_deleted = 0 "
+    . "group by e.c_uid limit 1");
+$prep->execute();
+
+while ($prep->rows) {
+    # Get this email's info
+    my $email = $prep->fetchrow_hashref();
+    # Get the recipients for the email
+    my $recips = $dbh->prepare("select er.c_uid, me.c_email "
+        . "from m_member as me "
+        . "inner join m_email_recipient as er on me.c_uid = er.c_recipient "
+        . "where er.c_email = " . $email->{'c_uid'});
+    $recips->execute();
+    my $recip;
+
+    while ($recip = $recips->fetchrow_hashref()) {
+        # Send the message and update it in the database.
+        send_mail($email->{'c_email'},
+                $recip->{'c_email'},
+                $email->{'c_subject'},
+                $email->{'c_message'});
+        $dbh->do("update m_email_recipient set c_deleted = 1 where c_uid = "
+            . $recip->{'c_uid'});
+    }
+
+    # Get the next email to be sent
+    $prep->execute();
+}
+
+flock(FILE, 8);
+close(FILE);
