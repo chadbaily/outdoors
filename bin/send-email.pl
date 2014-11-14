@@ -39,7 +39,7 @@ $message
 %%%
 
     close(MAIL);
-	sleep(2);
+	sleep(3);
 	print "Emailed $to\n";
 }
 
