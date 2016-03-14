@@ -1,0 +1,115 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.21.20.54.20;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.18.15.22.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@classes moved to files that match the database table names
+@
+text
+@* Most of the files in this directory try to correspond pretty
+  directly to tables in the database.  Whenever there is a member variable, 
+  such as PhoneNumber->c_type, that is storable in the database, the member 
+  variable itself is NOT a PhoneNumberType object, it is the c_uid of the 
+  appropriate row in the appropriate table.  To get an object of that type, 
+  do the following:
+      // assuming $phone is already created and initialized
+      include_once("PhoneNumberType.php");
+      $ph = new PhoneNumberType();
+      $ph->select($phone->getType());
+  Now $ph is a fully initialized PhoneNumberType.  
+  
+* On the other hand, if there is a member variable of a non-storable type, which
+  doesn't inherit from DatabaseObject, it's directly defined of the type you
+  think it is.  Dates are also stored in the objects as they are represented in
+  the database, so that the database classes can smoothly talk to the database,
+  but the getters and setters work in terms of the Date class, so you can
+  abstract away the database conveniently -- because Dates aren't storable in
+  the database, of course.
+
+* Member variables named c_something, and given the initial value of null, are
+  auto-detected by code in DatabaseObject and used for automagically knowing
+  what variables to send to/from the database.
+
+* For member variables that don't get stored in the database as a column of the
+  object's row, these ARE stored in the object as objects of the appropriate
+  type.  In other words, $member->initInterests() will populate the $interests
+  variable with an array of Interest objects, not the c_uid of each interest.
+  These arrays are always stored as objects that are keyed on their c_uid.  In
+  other words, 
+
+  array(
+    1 => member whose c_uid = 1,
+    2 => member whose c_uid = 2
+  )
+
+  You don't need to call initWhatevers() on these classes if you are dealing
+  with a user-defined type returned in an array.  The getWhatevers() function
+  should check if the $this->whatevers var is null and init it automatically if
+  need be.  This is just to assist in cleaning up the code and avoiding
+  returning an array that's a null object.
+@
+
+
+1.2
+log
+@remove obsolete examples
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d26 6
+a31 5
+  object's row, such as $member->debts, these ARE stored in the object as
+  objects of the appropriate type.  In other words, $member->initDebts() will
+  populate the $debts variable with an array of Debt objects, not the c_uid of
+  each debt the member owes.  These arrays are always stored as objects that 
+  are keyed on their c_uid.  In other words, 
+d35 1
+a35 1
+       )
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

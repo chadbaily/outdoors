@@ -1,0 +1,2 @@
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/home/outdoorsatuva/bin/send-email.pl
+0 2 * * * /usr/home/at/bin/send-reminder.pl > /usr/home/outdoorsatuva/bin/send-reminder.log

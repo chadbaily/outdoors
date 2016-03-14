@@ -1,0 +1,55 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.13.15.19.42;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    qu.c_uid,
+    qu.c_text,
+    count(*) as num
+from [_]question as qu
+    inner join [_]adventure as ad on qu.c_adventure = ad.c_uid
+    inner join [_]adventure_activity as this_aa
+        on this_aa.c_adventure = {adventure,int}
+    inner join [_]adventure_activity as aa
+        on aa.c_adventure = ad.c_uid and aa.c_activity = this_aa.c_activity
+where qu.c_deleted <> 1
+    and ad.c_deleted <> 1
+    and aa.c_deleted <> 1
+    and this_aa.c_deleted <> 1
+group by qu.c_text
+order by num desc
+limit {limit,int}
+@
+
+
+1.1
+log
+@show most popular questions by adventure type, not most popular overall
+@
+text
+@d11 4
+@
+

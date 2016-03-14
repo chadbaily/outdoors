@@ -1,0 +1,52 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.14.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Chat Identities</h1>
+
+<p>The following is a list of all chat identities you own.  Click
+<a href="members/chat/create">here</a>
+to create a new chat identity.</p>
+
+<ol>{ITEM:}
+  <li><a href="members/chat/read/{C_UID}">{C_SCREENNAME}</a></li>{:ITEM}
+</ol>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d4 1
+a4 1
+<a href="members.php?page=chat&action={ACTION_CREATE}">here</a>
+d8 1
+a8 1
+  <li><a href="members.php?page=chat&action={ACTION_READ}&object={C_UID}">{C_SCREENNAME}</a></li>{:ITEM}
+@
+

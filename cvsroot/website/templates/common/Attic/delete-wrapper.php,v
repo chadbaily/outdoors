@@ -1,0 +1,83 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.15.23;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Delete an Object</h1>
+
+<p>Use this page to delete an object from the database.</p>
+
+<p class="notice"><b>Warning:</b> Unless you know that you need to do this,
+<b>don't do it</b>.</p>
+
+<p>There are several choices for how to delete things.  To decide what to do,
+think about whether you want to just mark the item as deleted (it stays in the
+database, but the website ignores it) or actually delete it (gone forever).
+Also think about whether you want this choice to apply to everything that's
+linked to what you're deleting (a "cascading" delete).  To see how many items
+will be affected if you choose this, look at the list at the bottom of this
+page.</p>
+
+<p>Generally, the only time you want to truly delete something is when the data
+is wrong or bogus (someone was having too much fun making bullshit memberhips).
+Most other things you just want to leave in the database so we have records of
+them.</p>
+
+{BOX}
+
+{TODELETE:}
+<h2>Objects to Delete</h2>
+
+<p>If you choose the "cascade" option above, the following objects will be
+deleted:</p>
+
+<ol>
+  <li>{OBJECTS}</li>
+</ol>
+{:TODELETE}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,228 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.23.12.54.10;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: chgrp.php,v 1.5 2004/10/07 17:41:47 at Exp $
+ */
+
+include_once("group.php");
+
+# Create templates
+$template = file_get_contents("templates/common/chgrp.php");
+
+# If the form's been submitted, update the member's group
+$newGroup = postval('group');
+
+if ($newGroup) {
+    $object->setGroup($newGroup);
+    $object->update();
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+# Plug the groups into the template, selecting the correct one
+foreach ($cfg['group_id'] as $title => $id) {
+    $template = Template::block($template, "GROUP", array(
+        "C_UID" => $id,
+        "C_TITLE" => $title,
+        "SELECTED" => ($id == $object->getGroup())
+            ? "selected"
+            : ""));
+}
+
+# Plug some other common stuff into the template
+$template = Template::replace($template, array(
+    "TABLE" => get_class($object)));
+
+# Plug it all into the template
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Change Group";
+
+?>
+@
+
+
+1.5
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp.php,v 1.4 2004/09/20 20:38:39 at Exp $
+d23 1
+a23 1
+include_once("Group.php");
+d49 1
+a49 1
+    "TABLE" => $object->getTable()));
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d29 1
+a29 1
+$newGroup = Utility::postval('group');
+a36 4
+# FIXME: is this duplicating what Utility::initialize() does?
+# Get a list of all the groups in the database, the non-OO way
+$result =& $obj['conn']->query("select c_uid, c_title from [_]group");
+
+d38 1
+a38 1
+while ($row =& $result->fetchRow()) {
+d40 3
+a42 3
+        "C_UID" => $row['c_uid'],
+        "C_TITLE" => $row['c_title'],
+        "SELECTED" => ($row['c_uid'] == $object->getGroup())
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d34 1
+a34 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d43 1
+a43 1
+    $template = Template::replaceWithinBlock($template, "GROUP", array(
+d52 1
+a52 1
+$template = Template::replaceValues($template, array(
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d26 1
+a26 2
+$wrapper = file_get_contents("templates/common/chgrp-wrapper.php");
+$box = file_get_contents("templates/common/chgrp-box.php");
+d34 1
+a34 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d43 1
+a43 1
+    $box = Template::replaceWithinBlock($box, "GROUP", array(
+d52 5
+a56 9
+$box = Template::replaceValues($box, array(
+    "TABLE" => $object->getTable(),
+    "PAGE" => $cfg['page']));
+
+# Plug it all into the templates.  No need to set the active tab.
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/common-properties.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp.php,v 1.4 2004/05/30 01:42:12 baron Exp $
+d40 1
+a40 1
+$result =& $obj['conn']->query("select c_uid, c_title from t_group");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

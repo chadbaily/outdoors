@@ -1,0 +1,135 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.22.01.46.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.19.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>Location: {C_TITLE}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{C_DESCRIPTION|nl2br|_linkify|htmlspecialchars}
+
+{WEATHER:}
+<p><b>Weather Forecast:</b><br>
+You can view a
+<a target="_blank" href="http://www.weather.com/weather/print/{C_ZIP_CODE}">weather
+forecast</a> for this location.</p>
+{:WEATHER}
+
+{ACTS:}
+<p><b>Activity Types:</b><br>
+You can do the following types of outdoor activities at this location:</p>
+ <ul>{ACTIVITY:}
+   <li>{C_TITLE}</li>{:ACTIVITY}
+ </ul>
+{:ACTS}
+
+{actions,{PAGE},{OBJECT},default}
+
+{SOME:}
+<h2>Adventures</h2>
+
+<p>The following adventures went to this location:</p>
+
+<ol>
+{ADVENTURE:}
+  <li>
+    <a href="members/adventure/read/{C_UID}">{C_TITLE}</a>
+  </li>{:ADVENTURE}
+</ol>
+{:SOME}
+
+</div>
+@
+
+
+1.4
+log
+@shrink-wrapped the actions form
+@
+text
+@d35 1
+a35 1
+    <a href="members.php?page=adventure&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a>
+@
+
+
+1.3
+log
+@simplify 'Other actions' form
+@
+text
+@d25 1
+a25 9
+<form action="members.php" method="GET">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <input type="hidden" name="page" value="{PAGE}">
+  <select name="action">
+  <option value="">Choose an Action</option>{OPTION:}
+  <option value="{C_UID}">{C_SUMMARY}</option>{:OPTION}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.2
+log
+@added linkify
+@
+text
+@a27 1
+  <b>Other Actions:</b>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+{C_DESCRIPTION|nl2br|htmlspecialchars}
+@
+

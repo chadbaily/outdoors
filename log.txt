@@ -1,0 +1,2 @@
+8/20/2010 - Andrew Richers - changed line 10 of bin/send-reminder.log and
+send-reminder.pl to reflect new membership prices of $40 and $30

@@ -1,0 +1,247 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.11.02.22.34.47;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.23.12.54.10;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.18.17.23.38;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@fix issue with incorrect table-name prefixing
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: add_privilege.php,v 1.6 2004/10/23 12:54:10 at Exp $
+ */
+
+include_once("privilege.php");
+
+# Create templates
+$template = file_get_contents("templates/common/add_privilege.php");
+$formTemplate = file_get_contents("forms/common/add_privilege.xml");
+
+# Add actions and tables to the form template
+foreach ($cfg['action_summary'] as $key => $val) {
+    $formTemplate = Template::block($formTemplate, "ACTION", array(
+        "C_UID" => $key,
+        "C_SUMMARY" => $val));
+}
+$result =& $obj['conn']->query("select * from [_]table");
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "TABLE",
+        array_change_key_case($row, 1));
+}
+
+$form =& new XmlForm(Template::finalize($formTemplate), true);
+$form->setValue("related_uid", $cfg['object']);
+$form->setValue("related_table", $cfg['table_prefix'] . get_class($object));
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    $priv =& new privilege();
+    $priv->setWhatGrantedTo($form->getValue("what_granted_to"));
+    $priv->setWhoGrantedTo($form->getValue("who_granted_to"));
+    $priv->setAction($form->getValue("action"));
+    $priv->setWhatRelatesTo($form->getValue("what_relates_to"));
+    $priv->setRelatedTable($form->getValue("related_table"));
+    $priv->setRelatedUID($form->getValue("related_uid"));
+    $priv->insert();
+    $template = Template::unhide($template, "SUCCESS");
+}
+else {
+    $template = Template::replace($template, array("FORM" => $form->toString()));
+}
+
+# Plug it all into the templates.
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Add Privilege";
+
+?>
+@
+
+
+1.6
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.5 2004/09/20 20:38:39 at Exp $
+d43 1
+a43 1
+$form->setValue("related_table", $obj['conn']->aliasTables(get_class($object)));
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.4 2004/09/08 22:45:37 at Exp $
+d23 1
+a23 1
+include_once("Privilege.php");
+d43 1
+a43 1
+$form->setValue("related_table", $obj['conn']->aliasTables($object->getTable()));
+d48 1
+a48 1
+    $priv =& new Privilege();
+@
+
+
+1.4
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.3 2004/08/18 17:23:38 at Exp $
+d31 1
+a31 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "ACTION", array(
+d37 1
+a37 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "TABLE",
+d56 1
+a56 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d59 1
+a59 1
+    $template = Template::replaceValues($template, array("FORM" => $form->toString()));
+@
+
+
+1.3
+log
+@pre-populate the form
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d26 1
+a26 2
+$wrapper = file_get_contents("templates/common/add_privilege-wrapper.php");
+$box = file_get_contents("templates/common/add_privilege-box.php");
+d56 1
+a56 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d59 1
+a59 1
+    $box = Template::replaceValues($box, array("FORM" => $form->toString()));
+d62 2
+a63 5
+# Plug it all into the templates.  No need to set the active tab.
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/common-properties.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d43 2
+a44 1
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: add_privilege.php,v 1.4 2004/05/30 01:42:12 baron Exp $
+d36 1
+a36 1
+$result =& $obj['conn']->query("select * from t_table");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

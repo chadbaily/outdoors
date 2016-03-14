@@ -1,0 +1,72 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.13.19.15.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.13.16.52.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    max(qu.c_uid) as c_uid,
+    qu.c_text,
+    count(*) as num
+from [_]question as qu
+    inner join [_]adventure as ad on ad.c_uid = qu.c_adventure
+-- Make sure we don't mess with adventures where that aren't over yet
+where ad.c_end_date < current_date
+    and qu.c_deleted <> 1
+    and ad.c_deleted <> 1
+group by qu.c_text
+order by qu.c_text
+@
+
+
+1.2
+log
+@prevent from counting or modifying questions for future adventures
+@
+text
+@d9 2
+@
+
+
+1.1
+log
+@added ability to dedupe questions
+@
+text
+@d2 2
+a3 2
+    max(c_uid) as c_uid,
+    c_text,
+d5 6
+a10 3
+from [_]question
+group by c_text
+order by c_text
+@
+

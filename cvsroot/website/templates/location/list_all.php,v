@@ -1,0 +1,55 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.19.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Locations</h1>
+
+<p>The following is a list of all locations in the database.</p>
+
+{SOME:}
+<ol>
+  {ITEM:}
+  <li><a href="members/location/read/{C_UID}">{C_TITLE}</a></li>
+  {:ITEM}
+</ol>
+{:SOME}
+
+{NONE:}
+<p class="notice">There are no locations in the database.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+  <li><a href="members.php?page=location&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a></li>
+@
+

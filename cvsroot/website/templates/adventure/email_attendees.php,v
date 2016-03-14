@@ -1,0 +1,68 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.17.35.05;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@added the ability to send email to all, joined, or waitlisted attendees
+@
+text
+@<h1>Email Adventure Attendees</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use this page to send an email to attendees for adventure <b>{C_TITLE}</b>.</p>
+
+{ACTIVE:}
+<p class="error">This adventure is not active.  You cannot email attendees for 
+this adventure.</p>
+{:ACTIVE}
+
+{SUCCESS:}
+<p class="notice">You have successfully emailed attendees for this
+adventure.</p>
+
+<p>The following is the message you sent:</p>
+<pre style="border:1px dotted black; background:white; color:green">{MESSAGE}</pre>
+{:SUCCESS}
+
+{FORM}
+
+</div>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+<p>Use this page to send an email to all attendees for adventure <b>{C_TITLE}</b>.</p>
+d16 1
+a16 1
+<p class="notice">You have successfully emailed all attendees for this
+@
+

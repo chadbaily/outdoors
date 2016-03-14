@@ -1,0 +1,94 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.01.10.21.17.02;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.09.15.20.48;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.03.13.48.36;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.30.02.12.41;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.25.21.06.53;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@upgrade to privileges system
+@
+text
+@#!/usr/local/bin/bash
+
+# Pipe the files through sed and replace the table
+# aliases with real table names, then feed the results to mysql.
+sed -e "s/\[_]/$1/g" drop.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+sed -e "s/\[_]/$1/g" create.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+sed -e "s/\[_]/$1/g" initialize.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+sed -e "s/\[_]/$1/g" privileges.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+#sed -e "s/\[_]/$1/g" translate.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+@
+
+
+1.4
+log
+@one-time deal is done
+@
+text
+@d3 1
+a3 1
+# Pipe the create.sql and initialize.sql files through sed and replace the table
+d8 1
+@
+
+
+1.3
+log
+@drop tables
+@
+text
+@d8 1
+a8 1
+sed -e "s/\[_]/$1/g" translate.sql | mysql -uat -hdb57b.pair.com -pBFnUS5cK at_main1
+@
+
+
+1.2
+log
+@added the translation
+@
+text
+@d5 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d7 1
+@
+

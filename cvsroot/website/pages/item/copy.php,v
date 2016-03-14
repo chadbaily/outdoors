@@ -1,0 +1,243 @@
+head	1.9;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.23.12.56.02;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.07.17.41.48;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.06.13.56.03;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.02.02.49.23;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.24.19.57.26;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.20.22.26.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: copy.php,v 1.8 2005/02/07 18:49:28 at Exp $
+ */
+
+# Make a copy of the object and redirect to the copy's edit page.
+$item =& $object->copy();
+$item->insert();
+
+# Copy the item's features, too
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/copy-features.sql");
+$cmd->addParameter("from", $cfg['object']);
+$cmd->addParameter("to", $item->getUID());
+$cmd->addParameter("owner", $cfg['user']);
+$cmd->executeNonQuery();
+
+if (isset($_SERVER['HTTP_REFERER'])
+        && strpos($_SERVER['HTTP_REFERER'], "action={$cfg['action_id']['edit_features']}"))
+{
+    redirect("$cfg[base_url]/members/item/edit_features/$item->c_uid");
+}
+else {
+    redirect("$cfg[base_url]/members/item/write/$item->c_uid?mode=new");
+}
+
+?>
+@
+
+
+1.8
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.7 2004/10/23 12:56:02 at Exp $
+d38 1
+a38 1
+    redirect("members/item/edit_features/$item->c_uid");
+d41 1
+a41 1
+    redirect("members/item/write/$item->c_uid?mode=new");
+@
+
+
+1.7
+log
+@edit_attributes -> edit_features, change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.6 2004/10/07 17:41:48 at Exp $
+d38 1
+a38 2
+    redirect("members.php?page=item&action={$cfg['action_id']['edit_features']}"
+        . "&object=" . $item->getUID());
+d41 1
+a41 2
+    redirect("members.php?page=item&action={$cfg['action_id']['write']}"
+        . "&object=" . $item->getUID() . "&mode=new");
+@
+
+
+1.6
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.5 2004/10/06 13:56:03 at Exp $
+d27 1
+a27 1
+# Copy the item's attributes, too
+d29 1
+a29 1
+$cmd->loadQuery("sql/queries/item/copy-attributes.sql");
+d36 1
+a36 1
+        && strpos($_SERVER['HTTP_REFERER'], "action={$cfg['action_id']['edit_attributes']}"))
+d38 1
+a38 1
+    redirect("members.php?page=item&action={$cfg['action_id']['edit_attributes']}"
+@
+
+
+1.5
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.4 2004/10/02 02:49:23 at Exp $
+d38 1
+a38 1
+    Utility::redirect("members.php?page=item&action={$cfg['action_id']['edit_attributes']}"
+d42 1
+a42 1
+    Utility::redirect("members.php?page=item&action={$cfg['action_id']['write']}"
+@
+
+
+1.4
+log
+@fine-tune copy-and-edit process
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.3 2004/09/24 19:57:26 at Exp $
+d28 6
+a33 6
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/copy-attributes.sql");
+$comm->addParameter("from", $cfg['object']);
+$comm->addParameter("to", $item->getUID());
+$comm->addParameter("owner", $cfg['user']);
+$comm->executeNonQuery();
+@
+
+
+1.3
+log
+@copy an item's attributes when copying it
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.2 2004/09/24 17:39:46 at Exp $
+d35 8
+a42 1
+Utility::redirect("members.php?page=item&action={$cfg['action_id']['write']}"
+d44 1
+@
+
+
+1.2
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.1 2004/09/20 22:26:28 at Exp $
+d26 9
+@
+
+
+1.1
+log
+@added the copy action to item; changed the default behavior when entering new items
+@
+text
+@d20 1
+a20 1
+ * $Id: copy.php,v 1.2 2004/09/20 20:38:40 at Exp $
+a24 1
+$item->setTitle("Copy of " . $item->getTitle());
+@
+

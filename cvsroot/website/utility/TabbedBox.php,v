@@ -1,0 +1,511 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.10.20.41.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.23.33.25;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@get rid of utility/Utility.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: TabbedBox.php,v 1.4 2004/09/10 20:41:37 at Exp $
+ *
+ * Purpose: A box with multiple tabs.  Each tab has some text in it,
+ * which could be a link as well.  There can be multiple rows too.
+ */
+
+class TabbedBox extends Object{
+    // {{{declarations
+    var $rows = array();        # An array of rows, which are arrays of tabs
+    var $activeTab  = "";       # The currently active tab, which is highlighted
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function TabbedBox() {
+    } //}}}
+
+    /* {{{setActiveTab
+     * Sets the active tab to the element that is keyed on $activeTab
+     */
+    function setActiveTab($value) {
+        $this->activeTab = str_replace("&", "", $value);
+    } //}}}
+
+    /* {{{addTab
+     */
+    function addTab($text, $row, $link) {
+        $name = str_replace("&", "", $text);
+        if (!isset($this->rows[intval($row)])) {
+            $this->rows[intval($row)] = array();
+        }
+        $this->rows[intval($row)][$name] = array(
+            'label' => $text,
+            'link' => $link,
+            'row' => $row);
+    } //}}}
+
+    /* deleteTab
+     * Deletes the tab with the specified label.
+     */
+    function deleteTab($label) {
+        foreach ($this->rows as $key => $row) {
+            unset($this->rows[$key][$label]);
+        }
+    } #}}}
+
+    /* {{{toString
+     * Returns an HTML string representation of the whole thing.
+     */
+    function toString() {
+        global $obj;
+
+        $result = "";
+        $tabs = array(""); # An array of the HTML strings to make the tabs
+        $activeRow = 0;
+
+        foreach ($this->rows as $key => $row) {
+            $tabs[$key] = "";
+            foreach ($this->rows[$key] as $name => $tab) {
+                # Find out if it's the active tab
+                if ($name == $this->activeTab) {
+                    $class = " class='active'";
+                    $activeRow = $key;
+                } else {
+                    $class = "";
+                }
+                $accesskey = (strpos($tab['label'], '&') !== false)
+                    ? substr($tab['label'], strpos($tab['label'], '&') + 1, 1)
+                    : "";
+                $label = preg_replace("/&(.)/", "<u>$1</u>", $tab['label']);
+
+                # Add the tab to the row
+                $tabs[$key] .= "\r\n  <td$class><a "
+                    . ($accesskey ? "accesskey='$accesskey' " : "")
+                    . "href='$tab[link]'>$label</a></td>";
+            }
+        }
+
+        # Add the active row to the output first, then delete it from the array
+        $tabHTML = "\r\n<tr><td><table cellspacing=0 border=0><tr>"
+            . $tabs[$activeRow] .  "\r\n</tr></table></td></tr>";
+        unset($tabs[$activeRow]);
+
+        # Prepend the rest of the rows, so they'll go "on top" of the active row
+        return "\r\n<tr><td><table cellspacing=0 border=0><tr>"
+            . join("\r\n</tr></table></td></tr>"
+                . "\r\n<tr><td><table cellspacing=0 border=0><tr>", $tabs)
+            . "\r\n</tr></table></td></tr>$tabHTML";
+    } //}}}
+
+}
+
+?>
+@
+
+
+1.4
+log
+@tweaked a space in <a> tag
+@
+text
+@d20 1
+a20 1
+ * $Id: TabbedBox.php,v 1.3 2004/09/08 23:33:25 at Exp $
+d42 1
+a42 1
+        $this->activeTab = Utility::stripAccessKey($value);
+d48 1
+a48 1
+        $name = Utility::stripAccessKey($text);
+d87 4
+a90 2
+                $accesskey = Utility::getAccessKey($tab['label']);
+                $label = Utility::underlineAccessKey($tab['label']);
+@
+
+
+1.3
+log
+@took out navbar code and simplified what's left
+@
+text
+@d20 1
+a20 1
+ * $Id: TabbedBox.php,v 1.2 2004/09/03 20:38:24 at Exp $
+d92 1
+a92 1
+                    . ($accesskey ? " accesskey='$accesskey'" : "")
+@
+
+
+1.2
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: TabbedBox.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d23 1
+a23 32
+ * which could be a link as well.
+ *
+ * The data structure of a tabbed box looks something like this:
+ * class TabbedBox
+ *  |
+ *  +-array tabRows
+ *          |
+ *          +[0]--+
+ *          |     +[Google]
+ *          |     |  +[accesskey] => "G"
+ *          |     |  +[label] => "<u>G</u>oogle"
+ *          |     |  +[link] => "http://www.google.com"
+ *          |     |  +[width] => 100
+ *          |     |  +[tooltip] => "Go to Google"
+ *          |     +[MSN]
+ *          |        +[accesskey] => "M"
+ *          |        +[label] => "<u>M</u>SN"
+ *          |        +[link] => "http://www.msn.com"
+ *          |        +[width] => 
+ *          |        +[tooltip] => "Never go here!"
+ *          +[1]--+
+ *                +[Yahoo]
+ *                   +[accesskey] => "Y"
+ *                   +[label] => "<u>Y</u>ahoo"
+ *                   +[link] => "http://www.yahoo.com"
+ *                   +[width] =>
+ *                   +[tooltip] => "Go to Yahoo"
+ * Basically, it's a multi-dimensional array.  The top level is an
+ * array of rows; you usually want to have one row.  The next level is
+ * an array of tabs; each tab is an array of accesskey, label, link,
+ * and tooltip.  The system will automatically decide which row to
+ * place where, depending on which one has the active tab.
+d28 2
+a29 4
+    var $tabRows      = array();  # An array of rows of tabs
+    var $activeTab    = "";       # The currently active tab, which is highlighted
+    var $contents     = "";       # The contents of the box
+    var $style        = "";       # The box's background color
+d35 1
+a35 5
+    function TabbedBox($tabs = array()) {
+        if (!is_array($tabs)) {
+            trigger_error("Parameter was not an array", E_USER_ERROR);
+        }
+        $this->tabs = $tabs;
+d42 1
+a42 22
+        $this->activeTab = $value;
+    } //}}}
+
+    /* {{{getActiveTab
+     * returns the active tab.
+     */
+    function getActiveTab() {
+        return $this->activeTab;
+    } //}}}
+
+    /* {{{setTabs
+     * Sets the tabs array
+     */
+    function setTabs($value) {
+        $this->tabs = $value;
+    } //}}}
+
+    /* {{{getTabs
+     * Returns an array of tabs.
+     */
+    function getTabs() {
+        return $tabs;
+a45 1
+     * Adds another tab as key (label) and text
+d47 1
+a47 1
+    function addTab($text, $link, $row = 0, $tooltip = "", $width = "") {
+d49 5
+a53 3
+        $this->tabRows[$row][$name] = array(
+            'accesskey' => Utility::getAccessKey($text),
+            'label' => str_replace(' ', '&nbsp;', Utility::underlineAccessKey($text)),
+d55 1
+a55 11
+            'width' => $width,
+            'tooltip' => $tooltip);
+    } //}}}
+
+    /* {{{addSubTab
+     * Adds a tab as a child of the parent tab
+     */
+    function addSubTab($parent, $text, $link, $row = 0) {
+        $this->tabRows[$row][$parent]['children'][$text] = array(
+            'label' => $text,
+            'link' => $link);
+d62 2
+a63 2
+        foreach ($this->tabRows as $key => $row) {
+            unset($this->tabRows[$key][$label]);
+a66 7
+    /* {{{setContents
+     * Sets the contents of the box.
+     */
+    function setContents($value) {
+        $this->contents = $value;
+    } //}}}
+
+d73 2
+a74 2
+        $tabs = array(); # An array of the HTML strings to make the tabs
+        $tabHTML = "";
+d77 3
+a79 5
+        foreach ($this->tabRows as $row => $arrayOfTabs) {
+            $tabs[$row] = "";
+
+            foreach ($arrayOfTabs as $name => $tab) {
+
+d81 3
+a83 3
+                if ($name == $this->getActiveTab()) {
+                    $class = "class='active'";
+                    $activeRow = $row;
+d87 2
+d91 3
+a93 1
+                $tabs[$row] .= "<li><a $class href='$tab[link]'>$tab[label]</a></li>";
+d98 2
+a99 1
+        $tabHTML = "<ul>$tabs[$activeRow]</ul>";
+d101 1
+d103 4
+a106 4
+        foreach ($tabs as $index => $tab) {
+            $tabHTML = "<ul>$tab</ul>$tabHTML";
+        }
+        return $tabHTML;
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: TabbedBox.php,v 1.6 2004/05/30 01:42:25 baron Exp $
+a54 2
+ *
+ * Tabs can also have subtabs.  Subtabs are shown when the tab is active.
+a60 1
+    var $activeSubTab = "";       # The currently active sub-tab
+a61 1
+    var $template     = "";       # Which template file to use
+a62 1
+    var $classPrefex  = "";       # The text to prefix CSS active/inactive styles
+a74 38
+    /* {{{setClassPrefix
+     */
+    function setClassPrefix($value) {
+        $this->classPrefix = $value;
+    } //}}}
+
+    /* {{{getClassPrefix
+     */
+    function getClassPrefix() {
+        return $this->classPrefix;
+    } //}}}
+
+    /* {{{setTemplate
+     */
+    function setTemplate($value) {
+        $this->template = $value;
+    } //}}}
+
+    /* {{{getTemplate
+     */
+    function getTemplate() {
+        return $this->template;
+    } //}}}
+
+    /* {{{setActiveSubTab
+     * Sets the active sub-tab to the element that is keyed on $activeSubTab
+     */
+    function setActiveSubTab($value) {
+        $this->activeSubTab = $value;
+    } //}}}
+
+    /* {{{getActiveSubTab
+     * returns the active sub-tab.
+     */
+    function getActiveSubTab() {
+        return $this->activeSubTab;
+    } //}}}
+
+a88 12
+    /* {{{setStyle
+     */
+    function setStyle($value) {
+        $this->style = $value;
+    } //}}}
+
+    /* {{{getStyle
+     */
+    function getStyle() {
+        return $this->style;
+    } //}}}
+
+a140 15
+    /* {{{getContents
+     * Returns the contents of the box.
+     */
+    function getContents() {
+        return $this->contents;
+    } //}}}
+
+    /* {{{addToContents
+     * Adds to the contents of the box, allowing for more later (which
+     * setContents does not do)
+     */
+    function addToContents($contents) {
+        $this->contents .= $contents;
+    } //}}}
+
+a145 1
+        $template = file_get_contents($this->template);
+d147 1
+a147 7
+        # Extract row and tab templates from the main template
+        $rowTemplate = Template::extract($template, "ROW");
+        $tabTemplate = Template::extract($template, "TAB");
+        $subRowTemplate = Template::extract($template, "SUB_ROW");
+        $subTabTemplate = Template::extract($template, "SUB_TAB");
+
+        $tabs = array();
+a154 1
+                $subTabs = "";
+d158 1
+a158 1
+                    $class = "{$this->classPrefix}active";
+d160 2
+a161 23
+                }
+                else {
+                    $class = "{$this->classPrefix}inactive";
+                }
+
+                # Add child tabs if this is the active tab
+                if (isset($tab['children']) && $name == $this->getActiveTab()) {
+                    foreach ($tab['children'] as $subName => $subTab) {
+                        # Find out if it's the active subtab
+                        if ($subName == $this->getActiveSubTab()) {
+                            $subClass = "{$this->classPrefix}activeSub";
+                        }
+                        else {
+                            $subClass = "{$this->classPrefix}inactiveSub";
+                        }
+                        # Create HTML for the subtabs
+                        $subTabs .= Template::replaceValues($subTabTemplate, array(
+                            'CLASS' => $subClass,
+                            'LINK' => $subTab['link'],
+                            'LABEL' => $subTab['label']));
+                    }
+                    $subTabs = Template::replaceValues($subRowTemplate, array(
+                        "SUBTABS" => $subTabs));
+d164 2
+a165 9
+                # Add the tab to the row, along with the subtabs too
+                $tabs[$row] .= Template::replaceValues($tabTemplate, array(
+                    'SUBTAB' => $subTabs,
+                    'CLASS' => $class,
+                    'ACCESSKEY' => $tab['accesskey'],
+                    'LINK' => $tab['link'],
+                    'TOOLTIP' => $tab['tooltip'],
+                    'WIDTH' => $tab['width'],
+                    'LABEL' => $tab['label']));
+d170 1
+a170 2
+        $tabHTML = Template::replaceValues($rowTemplate, array(
+            "TABS" => $tabs[$activeRow]));
+d172 1
+a172 1
+        # Prepend the rest of the tab rows
+d174 1
+a174 3
+            $tabHTML 
+                = Template::replaceValues($rowTemplate, array("TABS" => $tab))
+                . $tabHTML;
+d176 1
+a176 4
+        return Template::replaceValues($template, array(
+            "ROWS" => $tabHTML,
+            "STYLE" => $this->getStyle(),
+            "CONTENTS" => $this->getContents()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

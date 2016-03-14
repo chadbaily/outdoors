@@ -1,0 +1,108 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: DecisionXref.php,v 1.1 2004/10/07 03:09:14 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+
+class DecisionXref extends DatabaseObject {
+    // {{{declarations
+    var $c_decision = null;
+    var $c_xref = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function DecisionXref() {
+        $this->DatabaseObject();
+        $this->table = "[_]decision_xref";
+    } //}}}
+
+    /* {{{getXref
+     *
+     */
+    function getXref() {
+        return $this->c_xref;
+    } //}}}
+    
+    /* {{{setXref
+     *
+     */
+    function setXref($value) {
+        $this->c_xref = $value;
+    } //}}}
+
+    /* {{{getDecision
+     *
+     */
+    function getDecision() {
+        return $this->c_decision;
+    } //}}}
+    
+    /* {{{setDecision
+     *
+     */
+    function setDecision($value) {
+        $this->c_decision = $value;
+    } //}}}
+
+}
+?>
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d20 1
+a20 1
+ * $Id: DecisionXref.php,v 1.3 2004/08/18 22:27:27 at Exp $
+@
+

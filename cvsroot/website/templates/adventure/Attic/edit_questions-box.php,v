@@ -1,0 +1,103 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.11.20;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<p>You are currently adding questions to the adventure <b>{C_TITLE}</b>.  When you are done, the next step is to 
+<a href="members.php?page=adventure&action={ACTION_JOIN}&object={OBJECT}">join the adventure yourself</a>,
+so you can activate it; or if you're editing an adventure that already has been posted, if necessary you can
+<a href="members.php?page=adventure&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}">email the attendees</a> 
+to let them know that you changed the questions.  Otherwise, click one of the other tabs above.</p>
+
+<fieldset>
+<legend>Most Popular Questions</legend>
+
+<div style="height:16em; overflow:auto">
+Here are the most popular questions in the database.  Click on a question to
+copy it to your adventure:
+<ol>
+  {POPULAR:}
+  <li><a href="members.php?page=question&object={Q}&adventure={A}&action={ACTION_COPY}">{TEXT}</a></li>
+  {:POPULAR}
+</ol>
+</div>
+
+</fieldset>
+
+<fieldset>
+<legend>Current Questions</legend>
+
+<p>Here are all the questions you have added so far:</p>
+
+<ol>
+  {EXISTING:}
+  <li><a href="members.php?page=question&object={Q}&action={ACTION_READ}">{TEXT}</a></li>
+  {:EXISTING}
+</ol>
+</fieldset>
+
+<fieldset>
+<legend>Add A NEW Question</legend>
+
+<p>Use this form to add a question to your adventure.</p>
+
+{SUCCESS:}
+<p class="notice">Success. Your question, <b>{C_QUESTION_TITLE}</b>,
+has been added to this adventure.</p>
+{:SUCCESS}
+
+{FORM}
+
+<p>If you are done, the next step is to 
+<a href="members.php?page=adventure&action={ACTION_JOIN}&object={OBJECT}">join the adventure yourself</a>,
+so you can activate it; or if you're editing an adventure that already has been posted, if necessary you can
+<a href="members.php?page=adventure&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}">email the attendees</a> 
+to let them know that you changed the questions.  Otherwise, click one of the other tabs above.</p>
+
+</fieldset>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

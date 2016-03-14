@@ -1,0 +1,51 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Conditions</h1>
+
+<p>This part of the website manages conditions.  A condition represents the
+condition of an item of inventory.</p>
+
+<p>Use the links below to manage conditions.</p>
+
+<ul>{actions:}
+  <li><a href="members/{PAGE}/{c_title}">{c_summary}</a></li>{:actions}
+</ul>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d8 2
+a9 2
+<ul>{ACTIONS:}
+  <li><a href="members.php?page={PAGE}&action={C_UID}">{C_SUMMARY}</a></li>{:ACTIONS}
+@
+

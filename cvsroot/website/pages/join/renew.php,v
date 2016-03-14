@@ -1,0 +1,436 @@
+head	1.12;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.23.12.56.45;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.06.17.54.48;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.04.18.13.06;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.18.14.19.47;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.26.13.40.05;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.19.17.52.04;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: renew.php,v 1.11 2005/02/07 18:49:28 at Exp $
+ *
+ * Purpose: allows a current member (who may be expired) to renew his/her
+ * membership.
+ */
+
+include_once("membership_type.php");
+include_once("member.php");
+include_once("membership.php");
+include_once("Email.php");
+
+# Find out who the user is
+$cfg['login_mode'] = "partial";
+include_once("authorize.php");
+
+# Create templates
+$wrapper = file_get_contents("templates/join/renew.php");
+$formTemplate = file_get_contents("forms/join/renew.xml");
+
+# Plug membership-type choices into the form template.
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/membership_type/select-for-renewal.sql");
+$cmd->addParameter("private", $cfg['flag']['private']);
+$cmd->addParameter("flexible", $cfg['flag']['flexible']);
+$cmd->addParameter("member", $cfg['user']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "PLAN",
+        array_change_key_case($row, 1)
+        + array(
+            "CLASS" => (($row['already_has'] == "0") ? "" : "disabled"),
+            "DISABLED" => (($row['already_has'] == "0") ? "" : 'disabled="true"')
+            ));
+}
+
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+
+# Plug the member's phone and address information into the form, then overwrite
+# it with whatever the member submits:
+$address =& $obj['user']->getPrimaryAddress();
+$phone =& $obj['user']->getPrimaryPhoneNumber();
+if (is_object($address)) {
+    $form->setValue("street", $address->getStreet());
+    $form->setValue("city", $address->getCity());
+    $form->setValue("state", $address->getState());
+    $form->setValue("zip", $address->getZIP());
+}
+if (is_object($phone)) {
+    $form->setValue("areaCode", $phone->getAreaCode());
+    $form->setValue("exchange", $phone->getExchange());
+    $form->setValue("number", $phone->getNumber());
+}
+
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Create a new membership
+    $type =& new membership_type();
+    $type->select($form->getValue("membership-plan"));
+
+    $mem =& new membership();
+    $mem->setOwner($cfg['root_uid']);
+    $mem->setType($type->getUID());
+    $mem->setBeginDate($type->getBeginDate());
+    $mem->setExpirationDate($type->getExpirationDate());
+    $mem->setTotalCost($type->getTotalCost());
+    $mem->setUnitsGranted($type->getUnitsGranted());
+    $mem->setUnit($type->getUnit());
+    $mem->setMember($cfg['user']);
+    $mem->insert();
+
+    $obj['user']->addNote("Agreed to Electronic Services Agreement during renew process");
+
+    # Insert or update the address and phone numbers
+    if (is_object($phone)) {
+        $phone->setAreaCode($form->getValue('areaCode'));
+        $phone->setExchange($form->getValue('exchange'));
+        $phone->setNumber($form->getValue('number'));
+        $phone->update();
+    }
+    else {
+        $phone =& new phone_number();
+        $phone->setTitle("Phone Number");
+        $phone->setFlag("primary", true);
+        $phone->setAreaCode($form->getValue('areaCode'));
+        $phone->setExchange($form->getValue('exchange'));
+        $phone->setNumber($form->getValue('number'));
+        $phone->insert();
+    }
+    if (is_object($address)) {
+        $address->setStreet($form->getValue('street'));
+        $address->setCity($form->getValue('city'));
+        $address->setState($form->getValue('state'));
+        $address->setZIP($form->getValue('zip'));
+        $address->update();
+    }
+    else {
+        $address =& new address();
+        $address->setTitle("Main Address");
+        $address->setStreet($form->getValue('street'));
+        $address->setCity($form->getValue('city'));
+        $address->setState($form->getValue('state'));
+        $address->setZIP($form->getValue('zip'));
+        $address->setCountry('US');
+        $address->setFlag("primary", true);
+        $address->insert();
+    }
+
+    # Send an email to the member
+    $body = file_get_contents("templates/emails/final-instructions.txt");
+    $email =& new Email();
+    $email->setFrom($cfg['club_admin_email_name']);
+    $email->addHeader("Return-Path", $cfg['club_admin_email']);
+    $email->setSubject("Your new $cfg[club_name] membership");
+    $email->addTo($obj['user']->getEmail());
+    $body = Template::replace($body, array(
+        "C_FULL_NAME" => $obj['user']->getFullName(),
+        "MEMBERSHIP" => $type->getTitle(),
+        "CLUB_NAME" => $cfg['club_name'],
+        "FEE" => $type->getTotalCost()));
+    $email->setBody(Template::finalize($body));
+    $email->loadFooter("templates/emails/footer.txt");
+    $email->send();
+
+    redirect("$cfg[base_url]/members/join/final-instructions");
+}
+
+$res['content'] = Template::replace($wrapper, array(
+    "FORM" => $form->toString()));
+
+$res['title'] = "Renew Your Membership";
+
+?>
+@
+
+
+1.11
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.10 2004/10/23 12:56:45 at Exp $
+d145 1
+a145 1
+    redirect("members/join/final-instructions");
+@
+
+
+1.10
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.9 2004/10/07 17:41:50 at Exp $
+d145 1
+a145 1
+    redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.9
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.8 2004/10/06 17:54:48 at Exp $
+d26 3
+a28 3
+include_once("MembershipType.php");
+include_once("Member.php");
+include_once("Membership.php");
+d77 2
+a78 2
+    # Create a new Membership
+    $type =& new MembershipType();
+d81 1
+a81 1
+    $mem =& new Membership();
+d102 1
+a102 1
+        $phone =& new PhoneNumber();
+d118 1
+a118 1
+        $address =& new Address();
+@
+
+
+1.8
+log
+@comm -> cmd
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.7 2004/10/04 18:13:06 at Exp $
+d145 1
+a145 1
+    Utility::redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.7
+log
+@stop using the owner- address of the officers list as the club admin email, and stop BCCing messages all over the place
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.6 2004/09/20 20:38:40 at Exp $
+d40 6
+a45 6
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/membership_type/select-for-renewal.sql");
+$comm->addParameter("private", $cfg['flag']['private']);
+$comm->addParameter("flexible", $cfg['flag']['flexible']);
+$comm->addParameter("member", $cfg['user']);
+$result =& $comm->executeReader();
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.5 2004/09/18 14:19:47 at Exp $
+a135 1
+    $email->addBCC($cfg['club_admin_email']);
+@
+
+
+1.5
+log
+@uppercase getZip()
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.4 2004/08/26 13:40:05 at Exp $
+d47 1
+a47 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "PLAN",
+d137 1
+a137 1
+    $body = Template::replaceValues($body, array(
+d149 1
+a149 1
+$res['content'] = Template::replaceValues($wrapper, array(
+@
+
+
+1.4
+log
+@added ability to update or create phone and address
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.3 2004/08/19 17:52:04 at Exp $
+d65 1
+a65 1
+    $form->setValue("zip", $address->getZip());
+@
+
+
+1.3
+log
+@added de-duping support by simply graying out choices when a member has a membership of that type already
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d54 1
+a54 1
+            
+d57 16
+d91 37
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d40 6
+a45 7
+$result =& $obj['conn']->query("select * from [_]membership_type as mt
+    where not(mt.c_flags & {$cfg['flag']['private']})
+    and (
+        (mt.c_flags & {$cfg['flag']['flexible']})
+        or current_date between mt.c_show_date and mt.c_hide_date
+        )");
+
+d48 5
+a52 1
+        array_change_key_case($row, 1));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: renew.php,v 1.6 2004/05/30 01:42:15 baron Exp $
+d40 1
+a40 1
+$result =& $obj['conn']->query("select * from t_membership_type as mt
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

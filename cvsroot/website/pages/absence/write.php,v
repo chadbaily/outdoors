@@ -1,0 +1,145 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shortened template function names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: write.php,v 1.2 2004/09/08 22:45:36 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/absence/write.php");
+
+$form =& new XMLForm("forms/absence/write.xml");
+
+# Put the absence's information into the form
+$form->setValue("comment", $object->getComment());
+$form->setValue("severity", $object->getSeverity());
+
+# Validate the form
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Update the absence with the form information
+    $object->setComment($form->getValue("comment"));
+    $object->setSeverity($form->getValue("severity"));
+
+    # Save the modified absence
+    $object->update();
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+$template = Template::replace($template, array("FORM" => $form->toString()));
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Edit Absence Details";
+
+?>
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d43 1
+a43 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d46 1
+a46 1
+$template = Template::replaceValues($template, array("FORM" => $form->toString()));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.6 2004/05/30 01:42:02 baron Exp $
+d24 1
+a24 2
+$wrapper = file_get_contents("templates/absence/write-wrapper.php");
+$box = file_get_contents("templates/absence/write-box.php");
+d43 1
+a43 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d46 1
+a46 1
+$box = Template::replaceValues($box, array("FORM" => $form->toString()));
+d48 1
+a48 6
+# Plug it all into the templates
+$res['content'] = $object->insertIntoTemplate($box);
+$res['tab'] = "Edit";
+include_once("tabbed-boxes/generic-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

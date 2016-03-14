@@ -1,0 +1,61 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.22.59.21;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.28.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@subscriptions can now be batched and done all at once
+@
+text
+@<h1>Unsubscribe From Mailing List</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{CONFIRM:}
+<p>Please confirm that you wish to unsubscribe from this email list by deleting
+your subscription:</p>
+<form action="members.php" method="GET">
+<input type="hidden" name="page" value="{PAGE}">
+<input type="hidden" name="object" value="{OBJECT}">
+<input type="hidden" name="action" value="{ACTION_DELETE}">
+<input type="hidden" name="continue" value="1">
+<input type="submit" value="Continue">
+</form>
+{:CONFIRM}
+
+{SUCCESS:}
+<p class='notice'>You have successfully unsubscribed from this email list.</p>
+{:SUCCESS}
+
+</div>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@@
+

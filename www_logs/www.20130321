@@ -1,0 +1,2 @@
+58.246.181.4 - - [21/Mar/2013:02:26:34 -0400] "GET /manager/html HTTP/1.1" 500 730 "-" "Mozilla/3.0 (compatible; Indy Library)"
+210.96.13.151 - - [21/Mar/2013:06:51:39 -0400] "GET /manager/html HTTP/1.1" 500 730 "-" "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"

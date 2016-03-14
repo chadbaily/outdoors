@@ -1,0 +1,482 @@
+head	1.10;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2004.10.07.17.41.50;	author at;	state dead;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.01.20.58.01;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.24.13.24.49;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.18.15.19.27;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.18.14.20.49;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.24.03.24.49;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.17.22.22.16;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.22.03;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@get rid of utility/Utility.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Utility.php,v 1.9 2004/10/01 20:58:01 at Exp $
+ */
+class Utility{
+
+    /* {{{getval
+     * Get a sanitized version of a $_GET variable from a browser.  If your
+     * variables are not sanitized, then the server may be using
+     * magic_quotes_gpc.  The .htaccess file should turn this off, but if it's
+     * not then just use the alternate code below.  This also applies to postval
+     * and cookieval.
+     */
+    function getval($key) {
+        if (isset($_GET[$key])) {
+            if (is_array($_GET[$key])) {
+                // build a new array and return it, sanitized
+                $toReturn = array();
+                while (list($key, $val) = each($_GET[$key])) {
+                    $toReturn[$key] = stripslashes($val);
+                }
+                return $toReturn;
+            }
+            return stripslashes($_GET[$key]); 
+        }
+    } //}}}
+
+    /* {{{postval
+     * Return a sanitized version of a browser's $_POST variable.
+     */
+    function postval($key) {
+        if (isset($_POST[$key])) {
+            if (is_array($_POST[$key])) {
+                // build a new array and return it, sanitized
+                $temp = $_POST[$key];
+                $toReturn = array();
+                while (list($key, $val) = each($temp)) {
+                    $toReturn[$key] = stripslashes($val);
+                }
+                return $toReturn;
+            }
+            return stripslashes($_POST[$key]); 
+        }
+    } //}}}
+    
+    /* {{{cookieval
+     * Return a sanitized version of a browser's $_COOKIE variable.
+     */
+    function cookieval($key) {
+        if (isset($_COOKIE[$key])) {
+            if (is_array($_COOKIE[$key])) {
+                // build a new array and return it, sanitized
+                $temp = $_COOKIE[$key];
+                $toReturn = array();
+                while (list($key, $val) = each($temp)) {
+                    $toReturn[$key] = stripslashes($val);
+                }
+                return $toReturn;
+            }
+            return stripslashes($_COOKIE[$key]); 
+        }
+    } //}}}
+    
+    /* {{{initialize
+     * Do some Magic Initialization as needed.  This sets up things that the
+     * rest of the site will need to run correctly.
+     */
+    function initialize() {
+        global $obj;
+        global $cfg;
+
+        // Set up the flags
+        $result =& $obj['conn']->query("select c_title, c_bitmask from [_]flag");
+        while ($row =& $result->fetchRow()) {
+            $cfg['flag'][$row['c_title']] = intval($row['c_bitmask']);
+        }
+
+        // Set up the perms
+        $result =& $obj['conn']->query("select c_title, c_bitmask from [_]unixperm");
+        while ($row =& $result->fetchRow()) {
+            $cfg['perm'][$row['c_title']] = intval($row['c_bitmask']);
+        }
+
+        // Set up the status codes
+        $result =& $obj['conn']->query("select c_title, c_uid from [_]status order by c_uid");
+        while ($row =& $result->fetchRow()) {
+            $cfg['status_id'][$row['c_title']] = $row['c_uid'];
+        }
+
+        // Set up the action codes and labels, and list of actions that require
+        // an object
+        $result =& $obj['conn']->query("select c_title, c_uid, c_flags, "
+            . "c_summary from [_]action order by c_uid");
+        while ($row =& $result->fetchRow()) {
+            $cfg['action_id'][$row['c_title']] = $row['c_uid'];
+            $cfg['action_summary'][$row['c_uid']] = $row['c_summary'];
+            if (intval($row['c_flags']) & $cfg['flag']['applies_to_object']) {
+                $cfg['require_object_actions'][] = $row['c_uid'];
+            }
+        }
+
+        // Set up the flipped action codes
+        $cfg['action_title'] = array_flip($cfg['action_id']);
+
+        // Set up the group codes
+        $result =& $obj['conn']->query("select c_title, c_uid from [_]group order by c_uid");
+        while ($row =& $result->fetchRow()) {
+            $cfg['group_id'][$row['c_title']] = $row['c_uid'];
+        }
+
+        // Set up tables
+        $result =& $obj['conn']->query("select c_name from [_]table order by c_name");
+        while ($row =& $result->fetchRow()) {
+            $cfg['tables'][] = $row['c_name'];
+        }
+
+
+    } //}}}
+
+    /* {{{checkType
+     * Check that the given variable is of the desired type.
+     */
+    function checkType($type, &$obj, $line, $file, $subtype = 0) {
+        $bad = false;
+        // Check if $obj is of type $type (or a subclass, if $subtype is set)
+        if ($subtype) { 
+            // This would be a heck of a lot easier if is_a were supported in
+            // older versions of PHP!
+            if (!is_subclass_of($obj, $type) && strcasecmp($type, get_class($obj)) != 0) {
+                $bad = true;
+            }
+        }
+        elseif (strcasecmp($type, get_class($obj)) != 0) {
+            $bad = true;
+        }
+        if ($bad) {
+            trigger_error("Error: object wasn't of type $type at "
+                    . "line $line in file '$file'", E_USER_ERROR);
+        }
+    } //}}}
+
+    /* {{{underlineAccessKey
+     */
+    function underlineAccessKey($string) {
+        return preg_replace("/&(.)/", "<u>$1</u>", $string);
+    } //}}}
+    
+    /* {{{getAccessKey
+     */
+    function getAccessKey($text) {
+        $matches = array();
+        preg_match("/&(.)/", $text, $matches);
+        return (isset($matches[1]) ? $matches[1] : "");
+    } //}}}
+
+    /* {{{stripAccessKey
+     */
+    function stripAccessKey($text) {
+        return str_replace("&", "", $text);
+    } //}}}
+
+    /* {{{redirect
+     * Redirects if the headers haven't already been sent; if they have, shows
+     * a link to the redirect url.
+     */
+    function redirect($url) {
+        header("Location:$url");
+    } //}}}
+
+    /* {{{getRandomString
+     */
+    function getRandomString($length, $dictionary = null) {
+        if (is_null ($dictionary)) {
+            $dictionary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        }
+        $dictionaryLength = strlen($dictionary);
+        $result = "";
+        for ($i = 0; $i < $length; ++$i) {
+            $result .= substr($dictionary, rand(0, $dictionaryLength - 1), 1);
+        }
+        return $result;
+    } //}}}
+
+    /* {{{highlightSql
+     */
+    function highlightSql($sql) {
+        $gray = str_replace(" ", "\b|\b", 
+            "ALL AND BETWEEN CROSS EXISTS JOIN IN LIKE NOT OR NULL OUTER SOME");
+
+        $blue = str_replace(" ", "\b|\b", 
+            "ADD ALTER AS ASC BIGINT BINARY BY CASCADE CHAR CHARACTER CHECK"
+            . "COLLATE COLUMN COLUMNS CONNECTION CONSTRAINT CREATE CURRENT_DATE "
+            . "CURRENT_TIME CURSOR DATABASE DEC DECIMAL DECLARE DEFAULT DELETE DESC "
+            . "DESCRIBE CHANGE DISTINCT DROP ELSE ON EXPLAIN FALSE FOR FROM "
+            . "GRANT GROUP HASH HAVING IF IGNORE INDEX INNER INSERT "
+            . "INTERVAL INTO IS KEY LIMIT LOAD OPTIMIZE ORDER OUT RENAME REVOKE "
+            . "SELECT SET SHOW TABLE THEN TO TRUE TRUNCATE UNION UNIQUE UPDATE USE "
+            . "VALUES WHEN WHERE WHILE WITH");
+
+        $pink = str_replace(" ", "\b|\b", 
+            "CASE CURRENT_TIMESTAMP LEFT REPLACE RIGHT");
+
+        $sql = preg_replace("/('|\")(.*?)(\\1)/", "<tt style='color:red'>\\1\\2\\3</tt>", $sql);
+        $sql = preg_replace("/(\b$blue\b)/i", "<tt style='color:blue'>\\1</tt>", $sql);
+        $sql = preg_replace("/(\b$pink\b)/i", "<tt style='color:#FF00FF'>\\1</tt>", $sql);
+        return preg_replace("/(\b$gray\b)/i", "<tt style='color:gray'>\\1</tt>", $sql);
+    } //}}}
+
+}
+
+function titlecase($text) {
+    return preg_replace_callback(
+        "/\b(to|at|in|the|from|for|and|of|on|or|a|this)\b/i",
+        create_function('$matches', 'return strtolower($matches[1]);'),
+        ucwords(strtolower($text)));
+}
+
+?>
+@
+
+
+1.9
+log
+@add more words to titlecase()
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.8 2004/09/24 13:24:49 at Exp $
+@
+
+
+1.8
+log
+@added titlecase
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.7 2004/09/18 15:19:27 at Exp $
+d230 1
+a230 1
+        "/\b(to|at|in|the|from|for|and|of|on|or)\b/i",
+@
+
+
+1.7
+log
+@removed variableDump
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.6 2004/09/18 14:20:49 at Exp $
+d226 7
+@
+
+
+1.6
+log
+@removed spaces to conform to coding style
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.5 2004/08/24 03:24:49 at Exp $
+a157 12
+
+    /* {{{variableDump
+     * I have to do this for earlier versions of PHP in which there is no way to
+     * just freakin' return the value from print_r()
+     */
+    function variableDump($object) {
+        ob_start();
+        print_r($object);
+        $result = ob_get_contents();
+        ob_end_clean();
+        return ($result ? $result : "NULL");
+    } // }}}
+@
+
+
+1.5
+log
+@initialize a list of tables
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.4 2004/08/17 22:22:16 at Exp $
+d31 1
+a31 1
+    function getval ($key) {
+d48 1
+a48 1
+    function postval ($key) {
+d66 1
+a66 1
+    function cookieval ($key) {
+d201 1
+a201 1
+    function getRandomString ($length, $dictionary = null) {
+@
+
+
+1.4
+log
+@there is no abortPage()
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.3 2004/08/06 18:49:26 at Exp $
+d109 2
+a110 1
+        $result =& $obj['conn']->query("select c_title, c_uid, c_flags, c_summary from [_]action order by c_uid");
+d127 7
+@
+
+
+1.3
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.2 2004/07/20 14:22:03 at Exp $
+d188 1
+a188 9
+        if (!headers_sent()) {
+            header("Location:$url");
+            exit;
+        }
+        else {
+            Utility::abortPage("<h1>Redirect</h1><p>Please click on the"
+                . " following link to go to your destination: <a href='"
+                . "$url'>$url</a>.</p>");
+        }
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a162 5
+    function abortPage($message) {
+        echo $message;
+        exit;
+    }
+    
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Utility.php,v 1.4 2004/05/30 01:42:26 baron Exp $
+d90 1
+a90 1
+        $result =& $obj['conn']->query("select c_title, c_bitmask from t_flag");
+d96 1
+a96 1
+        $result =& $obj['conn']->query("select c_title, c_bitmask from t_unixperm");
+d102 1
+a102 1
+        $result =& $obj['conn']->query("select c_title, c_uid from t_status order by c_uid");
+d109 1
+a109 1
+        $result =& $obj['conn']->query("select c_title, c_uid, c_flags, c_summary from t_action order by c_uid");
+d122 1
+a122 1
+        $result =& $obj['conn']->query("select c_title, c_uid from t_group order by c_uid");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

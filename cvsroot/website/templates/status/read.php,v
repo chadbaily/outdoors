@@ -1,0 +1,87 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.01.13.52.01;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.27.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shrink-wrapped the actions form
+@
+text
+@<h1>Status: {C_TITLE}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Title</th>
+    <td>{C_TITLE}</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>{C_DESCRIPTION}</td>
+  </tr>
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.2
+log
+@simplify 'Other actions' form
+@
+text
+@d19 1
+a19 9
+<form action="members.php" method="GET">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+    <option value="">Choose An Action</option>{ACTIONS:}
+    <option value="{C_UID}">{C_SUMMARY}</a>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@a21 1
+  <p>You may take the following actions on this object:</p>
+d23 1
+a23 1
+    <option value="">Choose One</option>{ACTIONS:}
+@
+

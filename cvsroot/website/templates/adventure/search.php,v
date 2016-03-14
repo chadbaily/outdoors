@@ -1,0 +1,71 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.09.18.30.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Search Adventures</h1>
+
+<p>Use this form to search for adventures.  You can narrow the search by
+filling in more fields.  You need to fill in at least one field, but it doesn't
+matter which.</p>
+
+{FORM}
+
+{SOME:}
+<hr>
+<h1>Results</h1>
+<p>The following adventures matched your search terms:</p>
+<table class="ruled compact">
+ <tr><th>Title</th><th>Location</th><th>Date</th></tr>
+ {ROW:}
+ <tr>
+   <td><a href="members/adventure/read/{C_UID}">{C_TITLE}</a></td>
+   <td><a
+   href="members/location/read/{C_DESTINATION}">{DESTINATION_TITLE}</a></td>
+   <td nowrap>{C_START_DATE|_date_format,'M j, Y'}</td>
+ </tr>
+ {:ROW}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">Sorry, no adventures found.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@consolidated templates from boxes and wrappers into one template
+@
+text
+@d17 1
+a17 1
+   <td><a href="members.php?page=adventure&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a></td>
+d19 1
+a19 1
+   href="members.php?page=location&object={C_DESTINATION}&action={ACTION_READ}">{DESTINATION_TITLE}</a></td>
+@
+

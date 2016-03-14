@@ -1,0 +1,72 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.22.12.53.16;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.27.01;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Reports</h1>
+
+{SOME:}
+<p>The following are all reports that you are allowed to execute.</p>
+
+<dl>{ITEM:}
+  <dt>{C_TITLE}</dt>
+  <dd>{C_DESCRIPTION}
+    <a href="members/report/execute/{C_UID}">&raquo; execute</a> 
+  </dd>{:ITEM}
+</dl>
+{:SOME}
+
+{NONE:}
+<p class="notice">There are no reports in the database.</p>
+{:NONE}
+@
+
+
+1.2
+log
+@change wording to 'that you are allowed to execute'
+@
+text
+@d9 1
+a9 1
+    <a href="members.php?page=report&object={C_UID}&action={ACTION_EXECUTE}">&raquo; execute</a> 
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d4 1
+a4 1
+<p>The following are all reports in the database.</p>
+@
+

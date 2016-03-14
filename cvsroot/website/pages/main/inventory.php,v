@@ -1,0 +1,208 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.01.31.15.32.51;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.18.03.52.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.17.16.51.38;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@add links to manage item categories, item types
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: inventory.php,v 1.4 2005/01/18 03:52:33 at Exp $
+ */
+
+include_once("authorize.php");
+include_once("item.php");
+include_once("item_type.php");
+include_once("item_feature.php");
+include_once("condition.php");
+include_once("checkout.php");
+
+$res['title'] = "Outdoors at UVa Inventory";
+$res['navbar'] = "Member's Area/Inventory";
+
+$template = file_get_contents("templates/main/inventory.php");
+
+# Plug in allowed actions.
+$item =& new table("$cfg[table_prefix]item");
+$checkout =& new table("$cfg[table_prefix]checkout");
+
+if ($item->permits($cfg['action_id']['list_all'])) {
+    $template = Template::unhide($template, "item_list_all");
+}
+
+if ($item->permits($cfg['action_id']['create'])) {
+    $template = Template::unhide($template, "item_create");
+}
+
+if ($checkout->permits($cfg['action_id']['create'])) {
+    $template = Template::unhide($template, "checkout_create");
+}
+
+if ($checkout->permits($cfg['action_id']['list_all'])) {
+    $template = Template::unhide($template, "checkout_list_all");
+}
+
+if ($obj['user']->isInGroup("quartermaster")
+    || $obj['user']->isRootUser())
+{
+    $template = Template::unhide($template, "manage");
+}
+
+# Display an inventory report.
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/summarize.sql");
+$cmd->addParameter("checked_out", $cfg['status_id']['checked_out']);
+$cmd->addParameter("missing", $cfg['status_id']['missing']);
+$reader =& $cmd->executeReader();
+while ($row =& $reader->fetchRow()) {
+    $template = Template::block($template, "row", $row);
+}
+
+$res['content'] = $template;
+
+?>
+@
+
+
+1.4
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d20 1
+a20 1
+ * $Id: inventory.php,v 1.3 2005/01/17 16:51:38 at Exp $
+d53 6
+@
+
+
+1.3
+log
+@use aggregate table to hold quantity of gear checked out
+@
+text
+@d20 1
+a20 1
+ * $Id: inventory.php,v 1.2 2005/01/16 14:33:38 at Exp $
+a59 1
+$cmd->addParameter("deleted", $cfg['status_id']['deleted']);
+d62 1
+a62 7
+            $template = Template::block($template, "row", array(
+                "ic_uid" => $row['ic_uid'],
+                "ic_title" => $row['ic_title'],
+                "ty_title" => $row['ty_title'],
+                "ty_uid" => $row['ty_uid'],
+                "existing" => $row['existing'],
+                "total" => $row['items_out'] + $row['gear_out']));
+@
+
+
+1.2
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d20 1
+a20 1
+ * $Id: inventory.php,v 1.1 2004/11/20 15:17:47 at Exp $
+d55 1
+a55 4
+# Display an inventory report.  Because MySQL doesn't support subselects as
+# yet, we will need to do a final level of grouping in the code here.  We will
+# need to iterate over all the rows that have the same ty_uid, and sum up the
+# gear_out column before using it.
+a61 2
+# Used to tally up the count for duplicate rows
+$grouped = false;
+a62 12
+    if (!$grouped) {
+        # This is the first loop in the while loop
+        $grouped = $row;
+    }
+    else {
+        if ($row['ty_uid'] == $grouped['ty_uid']) {
+            # We have seen this row before, so add the current row to the cache
+            $grouped['gear_out'] += $row['gear_out'];
+        }
+        else {
+            # We must be starting a fresh row for a type we haven't seen before.
+            # The last iteration created the final total for 'gear_out'.
+d64 6
+a69 10
+                "ic_uid" => $grouped['ic_uid'],
+                "ic_title" => $grouped['ic_title'],
+                "ty_title" => $grouped['ty_title'],
+                "ty_uid" => $grouped['ty_uid'],
+                "existing" => $grouped['existing'],
+                "total" => $grouped['items_out'] + $grouped['gear_out']));
+            # Restart the looping!
+            $grouped = $row;
+        }
+    }
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d20 1
+a20 1
+ * $Id: item.php,v 1.3 2004/10/21 21:22:22 at Exp $
+d53 38
+@
+

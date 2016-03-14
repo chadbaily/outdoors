@@ -1,0 +1,102 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.08.24;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@shrink-wrapped the actions form
+@
+text
+@<h1>Action: {C_SUMMARY}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Title</th>
+    <td>{C_TITLE}</td>
+  </tr>
+  <tr>
+    <th>Summary</th>
+    <td>{C_SUMMARY}</td>
+  </tr>
+  <tr>
+    <th>Label</th>
+    <td>{C_LABEL}</td>
+  </tr>
+  <tr>
+    <th>Row</th>
+    <td>{C_ROW}</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>{C_DESCRIPTION}</td>
+  </tr>
+</table>
+
+<p>Actions may apply to objects, tables, or both; use the "Set Flags" action to
+view or change the flags set on this action.</p>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.2
+log
+@simplify 'Other actions' form
+@
+text
+@d34 2
+a35 9
+<form action="members.php" method="GET">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+    <option value="">Choose An Action</option>{ACTIONS:}
+    <option value="{C_UID}">{C_SUMMARY}</a>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@a36 1
+  <p>You may take the following actions on this object:</p>
+d38 1
+a38 1
+    <option value="">Choose One</option>{ACTIONS:}
+@
+

@@ -1,0 +1,150 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.11.12.13.46.48;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.15.51.25;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.18.02.38.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.14.03;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>Withdraw Attendee</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{SUCCESS:}
+<p class="notice">You have successfully withdrawn {C_FULL_NAME} from this
+adventure.
+<br><i>&raquo; Return to the adventure's <a
+href="members/adventure/view_report/{C_ADVENTURE}">report
+page</a></a>.</p>
+{:SUCCESS}
+
+{MOVED:}
+<p class="notice">{MEMBER_NAME} was moved from the waitlist onto the
+adventure.</p>
+{:MOVED}
+
+{NO_MOVED:}
+<p class="notice">There were no waitlisted attendees, so no one was joined
+automatically.</p>
+{:NO_MOVED}
+
+{CONFIRM:}
+<p>You are withdrawing <b>{C_FULL_NAME}</b> from the adventure <b>{C_TITLE}</b>.
+Choose what to do with the waitlist:</p>
+
+<form action="members/attendee/withdraw/{OBJECT}" method="GET">
+
+<p>
+  <input type="radio" value="true" name="waitlist" id="waitlist1">
+  <label for="waitlist1">Automatically join the first waitlisted
+  member.</label><br>
+  <input type="radio" value="false" name="waitlist" id="waitlist2">
+  <label for="waitlist2">Leave the waitlist as is.</label>
+</p>
+
+<input type="submit" name="continue" value="Continue">
+</form>
+{:CONFIRM}
+
+</div>
+@
+
+
+1.4
+log
+@show a link back to the report page so people don't try to reload a page with an object that's just been deleted
+@
+text
+@d12 1
+a12 1
+href="members.php?page=adventure&action={ACTION_VIEW_REPORT}&object={C_ADVENTURE}">report
+d30 1
+a30 1
+<form action="members.php" method="GET">
+a39 3
+<input type="hidden" name="page" value="{PAGE}">
+<input type="hidden" name="action" value="{ACTION_WITHDRAW}">
+<input type="hidden" name="object" value="{OBJECT}">
+@
+
+
+1.3
+log
+@add the choice of whether to move someone off the waitlist
+@
+text
+@d9 5
+a13 1
+<p class="notice">You have successfully withdrawn {C_FULL_NAME} from this adventure.</p>
+@
+
+
+1.2
+log
+@added joined_date column
+@
+text
+@a7 2
+<p>You are withdrawing <b>{C_FULL_NAME}</b> from adventure <b>{C_TITLE}</b>.</p>
+
+d9 1
+a9 1
+<p class="notice">You have successfully withdrawn this attendee from this adventure.</p>
+d12 10
+d23 3
+a25 1
+<p>Please confirm that you wish to withdraw this member from this adventure:</p>
+d27 9
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d17 1
+a17 1
+<input type="hidden" name="page" value="attendee">
+d19 1
+a19 1
+<input type="hidden" name="object" value="{T_ATTENDEE}">
+@
+

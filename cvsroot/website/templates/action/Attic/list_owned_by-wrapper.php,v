@@ -1,0 +1,64 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.08.24;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Actions</h1>
+
+<p>The following is a list of all actions that you own.</p>
+
+{SOME:}
+<ol>{ITEM:}
+  <li><a href="members.php?page=action&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a></li>{:ITEM}
+</ol>
+{:SOME}
+
+{NONE:}
+<p class="notice">You do not own any actions.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

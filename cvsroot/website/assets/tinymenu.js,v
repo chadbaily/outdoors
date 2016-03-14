@@ -1,0 +1,82 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.45.01;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.31.21.28.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@/*
+   link is the link the user clicked on to get this menu
+   page is the ?page param
+   uid is the ?object param
+   divId is the ID of the div to create the menu in
+   actions is an array of [[uid, summary],...] actions that are allowed
+*/
+function tinyMenu(link, page, uid, divId, actions) {
+    if (document.getElementById) {
+        var div = document.getElementById(divId);
+        if (div !== undefined && div != null) {
+            showTinyMenu(div, divId);
+            div.innerHTML = "";
+            for (var a in actions) {
+                div.innerHTML += "<a href='members/" + page
+                    + "/" + actions[a][0] + "/" + uid + "'>" + actions[a][1] + "</a>";
+            }
+        }
+    }
+    return false;
+}
+
+function showTinyMenu(div, divId) {
+    div.style.visibility = "visible";
+    div.style.display = "block";
+    div.style.position = "absolute";
+    document.tinyMenuDivId = divId;
+    setTimeout('document.onclick = function(e) {hideTinyMenu(document.tinyMenuDivId); return true}', 100);
+}
+
+function hideTinyMenu(divId) {
+    if (document.getElementById) {
+        var div = document.getElementById(divId);
+        if (div !== undefined) {
+            div.style.visibility = "hidden";
+            div.style.display = "none";
+            div.innerHTML = "";
+        }
+    }
+    document.onclick = null;
+}
+@
+
+
+1.1
+log
+@add tiny action menus
+@
+text
+@d15 2
+a16 2
+                div.innerHTML += "<a href='members.php?page=" + page
+                    + "&object=" + uid + "&action=" + actions[a][0] + "'>" + actions[a][1] + "</a>";
+@
+

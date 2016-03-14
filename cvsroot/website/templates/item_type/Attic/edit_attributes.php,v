@@ -1,0 +1,135 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.10.21.21.17.37;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.02.03.10.12;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@move edit_attributes -> edit_features
+@
+text
+@<h1>Edit Features for Item Type &ldquo;{C_TITLE}&rdquo;</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<h2>Add a New Feature</h2>
+
+<p>Use this form to add a new feature to this item type.  Every item of this
+type will now be expected to have this feature, too.  When you're done, use the
+"Edit" tab to choose which feature should show up in the list of items.</p>
+
+{FORM}
+
+<p>This table shows the existing features for every item of this type, which
+defines sort of a "template" for the items themselves.  Deleting any features
+from the type will also delete the features from the items themselves.</p>
+
+<form method="POST"
+    action="members.php?page={PAGE}&action={ACTION_EDIT_ATTRIBUTES}&object={OBJECT}">
+
+<table>
+  <tr>{ATTR:}
+    <td>
+      <input type="radio" name="delete" id="delete{C_UID}" value="{C_UID}">
+    </td>
+    <td{CLASS}><label for="delete{C_UID}">{C_NAME}</label></td>
+  </tr>{:ATTR}
+  <tr>
+    <td colspan="3" align="right">
+      <input type="submit" value="Delete Selected">
+    </td>
+  </tr>
+</table>
+
+</form>
+
+</div>
+@
+
+
+1.3
+log
+@move form to add a feature above the list of current features
+@
+text
+@@
+
+
+1.2
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d8 8
+a37 7
+
+<h2>Add a New Feature</h2>
+
+<p>Use this form to add a new feature to this item type.  Every item of this
+type will now be expected to have this feature, too.</p>
+
+{FORM}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d1 1
+a1 1
+<h1>Edit Attributes for Item Type &ldquo;{C_TITLE}&rdquo;</h1>
+d8 3
+a10 6
+<p>This table shows the existing attributes for every item of this type.
+Deleting an attribute will also delete the attributes from the items themselves.
+That is, this page specifies which attributes an item <b>type</b> has, and
+therefore which attributes every item of this type is expected to have, too.  If
+you remove an attribute from the type, the corresponding attributes will be
+deleted from the items, too.</p>
+d20 1
+a20 1
+    <td><label for="delete{C_UID}">{C_NAME}</label></td>
+d23 1
+a23 1
+    <td colspan="2" align="right">
+d31 1
+a31 1
+<h2>Add a New Attribute</h2>
+d33 2
+a34 2
+<p>Use this form to add a new attribute to this item type.  Every item of this
+type will now be expected to have this attribute, too.</p>
+@
+

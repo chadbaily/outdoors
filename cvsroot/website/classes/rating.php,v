@@ -1,0 +1,68 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.10.03.32.40;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@missing classes that broke the automatic foreign key system
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: expense_submission.php,v 1.2 2004/10/28 01:41:35 at Exp $
+ */
+
+include_once("database_object.php");
+
+class rating extends database_object {
+
+    var $c_title = null;
+
+    /* {{{constructor
+     */
+    function rating() {
+        $this->database_object();
+    } //}}}
+
+
+    function getTitle() {
+        return $this->c_title;
+    }
+
+    function setTitle($value) {
+        $this->c_title = $value;
+    }
+
+}
+?>
+@

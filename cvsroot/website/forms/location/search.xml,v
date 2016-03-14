@@ -1,0 +1,69 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.08.22.02.56.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="title"
+        error-element="error"
+        required-unless="activity"
+        element-id="title" />
+    <element
+        name="activity"
+        error-element="error"
+        required-unless="title"
+        element-id="activity" />
+</config>
+
+<table>
+  <tr hidden="1" id="error">
+    <td colspan="2" class="error">You need to choose what to search for.</td>
+  </tr>
+  <tr>
+    <td>Show locations where the title contains </td>
+    <td>
+      <input type="text" name="title" id="title" />
+    </td>
+  </tr>
+  <tr>
+    <td>Where I can do this type of activity:</td>
+    <td>
+      <select name="activity" id="activity">
+        <option value="">Choose One</option>{ACTIVITY:}
+        <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:ACTIVITY}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+    <input type="submit" value="Go" />
+    </td>
+  </tr>
+</table>
+</form>
+@

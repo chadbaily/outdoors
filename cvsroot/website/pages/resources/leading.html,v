@@ -1,0 +1,336 @@
+head	1.11;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.11
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2005.01.25.15.44.12;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.11.11.15.26.06;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.29.01.13.37;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.30.18.28.38;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.30.18.26.12;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.16.18.25.34;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.12.15.57.39;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.06.14.16.12;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.30.01.09.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.11
+log
+@friendlyurls
+@
+text
+@<!-- title=Leading a Club Adventure -->
+<!-- navbar=Member's Area/Member Resources/Leading Trips -->
+
+<h1>Leading a Club Adventure</h1>
+
+<p>Outdoors at UVA is unique in that all the adventures are led by members.  The club
+could not function without members who are willing to donate their time and
+expertise to helping other members enjoy the outdoors.  The officers are always
+looking for new leaders.</p>
+
+<p>There are no prerequisites for leading most adventures.  You simply need to have
+an interest in what you are doing, and be willing to share what you know with
+others in the club.  If you would like to get your feet wet but you are
+hesitant, we suggest leading an easy adventure first.  These types of adventures
+include:</p>
+
+<ul>
+
+ <li><b>Horseback Riding</b> &mdash; We've already picked the stable, all you need to
+ do is call them and reserve a date!</li>
+
+ <li><b>Hiking</b> &mdash; Charlottesville has some beautiful mountains within 30
+ minutes that are perfect for a day hike.  All you need to do is think of a
+ place to go!  Check out past hikes for inspiration.</li>
+
+ <li><b>Snow Tubing</b> &mdash; Wintergreen has some great snow tubing.  Simply get
+ people together and go!</li>
+
+ <li><b>And others...</b></li>
+
+</ul>
+
+<p>Of course, we encourage you to lead whatever outdoorsy adventures that you want to
+lead.  We are always looking for new leaders to take people backpacking,
+kayaking, or climbing.  Remember, the officers are here to help, so please
+e-mail them at <script>document.write(email('outdoors-officers',
+'virginia.edu'));</script> with your questions.</p>
+
+<h2>Setting Up the Adventure Online</h2>
+
+<p>If you would like to lead a Club adventure, you must use the website to create the
+adventure online.  If you are a first-timer, you must e-mail the officers at
+<script>document.write(email('outdoors-officers', 'virginia.edu'));</script> in
+order to get leader privileges on the website.  We'll give you those
+privileges, and from that point on, setting up an adventure is a matter of
+following the instructions in the <a
+href="members/resources/leaders-manual">leader's manual</a>.</p>
+
+<h2>Climbing and Caving Adventures</h2>
+
+<p>There are special rules for <a
+href="members/resources/climbing-permissions">climbing</a> and
+<a href="members/resources/trip-cave">caving</a> adventures.</p>
+@
+
+
+1.10
+log
+@add crosslinks, check grammar
+@
+text
+@d47 1
+a47 1
+href="members.php?page=resources&action=leaders-manual">leader's manual</a>.</p>
+d52 2
+a53 2
+href="members.php?page=resources&action=climbing-permissions">climbing</a> and
+<a href="members.php?page=resources&action=trip-cave">caving</a> adventures.</p>
+@
+
+
+1.9
+log
+@add climbing permissions
+@
+text
+@d49 1
+a49 1
+<h2>Climbing Adventures</h2>
+d51 3
+a53 2
+<p>There are <a href="members.php?page=resources&action=climbing-permissions">special rules</a>
+for climbing adventures.</p>
+@
+
+
+1.8
+log
+@added leader's manual
+@
+text
+@d48 5
+@
+
+
+1.7
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d1 1
+a1 1
+<!-- title=Leading a Club Trip -->
+d4 1
+a4 1
+<h1>Leading a Club Trip</h1>
+d6 1
+a6 1
+<p>Outdoors at UVA is unique in that all the trips are led by members.  The club
+d11 1
+a11 1
+<p>There are no prerequisites for leading most trips.  You simply need to have
+d14 1
+a14 1
+hesitant, we suggest leading an easy trip first.  These types of trips
+d33 1
+a33 1
+<p>Of course, we encourage you to lead whatever outdoorsy trips that you want to
+d39 1
+a39 1
+<h2>Setting Up the Trip Online</h2>
+d41 2
+a42 3
+<p>Outdoors at UVA is run almost completely online.  If you would like to lead a
+Club trip, you must use the website to create the trip online.  If you are a
+first-timer, you must e-mail the officers at
+d44 4
+a47 23
+order to get trip leader privileges on the website.  Once you have privileges,
+you will see some new links, and setting up a trip is as simple as following the
+directions from that point.  Please e-mail the officers with your questions
+about what to say in the description, fees, etc etc.</p>
+
+<h2>Trip Finances</h2>
+
+<p>During the school year, Outdoors at UVA will pay for all the gas, lodging,
+and food on a Club trip.  The club operates on a reimbursal system &mdash; so
+whatever you buy for a trip, keep the receipts to get reimbursed.  The club will
+pay the following for meals:</p>
+
+<ul>
+ <li>$2/person for breakfast</li>
+ <li>$4/person for lunch </li>
+ <li>$6/person for dinner </li>
+</ul>
+
+<p>If a member spends more than this on a meal, then the member needs to pay for
+the difference.  In order to get reimbursed for gas, you must print off a gas
+receipt form and have all drivers sign the form when you give them money for
+gas.  Once the trip is over, you can turn in any receipts for food and lodging,
+along with the gas receipt form, to an officer to receive reimbursement.</p>
+@
+
+
+1.6
+log
+@dashes to entities
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Leading Trips -->
+@
+
+
+1.5
+log
+@shortened and clarified
+@
+text
+@d20 1
+a20 1
+ <li><b>Horseback Riding</b> -- We've already picked the stable, all you need to
+d23 1
+a23 1
+ <li><b>Hiking</b> -- Charlottesville has some beautiful mountains within 30
+d27 1
+a27 1
+ <li><b>Snow Tubing</b> -- Wintergreen has some great snow tubing.  Simply get
+d54 1
+a54 1
+and food on a Club trip.  The club operates on a reimbursal system -- so
+@
+
+
+1.4
+log
+@fixed a typo
+@
+text
+@d7 10
+a16 1
+<p>Outdoors at UVA is unique in that all the trips are led by members.  The club could not function without members who are willing to donate their time (and expertise) to helping other members enjoy the outdoors.  The officers are always looking for new leaders.</p>
+d18 11
+a28 1
+<p>For most trips, there are no prerequisites for being a leader.  You simply need to have an interest in what you are doing, and be willing to share what you know with others in the club.  If you would like to get your feet wet but you are hesitant, we suggest leading an easy trip as your first trip.  Of course, this is not a requirement -- merely a suggestion.  These types of trips include:</p>
+a29 4
+<ul>
+ <li><b>Horseback Riding</b> -- We've already picked the stable, all you need to do is call them and reserve a date!</li>
+ <li><b>Hiking</b> -- Charlottesville has some beautiful mountains within 30 minutes that are perfect for a day hike.  All you need to do is think of a place to go!</li>
+ <li><b>Snow Tubing</b> -- Wintergreen has some great snow tubing.  Simply get people together and go!</li>
+d31 1
+d34 5
+a38 1
+<p>Of course, we encourage you to lead whatever outdoorsy trips that you want to lead.  We are always looking for new leaders to take people backpacking, kayaking, or climbing.  Remember, the officers are here to help, so please e-mail them at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> with your questions.</p>
+d42 8
+a49 2
+<p>Outdoors at UVA is run almost completely online.  If you would like to lead a Club trip, you must create the trip online and let everyone know what's going on.  If you are a first timer, you must e-mail the officers at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> in order to get trip leader privileges.  Once you have privileges, setting up a trip is as simple as following the directions on the website.  Please e-mail the officers
+with your questions about what to say in the description, fees, etc etc.</p>
+d53 4
+a56 1
+<p>During the school year, Outdoors at UVA will pay for all the gas, lodging, and food on a Club trip.  The club operates on a reimbursal system -- so whatever you buy for a trip, keep the receipts to get reimbursed.  It is important to note that the club will pay the following for meals:</p>
+d64 5
+a68 2
+<p>If a member spends more than this on a meal, then the member needs to pay for the difference.  In order to get reimbursed for gas, a trip leader must print off a gas receipt form and have all drivers sign the form when you give them money for gas.  Once the trip is over, the leader can turn in any receipts for food and lodging, along with the gas receipt form, to an officer to receive reimbursement.</p>
+
+@
+
+
+1.3
+log
+@replaced 'don't hesitate' in text
+@
+text
+@d18 1
+a18 1
+<p>Of course, we encourage you to lead whatever outdoorsy trips that you want to lead.  We are always looking for new leaders to take people backpacking, kayaking, or climbing.  Remember, the officers are here to help, so please to e-mail them at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> with your questions.</p>
+@
+
+
+1.2
+log
+@changed horseback riding trip description and spell checked.
+@
+text
+@d18 1
+a18 1
+<p>Of course, we encourage you to lead whatever outdoorsy trips that you want to lead.  We are always looking for new leaders to take people backpacking, kayaking, or climbing.  Remember, the officers are here to help, so please don't hesitate to e-mail them at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> with any questions that you may have.</p>
+d22 2
+a23 1
+<p>Outdoors at UVA is run almost completely online.  If you would like to lead a Club trip, you must create the trip online and let everyone know what's going on.  If you are a first timer, you must e-mail the officers at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> in order to get trip leader privileges.  Once you have privileges, setting up a trip is as simple as following the directions on the website.  If you have any question about what should be said in the description or any other questions, please don't hesitate to e-mail the officers.</p>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d12 1
+a12 1
+ <li><b>Horseback Riding</b> -- these trips require you to pick a date, and set up the trip with a stable in Charlottesville.</li>
+d18 1
+a18 1
+<p>Of course, we encourage you to lead whatever outdoorsy trips that you want to lead.  We are always looking for new leaders to take people backpacking, kayaking, or climbing.  Remember, the officers are here to help, so please don't hestitate to e-mail them at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> with any questions that you may have.</p>
+d22 1
+a22 1
+<p>Outdoors at UVA is run almost completely online.  If you would like to lead a Club trip, you must create the trip online and let everyone know what's going on.  If you are a first timer, you must e-mail the officers at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> in order to get trip leader priveleges.  Once you have priveleges, setting up a trip is as simple as following the directions on the website.  If you have any question about what should be said in the description or any other questions, please don't hesitate to e-mail the officers.</p>
+d26 1
+a26 1
+<p>During the school year, Outdoors at UVA will pay for all the gas, lodging, and food on a Club trip.  The club operates on a reimbursal system -- so whatever you buy for a trip, keep the receipts to get reimbursed.  It is imporatnt to note that the club will pay the following for meals:</p>
+@
+

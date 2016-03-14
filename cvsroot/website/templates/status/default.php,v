@@ -1,0 +1,109 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.34;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.24.03.24.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.16.22.00.12;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<!-- title=Manage Statuses -->
+<h1>Status Objects</h1>
+
+<p>This part of the website manages statuses.  The system marks objects in
+the database with a status; most objects have the default status, which
+means they exist and nothing else special, but objects may be marked as
+deleted or, for special purposes, various other status codes.</p>
+
+<p>Use the links below to manage status objects.</p>
+
+<ul>{actions:}
+  <li><a href="members/{PAGE}/{c_title}">{c_summary}</a></li>{:actions}
+</ul>
+@
+
+
+1.3
+log
+@updated to match the new privilege scheme: privileges moved out of SecurityManager and into SQL query
+@
+text
+@d11 2
+a12 2
+<ul>{ACTIONS:}
+  <li><a href="members.php?page={PAGE}&action={C_UID}">{C_SUMMARY}</a></li>{:ACTIONS}
+@
+
+
+1.2
+log
+@added privilege checking
+@
+text
+@d1 1
+d11 3
+a13 10
+<ol>
+  {LIST_ALL:}
+  <li><a href="members.php?page=status&action={ACTION_LIST_ALL}">List all
+  status objects</a></li>
+  {:LIST_ALL}
+  {CREATE:}
+  <li><a href="members.php?page=status&action={ACTION_CREATE}">Create a
+  new status</a></li>
+  {:CREATE}
+</ol>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+d14 1
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

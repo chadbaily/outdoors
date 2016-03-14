@@ -1,0 +1,169 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.20.13.26.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.19.12.16.29;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.12.16.24.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@remove spurious semicolons
+@
+text
+@select
+    ad.c_uid,
+    ad.c_title,
+    ad.c_destination,
+    ad.c_start_date,
+    lo.c_title as destination_title
+from [_]adventure as ad
+    inner join [_]location as lo on ad.c_destination = lo.c_uid
+    inner join [_]status as st on ad.c_status = st.c_uid
+    left outer join [_]adventure_activity as aa on aa.c_adventure = ad.c_uid
+        and aa.c_deleted <> 1
+where
+    st.c_title = 'active'
+    and ad.c_deleted <> 1
+    and lo.c_deleted <> 1
+    and ({title,char} is null or ad.c_title like {title,char})
+    and ({destination,int} is null or c_destination = {destination,int})
+    and ({leader,int} is null or ad.c_owner = {leader,int})
+    and ({activity,int} is null or aa.c_activity = {activity,int})
+    and ({start,date} is null or c_start_date between {start,date} and {end,date})
+group by ad.c_uid
+order by ad.c_start_date desc
+@
+
+
+1.6
+log
+@add c_deleted column to database tables
+@
+text
+@d22 1
+a22 1
+order by ad.c_start_date desc;
+@
+
+
+1.5
+log
+@changed the order by clause
+@
+text
+@d11 1
+d14 2
+@
+
+
+1.4
+log
+@added the ability to search by leader
+@
+text
+@d19 1
+a19 1
+order by ad.c_created_date
+@
+
+
+1.3
+log
+@fixed to select something (left outer join was borked)
+@
+text
+@d8 3
+a10 4
+    inner join [_]location as lo
+        on ad.c_destination = lo.c_uid
+    left outer join [_]adventure_activity as aa
+        on aa.c_adventure = ad.c_uid
+d12 2
+a13 1
+    ({title,char} is null or ad.c_title like {title,char})
+d15 1
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d13 4
+a16 4
+    ad.c_title like {title,char,,,0,'%'}
+    and c_destination = {destination,int,,,0,c_destination}
+    and aa.c_activity = {activity,int,,,0,aa.c_activity}
+    and c_start_date between {start,date,,,0,'1900-01-01'} and {end,date,,,0,'2999-01-01'}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 2
+a8 2
+from t_adventure as ad
+    inner join t_location as lo
+d10 1
+a10 1
+    left outer join t_adventure_activity as aa
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

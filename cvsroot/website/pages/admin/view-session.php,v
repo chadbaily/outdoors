@@ -1,0 +1,70 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.11.08.18.25.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: activate-members.php,v 1.10 2004/11/01 19:06:58 at Exp $
+ */
+
+# Check that the user has correct permissions
+if (!$obj['user']->isInGroup('root')) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$wrapper = file_get_contents("templates/admin/view-session.php");
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/session/read.sql");
+$cmd->addParameter("session", $_GET['object']);
+$result =& $cmd->executeReader();
+
+if ($result->numRows()) {
+    $wrapper = Template::unhide($wrapper, "SOME");
+    while ($row = $result->fetchRow()) {
+        $wrapper = Template::block($wrapper, "ROW", $row);
+    }
+}
+
+$res['title'] = "View Session";
+$res['content'] = $wrapper;
+
+?>
+@

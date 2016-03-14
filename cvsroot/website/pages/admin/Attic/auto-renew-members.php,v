@@ -1,0 +1,334 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.18.14.13.43;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@not needed anymore
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: auto-renew-members.php,v 1.3 2004/08/25 11:43:32 at Exp $
+ *
+ * This script checks for members that need to be activated because they
+ * renewed and the system marked their memberships as pending.  This is to keep
+ * from blanking out any accounts that still have Club Bux, because the member
+ * should get to use those Club Bux right up until the new membership starts or
+ * there are no Club Bux to use from the old membership.  This script assumes
+ * that the debt for the membership fees is already marked as paid, as it
+ * should be since the member had to pay all of his/her outstanding debts
+ * before getting activated.
+ *
+ * This script is accessible from a web browser, because there's not a good way
+ * to run Perl or PHP scripts from a Cron job on the SCS server.  I'd love to
+ * use Python, but guess what... version 1.5 from the year 1.5 BC.  So my Cron
+ * job is just going to use wget to invoke this page.
+ */
+
+include_once("MembershipType.php");
+include_once("Account.php");
+include_once("Transaction.php");
+include_once("Email.php");
+
+# Check that the user has correct permissions
+if (!$obj['user']->isInGroup('root') && !$obj['user']->isInGroup('treasurer')) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+# Log that the page was accessed
+$time = date("Y-m-d H:i:s");
+$userid = $_COOKIE['user'];
+$login = $_COOKIE['loggedin'];
+$logMessage = "
+[$time] This page was accessed.
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User Cookie:   $userid
+Login Cookie:  $login
+";
+error_log($logMessage, 3, $error_log);
+
+# Get a list of all membership types
+$mt =& new MembershipType();
+$membershipTypes = $mt->selectAll();
+
+# Get a list of members that have pending memberships whose start date has
+# passed (we definitely don't activate memberships till they start)
+$members = array();
+$result = $db->query("select me.*
+    from [_]member as me, [_]membership as ms, [_]membership_type as mt
+    where me.c_uid = ms.c_member and ms.c_type = mt.c_uid
+    and ms.c_status = $status_id[pending]
+    and mt.c_begin_date <= current_date;");
+while ($row = $result->fetchRow()) {
+    $member =& new Member();
+    $member->initFromRow($row);
+    $members[$row['c_uid']] = $member;
+}
+
+# Go through and remove any members that have a currently active membership and
+# a positive Club Bux balance.  We do NOT want to run this script for those
+# members, because their current membership hasn't yet expired and they haven't
+# gotten full use of their Club Bux account balance before it gets reset to
+# zero for the new membership.
+$result = $db->query("select me.c_uid
+    from [_]member as me, [_]membership as ms, 
+    [_]membership_type as mt, [_]account as ac
+    where me.c_uid = ms.c_member 
+    and ms.c_type = mt.c_uid
+    and ac.c_uid = me.c_account
+    and ac.c_balance > 0
+    and ms.c_status = $status_id[active]
+    and mt.c_begin_date <= current_date 
+    and mt.c_expiration_date >= current_date;");
+while ($row = $result->fetchRow()) {
+    unset($members[$row['c_uid']]);
+}
+
+if (count($members)) {
+
+    # Log the members that are in the list to activate
+    $memberUIDs = implode(",", array_keys($members));
+    $time = date("Y-m-d H:i:s");
+    $logMessage = "
+[$time] The following members have pending memberships to activate:
+($memberUIDs)
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User Cookie:   $userid
+Login Cookie:  $login
+";
+    error_log($logMessage, 3, $error_log);
+
+
+    # Get a list of account IDs and balances for those members that need to be
+    # activated.
+    $accounts = array();
+    $result = $db->query("select ac.* from [_]account as ac,
+        [_]member as me, [_]membership as ms, [_]membership_type as mt
+        where me.c_uid = ms.c_member and ms.c_type = mt.c_uid
+        and ms.c_status = $status_id[pending]
+        and ac.c_uid = me.c_account
+        and mt.c_begin_date <= current_date;");
+    while ($row = $result->fetchRow()) {
+        $account =& new Account();
+        $account->initFromRow($row);
+        $accounts[$row['c_uid']] = $account;
+    }
+
+    # Get all memberships that are pending for each member; build a
+    # two-dimensional array out of them.
+
+    $memberships = array();
+    $result = $db->query("select ms.* from [_]account as ac,
+        [_]member as me, [_]membership as ms, [_]membership_type as mt
+        where me.c_uid = ms.c_member and ms.c_type = mt.c_uid
+        and ms.c_status = $status_id[pending]
+        and ac.c_uid = me.c_account
+        and mt.c_begin_date <= current_date
+        limit 1;");
+    # XXX: that's bogus.  What's the limit 1 for?
+    while ($row = $result->fetchRow()) {
+        $membership =& new Membership();
+        $membership->initFromRow($row);
+        $memberships[$row['c_member']][$row['c_uid']] = $membership;
+    }
+
+    # For each member,
+    # * Adjust the member's account balance to the lesser of
+    #   zero and the current balance.  This preserves debts.
+    # * Adjust the member's account balance to add in the
+    #   Club Bux for the new memberships.
+    foreach ($members as $key => $member) {
+        $account = $accounts[$member->getAccount()];
+        $balance = $account->getBalance();
+        # XXX: this is bogus.  Why am I overwriting the $memberships array?
+        $memberships = $memberships[$member->getUID()];
+        $membershipType = $membershipTypes[$membership->getMembershipType()];
+        $clubBux = $membershipType->getClubBuxAwarded();
+
+        # Adjust the member's account balance to the lesser of zero and the
+        # current balance
+
+        if ($balance > 0) {
+
+            # Adjust the member's account to 0
+            $trans =& new Transaction();
+            $trans->setFromAccount($account->getUID());
+            $trans->setToAccount($root_account);
+            $trans->setAmount($balance);
+            $trans->setRelatesTo($membership->getUID());
+            $trans->setRelatedUID($membership->getTable());
+            $trans->setComment("Automatic account adjustment: Club Bux do "
+                    . "not roll over to new membership '" 
+                    . $membershipType->getTitle() . "'");
+            $trans->insert($member->getUID());
+
+        }
+
+        # Now add in the member's Club Bux for the new memberships, and
+        # activate the memberships...
+
+        foreach ($memberships as $key => $membership) {
+            # Add in the initial Club Bux for the membership
+            $trans =& new Transaction();
+            $trans->setToAccount($account->getUID());
+            $trans->setFromAccount($root_account);
+            $trans->setAmount($clubBux);
+            $trans->setRelatesTo($membership->getUID());
+            $trans->setRelatedUID($membership->getTable());
+            $trans->setComment("Automatic adjustment: Inital Club Bux for '" 
+                    . $membershipType->getTitle() .  "'");
+            $trans->insert($member->getUID());
+
+            # Update the membership to 'active' status
+            $membership->setStatus($status_id['active']);
+            $membership->update();
+        }
+
+    }
+
+    # Send an email to the members, saying 'your account was automatically
+    # activated.'
+    $mail =& new Email($email_path);
+    $mail->loadTemplate("auto-renew-notice");
+    $mail->loadFooter("footer");
+    $mail->setFrom($club_admin_email);
+    $mail->addTo($club_admin_email);
+    $mail->setSubject("Automatic renewal notice");
+    foreach ($members as $key => $member) {
+        $mail->addBCC($member->getEmail());
+    }
+    $mail->send();
+
+    $contents = "<h1>Success</h1>"
+        . "<p>All members were successfully activated.</p>";
+
+}
+else {
+    $contents = "<h1>No Members To Activate</h1>"
+        . "<p>There are no members with pending memberships.</p>";
+}
+
+$tabbedBox->setContents($contents);
+
+?>
+@
+
+
+1.3
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-renew-members.php,v 1.2 2004/07/20 14:21:23 at Exp $
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-renew-members.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d43 1
+a43 2
+if (!$security->isInGroup($user, $group_id['root'])
+        and !$security->isInGroup($user, $group_id['treasurer'])) {
+d45 2
+a46 1
+    $security->notAllowedOnPage($user);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-renew-members.php,v 1.3 2004/05/30 01:42:05 baron Exp $
+d70 1
+a70 1
+    from t_member as me, t_membership as ms, t_membership_type as mt
+d86 2
+a87 2
+    from t_member as me, t_membership as ms, 
+    t_membership_type as mt, t_account as ac
+d118 2
+a119 2
+    $result = $db->query("select ac.* from t_account as ac,
+        t_member as me, t_membership as ms, t_membership_type as mt
+d134 2
+a135 2
+    $result = $db->query("select ms.* from t_account as ac,
+        t_member as me, t_membership as ms, t_membership_type as mt
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,75 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Addresses</h1>
+
+<p>The following is a list of all addresses in the database:</p>
+
+<table>
+  <tr>
+    <th>Owner</th><th>Title</th><th>Primary?</th>
+  </tr>
+  <tr>{ITEM:}
+    <td>
+      <a href="members/member/read/{T_MEMBER}">{C_FULL_NAME}</a></li>
+    </td>
+    <td>
+      <a href="members/address/read/{T_ADDRESS}">{C_TITLE}</a></li>
+    </td>
+    <td>{C_PRIMARY}</td>
+  </tr>{:ITEM}
+</table>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+a11 1
+      <a href="members.php?page=member&action={ACTION_READ}&object={T_MEMBER}">{C_FULL_NAME}</a>
+d14 1
+a14 1
+      <a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

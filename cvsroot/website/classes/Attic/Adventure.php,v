@@ -1,0 +1,539 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.19.47.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.18.15.23.31;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.18.02.52.12;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Adventure.php,v 1.5 2004/09/20 19:47:28 at Exp $
+ */
+
+include_once("Question.php");
+include_once("Attendee.php");
+include_once("AdventureActivity.php");
+include_once("DatabaseObject.php");
+
+class Adventure extends DatabaseObject {
+    // {{{declarations
+    var $c_title = null;
+    var $c_description = null;
+    var $c_destination = null;
+    var $c_departure = null;
+    var $c_start_date = null;
+    var $c_end_date = null;
+    var $c_signup_date = null;
+    var $c_fee = null;
+    var $c_max_attendees = null;
+    var $c_average_rating = null;
+    var $c_num_ratings = null;
+    var $questions;
+    var $attendees;
+    var $activities;
+    var $comments;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Adventure() {
+        global $cfg;
+        $this->DatabaseObject();
+        $this->table = "[_]adventure";
+        $this->cascadeFunctions[] = "getQuestions";
+        $this->cascadeFunctions[] = "getActivities";
+        $this->cascadeFunctions[] = "getAttendees";
+    } //}}}
+
+    /* {{{initComments
+     * Initialize the $comments object with an array, keyed by c_uid, of the
+     * adventure's comments.  You do not need to call this function directly;
+     * you can just call getComments and it will call this if need be.
+     */
+    function initComments() {
+        global $obj;
+        global $cfg;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->comments = array();
+        $result =& $obj['conn']->query("select * from [_]adventure_comment where c_adventure="
+            . "$this->c_uid and c_status!={$cfg['status_id']['deleted']}");
+        while ($row =& $result->fetchRow()) {
+            $this->comments[$row['c_uid']] =& new AdventureComment();
+            $this->comments[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initQuestions
+     * Initialize the $questions object with an array, keyed by c_uid, of the
+     * adventure's questions.  You do not need to call this function directly;
+     * you can just call getQuestions and it will call this if need be.
+     */
+    function initQuestions() {
+        global $obj;
+        global $cfg;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->questions = array();
+        $result =& $obj['conn']->query("select * from [_]question "
+            . "where c_adventure=$this->c_uid");
+        while ($row =& $result->fetchRow()) {
+            $this->questions[$row['c_uid']] =& new Question();
+            $this->questions[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initAttendees
+     * You do not need to call this directly.  You can just call getAttendees
+     * and it will call this if need be.
+     */
+    function initAttendees() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->attendees = array();
+        $result =& $obj['conn']->query("select * from [_]attendee where c_adventure="
+            . "$this->c_uid order by c_joined_date");
+        while ($row =& $result->fetchRow()) {
+            $this->attendees[$row['c_uid']] =& new Attendee();
+            $this->attendees[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initActivities
+     * You do not need to call this directly.  You can just call getActivities
+     * and it will call this if need be.
+     */
+
+    function initActivities() {
+        global $obj;
+        global $cfg;
+
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->activities = array();
+        $result = $obj['conn']->query("select * from [_]adventure_activity where c_adventure="
+            . "$this->c_uid and c_status!={$cfg['status_id']['deleted']}"
+            . " order by c_created_date");
+        while ($row = $result->fetchRow()) {
+            $this->activities[$row['c_uid']] =& new AdventureActivity();
+            $this->activities[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{isFull
+     * Returns true if the adventure already has as many attendees as it can
+     * take.
+     */
+    function isFull() {
+        return (count($this->getAttendees()) >= $this->getMaxAttendees());
+    } //}}}
+
+    /* {{{getTitle
+     *
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+
+    /* {{{setTitle
+     *
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getDescription
+     *
+     */
+    function getDescription() {
+        return $this->c_description;
+    } //}}}
+
+    /* {{{setDescription
+     *
+     */
+    function setDescription($value) {
+        $this->c_description = $value;
+    } //}}}
+
+    /* {{{getDestination
+     *
+     */
+    function getDestination() {
+        return $this->c_destination;
+    } //}}}
+
+    /* {{{setDestination
+     *
+     */
+    function setDestination($value) {
+        $this->c_destination = $value;
+    } //}}}
+
+    /* {{{getDeparture
+     *
+     */
+    function getDeparture() {
+        return $this->c_departure;
+    } //}}}
+
+    /* {{{setDeparture
+     *
+     */
+    function setDeparture($value) {
+        $this->c_departure = $value;
+    } //}}}
+
+    /* {{{getStartDate
+     *
+     */
+    function getStartDate() {
+        return $this->c_start_date;
+    } //}}}
+
+    /* {{{setStartDate
+     *
+     */
+    function setStartDate($value) {
+        $this->c_start_date = date("Y-m-d H:i:s", strtotime($value));
+    } //}}}
+
+    /* {{{getEndDate
+     *
+     */
+    function getEndDate() {
+        return $this->c_end_date;
+    } //}}}
+
+    /* {{{setEndDate
+     *
+     */
+    function setEndDate($value) {
+        $this->c_end_date = date("Y-m-d H:i:s", strtotime($value));
+    } //}}}
+
+    /* {{{getSignupDate
+     *
+     */
+    function getSignupDate() {
+        return $this->c_signup_date;
+    } //}}}
+
+    /* {{{setSignupDate
+     *
+     */
+    function setSignupDate($value) {
+        $this->c_signup_date = date("Y-m-d H:i:s", strtotime($value));
+    } //}}}
+
+    /* {{{getFee
+     *
+     */
+    function getFee() {
+        return $this->c_fee;
+    } //}}}
+
+    /* {{{setFee
+     *
+     */
+    function setFee($value) {
+        $this->c_fee = $value;
+    } //}}}
+
+    /* {{{getMaxAttendees
+     *
+     */
+    function getMaxAttendees() {
+        return $this->c_max_attendees;
+    } //}}}
+
+    /* {{{setMaxAttendees
+     *
+     */
+    function setMaxAttendees($value) {
+        $this->c_max_attendees = $value;
+    } //}}}
+
+    /* {{{setAverageRating
+     * Don't use this.  It should be automatically done when you insert a new
+     * AdventureComment.
+     */
+    function setAverageRating($value) {
+        $this->c_average_rating = $value;
+    } //}}}
+
+    /* {{{getAverageRating
+     */
+    function getAverageRating() {
+        return $this->c_average_rating;
+    } //}}}
+
+    /* {{{setNumRatings
+     * Don't use this.  It should be automatically done when you insert a new
+     * AdventureComment.
+     */
+    function setNumRatings($value) {
+        $this->c_num_ratings = $value;
+    } //}}}
+
+    /* {{{getNumRatings
+     */
+    function getNumRatings() {
+        return $this->c_num_ratings;
+    } //}}}
+
+    /* {{{getComments
+     * Returns the comments associated with the adventure.  Calls initComments
+     * if needed; if you want to force it to call, pass a TRUE parameter.
+     */
+    function &getComments($refresh = FALSE) {
+        if (is_null($this->comments) || $refresh) {
+            $this->initComments();
+        }
+        return $this->comments;
+    } //}}}
+
+    /* {{{getQuestions
+     * Returns the questions associated with the adventure.  Calls initQuestions
+     * if needed; if you want to force it to call, pass a TRUE parameter.
+     */
+    function getQuestions($refresh = FALSE) {
+        if (is_null($this->questions) || $refresh) {
+            $this->initQuestions();
+        }
+        return $this->questions;
+    } //}}}
+
+    /* {{{getAttendees
+     * Returns the attendees associated with the adventure.  Calls initAttendees
+     * if needed; if you want to force it to call, pass a TRUE parameter.
+     */
+    function &getAttendees($refresh = FALSE) {
+        if (is_null($this->attendees) || $refresh) {
+            $this->initAttendees();
+        }
+        return $this->attendees;
+    } //}}}
+
+    /* {{{getFullAttendees
+     * Returns the un-waitlisted attendees.  Pass TRUE to force a refresh from
+     * the DB.
+     */
+    function &getFullAttendees($refresh = FALSE) {
+        global $cfg;
+        if (is_null($this->attendees) || $refresh) {
+            $this->initAttendees();
+        }
+        $result = array();
+        foreach (array_keys($this->attendees) as $key) {
+            if ($this->attendees[$key]->getStatus() == $cfg['status_id']['default']) {
+                $result[$key] = $this->attendees[$key];
+            }
+        }
+        return $result;
+    } //}}}
+
+    /* {{{getWaitlist
+     * Returns the waitlisted attendees.  Pass TRUE to force a refresh from the
+     * DB.
+     */
+    function &getWaitlist($refresh = FALSE) {
+        global $cfg;
+        if (is_null($this->attendees) || $refresh) {
+            $this->initAttendees();
+        }
+        $result = array();
+        foreach (array_keys($this->attendees) as $key) {
+            if ($this->attendees[$key]->getStatus() == $cfg['status_id']['waitlisted']) {
+                $result[$key] = $this->attendees[$key];
+            }
+        }
+        return $result;
+    } //}}}
+
+    /* {{{getActivities
+     * Returns the activities associated with the adventure.  Calls initActivities
+     * if needed; if you want to force it to call, pass a TRUE parameter.
+     */
+    function getActivities($refresh = FALSE) {
+        if (is_null($this->activities) || $refresh) {
+            $this->initActivities();
+        }
+        return $this->activities;
+    } //}}}
+
+}
+
+?>
+@
+
+
+1.5
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: Adventure.php,v 1.4 2004/09/18 15:23:31 at Exp $
+@
+
+
+1.4
+log
+@add getFullAttendees() and getWaitlist()
+@
+text
+@d20 1
+a20 1
+ * $Id: Adventure.php,v 1.3 2004/09/18 02:52:12 at Exp $
+d199 1
+a199 1
+        return new DateTime($this->c_start_date);
+d205 2
+a206 3
+    function setStartDate(/*DateTime*/$value) {
+        Utility::checkType("DateTime", $value, __LINE__, __FILE__);
+        $this->c_start_date = $value->toString("Y-m-d H:i:s");
+d213 1
+a213 1
+        return new DateTime($this->c_end_date);
+d219 2
+a220 3
+    function setEndDate(/*DateTime*/$value) {
+        Utility::checkType("DateTime", $value, __LINE__, __FILE__);
+        $this->c_end_date = $value->toString("Y-m-d H:i:s");
+d227 1
+a227 1
+        return new DateTime($this->c_signup_date);
+d233 2
+a234 3
+    function setSignupDate(/*DateTime*/$value) {
+        Utility::checkType("DateTime", $value, __LINE__, __FILE__);
+        $this->c_signup_date = $value->toString("Y-m-d H:i:s");
+@
+
+
+1.3
+log
+@use the c_joined_date to determine the order of attendees
+@
+text
+@d20 1
+a20 1
+ * $Id: Adventure.php,v 1.2 2004/07/20 14:11:06 at Exp $
+d322 1
+a322 1
+    function getAttendees($refresh = FALSE) {
+d327 36
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Adventure.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+d104 1
+a104 1
+            . "$this->c_uid order by c_created_date");
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Adventure.php,v 1.5 2004/05/30 01:41:51 baron Exp $
+d53 1
+a53 1
+        $this->table = "t_adventure";
+d69 1
+a69 1
+        $result =& $obj['conn']->query("select * from t_adventure_comment where c_adventure="
+d87 1
+a87 1
+        $result =& $obj['conn']->query("select * from t_question "
+d103 1
+a103 1
+        $result =& $obj['conn']->query("select * from t_attendee where c_adventure="
+d122 1
+a122 1
+        $result = $obj['conn']->query("select * from t_adventure_activity where c_adventure="
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

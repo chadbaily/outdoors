@@ -1,0 +1,230 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.09.02.16.15;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.26.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tabbed box functionality is now databased and these files are business rules for when NOT to show a tab
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: adventure-read.php,v 1.2 2004/08/24 03:26:46 at Exp $
+ *
+ * This tabbed box enhances the generic tabbed box for all objects.
+ */
+
+include_once("tabbed-boxes/common-read.php");
+include_once("JoinAdventureManager.php");
+
+$attending = JoinAdventureManager::checkIfMemberIsAttending($object, $obj['user']);
+$now =& new DateTime();
+
+# Create tabs and add them to the tabbed box
+
+if ($object->permits($cfg['action_id']['edit_questions'])
+        && $now->compareTo($object->getStartDate()) < 1) {
+    $obj['inner_box']->addTab('Edit &Questions',
+            "members.php?page={PAGE}&action={ACTION_EDIT_QUESTIONS}&object={OBJECT}",
+            0,
+            "Edit this adventure's questions");
+}
+
+if (!$attending
+        && $object->permits($cfg['action_id']['join'])) {
+    $obj['inner_box']->addTab('&Join',
+            "members.php?page={PAGE}&action={ACTION_JOIN}&object={OBJECT}",
+            0,
+            "Join this adventure");
+}
+
+if ($object->getStatus() == $cfg['status_id']['active']
+        && $now->compareTo($object->getStartDate()) < 1
+        && $object->permits($cfg['action_id']['deactivate'])) {
+    $obj['inner_box']->addTab('Deactivate',
+            "members.php?page={PAGE}&action={ACTION_DEACTIVATE}&object={OBJECT}",
+            0,
+            "Deactivate this adventure");
+}
+
+if ($attending
+        && $object->getStatus() != $cfg['status_id']['active']
+        && $now->compareTo($object->getStartDate()) < 1
+        && $object->permits($cfg['action_id']['activate'])) {
+    $obj['inner_box']->addTab('A&ctivate',
+            "members.php?page={PAGE}&action={ACTION_ACTIVATE}&object={OBJECT}",
+            0,
+            "Activate this adventure");
+}
+
+if ($attending
+        && $object->getOwner() != $obj['user']->getUID()
+        && $now->compareTo($object->getStartDate()) < 1
+        && $object->permits($cfg['action_id']['withdraw'])) {
+    $obj['inner_box']->addTab('&Withdraw',
+            "members.php?page={PAGE}&action={ACTION_WITHDRAW}&object={OBJECT}",
+            0,
+            "Withdraw from this adventure");
+}
+
+if ($object->permits($cfg['action_id']['view_report'])) {
+    $obj['inner_box']->addTab('View Report',
+            "members.php?page={PAGE}&action={ACTION_VIEW_REPORT}&object={OBJECT}",
+            0,
+            "View Attendee Reports");
+}
+
+if (JoinAdventureManager::memberIsWaitlisted($object, $obj['user'])
+        && $object->permits($cfg['action_id']['view_waitlist'])) {
+    $obj['inner_box']->addTab('View Wait&list',
+            "members.php?page={PAGE}&action={ACTION_VIEW_WAITLIST}&object={OBJECT}",
+            0,
+            "View the waitlist for this adventure");
+}
+
+if ($object->permits($cfg['action_id']['announce'])
+        && $now->compareTo($object->getStartDate()) < 1) {
+    $obj['inner_box']->addTab('A&nnounce',
+            "members.php?page={PAGE}&action={ACTION_ANNOUNCE}&object={OBJECT}",
+            0,
+            "Announce this adventure to the club mailing list");
+}
+
+if ($object->permits($cfg['action_id']['email_attendees'])) {
+    $obj['inner_box']->addTab('Emai&l Attendees',
+            "members.php?page={PAGE}&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}",
+            0,
+            "Send an email message to all attendees of this adventure");
+}
+
+if ($object->permits($cfg['action_id']['write'])
+        && $now->compareTo($object->getStartDate()) < 1) {
+    $obj['inner_box']->addTab('Edit',
+            "members.php?page={PAGE}&action={ACTION_WRITE}&object={OBJECT}",
+            0,
+            "Edit this adventure");
+}
+
+# The fact that this file is running implies that someone set $res[content] and
+# $res[tab].  We use these bits of information to fill in the tabbed box, and
+# then we unset those variables so the call to fill the tabbed box doesn't
+# propagate back up the chain.  The only thing we reset is $res[content].
+$obj['inner_box']->setContents($res['content']);
+if (isset($res['tab'])) {
+    $obj['inner_box']->setActiveTab($res['tab']);
+}
+$obj['inner_box']->deleteTab("Create");
+$res['content'] = $obj['inner_box']->toString();
+unset($res['tab']);
+unset($res['usetab']);
+unset($res['tabfile']);
+
+?>
+@
+
+
+1.2
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure-read.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: adventure-read.php,v 1.5 2004/05/30 01:42:24 baron Exp $
+d33 1
+a33 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['edit_questions'], $obj['user'], $object)
+d42 1
+a42 1
+        && $obj['security']->isAllowedOnObject($cfg['action_id']['join'], $obj['user'], $object)) {
+d51 1
+a51 1
+        && $obj['security']->isAllowedOnObject($cfg['action_id']['deactivate'], $obj['user'], $object)) {
+d61 1
+a61 1
+        && $obj['security']->isAllowedOnObject($cfg['action_id']['activate'], $obj['user'], $object)) {
+d71 1
+a71 1
+        && $obj['security']->isAllowedOnObject($cfg['action_id']['withdraw'], $obj['user'], $object)) {
+d78 1
+a78 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['view_report'], $obj['user'], $object)) {
+d86 1
+a86 1
+        && $obj['security']->isAllowedOnObject($cfg['action_id']['view_waitlist'], $obj['user'], $object)) {
+d93 1
+a93 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['announce'], $obj['user'], $object)
+d101 1
+a101 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['email_attendees'], $obj['user'], $object)) {
+d108 1
+a108 1
+if ($obj['security']->isAllowedOnObject($cfg['action_id']['write'], $obj['user'], $object)
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,68 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Addresses</h1>
+
+<p>The following is a list of all addresses you own:</p>
+
+<ol>
+{ITEM:}
+  <li><a href="members/address/read/{T_ADDRESS}">{C_TITLE}</a></li>
+{:ITEM}
+</ol>
+
+<p>If you wish, you may <a href="members/address/create">create another address</a>.</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 1
+a7 1
+  <li><a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a></li>
+d11 1
+a11 1
+<p>If you wish, you may <a href="members.php?page=address&action={ACTION_CREATE}">create another address</a>.</p>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

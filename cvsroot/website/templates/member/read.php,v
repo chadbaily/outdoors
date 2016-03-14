@@ -1,0 +1,356 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.09.03.06.09;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.21.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>{C_FULL_NAME}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{ALL:}
+{MEMBER:}
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Name</th>
+    <td>{C_FULL_NAME}</td>
+  </tr>{EMAIL:}
+  <tr>
+    <th>Email</th>
+    <td><a href="mailto:{C_EMAIL}">{C_EMAIL}</a></td>
+  </tr>{:EMAIL}{BIRTHDATE:}
+  <tr>
+    <th>Birthdate</th>
+    <td>{C_BIRTH_DATE|_date_format,'M j, Y'}</td>
+  </tr>{:BIRTHDATE}{GENDER:}
+  <tr>
+    <th>Gender</th>
+    <td>{C_GENDER}</td>
+  </tr>{:GENDER}{PASSWORD:}
+  <tr>
+    <th>Password</th>
+    <td>{C_PASSWORD}</td>
+  </tr>{:PASSWORD}{:MEMBER}{ADDRESS:}
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Address
+      {ADDR_ALL:}
+        <br><a href="members/address/list_owned_by">&raquo; all addresses</a>
+      {:ADDR_ALL}
+    </th>
+    <td>
+      <a href="members/address/read/{T_ADDRESS}">{C_TITLE}</a>
+      <br>{C_STREET}
+      <br>{C_CITY}, {C_STATE} {C_ZIP}
+    </td>
+  </tr>{:ADDRESS}{PHONES:}
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>
+      Phone Numbers
+      {PHONE_ALL:}
+      <br><a href="members/phone_number/list_owned_by">&raquo; all numbers</a>
+      {:PHONE_ALL}
+    </th>
+    <td>{PHONE:}
+      <div><a href="members/phone_number/read/{T_PHONE_NUMBER}">&raquo;</a> {C_PHONE_NUMBER}</div>{:PHONE}
+    </td>
+  </tr>{:PHONES}{IDENTITIES:}
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>
+      Chat Identities
+      {CHAT_ALL:}
+      <br><a href="members/chat/list_owned_by">&raquo; all identities</a>
+      {:CHAT_ALL}
+    </th>
+    <td>{CHAT:}
+      <div>
+        <img src="assets/{C_ABBREVIATION}.png" height="16" width="16" title="{C_TYPE}" alt="{C_TYPE}">
+        <a href="members/chat/read/{T_CHAT}">{C_SCREENNAME}</a>
+        {:CHAT}
+    </td>
+  {:IDENTITIES}
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+{:ALL}
+
+{NONE:}
+<p class="notice">Sorry, but this member has chosen to remain entirely
+private.</p>
+{:NONE}
+
+{ADV:}
+<h2>Adventures</h2>
+<p>{C_FULL_NAME} has attended the following adventures:</p>
+<table class="ruled collapsed compact elbowroom cleanHeaders">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Date</th>
+  </tr>
+{ROW:}
+  <tr class="{CLASS}">
+    <td>
+      <a href="members/adventure/read/{C_UID}">{C_TITLE}</a>
+    </td>
+    <td>
+      <a href="members/location/read/{LOC_UID}">{LOC_TITLE}</a>
+    </td>
+    <td nowrap>{C_START_DATE|_date_format,'M j, Y'}</td>
+  </tr>
+{:ROW}
+</table>
+{:ADV}
+
+</div>
+@
+
+
+1.4
+log
+@shrink-wrapped the actions form
+@
+text
+@d38 1
+a38 1
+        <br><a href="members.php?page=address&action={ACTION_LIST_OWNED_BY}">&raquo; all addresses</a>
+d42 1
+a42 1
+      <a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a>
+d55 1
+a55 1
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+d59 1
+a59 1
+      <div><a href="members.php?page=phone_number&object={T_PHONE_NUMBER}&action={ACTION_READ}">&raquo;</a> {C_PHONE_NUMBER}</div>{:PHONE}
+d70 1
+a70 1
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+d76 1
+a76 1
+        <a href="members.php?page=chat&object={T_CHAT}&action={ACTION_READ}">{C_SCREENNAME}</a>
+d103 1
+a103 1
+      <a href="members.php?page=adventure&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+d106 1
+a106 1
+      <a href="members.php?page=location&object={LOC_UID}&action={ACTION_READ}">{LOC_TITLE}</a>
+@
+
+
+1.3
+log
+@simplify 'Other actions' form
+@
+text
+@d82 1
+a83 12
+<p>&nbsp;</p>
+<form action="members.php" method="GET">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <input type="hidden" name="page" value="{PAGE}">
+  <select name="action">
+  <option value="">Choose an Action</option>
+  {OPTION:}
+  <option value="{C_UID}">{C_SUMMARY}</option>{:OPTION}
+  </select>
+  <input type="submit" value="Go">
+</form>
+<p>&nbsp;</p>
+@
+
+
+1.2
+log
+@added chat icons
+@
+text
+@a81 1
+<p>You may take the following actions on this object:</p>
+d83 1
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d61 1
+a61 49
+  </tr>{:PHONES}{CHATS:}
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>
+      Chat Identities
+<h1>View Member Details</h1>
+
+{ALL:}
+{MEMBER:}
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Name:</th>
+    <td>{C_FULL_NAME}</td>
+  </tr>{EMAIL:}
+  <tr>
+    <th>Email:</th>
+    <td><a href="mailto:{C_EMAIL}">{C_EMAIL}</a></td>
+  </tr>{:EMAIL}{BIRTHDATE:}
+  <tr>
+    <th>Birthdate:</th>
+    <td>{C_BIRTH_DATE|_date_format,'M j, Y'}</td>
+  </tr>{:BIRTHDATE}{GENDER:}
+  <tr>
+    <th>Gender:</th>
+    <td>{C_GENDER}</td>
+  </tr>{:GENDER}{PASSWORD:}
+  <tr>
+    <th>Password:</th>
+    <td>{C_PASSWORD}</td>
+  </tr>{:PASSWORD}{:MEMBER}{ADDRESS:}
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Address
+      {ADDR_ALL:}
+        <br><a href="members.php?page=address&action={ACTION_LIST_OWNED_BY}">&raquo; all addresses</a>
+      {:ADDR_ALL}
+    </th>
+    <td>
+      <a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a>
+      <br>{C_STREET}
+      <br>{C_CITY}, {C_STATE} {C_ZIP}
+    </td>
+  </tr>{:ADDRESS}{PHONES:}
+a67 15
+      Phone Numbers
+      {PHONE_ALL:}
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+      {:PHONE_ALL}
+    </th>
+    <td>{PHONE:}
+      <div><a href="members.php?page=phone_number&object={T_PHONE_NUMBER}&action={ACTION_READ}">&raquo;</a> {C_PHONE_NUMBER}</div>{:PHONE}
+    </td>
+  </tr>{:PHONES}{IDENTITIES:}
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>
+d74 4
+a77 1
+      <div><a href="members.php?page=chat&object={T_CHAT}&action={ACTION_READ}">&raquo;</a> {C_SCREENNAME} ({C_TYPE})</div>{:CHAT}
+a79 54
+</table>
+
+<p>You may take the following actions on this object:</p>
+
+<form action="members.php" method="GET">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <input type="hidden" name="page" value="{PAGE}">
+  <select name="action">
+  <option value="">Choose an Action</option>
+  {OPTION:}
+  <option value="{C_UID}">{C_SUMMARY}</option>{:OPTION}
+  </select>
+  <input type="submit" value="Go">
+</form>
+<p>&nbsp;</p>
+{:ALL}
+
+{NONE:}
+<p class="notice">Sorry, but this member has chosen to remain entirely
+private.</p>
+{:NONE}
+
+{ADV:}
+<h2>Adventures</h2>
+<p>{C_FULL_NAME} has attended the following adventures:</p>
+<table class="ruled collapsed compact elbowroom cleanHeaders">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Date</th>
+  </tr>
+{ROW:}
+  <tr class="{CLASS}">
+    <td>
+      <a href="members.php?page=adventure&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+    </td>
+    <td>
+      <a href="members.php?page=location&object={LOC_UID}&action={ACTION_READ}">{LOC_TITLE}</a>
+    </td>
+    <td nowrap>{C_START_DATE|_date_format,'M j, Y'}</td>
+  </tr>
+{:ROW}
+</table>
+{:ADV}
+
+</div>
+      {CHAT_ALL:}
+      <br><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">&raquo; all numbers</a>
+      {:CHAT_ALL}
+    </th>
+    <td>{CHAT:}
+      <div><a href="members.php?page=chat&object={T_CHAT}&action={ACTION_READ}">&raquo;</a> {C_SCREENNAME} ({C_TYPE})</div>{:CHAT}
+    </td>
+  {:CHATS}
+@
+

@@ -1,0 +1,57 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.09.21.41.12;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.15.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@broken tabbed boxes
+@
+text
+@<h1>Edit Object Properties</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{SUCCESS:}
+<p class="notice">The obect's new properties were saved.</p>
+{:SUCCESS}
+
+<p>You are editing properties for object <b>{OBJECT}</b> in table <b>{TABLE}</b>.</p>
+
+{FORM}
+
+</div>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@a7 2
+<p>You are editing properties for object <b>{OBJECT}</b> in table <b>{TABLE}</b>.</p>
+
+d11 4
+@
+

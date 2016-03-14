@@ -1,0 +1,112 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.12.15.22.28;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.19;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<h1>Announce Adventure</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use this page to send an announcement email to the main club
+mailing list.</p>
+
+{START:}
+<p class='error'>This adventure's start date is not in the future.
+You cannot announce this adventure.</p>
+{:START}
+
+{ACTIVE:}
+<p class="error">This adventure is not active.  You cannot announce
+this adventure.</p>
+{:ACTIVE}
+
+{SUCCESS:}
+<p class="notice">You have successfully announced your adventure to
+the main mailing list.</p>
+{:SUCCESS}
+
+{CONFIRM:}
+<p>Please confirm that you wish to announce this adventure:</p>
+<form action="members/adventure/announce/{OBJECT}" method="GET">
+<input type="submit" name="continue" value="Continue">
+</form>
+{:CONFIRM}
+
+</div>
+@
+
+
+1.3
+log
+@use default category if no activity types defined
+@
+text
+@d28 1
+a28 4
+<form action="members.php" method="GET">
+<input type="hidden" name="page" value="{PAGE}">
+<input type="hidden" name="action" value="{ACTION_ANNOUNCE}">
+<input type="hidden" name="object" value="{OBJECT}">
+@
+
+
+1.2
+log
+@release email system
+@
+text
+@a35 6
+{NOCAT:}
+<p class="error">Sorry, I couldn't figure out what category of adventure this
+is for email opt-out purposes.  Please get in touch with the webmasters about
+this problem.</p>
+{:NOCAT}
+
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d36 5
+a40 1
+{FORM}
+@
+

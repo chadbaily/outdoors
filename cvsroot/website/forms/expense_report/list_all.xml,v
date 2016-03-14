@@ -1,0 +1,130 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.47.48;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.28.17.33.04;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.27.23.13.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="leader"
+        element-id="leader" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+</config>
+
+<table>
+  <tr>
+    <td>Filter by: </td>
+    <td>
+
+    <select name="status" id="status" onChange="this.form.submit()" >
+      <option value="">[All Statuses]</option>{STATUS:}
+      <option value="{id}">{c_title}</option>{:STATUS}
+    </select>
+
+    <select name="leader" id="leader" onChange="this.form.submit()" >
+      <option value="">[All Leaders]</option>{leader:}
+      <option value="{c_uid}">{c_full_name}</option>{:leader}
+    </select>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Date range:</td>
+    <td>
+
+    <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+    To
+    <input type="text" id="end" name="end" maxlength="10" size="10" />
+    <input type="submit" value="Go" />
+
+    </td>
+  </tr>
+</table>
+
+</form>
+@
+
+
+1.2
+log
+@tweak to layout
+@
+text
+@d1 1
+a1 1
+<form name="theform" id="theform" method="GET" action="members.php">
+a2 2
+    <input type="hidden" name="page" value="expense_report" />
+    <input type="hidden" name="action" value="4" />
+@
+
+
+1.1
+log
+@init
+@
+text
+@d25 29
+a53 19
+Filter by: 
+
+<select name="status" id="status" onChange="this.form.submit()" class="compact">
+  <option value="">[All Statuses]</option>{STATUS:}
+  <option value="{id}">{c_title}</option>{:STATUS}
+</select>
+
+<select name="leader" id="leader" onChange="this.form.submit()" class="compact">
+  <option value="">[All Leaders]</option>{leader:}
+  <option value="{c_uid}">{c_full_name}</option>{:leader}
+</select>
+
+<input type="text" id="begin" name="begin" maxlength="10" size="10" class="compact"/>
+
+To
+
+<input type="text" id="end" name="end" maxlength="10" size="10" class="compact"/>
+
+<input type="submit" value="Go" class="compact" />
+@
+

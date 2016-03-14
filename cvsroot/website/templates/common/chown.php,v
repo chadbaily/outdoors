@@ -1,0 +1,59 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.15.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Change Owner</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>You are changing the owner for object <b>{OBJECT}</b> in table <b>{TABLE}</b>.</p> 
+
+{SUCCESS:} <p class="notice">The object's new owner was saved.</p> {:SUCCESS}
+
+<form action="members/{PAGE}/chown/{OBJECT}" method="POST">
+  <select name="owner">{OWNER:}
+    <option value="{C_UID}" {SELECTED}>{C_LAST_NAME}, {C_FIRST_NAME}</option>{:OWNER}
+  </select>
+  <input type="submit" value="Change Owner">
+</form>
+
+</div>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d12 1
+a12 1
+<form action="members.php?page={PAGE}&action={ACTION_CHOWN}&object={OBJECT}" method="POST">
+@
+

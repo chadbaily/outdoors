@@ -1,0 +1,2 @@
+183.91.14.60 - - [21/Jun/2013:09:54:47 -0400] "GET http://www.google.com/ HTTP/1.0" 200 5132 "-" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
+219.94.197.33 - - [21/Jun/2013:11:41:51 -0400] "GET /phppath/php HTTP/1.0" 404 380 "-" "-"

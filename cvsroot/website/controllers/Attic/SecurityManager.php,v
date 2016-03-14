@@ -1,0 +1,389 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.08.23.14.42.21;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.12.16.05.15;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.02.01.06.51;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@replaced by a SQL query and methods in DatabaseObject
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: SecurityManager.php,v 1.5 2004/08/12 16:05:15 at Exp $
+ *
+ * Purpose:  A  controller class to help pages decide who is allowed to do what
+ * to what, as well as some basic functionality such os determining whether a
+ * member is logged in or not.  The most important functions are
+ * isAllowedOnObject() and isAllowedOnTable().
+ */
+
+// {{{require statements
+include_once("Table.php");
+include_once("Action.php");
+//}}}
+
+class SecurityManager {
+
+    // {{{declarations
+    // Caches for information to save DB round-trips.  These are private.
+    var $actions = null;  // Action
+    var $tables = null; // Table
+    // Null value that's passable by reference
+    var $null = null;
+    //}}}
+
+    /* {{{isAllowedOnObject
+     * Returns true if $member is allowed to take $action on $object.  This
+     * and isAllowedOnTable are the two most important security-related
+     * functions in this class.
+     */
+    function isAllowedOnObject(/*int*/ $action, /*Member*/ &$member, /*Object*/ &$object) {
+        if (!$action) {
+            trigger_error("No action passed into isAllowedOnObject", E_USER_NOTICE);
+            return false;
+        }
+        if (!$object->implementsAction($action)) {
+            return false;
+        }
+        // Check in this order: check for root privileges, check for Unix-style
+        // permissions that allow the action, and finally check the ACL
+        // permissions for the object.
+        return ($member->isRootUser()
+            || $this->isAllowedByUnixPermissions($action, $member, $object)
+            || $this->isAllowedByPrivileges($action, $member, $object, $this->null));
+    } //}}}
+
+    /* {{{isAllowedOnTable
+     * Returns true if $member is allowed to take $action on $table.  This
+     * and isAllowedOnObject are the two most important security-related
+     * functions in this class.
+     */
+    function isAllowedOnTable(/*int*/ $action, /*Member*/ &$member, /*string*/ $table) {
+        if (!$action) {
+            trigger_error("No action passed into isAllowedOnTable", E_USER_NOTICE);
+            return false;
+        }
+        $a =& $this->getAction($action);
+        if (!$a->getFlag("applies_to_table")) {
+            return false;
+        }
+        // Check in this order: check for root privileges and check the ACL
+        // permissions for the table.
+        return ($member->isRootUser()
+            || $this->isAllowedByPrivileges($action, $member, $this->null, $table));
+    } //}}}
+
+    /* Checks if $member can take $action on something.  Either $object or
+     * $table will be given; the other will be null.  Remember that the
+     * privileges on an object is an array, not an object!
+     */
+    function isAllowedByPrivileges(/*int*/     $action,
+                                   /*Member*/ &$member,
+                                   /*Object*/ &$object,
+                                   /*string*/  $table) {
+        if ($object) {
+            foreach ($object->getPrivileges() as $key => $priv) {
+                // The privilege permits the action if the action matches the
+                // privilege's action
+                if ($priv['c_action'] == $action
+                // and any of the following are true:
+                    && (
+                // 1. The privilege is granted to a user and this is the user, and
+                    ($priv['c_what_granted_to'] == "user" && $priv['c_who_granted_to'] == $member->c_uid
+                //    a. The privilege is granted on a specific object and this
+                //       is that object, or
+                        && (($priv['c_what_relates_to'] == "object" && $priv['c_related_uid'] == $object->c_uid)
+                //    b. The privilege is granted on all objects in the table
+                //       (we already know this object is in the table because
+                //       that's how the query is written in initPrivileges)
+                            || $priv['c_what_relates_to'] == "global"))
+                // 2. The privilege is granted to a group and this user is a
+                //    member of that group, and
+                    || ($priv['c_what_granted_to'] == "group" && $member->isInGroup($priv['c_who_granted_to'])
+                //    a. The privilege is granted on a specific object and this
+                //       is that object, or
+                        && (($priv['c_what_relates_to'] == "object" && $priv['c_related_uid'] == $object->c_uid)
+                //    b. The privilege is granted on all objects in the table
+                            || $priv['c_what_relates_to'] == "global"))
+                // 3. The privilege is granted to the owner and this user is the
+                //    object's owner, and
+                    || ($priv['c_what_granted_to'] == "owner" && $member->c_uid == $object->c_owner
+                //    a. The privilege is granted on a specific object and this
+                //       is that object, or
+                        && (($priv['c_what_relates_to'] == "object" && $priv['c_related_uid'] == $object->c_uid)
+                //    b. The privilege is granted on all objects in the table
+                            || $priv['c_what_relates_to'] == "global"))
+                // 4. The privilege is granted to the group that owns the object
+                //    and this user is a member of that group, and
+                    || ($priv['c_what_granted_to'] == "owner_group" && $member->isInGroup($object->c_group)
+                //    a. The privilege is granted on a specific object and this
+                //       is that object, or
+                        && (($priv['c_what_relates_to'] == "object" && $priv['c_related_uid'] == $object->c_uid)
+                //    b. The privilege is granted on all objects in the table
+                            || $priv['c_what_relates_to'] == "global"))
+                    )) {
+                    return true;
+                }
+            }
+        }
+        elseif ($table) {
+            // Get the table and get its privileges
+            if (!$this->tables[$table]) {
+                $this->tables[$table] =& new Table($table);
+            }
+            foreach ($this->tables[$table]->getPrivileges() as $key => $priv) {
+                // The privilege permits the action if the action matches the
+                // privilege's action and the privilege relates to a table (we
+                // already know it does because the initPrivileges ensures that)
+                if ($action == $priv['c_action']
+                // and any of the following are true:
+                    && (
+                        // 1. The privilege is granted to a user and this is the user
+                        ($priv['c_what_granted_to'] == "user"
+                            && $priv['c_who_granted_to'] == $member->c_uid)
+                        // 2. The privilege is granted to a group and this user
+                        //    belongs to the group
+                        || ($priv['c_what_granted_to'] == "group"
+                            && $member->isInGroup($priv['c_who_granted_to']))
+                    )) {
+                    return true;
+                }
+            }
+        }
+        else {
+            trigger_error("You must pass an object or a table", E_USER_ERROR);
+        }
+        return false;
+    }
+
+    /* {{{isAllowedByUnixPermissions
+     * Returns true if the Unix-style permissions allow the $member to take
+     * $action on $object.  Never call this function before calling
+     * isRootUser().
+     */
+    function isAllowedByUnixPermissions(
+            /*int*/ $action, 
+            /*Member*/ &$member, 
+            /*Object*/ &$object) {
+        global $cfg;
+        return 
+            ((($cfg['action_id']['read'] == $action)
+                && (($object->c_unixperms & $cfg['perm']['other_read'])
+                    || ($member->c_uid == $object->c_owner 
+                        && $object->c_unixperms & $cfg['perm']['owner_read'])
+                    || ($member->isInGroup($object->c_group)
+                        && $object->c_unixperms & $cfg['perm']['group_read'])))
+            || (($cfg['action_id']['write'] == $action)
+                && (($object->c_unixperms & $cfg['perm']['other_write'])
+                    || ($member->c_uid == $object->c_owner 
+                        && $object->c_unixperms & $cfg['perm']['owner_write'])
+                    || ($member->isInGroup($object->c_group)
+                        && $object->c_unixperms & $cfg['perm']['group_write'])))
+            || (($cfg['action_id']['delete'] == $action)
+                && (($object->c_unixperms & $cfg['perm']['other_delete'])
+                    || ($member->c_uid == $object->c_owner 
+                        && $object->c_unixperms & $cfg['perm']['owner_delete'])
+                    || ($member->isInGroup($object->c_group)
+                        && $object->c_unixperms & $cfg['perm']['group_delete']))));
+    } //}}}
+
+    /* {{{getAllowedObjectActions
+     * Returns an array of Action objects the member is allowed to take on the
+     * object.
+     */
+    function &getAllowedObjectActions(/*Object*/ $object, /*Member*/ $member) {
+        $result = array();
+        foreach ($object->implementedActions as $key => $action) {
+            if ($this->isAllowedOnObject($action, $member, $object)) {
+                $result[$action] =& $this->getAction($action);
+            }
+        }
+        return $result;
+    } //}}}
+
+    /* {{{getAction
+     * Returns an Action.  Actions are cached the first time this method is
+     * invoked; this reduces round trips to the database.
+     */
+    function &getAction($action) {
+        // Look in the cache for the action, or create the cache...
+        if (is_null($this->actions)) {
+            // The cache was null, create and populate it.
+            global $obj;
+            $result = $obj['conn']->query("select * from [_]action");
+            while ($row = $result->fetchRow()) {
+                $this->actions[$row['c_uid']] =& new Action();
+                $this->actions[$row['c_uid']]->initFromRow($row);
+            }
+        }
+        return $this->actions[$action];
+    } //}}}
+
+}
+@
+
+
+1.5
+log
+@cleaned out a comment
+@
+text
+@d20 1
+a20 1
+ * $Id: SecurityManager.php,v 1.4 2004/08/06 18:49:26 at Exp $
+@
+
+
+1.4
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@d20 1
+a20 1
+ * $Id: SecurityManager.php,v 1.3 2004/08/02 01:06:51 at Exp $
+d25 1
+a25 1
+ * requireLoggedIn(), isAllowedOnObject(), and isAllowedOnTable().
+@
+
+
+1.3
+log
+@removed unused notAllowedOnObject (now done by pages/common/include-file.php)
+@
+text
+@d20 1
+a20 1
+ * $Id: SecurityManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+a227 20
+    } //}}}
+
+    /* {{{notAllowedOnTable
+     * Displays an error message with information about the permission error.
+     */
+    function notAllowedOnTable(/*int*/ $action, /*Member*/ &$member, /*string*/$table) {
+        global $cfg;
+        $message = "<h1>Permission Error</h1><p>" . $member->getFirstName()
+            . " " . $member->getLastName() . " is not permitted to take action "
+            . "'<b>" . $cfg['action_summary'][$action] . "</b>' on table <b>$table</b>";
+        Utility::abortPage($message);
+    } //}}}
+
+    /* {{{notAllowedOnPage
+     * Displays an error message with information about the permission error.
+     */
+    function notAllowedOnPage(/*Member*/ &$member) {
+        $message = "<h1>Permission Error</h1><p>" . $member->getFirstName()
+            . " " . $member->getLastName() . " is not permitted to access this page.</p>";
+        Utility::abortPage($message);
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: SecurityManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a227 13
+    } //}}}
+
+    /* {{{notAllowedOnObject
+     * Displays an error message with information about the permission error.
+     */
+    function notAllowedOnObject(/*int*/ $action, /*Member*/ &$member, /*Object*/&$object) {
+        global $cfg;
+        $message = "<h1>Permission Error</h1><p>" . $member->getFirstName()
+            . " " . $member->getLastName() . " is not permitted to take action "
+            . "'<b>" . $cfg['action_summary'][$action] . "</b>' on "
+            . "object <b>" . DatabaseObject::tableToType($object->table)
+            . " [$object->c_uid]</b>.</p>";
+        Utility::abortPage($message);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: SecurityManager.php,v 1.3 2004/05/30 01:41:57 baron Exp $
+d221 1
+a221 1
+            $result = $obj['conn']->query("select * from t_action");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

@@ -1,0 +1,71 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.22.28.34;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.11.09.14.12.54;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.08.18.25.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@fix invalid comparison op
+@
+text
+@select
+    se.c_uid,
+    se.c_created_date,
+    se.c_member,
+    se.c_ip,
+    count(*) as c_pages,
+    me.c_full_name
+from [_]session as se
+    inner join [_]member as me on se.c_member = me.c_uid
+    left outer join [_]session_page as pa on pa.c_session = se.c_uid
+where ({member,int} is null or se.c_member = {member,int})
+    and ({begin,date} is null or se.c_created_date >= {begin,date})
+    and ({end,date} is null or se.c_created_date <= {end,date})
+    and ({ip,char} is null or se.c_ip like {ip,char})
+group by se.c_uid
+limit 150
+@
+
+
+1.2
+log
+@filter by ip addr
+@
+text
+@d13 1
+a13 1
+    and ({end,date} is null or se.c_created_date >= {end,date})
+d16 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d14 1
+@
+

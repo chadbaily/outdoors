@@ -1,0 +1,62 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.19.46.29;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.10.20.17.40;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@not used
+@
+text
+@select
+    ad.c_uid,
+    ad.c_title,
+    ad.c_start_date,
+    case when (ad.c_owner = {owner,int}) then 1 else 0 end
+    + case when (ad.c_destination = {destination,int}) then 2 else 0 end
+    + case when (abs(to_days(ad.c_start_date) - to_days({start,date})) < 14)
+        then 5 else 0 end
+    + case when (abs(to_days(ad.c_start_date) - to_days({start,date})) between 14 and  60)
+        then (60 - abs(to_days(ad.c_start_date) - to_days({start,date}))) / 15
+        else 0 end
+    + case when (substring(ad.c_title, 1, 15) = {title,char})
+        then 1 else 0 end
+    + count(aa.c_uid) as score
+
+from
+    t_adventure as ad
+    inner join t_status as st on st.c_uid = ad.c_status
+    left outer join t_adventure_activity as other_aa on other_aa.c_adventure = {adventure,int}
+    left outer join t_adventure_activity as aa on aa.c_adventure = ad.c_uid
+        and aa.c_activity = other_aa.c_activity
+where st.c_title = 'active' and ad.c_uid <> {adventure,int}
+group by ad.c_uid
+order by score desc, ad.c_start_date desc
+limit {limit,int}
+@
+
+
+1.1
+log
+@init
+@
+text
+@@
+

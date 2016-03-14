@@ -1,0 +1,92 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.11.03.07.10;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.12.04.21.52.43;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@add c_deleted column to database tables
+@
+text
+@-- Copy the c_flags from the expenses into the transactions to preserve the fact
+-- that they are reimbursable
+insert into [_]transaction
+    (c_owner, c_creator, c_created_date, c_flags, c_category,
+     c_amount, c_from, c_to, c_expense)
+select
+    {member,int}, {member,int}, now(), ex.c_flags, ex.c_category,
+    abs(ex.c_amount), 
+    case when (c_amount >= 0) then {from,int} else re.c_member end,
+    case when (c_amount >= 0) then re.c_member else {from,int} end,
+    ex.c_uid
+from [_]expense as ex
+    inner join [_]expense_report as re on ex.c_report = re.c_uid
+where ex.c_report = {report,int}
+    and ex.c_deleted <> 1
+    and re.c_deleted <> 1
+@
+
+
+1.3
+log
+@fixed some wonkiness with the from/to stuff, and with the amounts
+@
+text
+@d14 3
+a16 1
+where c_report = {report,int}
+@
+
+
+1.2
+log
+@upgrade to the expense system
+@
+text
+@d8 4
+a11 1
+     ex.c_amount, {from,int}, re.c_member, ex.c_uid
+@
+
+
+1.1
+log
+@create transactions; move some of the expense/expense_port functionality into transactions
+@
+text
+@d5 1
+a5 1
+     c_amount, c_from, c_to, c_description)
+d8 1
+a8 2
+     ex.c_amount, {from,int}, re.c_member, 
+     concat('Payment for expense ', ex.c_uid, ': ', ex.c_description)
+@
+

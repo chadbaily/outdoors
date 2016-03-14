@@ -1,0 +1,225 @@
+head	1.11;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.11
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2005.01.16.16.59.52;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.06.17.35.45;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.06.13.56.03;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.05.22.37.30;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.03.21.34.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.22.21.55.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.11
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    it.c_uid as ID,
+    it.c_type,
+    it.c_qty as qty,
+    coalesce(iat1.c_value, "[null]") as details1,
+    coalesce(iat2.c_value, "[null]") as details2,
+    co.c_title as condition,
+    ty.c_title as type,
+    st.c_title as status
+from [_]item as it
+    inner join [_]condition as co on co.c_uid = it.c_condition
+    inner join [_]status as st on st.c_uid = it.c_status
+    inner join [_]item_type as ty on ty.c_uid = it.c_type
+    inner join [_]item_category as ic on ic.c_uid = ty.c_category
+    left outer join [_]item_feature as iat1 on iat1.c_item = it.c_uid
+        and iat1.c_name = ty.c_primary_feature
+        and iat1.c_deleted <> 1
+    left outer join [_]item_feature as iat2 on iat2.c_item = it.c_uid
+        and iat2.c_name = ty.c_secondary_feature
+        and iat2.c_deleted <> 1
+where ({cat,int} is null or ic.c_uid = {cat,int})
+    and ({status,int} is null or it.c_status = {status,int})
+    and it.c_deleted <> 1
+    and co.c_deleted <> 1
+    and ty.c_deleted <> 1
+    and ic.c_deleted <> 1
+order by {orderby,none,,,,it.c_type}
+limit {offset,int},{limit,int}
+@
+
+
+1.10
+log
+@fix bug 194: show appropriate sort options in menu
+@
+text
+@d17 1
+d20 1
+d23 4
+@
+
+
+1.9
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d2 1
+a2 1
+    it.c_uid,
+d4 6
+a9 6
+    it.c_qty,
+    coalesce(iat1.c_value, "[null]") as c_primary,
+    coalesce(iat2.c_value, "[null]") as c_secondary,
+    co.c_title as co_title,
+    ty.c_title as ty_title,
+    st.c_title as st_title
+@
+
+
+1.8
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d4 1
+@
+
+
+1.7
+log
+@add a filter by status
+@
+text
+@d14 1
+a14 1
+    left outer join [_]item_attribute as iat1 on iat1.c_item = it.c_uid
+d16 1
+a16 1
+    left outer join [_]item_attribute as iat2 on iat2.c_item = it.c_uid
+@
+
+
+1.6
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d19 1
+@
+
+
+1.5
+log
+@add a secondary description column to item types
+@
+text
+@a3 1
+    it.c_condition,
+d7 2
+a8 1
+    ty.c_title as ty_title
+d11 1
+@
+
+
+1.4
+log
+@organize item types by category
+@
+text
+@d5 2
+a6 1
+    coalesce(iat.c_value, "[null]") as c_description,
+d13 4
+a16 2
+    left outer join [_]item_attribute as iat on iat.c_item = it.c_uid
+        and iat.c_name = ty.c_primary_feature
+@
+
+
+1.3
+log
+@add the ability to page through records
+@
+text
+@d11 1
+d14 1
+@
+
+
+1.2
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d14 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@a2 2
+    it.c_title,
+    it.c_description,
+d5 1
+d11 2
+@
+

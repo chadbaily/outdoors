@@ -1,0 +1,741 @@
+head	1.10;
+access;
+symbols
+	maintenance:1.1.1.1.2.3.0.2
+	test:1.1.1.1.0.2
+	init:1.1.1.1
+	socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2005.02.07.19.03.01;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.11.01.01.05.06;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.28.17.05.22;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.07.17.45.59;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.21.15.24;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.19.03.02.14;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.09.03.39.18;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.48.50;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.26.00.26.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1.2.1;
+next	;
+
+1.1.1.1.2.1
+date	2004.08.24.03.30.18;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.2;
+
+1.1.1.1.2.2
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.3;
+
+1.1.1.1.2.3
+date	2004.09.08.23.50.07;	author at;	state Exp;
+branches
+	1.1.1.1.2.3.2.1;
+next	1.1.1.1.2.4;
+
+1.1.1.1.2.4
+date	2004.09.14.13.29.11;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.5;
+
+1.1.1.1.2.5
+date	2004.09.18.15.24.06;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.6;
+
+1.1.1.1.2.6
+date	2004.09.20.20.38.38;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.7;
+
+1.1.1.1.2.7
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.8;
+
+1.1.1.1.2.8
+date	2004.10.27.21.41.38;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.9;
+
+1.1.1.1.2.9
+date	2004.10.31.21.28.33;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.10;
+
+1.1.1.1.2.10
+date	2005.02.07.18.48.48;	author at;	state Exp;
+branches;
+next	;
+
+1.1.1.1.2.3.2.1
+date	2004.09.09.23.09.21;	author at;	state Exp;
+branches;
+next	1.1.1.1.2.3.2.2;
+
+1.1.1.1.2.3.2.2
+date	2004.09.20.21.27.04;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@merge friendlyurl changes from test branch
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: members.php,v 1.9 2004/11/01 01:05:06 at Exp $
+ */
+
+include_once("config.php");
+
+# ------------------------------------------------------------------------------
+# Create global objects
+# ------------------------------------------------------------------------------
+
+# Create the database connection
+$obj['conn'] =& new MySqlConnection($cfg['db']);
+$obj['conn']->open();
+
+# ----------------------------------------------------------------------------
+# Perform any Magical Initialization that needs to be done.
+# ----------------------------------------------------------------------------
+# Set up the flags
+$result =& $obj['conn']->query("select c_title, c_bitmask from [_]flag");
+while ($row =& $result->fetchRow()) {
+    $cfg['flag'][$row['c_title']] = intval($row['c_bitmask']);
+}
+
+# Set up the permission flags
+$result =& $obj['conn']->query("select c_title, c_bitmask from [_]unixperm");
+while ($row =& $result->fetchRow()) {
+    $cfg['perm'][$row['c_title']] = intval($row['c_bitmask']);
+}
+
+# Set up the status codes
+$result =& $obj['conn']->query("select c_title, c_uid from [_]status order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['status_id'][$row['c_title']] = $row['c_uid'];
+}
+
+# Set up the action codes and labels, and list of actions that require
+# an object
+$result =& $obj['conn']->query("select c_title, c_uid, c_flags, "
+    . "c_summary from [_]action order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['action_id'][$row['c_title']] = $row['c_uid'];
+    $cfg['action_summary'][$row['c_uid']] = $row['c_summary'];
+    if (intval($row['c_flags']) & $cfg['flag']['applies_to_object']) {
+        $cfg['require_object_actions'][] = $row['c_uid'];
+    }
+}
+
+# Set up the flipped action codes
+$cfg['action_title'] = array_flip($cfg['action_id']);
+
+# Set up the group codes
+$result =& $obj['conn']->query("select c_title, c_uid from [_]group order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['group_id'][$row['c_title']] = $row['c_uid'];
+}
+
+# Set up tables
+$result =& $obj['conn']->query("select c_name from [_]table order by c_name");
+while ($row =& $result->fetchRow()) {
+    $cfg['tables'][] = $row['c_name'];
+}
+
+# If the action was specified by name rather than by UID (maybe in a friendly
+# URL), translate it to UID.
+if (isset($cfg['action_id'][$cfg['action']])) {
+    $cfg['action'] = $cfg['action_id'][$cfg['action']];
+}
+
+# ----------------------------------------------------------------------------
+# The individual page is now executed, if it exists.  First do some sanity
+# checking on the $_GET[page] parameter: it must contain only letters and
+# dashes and underscores.  If the request is for ?page=foo where foo is a table
+# in the database, then there is the possibility of generating a default page
+# that shows actions the user is allowed to take on the table.
+# ----------------------------------------------------------------------------
+if ($cfg['page'] && preg_match("/[^\w-]/", $cfg['page'])) {
+    include_once("pages/invalid.php");
+}
+elseif ($cfg['page'] && file_exists($cfg['page_file'])) {
+    include_once($cfg['page_file']);
+}
+elseif ($cfg['page'] && in_array("$cfg[table_prefix]$cfg[page]", $cfg['tables'])
+        && !file_exists("pages/$cfg[page]/default.php"))
+{
+    include_once("pages/common/default.php");
+}
+else {
+    include_once("pages/main.php");
+}
+
+# ------------------------------------------------------------------------------
+# Do any other stuff that needs to be done once the included page has finished
+# ------------------------------------------------------------------------------
+
+# Create the navigation bar and the tabbed-box tabs
+include_once("tabbed-boxes/navbar.php");
+include_once("tabbed-boxes/tabbed-box.php");
+
+# Create the main template for the page
+if (isset($_GET['print'])) {
+    $page = file_get_contents("templates/main/print.php");
+}
+else {
+    $page = file_get_contents("templates/main/main.php");
+}
+
+# Plug the content into the main page and finalize it
+$page = Template::replace($page, array(
+    "TITLE" => $res['title'],
+    "REQUEST_URI" => $_SERVER['REQUEST_URI'],
+    "CONTENT" => $res['content'],
+    "TABS" => $res['tabs'],
+    "NAVBAR" => $obj['navbar']->toString()));
+
+# Plug in information about the user
+if (isset($obj['user'])) {
+    $page = Template::unhide($page, "LOGOUT");
+    # Fill in the member's name
+    $page = Template::replace($page, array(
+        "C_FULL_NAME" => $obj['user']->getFullName()));
+}
+
+# One of the things that might remain to do is insert action codes.
+# Since not all templates are fully evaluated, there might be some keys
+# remaining in the form {ACTION_X} where X is an action that needs to be
+# filled in with the correct action code.
+$page = preg_replace("/\{ACTION_([^}]+)\}/e",
+    "\$cfg['action_id'][ strtolower('\\1') ]", $page);
+
+# There are a couple of other magical variables to replace: the object
+# and the page for going into the GET/POST parameters, and the club name
+$page = Template::replace($page, array(
+    "CLUB_NAME" => $cfg['club_name'],
+    "OBJECT" => $cfg['object'],
+    "BASE" => "$cfg[site_url]$cfg[base_url]/",
+    "PAGE" => $cfg['page']));
+
+# Templates in the format {actions,class,object,style,cache?} get replaced by action forms.
+$page = preg_replace("#\{actions,(\w+),(\d+),(\w+)\}#e",
+    "actionform('\\1', '\\2', '\\3')", $page);
+$page = preg_replace("#\{actions,(\w+),(\d+),(\w+),1\}#e",
+    "actionform('\\1', '\\2', '\\3', true)", $page);
+
+echo Template::finalize($page);
+
+?>
+@
+
+
+1.9
+log
+@merge changes for action menus as JavaScript; from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.8 2004/10/28 17:05:22 at Exp $
+d81 6
+d153 1
+@
+
+
+1.8
+log
+@merge actionforms code from test
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.7 2004/10/07 17:45:59 at Exp $
+d149 1
+a149 1
+# Templates in the format {actions,class,object,style} get replaced by action forms.
+d152 2
+@
+
+
+1.7
+log
+@merge changes from test branch after getting rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.6 2004/09/20 21:15:24 at Exp $
+d148 4
+@
+
+
+1.6
+log
+@merged from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.5 2004/09/19 03:02:14 at Exp $
+d36 44
+a79 1
+Utility::initialize();
+@
+
+
+1.5
+log
+@merge changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.4 2004/09/09 03:39:18 at Exp $
+d77 1
+a77 1
+$page = Template::replaceValues($page, array(
+d86 1
+a86 1
+    $page = Template::unhideBlock($page, "LOGOUT");
+d88 1
+a88 1
+    $page = Template::replaceValues($page, array(
+d101 1
+a101 1
+$page = Template::replaceValues($page, array(
+@
+
+
+1.4
+log
+@merged changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.3 2004/08/25 11:48:50 at Exp $
+a63 3
+# Close conection to database -- NOT, because it's a persistent connection
+# $db->disconnect();
+
+d69 6
+a74 1
+$page = file_get_contents("templates/main/main.php");
+d79 1
+@
+
+
+1.3
+log
+@merged changes from test branch
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.2 2004/07/26 00:26:32 at Exp $
+d67 3
+a69 4
+# If the included page requested a tabbed box, plug the page into it
+if (isset($res['usetab']) && $res['usetab']) {
+    include_once("tabbed-boxes/$res[tabfile]");
+}
+d77 3
+a79 1
+    "BODY" => $res['content']));
+@
+
+
+1.2
+log
+@removed debugging code
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a28 3
+# Include a security manager
+$obj['security'] =& new SecurityManager();
+
+d41 3
+a43 1
+# dashes and underscores.
+d50 5
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.10 2004/05/30 01:41:51 baron Exp $
+a98 5
+
+# DEBUG debugging code only.
+if (count($err)) {
+    echo "<ol><li>" . implode("</li><li>", $err) . "</li></ol>";
+}
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@
+
+
+1.1.1.1.2.1
+log
+@new default scheme for showing actions you can take on a table
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d29 3
+d44 1
+a44 3
+# dashes and underscores.  If the request is for ?page=foo where foo is a table
+# in the database, then there is the possibility of generating a default page
+# that shows actions the user is allowed to take on the table.
+a50 5
+}
+elseif ($cfg['page'] && in_array("$cfg[table_prefix]$cfg[page]", $cfg['tables'])
+        && !file_exists("pages/$cfg[page]/default.php"))
+{
+    include_once("pages/common/default.php");
+@
+
+
+1.1.1.1.2.2
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.1 2004/08/24 03:30:18 at Exp $
+d67 4
+a70 2
+# Create the navigation bar
+include_once("tabbed-boxes/navbar.php");
+d78 1
+a78 2
+    "CONTENT" => $res['content'],
+    "NAVBAR" => $obj['navbar']->toString()));
+@
+
+
+1.1.1.1.2.3
+log
+@add tabs to page
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.2 2004/09/03 20:38:24 at Exp $
+d67 1
+a67 1
+# Create the navigation bar and the tabbed-box tabs
+a68 1
+include_once("tabbed-boxes/tabbed-box.php");
+a76 1
+    "TABS" => $res['tabs'],
+@
+
+
+1.1.1.1.2.4
+log
+@added printable option
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.3 2004/09/08 23:50:07 at Exp $
+d72 1
+a72 6
+if (isset($_GET['print'])) {
+    $page = file_get_contents("templates/main/print.php");
+}
+else {
+    $page = file_get_contents("templates/main/main.php");
+}
+a76 1
+    "REQUEST_URI" => $_SERVER['REQUEST_URI'],
+@
+
+
+1.1.1.1.2.5
+log
+@remove obsolete comment
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.4 2004/09/14 13:29:11 at Exp $
+d63 3
+@
+
+
+1.1.1.1.2.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.5 2004/09/18 15:24:06 at Exp $
+d77 1
+a77 1
+$page = Template::replace($page, array(
+d86 1
+a86 1
+    $page = Template::unhide($page, "LOGOUT");
+d88 1
+a88 1
+    $page = Template::replace($page, array(
+d101 1
+a101 1
+$page = Template::replace($page, array(
+@
+
+
+1.1.1.1.2.7
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.6 2004/09/20 20:38:38 at Exp $
+d36 1
+a36 44
+# Set up the flags
+$result =& $obj['conn']->query("select c_title, c_bitmask from [_]flag");
+while ($row =& $result->fetchRow()) {
+    $cfg['flag'][$row['c_title']] = intval($row['c_bitmask']);
+}
+
+# Set up the permission flags
+$result =& $obj['conn']->query("select c_title, c_bitmask from [_]unixperm");
+while ($row =& $result->fetchRow()) {
+    $cfg['perm'][$row['c_title']] = intval($row['c_bitmask']);
+}
+
+# Set up the status codes
+$result =& $obj['conn']->query("select c_title, c_uid from [_]status order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['status_id'][$row['c_title']] = $row['c_uid'];
+}
+
+# Set up the action codes and labels, and list of actions that require
+# an object
+$result =& $obj['conn']->query("select c_title, c_uid, c_flags, "
+    . "c_summary from [_]action order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['action_id'][$row['c_title']] = $row['c_uid'];
+    $cfg['action_summary'][$row['c_uid']] = $row['c_summary'];
+    if (intval($row['c_flags']) & $cfg['flag']['applies_to_object']) {
+        $cfg['require_object_actions'][] = $row['c_uid'];
+    }
+}
+
+# Set up the flipped action codes
+$cfg['action_title'] = array_flip($cfg['action_id']);
+
+# Set up the group codes
+$result =& $obj['conn']->query("select c_title, c_uid from [_]group order by c_uid");
+while ($row =& $result->fetchRow()) {
+    $cfg['group_id'][$row['c_title']] = $row['c_uid'];
+}
+
+# Set up tables
+$result =& $obj['conn']->query("select c_name from [_]table order by c_name");
+while ($row =& $result->fetchRow()) {
+    $cfg['tables'][] = $row['c_name'];
+}
+@
+
+
+1.1.1.1.2.8
+log
+@shrink-wrapped the actions form
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.7 2004/10/07 17:41:47 at Exp $
+a147 4
+
+# Templates in the format {actions,class,object,style} get replaced by action forms.
+$page = preg_replace("#\{actions,(\w+),(\d+),(\w+)\}#e",
+    "actionform('\\1', '\\2', '\\3')", $page);
+@
+
+
+1.1.1.1.2.9
+log
+@add tiny action menus
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.8 2004/10/27 21:41:38 at Exp $
+d149 1
+a149 1
+# Templates in the format {actions,class,object,style,cache?} get replaced by action forms.
+a151 2
+$page = preg_replace("#\{actions,(\w+),(\d+),(\w+),1\}#e",
+    "actionform('\\1', '\\2', '\\3', true)", $page);
+@
+
+
+1.1.1.1.2.10
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.9 2004/10/31 21:28:33 at Exp $
+a80 6
+# If the action was specified by name rather than by UID (maybe in a friendly
+# URL), translate it to UID.
+if (isset($cfg['action_id'][$cfg['action']])) {
+    $cfg['action'] = $cfg['action_id'][$cfg['action']];
+}
+
+a146 1
+    "BASE" => "$cfg[site_url]$cfg[base_url]/",
+@
+
+
+1.1.1.1.2.3.2.1
+log
+@added message about being down for maintenance
+@
+text
+@d20 1
+a20 1
+ * $Id: index.php,v 1.4 2004/09/03 20:38:24 at Exp $
+d25 34
+a58 4
+$res['title'] = $cfg['club_name'];
+
+# Read the file
+$res['content'] = file_get_contents("templates/main/down-for-maintenance.php");
+d60 10
+a69 8
+# Extract the title, tab, keywords, and meta tags out of the file and put them
+# into the $res array.  To define a value, simply put it inside an HTML comment
+# and make sure it's in the form <!-- name=value --> and is the only thing on
+# the line.
+preg_match_all('/^<!-- (\w+)=(.*?) -->$/m', $res['content'], $matches);
+foreach ($matches[1] as $key => $value) {
+    $res[$matches[1][$key]] = $matches[2][$key];
+}
+d77 22
+a98 2
+    "META" => $res['meta'],
+    "KEYWORDS" => $res['keywords'],
+d100 2
+a101 1
+    "CONTENT" => $res['content']));
+d104 5
+@
+
+
+1.1.1.1.2.3.2.2
+log
+@shorten template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: members.php,v 1.1.1.1.2.3.2.1 2004/09/09 23:09:21 at Exp $
+d43 1
+a43 1
+$page = Template::replace($page, array(
+@
+
+

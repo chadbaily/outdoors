@@ -1,0 +1,176 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.31.15.32.51;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.18.03.52.35;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.16.17.41.41;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@friendlyurls
+@
+text
+@<table class="compact elbowroom cleanHeaders" style="float:right">
+  <caption>Inventory Summary</caption>
+  <tr>
+    <th>Type</th>
+    <th>Qty</th>
+    <th>Qty Out</th>
+  </tr>
+  <tr>{row:}
+    <td>
+      <a href="members/item/list_all?category={ic_uid}&type={ty_uid}&form-name=1">{ic_title} &raquo; {ty_title}</a>
+    </td>
+    <td align="right">{existing}</td>
+    <td align="right">{items_out}</td>
+  </tr>{:row}
+</table>
+
+<h1>Outdoors at UVa Inventory</h1>
+
+<p>This section of the website handles our equipment inventory.  For the rules
+about borrowing gear, who's allowed to borrow what, etc please use the "Member
+Resources" navigation item at left.</p>
+
+<p>You may do the following:</p>
+
+<ul>
+
+{item_list_all:}
+<li><a href="members/item/list_all">Browse the inventory online</a></li>
+{:item_list_all}
+{item_create:}
+<li><a href="members/item/create">Add items to the inventory</a></li>
+{:item_create}
+{checkout_create:}
+<li><a href="members/checkout/create">Check equipment out to a member</a></li>
+{:checkout_create}
+{checkout_list_all:}
+<li><a href="members/checkout/list_all">View equipment that's checked out</a></li>
+{:checkout_list_all}
+{manage:}
+<li><a href="members/item_category">Manage item categories</a></li>
+<li><a href="members/item_type">Manage item types</a></li>
+{:manage}
+
+</ul>
+@
+
+
+1.5
+log
+@add links to manage item categories, item types
+@
+text
+@d10 1
+a10 1
+      <a href="members.php?page=item&action={ACTION_LIST_ALL}&category={ic_uid}&type={ty_uid}&form-name=1">{ic_title} &raquo; {ty_title}</a>
+d28 1
+a28 1
+<li><a href="members.php?page=item&action={ACTION_LIST_ALL}">Browse the inventory online</a></li>
+d31 1
+a31 1
+<li><a href="members.php?page=item&action={ACTION_CREATE}">Add items to the inventory</a></li>
+d34 1
+a34 1
+<li><a href="members.php?page=checkout&action={ACTION_CREATE}">Check equipment out to a member</a></li>
+d37 1
+a37 1
+<li><a href="members.php?page=checkout&action={ACTION_LIST_ALL}">View equipment that's checked out</a></li>
+d40 2
+a41 2
+<li><a href="members.php?page=item_category">Manage item categories</a></li>
+<li><a href="members.php?page=item_type">Manage item types</a></li>
+@
+
+
+1.4
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d39 4
+@
+
+
+1.3
+log
+@styling changes
+@
+text
+@d13 1
+a13 1
+    <td align="right">{total}</td>
+@
+
+
+1.2
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d1 16
+a40 17
+
+<h2>Inventory Summary</h2>
+
+<table class="compact elbowroom cleanHeaders">
+  <tr>
+    <th>Type</th>
+    <th>Qty</th>
+    <th>Qty Out</th>
+  </tr>
+  <tr>{row:}
+    <td>
+      <a href="members.php?page=item&action={ACTION_LIST_ALL}&category={ic_uid}&type={ty_uid}&form-name=1">{ic_title} &raquo; {ty_title}</a>
+    </td>
+    <td align="right">{existing}</td>
+    <td align="right">{total}</td>
+  </tr>{:row}
+</table>
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d25 17
+@
+

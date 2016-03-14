@@ -1,0 +1,240 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.09.29.01.46.41;	author at;	state dead;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@new view_report pages
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: report-matrix.php,v 1.4 2004/09/20 20:38:39 at Exp $
+ *
+ * This page gives a report on attendees and their answers to the adventure's
+ * questions.
+ */
+
+# Check that the member is allowed to see this kind of report
+if ($obj['user']->getUID() != $object->getOwner()
+        && !$obj['user']->isRootUser()
+        && !$obj['user']->isInGroup('officer')) {
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$template = file_get_contents("templates/adventure/view_report-matrix.php");
+
+$attendees = $object->getAttendees();
+$questions = $object->getQuestions();
+
+# Add the question text to the page
+foreach ($questions as $key => $question) {
+    $template = Template::block($template, "HEADER",
+        $question->getVarArray());
+}
+
+# Add the attendees' answers to the page
+if (count($attendees)) {
+    # Extract a template from the template template...
+    $rowTemplate = Template::extract($template, "ROW");
+    $template = Template::unhide($template, "SOME");
+    foreach ($attendees as $key => $attendee) {
+        if ($attendee->getStatus() == $cfg['status_id']['default']) {
+            $thisRow = $rowTemplate;
+            # Insert the member's information...
+            $member =& new Member();
+            $member->select($attendee->getMember());
+            $thisRow = Template::block($thisRow, "MEMBER",
+                $member->getVarArray());
+
+            # Insert the attendee's answers to the questions.
+            $answers = $attendee->getAnswers();
+            foreach ($questions as $key => $question) {
+                if ($answers[$key]) {
+                    if ($question->getType() == "bool") {
+                        $thisRow = Template::block($thisRow,
+                                "ANSWER", array(
+                                    "C_ANSWER_TEXT" => ($answers[$key]->getAnswerText() == "1"
+                                                ? "Yes"
+                                                : "No"))
+                                                + $answers[$key]->getVarArray());
+                    }
+                    else {
+                        $thisRow = Template::block($thisRow,
+                                "ANSWER", $answers[$key]->getVarArray());
+                    }
+                }
+                else {
+                    $thisRow = Template::block($thisRow, "ANSWER",
+                    array("C_ANSWER_TEXT" => "--"));
+                }
+            }
+            $template = Template::replace($template, array("ROW" => $thisRow), 1);
+        }
+    }
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+
+?>
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: report-matrix.php,v 1.3 2004/09/08 22:45:37 at Exp $
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: report-matrix.php,v 1.2 2004/08/25 11:43:32 at Exp $
+d41 1
+a41 1
+    $template = Template::replaceWithinBlock($template, "HEADER",
+d49 1
+a49 1
+    $template = Template::unhideBlock($template, "SOME");
+d56 1
+a56 1
+            $thisRow = Template::replaceWithinBlock($thisRow, "MEMBER",
+d64 1
+a64 1
+                        $thisRow = Template::replaceWithinBlock($thisRow,
+d72 1
+a72 1
+                        $thisRow = Template::replaceWithinBlock($thisRow,
+d77 1
+a77 1
+                    $thisRow = Template::replaceWithinBlock($thisRow, "ANSWER",
+d81 1
+a81 1
+            $template = Template::replaceValues($template, array("ROW" => $thisRow), 1);
+d86 1
+a86 1
+    $template = Template::unhideBlock($template, "NONE");
+@
+
+
+1.2
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: report-matrix.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d34 1
+a34 1
+$box = file_get_contents("templates/adventure/view_report-matrix-box.php");
+d41 1
+a41 1
+    $box = Template::replaceWithinBlock($box, "HEADER",
+d47 3
+a49 3
+    # Extract a template from the box template...
+    $rowTemplate = Template::extract($box, "ROW");
+    $box = Template::unhideBlock($box, "SOME");
+d81 1
+a81 1
+            $box = Template::replaceValues($box, array("ROW" => $thisRow), 1);
+d86 1
+a86 1
+    $box = Template::unhideBlock($box, "NONE");
+d89 1
+a89 1
+$res['content'] = $box;
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: report-matrix.php,v 1.5 2004/05/30 01:42:08 baron Exp $
+d30 2
+a31 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

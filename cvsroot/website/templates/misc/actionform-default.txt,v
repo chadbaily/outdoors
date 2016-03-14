@@ -1,0 +1,69 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.09.20.58.23;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.27.23.12.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@fix IE problem with relative URIs in the form's action javascript
+@
+text
+@<form class="action" onSubmit="document.location=this.elements[0].options[this.elements[0].selectedIndex].value; return false;">
+  <select>
+    <option value="">Choose An Action</option>{actions:}
+    <option value="{BASE}/members/{PAGE}/{c_title}/{OBJECT}">{c_summary}</option>{:actions}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@d4 1
+a4 1
+    <option value="members/{PAGE}/{c_title}/{OBJECT}">{c_summary}</option>{:actions}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d1 2
+a2 4
+<form action="members.php" method="GET" class="action">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+d4 1
+a4 1
+    <option value="{c_uid}">{c_summary}</option>{:actions}
+@
+

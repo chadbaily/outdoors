@@ -1,0 +1,161 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.05.12.30.15;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.05.12.12.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@remove primary-feature element
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        pre-processing="ucwords"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td>
+      <input type="text" name="title" id="title" style="width:400px" maxlength="100"/>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="category-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>
+      <select name="category" id="category">{CAT:}
+        <option value="{C_UID}">{C_TITLE}</option>{:CAT}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Item Type" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.4
+log
+@focus the cursor in te username field on load
+@
+text
+@a17 3
+    <element
+        name="primary-feature"
+        element-id="primary-feature" />
+@
+
+
+1.3
+log
+@organize item types by category
+@
+text
+@a7 1
+    error-element="overall-error"
+a21 3
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+@
+
+
+1.2
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d15 7
+d38 14
+@
+
+
+1.1
+log
+@init
+@
+text
+@d12 1
+a14 4
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+a30 12
+    </td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>
+      <input type="text" name="description" id="description" style="width:400px" maxlength="255"/>
+@
+

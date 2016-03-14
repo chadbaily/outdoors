@@ -1,0 +1,135 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.02.02.30.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.01.23.37.19;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Kayaking Trip Sheet -->
+<!-- navbar=Member's Area/Member Resources/Trip Checklists -->
+
+<h1>General Kayaking Trip Checklist</h1>
+
+<p><b>White water kayaking and canoeing are both dangerous activities that can result in serious injury or death.</b><br></p>
+
+<h2>Participant Requirements</h2>
+
+<p>To participate in a club introductory paddling class, you must know how to swim.</p>
+
+<p>To participate on a club kayaking trip, one must:
+<ul>
+ <li>Be able to swim</li>
+ <li>Know how to use the gear (paddle, PFD, Sprayskirt, etc.)</li>
+ <li>Satisfactorily complete the club’s introduction to white water kayaking class or have similar experience</li>
+ <li>Be qualified as per the appropriate rating (see below)</li>
+ <li>Wear a Personal Flotation Device (PFD) at <b>ALL TIMES</b> while boating</li>
+ <li>Wear a helmet at all times</li>
+</ul>
+
+<h2>Leader Requirements</h2>
+
+<p>To lead a club kayaking trip, one is ADVISED to (<b>bold items are REQUIRED</b>):
+
+<ul>
+ <li><b>Know the section of the water you are leading people down, including put-in and take-out locations, and where hazards are and how to avoid them.</b></li>
+ <li>Know first aid/CPR</li>
+ <li>Know the section at various gauge levels</li>
+ <li><b>Know the section at the level it will be at on the day of the adventure</b></li>
+ <li><b>Must bring:</b> (all provided by the club)</li>
+        <ul>
+         <li>Throw rope</li>
+         <li>First-aid supplies</li>
+         <li>Break down paddle</li>
+        </ul>
+</ul>
+
+<h2>Possible Gear</h2>
+
+<p>Possible gear that can be used for a kayaking trip include:</p>
+
+<ul>
+ <li>Five all-around whitewater kayaks and one sit-on-top kayak</li>
+ <li>Spray jackets</li>
+ <li>PFDs</li>
+ <li>Paddles</li>
+ <li>Helmets</li>
+ <li>Noseplugs</li>
+ <li>Throw rope</li>
+ <li>Foam car rack</li>
+</ul>
+
+<p>Possible gear that can be used for a canoeing trip include:</p>
+
+<ul>
+ <li>2 canoes</li>
+ <li>PFDs</li>
+ <li>Helmets</li>
+ <li>Paddles</li>
+ <li>Foam car rack</li>
+</ul>
+
+<p><b>Any sort of watersports gear can be checked out by any club member.  However, all gear is restricted to use on flat water, unless cleared by one of the watersports officers.</b></p>
+
+<h2>Rating System</h2>
+
+<p>The club's rating system for paddling experience is as follows:</p>
+
+<ul>
+ <li><b>Beginner</b> – Someone who has completed the introductory course or has similar experience. This person has been in a white water kayak and knows the basics strokes, recovery techniques, and how to wet exit. More experienced beginners have river experience. They’ve paddled through class 1-3 rapids with guidance.</li>
+ <li><b>Intermediate</b> – An intermediate paddler has ample experience in white water. He/she has paddled at least class 3 rapids numerous times, knows how to ferry and eddy turn well, and can Eskimo roll in flat water. The intermediate paddler doesn’t necessarily have a bomb proof roll.</li>
+ <li><b>Advanced</b> – If you are an advanced paddler you’ve kayaked through at least class 4 rapids, have a solid roll, and know well such terms as “boof”, “keeper”, and “chundering hole”. You can easily read class 3 rivers and you have enough river experience to have participated in some form of river rescue. You are likely qualified to lead a group down your top 3 most run sections at various levels.</li>
+ <li><b>Expert</b> – If you are an expert paddler, you are not reading this checklist! Your river reading skills are top notch. You could paddle some of the hardest stuff out there with complete confidence. You are up to date on paddle techniques and river rescue. You are a god on the river!</li>
+</ul>
+
+<p><center><font size=+2><b>ENJOY YOUR TRIP!</b></font></center></p>
+
+@
+
+
+1.2
+log
+@Decided to shrink down the death warning
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Trip Checklists -->
+@
+
+
+1.1
+log
+@*** empty log message ***
+@
+text
+@d7 1
+a7 1
+<p><b><font size=+1>White water kayaking and canoeing are both dangerous activities that can result in serious injury or death.</font></b><br></p>
+@
+

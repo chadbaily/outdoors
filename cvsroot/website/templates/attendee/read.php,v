@@ -1,0 +1,150 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.18.02.38.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.14.03;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>Attendee Details</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="collapsed elbowroom verticalHeaders">
+  <tr>
+    <th>Member</th>
+    <td><a href="members/member/read/{T_MEMBER}">{C_FULL_NAME}</a></td>
+  </tr>
+  <tr>
+    <th>Adventure</th>
+    <td><a href="members/adventure/read/{T_ADVENTURE}">{C_TITLE}</a></td>
+  </tr>
+  <tr>
+    <th>Amount Paid</th>
+    <td>${C_AMOUNT_PAID}</td>
+  </tr>
+  <tr>
+    <th>Date Joined</th>
+    <td>{C_JOINED_DATE}</td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td>{STATUS}</td>
+  </tr>
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.4
+log
+@shrink-wrapped the actions form
+@
+text
+@d11 1
+a11 1
+    <td><a href="members.php?page=member&object={T_MEMBER}&action={ACTION_READ}">{C_FULL_NAME}</a></td>
+d15 1
+a15 1
+    <td><a href="members.php?page=adventure&object={T_ADVENTURE}&action={ACTION_READ}">{C_TITLE}</a></td>
+d27 1
+a27 1
+    <td><a href="members.php?page=status&object={T_STATUS}&action={ACTION_READ}">{STATUS}</a></td>
+@
+
+
+1.3
+log
+@simplify 'Other actions' form
+@
+text
+@d31 1
+a31 10
+<form action="members.php" name="form{T_ATTENDEE}" method="GET">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <input type="hidden" name="page" value="{PAGE}">
+  <select name="action">
+  <option value="">Choose an Action</option>
+  {ACTIONS:}
+  <option value="{C_UID}">{C_SUMMARY}</option>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.2
+log
+@added joined_date column
+@
+text
+@a33 1
+  <p>You may take the following actions on this object:</p>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 1
+a8 1
+<table>
+d10 1
+a10 1
+    <td>Member:</td>
+d14 1
+a14 1
+    <td>Adventure:</td>
+d18 1
+a18 1
+    <td>Amount Paid:</td>
+d22 5
+a26 1
+    <td>Status:</td>
+d33 1
+a33 1
+  <input type="hidden" name="page" value="attendee">
+@
+

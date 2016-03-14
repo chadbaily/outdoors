@@ -1,0 +1,267 @@
+head	1.10;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2005.02.07.18.45.27;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.12.22.02.52.25;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.14.13.29.48;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.24.18.36.32;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.22.00.23.57;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.19.11.37.22;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.16.18.25.47;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.16.17.30.18;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@friendlyurls
+@
+text
+@<!-- title=Outdoors at UVa -->
+<!-- navbar=Home -->
+<h1>Outdoors at UVa</h1>
+
+<p><a href="javascript:imageWindow('waterfall.jpg')"><img src="images/waterfall-thumb.jpg" class="thumbnail-right" height="150" width="100" alt="A nearby
+waterfall"></a>Outdoors at UVa is an exciting and fun outdoors club based
+at the University of Virginia, in Charlottesville, VA.
+We are a student-run organization, so most (but not all) of our
+members are <a href="http://www.virginia.edu/">University of Virginia</a>
+students.</p>
+
+<p><a href="javascript:imageWindow('bouldering.jpg')"><img src="images/bouldering-thumb.jpg" 
+class="thumbnail-left"></a>
+
+We have a large and active membership &mdash; over 400 members.  Members
+participate in a huge variety of <a
+href="index.php?page=activities">activities</a> all over Charlottesville,
+surrounding areas and states, and even all over the US and world, at very
+low cost.  Last year we led <a
+href="members/main/past-adventures">over 150 trips</a>!
+Outdoors at UVa has a talented and energetic corps of <a
+href="index.php?page=officers">officers and leaders</a>, who plan outdoors
+trips and manage the organization.  We have a large collection of
+top-quality, well-maintained gear that members can borrow for free.  For
+more information, read <a href="index.php?page=how-it-works">how the club
+works</a>.</p>
+
+<p>Membership is inexpensive and comes with a huge array of <a
+href="index.php?page=how-it-works">benefits</a>.  If you're ready to hit the
+trail, <a href="members/join">join the club</a>! If you need more
+information, read our <a href="index.php?page=faq">frequently asked
+questions</a> list; if you still have a question, you may <a
+href="index.php?page=contact">contact us</a>.</p>
+
+<p>And don't miss our <a href="index.php?page=schedule">upcoming meetings</a>,
+where you can find out all about us while you enjoy beautiful photos of our
+past trips.</p>
+
+<h2>Mission Statement</h2>
+
+<p>Our Mission Statement defines our purpose, values, and principles as an
+organization.</p>
+
+<blockquote style="border:1px solid #252; padding:1em">
+
+Outdoors at UVa is a group of students and community members united by their
+desire to enjoy outdoor activities with friends, while promoting safety and
+environmental preservation, educating others about nature, and developing
+leadership skills.
+
+</blockquote>
+
+@
+
+
+1.9
+log
+@change membership number to 'over 400'
+@
+text
+@d20 1
+a20 1
+href="members.php?page=main&action=past-adventures">over 150 trips</a>!
+d30 1
+a30 1
+trail, <a href="members.php?page=join">join the club</a>! If you need more
+@
+
+
+1.8
+log
+@added FAQ page
+@
+text
+@d15 1
+a15 1
+We have a large and active membership &mdash; nearly 400 members.  Members
+@
+
+
+1.7
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d31 7
+a37 5
+information, the club officers live to serve you.  Please <a
+href="index.php?page=contact">contact us directly</a>, or use our <a
+href="members.php?page=main&action=feedback">anonymous contact form</a>.  And
+don't miss our <a href="index.php?page=schedule">upcoming meetings</a>, where
+you can find out all about us while you enjoy beautiful photos of our past trips.</p>
+@
+
+
+1.6
+log
+@added tabs and links and the public schedule page
+@
+text
+@d2 1
+a2 1
+<!-- tab=Home -->
+@
+
+
+1.5
+log
+@took out the redundant "Charlottesville, Virginia" part and moved it to the body of the text.
+@
+text
+@d28 8
+a35 7
+<p>Membership is inexpensive and comes with a huge array of 
+<a href="index.php?page=how-it-works">benefits</a>.
+If you're ready to hit the trail, 
+<a href="members.php?page=join">join the club</a>!
+If you need more information, the club officers live to serve you.  Please 
+<a href="index.php?page=contact">contact us directly</a>, or use our 
+<a href="members.php?page=main&action=feedback">anonymous contact form</a>.</p>
+@
+
+
+1.4
+log
+@added Outdoors at UVa
+@
+text
+@d1 1
+a1 1
+<!-- title=Outdoors at UVa in Charlottesville, Virginia -->
+d3 1
+a3 1
+<h1>Outdoors at UVa in Charlottesville, Virginia</h1>
+d6 3
+a8 2
+waterfall"></a>Outdoors at UVa is an exciting, fun outdoors club based in Charlottesville,
+Virginia.  We are a student-run organization, so most (but not all) of our
+@
+
+
+1.3
+log
+@removed a feel free
+@
+text
+@d1 1
+a1 1
+<!-- title=Outdoors at UVa -->
+d3 1
+a3 1
+<h1>Outdoors at UVa</h1>
+d15 11
+a25 7
+participate in a huge variety of <a href="index.php?page=activities">activities</a> all
+over Charlottesville, surrounding areas and states, and even all over the US and
+world, at very low cost.  Outdoors at UVa has a talented and energetic corps of
+<a href="index.php?page=officers">officers and leaders</a>, who plan outdoors trips and
+manage the organization.  We have a large collection of top-quality,
+well-maintained gear that members can borrow for free.  For more information,
+read <a href="index.php?page=how-it-works">how the club works</a>.</p>
+@
+
+
+1.2
+log
+@added mission statement to front page
+@
+text
+@d27 1
+a27 1
+If you need more information, the club officers live to serve you.  Feel free to
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 1
+a14 1
+We have a large and active membership &mdash; upwards of 300 members.  Members
+d30 15
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

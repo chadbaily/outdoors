@@ -1,0 +1,85 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.30.18.26.12;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.30.01.09.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=Becoming an Officer -->
+<!-- navbar=Member's Area/Member Resources/Becoming an Officer -->
+
+<h1>Becoming an officer</h1>
+
+<p>The current officers are always seeking new officers to join their ranks.  In
+order to become an officer, a member must lead at least 3 trips in a year and
+must be approved by all current officers.  The single most important aspect that
+we look for in new officers is a passion for the Club.</p>
+
+<p>A few of our most active officers graduated this year, so we are looking for
+replacements!  Contact us if you think you can contribute to the club.</p>
+
+<h2>Officer Benefits</h2>
+
+<p>Becoming an officer of Outdoors at UVA will give you experience running a
+large club, which is a surprising amount of work.  As an officer, you can choose
+to help out in any way you see fit: by leading trips, helping keep finances straight,
+and so on.</p>
+
+<p>If you are at all interested in becoming an officer, please let the officers
+know!  Just shoot us an e-mail at
+<script>document.write(email('outdoors-officers', 'virginia.edu'));</script>.</p>
+@
+
+
+1.2
+log
+@shortened and clarified
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Becoming an Officer -->
+@
+
+
+1.1
+log
+@init
+@
+text
+@d7 7
+a13 1
+<p>The current officers are always seeking new officers to join their ranks.  In order to become an officer, a member must lead at least 3 trips in a year and must be approved by all current officers.  The single most important aspect that we look for in new officers is a passion for the Club.  We are also interested in members who exhibit a genuine interest in making the club even better.</p>
+d17 4
+a20 1
+<p>Becoming an officer of Outdoors at UVA will give you an immense amount of experience running a large club.  There is a surprising amount of work that goes into keeping the club running (we have over 300 members), and as an officer you will have the opportunity to keep this awesome club running.  As an officer, you can choose to help out in any way you see fit: by leading trips, helping out administratively, or helping with finances.</p>
+d22 3
+a24 1
+<p>If you are at all interested in becoming an officer, please let the officers know!  We are more than willing to help you along the way!  Just shoot us an e-mail at <script>document.write(email('outdoors-officers', 'virginia.edu'));</script>.</p>@
+

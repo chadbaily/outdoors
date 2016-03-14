@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.31.00.48.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@fix bug 197: add view_history action to item
+@
+text
+@select ci.*, st.c_title as st_title
+from [_]checkout_item as ci
+    inner join [_]status as st on ci.c_status = st.c_uid
+where ci.c_item = {item,int}
+    and ci.c_deleted <> 1
+@

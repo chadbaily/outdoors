@@ -1,0 +1,16 @@
+#!/usr/local/bin/bash
+if [ $2 ]
+then
+    name=`basename $1`
+    cvs up -Ap -r$2 $1 > ".#cv-$name"
+    vimdiff $1 ".#cv-$name"
+    rm ".#cv-$name"
+elif [ $1 ]
+then
+    name=`basename $1`
+    cvs up -Ap $1 > ".#cv-$name"
+    vimdiff $1 ".#cv-$name"
+    rm ".#cv-$name"
+else
+    echo "usage: vd <file> <branch|revision>"
+fi

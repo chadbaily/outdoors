@@ -1,0 +1,437 @@
+head	1.14;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.14
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.23.12.56.02;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.07.17.41.48;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.06.22.37.14;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.06.13.56.03;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.05.19.34.50;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.05.02.27.10;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.22.26.28;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.20.20.31.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.14
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: write.php,v 1.13 2005/02/07 18:49:28 at Exp $
+ */
+
+include_once("item_note.php");
+
+# Create templates
+$template = file_get_contents("templates/item/write.php");
+$template = $object->insertIntoTemplate($template);
+
+# Get the next and last items in the list
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/next-by-type.sql");
+$cmd->addParameter("type", $object->getType());
+$cmd->addParameter("item", $cfg['object']);
+$next = $cmd->executeScalar();
+if ($next) {
+    $template = Template::unhide($template, "NEXT");
+    $template = Template::replace($template,
+        array ("NEXT_ID" => $next));
+}
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/last-by-type.sql");
+$cmd->addParameter("type", $object->getType());
+$cmd->addParameter("item", $cfg['object']);
+$last = $cmd->executeScalar();
+if ($last) {
+    $template = Template::unhide($template, "LAST");
+    $template = Template::replace($template,
+        array ("LAST_ID" => $last));
+}
+
+# Create the form and populate the condition menu
+$formTemplate = file_get_contents("forms/item/write.xml");
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]condition");
+$cmd->addParameter("orderby", "c_rank");
+$result =& $cmd->executeReader();
+
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "OPTION",
+        array_change_key_case($row, 1));
+}
+
+foreach (array("checked_out", "checked_in", "missing") as $status) {
+    $formTemplate = Template::block($formTemplate, "STATUS", array(
+        "C_TITLE" => $status,
+        "C_UID" => $cfg['status_id'][$status]));
+}
+
+$form =& new XMLForm(Template::finalize($formTemplate), true);
+
+# Put the item's information into the form
+$form->setValue("description", $object->getDescription());
+$form->setValue("purchase-date", $object->getPurchaseDate());
+$form->setValue("condition", $object->getCondition());
+$form->setValue("status", $object->getStatus());
+$form->setValue("qty", $object->getQty());
+
+# Validate the form
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Update the object with the form information, possibly saving a note
+    if (trim($form->getValue("note"))
+            || $object->getCondition() != $form->getValue("condition")
+            || $object->getStatus() != $form->getValue("status")) {
+        $note =& new item_note();
+        $note->setItem($cfg['object']);
+        $note->setNote($form->getValue("note"));
+        $note->setCondition($form->getValue("condition"));
+        $note->setStatus($form->getValue("status"));
+        $note->insert();
+    }
+    $object->setDescription($form->getValue("description"));
+    $object->setPurchaseDate($form->getValue("purchase-date"));
+    $object->setCondition($form->getValue("condition"));
+    $object->setStatus($form->getValue("status"));
+    $object->setQty($form->getValue("qty"));
+    $object->update();
+    if (isset($_GET['mode'])) {
+        redirect("$cfg[base_url]/members/item/edit_features/$cfg[object]");
+    }
+    else {
+        redirect("$cfg[base_url]/members/item/read/$cfg[object]");
+    }
+}
+
+$res['content'] = Template::replace($template,
+    array("FORM" => $form->toString()));
+$res['title'] = "Edit Item Details";
+
+?>
+@
+
+
+1.13
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.12 2005/01/16 14:33:38 at Exp $
+d103 1
+a103 1
+        redirect("members/item/edit_features/$cfg[object]");
+d106 1
+a106 1
+        redirect("members/item/read/$cfg[object]");
+@
+
+
+1.12
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.11 2004/10/23 12:56:02 at Exp $
+d103 1
+a103 3
+        redirect("members.php?page=item&action="
+            . $cfg['action_id']['edit_features']
+            . "&object=$cfg[object]");
+d106 1
+a106 1
+        redirect("members.php?page=item&action=1&object=$cfg[object]");
+@
+
+
+1.11
+log
+@edit_attributes -> edit_features, change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.10 2004/10/07 17:41:48 at Exp $
+d78 1
+d100 1
+@
+
+
+1.10
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.9 2004/10/06 22:37:14 at Exp $
+d23 2
+d88 1
+a88 1
+        $note =& new ItemNote();
+d102 1
+a102 1
+            . $cfg['action_id']['edit_attributes']
+@
+
+
+1.9
+log
+@order conditions by rank
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.8 2004/10/06 13:56:03 at Exp $
+d99 1
+a99 1
+        Utility::redirect("members.php?page=item&action="
+d104 1
+a104 1
+        Utility::redirect("members.php?page=item&action=1&object=$cfg[object]");
+@
+
+
+1.8
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.7 2004/10/05 19:34:50 at Exp $
+d55 1
+a55 1
+$cmd->addParameter("orderby", "c_uid");
+@
+
+
+1.7
+log
+@add a note if the condition changes or there is a note in the textarea
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.6 2004/10/05 02:27:10 at Exp $
+d28 5
+a32 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/next-by-type.sql");
+$comm->addParameter("type", $object->getType());
+$comm->addParameter("item", $cfg['object']);
+$next = $comm->executeScalar();
+d38 5
+a42 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/last-by-type.sql");
+$comm->addParameter("type", $object->getType());
+$comm->addParameter("item", $cfg['object']);
+$last = $comm->executeScalar();
+d63 6
+d75 1
+d84 2
+a85 1
+            || $object->getCondition() != $form->getValue("condition")) {
+d90 1
+d96 1
+@
+
+
+1.6
+log
+@add next/last/back-to-list links
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.5 2004/09/24 17:39:46 at Exp $
+d75 9
+a83 1
+    # Update the object with the form information
+a87 5
+    $note =& new ItemNote();
+    $note->setItem($cfg['object']);
+    $note->setNote($form->getValue("note"));
+    $note->setCondition($object->getCondition());
+    $note->insert();
+d90 2
+a91 2
+                . $cfg['action_id']['edit_attributes']
+                . "&object=$cfg[object]");
+@
+
+
+1.5
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.4 2004/09/20 22:26:28 at Exp $
+d26 22
+@
+
+
+1.4
+log
+@added the copy action to item; changed the default behavior when entering new items
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.3 2004/09/20 20:38:40 at Exp $
+a43 1
+$form->setValue("title", $object->getTitle());
+a53 1
+    $object->setTitle($form->getValue("title"));
+@
+
+
+1.3
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.2 2004/09/20 20:31:40 at Exp $
+d65 8
+a72 1
+    Utility::redirect("members.php?page=item&action=1&object=$cfg[object]");
+@
+
+
+1.2
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.1 2004/09/19 02:48:34 at Exp $
+d37 1
+a37 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "OPTION",
+d68 1
+a68 1
+$res['content'] = Template::replaceValues($template,
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.3 2004/09/08 22:45:37 at Exp $
+a43 1
+$purch = $object->getPurchaseDate();
+d46 1
+a46 1
+$form->setValue("purchase-date", $purch->toString("Y-m-d"));
+d57 1
+a57 1
+    $object->setPurchaseDate(new DateTime($form->getValue("purchase-date")));
+d65 1
+a65 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+@
+

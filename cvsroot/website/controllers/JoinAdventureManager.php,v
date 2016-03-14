@@ -1,0 +1,806 @@
+head	1.16;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.16
+date	2004.11.03.21.49.09;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.10.21.21.05.02;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.10.13.18.31.22;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.06.22.24.00;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.04.18.13.06;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.09.20.20.38.38;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.18.15.51.50;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.18.15.22.18;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.18.02.40.22;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.17.22.46.07;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.07.14.02.36;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.03.20.37.51;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.02.54.48;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.16
+log
+@use attendee's status to determine waitlisting, instead of hitting the DB again
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: JoinAdventureManager.php,v 1.15 2004/10/21 21:05:02 at Exp $
+ */
+// {{{require statements
+include_once("Email.php");
+include_once("location.php");
+include_once("privilege.php");
+//}}}
+
+class JoinAdventureManager {
+
+    /* {{{addQuestionsToForm
+     *
+     */
+    function addQuestionsToForm($formTemplate, &$adventure) {
+        global $obj;
+        # Extract some templates out of the template
+        $boolConfig = Template::extract($formTemplate, "BOOL_CONFIG");
+        $textConfig = Template::extract($formTemplate, "TEXT_CONFIG");
+        $text = Template::extract($formTemplate, "TEXT");
+        $bool = Template::extract($formTemplate, "BOOL");
+        # Go through the adventure's questions and plug them into the form
+        # template
+        $cmd =& $obj['conn']->createCommand();
+        $cmd->loadQuery("sql/queries/question/select-by-adventure.sql");
+        $cmd->addParameter("adventure", $adventure->c_uid);
+        $result =& $cmd->executeReader();
+        while ($row =& $result->fetchRow()) {
+            $whichConfig = "$row[c_type]Config";
+            $formTemplate = Template::replace($formTemplate, array(
+                "ELEMENTS" => Template::replace($$row['c_type'],
+                    array_change_key_case($row, 1))), true);
+            $formTemplate = Template::replace($formTemplate, array(
+                "CONFIGS" => Template::replace($$whichConfig,
+                    array_change_key_case($row, 1))), true);
+        }
+        return $formTemplate;
+    } //}}}
+
+    /* {{{checkIfMemberIsAttending
+     *
+     */
+    function checkIfMemberIsAttending(&$adventure, &$member) {
+        $attendees =& $adventure->getChildren("attendee");
+        foreach (array_keys($attendees) as $key) {
+            if ($attendees[$key]->getMember() == $member->getUID()) {
+                return true;
+            }
+        }
+        return false;
+    } //}}}
+
+    /* {{{sendJoinConfirmation
+     *
+     */
+    function sendJoinConfirmation(&$member, &$adventure, $status) {
+        global $obj;
+        global $cfg;
+
+        $waitlist = ($status == $cfg['status_id']['waitlisted']);
+
+        $leader =& new member();
+        $leader->select($adventure->getOwner());
+        $phone =& $leader->getPrimaryPhoneNumber();
+        $departure =& new location();
+        $departure->select($adventure->getDeparture());
+        $destination =& new location();
+        $destination->select($adventure->getDestination());
+
+        $emailTemplate = "";
+        if ($waitlist) {
+            $emailTemplate =
+                file_get_contents("templates/emails/welcome-to-adventure-waitlist.txt");
+        }
+        else {
+            $emailTemplate =
+                file_get_contents("templates/emails/welcome-to-adventure.txt");
+        }
+
+        $email =& new Email();
+        $email->addTo($member->getEmail());
+        $email->setFrom($leader->getEmail());
+        $email->addCC($leader->getEmail());
+        if ($waitlist) {
+            $email->setSubject("Welcome to the Waitlist for " . $adventure->getTitle());
+        }
+        else {
+            $email->setSubject("Welcome to " . $adventure->getTitle());
+        }
+        $array = array(
+            "LEADER_NAME" => $leader->getFullName(),
+            "LEADER_EMAIL" => $leader->getEmail(),
+            "LEADER_PHONE" => isset($phone) ? $phone->toString() : "NONE",
+            "C_FULL_NAME" => $member->getFullName(),
+            "TO_EMAIL" => $member->getEmail(),
+            "DEPARTURE" => $departure->getTitle(),
+            "WITHDRAW" => $cfg['action_id']['withdraw'],
+            "BASEURL" => $cfg['site_url'] . $cfg['base_url'],
+            "READ" => $cfg['action_id']['read']
+            );
+        $emailTemplate = $adventure->insertIntoTemplate($emailTemplate);
+        $email->setBody(Template::replace($emailTemplate, $array));
+        $email->setWordWrap(FALSE);
+        $email->loadFooter("templates/emails/footer.txt");
+        $email->send();
+    } //}}}
+
+    /* {{{memberIsWaitlisted
+     *
+     */
+    function memberIsWaitlisted(&$adventure, &$member) {
+        global $cfg;
+        foreach ($adventure->getChildren("attendee") as $key => $attendee) {
+            if ($attendee->getMember() == $member->getUID()) {
+                return ($attendee->getStatus() ==
+                    $cfg['status_id']['waitlisted']);
+            }
+        }
+        return false;
+    } //}}}
+
+    /* {{{getAttendee
+     */
+    function getAttendee(&$member, &$adventure) {
+        foreach ($adventure->getChildren("attendee") as $key => $att) {
+            if ($att->getMember() == $member->getUID()) {
+                return $att;
+            }
+        }
+    } //}}}
+
+    /* {{{sendWithdrawalConfirmation
+     */
+    function sendWithdrawalConfirmation(&$member, &$adventure) {
+        global $obj;
+        global $cfg;
+
+        $leader =& new member();
+        $leader->select($adventure->getOwner());
+        $emailTemplate = 
+            file_get_contents("templates/emails/adventure-withdraw.txt");
+
+        $email =& new Email();
+        $email->addTo($member->getEmail());
+        $email->setFrom('"' . $leader->getFullName = '" <' . $leader->getEmail() . ">");
+        $email->addHeader("Reply-To",  $leader->getEmail());
+        $email->addHeader("Return-Path",  $leader->getEmail());
+        $email->addCC($leader->getEmail());
+        $email->setSubject("Withdrawal Confirmation"); 
+        $array = array(
+            "LEADER_NAME" => $leader->getFullName(),
+            "TO_NAME" => $member->getFullName()
+            );
+        $emailTemplate = $adventure->insertIntoTemplate($emailTemplate);
+        $email->setBody(Template::replace($emailTemplate, $array));
+        $email->setWordWrap(TRUE);
+        $email->loadFooter("templates/emails/footer.txt");
+        $email->send();
+    } //}}}
+
+    /* {{{removeFirstWaitlistedMember
+     * Joins the first waitlisted member and returns that object.  Does NOT
+     * remove any members if the adventure is already full.  This is to prevent
+     * the following undesirable scenario: The adventure fills and the leader
+     * removes someone from the waitlist manually.  Now the adventure is
+     * overfull.  A member withdraws, and the first person on the waitlist gets
+     * un-waitlisted.  This is BAD.  We don't want the adventure to stay
+     * overfull.
+     */
+    function removeFirstWaitlistedMember(&$adventure) {
+        global $cfg;
+        if (count($adventure->getAttendees("waitlisted"))
+            && count($adventure->getAttendees("default")) < $adventure->getMaxAttendees())
+        {
+            $attendee = array_shift($adventure->getAttendees("waitlisted"));
+            $attendee->setStatus($cfg['status_id']['default']);
+            $attendee->setJoinedDate(date("Y-m-d H:i:s"));
+            $attendee->update();
+            $member =& new member();
+            $member->select($attendee->getMember());
+            JoinAdventureManager::sendJoinConfirmation($member, $adventure,
+                $attendee->getStatus());
+            return $member;
+        }
+    } //}}}
+
+    /* {{{sendWaitlistConfirmation
+     */
+    function sendWaitlistConfirmation(&$member, &$adventure) {
+        global $obj;
+        global $cfg;
+
+        $leader =& new member();
+        $leader->select($adventure->getOwner());
+        $emailTemplate = 
+            file_get_contents("templates/emails/waitlist-email.txt");
+
+        $email =& new Email();
+        $email->addTo($member->getEmail());
+        $email->setFrom($leader->getEmail());
+        $email->addCC($leader->getEmail());
+        $email->setSubject("Waitlist Confirmation"); 
+        $array = array(
+            "LEADER_NAME" => $leader->getFullName(),
+            "TO_NAME" => $member->getFullName()
+            );
+        $emailTemplate = $adventure->insertIntoTemplate($emailTemplate);
+        $email->setBody(Template::replace($emailTemplate, $array));
+        $email->setWordWrap(TRUE);
+        $email->loadFooter("templates/emails/footer.txt");
+        $email->send();
+    } //}}}
+
+    /* {{{checkIfMemberCommented
+     */
+    function checkIfMemberCommented(&$adventure, &$member) {
+        foreach ($adventure->getChildren("adventure_comment", "c_adventure") as $key => $comment) {
+            if ($comment->getOwner() == $member->getUID()) {
+                return true;
+            }
+        }
+    } //}}}
+
+}
+?>
+@
+
+
+1.15
+log
+@class names change to match tables names.  Use getChildren()
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.14 2004/10/13 18:31:22 at Exp $
+d74 1
+a74 1
+    function sendJoinConfirmation(&$member, &$adventure) {
+d78 1
+a78 4
+        $waitlist = false;
+        if (JoinAdventureManager::memberIsWaitlisted($adventure, $member)) {
+            $waitlist = true;
+        }
+d199 2
+a200 1
+            JoinAdventureManager::sendJoinConfirmation($member, $adventure);
+@
+
+
+1.14
+log
+@don't word-wrap welcome-to-adventure emails
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.13 2004/10/06 22:24:00 at Exp $
+d24 2
+a25 2
+include_once("Location.php");
+include_once("Privilege.php");
+d62 1
+a62 1
+        $attendees =& $adventure->getAttendees();
+d83 1
+a83 1
+        $leader =& new Member();
+d86 1
+a86 1
+        $departure =& new Location();
+d88 1
+a88 1
+        $destination =& new Location();
+d134 1
+a134 1
+        foreach ($adventure->getAttendees(TRUE) as $key => $attendee) {
+d146 1
+a146 1
+        foreach ($adventure->getAttendees() as $key => $att) {
+d159 1
+a159 1
+        $leader =& new Member();
+d193 2
+a194 2
+        if (count($adventure->getWaitlist())
+            && count($adventure->getFullAttendees()) < $adventure->getMaxAttendees())
+d196 1
+a196 1
+            $attendee = array_shift($adventure->getWaitlist());
+d200 1
+a200 1
+            $member =& new Member();
+d213 1
+a213 1
+        $leader =& new Member();
+d237 1
+a237 1
+        foreach ($adventure->getComments() as $key => $comment) {
+@
+
+
+1.13
+log
+@comm -> cmd
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.12 2004/10/04 18:13:06 at Exp $
+d124 1
+a124 1
+        $email->setWordWrap(TRUE);
+@
+
+
+1.12
+log
+@stop using the owner- address of the officers list as the club admin email, and stop BCCing messages all over the place
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.11 2004/09/20 20:38:38 at Exp $
+d42 4
+a45 4
+        $comm =& $obj['conn']->createCommand();
+        $comm->loadQuery("sql/queries/question/select-by-adventure.sql");
+        $comm->addParameter("adventure", $adventure->c_uid);
+        $result =& $comm->executeReader();
+@
+
+
+1.11
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.10 2004/09/20 18:26:50 at Exp $
+d118 1
+a118 1
+            "DESTINATION" => $destination->getTitle(),
+@
+
+
+1.10
+log
+@use uppercase H for 24-hour time
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.9 2004/09/18 15:51:50 at Exp $
+d48 2
+a49 2
+            $formTemplate = Template::replaceValues($formTemplate, array(
+                "ELEMENTS" => Template::replaceValues($$row['c_type'],
+d51 2
+a52 2
+            $formTemplate = Template::replaceValues($formTemplate, array(
+                "CONFIGS" => Template::replaceValues($$whichConfig,
+d123 1
+a123 1
+        $email->setBody(Template::replaceValues($emailTemplate, $array));
+d176 1
+a176 1
+        $email->setBody(Template::replaceValues($emailTemplate, $array));
+d228 1
+a228 1
+        $email->setBody(Template::replaceValues($emailTemplate, $array));
+@
+
+
+1.9
+log
+@fix undefined variable
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.8 2004/09/18 15:22:18 at Exp $
+d198 1
+a198 1
+            $attendee->setJoinedDate(date("Y-m-d h:i:s"));
+@
+
+
+1.8
+log
+@remove unused code
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.7 2004/09/18 02:40:22 at Exp $
+d196 1
+a196 1
+            $attendee = array_shift($waitlist);
+@
+
+
+1.7
+log
+@moved a lot of the controller code into the attendee and adventure pages
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.6 2004/09/17 22:46:07 at Exp $
+d105 6
+a110 6
+	if ($waitlist) {
+	        $email->setSubject("Welcome to the Waitlist for " . $adventure->getTitle());
+	}
+	else {
+	        $email->setSubject("Welcome to " . $adventure->getTitle());
+	}
+a128 13
+    /* {{{getWaitlist
+     */
+    function getWaitlist(&$adventure) {
+        global $cfg;
+        $waitlist = array();
+        foreach ($adventure->getAttendees(TRUE) as $key => $attendee) {
+            if ($attendee->getStatus() == $cfg['status_id']['waitlisted']) {
+                $waitlist[$key] = $attendee;
+            }
+        }
+        return $waitlist;
+    } //}}}
+
+d193 2
+a194 3
+        $waitlist = JoinAdventureManager::getWaitlist($adventure);
+        if (count($waitlist)
+            && count(JoinAdventureManager::getAttendingMembers($adventure)) < $adventure->getMaxAttendees())
+@
+
+
+1.6
+log
+@fix invalid function calls
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.5 2004/09/07 14:02:36 at Exp $
+d42 4
+a45 3
+        $result =& $obj['conn']->query("select c_text as C_TEXT, c_uid as C_UID, "
+            . "c_type from [_]question where c_adventure = $adventure->c_uid "
+            . "order by [_]question.c_created_date");
+d49 2
+a50 2
+                "ELEMENTS" => Template::replaceValues($$row['c_type'], $row)),
+                true);
+d52 2
+a53 1
+                "CONFIGS" => Template::replaceValues($$whichConfig, $row)), true);
+a57 14
+    /* {{{setAnswerValues
+     */
+    function setAnswerValues(&$form, &$attendee, &$member) {
+        global $obj;
+        $result = $obj['conn']->query("select [_]answer.* from [_]answer"
+                . " inner join [_]question on [_]question.c_uid=[_]answer.c_question"
+                . " inner join [_]attendee on [_]attendee.c_member = [_]answer.c_member"
+                . " where [_]attendee.c_uid=" . $attendee->getUID()
+                . " and [_]question.c_adventure=" . $attendee->getAdventure());
+        while ($row = $result->fetchRow()) {
+            $form->setValue("question" . $row['c_question'], $row['c_answer_text']);
+        }
+    } //}}}
+
+a70 68
+    /* {{{updateAnswers
+     *
+     */
+    function updateAnswers(&$member, &$adventure, &$form) {
+        global $obj;
+        foreach ($adventure->getQuestions() as $key => $q) {
+            $answer =& new Answer();
+            # See if there's an existing answer to update
+            $result = $obj['conn']->query("select * from [_]answer where c_member="
+                    . $member->getUID() . " and c_question = "
+                    . $q->getUID());
+            if ($result->numRows() > 0) {
+                $answer->initFromRow($result->fetchRow());
+                $answer->setAnswerText($form->getValue("question" . $q->getUID()));
+                $answer->update();
+            }
+            else {
+                $answer->setQuestion($q->getUID());
+                $answer->setOwner($member->getUID());
+                $answer->setMember($member->getUID());
+                $answer->setAnswerText($form->getValue("question" . $q->getUID()));
+                $answer->insert();
+            }
+        }
+    } //}}}
+
+    /* {{{recordAnswers
+     *
+     */
+    function recordAnswers(&$member, &$adventure, &$form) {
+        foreach ($adventure->getQuestions() as $key => $q) {
+            $answer =& new Answer();
+            $answer->setQuestion($q->getUID());
+            $answer->setMember($member->getUID());
+            $answer->setAnswerText($form->getValue("question" . $q->getUID()));
+            $answer->insert();
+        }
+    } //}}}
+
+    /* {{{addAttendeeToAdventure
+     * Returns "waitlisted" or "joined" depending on whether the adventure was
+     * full or not.
+     */
+    function addAttendeeToAdventure(&$member, &$adventure) {
+        global $cfg;
+        $attendee =& new Attendee();
+        $attendee->setMember($member->getUID());
+        $attendee->setOwner($adventure->getOwner());
+        $attendee->setAdventure($adventure->getUID());
+        if ($adventure->isFull()) {
+            $attendee->setStatus($cfg['status_id']['waitlisted']);
+        }
+        $attendee->setAmountPaid($adventure->getFee());
+        $attendee->insert();
+
+        # Create a privilege to let the user view his/her answers
+        $priv =& new Privilege();
+        $priv->setWhatGrantedTo("user");
+        $priv->setWhoGrantedTo($attendee->getMember());
+        $priv->setAction($cfg['action_id']['view_answers']);
+        $priv->setWhatRelatesTo("object");
+        $priv->setRelatedTable($attendee->getTable());
+        $priv->setRelatedUID($attendee->getUID());
+        $priv->insert();
+
+        return $attendee->getStatus();
+    } //}}}
+
+d78 1
+a78 1
+	$waitlist = false;
+d80 3
+a82 5
+		$waitlist = true;
+	}
+	else {
+		$waitlist = false;
+	}
+a141 14
+    /* {{{getAttendingMembers
+     * Gets members who aren't waitlisted, deleted etc
+     */
+    function getAttendingMembers(&$adventure) {
+        global $cfg;
+        $result = array();
+        foreach ($adventure->getAttendees(TRUE) as $key => $attendee) {
+            if ($attendee->getStatus() == $cfg['status_id']['default']) {
+                $result[$key] = $attendee;
+            }
+        }
+        return $result;
+    } //}}}
+
+d196 1
+a196 1
+     * Removes the first waitlisted member and returns that object.  Does NOT
+d211 7
+a217 1
+            return JoinAdventureManager::joinWaitlistedAttendee($attendee);
+a218 16
+        return;
+    } //}}}
+
+    /* {{{joinWaitlistedAttendee
+     * Removes a member from the waitlist and returns the member object.
+     */
+    function joinWaitlistedAttendee(&$attendee) {
+        global $cfg;
+        $adventure =& new Adventure();
+        $adventure->select($attendee->getAdventure());
+        $attendee->setStatus($cfg['status_id']['default']);
+        $member =& new Member();
+        $member->select($attendee->getMember());
+        $attendee->update();
+        JoinAdventureManager::sendJoinConfirmation($member, $adventure);
+        return $member;
+@
+
+
+1.5
+log
+@reorder questions to match the order the leader created them
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.4 2004/09/03 20:37:51 at Exp $
+d304 1
+a304 1
+            && count($adventure->getAttendingMembers()) < $adventure->getMaxAttendees())
+d307 1
+a307 1
+            return JoinAdventureManger::joinWaitlistedAttendee($attendee);
+@
+
+
+1.4
+log
+@table name prefixes
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.3 2004/08/25 02:54:48 at Exp $
+d43 2
+a44 1
+            . "c_type from [_]question where c_adventure = $adventure->c_uid");
+@
+
+
+1.3
+log
+@don't let members comment more than once on an adventure; limit form input
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+d60 1
+a60 1
+                . " inner join [_]question on [_]question.c_uid=t_answer.c_question"
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d351 10
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinAdventureManager.php,v 1.5 2004/05/30 01:41:57 baron Exp $
+d43 1
+a43 1
+            . "c_type from t_question where c_adventure = $adventure->c_uid");
+d59 5
+a63 5
+        $result = $obj['conn']->query("select t_answer.* from t_answer"
+                . " inner join t_question on t_question.c_uid=t_answer.c_question"
+                . " inner join t_attendee on t_attendee.c_member = t_answer.c_member"
+                . " where t_attendee.c_uid=" . $attendee->getUID()
+                . " and t_question.c_adventure=" . $attendee->getAdventure());
+d90 1
+a90 1
+            $result = $obj['conn']->query("select * from t_answer where c_member="
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

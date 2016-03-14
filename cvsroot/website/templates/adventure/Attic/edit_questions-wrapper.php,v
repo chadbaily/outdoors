@@ -1,0 +1,69 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.11.20;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Add Questions to Adventure</h1>
+
+<p>Use this page to associate questions with an adventure.  Think of the
+questions as a survey that you give to adventure attendees.  You can use this to
+find out whether someone is allergic to something, needs certain equipment, is
+vegetarian, etc.  When you are organizing your adventure, the website will help
+you plan by giving you a report on the answers.</p>
+
+{NOTICE:}
+<p class="notice">There is nothing stopping you from editing the questions after
+you have activated the adventure, but you may want to notify the members if you
+do.  Tell them to log back in, view the adventure, and they should see a link to
+edit their answers to the question (if needed).  Deleting questions won't hurt
+anything.  Of course, you don't want to change a question's text after someone
+has already answered the question either.  That's a media trick :-)</p> 
+{:NOTICE}
+
+{BOX}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

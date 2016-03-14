@@ -1,0 +1,125 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.27.21.39.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.01.13.52.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.24.17;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<h1>Phone Number: {C_PHONE_NUMBER}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>This page shows the details for a phone number.  You may also
+<a href="members/phone_number/create">create
+a new phone number</a>.</p>
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Number</th>
+    <td>{C_PHONE_NUMBER}</td>
+  </tr>
+  <tr>
+    <th>Owned by</th>
+    <td><a href="members/member/read/{C_OWNER}">{C_FULL_NAME}</a></td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <td>{C_TITLE}</td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      {TYPE:}
+      <a href="members/phone_number_type/read/{T_PHONE_NUMBER_TYPE}">{C_TITLE}</a>
+      {:TYPE}
+    </td>
+  </tr>
+</table>
+
+{actions,{PAGE},{OBJECT},default}
+
+</div>
+@
+
+
+1.3
+log
+@shrink-wrapped the actions form
+@
+text
+@d9 1
+a9 1
+<a href="members.php?page=phone_number&action={ACTION_CREATE}">create
+d19 1
+a19 1
+    <td><a href="members.php?page=member&object={C_OWNER}&action={ACTION_READ}">{C_FULL_NAME}</a></td>
+d29 1
+a29 1
+      <a href="members.php?page=phone_number_type&object={T_PHONE_NUMBER_TYPE}&action={ACTION_READ}">{C_TITLE}</a>
+@
+
+
+1.2
+log
+@simplify 'Other actions' form
+@
+text
+@d35 1
+a35 9
+<form action="members.php" method="GET">
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="object" value="{OBJECT}">
+  <select name="action">
+    <option value="">Choose An Action</option>{ACTIONS:}
+    <option value="{C_UID}">{C_SUMMARY}</a>{:ACTIONS}
+  </select>
+  <input type="submit" value="Go">
+</form>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@a37 1
+  <p>You may take the following actions on this object:</p>
+d39 1
+a39 1
+    <option value="">Choose One</option>{ACTIONS:}
+@
+

@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@remove spurious semicolons
+@
+text
+@insert into [_]item_note
+(c_owner, c_creator, c_created_date, c_status, c_item, c_condition, c_note)
+select
+{member,int}, {member,int}, now(), it.c_status, it.c_uid, it.c_condition, "Checked in"
+from [_]item as it
+    inner join [_]checkout_item as co on it.c_uid = co.c_item
+where co.c_uid = {checkout_item,int}
+@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@d7 1
+a7 1
+where co.c_uid = {checkout_item,int};
+@
+

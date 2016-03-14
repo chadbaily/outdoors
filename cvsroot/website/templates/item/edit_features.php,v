@@ -1,0 +1,126 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.27.13.42.21;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.21.21.17.37;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Edit Features for Item {OBJECT}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use the form below to edit this item's features.  You can either
+choose an existing value, or just type a new one in the menu (this might only
+work in newer browsers).</p>
+
+{SUCCESS:}
+<p class="notice">Your changes were saved.</p>
+{:SUCCESS}
+
+<form action="members/item/edit_features/{OBJECT}" method="POST">
+
+<table>{ATTRS}
+  <tr>
+    <td colspan="2" align="right">
+      <input type="submit" value="Update Features">
+    </td>
+  </tr>
+</table>
+
+<input type="hidden" value="1" name="edit_features">
+</form>
+
+<script>
+window.onload = function() {
+    document.forms[0].elements[0].focus();
+}
+</script>
+
+<p style="text-align:center">
+{LAST:}
+<a href="members/item/edit_features/{LAST_ID}">&laquo; prev</a>
+{:LAST}
+<a href="members/item/list_all?category=&form-name=1&type={C_TYPE}">item list</a>
+{NEXT:}
+<a href="members/item/edit_features/{NEXT_ID}">next &raquo;</a>
+{:NEXT}
+</p>
+
+</div> 
+{ATTRIBUTE:}
+  <tr>
+    <td>{C_NAME}</td>
+    <td>
+      <select class="comboBox" name="{C_NAME}" onKeyPress="edit(event)" onBlur="this.editing = false;">{OPTION:}
+         <option>{C_VALUE}</option>{:OPTION}
+         {OPTIONS}
+      </select>
+    </td>
+  </tr>{:ATTRIBUTE}
+@
+
+
+1.2
+log
+@attribute -> feature
+@
+text
+@d16 1
+a16 1
+<form action="members.php?page={PAGE}&action={ACTION_EDIT_FEATURES}&object={OBJECT}" method="POST">
+d37 1
+a37 1
+<a href="members.php?page=item&object={LAST_ID}&action={ACTION_EDIT_FEATURES}">&laquo; prev</a>
+d39 1
+a39 1
+<a href="members.php?page=item&action={ACTION_LIST_ALL}&category=&form-name=1&type={C_TYPE}">item list</a>
+d41 1
+a41 1
+<a href="members.php?page=item&object={NEXT_ID}&action={ACTION_EDIT_FEATURES}">next &raquo;</a>
+@
+
+
+1.1
+log
+@move edit_attributes -> edit_features
+@
+text
+@d16 1
+a16 1
+<form action="members.php?page={PAGE}&action={ACTION_EDIT_ATTRIBUTES}&object={OBJECT}" method="POST">
+d37 1
+a37 1
+<a href="members.php?page=item&object={LAST_ID}&action={ACTION_EDIT_ATTRIBUTES}">&laquo; prev</a>
+d41 1
+a41 1
+<a href="members.php?page=item&object={NEXT_ID}&action={ACTION_EDIT_ATTRIBUTES}">next &raquo;</a>
+@
+

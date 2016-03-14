@@ -1,0 +1,264 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.29.23.54.50;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.29.23.53.40;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.19.11.37.22;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.08.04.40.44;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.03.22.15.49;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.21.21.43.39;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@<!-- title=How Outdoors at UVa Works -->
+<!-- navbar=How the Club Works -->
+<h1>How Outdoors at UVa Works</h1>
+
+<p>Outdoors at UVa is funded through member dues and funding from the University
+of Virginia, and sometimes adventures are funded through participation fees.
+Most of the club's business and organization is done online; there's very little
+bureaucracy.  Mostly we just get outside and do things!  Here's how our club
+works:</p>
+
+<h2>Join the Club</h2>
+
+<p>You join the club online.  All you need to do is tell us who you are and what
+kind of membership you'd like.  This information is stored in our database.  You
+then send us your membership fees and paperwork, and we activate your membership
+online.  The website sends you an email welcoming you to the club and subscribes
+you to the members-only email list.</p>
+
+<h2>Participate</h2>
+
+<p>As a member, you'll receive emails when someone creates an adventure, and you
+can use the website to see what's planned.  You'll sign up online whenever you
+see a adventure you like.  You can go on as many or as few adventures as you
+wish.  Most adventures have no participation fee; if there is a fee, it's due
+when you meet to depart for the adventure.  Most expenses, such as meals,
+lodging, and gas for drivers, are paid by the club.  Gear is provided, and the
+website helps the adventure's leader organize things such as who needs gear,
+meal preferences, and so forth.</p>
+
+<p>We lead <b>LOTS</b> of adventures, so there's always something to do!</p>
+
+<h2>Lead Adventures</h2>
+
+<p>Outdoors at UVA is run by members.  As a member, you can lead whatever
+adventures you wish, and the officers are here to help you.  As an added perk,
+if you lead <b>four or more</b> adventures during the school year, the club
+will reimburse your membership fee!</p>
+
+<h2>Other Benefits</h2>
+
+<p>Though most members just want an inexpensive way to participate with other
+folks in fun outdoors activities, there are many other benefits, including <a
+href="index.php?page=policies&action=discounts">discounts at local
+merchants</a>, the ability to <a
+href="index.php?page=policies&action=equipment">borrow our high-quality gear</a>
+for free, and other perks.</p>
+
+<h2>More About the Club</h2>
+
+<p>If you're interested in becoming more active in the club, there many ways you
+can get involved, and we always need more good help.  The easiest, and often the
+most rewarding, is to simply lead adventures yourself.  It's extremely easy
+&mdash; just contact the officers and they'll give you permission to create
+adventures online, send you a how-to guide, and help in any way possible.  There
+are benefits to leading adventures, too; you can get your membership money back,
+among other things.  If you want to go beyond leading adventures, there's room
+for you in the officer's group, and there are special privileges that come with
+this too.  Contact the officers, or come to a meeting, if you want know
+more.</p>
+@
+
+
+1.7
+log
+@fix grammar
+@
+text
+@d2 1
+a2 1
+<!-- tab=How the Club Works -->
+@
+
+
+1.6
+log
+@made more concise and fixed grammar
+@
+text
+@d34 4
+a37 4
+<p>Outdoors at UVA is run by members.  As a member, you can opportunity to lead
+whatever adventures you wish, and the officers are here to help you.  As an
+added perk, if you lead <b>four or more</b> adventures during the school year,
+the club will reimburse your membership fee!</p>
+@
+
+
+1.5
+log
+@added Outdoors at UVa
+@
+text
+@d6 3
+a8 4
+of Virginia (we are a Contracted Independent Organization), and sometimes
+particular trips are funded through participation fees.  Most of the club's
+business and organization is done online; there's not very much bureaucracy,
+though.  Mostly we just get outside and do things!  Here's how our club
+d13 5
+a17 5
+<p>You join the club online.  All you need to do is tell us who you are and
+what kind of membership you'd like.  This information is stored in our
+database.  You then send us your membership fees and paperwork, and we activate
+your membership online.  The website sends you an email welcoming you to the
+club and subscribes you to the members-only email list.</p>
+d21 17
+a37 17
+<p>As a member, you'll receive emails when someone creates an adventure (you can
+also use the website to see what's planned).  You'll sign up online whenever you see
+an adventure you like (there's no need to go on all the adventures).  Most
+adventures have no participation fee (if there is a fee, it's due when you meet
+to depart for the adventure).  Most expenses, such as meals and lodging and
+gas (if you help with carpooling) are paid.  Gear is provided, and the website helps the
+adventure's leader organize things such as who needs gear, meal preferences, and
+so forth.</p>
+
+<p>We lead <b>LOTS</b> of trips, so there's always something to do!</p>
+
+<h2>Lead Trips</h2>
+
+<p>Outdoors at UVA is run <i>entirely</i> by students.  As a member, you will have 
+the opportunity to lead trips in whatever area you wish.  The officers are here to help 
+you if you would like to lead trips.  As an added perk, if you lead <b>four or more</b>
+trips during the school year, the club will reimburse your <i>entire</i> membership fee!</p>
+d42 5
+a46 5
+folks in fun outdoors activities, there are many other benefits, including 
+<a href="index.php?page=policies&action=discounts">discounts at local
+merchants</a>, the ability to
+<a href="index.php?page=policies&action=equipment">borrow our high-quality
+gear</a> for free, and other perks.</p>
+d50 10
+a59 10
+<p>If you're interested in becoming more active in the club, there are a variety
+of ways you can get involved, and we always need more good help.  The easiest,
+and often the most rewarding, is to simply lead adventures yourself.  It's
+extremely easy &mdash; just contact the officers and they'll give you permission
+to create adventures online, send you a how-to guide, and help in any way
+possible.  There are benefits to leading adventures, too; you can get your
+membership money back, among other things.  If you want to go beyond leading
+adventures, there's room for you in the officer's group, and there are special
+privileges that come with this too.  Contact the officers, or come to a meeting,
+if you want know more.</p>
+@
+
+
+1.4
+log
+@updated to correct spelling of bureaucracy
+@
+text
+@d1 1
+a1 1
+<!-- title=How the Club Works -->
+d3 1
+a3 1
+<h1>How the Club Works</h1>
+@
+
+
+1.3
+log
+@added part in about leaders getting reimbursed -- fixed grammar as well
+@
+text
+@d8 1
+a8 1
+business and organization is done online; there's not very much beaurocracy,
+@
+
+
+1.2
+log
+@pointed out you don't need to go on all the trips. Prospective members usually think that is required and so get scared
+@
+text
+@d33 7
+d51 1
+a51 1
+<p>If you're interested in becoming more active in the club, there is a variety
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 2
+a24 1
+also use the website to see what's planned).  You'll sign up online.  Most
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

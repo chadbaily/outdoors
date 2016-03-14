@@ -1,0 +1,54 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.10.31.21.29.25;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@init
+@
+text
+@<h1>View Expense Details</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<table class="verticalHeaders collapsed elbowroom">
+  <tr>
+    <th>Memo</th>
+    <td>{C_DESCRIPTION}</td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td>{C_EXPENSE_DATE}</td>
+  </tr>
+  <tr>
+    <th>Amount</th>
+    <td>${C_AMOUNT}</td>
+  </tr>
+  <tr>
+    <th>Merchant</th>
+    <td>{C_MERCHANT}</td>
+  </tr>
+  <tr>
+    <th>Adventure</th>
+    <td>{C_ADVENTURE}</td>
+  </tr>
+</table>
+
+</div>
+@

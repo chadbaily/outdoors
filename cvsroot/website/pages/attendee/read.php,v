@@ -1,0 +1,217 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.10.27.21.40.29;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.23.12.52.52;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.03.26.45;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@shrink-wrapped the actions form
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: read.php,v 1.5 2004/10/23 12:52:52 at Exp $
+ */
+
+include_once("status.php");
+
+$template = file_get_contents("templates/attendee/read.php");
+
+# Get info about the attendee & adventure
+$member =& new member();
+$adventure =& new adventure();
+$status =& new status();
+$member->select($object->getMember());
+$adventure->select($object->getAdventure());
+$status->select($object->getStatus());
+
+# Plug info into the template template
+$template = Template::replace(
+    $member->insertIntoTemplate(
+        $object->insertIntoTemplate(
+            $adventure->insertIntoTemplate($template))),
+        array( 
+            "T_STATUS" => $status->getUID(),
+            "STATUS" => $status->getTitle()
+            ));
+
+$res['content'] = $template;
+$res['title'] = "View Attendee Details";
+
+?>
+@
+
+
+1.5
+log
+@change class names to match table names; use getChildren(); merge code from AbsenceManager
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.4 2004/09/20 20:38:39 at Exp $
+a33 6
+
+# Create a list of allowed actions for the object
+foreach ($object->getAllowedActions() as $key => $action) {
+    $template = Template::block($template, "ACTIONS",
+        array_change_key_case($action, 1));
+}
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d23 1
+a23 1
+include_once("Status.php");
+d28 3
+a30 3
+$member =& new Member();
+$adventure =& new Adventure();
+$status =& new Status();
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.2 2004/08/24 03:26:45 at Exp $
+d37 1
+a37 1
+    $template = Template::replaceWithinBlock($template, "ACTIONS",
+d42 1
+a42 1
+$template = Template::replaceValues(
+@
+
+
+1.2
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d25 1
+a25 3
+# Create templates 
+$wrapper = file_get_contents("templates/attendee/read-wrapper.php");
+$box = file_get_contents("templates/attendee/read-box.php");
+d37 1
+a37 1
+    $box = Template::replaceWithinBlock($box, "ACTIONS",
+d41 2
+a42 2
+# Plug info into the box template
+$box = Template::replaceValues(
+d45 1
+a45 1
+            $adventure->insertIntoTemplate($box))),
+d51 1
+a51 6
+# Plug it all into the templates
+$res['content'] = $box;
+$res['tab'] = "Details";
+include_once("tabbed-boxes/attendee-read.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.4 2004/05/30 01:42:10 baron Exp $
+d38 3
+a40 5
+$actions = $obj['security']->getAllowedObjectActions($object, $obj['user']);
+foreach ($actions as $key => $action) {
+    $box = Template::replaceWithinBlock($box, "OPTION", array(
+        "C_UID" => $action->getUID(),
+        "C_TITLE" => $action->getSummary()));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

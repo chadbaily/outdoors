@@ -1,0 +1,127 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.02.07.18.49.29;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.12.13.03.19.18;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.08.01.18.57;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.02.02.45.35;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.01.23.37.19;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@friendlyurls
+@
+text
+@<!-- title=Trip Checklists -->
+<!-- navbar=Member's Area/Member Resources/Trip Checklists -->
+
+<h1>Outdoors at UVA Trip Checklists</h1>
+
+<p>These checklists are designed to lay down some ground rules for trips of
+different types.  They can also be used as guidelines for personal trips.  If
+you have any questions about them, please <a
+href="index.php?page=contact">contact the officers</a>.</p>
+
+<p>Available checklists:</p>
+
+<ul>
+ <li><a href="members/resources/trip-cave">Caving</a></li>
+ <li><a href="members/resources/trip-bike">Mountain Biking</a></li>
+ <li><a href="members/resources/trip-climb">Rock Climbing</a></li>
+ <li><a href="members/resources/trip-kayak">Whitewater Kayaking/Canoeing</a></li>
+</ul>
+@
+
+
+1.5
+log
+@added caving guidelines
+@
+text
+@d14 4
+a17 4
+ <li><a href="members.php?page=resources&action=trip-cave">Caving</a></li>
+ <li><a href="members.php?page=resources&action=trip-bike">Mountain Biking</a></li>
+ <li><a href="members.php?page=resources&action=trip-climb">Rock Climbing</a></li>
+ <li><a href="members.php?page=resources&action=trip-kayak">Whitewater Kayaking/Canoeing</a></li>
+@
+
+
+1.4
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d14 1
+@
+
+
+1.3
+log
+@Updated to have link to climbing list
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Trip Checklists -->
+d6 4
+a9 1
+<p>The checklists that are linked are designed to lay down some ground rules for trips of different types.  These checklists can also be used as guidelines for personal trips.  If there are any questions about the checklists, please send an e-mail to <script>document.write(email('outdoors-officers', 'virginia.edu'));</script>.
+d17 1
+a17 1
+</ul>@
+
+
+1.2
+log
+@Added link to the bike checklist
+@
+text
+@d12 2
+a14 1
+ <li><a href="members.php?page=resources&action=trip-bike">Mountain Biking</a></li>
+@
+
+
+1.1
+log
+@*** empty log message ***
+@
+text
+@d13 1
+@
+

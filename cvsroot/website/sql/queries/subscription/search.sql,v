@@ -1,0 +1,65 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.09.21.41.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@remove spurious semicolons
+@
+text
+@select
+    su.*,
+    li.c_title,
+    me.c_full_name
+from [_]subscription as su
+    inner join [_]email_list as li on li.c_uid = su.c_list
+    inner join [_]member as me on me.c_uid = su.c_owner
+where su.c_email like concat('%', {email,char}, '%')
+    and su.c_deleted <> 1
+    and li.c_deleted <> 1
+    and me.c_deleted <> 1
+@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@d8 1
+a8 1
+where su.c_email like concat('%', {email,char}, '%');
+@
+
+
+1.1
+log
+@init
+@
+text
+@d9 3
+@
+

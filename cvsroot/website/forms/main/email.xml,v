@@ -1,0 +1,84 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.10.09.21.14.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@release email system
+@
+text
+@<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="subject"
+        required="1"
+        pre-processing="titlecase"
+        element-id="subject" />
+    <element
+        name="message"
+        pre-processing="trim"
+        required="1"
+        element-id="message" />
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+</config>
+
+<table width="100%">
+
+  <tr hidden="1" id="subject-error">
+    <td colspan="2" class="error">The subject is required.</td>
+  </tr>
+  <tr>
+    <td width="10%">Subject</td>
+    <td><input type="text" style="width:100%" name="subject" id="subject" /></td>
+  </tr>
+
+  <tr hidden="1" id="message-error">
+    <td colspan="2" class="error">You must enter a message.</td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>
+      <textarea cols="40" style="width:100%" rows="10" name="message" id="message">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="category-error">
+    <td colspan="2" class="error">You must choose a category.</td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>
+      <select name="category" id="category">
+        <option value="">Choose a Category</option>{option:}
+        <option value="{c_uid}">{c_title}</option>{:option}
+      </select>
+      <input type="submit" value="Send Message" />
+    </td>
+  </tr>
+
+</table>
+</form>
+@

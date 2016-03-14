@@ -1,0 +1,69 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.21.14.48.40;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.20.22.26.37;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@only show tabs for actions that have a file to implement the action
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: item.php,v 1.1 2004/09/20 22:26:37 at Exp $
+ *
+ * This tabbed box enhances the generic tabbed box for all objects.
+ */
+
+$obj['tabbed_box']->addTab('&Copy',
+        0,
+        "members.php?page={PAGE}&action={$cfg['action_id']['copy']}&object={OBJECT}");
+
+?>
+@
+
+
+1.1
+log
+@added the copy action to item; changed the default behavior when entering new items
+@
+text
+@d20 1
+a20 1
+ * $Id: attendee.php,v 1.1 2004/09/09 02:13:14 at Exp $
+@
+

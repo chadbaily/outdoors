@@ -1,0 +1,60 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Submit Expenses</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Since expenses are not marked as submitted until you explicitly mark them as
+submitted, you need to check that this submission contains <b>exactly</b> the
+expenses you are actually submitting for reimbursal.  Later, when you receive
+the reimbursal, you will use the "Accept" tab to record that the expenses were
+accepted and reimbursed.</p>
+
+<form action="members/expense_submission/submit/{OBJECT}" method="POST">
+
+<p><input type="submit" name="submitted" value="Mark Expenses as Submitted"></p>
+
+</form>
+
+</div>
+@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@d14 1
+a14 1
+<form action="members.php?page={PAGE}&object={OBJECT}&action={ACTION_SUBMIT}" method="POST">
+@
+

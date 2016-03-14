@@ -1,0 +1,26 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@initial release of checkin/checkout system
+@
+text
+@update [_]checkout_gear
+set c_status = {status,int}, c_checkin_member = {member,int}
+where c_uid = {checkout_gear,int}
+@

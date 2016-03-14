@@ -1,0 +1,43 @@
+head     1.1;
+branch   1.1.1;
+access   ;
+symbols  init:1.1.1.1 socialclub:1.1.1;
+locks    ; strict;
+comment  @# @;
+
+
+1.1
+date     2004.05.30.03.10.36;  author at;  state Exp;
+branches 1.1.1.1;
+next     ;
+
+1.1.1.1
+date     2004.05.30.03.10.36;  author at;  state Exp;
+branches ;
+next     ;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@Dear {TO_NAME},
+
+This email is to confirm that you have withdrawn from adventure '{C_TITLE}'.  
+
+Sincerely,
+{LEADER_NAME}@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

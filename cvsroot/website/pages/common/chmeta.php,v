@@ -1,0 +1,265 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.23.12.54.10;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.31.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.22.02.57.12;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: chmeta.php,v 1.6 2004/09/20 20:38:39 at Exp $
+ */
+
+# Create and populate the form.  Create the form as a template.  Create a
+# template for the page.
+$formTemplate = file_get_contents("forms/common/chmeta.xml");
+$template = file_get_contents("templates/common/chmeta.php");
+
+# Fill in choices for the creator
+$result =& $obj['conn']->query("select c_uid, c_first_name, c_last_name from [_]member"
+    . " order by c_last_name");
+while ($row = $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate,
+        "CREATOR", array_change_key_case($row, 1));
+}
+
+# Fill in choices for the status
+foreach ($cfg['status_id'] as $key => $val) {
+    $formTemplate = Template::block($formTemplate, "STATUS",
+        array("C_UID" => $val, "C_TITLE" => $key));
+}
+
+$formTemplate = Template::finalize($formTemplate);
+
+$form =& new XmlForm($formTemplate, true);
+
+# Populate with the current values
+$form->setValue("created", $object->getCreatedDate());
+$form->setValue("creator", $object->getCreator());
+$form->setValue("status", $object->getStatus());
+
+# Now overwrite it with any data the user submitted.
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Update the object with the new values
+    $object->setCreator($form->getValue("creator"));
+    $object->setStatus($form->getValue("status"));
+    $object->setCreatedDate($form->getValue("created"));
+    $object->update();
+    # Plug in a success message
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+# Plug it all into the template
+$res['content'] = Template::replace($template, array(
+    "TABLE" => get_class($object),
+    "FORM" => $form->toString()));
+$res['title'] = "Edit Object Properties";
+
+?>
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.5 2004/09/20 20:31:40 at Exp $
+d59 1
+a59 1
+    $object->setCreatedDate($form->getValue("created_date"));
+d67 1
+a67 1
+    "TABLE" => $object->getTable(),
+@
+
+
+1.5
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.4 2004/09/08 22:45:37 at Exp $
+d32 1
+a32 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate,
+d38 1
+a38 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "STATUS",
+d62 1
+a62 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d66 1
+a66 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.4
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.3 2004/08/22 02:57:12 at Exp $
+d47 1
+a47 2
+$createdDate = $object->getCreatedDate();
+$form->setValue("created", $createdDate->toString("Y-m-d h:i:s"));
+d59 1
+a59 1
+    $object->setCreatedDate(new DateTime($form->getValue("created_date")));
+@
+
+
+1.3
+log
+@remove unnecessary SQL query
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d24 1
+a24 1
+# wrapper template for the page.
+d26 1
+a26 1
+$wrapper = file_get_contents("templates/common/chmeta-wrapper.php");
+d63 1
+a63 1
+    $wrapper = Template::unhideBlock($wrapper, "SUCCESS");
+d66 2
+a67 4
+# Plug it all into the templates.  No need to set the active tab.
+$res['content'] = $form->toString();
+include_once("tabbed-boxes/common-properties.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+d69 1
+a69 1
+    "BOX" => $res['content']));
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d24 1
+a24 1
+# wraapper template for the page.
+a35 1
+# FIXME: this is duplicating what Utility::initialize() does
+d37 3
+a39 4
+$result =& $obj['conn']->query("select c_uid, c_title from [_]status");
+while ($row = $result->fetchRow()) {
+    $formTemplate = Template::replaceWithinBlock($formTemplate,
+        "STATUS", array_change_key_case($row, 1));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: chmeta.php,v 1.4 2004/05/30 01:42:12 baron Exp $
+d29 1
+a29 1
+$result =& $obj['conn']->query("select c_uid, c_first_name, c_last_name from t_member"
+d38 1
+a38 1
+$result =& $obj['conn']->query("select c_uid, c_title from t_status");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

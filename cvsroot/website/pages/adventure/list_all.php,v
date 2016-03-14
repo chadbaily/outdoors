@@ -1,0 +1,307 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2004.10.23.12.51.27;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.12.17.10.56;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.12.16.43.11;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.03.13.47.34;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: list_all.php,v 1.7 2004/10/07 17:41:47 at Exp $
+ *
+ * This page expects some criteria for what to display: past, upcoming, joined.
+ * This variable comes from $_GET[criteria].
+ */
+
+include_once("location.php");
+
+$template = file_get_contents("templates/adventure/list_all.php");
+
+# Create a SqlCommand
+$cmd =& $obj['conn']->createCommand();
+
+# Choose which query to run:
+$dateFormat = "D M j, g:i A";
+switch (getval('criteria')) {
+    case "past":
+        $cmd->loadQuery("sql/queries/adventure/list_all-past.sql");
+        if (isset($_GET['all'])) {
+            $cmd->addParameter("start", "1900-01-01");
+        }
+        $dateFormat = "M j, Y";
+        $res['title'] = "Past Adventures";
+        break;
+    case "upcoming":
+        $cmd->loadQuery("sql/queries/adventure/list_all-upcoming.sql");
+        $res['title'] = "Upcoming Adventures";
+        break;
+    case "joined":
+        $cmd->loadQuery("sql/queries/adventure/list_all-joined.sql");
+        $cmd->addParameter("member", $cfg['user']);
+        $dateFormat = "M j, Y";
+        $res['title'] = "Adventures You've Joined";
+        break;
+    case "owned":
+        $cmd->loadQuery("sql/queries/adventure/list_all-owned.sql");
+        $cmd->addParameter("owner", $cfg['user']);
+        $dateFormat = "M j, Y g:i A";
+        $res['title'] = "Adventures You Are Leading";
+        break;
+    case "inactive":
+        $cmd->loadQuery("sql/queries/adventure/list_all-inactive.sql");
+        $res['title'] = "Inactive Adventures";
+        break;
+    default:
+        $cmd->loadQuery("sql/queries/adventure/list_all-default.sql");
+        $res['title'] = "All Adventures";
+        $dateFormat = "M j, Y";
+        break;
+}
+
+# Format the date display differently depending on the query
+$template = Template::replace($template, array("FORMAT" => $dateFormat));
+
+# Choose which text to un-hide:
+$template = Template::unhide($template,
+    getval('criteria') 
+        ? strtoupper(getval('criteria'))
+        : "ALL");
+
+$result =& $cmd->executeReader();
+
+if ($result->numRows()) {
+    while ($row =& $result->fetchRow()) {
+        # Plug adventures into the template.
+        $template = Template::block($template, "ROW", 
+            array_change_key_case($row, 1));
+    }
+    $template = Template::unhide($template, "SOME");
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+
+?>
+@
+
+
+1.7
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.6 2004/09/20 20:38:39 at Exp $
+d26 1
+a26 1
+include_once("Location.php");
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.5 2004/09/08 22:45:37 at Exp $
+d35 1
+a35 1
+switch (Utility::getval('criteria')) {
+d76 2
+a77 2
+    Utility::getval('criteria') 
+        ? strtoupper(Utility::getval('criteria'))
+@
+
+
+1.5
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.4 2004/08/12 17:10:56 at Exp $
+d72 1
+a72 1
+$template = Template::replaceValues($template, array("FORMAT" => $dateFormat));
+d75 1
+a75 1
+$template = Template::unhideBlock($template,
+d85 1
+a85 1
+        $template = Template::replaceWithinBlock($template, "ROW", 
+d88 1
+a88 1
+    $template = Template::unhideBlock($template, "SOME");
+d91 1
+a91 1
+    $template = Template::unhideBlock($template, "NONE");
+@
+
+
+1.4
+log
+@changed date formatting to be different per query
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.3 2004/08/12 16:43:11 at Exp $
+d28 1
+a28 2
+# Create templates
+$wrapper = file_get_contents("templates/adventure/list_all-wrapper.php");
+d42 1
+d46 1
+d52 1
+d58 1
+d62 1
+d66 1
+d72 1
+a72 1
+$wrapper = Template::replaceValues($wrapper, array("FORMAT" => $dateFormat));
+d75 1
+a75 1
+$wrapper = Template::unhideBlock($wrapper,
+d85 1
+a85 1
+        $wrapper = Template::replaceWithinBlock($wrapper, "ROW", 
+d88 1
+a88 1
+    $wrapper = Template::unhideBlock($wrapper, "SOME");
+d91 1
+a91 1
+    $wrapper = Template::unhideBlock($wrapper, "NONE");
+d94 1
+a94 1
+$res['content'] = $wrapper;
+@
+
+
+1.3
+log
+@added a page that shows inactive adventures, and made the default status to 'inactive' when creating an adventure
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.2 2004/08/03 13:47:34 at Exp $
+d35 1
+d42 1
+d50 1
+d55 1
+d62 1
+d65 3
+@
+
+
+1.2
+log
+@handle link to limit past adventures query
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d52 3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: list_all.php,v 1.8 2004/05/30 01:42:08 baron Exp $
+d38 3
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

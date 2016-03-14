@@ -1,0 +1,74 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.13.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.03.20.39.16;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@put content inside box
+@
+text
+@<h1>View Answers</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>You are viewing the answers that <b>{C_FULL_NAME}</b> gave to the questions for
+<b>{C_TITLE}</b>.</p>
+
+{DEADLINE:}
+<p class='error'>This adventure's start date has already passed.  You may no
+longer change the answers to these questions.</p>
+{:DEADLINE}
+
+{INSTRUCTIONS:}
+<p> Please answer all of the following questions (if any) and submit the
+form to record your answers.</p>
+{:INSTRUCTIONS}
+
+{SUCCESS:}
+<p class="notice">Your answers were successfully updated.</p>
+{:SUCCESS}
+
+{FORM}
+
+</div>
+@
+
+
+1.1
+log
+@merger of two templates
+@
+text
+@d1 6
+a6 1
+<h1>View Answers for Adventure</h1>
+a10 5
+<div class="tabbedBox">
+{TABS}
+</div>
+<div class="box">
+
+d26 1
+@
+

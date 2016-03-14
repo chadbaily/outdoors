@@ -1,0 +1,49 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.10.03.36.09;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@insert into [_]transaction
+    (c_owner, c_creator, c_created_date, c_flags, c_category,
+     c_amount, c_from, c_to, c_expense)
+select
+    {member,int}, {member,int}, now(), ex.c_flags, ex.c_category,
+     ex.c_amount, {from,int}, {to,int}, ex.c_uid
+from [_]expense as ex
+where c_uid = {expense,int}
+    and c_deleted <> 1
+@
+
+
+1.1
+log
+@upgrade to the expense system
+@
+text
+@d9 1
+a9 1
+
+@
+

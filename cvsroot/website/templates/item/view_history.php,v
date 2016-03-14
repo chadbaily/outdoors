@@ -1,0 +1,71 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.31.00.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>History for Item {C_UID}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+{some:}
+
+<table class="cleanHeaders compact">
+  <tr>
+    <th>Checkout</th>
+    <th>Date</th>
+    <th>Current Status</th>
+  </tr>
+  <tr>{checkout:}
+    <td><a href="members/checkout/read/{c_checkout}">{c_checkout}</a></td>
+    <td nowrap>{c_created_date|_date_format,'M j, Y'}</td>
+    <td>{st_title}</td>
+  </tr>{:checkout}
+</table>
+{:some}
+
+{none:}
+<p class="notice">Item {C_UID} has no history.</p>
+{:none}
+
+</div>
+@
+
+
+1.1
+log
+@fix bug 197: add view_history action to item
+@
+text
+@d1 1
+a1 1
+<h1>History for Iteem {C_UID}</h1>
+d17 1
+a17 1
+    <td><a href="members.php?page=checkout&action={ACTION_READ}&object={c_checkout}">{c_checkout}</a></td>
+@
+

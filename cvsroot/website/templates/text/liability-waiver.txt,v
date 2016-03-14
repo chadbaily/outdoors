@@ -1,0 +1,79 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.05.31.05.25.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@now it is like upto date with what we currently have on the real server
+@
+text
+@I, {C_FIRST_NAME} {C_LAST_NAME}, want to participate in the activities of the Outdoors at UVA club (hereinafter the "Club"). I recognize that membership in the Club and participation in its activities and programs are not part of my responsibilities to the University of Virginia or the Club and participation is purely voluntary. Neither the University nor the Club officers require such membership or participation on my part.
+
+I certify that I have no medical problems or conditions that would in any way cause risk to my health by participation in the activities of the Club.
+
+I understand that participation in any physical activity involves inherent risk and that even when safety precautions are taken, injuries and property damage can occur. I understand that the activities of the Club may involve certain risks including, but not limited to: death or severe bodily injury.  I also agree that if I experience any unusual pain or physical discomfort during participation in any activity, I will decrease or stop that activity.  
+
+I understand that the activities of the Club may expose me to hazardous conditions associated with the outdoors. I further understand that the Club does not guarantee that equipment provided by the Club, its members or third parties (e.g. rental equipment) is free from defect.
+
+I understand that the University, their employees and other agents, and the Club officers and members will not be responsible for any harm that may occur to the Club member, participants or third parties in connection with this activity. In addition, I recognize that neither the University nor the Club control, or have the power to control, the operation of any vehicle to be used in conjunction with the activities of the Club. I further certify that I am over the age of 18 or have secured the signature of my parent or legal guardian if under the age of 18 as shown below.
+
+I hereby release and promise not to sue The Rector and Visitors of the University of Virginia, the Commonwealth of Virginia, the Club, their officers, members, employees and other agents, and their successors or assigns, in connection with any and all claims, including without limitation, those related to outdoor and indoor activities ("adventures") and trips, meetings, clinics, and travel.
+
+I further understand that, although the Club has members who are University of Virginia students, faculty, or employees, the Club is independent of the corporation which is the University of Virginia and which is not responsible for the Club's contracts, acts, or omissions.
+
+I authorize the Club to use, copy and distribute photographs or videos of me participating in Club activities, whether photographed or filmed by me or not, for club-related business.  I further authorize the Club to use, copy and distribute photographs or videos I take of club activities and provide to the Club for Club-related business. 
+
+I agree to pay for the replacement cost of equipment that I borrow and either fail to return within 30 days or damage beyond normal wear and tear.
+
+Severability:  Any provision of this General Release of Liability that is prohibited by, or unlawful or unenforceable under, Virginia law shall be ineffective only to the extent of such prohibition without invalidating the remaining provisions.
+
+I certify that the following information pertains to me and is complete and accurate:
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 1
+a7 1
+I understand that the activities of the Club may expose me to hazardous conditions associated with the outdoors. I further understand that the Club does not guarantee that equipment provided by the Club, its members or third parties (e.g. rental equipment) for use in Club activities are free from defect.
+d11 1
+a11 1
+I hereby release and promise not to sue The Rector and Visitors of the University of Virginia, the County of Albemarle, the Commonwealth of Virginia, the Club, their officers, members, employees and other agents, and their successors or assigns, in connection with any and all claims, including without limitation, those related to outdoor and indoor activities ("adventures") and trips, meetings, clinics, and travel.
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

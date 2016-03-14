@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@-- Updates a given row in a tale to have the primary flag, and all others to have it
+-- unset.
+-- Parameters:
+-- {table,none}  The table to update
+-- {object,int}  The object to make primary
+-- {primary,int} The bitmask value for primary
+-- {member,int}  The member for which to update the objects
+update {table,none}
+    set c_flags = case
+    when (c_uid = {object,int}) then c_flags | {primary,int}
+    else c_flags & ~{primary,int} end
+    where c_owner = {member,int}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+-- Updates a given address to have the primary flag, and all others to have it
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

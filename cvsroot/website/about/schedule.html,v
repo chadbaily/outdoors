@@ -1,0 +1,235 @@
+head	1.8;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.01.29.21.15.50;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.03.21.35.46;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.30.13.48.04;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.28.13.51.36;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.27.16.39.26;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.24.20.18.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.24.18.36.32;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@commented out the schedule
+@
+text
+@<!-- navbar=Home/Upcoming Meetings -->
+<!-- title=Outdoors at UVa's Upcoming Meetings -->
+
+<h1>Outdoors at UVa's Upcoming Meetings</h1>
+
+<p>Outdoors at UVa doesn't hold many &ldquo;club meetings,&rdquo; because we're
+focused on being in the outdoors (see our <a
+href="index.php?page=policies">Mission Statement</a>).  We use our website and
+email list to manage the club, and the officers mostly communicate via email.
+Meetings are not mandatory and you are not required to attend them in order to
+join the club. However, we do hold several large meetings every year.</p>
+
+<p>We are not currently planning any meetings; we held our major interest
+meetings in the fall and won't hold any more meetings till next fall.  However,
+you can always join the club by clicking the link at left.  We remain active
+all year long.</p>
+
+<!-- 
+
+<p>The following table lists our scheduled events:</p>
+
+<table class="top ruled compact cleanHeaders">
+  <tr>
+    <th>Meeting</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Date</th>
+  </tr>
+
+  <tr>
+    <td nowrap="1">Activities Fair</td>
+    <td>McIntire Amphitheater</td>
+    <td>The fall Activities Fair is one of the best chances for people to find
+    out about us.  We have a table and staff it with several officers who can
+    tell you anything you want to know about the club.
+    </td>
+    <td nowrap="1">Tue Aug 31, 2004<br>
+        10:00 AM - 4:00 PM</td>
+  </tr>
+
+  <tr class="odd">
+    <td nowrap="1">Information Session I</td>
+    <td>Minor Hall, Room 125</td>
+    <td>This information session is designed to give you an overview of who we
+    are, what we do, and why we're the best deal on Grounds.  We'll show
+    pictures of past trips and introduce the officers.  Don't miss it &mdash;
+    the trip pictures are stunning.  Afterwards we'll hold a sign-up session in
+    a nearby library to assist everyone getting signed up and activated, so
+    bring cash or a checkbook if you want to join.  This will be the fastest,
+    easiest way to become a club member.  You can find this event on the <a
+    href="https://etg07.itc.virginia.edu/studentcal/event/display?eventID=10836146550001">UVa
+    Student Activities Calendar</a>.
+    </td>
+    <td nowrap="1">Wed Sep 1, 2004<br>
+        7:00 - 8:30 PM</td>
+  </tr>
+
+  <tr>
+    <td nowrap="1">Information Session II</td>
+    <td>Minor Hall, Room 125</td>
+    <td>This information session is the same as the first one, for those who can't
+    make it on Sept. 1st.
+    </td>
+    <td nowrap="1">Tue Sep 7, 2004<br>
+        7:00 - 8:30 PM</td>
+  </tr>
+
+  <tr class="odd">
+    <td nowrap="1">Officer Meetings</td>
+    <td>TBD</td>
+    <td>The officers will hold several officer meetings this year, but we
+    haven't yet decided when.  When we schedule these, we'll post them and
+    announce them to the club mailing list so anyone can attend.
+    </td>
+    <td nowrap="1">TBD</td>
+  </tr>
+
+</table>
+
+<p><b>If you can't attend the information sessions</b>, don't worry.  They are
+just for convenience anyway!  You can <b>always</b> join by clicking the "Join"
+link at left.</p>
+
+-->
+@
+
+
+1.7
+log
+@added a note about joining
+@
+text
+@d11 8
+a18 1
+ join the club. However, we do hold several large meetings every year.</p>
+d83 2
+@
+
+
+1.6
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d15 1
+a15 1
+<table class="top ruled compact">
+d72 4
+@
+
+
+1.5
+log
+@added date days
+@
+text
+@d1 1
+a1 2
+<!-- tab=Home -->
+<!-- subtab=Upcoming Meetings -->
+@
+
+
+1.4
+log
+@added times
+@
+text
+@d31 1
+a31 1
+    <td nowrap="1">Aug 31, 2004<br>
+d48 1
+a48 1
+    <td nowrap="1">Sep 1, 2004<br>
+d58 1
+a58 1
+    <td nowrap="1">Sep 7, 2004<br>
+@
+
+
+1.3
+log
+@corrected date
+@
+text
+@d31 2
+a32 1
+    <td nowrap="1">Aug 31, 2004</td>
+d48 2
+a49 1
+    <td nowrap="1">Sep 1, 2004</td>
+d58 2
+a59 1
+    <td nowrap="1">Sep 7, 2004</td>
+@
+
+
+1.2
+log
+@need to point out you do not need to attend meetings. Lots of people often ask if they can join since they missed a meeting.
+@
+text
+@d56 1
+a56 1
+    <td nowrap="1">Sep 1, 2004</td>
+@
+
+
+1.1
+log
+@added tabs and links and the public schedule page
+@
+text
+@d11 2
+a12 1
+However, we do hold several large meetings every year.</p>
+@
+

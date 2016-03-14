@@ -1,0 +1,123 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.21.21.10.47;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.08.20.20.33;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.15.23;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@friendlyurls
+@
+text
+@<h1>View Object ACL</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Below is a list of all privileges that apply to object <b>{OBJECT}</b> in
+table <b>{PAGE}</b>.  A privilege specifes <i>who</i> is allowed to take
+<i>what action</i> on <i>what</i>.  If the privilege is granted globally, then
+it is granted on every object in that table.  If it is granted to <i>self</i>,
+then it specifies an action a member can perform on himself.</p>
+
+<p>You may also <a
+href="members/{PAGE}/add_privilege/{OBJECT}">define
+a new privilege for this object</a>.</p>
+
+{SOME:}
+<table class="cleanHeaders">
+  <tr>
+    <th>ID</th>
+    <th>Who</th>
+    <th>What Action</th>
+    <th>Granted on What</th>
+  </tr>
+  {ROWS:}
+  <tr>
+    <td><a href="members/privilege/read/{C_UID}">{C_UID}</a></td>
+    <td>{C_WHO_TYPE} {C_WHO_UID} ({C_WHO})</td>
+    <td><a href="members/action/read/{C_ACTION}">{C_ACTION_TITLE}</a></td>
+    <td><b>{C_GRANTED_ON}</b> {C_TABLE}({C_RELATED_UID})</td>
+  </tr>
+    </tr>
+  {:ROWS}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">There are no privileges for this object.</p>
+{:NONE}
+
+</div>
+@
+
+
+1.3
+log
+@change class names to be the same as table names
+@
+text
+@d15 1
+a15 1
+href="members.php?page={PAGE}&object={OBJECT}&action={ACTION_ADD_PRIVILEGE}">define
+d28 1
+a28 1
+    <td><a href="members.php?page=privilege&action={ACTION_READ}&object={C_UID}">{C_UID}</a></td>
+d30 1
+a30 1
+    <td><a href="members.php?page=action&action=1&object={C_ACTION}">{C_ACTION_TITLE}</a></td>
+@
+
+
+1.2
+log
+@add 'self' privileges.
+@
+text
+@d9 1
+a9 1
+table <b>{TABLE}</b>.  A privilege specifes <i>who</i> is allowed to take
+d11 2
+a12 1
+it is granted on every object in that table.</p>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d30 1
+a30 1
+    <td>{C_GRANTED_ON} {C_TABLE}({C_RELATED_UID})</td>
+@
+

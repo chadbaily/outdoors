@@ -1,0 +1,246 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.23.12.54.10;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.06.17.54.18;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.06.01.54.56;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.21.02.35.31;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@change class names to match table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: view_acl.php,v 1.6 2004/10/06 17:54:18 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/common/view_acl.php");
+
+# Query for a list of the object's privileges
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/privilege/select-by-object.sql");
+$cmd->addParameter("object", $cfg['object']);
+$cmd->addParameter("table", "$cfg[table_prefix]$cfg[page]");
+$result =& $cmd->executeReader();
+if ($result->numRows()) {
+    $template = Template::unhide($template, "SOME");
+    while ($row =& $result->fetchRow()) {
+        $template = Template::block($template, "ROWS", 
+            array_change_key_case($row, 1));
+    }
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+$res['title'] = "View Object Permissions";
+
+?>
+@
+
+
+1.6
+log
+@comm -> cmd
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.5 2004/10/06 01:54:56 at Exp $
+d30 1
+a30 1
+$cmd->addParameter("table", $object->getTable());
+d43 1
+a43 3
+# Plug it all into the template
+$res['content'] = Template::replace($template, array(
+    "TABLE" => $object->getTable()));
+@
+
+
+1.5
+log
+@clean up query code
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.4 2004/09/20 20:38:40 at Exp $
+d27 5
+a31 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/privilege/select-by-object.sql");
+$comm->addParameter("object", $cfg['object']);
+$comm->addParameter("table", $object->getTable());
+$result =& $comm->executeReader();
+@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d31 2
+a32 2
+$results =& $comm->executeReader();
+if ($results->numRows()) {
+d34 1
+a34 1
+    while ($row =& $results->fetchRow()) {
+@
+
+
+1.3
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.2 2004/08/21 02:35:31 at Exp $
+d33 1
+a33 1
+    $template = Template::unhideBlock($template, "SOME");
+d35 1
+a35 1
+        $template = Template::replaceWithinBlock($template, "ROWS", 
+d40 1
+a40 1
+    $template = Template::unhideBlock($template, "NONE");
+d44 1
+a44 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.2
+log
+@do the privilege stuff in a single query
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d24 1
+a24 2
+$wrapper = file_get_contents("templates/common/view_acl-wrapper.php");
+$box = file_get_contents("templates/common/view_acl-box.php");
+d33 1
+a33 1
+    $box = Template::unhideBlock($box, "SOME");
+d35 1
+a35 1
+        $box = Template::replaceWithinBlock($box, "ROWS", 
+d40 1
+a40 1
+    $box = Template::unhideBlock($box, "NONE");
+d43 3
+a45 8
+# Plug it all into the templates.  No need to set the active tab.
+$res['content'] = Template::replaceValues($box, array(
+        "TABLE" => $object->getTable()));
+include_once("tabbed-boxes/common-properties.php");
+$res['content'] = Template::replaceValues($wrapper, array(
+    "PAGE" => $cfg['page'],
+    "TABLE" => $object->getTable(),
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: view_acl.php,v 1.5 2004/05/30 01:42:13 baron Exp $
+d27 7
+a33 6
+foreach ($object->getPrivileges() as $key => $priv) {
+    $box = Template::replaceWithinBlock($box, "ROWS", 
+        array_change_key_case($priv, 1)
+        + array("AC_TITLE" => $cfg['action_title'][$priv['c_action']]));
+}
+if (count($object->getPrivileges())) {
+d35 4
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

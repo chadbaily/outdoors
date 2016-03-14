@@ -1,0 +1,254 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.04.29.19.25.34;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.12.17.03.59;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.09.21.48.53;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.14.13.29.48;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.19.11.35.52;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.04.20.25.03;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@<!-- title=Outdoors at UVa Email List Policy -->
+<!-- navbar=Club Policies/Email Policy -->
+
+<h1>Outdoors at UVa Email List Policy</h1>
+
+<p>The main purpose of the outdoors-club list is for outdoor and club-related
+email. If the email is in keeping with our
+<a href="index.php?page=policies">mission statement</a>, and you feel that it is
+something that 300 or more other members would benefit from reading, then go
+ahead, send the email, and help build our outdoor community.  Please ask the
+officers if you are in doubt.  We are not super-strict, but we do want to keep
+our club focused on the things mentioned in our mission statement.  Here are
+some rough guidelines:</p>
+
+<p>Appropriate emails include:</p>
+
+<ul>
+  <li>anything involving the outdoors</li>
+  <li>notices about outdoorsy presentations</li>
+  <li>information about Skyline Drive, the Blue Ridge Parkway, conditions of
+    local rivers and hikes, etc.</li>
+  <li>non club related trips (i.e. anyone want to join me on a hike to...)</li>
+  <li>looking for climbing partners, running partners, someone to go on a
+    spur-of-the-moment hike or other activity</li>
+</ul>
+
+<p>This list is not exhaustive.  All of these items build our community
+and are related to our mission.  Inappropriate emails are those which are
+not outdoorsy and not related to our mission, such as:</p>
+
+<ul>
+  <li>looking for a ride home</li>
+  <li>advertising anything for sale</li>
+  <li>commentary on outside issues such as politics or world events</li>
+  <li>elections or endorsements</li>
+  <li>porn, jokes, chain letters</li>
+</ul>
+
+<h2>Email Writing Guidelines</h2>
+
+<p>Please keep your email <b>short and to the point</b>.  If you need to make it
+long, it's probably better to just mention the main point of the email in one
+or two sentences, and then give your name and contact information so people can
+get in touch with you directly to find out more.  Please follow these
+guidelines:</p>
+
+<ul>
+  <li>Keep it short.</li>
+  <li>DO NOT SHOUT.  EVER.  THIS IS SHOUTING.</li>
+  <li>Don't use lots of exclamation points, either!!!</li>
+  <li>Create a relevant, short subject.</li>
+</ul>
+
+<p>Here is a sample email:</p>
+
+<blockquote style="border:1px solid gray; padding: 5px">
+Subject:Climb at Rocky Top Thursday<br>
+<br>
+I'm going climbing at Rocky Top Thursday at 5:00 PM.  Contact Morgan Jones at
+<script>document.write(email('morgan', 'jones.com))</script>, or 123-4567,
+if you want to ride along.
+</blockquote>
+
+<p>If you're not sure about an email you want to send, please <a
+href="index.php?page=contact">ask the officers</a>.</p>
+@
+
+
+1.7
+log
+@shorten chastising text to be merely imperative
+@
+text
+@a21 2
+  <li>organizing club-related social events, such as inviting club members
+    to an outdoors club potluck or other social event (if in doubt, ask!)</li>
+@
+
+
+1.6
+log
+@add some writing guidelines
+@
+text
+@d43 5
+a47 5
+<p>Please keep your email <b>short and to the point</b>.  You should be able to
+say what you need in one or two sentences.  If you need to make it longer, it's
+probably better to just mention the main point of the email in one or two
+sentences, and then give your name and contact information so people can get in
+touch with you directly to find out more.  Please follow these guidelines:</p>
+d62 2
+a63 1
+morgan@@jones.com, or 123-4567, if you want to ride along.
+@
+
+
+1.5
+log
+@added FAQ page
+@
+text
+@d41 24
+@
+
+
+1.4
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d41 2
+a42 3
+<p>If you're not sure about an email you want to send, please ask us at
+<script>document.write(email('outdoors-officers', 'virginia.edu'))</script>.
+</p>
+@
+
+
+1.3
+log
+@added Outdoors at UVa
+@
+text
+@d2 1
+a2 2
+<!-- tab=Club Policies -->
+<!-- subtab=Email Policy -->
+@
+
+
+1.2
+log
+@Updated to match tone of the rest of our site
+Removed the "we won't enforce" clause and made the "social events" clause more strict.
+@
+text
+@d5 1
+a5 1
+<h1>Email List Policy</h1>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@a6 1
+
+d8 7
+a14 7
+email. If the email is &quot;outdoorsy&quot; and you feel that it is something
+that 300 or more other members would benefit from reading, then go ahead, send
+the email, and help build our outdoor community.</p>
+
+<p>What exactly constitutes an &quot;outdoorsy&quot; email is not set in stone.
+If you follow common sense, then you'll probably be correct.  Here are some
+rough guidelines:</p>
+d16 1
+a16 1
+<p><b>Great</b> emails include:</p>
+d23 2
+a24 2
+  <li>invitations to social events planned mostly for outdoors club members
+   it (might be a good idea to clear the email with the officers first though)</li>
+d27 1
+a27 1
+  spur-of-the-moment hike or other activity</li>
+d30 3
+a32 3
+<p>This list is not exhaustive.</p>
+
+<p><b>Unfavorable</b> emails are those which are not outdoorsy, such as:</p>
+d42 1
+a42 1
+<p>If you're not sure about an email you want to send, feel free to ask us at
+a44 3
+
+<p>If someone sends an unfavorable email, we'll remind that person of these
+guidelines and ask them not to do it again.</p>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

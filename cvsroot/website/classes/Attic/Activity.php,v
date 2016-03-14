@@ -1,0 +1,261 @@
+head	1.5;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.09.21.14.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.18.22.27.27;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Activity.php,v 1.4 2004/10/09 21:14:32 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+include_once("Interest.php");
+include_once("AdventureActivity.php");
+include_once("LocationActivity.php");
+
+class Activity extends DatabaseObject {
+    // {{{declarations
+    var $c_title = null;
+    var $c_category = null;
+    var $locationActivities = null;
+    var $adventureActivities = null;
+    var $interests = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Activity() {
+        $this->DatabaseObject();
+        $this->table = "[_]activity";
+        $this->cascadeFunctions[] = "getAdventureActivities";
+        $this->cascadeFunctions[] = "getLocationActivities";
+        $this->cascadeFunctions[] = "getInterests";
+    } //}}}
+
+    /* {{{getCategory
+     */
+    function getCategory() {
+        return $this->c_category;
+    } //}}}
+    
+    /* {{{setCategory
+     */
+    function setCategory($value) {
+        $this->c_category = $value;
+    } //}}}
+
+    /* {{{getTitle
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+    
+    /* {{{setTitle
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getAdventureActivities
+     */
+    function getAdventureActivities($refresh = FALSE) {
+        if (is_null($this->adventureActivities) || $refresh) {
+            $this->initAdventureActivities();
+        }
+        return $this->adventureActivities;
+    } //}}}
+
+    /* {{{initAdventureActivites
+     * Initializes all the AdventureActivities.
+     */
+    function initAdventureActivities() {
+        global $obj;
+        global $cfg;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->adventureActivities = array();
+        $result = $obj['conn']->query("select * from [_]adventure_activity where c_activity=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->adventureActivities[$row['c_uid']] =& new AdventureActivity();
+            $this->adventureActivities[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{getLocationActivities
+     */
+    function &getLocationActivities($refresh = FALSE) {
+        if (!isset($this->locationActivities) or $refresh) {
+            $this->initLocationActivities();
+        }
+        return $this->locationActivities;
+    } //}}}
+
+
+    /* {{{initLocationActivities
+     * Initializes all the location's LocationActivities.
+     */
+    function initLocationActivities() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->locationActivities = array();
+        $result = $obj['conn']->query("select * from [_]location_activity "
+            . "where c_activity=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->locationActivities[$row['c_uid']] =& new LocationActivity();
+            $this->locationActivities[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{getInterests
+     */
+    function &getInterests($refresh = FALSE) {
+        if (!isset($this->interests) or $refresh) {
+            $this->initInterests();
+        }
+        return $this->interests;
+    } //}}}
+
+    /* {{{initInterests
+     * Initializes all the Interests.  You don't need to call this
+     * directly; just call getInterests().
+     */
+    function initInterests() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->interests = array();
+        $result = $obj['conn']->query("select * from [_]interest where c_activity=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->interests[$row['c_uid']] =& new Interest();
+            $this->interests[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+}
+?>
+@
+
+
+1.4
+log
+@release email system
+@
+text
+@d20 1
+a20 1
+ * $Id: Activity.php,v 1.3 2004/08/18 22:27:27 at Exp $
+@
+
+
+1.3
+log
+@added cascading functions
+@
+text
+@d20 1
+a20 1
+ * $Id: Activity.php,v 1.2 2004/07/20 14:11:06 at Exp $
+d31 1
+d48 12
+a60 1
+     *
+a66 1
+     *
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Activity.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+d24 3
+d31 3
+d42 3
+d59 73
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Activity.php,v 1.5 2004/05/30 01:41:51 baron Exp $
+d35 1
+a35 1
+        $this->table = "t_activity";
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

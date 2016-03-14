@@ -1,0 +1,58 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.10.23.13.04.20;	author at;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.06.01.46.11;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@delete [_]item_attribute
+from [_]item_attribute as ia
+    inner join [_]item as it on it.c_uid = ia.c_item
+where it.c_type = {item_type,int}
+    and ia.c_name = {attr_name,char}
+@
+
+
+1.2
+log
+@fix invalid join condition
+@
+text
+@@
+
+
+1.1
+log
+@init
+@
+text
+@d3 1
+a3 1
+    inner join [_]item as it on it.c_type = ia.c_item
+@
+

@@ -1,0 +1,358 @@
+head	1.14;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.14
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2005.01.16.02.06.14;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.12.28.15.51.53;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.07.14.14.21;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.05.12.15.39;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.30.13.40.05;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.29.20.08.34;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.29.13.14.19;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.29.12.20.45;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.29.01.56.43;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.29.01.46.43;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.10.20.42.09;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.10.20.18.15;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.14
+log
+@friendlyurls
+@
+text
+@<h1>View Report</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+Adventure: <b>{C_TITLE}</b>
+
+{FORM}
+
+{SOME:}
+
+<p>{NUM_ATTENDEES} attendees shown, in the order they joined<sup>[1]</sup>.  The first column
+shows whether the member is joined or waitlisted.  The last shows the number of
+absences and times the member has been waitlisted.  Use the radio button in the
+left column, and the buttons at the bottom of the table, to manage
+attendees.</p>
+
+<form action="members.php" method="GET">
+  <input type="hidden" name="page" value="attendee">
+<table class="compact cleanHeaders top">
+  <tr>
+    <td>&nbsp;</td>
+    <th>J/W</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Sex</th>
+    <th>Birthdate</th>
+    <th>Abs/Wtlst</th>
+  </tr>{ROW:}
+  <tr>
+    <td>
+      <input type="radio" class="compact" name="object" value="{C_UID}">
+    </td>
+    <td>{C_STATUS}</td>
+    <td>
+      <a href="members/member/read/{C_MEMBER}" title="View details for this member">{C_FULL_NAME}</a>
+    </td>
+    <td><a href="mailto:{C_EMAIL}">{C_EMAIL}</a></td>
+    <td nowrap>{NUMBERS}</td>
+    <td>{C_GENDER}</td>
+    <td>{C_BIRTH_DATE|_date_format,'n/j/y'}</td>
+    <td>
+      <a href="members/member/view_absences/{C_MEMBER}"
+        title="View absences for {C_FULL_NAME}">{C_ABSENCES}</a>/<a
+        href="members/member/view_waitlist/{C_MEMBER}">{C_WAITLISTS}</a>
+    </td>
+  </tr>
+{:ROW}
+  <tr><td colspan="8" style="border-top:1px solid #000; text-align:right">
+  <input type="radio" name="action" value="{ACTION_WITHDRAW}" id="action1">
+  <label for="action1">Withdraw</label>
+  <input type="radio" name="action" value="{ACTION_WAITLIST}" id="action2">
+  <label for="action2">Waitlist</label>
+  <input type="radio" name="action" value="{ACTION_JOIN}" id="action3">
+  <label for="action3">Join from Waitlist</label>
+  <input type="radio" name="action" value="{ACTION_MARK_ABSENT}" id="action4">
+  <label for="action4">Mark Absent</label>
+  <input type="submit" value="Go">
+  </td></tr>
+</table>
+</form>
+
+{QUESTIONS:}
+<h1>Questions</h1>
+
+<table class="borders compact collapsed top" style="background:white">
+  <tr>
+    <td>&nbsp;</td>{HEADER_V:}
+    <td title="{C_TEXT|htmlspecialchars}"><img title="{C_TEXT|htmlspecialchars}" alt="{C_TEXT|htmlspecialchars}" src="images/vertical-text.php?text={C_TEXT|urlencode}"></td>{:HEADER_V}{HEADER_H:}
+    <td>{C_TEXT|htmlspecialchars}</td>{:HEADER_H}
+  </tr>
+{ROWS}
+{QUESTION:}
+  <tr>
+    <td>{C_FULL_NAME}</td>{ANSWER:}
+    <td>{C_ANSWER_TEXT}</td>{:ANSWER}
+  </tr>
+{:QUESTION}
+</table>
+{:QUESTIONS}
+
+{:SOME}
+
+{NONE:}
+<p class="notice">There is nothing to display.</p>
+{:NONE}
+
+<p><sup>[1]</sup>After a member is automatically removed from the waitlist
+his/her joined date is reset, so s/he appears at the end of the roster.  This is
+correct behavior.  It doesn't mean that people who joined later are getting off
+the waitlist first.</p>
+
+</div>
+@
+
+
+1.13
+log
+@add member/view_waitlist action
+@
+text
+@d39 1
+a39 2
+      <a href="members.php?page=member&object={C_MEMBER}&action={ACTION_READ}"
+        title="View details for this member">{C_FULL_NAME}</a>
+d46 1
+a46 1
+      <a href="members.php?page=member&object={C_MEMBER}&action={ACTION_VIEW_ABSENCES}"
+d48 1
+a48 1
+        href="members.php?page=member&object={C_MEMBER}&action={ACTION_VIEW_WAITLIST}">{C_WAITLISTS}</a>
+@
+
+
+1.12
+log
+@added a note to explain the weird ordering of people that get automatically removed from the waitlist.
+@
+text
+@d48 2
+a49 1
+        title="View absences for {C_FULL_NAME}">{C_ABSENCES}</a>/{C_WAITLISTS}
+@
+
+
+1.11
+log
+@add adventure title to report
+@
+text
+@d14 1
+a14 1
+<p>{NUM_ATTENDEES} attendees shown, in the order they joined.  The first column
+d90 5
+@
+
+
+1.10
+log
+@tweak to page layout
+@
+text
+@d8 2
+@
+
+
+1.9
+log
+@add title to TH and add hint about title
+@
+text
+@a66 2
+<p class="tiny">(Hover over the question to see it horizontally)</p>
+
+d69 3
+a71 2
+    <th>&nbsp;</th>{HEADER:}
+    <th title="{C_TEXT|htmlspecialchars}"><img title="{C_TEXT|htmlspecialchars}" alt="{C_TEXT|htmlspecialchars}" src="images/vertical-text.php?text={C_TEXT|urlencode}"></th>{:HEADER}
+@
+
+
+1.8
+log
+@change class name, and allow any input to be thusly styled: radioCompact
+@
+text
+@d67 2
+d72 1
+a72 1
+    <th><img title="{C_TEXT}" alt="{C_TEXT}" src="images/vertical-text.php?text={C_TEXT|urlencode}"></th>{:HEADER}
+@
+
+
+1.7
+log
+@add title and alt attributes to question headers
+@
+text
+@d33 1
+a33 1
+      <input type="radio" class="radioCompact" name="object" value="{C_UID}">
+@
+
+
+1.6
+log
+@styling for the radio buttons to make them more compact
+@
+text
+@d70 1
+a70 1
+    <th><img src="images/vertical-text.php?text={C_TEXT|urlencode}"></th>{:HEADER}
+@
+
+
+1.5
+log
+@add note about join order
+@
+text
+@d33 1
+a33 1
+      <input type="radio" name="object" value="{C_UID}">
+@
+
+
+1.4
+log
+@new view_report pages
+@
+text
+@d11 6
+a16 4
+<p>{NUM_ATTENDEES} attendees shown.  The first column shows whether the member
+is joined or waitlisted.  The last shows the number of absences and times the
+member has been waitlisted.  Use the radio button in the left column, and the
+buttons at the bottom of the table, to manage attendees.</p>
+@
+
+
+1.3
+log
+@re-formatted the report-jump menu, and sorted it by date (descending)
+@
+text
+@d8 8
+a15 1
+{SWITCH:}
+d17 43
+a59 8
+  <input type="hidden" name="page" value="{PAGE}">
+  <input type="hidden" name="action" value="{ACTION_VIEW_REPORT}">
+  <input type="hidden" name="report" value="{REPORT}">
+  <input type="hidden" name="status" value="{STATUS}">
+  <select name="object" onChange="if(this.options[this.selectedIndex].value){this.form.submit();}">
+    <option value="">View this report for a similar adventure</option>{OPTION:}
+    <option value="{C_UID}">{C_START_DATE|_date_format,'m/d/Y'}: {C_TITLE|substr,0,65}</option>{:OPTION}
+  </select>
+a60 1
+{:SWITCH}
+d62 23
+a84 1
+{CONTENTS}
+@
+
+
+1.2
+log
+@add a list of similar adventures to jump to the report
+@
+text
+@d14 1
+a14 1
+  <select name="object" onChange="this.form.submit()">
+d16 1
+a16 1
+    <option value="{C_UID}">{C_START_DATE|_date_format,'m/d/Y'}: {C_TITLE|substr,0,60}</option>{:OPTION}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d8 13
+@
+

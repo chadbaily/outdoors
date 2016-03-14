@@ -1,0 +1,2292 @@
+head	1.64;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.64
+date	2005.01.31.00.25.19;	author at;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2005.01.29.22.43.20;	author at;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2005.01.18.13.44.04;	author at;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2005.01.18.03.52.33;	author at;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2005.01.17.16.51.38;	author at;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2005.01.16.17.33.04;	author at;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2005.01.15.02.27.34;	author at;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2005.01.14.17.26.49;	author at;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2005.01.12.03.38.59;	author at;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2005.01.12.03.27.17;	author at;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2005.01.12.03.25.52;	author at;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2005.01.12.03.20.30;	author at;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2005.01.12.03.16.23;	author at;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2005.01.10.22.01.10;	author at;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2005.01.10.21.15.23;	author at;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2004.11.08.16.44.45;	author at;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2004.11.07.03.03.51;	author at;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2004.11.07.02.49.28;	author at;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2004.11.04.15.02.36;	author at;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2004.11.02.22.20.43;	author at;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2004.11.02.20.01.06;	author at;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2004.11.01.01.55.17;	author at;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2004.11.01.01.46.54;	author at;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2004.10.28.01.43.18;	author at;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2004.10.28.01.37.39;	author at;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2004.10.23.14.52.32;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2004.10.23.13.07.09;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2004.10.11.00.47.39;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2004.10.11.00.47.21;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2004.10.11.00.40.03;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.10.11.00.37.01;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.10.10.23.47.18;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.10.10.23.46.46;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.10.10.20.00.02;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.10.09.22.11.57;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.10.09.21.14.34;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.10.07.03.40.17;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.10.06.22.38.06;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.10.06.22.37.14;	author at;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2004.10.06.14.12.51;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.10.06.13.57.14;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.10.05.22.58.21;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.10.05.22.37.30;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.10.04.14.06.39;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.10.04.14.06.18;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.10.04.12.42.20;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.03.22.55.58;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.03.22.52.33;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.02.00.20.46;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.02.00.08.21;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.01.23.56.46;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.22.16.49.57;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.22.16.28.50;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.22.12.58.13;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.19.02.49.15;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.16.02.08.25;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.64
+log
+@*** empty log message ***
+@
+text
+@/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software.  You can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 2 of the License, or (at your option) any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: upgrade.sql,v 1.63 2005/01/30 20:48:40 at Exp $
+ */
+
+@
+
+
+1.63
+log
+@add c_deleted column to database tables
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.62 2005/01/29 22:43:20 at Exp $
+a21 52
+alter table [_]absence add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]action add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]activity add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]activity_category add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]address add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]adventure add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]adventure_activity add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]adventure_comment add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]answer add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]attendee add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]chat add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]chat_type add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]checkout add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]checkout_gear add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]checkout_item add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]classified_ad add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]condition add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]decision add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]decision_category add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]decision_xref add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]email_list add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense_category add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense_report add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense_report_note add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense_submission add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]expense_submission_expense add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]group add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]interest add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item_category add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item_feature add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item_note add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item_type add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]item_type_feature add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]location add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]location_activity add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]member add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]member_group add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]member_note add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]membership add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]membership_type add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]optout add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]phone_number add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]phone_number_type add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]privilege add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]question add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]rating add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]report add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]status add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]subscription add c_deleted tinyint not null default 0 after c_flags;
+alter table [_]transaction add c_deleted tinyint not null default 0 after c_flags;
+@
+
+
+1.62
+log
+@move changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.61 2005/01/18 13:44:04 at Exp $
+d21 53
+@
+
+
+1.61
+log
+@change columns to signed integers to avoid overflows when quantities go negative
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.60 2005/01/18 03:52:33 at Exp $
+a20 16
+
+drop table if exists [_]checkout_gear_qty;
+drop table if exists [_]checkout_item_qty;
+
+create table [_]checkout_gear_qty (
+    c_type int not null default 0,
+    c_qty int not null default 0,
+    primary key(c_type)
+) type=MyISAM;
+
+create table [_]checkout_item_qty (
+    c_type int not null default 0,
+    c_qty int not null default 0,
+    c_qty_out int not null default 0,
+    primary key(c_type)
+) type=MyISAM;
+@
+
+
+1.60
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.59 2005/01/17 16:51:38 at Exp $
+d26 2
+a27 2
+    c_type int unsigned not null default 0,
+    c_qty int unsigned not null default 0,
+d32 3
+a34 3
+    c_type int unsigned not null default 0,
+    c_qty int unsigned not null default 0,
+    c_qty_out int unsigned not null default 0,
+@
+
+
+1.59
+log
+@use aggregate table to hold quantity of gear checked out
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.58 2005/01/16 17:33:04 at Exp $
+d22 3
+d28 7
+@
+
+
+1.58
+log
+@fix bug 206: don't allow reserved words for item feature names
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.57 2005/01/16 14:33:38 at Exp $
+d22 5
+a26 2
+update [_]item_type_feature set c_name = 'item_id' where c_name = 'id';
+update [_]item_feature set c_name = 'item_id' where c_name = 'id';
+@
+
+
+1.57
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.56 2005/01/15 02:27:34 at Exp $
+d22 2
+a23 14
+alter table [_]item add c_qty int unsigned not null;
+
+-- Before running this make sure all features have numeric quantities
+-- There are some that have textual notes in the qty fields
+-- The following query should help
+--   select c_uid, c_item, c_name, c_value from test_item_feature
+--   where c_name = 'qty'
+
+update [_]item as it
+    left join [_]item_feature as itf on itf.c_item = it.c_uid and itf.c_name = 'qty'
+set it.c_qty = coalesce(itf.c_value, 1);
+
+delete from [_]item_type_feature where c_name = 'qty';
+delete from [_]item_feature where c_name = 'qty';
+@
+
+
+1.56
+log
+@merged new tables
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.55 2005/01/14 17:26:49 at Exp $
+d21 15
+@
+
+
+1.55
+log
+@remove commented-out lines
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.54 2005/01/14 15:08:49 at Exp $
+a20 59
+
+drop table if exists [_]checkout;
+drop table if exists [_]checkout_gear;
+drop table if exists [_]checkout_item;
+
+create table [_]checkout (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    -- The owner checks out the items.  The member is who they are checked out TO.
+    c_member          int unsigned    not null default 0, -- > [_]member
+    -- Generally speaking, what type of checkout is this?
+    c_activity        int unsigned    not null default 0, -- > [_]activity_category
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]checkout_gear (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_checkout        int unsigned    not null default 0, -- > [_]checkout
+    c_type            int unsigned    not null default 0, -- > [_]item_type
+    c_qty             int unsigned    not null default 0,
+    c_description     varchar(100)    not null default '',
+    c_checkin_member  int unsigned    not null default 0, -- > [_]member
+    primary key  (c_uid),
+    index(c_checkout)
+) type=MyISAM;
+
+create table [_]checkout_item (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_checkout        int unsigned    not null default 0, -- > [_]checkout
+    c_item            int unsigned    not null default 0, -- > [_]item
+    primary key  (c_uid),
+    unique index(c_checkout, c_item)
+) type=MyISAM;
+
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description, c_flags) values
+      (now(), 'check_in', "Check In", 'Chec&k In', 'Check in Inventory', 256);
+@
+
+
+1.54
+log
+@initial release of checkin/checkout system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.46 2004/11/20 15:17:47 at Exp $
+a77 1
+/*
+a79 1
+      */
+@
+
+
+1.53
+log
+@increase column size for foreign keys
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.52 2005/01/12 03:27:17 at Exp $
+d22 60
+a81 5
+alter table [_]foreign_key modify c_parent_table varchar(50) not null;
+alter table [_]foreign_key modify c_child_table varchar(50) not null;
+alter table [_]foreign_key modify c_parent_col varchar(50) not null;
+alter table [_]foreign_key modify c_child_col varchar(50) not null;
+alter table [_]foreign_key modify c_child_col varchar(50) not null;
+@
+
+
+1.52
+log
+@insert foreign keys for expense_submission, expense_submission_expense
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.50 2005/01/12 03:20:30 at Exp $
+d22 5
+@
+
+
+1.51
+log
+@insert foreign keys for expense_submission, expense_submission_expense
+@
+text
+@a21 9
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    values
+    ("[_]expense_submission",   "[_]expense_submission_expense", "c_uid", "c_submission"),
+    ("[_]expense",              "[_]expense_submission_expense", "c_uid", "c_expense"),
+    ("[_]category",             "[_]transaction",           "c_uid",    "c_category"),
+    ("[_]member",               "[_]transaction",           "c_uid",    "c_from"),
+    ("[_]member",               "[_]transaction",           "c_uid",    "c_to");
+
+@
+
+
+1.50
+log
+@insert foreign keys for expense_submission, expense_submission_expense
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.49 2005/01/12 03:16:23 at Exp $
+d24 6
+a29 3
+    select "[_]member", c_name, "c_uid", "c_owner"
+    from [_]table
+    where c_name in ("[_]expense_submission", "[_]expense_submission_expense");
+a30 17
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_creator"
+    from [_]table
+    where c_name in ("[_]expense_submission", "[_]expense_submission_expense");
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]group", c_name, "c_uid", "c_group"
+    from [_]table
+    where c_name in ("[_]expense_submission", "[_]expense_submission_expense");
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]status", c_name, "c_uid", "c_status"
+    from [_]table
+    where c_name in ("[_]expense_submission", "[_]expense_submission_expense");
+@
+
+
+1.49
+log
+@merge upgrade.sql changes into create.sql and initialize.sql, and move privileges into privileges.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.48 2005/01/10 22:01:10 at Exp $
+d21 24
+@
+
+
+1.48
+log
+@changes to implemented actions
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.47 2005/01/10 21:15:23 at Exp $
+a20 103
+
+drop table if exists [_]transaction;
+drop table if exists [_]expense_submission;
+drop table if exists [_]expense_submission_expense;
+
+create table [_]expense_submission (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_submission_expense (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_submission      int unsigned    not null, -- > [_]expense_submission
+    c_expense         int unsigned    not null, -- > [_]expense
+    primary key  (c_uid),
+    index (c_submission),
+    unique index(c_expense)
+) type=MyISAM;
+
+create table [_]transaction (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_category        int unsigned    not null default 0, -- > [_]category
+    c_amount          decimal(6,2)    not null,
+    c_from            int unsigned    not null, -- > [_]member
+    c_to              int unsigned    not null, -- > [_]member
+    c_description     varchar(100)    not null default '',
+    c_expense         int unsigned    not null default 0, -- > [_]expense (optional)
+    primary key  (c_uid),
+    index (c_from, c_to)
+) type=MyISAM;
+
+delete from [_]table where c_name in 
+    ("[_]transaction", "[_]expense_submission", "[_]expense_submission_expense");
+
+insert into [_]table
+    (c_name)
+    values
+    ("[_]transaction"),
+    ("[_]expense_submission"),
+    ("[_]expense_submission_expense");
+
+delete [_]implemented_action.*
+from [_]implemented_action
+    inner join [_]action on c_action = c_uid
+    where c_table in("[_]expense_submission", "[_]expense_report");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_report", c_uid from [_]action
+    where c_title in ("submit", "accept");
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_submission", c_uid from [_]action
+    where c_title in ("submit", "accept");
+
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description) values
+    (now(), 'submit', "Submit", '&Submit', 'Submit an Expense Report');
+
+update [_]action as ac
+    inner join [_]flag as fl on fl.c_title = 'applies_to_object'
+set ac.c_flags = ac.c_flags | fl.c_bitmask
+    where ac.c_title in ('submit');
+
+delete [_]implemented_action.*
+from [_]implemented_action
+    inner join [_]action on c_action = c_uid
+    where c_table = "[_]expense" and c_title = "accept";
+
+insert into [_]status
+    (c_owner, c_created_date, c_title, c_description)
+    values
+    (1, now(), "submitted", "The object has been submitted");
+
+insert into [_]member
+    (c_created_date, c_status, c_first_name, c_last_name, c_email, c_password,
+    c_gender, c_birth_date, c_full_name, c_flags)
+    select now(), c_uid, "Student", "Council", "studentcouncil", "",
+      "m", '2001-01-01', "Student Council", c_bitmask
+    from [_]status inner join [_]flag
+    where [_]status.c_title = "active" and [_]flag.c_title = "private";
+@
+
+
+1.47
+log
+@upgrade to expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.46 2004/11/20 15:17:47 at Exp $
+d89 5
+a93 1
+    where c_table = "[_]expense_submission";
+@
+
+
+1.46
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.45 2004/11/08 16:44:45 at Exp $
+d22 3
+a24 2
+drop table if exists [_]checkout;
+drop table if exists [_]checkout_item;
+d26 1
+a26 1
+create table [_]checkout (
+a35 2
+    -- The owner checks out the items.  The member is who they are checked out TO.
+    c_member          int unsigned    not null default 0, -- > [_]member
+d39 1
+a39 1
+create table [_]checkout_item (
+d49 2
+a50 2
+    c_checkout        int unsigned    not null default 0, -- > [_]checkout
+    c_item            int unsigned    not null default 0, -- > [_]item
+d52 2
+a53 1
+    unique index(c_checkout, c_item)
+d56 22
+a77 1
+delete from [_]table where c_name in ("[_]checkout", "[_]checkout_item");
+d82 12
+a93 2
+    ("[_]checkout"),
+    ("[_]checkout_item");
+d95 2
+a96 9
+-- For quartermasters on [_]checkout and [_]checkout_item
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all", "list_owned_by")
+      and ta.c_name in("[_]checkout", "[_]checkout_item");
+d98 22
+a119 3
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]checkout", c_uid from [_]action
+    where c_title in ("accept");
+@
+
+
+1.45
+log
+@let officers see expenses
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.44 2004/11/07 03:03:51 at Exp $
+d22 43
+a64 1
+-- For officers to list_all on [_]expense and [_]expense_report
+d70 7
+a76 3
+    where gr.c_title = "officer"
+      and ac.c_title = "list_all"
+      and ta.c_name in ("[_]expense", "[_]expense_report");
+@
+
+
+1.44
+log
+@merge session tables into create.sql from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.43 2004/11/07 02:49:28 at Exp $
+d22 9
+@
+
+
+1.43
+log
+@add session-tracking to website
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.42 2004/11/04 15:02:36 at Exp $
+a20 23
+
+drop table if exists [_]session;
+drop table if exists [_]session_page;
+
+create table [_]session (
+    c_uid             int unsigned    not null auto_increment,
+    c_created_date    datetime        not null,
+    c_member          int unsigned    not null, -- > [_]member
+    c_ip              varchar(30)     not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]session_page (
+    c_uid             int unsigned    not null auto_increment,
+    c_created_date    datetime        not null,
+    c_session         int unsigned    not null, -- > [_]session
+    c_member          int unsigned,             -- > [_]member
+    c_method          varchar(4)      not null default '',
+    c_page            varchar(20)     not null default '',
+    c_action          varchar(40)     not null default '',
+    c_object          int unsigned,
+    primary key  (c_uid)
+) type=MyISAM;
+@
+
+
+1.42
+log
+@add expense category
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.41 2004/11/02 22:20:43 at Exp $
+d22 23
+a44 1
+insert into [_]expense_category(c_title) values ("Equipment Repair");
+@
+
+
+1.41
+log
+@collapse 'specific' bitmask flag into 'generic'
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.40 2004/11/02 20:01:06 at Exp $
+d22 1
+a22 5
+update [_]action as ac
+    inner join [_]flag as fl on fl.c_title = 'specific'
+set ac.c_flags = ac.c_flags & (~fl.c_bitmask);
+
+delete from [_]flag where c_title = 'specific';
+@
+
+
+1.40
+log
+@collapse the applies_to_object and applies_to_table flags into one
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.39 2004/11/01 01:55:17 at Exp $
+d23 1
+a23 1
+    inner join [_]flag as fl on fl.c_title = 'applies_to_table'
+d26 1
+a26 1
+update [_]flag set c_title = 'reimbursable' where c_title = 'applies_to_table';
+@
+
+
+1.39
+log
+@merge additional expense categories into initialize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.38 2004/11/01 01:46:54 at Exp $
+d21 6
+@
+
+
+1.38
+log
+@add more expense categories
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.37 2004/10/28 01:43:18 at Exp $
+a20 9
+
+insert into [_]expense_category (c_title)
+    values
+    ("Registration Fee"),
+    ("Equipment"),
+    ("Membership Dues"),
+    ("Rental Fee"),
+    ("Postage"),
+    ("Participation Fee");
+@
+
+
+1.37
+log
+@changes for expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.35 2004/10/23 14:52:32 at Exp $
+a21 120
+drop table if exists [_]expense;
+drop table if exists [_]expense_category;
+drop table if exists [_]expense_report;
+drop table if exists [_]expense_report_note;
+
+create table [_]expense (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_report          int unsigned    not null, -- > [_]expense_report
+    c_category        int unsigned    not null, -- > [_]expense_category
+    c_expense_date    date            not null,
+    c_adventure       varchar(100)    not null,
+    c_merchant        varchar(30)     not null,
+    c_description     varchar(60)     not null,
+    c_amount          decimal(6,2)    not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(30)     not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Expense reports initially belong to the member that creates them.  But after
+-- the member accepts the expense report, the owner becomes root, and the member
+-- cannot edit or delete it anymore.
+create table [_]expense_report (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 508, -- nonstandard!
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_report_note (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- root
+    c_creator         int unsigned    not null default 3, -- root
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_report          int unsigned    not null, -- > [_]expense_report
+    c_new_status      int unsigned    not null, -- > status
+    primary key  (c_uid),
+) type=MyISAM;
+
+insert into [_]table (c_name)
+    values
+    ("[_]expense"),
+    ("[_]expense_report"),
+    ("[_]expense_category"),
+    ("[_]expense_report_category");
+
+--------------------------------------------------------------------------------
+-- Define foreign keys.  Insert rows for properties that every table has: owner,
+-- creator, group, status
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_owner"
+    from [_]table where c_name in
+        ("[_]expense", "[_]expense_report", "[_]expense_category", "[_]expense_report_note");
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_creator"
+    from [_]table where c_name in
+        ("[_]expense", "[_]expense_report", "[_]expense_category", "[_]expense_report_note");
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]group", c_name, "c_uid", "c_group"
+    from [_]table where c_name in
+        ("[_]expense", "[_]expense_report", "[_]expense_category", "[_]expense_report_note");
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]status", c_name, "c_uid", "c_status"
+    from [_]table where c_name in
+        ("[_]expense", "[_]expense_report", "[_]expense_category", "[_]expense_report_note");
+
+--------------------------------------------------------------------------------
+-- Insert rows for other foreign keys in the database.
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    values
+    ("[_]expense_report",       "[_]expense",               "c_uid",    "c_report"),
+    ("[_]expense_report",       "[_]expense_report_note",   "c_uid",    "c_report"),
+    ("[_]status",               "[_]expense_report_note",   "c_uid",    "c_new_status"),
+    ("[_]expense_category",     "[_]expense",               "c_uid",    "c_category"),
+    ("[_]member",               "[_]expense_report",        "c_uid",    "c_member");
+
+d24 6
+a29 68
+    ("Food"), ("Gas"), ("Lodging"), ("Other");
+
+-- Insert new foreign keys, entries into t_table, privileges
+
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description, c_flags) values
+    (now(), 'accept', "Accept", '&Accept', 'Accept an Expense Report', 256);
+
+update [_]action, [_]flag set c_flags = c_flags | [_]flag.c_bitmask
+where [_]action.c_title = "accept"
+    and [_]flag.c_title = 'specific';
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]expense_report", c_uid from [_]action
+    where c_title in ("accept", "view_notes");
+
+-- -----------------------------------------------------------------------------
+-- TABLE PRIVILEGES: apply to the given table itself, so the last
+-- argument is a 0 because it's not applicable to table privileges
+-- -----------------------------------------------------------------------------
+
+-- For leaders to create expenses
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "leader"
+      and ac.c_title in ("create")
+      and ta.c_name in ("[_]expense");
+
+-- For leaders to list_owned_by and create
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "leader"
+      and ac.c_title in ("list_owned_by", "create")
+      and ta.c_name in ("[_]expense_report");
+
+-- For treasurers to create, list_owned_by, and list_all
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "treasurer"
+      and ac.c_title in ("create", "list_owned_by", "list_all")
+      and ta.c_name in ("[_]expense_report");
+
+-- For treasurers to accept and view_notes
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title in ("treasurer")
+      and ac.c_title in("accept", "view_notes")
+      and ta.c_name in ("[_]expense_report");
+
+-- For leaders to accept their own expense reports
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("accept")
+      and ta.c_name in ("[_]expense_report");
+@
+
+
+1.36
+log
+@fix bad default values for c_group on optout and activity_category
+@
+text
+@d22 190
+a211 7
+alter table [_]activity_category change c_group
+    c_group           int unsigned    not null default 1;
+update [_]activity_category set c_group = 1;
+
+alter table [_]optout change c_group
+    c_group           int unsigned    not null default 1;
+update [_]optout set c_group = 1;
+@
+
+
+1.35
+log
+@merge upgrade.sql into create/initialize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.34 2004/10/23 13:07:09 at Exp $
+d21 8
+@
+
+
+1.34
+log
+@answers should be related to attendees, not members
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.33 2004/10/11 00:47:39 at Exp $
+a20 49
+
+-- Answers should be related to attendees, not members.
+alter table [_]answer add c_attendee int unsigned not null after c_member;
+
+update [_]answer as ans
+    inner join [_]question as qu on ans.c_question = qu.c_uid
+    inner join [_]attendee as att on qu.c_adventure = att.c_adventure
+        and ans.c_member = att.c_member
+    set ans.c_attendee = att.c_uid;
+
+-- Delete the columns from [_]attendee and update the foreign keys
+alter table [_]answer drop column c_member;
+
+delete from [_]foreign_key where c_child_table = '[_]answer' and c_child_col = 'c_member';
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    values
+    ("[_]attendee", "[_]answer", "c_uid", "c_attendee");
+
+-- Make attendees owned by the member, not the adventure's owner.  Alter
+-- privileges so attendees can update their own answers by default.  Alter
+-- privileges so leaders can waitlist, withdraw, etc as needed.
+
+update [_]attendee set c_owner = c_member;
+
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner_group", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("waitlist", "withdraw", "join", "mark_absent", "view_answers")
+      and ta.c_name in ("[_]attendee");
+
+delete [_]privilege
+from [_]privilege as pr
+    inner join [_]action as ac on pr.c_action = ac.c_uid
+where c_what_granted_to = "owner" and c_what_relates_to = "global"
+    and ac.c_title in("waitlist", "withdraw", "join", "mark_absent", "view_answers")
+    and c_related_table = "[_]attendee";
+
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "owner", 0, ac.c_uid, "global", ta.c_name, 0
+    from [_]action as ac, [_]table as ta
+    where ac.c_title in("view_answers")
+      and ta.c_name in ("[_]attendee");
+
+@
+
+
+1.33
+log
+@merge changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.32 2004/10/11 00:47:21 at Exp $
+d21 49
+@
+
+
+1.32
+log
+@remove the cancel action from adventures
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.31 2004/10/11 00:40:03 at Exp $
+a20 4
+
+delete [_]implemented_action from [_]implemented_action as ia
+    inner join [_]action as ac on ia.c_action = ac.c_uid
+    where c_title = "cancel" and c_table = "[_]adventure";
+@
+
+
+1.31
+log
+@merge changes over from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.30 2004/10/11 00:37:01 at Exp $
+d22 3
+@
+
+
+1.30
+log
+@add foreign keys
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.26 2004/10/09 22:11:57 at Exp $
+a21 81
+drop table if exists [_]foreign_key;
+
+-- Defines relationships between data in the database.  There may be multiple
+-- rows per relationship.
+create table [_]foreign_key (
+    c_parent_table    varchar(30) not null,
+    c_child_table     varchar(30) not null,
+    c_parent_col      varchar(30) not null,
+    c_child_col       varchar(30) not null,
+    primary key (c_parent_table, c_child_table, c_parent_col, c_child_col)
+) type=MyISAM;
+
+--------------------------------------------------------------------------------
+-- Insert rows for properties that every table has: owner, creator, group,
+-- status
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_owner"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]member", c_name, "c_uid", "c_creator"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]group", c_name, "c_uid", "c_group"
+    from [_]table;
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    select "[_]status", c_name, "c_uid", "c_status"
+    from [_]table;
+
+--------------------------------------------------------------------------------
+-- Insert rows for other foreign keys in the database.
+--------------------------------------------------------------------------------
+
+insert into [_]foreign_key
+    (c_parent_table, c_child_table, c_parent_col, c_child_col)
+    values
+    ("[_]activity",             "[_]adventure_activity",    "c_uid",    "c_activity"),
+    ("[_]activity",             "[_]interest",              "c_uid",    "c_activity"),
+    ("[_]activity",             "[_]location_activity",     "c_uid",    "c_activity"),
+    ("[_]activity_category",    "[_]optout",                "c_uid",    "c_category"),
+    ("[_]activity_category",    "[_]activity",              "c_uid",    "c_category"),
+    ("[_]adventure",            "[_]adventure_comment",     "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]adventure_activity",    "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]attendee",              "c_uid",    "c_adventure"),
+    ("[_]adventure",            "[_]question",              "c_uid",    "c_adventure"),
+    ("[_]attendee",             "[_]absence",               "c_uid",    "c_attendee"),
+    ("[_]chat_type",            "[_]chat",                  "c_uid",    "c_type"),
+    ("[_]condition",            "[_]item",                  "c_uid",    "c_condition"),
+    ("[_]condition",            "[_]item_note",             "c_uid",    "c_condition"),
+    ("[_]decision_category",    "[_]decision",              "c_uid",    "c_category"),
+    ("[_]decision",             "[_]decision_xref",         "c_uid",    "c_decision"),
+    ("[_]decision",             "[_]decision_xref",         "c_uid",    "c_xref"),
+    ("[_]email_list",           "[_]subscription",          "c_uid",    "c_list"),
+    ("[_]group",                "[_]member_group",          "c_uid",    "c_related_group"),
+    ("[_]item",                 "[_]item_note",             "c_uid",    "c_item"),
+    ("[_]item",                 "[_]item_feature",          "c_uid",    "c_item"),
+    ("[_]item_category",        "[_]item_type",             "c_uid",    "c_category"),
+    ("[_]item_type",            "[_]item",                  "c_uid",    "c_type"),
+    ("[_]item_type",            "[_]item_type_feature",     "c_uid",    "c_type"),
+    ("[_]location",             "[_]adventure",             "c_uid",    "c_departure"),
+    ("[_]location",             "[_]adventure",             "c_uid",    "c_destination"),
+    ("[_]location",             "[_]location_activity",     "c_uid",    "c_location"),
+    ("[_]member",               "[_]answer",                "c_uid",    "c_member"),
+    ("[_]member",               "[_]attendee",              "c_uid",    "c_member"),
+    ("[_]member",               "[_]interest",              "c_uid",    "c_member"),
+    ("[_]member",               "[_]member_group",          "c_uid",    "c_member"),
+    ("[_]member",               "[_]member_note",           "c_uid",    "c_member"),
+    ("[_]member",               "[_]membership",            "c_uid",    "c_member"),
+    ("[_]member",               "[_]optout",                "c_uid",    "c_member"),
+    ("[_]membership_type",      "[_]membership",            "c_uid",    "c_type"),
+    ("[_]phone_number_type",    "[_]phone_number",          "c_uid",    "c_type"),
+    ("[_]question",             "[_]answer",                "c_uid",    "c_question"),
+    ("[_]rating",               "[_]adventure_comment",     "c_uid",    "c_rating");
+@
+
+
+1.29
+log
+@merge changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.28 2004/10/10 23:46:46 at Exp $
+d21 82
+@
+
+
+1.28
+log
+@change table name
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.26 2004/10/09 22:11:57 at Exp $
+a20 7
+
+delete from [_]table
+where c_name in ("[_]item_attribute", "[_]item_type_attribute");
+
+insert into [_]table values
+    ("[_]item_feature"),
+    ("[_]item_type_feature");
+@
+
+
+1.27
+log
+@change table names to feature instead of attribute
+@
+text
+@d22 6
+a27 2
+alter table [_]item_attribute rename to [_]item_feature;
+alter table [_]item_type_attribute rename to [_]item_type_feature;
+@
+
+
+1.26
+log
+@merge changes in for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.25 2004/10/09 21:14:34 at Exp $
+d22 2
+@
+
+
+1.25
+log
+@release email system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.24 2004/10/07 03:40:17 at Exp $
+a20 67
+
+drop table if exists [_]activity_category;
+drop table if exists [_]optout;
+
+-- Each activity has a category.
+create table [_]activity_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+insert into [_]activity_category
+    (c_created_date, c_title)
+    values
+    (now(), "Everything Else"),
+    (now(), "Biking"),
+    (now(), "Camping and Backpacking"),
+    (now(), "Climbing"),
+    (now(), "Hiking and Running"),
+    (now(), "Service"),
+    (now(), "Winter Sports"),
+    (now(), "Water Sports");
+
+--alter table [_]activity add c_category int unsigned not null default 1 after c_title;
+
+-- Members are opted in to every category of email unless they opt out.
+create table [_]optout (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_category        int unsigned    not null, -- > [_]activity_category
+    unique index (c_member, c_category),
+    primary key  (c_uid)
+) type=MyISAM;
+
+insert into [_]table values ("[_]optout"), ("[_]activity_category");
+
+insert into [_]action (c_created_date, c_title, c_summary, c_label, c_description, c_flags) values
+    (now(), 'optout', "Opt Out", '&Opt Out', 'Opt out of emails', 256);
+
+insert into [_]implemented_action (c_table, c_action)
+    select "[_]member", c_uid from [_]action
+    where c_title in ("optout");
+
+-- Allow members to opt themselves out
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "self", '[_]member', 0
+    from [_]action as ac, [_]table as ta, [_]group as gr
+    where ac.c_title in("optout")
+      and gr.c_title in ("member");
+@
+
+
+1.24
+log
+@merge decisions system in
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.23 2004/10/07 03:09:14 at Exp $
+d21 68
+@
+
+
+1.23
+log
+@init: release decision system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.7 2004/09/24 17:39:46 at Exp $
+a20 64
+
+drop table if exists [_]decision;
+drop table if exists [_]decision_category;
+drop table if exists [_]decision_xref;
+
+create table [_]decision (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 760,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100)    not null,
+    c_text            text            not null,
+    c_category        int unsigned    not null, -- > [_]decision_category
+    primary key  (c_uid),
+    index (c_category),
+    index (c_title)
+) type=MyISAM;
+
+create table [_]decision_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]decision_xref (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_decision        int unsigned    not null, -- > [_]decision
+    c_xref            int unsigned    not null, -- > [_]decision
+    primary key  (c_uid),
+    unique index (c_decision, c_xref)
+) type=MyISAM;
+
+insert into [_]decision_category (c_created_date, c_title)
+    values (now(), "General");
+
+insert into [_]table values
+    ("[_]decision"),
+    ("[_]decision_category"),
+    ("[_]decision_xref");
+
+-- insert privilege to let officers list_all and create on the table
+-- insert privilege to let officers add_xref
+-- Add the add_xref action, and make it apply to the type
+@
+
+
+1.22
+log
+@merge in changes to rank conditions
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.21 2004/10/06 22:37:14 at Exp $
+d21 64
+@
+
+
+1.21
+log
+@order conditions by rank
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.20 2004/10/06 14:12:51 at Exp $
+a20 2
+
+alter table [_]condition add c_rank int unsigned not null default 0 after c_title;
+@
+
+
+1.20
+log
+@merged into initialize.sql for inventory system upgrade
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.19 2004/10/06 13:57:14 at Exp $
+d21 2
+@
+
+
+1.19
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.18 2004/10/05 22:58:21 at Exp $
+a20 8
+
+
+insert into [_]status
+    (c_owner, c_created_date, c_title, c_description)
+    values
+    (1, now(), "checked_out", "The object is checked out"),
+    (1, now(), "checked_in", "The object is checked in"),
+    (1, now(), "missing", "The object is missing or lost");
+@
+
+
+1.18
+log
+@upgrade.sql -> create.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.17 2004/10/05 22:37:30 at Exp $
+d21 8
+@
+
+
+1.17
+log
+@add a secondary description column to item types
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.16 2004/10/04 14:06:39 at Exp $
+a20 3
+
+alter table [_]item_type change c_primary_feature c_primary_feature  varchar(10) not null;
+alter table [_]item_type add c_secondary_feature varchar(10) not null after c_primary_feature;
+@
+
+
+1.16
+log
+@changes moved to create.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.15 2004/10/04 14:06:18 at Exp $
+d21 3
+@
+
+
+1.15
+log
+@change item attributes to have a max length of 10, and reformat the entry screen
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.14 2004/10/04 12:42:20 at Exp $
+a20 3
+
+alter table [_]item_type_attribute change c_name c_name varchar(10) not null;
+alter table [_]item_attribute change c_name c_name varchar(10) not null;
+@
+
+
+1.14
+log
+@merged changes from upgrade.sql to create and initialize scripts
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.13 2004/10/03 22:55:58 at Exp $
+d21 3
+@
+
+
+1.13
+log
+@remove index on column that doesn't exist
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.12 2004/10/03 22:52:33 at Exp $
+a20 20
+
+drop table if exists [_]item_category;
+
+create table [_]item_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+alter table [_]item_type add c_category int unsigned not null default 1 after c_title;
+alter table [_]item_type add index (c_category);
+insert into [_]item_category (c_created_date, c_title) values (now(), "No Category");
+@
+
+
+1.12
+log
+@add default category
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.11 2004/10/03 22:49:56 at Exp $
+d35 1
+a35 2
+    primary key  (c_uid),
+    index (c_parent)
+@
+
+
+1.11
+log
+@organize item types by category
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.10 2004/10/02 00:20:46 at Exp $
+d41 1
+@
+
+
+1.10
+log
+@changes copied to create.sql and initalize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.9 2004/10/02 00:08:21 at Exp $
+d21 20
+@
+
+
+1.9
+log
+@changes for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.8 2004/10/01 23:56:46 at Exp $
+a20 78
+
+alter table [_]item change c_group c_group int unsigned not null default 5;
+update [_]item set c_group = 5;
+
+alter table [_]item_note change c_group c_group int unsigned not null default 5;
+update [_]item_note set c_group = 5;
+
+alter table [_]item_attribute change c_group c_group int unsigned not null default 5;
+update [_]item_attribute set c_group = 5;
+
+alter table [_]item_type change c_group c_group int unsigned not null default 5;
+update [_]item_type set c_group = 5;
+
+alter table [_]item_type_attribute change c_group c_group int unsigned not null default 5;
+update [_]item_type_attribute set c_group = 5;
+
+alter table [_]condition change c_group c_group int unsigned not null default 5;
+update [_]condition set c_group = 5;
+
+-- For quartermasters on condition
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]condition";
+
+-- For quartermasters on item
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]item";
+
+-- For quartermasters on items globally
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("copy", "view_notes", "edit_attributes")
+      and ta.c_name = "[_]item";
+
+-- For quartermasters on item_type
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("create", "list_all")
+      and ta.c_name = "[_]item_type";
+
+-- For quartermasters on item_types globally
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "global", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "quartermaster"
+      and ac.c_title in("edit_attributes")
+      and ta.c_name = "[_]item_type";
+
+-- For officers on item
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select 1, now(), "group", gr.c_uid, ac.c_uid, "table", ta.c_name, 0
+    from [_]group as gr, [_]action as ac, [_]table as ta
+    where gr.c_title = "officer"
+      and ac.c_title in("list_all")
+      and ta.c_name = "[_]item";
+@
+
+
+1.8
+log
+@update privileges for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.7 2004/09/24 17:39:46 at Exp $
+d36 13
+@
+
+
+1.7
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.6 2004/09/22 16:49:57 at Exp $
+d22 64
+a85 4
+alter table [_]item drop column c_title;
+alter table [_]item_type drop column c_description;
+alter table [_]item_type add unique index (c_title);
+alter table [_]item_type add c_primary_feature varchar(100) not null after c_title;
+@
+
+
+1.6
+log
+@merged classified ads in
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.5 2004/09/22 16:28:50 at Exp $
+d22 4
+a25 1
+
+@
+
+
+1.5
+log
+@changes for the classified ads
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.4 2004/09/22 12:58:13 at Exp $
+a21 16
+drop table if exists [_]classified_ad;
+
+create table [_]classified_ad (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100)    not null,
+    c_text            text            not null,
+    primary key  (c_uid)
+) type=MyISAM;
+@
+
+
+1.4
+log
+@merge upgrades into create script
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.3 2004/09/19 02:49:15 at Exp $
+d21 18
+@
+
+
+1.3
+log
+@schema changes as I tweaked the inventory system's code for the first draft
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.2 2004/09/16 02:08:25 at Exp $
+a20 119
+
+
+drop table if exists [_]condition;
+drop table if exists [_]item;
+drop table if exists [_]item_note;
+drop table if exists [_]item_attribute;
+drop table if exists [_]item_type_attribute;
+drop table if exists [_]item_type;
+
+
+-- Defines possible values for the condition of an item.
+create table [_]condition (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100)    not null,
+    c_description     varchar(255)    not null,
+    primary key  (c_uid),
+    unique index (c_title)
+) type=MyISAM;
+
+-- Defines an item of inventory.
+create table [_]item (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_condition       int unsigned    not null, -- > condition
+    c_type            int unsigned    not null, -- > type
+    c_title           varchar(100)    not null,
+    c_description     varchar(255)    not null,
+    c_purchase_date   date,
+    primary key  (c_uid),
+    index (c_type, c_condition)
+) type=MyISAM;
+
+-- Records a note on an item, along with the new condition.
+create table [_]item_note (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_item            int unsigned    not null, -- > item
+    c_condition       int unsigned    not null, -- > condition
+    c_note            varchar(255)    not null,
+    primary key  (c_uid),
+    index (c_item, c_creator)
+) type=MyISAM;
+
+-- Records an attribute on an item, which is a named value
+create table [_]item_attribute (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_item            int unsigned    not null, -- > item
+    c_name            varchar(100)    not null,
+    c_value           varchar(100)    not null,
+    primary key  (c_uid),
+    index (c_item, c_name)
+) type=MyISAM;
+
+-- Records an attribute that every item of a certain type should have.  Taken
+-- all together, the set of item_type_attributes for a given item_type define
+-- the attributes that every item of that type is expected to have.
+create table [_]item_type_attribute (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_type            int unsigned    not null, -- > item_type
+    c_name            varchar(100)    not null,
+    primary key  (c_uid),
+    unique index (c_type, c_name)
+) type=MyISAM;
+
+-- Defines a type of item.  Each type of item has its own set of attributes,
+-- which are defined in item_type_attribute.  Thus a type of item is a sort
+-- of template for the named values that belong to this class of item.
+create table [_]item_type (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_title           varchar(100)    not null,
+    c_description     varchar(255)    not null,
+    primary key  (c_uid)
+) type=MyISAM;
+@
+
+
+1.2
+log
+@inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d27 1
+a27 1
+drop table if exists [_]item_attribute_type;
+d42 4
+a45 2
+    c_title           varchar(100),
+    primary key  (c_uid)
+d61 2
+a62 2
+    c_title           varchar(100),
+    c_description     varchar(255),
+a63 1
+    c_price           decimal(6,2),
+d81 1
+a81 1
+    c_note            varchar(255),
+d98 2
+a99 2
+    c_name            varchar(100),
+    c_value           varchar(100),
+d105 1
+a105 1
+-- all together, the set of item_attribute_types for a given item_type define
+d107 1
+a107 1
+create table [_]item_attribute_type (
+d118 3
+a120 2
+    c_name            varchar(100),
+    primary key  (c_uid)
+d124 1
+a124 1
+-- which are defined in item_attribute_type.  Thus a type of item is a sort
+d136 2
+a137 1
+    c_title           varchar(100),
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d19 1
+a19 1
+ * $Id: upgrade.sql,v 1.3 2004/05/30 01:42:23 baron Exp $
+d22 115
+a136 10
+-- This file contains a set of SQL commands that can be run to convert one
+-- version of the database into the next.  Whenever you change create.sql or
+-- initialize.sql, update this file as well.  Be sure to include dates.  Follow
+-- the format given below.  Please, when you commit to CVS make your comment
+-- the same as the first line of the example (To upgrade...)
+
+-- To upgrade YYYY-MM-DD to YYYY-MM-DD
+-- create.sql changes:
+-- initialize.sql changes:
+-- End
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

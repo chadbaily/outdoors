@@ -1,0 +1,26 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2005.01.30.23.03.06;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@allow members to delete memberships that are keeping them from joining with a new membership -- bug 176
+@
+text
+@update [_]membership
+set c_deleted = 1
+where c_uid = {membership,int}
+@

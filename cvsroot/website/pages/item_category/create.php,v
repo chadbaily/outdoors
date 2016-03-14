@@ -1,0 +1,104 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.31.15.20.46;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: create.php,v 1.2 2005/02/07 18:49:28 at Exp $
+ */
+
+$template = file_get_contents("templates/item_category/create.php");
+$form =& new XMLForm("forms/item_category/create.xml");
+
+# Validate the form
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    $object =& new item_category();
+    $object->setTitle($form->getValue("title"));
+    $object->insert();
+    redirect("$cfg[base_url]/members/item_category/read/$object->c_uid");
+}
+
+$res['content'] = Template::replace($template,
+    array("FORM" => $form->toString()));
+$res['title'] = "Create a New Item Category";
+
+?>
+@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.1 2005/01/31 15:20:46 at Exp $
+d34 1
+a34 1
+    redirect("members/item_category/read/$object->c_uid");
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: write.php,v 1.7 2004/10/23 12:56:31 at Exp $
+d34 1
+a34 2
+    redirect("members.php?page=item_category&action={$cfg['action_id']['read']}"
+        . "&object=" . $object->getUID());
+@
+

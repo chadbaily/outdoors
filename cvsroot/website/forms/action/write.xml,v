@@ -1,0 +1,241 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.11.02.20.01.10;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.09.20.04.53;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.35.08;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@collapse the applies_to_object and applies_to_table flags into one
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="summary"
+        element-id="summary" />
+    <element
+        required="1"
+        name="label"
+        element-id="label" />
+    <element
+        required="1"
+        name="row"
+        data-type="integer"
+        element-id="row" />
+    <element
+        required="1"
+        name="description"
+        element-id="description" />
+    <element
+        required="1"
+        name="apply-object"
+        tag-name="input" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title (name that the system uses; should be all lowercase, with only letters and underscores)</td>
+    <td><input maxlength="100" type="text" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="summary-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Summary; should be one or two words suitable for displaying in a drop-down menu</td>
+    <td>
+      <input maxlength="25" type="text" name="summary" id="summary" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="label-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Label; used for UI.  Insert an &amp; character to create an access key.</td>
+    <td>
+      <input maxlength="25" type="text" name="label" id="label" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="row-error">
+    <td colspan="2" class="error">
+    This field is required and must be an integer.
+    </td>
+  </tr>
+  <tr>
+    <td>Row.  Used for UI; specifies a preferred level for a tabbed box.</td>
+    <td>
+      <input type="text" name="row" id="row" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Description; should be a single sentence that describes the action's purpose</td>
+    <td>
+      <input maxlength="255" type="text" name="description" id="description" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="apply-object-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Applies to:</td>
+    <td>
+      <input type="radio" name="apply-object" value="1" id="apply-object1" />
+      <label for="apply-object1">Objects</label>
+      <input type="radio" name="apply-object" value="0" id="apply-object0" />
+      <label for="apply-object0">Tables</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.3
+log
+@limit input to what the database can accept
+@
+text
+@a34 4
+    <element
+        required="1"
+        name="apply-table"
+        tag-name="input" />
+d106 1
+a106 1
+    <td>Applies to objects:</td>
+d109 1
+a109 1
+      <label for="apply-object1">Yes</label>
+d111 1
+a111 16
+      <label for="apply-object0">No</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="apply-table-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Applies to tables:</td>
+    <td>
+      <input type="radio" name="apply-table" value="1" id="apply-table1" />
+      <label for="apply-table1">Yes</label>
+      <input type="radio" name="apply-table" value="0" id="apply-table0" />
+      <label for="apply-table0">No</label>
+@
+
+
+1.2
+log
+@added c_name and c_row
+@
+text
+@d53 1
+a53 1
+    <td><input type="text" name="title" id="title" /></td>
+d64 1
+a64 1
+      <input type="text" name="summary" id="summary" />
+d76 1
+a76 1
+      <input type="text" name="label" id="label" />
+d100 1
+a100 1
+      <input type="text" name="description" id="description" />
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 9
+d65 24
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

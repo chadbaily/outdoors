@@ -1,0 +1,90 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Checked-Out Equipment</h1>
+
+<p>The following people have equipment checked out:</p>
+
+{FORM}
+<br>
+
+{SOME:}
+<table class="borders collapsed">
+  <tr>
+    <th>Member</th>
+    <th>Officer</th>
+    <th>Date</th>
+    <th>Status</th>
+  </tr>{checkout:}
+  <tr>
+    <td><a href="members/checkout/read/{c_uid}">{c_last_name}, {c_first_name}</a></td>
+    <td>{officer_name}</td>
+    <td>{c_created_date|_date_format,'n/j/Y'}</td>
+    <td>{st_title}</td>
+  </tr>{:checkout}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">No matching records found.</p>
+{:NONE}
+@
+
+
+1.2
+log
+@initial release of checkin/checkout system
+@
+text
+@d17 1
+a17 1
+    <td><a href="members.php?page=checkout&action={ACTION_READ}&object={c_uid}">{c_last_name}, {c_first_name}</a></td>
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d12 2
+a13 1
+    <th># of Items</th>
+d17 4
+a20 5
+    <td>
+      <a href="members.php?page=checkout&object={c_uid}&action={ACTION_READ}">{c_last_name}, {c_first_name}</a>
+    </td>
+    <td>{num_items}</td>
+    <td>{status_title}</td>
+@
+

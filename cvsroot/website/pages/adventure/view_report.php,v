@@ -1,0 +1,434 @@
+head	1.10;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2004.10.23.12.51.18;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.05.12.15.39;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.29.01.46.42;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.07.04;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.13.14.08.04;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.10.20.42.09;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.10.20.18.15;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@change table names to match class names; use getChildren()
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: view_report.php,v 1.9 2004/10/05 12:15:39 at Exp $
+ *
+ */
+
+include_once("attendee.php");
+
+$res['title'] = "View Adventure Report";
+
+$template = file_get_contents("templates/adventure/view_report.php");
+$form =& new XmlForm("forms/adventure/view_report.xml");
+$form->snatch();
+
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/adventure/view_report.sql");
+$cmd->addParameter("adventure", $cfg['object']);
+$cmd->addParameter("waitlisted", $cfg['status_id']['waitlisted']);
+if ($form->getValue("status")) {
+    $cmd->addParameter("status", intval($form->getValue("status")));
+}
+$result =& $cmd->executeReader();
+
+if ($result->numRows()) {
+
+    $template = Template::replace($template,
+        array("NUM_ATTENDEES" => $result->numRows()));
+    $template = Template::unhide($template, "SOME");
+
+    # Prepare to get the member's phone numbers
+    $cmd2 =& $obj['conn']->createCommand();
+    $cmd2->loadQuery("sql/queries/phone_number/select-by-owner.sql");
+
+    while ($row =& $result->fetchRow()) {
+
+        # Get an array of the member's phone numbers
+        $cmd2->addParameter("owner", $row['c_member']);
+        $result2 =& $cmd2->executeReader();
+        $phones = array();
+        while ($row2 =& $result2->fetchRow()) {
+            $phones[] = $row2['c_phone_number']
+                . ($row2['c_abbreviation'] ? $row2['c_abbreviation'] : "");
+        }
+
+        $template = Template::block($template, "ROW",
+            array_change_key_case($row, 1)
+                + array("NUMBERS" => implode("<br>", $phones)));
+    }
+
+    if ($form->getValue("question")) {
+        $template = Template::unhide($template, "QUESTIONS");
+        # Decide on header style
+        $headerStyle = "HEADER" . $form->getValue("question");
+        foreach ($object->getChildren("question") as $key => $question) {
+            $template = Template::block($template, $headerStyle,
+                array("C_TEXT" => $question->getText()));
+        }
+        $rowTemplate = Template::extract($template, "QUESTION");
+        $template = Template::delete($template, "QUESTION");
+        $result->seekRow(0);
+        while ($row =& $result->fetchRow()) {
+            $thisRow = $rowTemplate;
+            $attendee =& new attendee();
+            $attendee->select($row['c_uid']);
+            $answers =& $attendee->getChildren("answer");
+            # Re-key the answers by question ID
+            $a = array();
+            foreach ($answers as $answer) {
+                $a[$answer->getQuestion()] = $answer;
+            }
+            $answers = $a;
+            foreach ($object->getChildren("question") as $key => $question) {
+                if (isset($answers[$key])) {
+                    if ($question->getType() == "bool") {
+                        $thisRow = Template::block($thisRow,
+                                "ANSWER", array(
+                                    "C_ANSWER_TEXT" => ($answers[$key]->getAnswerText() == "1"
+                                                ? "Yes"
+                                                : "No"))
+                                                + $answers[$key]->getVarArray());
+                    }
+                    else {
+                        $thisRow = Template::block($thisRow,
+                                "ANSWER", $answers[$key]->getVarArray());
+                    }
+                }
+                else {
+                    $thisRow = Template::block($thisRow, "ANSWER",
+                    array("C_ANSWER_TEXT" => "--"));
+                }
+            }
+            $thisRow = Template::replace($thisRow, array("C_FULL_NAME" => $row['c_full_name']));
+            $template = Template::replace($template, array("ROWS" => $thisRow), 1);
+        }
+    }
+    else {
+        $template = Template::delete($template, "QUESTIONS");
+    }
+
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+
+$template = Template::replace($template, array(
+    "CONTENTS" => $res['content'],
+    "FORM" => $form->toString()));
+$res['content'] = $object->insertIntoTemplate($template);
+
+?>
+@
+
+
+1.9
+log
+@tweak to page layout
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.8 2004/09/29 01:46:42 at Exp $
+a21 7
+ * You can use this page to do several things.  First of all, if you are a
+ * member attending the adventure you can see your "status" including your
+ * position on the waitlist, any money you will owe for the adventure, and so
+ * on.  Next, if you are a member of the officer group or root, or are the
+ * leader, you can view fullblown reports.  You can see a list of attendees, see
+ * the full waitlist, see a report on how people answered the questions, and
+ * take any appropriate actions on the attendees.
+d24 1
+a24 1
+include_once("Attendee.php");
+d71 1
+a71 1
+        foreach ($object->getQuestions() as $key => $question) {
+d80 1
+a80 1
+            $attendee =& new Attendee();
+d82 8
+a89 2
+            $answers =& $attendee->getAnswers();
+            foreach ($object->getQuestions() as $key => $question) {
+@
+
+
+1.8
+log
+@new view_report pages
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.7 2004/09/20 20:38:39 at Exp $
+d76 2
+d79 1
+a79 1
+            $template = Template::block($template, "HEADER",
+@
+
+
+1.7
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.6 2004/09/20 20:07:04 at Exp $
+d35 10
+a44 16
+switch (Utility::getval("report")) {
+    case "attendee":
+        include_once("pages/adventure/report-attendee.php");
+        break;
+    case "matrix":
+        include_once("pages/adventure/report-matrix.php");
+        break;
+    case "question":
+        include_once("pages/adventure/report-question.php");
+        break;
+    case "waitlist":
+        include_once("pages/adventure/report-waitlist.php");
+        break;
+    default:
+        include_once("pages/adventure/report-default.php");
+        break;
+d46 11
+a57 18
+$template = file_get_contents("templates/adventure/view_report.php");
+if (isset($_GET['report']) && $_GET['report']
+        && ($obj['user']->isInGroup('officer') || $obj['user']->isInGroup('root'))) {
+    # Get a list of similar adventures and plug them into the drop-down menu
+    $template = Template::unhide($template, "SWITCH");
+    $comm =& $obj['conn']->createCommand();
+    $comm->loadQuery("sql/queries/adventure/select-similar.sql");
+    $comm->addParameter("adventure", $cfg['object']);
+    $comm->addParameter("limit", 45);
+    $comm->addParameter("owner", $object->getOwner());
+    $comm->addParameter("destination", $object->getDestination());
+    $comm->addParameter("title", substr($object->getTitle(), 0, 15));
+    $comm->addParameter("start", $object->getStartDate());
+    $result =& $comm->executeReader();
+
+    # Add the rows to an array so we can re-sort them (would need a nested
+    # select to do this in SQL)
+    $similar = array();
+d59 52
+a110 1
+        $similar[] = $row;
+d112 2
+a113 3
+    # Sorts the array in descending order by start date
+    function cmp($a, $b) {
+        return -strcmp($a['c_start_date'], $b['c_start_date']);
+a114 1
+    usort($similar, "cmp");
+a115 8
+    foreach ($similar as $row) {
+        $template = Template::block($template, "OPTION",
+            array_change_key_case($row, 1));
+    }
+    # Replace the other hidden fields in the form
+    $template = Template::replace($template, array(
+        "REPORT" => $_GET['report'],
+        "STATUS" => (isset($_GET['status']) ? $_GET['status'] : "")));
+d117 5
+d123 3
+a125 2
+$template = Template::replace($template, array("CONTENTS" =>
+    $res['content']));
+@
+
+
+1.6
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.5 2004/09/13 14:08:04 at Exp $
+d57 1
+a57 1
+    $template = Template::unhideBlock($template, "SWITCH");
+d81 1
+a81 1
+        $template = Template::replaceWithinBlock($template, "OPTION",
+d85 1
+a85 1
+    $template = Template::replaceValues($template, array(
+d90 1
+a90 1
+$template = Template::replaceValues($template, array("CONTENTS" =>
+@
+
+
+1.5
+log
+@only show the switch-to-another-adventure menu if you are an officer or root
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.4 2004/09/10 20:42:09 at Exp $
+d65 1
+a65 2
+    $start = $object->getStartDate();
+    $comm->addParameter("start", $start->toString("Y-m-d"));
+@
+
+
+1.4
+log
+@re-formatted the report-jump menu, and sorted it by date (descending)
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.3 2004/09/10 20:18:15 at Exp $
+d54 2
+a55 1
+if (isset($_GET['report']) && $_GET['report']) {
+@
+
+
+1.3
+log
+@add a list of similar adventures to jump to the report
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.2 2004/09/08 22:45:37 at Exp $
+d55 1
+a56 1
+    # Get a list of similar adventures and plug them into the drop-down menu
+d67 4
+d72 9
+@
+
+
+1.2
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d54 23
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: view_report.php,v 1.5 2004/05/30 01:42:09 baron Exp $
+d53 4
+a56 9
+$wrapper = file_get_contents("templates/adventure/view_report-wrapper.php");
+
+# Plug it all into the templates
+$res['tab'] = "View Report";
+$res['content'] = $object->insertIntoTemplate($box);
+include_once("tabbed-boxes/adventure-read.php");
+$res['content'] = $object->insertIntoTemplate(
+    Template::replaceValues($wrapper, array(
+        "BOX" => $res['content'])));
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

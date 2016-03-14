@@ -1,0 +1,13 @@
+insert into m_email (c_owner,c_subject, c_message,
+                   c_created_date) values (1,"You're turning 18!", "Dear Katherine Guinn, 
+
+According to our records, you are currently a minor, but will soon turn 18. Given this, you will need to sign an indemnification AFTER you have turned 18. Please turn in your signed indemnification within 7 days of turning 18. You may sign the indemnification agreement electronically at https://www.hellosign.com/s/c101b9bb or you may print out a copy (available at http://www.outdoorsatuva.org/pub-files/OUVA_Liability_Waiver.pdf), sign it, and return it to the officers
+
+Please email the officers if you have any questions!
+
+Thanks,
+The Officers
+outdoors-officers@virginia.edu
+",current_date)insert into m_email_recipient (c_email, c_recipient) values (9167,6503)
+insert into m_email_recipient (c_email, c_recipient) values (9168,6601)
+Finished script successfully

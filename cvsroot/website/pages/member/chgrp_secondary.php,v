@@ -1,0 +1,349 @@
+head	1.10;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2005.01.31.20.47.07;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2005.01.31.15.35.28;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.23.12.57.41;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.02.00.29.09;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@add the 'wheel' user group
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: chgrp_secondary.php,v 1.9 2005/01/31 15:35:28 at Exp $
+ */
+
+$template = file_get_contents("templates/member/chgrp_secondary.php");
+
+# Build an array of groups to let the user choose from.
+$groups = array();
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]group");
+$cmd->addParameter("orderby", "c_title");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    # 'Private' groups are not shown because they may allow privilege escalation
+    # (unless the current user is root anyway)
+    if ($obj['user']->isRootUser()
+        || (intval($row['c_flags']) & intval($cfg['flag']['private'])) == 0)
+    {
+        $groups[$row['c_uid']] = $row;
+    }
+}
+
+# Get a list of groups that the member already belongs to (these are MemberGroup
+# objects, not Group objects), and re-key it by GROUP not by c_uid
+$existing = array();
+foreach ($object->getChildren("member_group", "c_member") as $key => $mg) {
+    # Don't assign by reference.  Objects are already references and this will
+    # cause subtle bugs (all re-keyed elements will point to the same object).
+    $existing[$mg->getRelatedGroup()] = $mg;
+}
+
+# Get an array of checkboxes that the user checked
+$checkboxes = postval('groups');
+$posted = postval('posted');
+
+if ($posted && !is_array($checkboxes)){
+    $checkboxes = array();
+}
+
+$dirty = false;
+
+foreach (array_keys($groups) as $group) {
+    # We'll check the checkbox if the member is in the group...
+    $inGroup = array_key_exists($group, $existing);
+    # If the member is already in the group, and the form is submitted but the
+    # checkbox isn't checked, delete the member from that group.
+    if ($inGroup && $posted && !in_array($group, $checkboxes)) {
+        $existing[$group]->delete(TRUE);
+        $dirty = TRUE;
+        $inGroup = false;
+    }
+    # If the member isn't already in the group, and the form is submitted and
+    # the checkbox is checked, add the member to the group.
+    elseif (!array_key_exists($group, $existing)
+        && $posted
+        && in_array($group, $checkboxes))
+    {
+        $mg =& new member_group();
+        $mg->setMember($cfg['object']);
+        $mg->setRelatedGroup($group);
+        $mg->insert();
+        $dirty = TRUE;
+        $inGroup = true;
+    }
+    # Plug the info into the template row...
+    $template = Template::block($template, "GROUP",
+        $groups[$group]
+        + array("CHECKED" => ($inGroup ? "checked" : "")));
+}
+
+if ($dirty) {
+    # Say that the groups were updated.
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Change Group Memberships";
+
+?>
+@
+
+
+1.9
+log
+@add table name prefix
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.8 2005/01/30 20:48:40 at Exp $
+d33 7
+a39 11
+    $groups[$row['c_uid']] =& array_change_key_case($row, 1);
+}
+
+# Remove the 'root' group from the list if the user isn't a root
+# himself/herself.  This is to prevent privilege escalation, either by setting
+# one's own group memberships to include root, or setting another member to
+# root, then logging in as that member and then changing one's own account from
+# that account.
+if (!$obj['user']->isRootUser()) {
+    unset($groups[$cfg['group_id']['root']]);
+    $template = Template::unhide($template, "LIMITED");
+@
+
+
+1.8
+log
+@add c_deleted column to database tables
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.7 2004/10/23 12:57:41 at Exp $
+d29 1
+a29 1
+$cmd->addParameter("table", "group");
+@
+
+
+1.7
+log
+@change class names to match table names, use getChildren()
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.6 2004/10/07 17:41:50 at Exp $
+d27 5
+a31 1
+$result =& $obj['conn']->query("select * from [_]group order by c_title");
+@
+
+
+1.6
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.5 2004/09/20 20:38:40 at Exp $
+d45 1
+a45 1
+foreach ($object->getMemberGroups() as $key => $mg) {
+d77 1
+a77 1
+        $mg =& new MemberGroup();
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.4 2004/09/08 22:45:37 at Exp $
+d52 2
+a53 2
+$checkboxes = Utility::postval('groups');
+$posted = Utility::postval('posted');
+@
+
+
+1.4
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.3 2004/08/02 00:29:09 at Exp $
+d39 1
+a39 1
+    $template = Template::unhideBlock($template, "LIMITED");
+d85 1
+a85 1
+    $template = Template::replaceWithinBlock($template, "GROUP",
+d92 1
+a92 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+@
+
+
+1.3
+log
+@fixed wrong-name bug
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d23 1
+a23 3
+# Create templates
+$wrapper = file_get_contents("templates/member/chgrp_secondary-wrapper.php");
+$box = file_get_contents("templates/member/chgrp_secondary-box.php");
+d39 1
+a39 1
+    $wrapper = Template::unhideBlock($wrapper, "LIMITED");
+d85 1
+a85 1
+    $box = Template::replaceWithinBlock($box, "GROUP",
+d92 1
+a92 1
+    $box = Template::unhideBlock($box, "SUCCESS");
+d95 1
+a95 4
+# Plug it all into the templates
+$res['content'] = $object->insertIntoTemplate($box);
+$res['tab'] = "";
+include_once("tabbed-boxes/member-read.php");
+a96 3
+$res['content'] = Template::replaceValues(
+    $object->insertIntoTemplate($wrapper),
+    array("BOX" => $res['content']));
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d102 3
+a104 2
+$res['content'] = Template::replaceValues($wrapper, array(
+    "BOX" => $res['content']));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: chgrp_secondary.php,v 1.5 2004/05/30 01:42:17 baron Exp $
+d29 1
+a29 1
+$result =& $obj['conn']->query("select * from t_group order by c_title");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

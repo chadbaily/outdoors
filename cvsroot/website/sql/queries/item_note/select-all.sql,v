@@ -1,0 +1,67 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.06.13.56.03;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    me.c_full_name,
+    co.c_title,
+    st.c_title as status_title,
+    itn.*
+from [_]item_note as itn
+    inner join [_]member as me on itn.c_creator = me.c_uid
+    inner join [_]condition as co on co.c_uid = itn.c_condition
+    inner join [_]status as st on st.c_uid = itn.c_status
+where c_item = {item,int}
+    and itn.c_deleted <> 1
+    and me.c_deleted <> 1
+    and co.c_deleted <> 1
+order by itn.c_created_date
+@
+
+
+1.2
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d11 3
+@
+
+
+1.1
+log
+@init
+@
+text
+@d4 1
+d9 1
+@
+

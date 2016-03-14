@@ -1,0 +1,27 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.11.02.20.05.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@update [_]expense as ex
+    inner join [_]flag as fl on fl.c_title = 'reimbursable'
+set ex.c_flags = ex.c_flags | fl.c_bitmask
+where ex.c_uid = {expense,int}
+@

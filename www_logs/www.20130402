@@ -1,0 +1,8 @@
+93.187.165.20 - - [02/Apr/2013:07:15:12 -0400] "HEAD /manager/status HTTP/1.1" 500 162 "-" "Java/1.6.0_03"
+118.145.4.109 - - [02/Apr/2013:10:01:41 -0400] "HEAD /manager/status HTTP/1.1" 500 162 "-" "Java/1.6.0"
+216.92.130.16 - - [02/Apr/2013:17:21:03 -0400] "GET / HTTP/1.1" 500 721 "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Ubuntu Chromium/25.0.1364.160 Chrome/25.0.1364.160 Safari/537.22"
+216.92.130.16 - - [02/Apr/2013:17:21:06 -0400] "GET /favicon.ico HTTP/1.1" 500 721 "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Ubuntu Chromium/25.0.1364.160 Chrome/25.0.1364.160 Safari/537.22"
+216.92.130.16 - - [02/Apr/2013:17:22:08 -0400] "GET / HTTP/1.1" 302 456 "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Ubuntu Chromium/25.0.1364.160 Chrome/25.0.1364.160 Safari/537.22"
+70.192.193.91 - - [02/Apr/2013:17:49:34 -0400] "GET / HTTP/1.1" 302 456 "-" "Mozilla/5.0 (Linux; Android 4.1.2; DROID RAZR Build/9.8.2O-72_VZW-16) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+70.192.193.91 - - [02/Apr/2013:17:50:09 -0400] "GET / HTTP/1.1" 302 456 "-" "Mozilla/5.0 (Linux; Android 4.1.2; DROID RAZR Build/9.8.2O-72_VZW-16) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+70.192.193.91 - - [02/Apr/2013:17:50:46 -0400] "GET /info.php HTTP/1.1" 302 456 "-" "Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; DROID RAZR Build/9.8.2O-72_VZW-16) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"

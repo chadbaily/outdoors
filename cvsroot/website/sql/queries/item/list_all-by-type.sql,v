@@ -1,0 +1,166 @@
+head	1.8;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2005.01.16.16.59.52;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.15.04.51.26;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.23.13.04.20;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.06.17.35.45;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.10.06.13.56.03;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.01.17.53.11;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@add c_deleted column to database tables
+@
+text
+@select{select:}
+    coalesce({c_name}_table.c_value, "[null]") as {c_name}_table,{:select}
+    it.c_uid as ID_table,
+    it.c_qty as qty_table,
+    co.c_title as condition_table,
+    st.c_title as status_table
+from [_]item as it
+    inner join [_]condition as co on co.c_uid = it.c_condition
+    inner join [_]item_type as ty on ty.c_uid = it.c_type{join:}
+    left outer join [_]item_feature as {c_name}_table on {c_name}_table.c_item = it.c_uid
+        and {c_name}_table.c_name = '{c_name}'
+        and {c_name}_table.c_deleted <> 1{:join}
+    inner join [_]status as st on st.c_uid = it.c_status
+where it.c_type = {itemtype,int}
+    and it.c_deleted <> 1
+    and co.c_deleted <> 1
+    and ty.c_deleted <> 1
+    and ({status,int} is null or it.c_status = {status,int})
+order by {orderby,none,,,,it.c_uid}
+limit {offset,int},{limit,int}
+@
+
+
+1.7
+log
+@fix bug 194: show appropriate sort options in menu
+@
+text
+@a8 1
+    inner join [_]status as st on st.c_uid = it.c_status
+d11 3
+a13 1
+        and {c_name}_table.c_name = '{c_name}'{:join}
+d15 3
+@
+
+
+1.6
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d3 4
+a6 4
+    it.c_uid as c_uid_table,
+    it.c_qty as c_qty_table,
+    co.c_title as co_title_table,
+    st.c_title as st_title_table
+@
+
+
+1.5
+log
+@fixed problems with sorting, count not persisting, and other problems with item/list_all
+@
+text
+@d4 1
+@
+
+
+1.4
+log
+@new foreign key relationships are stored in the DB; answers are related to attendees, not members and advetnures; item_attribute -> item_feature
+@
+text
+@d1 2
+a2 2
+select{SELECT:}
+    coalesce({C_NAME}_table.c_value, "[null]") as {C_NAME}_table,{:SELECT}
+d9 3
+a11 3
+    inner join [_]item_type as ty on ty.c_uid = it.c_type{JOIN:}
+    left outer join [_]item_feature as {C_NAME}_table on {C_NAME}_table.c_item = it.c_uid
+        and {C_NAME}_table.c_name = '{C_NAME}'{:JOIN}
+d15 1
+@
+
+
+1.3
+log
+@add a filter by status
+@
+text
+@d10 1
+a10 1
+    left outer join [_]item_attribute as {C_NAME}_table on {C_NAME}_table.c_item = it.c_uid
+@
+
+
+1.2
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d13 1
+@
+
+
+1.1
+log
+@add filtering by type
+@
+text
+@d4 2
+a5 1
+    co.c_title as co_title_table
+d8 1
+@
+

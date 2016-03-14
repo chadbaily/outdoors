@@ -1,0 +1,50 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.31.15.20.46;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Item Categories</h1>
+
+<p>Item categories are the top-level grouping into which items are placed.
+Item categories contain item types, which contain items.  Use the links below to
+manage item categories:</p>
+
+<ul>{actions:}
+  <li><a href="members/{PAGE}/{c_title}">{c_summary}</a></li>{:actions}
+</ul>
+@
+
+
+1.1
+log
+@init
+@
+text
+@d7 2
+a8 2
+<ul>{ACTIONS:}
+  <li><a href="members.php?page={PAGE}&action={C_UID}">{C_SUMMARY}</a></li>{:ACTIONS}
+@
+

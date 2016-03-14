@@ -1,0 +1,267 @@
+head	1.9;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.23.12.59.25;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.07.17.41.50;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.41;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: create.php,v 1.8 2005/02/07 18:49:28 at Exp $
+ */
+
+$template = file_get_contents("templates/phone_number/create.php");
+$formTemplate = file_get_contents("forms/phone_number/create.xml");
+
+# Add all phone number types to the form
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/generic-select.sql");
+$cmd->addParameter("table", "[_]phone_number_type");
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $formTemplate = Template::block($formTemplate, "TYPE",
+        array_change_key_case($row, 1));
+}
+
+# Create the form.
+$form =& new XmlForm(Template::finalize($formTemplate), true);
+
+# Validate and plug the form into the template
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    $object =& new phone_number();
+    $object->setType($form->getValue("type"));
+    $object->setTitle($form->getValue("title"));
+    $object->setAreaCode($form->getValue("area-code"));
+    $object->setExchange($form->getValue("exchange"));
+    $object->setNumber($form->getValue("number"));
+    $object->setExtension($form->getValue("extension"));
+    $object->insert();
+    redirect("$cfg[base_url]/members/phone_number/read/$object->c_uid");
+}
+
+$res['content'] = Template::replace($template, array(
+    "FORM" => $form->toString()));
+$res['title'] = "Create a Phone Number";
+
+?>
+@
+
+
+1.8
+log
+@friendlyurls
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.7 2004/10/23 12:59:25 at Exp $
+d52 1
+a52 1
+    redirect("members/phone_number/read/$object->c_uid");
+@
+
+
+1.7
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.6 2004/10/07 17:41:50 at Exp $
+d52 1
+a52 2
+    redirect("members.php?page=phone_number&action="
+        . $cfg['action_id']['read'] . "&object=$object->c_uid");
+@
+
+
+1.6
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.5 2004/09/20 20:38:41 at Exp $
+d44 1
+a44 1
+    $object =& new PhoneNumber();
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.4 2004/09/08 22:45:37 at Exp $
+d52 1
+a52 1
+    Utility::redirect("members.php?page=phone_number&action="
+@
+
+
+1.4
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.3 2004/08/06 18:49:26 at Exp $
+d32 1
+a32 1
+    $formTemplate = Template::replaceWithinBlock($formTemplate, "TYPE",
+d56 1
+a56 1
+$res['content'] = Template::replaceValues($template, array(
+@
+
+
+1.3
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.2 2004/07/26 02:12:31 at Exp $
+d23 1
+a23 2
+# Create templates
+$wrapper = file_get_contents("templates/phone_number/create-wrapper.php");
+d39 1
+a39 1
+# Validate and plug the form into the wrapper template
+d56 1
+a56 1
+$res['content'] = Template::replaceValues($wrapper, array(
+@
+
+
+1.2
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a21 5
+
+# Check permissions
+if (!$obj['security']->isAllowedOnTable($cfg['action'], $obj['user'], "[_]phone_number")) {
+    $obj['security']->notAllowedOnTable($cfg['action'], $obj['user'], "[_]phone_number");
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: create.php,v 1.6 2004/05/30 01:42:19 baron Exp $
+d24 2
+a25 2
+if (!$obj['security']->isAllowedOnTable($cfg['action'], $obj['user'], "t_phone_number")) {
+    $obj['security']->notAllowedOnTable($cfg['action'], $obj['user'], "t_phone_number");
+d35 1
+a35 1
+$cmd->addParameter("table", "t_phone_number_type");
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

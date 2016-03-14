@@ -1,0 +1,594 @@
+head	1.13;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.13
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.11.10.21.20.10;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.11.09.17.53.44;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.09.21.14.35;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.08.23.24.59;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.18.22.06.25;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.18.14.24.50;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.06.17.37.24;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.06.17.00.00;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.03.13.51.59;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.19.12.22.55;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.05.31.01.36.58;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@friendlyurls
+@
+text
+@<h1>Manage Your Profile</h1>
+
+<p>Use the links below to manage your profile.</p>
+
+<ul>
+  <li><a href="members/member/optout/{OBJECT}">Opt out of emails</a></li>
+  <li><a href="members/member/choose_activities/{OBJECT}">Choose activities you are interested in</a></li>
+  <li><a href="members/profile/update">Update your profile</a></li>
+  <li><a href="members/member/change_password/{OBJECT}">Change your password</a></li>
+  <li><a href="members/subscription">Manage email subscriptions</a></li>
+</ul>
+
+<h2>Addresses, Phone Numbers, Chat Identities</h2>
+
+<p>The following tables display your addresses, phone numbers, and chat
+identities.  When an item is &ldquo;primary,&rdquo; it means that it's the item
+that appears in the member directory.  When an item is &ldquo;private,&rdquo; it
+won't appear in the member directory (club officers can see it though).  If you
+want to change your preferences on any of these items, use the links under the
+&ldquo;Primary&rdquo; and &ldquo;Private&rdquo; headings.</p>
+
+<table width="99%">
+<tr>
+  <td>
+
+<h3 id="address">Addresses</h3>
+
+<table class="cleanHeaders" width="100%">
+    <tr>
+        <th width="60%">Name</th>
+        <th width="20%">Primary?</th>
+        <th width="20%">Private?</th>
+    </tr>{ADDRESS:}
+    <tr>
+        <td><a href="members/address/read/{T_ADDRESS}">{C_TITLE}</a></td>
+        <td>
+            <a href="members/profile/default?primaryAddress={T_ADDRESS}#address">{PRIMARY}</a>
+        </td>
+        <td>
+            <a href="members/profile/default?privateAddress={T_ADDRESS}#address">{PRIVATE}</a>
+        </td>
+    </tr>{:ADDRESS}
+</table>
+
+<p class="indented">&raquo; <a href="members/address/create">Create a new address</a>.</p>
+
+<h3 id="phone">Phone Numbers</h3>
+
+<table class="cleanHeaders" width="100%">
+    <tr>
+        <th width="60%">Name</th>
+        <th width="20%">Primary?</th>
+        <th width="20%">Private?</th>
+    </tr>{PHONE:}
+    <tr>
+        <td>
+            <a href="members/phone_number/read/{T_PHONE_NUMBER}">{C_TITLE}</a></td>
+        <td>
+            <a href="members/profile/default?primaryPhone={T_PHONE_NUMBER}#phone">{PRIMARY}</a>
+        </td>
+        <td>
+            <a href="members/profile/default?privatePhone={T_PHONE_NUMBER}#phone">{PRIVATE}</a>
+        </td>
+    </tr>{:PHONE}
+</table>
+
+<p class="indented">&raquo; <a href="members/phone_number/create">Create a new phone number</a>.</p>
+
+<h3 id="chat">Chat Identities</h3>
+
+<table class="cleanHeaders" width="100%">
+    <tr>
+        <th width="60%">Screen Name</th>
+        <th width="20%">Primary?</th>
+        <th width="20%">Private?</th>
+    </tr>{CHAT:}
+    <tr>
+        <td><a href="members/chat/read/{T_CHAT}">{C_SCREENNAME}</a></td>
+        <td>
+            <a href="members/profile/default?primaryChat={T_CHAT}#chat">{PRIMARY}</a>
+        </td>
+        <td>
+            <a href="members/profile/default?privateChat={T_CHAT}#chat">{PRIVATE}</a>
+        </td>
+    </tr>{:CHAT}
+</table>
+
+<p class="indented">&raquo; <a href="members/chat/create">Create a new chat
+identity</a>.</p>
+
+    </td>
+    <td align="right">
+      <img src="images/franklin-crags-1.jpg" alt="Franklin Crags" height="313"
+      width="250" class="framed">
+    </td>
+  </tr>
+</table>
+
+<h2 id="privacy">Privacy Preferences</h2>
+
+
+<p>Do you want your email address to show up in the member directory?  We
+encourage you to let your email address be visible (it is only visible to
+members).  Your current choice is {EMAIL_PRIVATE}.  You can change that choice
+by clicking on 
+<a href="members/profile/default?hideEmail=1#privacy">hide
+my email address</a> or 
+<a href="members/profile/default?hideEmail=0#privacy">show
+my email address</a>.  If you hide your email address, it will just appear as
+the text [private] in the member directory.</p>
+
+<p>If you don't even want to appear in the member directory at all, you can set
+yourself as &ldquo;hidden&rdquo; (we hope you don't feel the need to do this).
+You are currently {HIDDEN} hidden.  You can change that by clicking on <a
+href="members/profile/default?meHidden=1#privacy">hide me totally</a> or
+<a href="members/profile/default?meHidden=0#privacy">don't hide
+me</a>.  Please note that you can't lead adventures if you are hidden!  Also,
+this doesn't change anything else about the website, such as keeping you
+from receiving emails; it just keeps people from seeing your contact
+information.</p>
+@
+
+
+1.12
+log
+@IE fixes
+@
+text
+@d6 5
+a10 6
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_OPTOUT}">Opt
+  out of emails</a></li>
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}">Choose activities you are interested in</a></li>
+  <li><a href="members.php?page=profile&action=update">Update your profile</a></li>
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHANGE_PASSWORD}">Change your password</a></li>
+  <li><a href="members.php?page=subscription">Manage email subscriptions</a></li>
+d35 1
+a35 1
+        <td><a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a></td>
+d37 1
+a37 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryAddress={T_ADDRESS}#address">{PRIMARY}</a>
+d40 1
+a40 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateAddress={T_ADDRESS}#address">{PRIVATE}</a>
+d45 1
+a45 1
+<p class="indented">&raquo; <a href="members.php?page=address&amp;action={ACTION_CREATE}">Create a new address</a>.</p>
+d57 1
+a57 1
+            <a href="members.php?page=phone_number&action={ACTION_READ}&object={T_PHONE_NUMBER}">{C_TITLE}</a></td>
+d59 1
+a59 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryPhone={T_PHONE_NUMBER}#phone">{PRIMARY}</a>
+d62 1
+a62 1
+            <a href="members.php?page=profile&amp;action=default&amp;privatePhone={T_PHONE_NUMBER}#phone">{PRIVATE}</a>
+d67 1
+a67 1
+<p class="indented">&raquo; <a href="members.php?page=phone_number&amp;action={ACTION_CREATE}">Create a new phone number</a>.</p>
+d78 1
+a78 1
+        <td><a href="members.php?page=chat&action={ACTION_READ}&object={T_CHAT}">{C_SCREENNAME}</a></td>
+d80 1
+a80 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryChat={T_CHAT}#chat">{PRIMARY}</a>
+d83 1
+a83 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateChat={T_CHAT}#chat">{PRIVATE}</a>
+d88 1
+a88 1
+<p class="indented">&raquo; <a href="members.php?page=chat&amp;action={ACTION_CREATE}">Create a new chat
+d106 1
+a106 1
+<a href="members.php?page=profile&action=default&hideEmail=1#privacy">hide
+d108 1
+a108 1
+<a href="members.php?page=profile&action=default&hideEmail=0#privacy">show
+d115 2
+a116 2
+href="members.php?page=profile&action=default&meHidden=1#privacy">hide me totally</a> or
+<a href="members.php?page=profile&action=default&meHidden=0#privacy">don't hide
+@
+
+
+1.11
+log
+@more images on default pages
+@
+text
+@d23 1
+a23 1
+<table width="100%">
+@
+
+
+1.10
+log
+@release email system
+@
+text
+@d23 4
+d29 1
+a29 1
+<table class="cleanHeaders">
+d31 3
+a33 3
+        <th>Name</th>
+        <th>Primary?</th>
+        <th>Private?</th>
+d50 1
+a50 1
+<table class="cleanHeaders">
+d52 3
+a54 3
+        <th>Name</th>
+        <th>Primary?</th>
+        <th>Private?</th>
+d72 1
+a72 1
+<table class="cleanHeaders">
+d74 3
+a76 3
+        <th>Screen Name</th>
+        <th>Primary?</th>
+        <th>Private?</th>
+d91 8
+@
+
+
+1.9
+log
+@styling changes
+@
+text
+@d6 3
+d10 1
+a11 2
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHANGE_PASSWORD}">Change your password</a></li>
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}">Choose activities you are interested in</a></li>
+@
+
+
+1.8
+log
+@made the ruled styling include hoverul by default
+@
+text
+@d23 1
+a23 3
+<p>&raquo; <a href="members.php?page=address&amp;action={ACTION_CREATE}">Create a new address</a>.</p>
+
+<table class="ruled collapsed elbowroom">
+d40 2
+d44 1
+a44 3
+<p>&raquo; <a href="members.php?page=phone_number&amp;action={ACTION_CREATE}">Create a new phone number</a>.</p>
+
+<table class="ruled collapsed elbowroom">
+d62 2
+d66 1
+a66 4
+<p>&raquo; <a href="members.php?page=chat&amp;action={ACTION_CREATE}">Create a new chat
+identity</a>.</p>
+
+<table class="ruled collapsed elbowroom">
+d82 3
+@
+
+
+1.7
+log
+@added styling for alternating row colors in tables
+@
+text
+@d32 1
+a32 1
+        <td><a class="hoverul" href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a></td>
+d34 1
+a34 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;primaryAddress={T_ADDRESS}#address">{PRIMARY}</a>
+d37 1
+a37 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;privateAddress={T_ADDRESS}#address">{PRIVATE}</a>
+d54 1
+a54 1
+            <a class="hoverul" href="members.php?page=phone_number&action={ACTION_READ}&object={T_PHONE_NUMBER}">{C_TITLE}</a></td>
+d56 1
+a56 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;primaryPhone={T_PHONE_NUMBER}#phone">{PRIMARY}</a>
+d59 1
+a59 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;privatePhone={T_PHONE_NUMBER}#phone">{PRIVATE}</a>
+d76 1
+a76 1
+        <td><a class="hoverul" href="members.php?page=chat&action={ACTION_READ}&object={T_CHAT}">{C_SCREENNAME}</a></td>
+d78 1
+a78 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;primaryChat={T_CHAT}#chat">{PRIMARY}</a>
+d81 1
+a81 1
+            <a class="hoverul" href="members.php?page=profile&amp;action=default&amp;privateChat={T_CHAT}#chat">{PRIVATE}</a>
+@
+
+
+1.6
+log
+@moved all privacy settings to the default profile page
+@
+text
+@d25 1
+a25 1
+<table class="borders">
+d32 1
+a32 1
+        <td><a href="members.php?page=address&action={ACTION_READ}&object={T_ADDRESS}">{C_TITLE}</a></td>
+d34 1
+a34 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryAddress={T_ADDRESS}#address">{PRIMARY}</a>
+d37 1
+a37 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateAddress={T_ADDRESS}#address">{PRIVATE}</a>
+d46 1
+a46 1
+<table class="borders">
+d54 1
+a54 1
+            <a href="members.php?page=phone_number&action={ACTION_READ}&object={T_PHONE_NUMBER}">{C_TITLE}</a></td>
+d56 1
+a56 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryPhone={T_PHONE_NUMBER}#phone">{PRIMARY}</a>
+d59 1
+a59 1
+            <a href="members.php?page=profile&amp;action=default&amp;privatePhone={T_PHONE_NUMBER}#phone">{PRIVATE}</a>
+d69 1
+a69 1
+<table class="borders">
+d76 1
+a76 1
+        <td><a href="members.php?page=chat&action={ACTION_READ}&object={T_CHAT}">{C_SCREENNAME}</a></td>
+d78 1
+a78 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryChat={T_CHAT}#chat">{PRIMARY}</a>
+d81 1
+a81 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateChat={T_CHAT}#chat">{PRIVATE}</a>
+@
+
+
+1.5
+log
+@fixed problems with privacy logic by removing the 'hidden' flag from existence
+@
+text
+@d104 4
+a107 1
+me</a>.</p>
+@
+
+
+1.4
+log
+@added stuff for managing privacy prefs
+@
+text
+@d21 1
+a21 1
+<h3>Addresses</h3>
+d34 1
+a34 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryAddress={T_ADDRESS}">{PRIMARY}</a>
+d37 1
+a37 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateAddress={T_ADDRESS}">{PRIVATE}</a>
+d42 1
+a42 1
+<h3>Phone Numbers</h3>
+d56 1
+a56 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryPhone={T_PHONE_NUMBER}">{PRIMARY}</a>
+d59 1
+a59 1
+            <a href="members.php?page=profile&amp;action=default&amp;privatePhone={T_PHONE_NUMBER}">{PRIVATE}</a>
+d64 1
+a64 1
+<h3>Chat Identities</h3>
+d78 1
+a78 1
+            <a href="members.php?page=profile&amp;action=default&amp;primaryChat={T_CHAT}">{PRIMARY}</a>
+d81 1
+a81 1
+            <a href="members.php?page=profile&amp;action=default&amp;privateChat={T_CHAT}">{PRIVATE}</a>
+d86 1
+a86 1
+<h2>Privacy Preferences</h2>
+d88 17
+a104 8
+<p>If you want your email address to be hidden in the member directory, you
+can set yourself as &ldquo;Private.&rdquo;  You are currently
+{ME_PRIVATE} private.  We encourage you to remain NOT private, so all club
+members can contact one another :-).  Setting yourself as private also keeps
+people from finding you by searching the directory, and you can't lead trips if
+you are private.  Set yourself as 
+<a href="members.php?page=profile&action=default&mePriv=1">private</a> or
+<a href="members.php?page=profile&action=default&mePriv=0">not private</a>.</p>
+@
+
+
+1.3
+log
+@Added a bunch of enhancements to the default profile page
+@
+text
+@d12 1
+a12 1
+<h2>Addresses</h2>
+d14 10
+a23 4
+<p>Your primary address is the one that will appear on your member profile.  If
+you want to change which address is primary, just click on the link in the
+rightmost column.  <a
+href="members.php?page=address&amp;action={ACTION_CREATE}">Create a new address</a>.</p>
+d29 1
+d36 3
+d42 1
+a42 1
+<h2>Phone Numbers</h2>
+d44 1
+a44 5
+<p>Your primary phone number is the one that will appear on your member profile.
+If you want to change which one is primary, just click on the link in the
+rightmost column.  <a
+href="members.php?page=phone_number&amp;action={ACTION_CREATE}">Create a new
+phone number</a>.</p>
+d50 1
+d58 3
+d64 1
+a64 1
+<h2>Chat Identities</h2>
+d66 1
+a66 4
+<p>Your primary chat identity is the one that will appear on your member
+profile.  If you want to change which one is primary, just click on the link in
+the rightmost column.  <a
+href="members.php?page=chat&amp;action={ACTION_CREATE}">Create a new chat
+d73 1
+d80 3
+d85 11
+@
+
+
+1.2
+log
+@updates to forms, templates to get working with new version (no new features)
+@
+text
+@d1 1
+a1 1
+<h1>Member Profile</h1>
+d3 1
+a3 1
+<p>Choose an action:</p>
+d6 4
+a9 15
+  <li><a href="members.php?page=profile&action=update">Update your
+      profile</a></li>
+  <li><a href="members.php?page=subscription">Manage email
+      subscriptions</a></li>
+  <li><a
+  href="members.php?page=member&object={OBJECT}&action={ACTION_CHANGE_PASSWORD}">Change
+      your password</a></li>
+  <li><a href="members.php?page=address&action={ACTION_LIST_OWNED_BY}">Manage
+      your addresses</a></li>
+  <li><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">Manage
+      your phone numbers</a></li>
+  <li><a href="members.php?page=chat&action={ACTION_LIST_OWNED_BY}">Manage your
+      chat identities</a></li>
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHOOSE_ACTIVITIES}">Choose
+      activities you are interested in</a></li>
+d11 63
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d6 15
+a20 6
+  <li><a href="members.php?page=profile&action=update">Update your profile</a></li>
+  <li><a href="members.php?page=subscription">Manage email subscriptions</a></li>
+  <li><a href="members.php?page=member&object={OBJECT}&action={ACTION_CHANGE_PASSWORD}">Change your password</a></li>
+  <li><a href="members.php?page=address&action={ACTION_LIST_OWNED_BY}">Manage your addresses</a></li>
+  <li><a href="members.php?page=phone_number&action={ACTION_LIST_OWNED_BY}">Manage your phone numbers</a></li>
+  <li><a href="members.php?page=interest&action={ACTION_LIST_ALL}">Choose activities you are interested in</a></li>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

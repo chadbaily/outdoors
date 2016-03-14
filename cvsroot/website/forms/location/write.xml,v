@@ -1,0 +1,150 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2004.09.09.20.04.53;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.30.01.15.19;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@limit input to what the database can accept
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="ucwords"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        pre-processing="trim"
+        element-id="description" />
+    <element
+        name="zip-code"
+        element-id="zip-code" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Title</td>
+    <td><input maxlength="100" type="text" name="title" id="title" size="60" style="width:400px" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Description</td>
+    <td>
+      <textarea name="description" id="description" rows="6" cols="40" style="width:500px">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="zip-code-data-error">
+    <td colspan="2" class="error">
+    This field must contain only numbers.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Zip Code</td>
+    <td>
+      <input type="text" name="zip-code" id="zip-code" />
+      <a href="http://zip4.usps.com/zip4/citytown_zip.htm" target="_blank">Look up a Zip Code</a>
+      for weather forecasts
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+
+</table>
+</form>
+@
+
+
+1.2
+log
+@date chooser stuff
+@
+text
+@d34 1
+a34 1
+    <td><input type="text" name="title" id="title" size="60" style="width:500px" /></td>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d34 1
+a34 1
+    <td><input type="text" name="title" id="title" size="60" style="width:400px" /></td>
+d46 1
+a46 1
+      <textarea name="description" id="description" rows="6" cols="40" style="width:400px">
+d58 6
+a63 2
+    <td>Zip Code (for weather reports)</td>
+    <td> <input type="text" name="zip-code" id="zip-code" /> </td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

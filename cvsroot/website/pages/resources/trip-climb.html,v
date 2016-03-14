@@ -1,0 +1,365 @@
+head	1.9;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.01.25.15.44.12;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.11.11.15.26.06;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.28.00.25.19;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.14.13.29.48;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.08.17.23.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.08.05.44.00;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.08.01.19.12;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@friendlyurls
+@
+text
+@<!-- title=Rock Climbing Info Sheet -->
+<!-- navbar=Member's Area/Member Resources/Trip Checklists -->
+
+<h1>Rock Climbing Checklist</h1>
+
+<p><b>Rock climbing, although enjoyable, can be extremely dangerous.</b>  If you
+are considering leading a climbing trip, please see our <a
+href="members/resources/climbing-permissions">special rules</a> for
+climbing trips.</p>
+
+<h2>Attending an Official Club Climbing Trip</h2>
+
+<p>You should consider these questions before going on a climbing trip:</p>
+
+<ol>
+ <li><b>Is this trip for me?</b></li><br>
+   Club trips are usually divided to 3 main levels:<br><br>
+   <i><b>Beginner</b></i><br>
+     <ul>
+      <li>You have never climbed.</li>
+      <li>You have climbed a few times, but you have forgotten how things work.</li>
+      <li>You know how to belay a top rope climber, but you climb less than <a href="http://www.climber.org/Resource/decimal.html#fifth">5.8</a></li>
+     </ul>
+   Being able to walk and use both your hands are the only physical requirements for this level.<br><br>
+   <i><b>Intermediate:</b></i><br>
+     <ul>
+      <li>You know how to belay and tie in and you climb better than <a href="http://www.climber.org/Resource/decimal.html#fifth">5.8</a> on top rope.</li>
+     </ul>
+     <br>
+   <i><b>Advanced:</b></i><br>
+     <ul>
+      <li>You know how to belay a leader, and you climb better than <a href="http://www.climber.org/Resource/decimal.html#fifth">5.9</a> on top rope.</li>
+      <li>You sport climb.</li>
+      <li>You trad climb.</li>
+     </ul>
+   <p>Higher level climbers may go to lower level trips.</p>
+ <li><b>What about climbing equipment?</b></li><br>
+   The club provides <b>all</b> climbing gear. However, if you wanted to buy your own gear, you would want to own the following (at least):<br>
+     <ul>
+      <li>Climbing shoes (highly recommended)</li>
+      <li>Harness (required)</li>
+      <li>Belaying device (required, but you can share this with 1-2 others)</li>
+      <li>Chalk bag (optional)</li>
+     </ul><br>
+  <li><b>What other things do I need to bring?</b></li>
+     <ul>
+      <li>2-3 liters of water per day (required)</li>
+      <li>Snacks like: energy bars, trail mix, fruit, dried fruit, jerky, and cookies (recommended)</li>
+      <li>Camera (optional)</li>
+     </ul><br>
+  <li><b>What clothes should I wear?</b></li>
+     <ul>
+      <li>Long shorts or comfortable pants(highly recommended).</li>
+      <li>Rain jacket (optional)</li>
+      <li>Warm clothes for cold weather including hat and gloves (recommended)</li>
+     </ul><br>
+  <li><b>Anything else?</b></li><br>
+    You may want to cut your toe and finger nails, not wear your watch or rings while climbing, wear a glasses leash, and bring sunscreen (all recommended).
+</ol>
+
+<h2>Going Climbing on Your Own</h2>
+
+<p>If you are a beginner make sure to climb with experienced climbers. You can
+always write to the <a href="members/main/email">club email list</a>
+in order to find climbing partners. You can borrow shoes, harness, chalk bag and
+belaying devices for free. Please write to
+<script>document.write(email('outdoors-officers', 'virginia.edu'));</script> 3-4
+days in advance to check for the availability and to set up a time to meet to
+get gear.</p>
+
+<p>You can borrow top rope, sport climbing or trad gear only if you have already
+climbed with the climbing officer of the club and you have proved your ability
+to use the gear properly and safely. Your name will be written in the authorized
+people's list in the locker room.</p>
+
+<p>Make sure to take:</p>
+
+<ul>
+ <li>Technical gear appropriate for the type of climbing and size of the group (Required)</li>
+ <li>Guide book (highly recommended)</li>
+ <li>First Aid (Highly recommended)</li>
+ <li>Helmet (Highly recommended)</li>
+</ul>
+
+<h2>Leading an Outdoors at UVA Climbing Trip</h2>
+
+<p>If you are an experienced climber we encourage you to lead trips.  Climbing
+is one of our most popular activities. The club pays back your membership dues
+if you have led 4 official trips. Also by leading a few trips you can become an
+officer.  The club is always in need of officers, since people are always
+graduating.</p>
+
+<p>Because of the danger involved in climbing, we have <a
+href="members/resources/climbing-permissions">special rules</a>
+about who can lead climbing adventures.</p>
+
+<h3>Indoor Trips</h3>
+
+<p>Everybody can lead official INDOOR climbing trips, since it is at a climbing
+gym where there is supervision, however, only <a
+href="members/resources/climbing-permissions">qualified
+leaders</a> can lead indoor trips for beginners. The club will pay for
+transportation. Please write to the officers list to arrange the trip a week in
+advance.</p>
+
+<h3>Other Trips</h3>
+
+<p>To lead other climbing trips you must have already climbed with one of the
+climbing officer and proven your ability to lead a fun and safe trip.  The
+officers will approve you to lead these trips when you have shown you are
+ready.</p>
+
+
+<h3>Sport Climbing Trips</h3>
+
+<p>Just having sport climbed doesn't mean a person is experienced enough to lead
+trips for the club.  Leading trips for a club is totally different from
+going climbing with friends.  It is a huge responsibility.  In order to have a
+safe trip the <b>sport climbing leader</b> must:</p>
+
+<ul>
+
+<li>know the leading skills perfectly including belaying, clipping,
+falling and cleaning.</li>
+
+<li>make sure that people who claim to know these skills actually <b>do</b> know
+and do them the right way.  This is very important.  The leader must watch them
+very closely, or even ask them to demonstrate before doing anything else.</li>
+
+<li>teach the first time leaders the skills (especially falling, belaying, and
+        cleaning anchor) in a correct and <b>safe</b> way. Just telling a
+beginner how to do it is not enough to <b>guide</b> a group. The leader must
+always expect that the beginner will do it the wrong way, and provide the right
+back ups.</li>
+
+<li>evaluate routes for beginner sport climbers (not just first timers --  also people who
+        have sport climbed for under a  year or so) for safety, things like the first bolt,
+        falling down past overhangs and ledges below.  The leader must not allow
+        climbers to lead routes that are not appropriate for them.</li>
+
+<li><b>not allow beginner sport climbers (definition above) to clean an anchor.</b></li>
+
+</ul>
+@
+
+
+1.8
+log
+@add crosslinks, check grammar
+@
+text
+@d8 1
+a8 1
+href="members.php?page=resources&action=climbing-permissions">special rules</a> for
+d64 1
+a64 1
+always write to the <a href="members.php?page=main&action=email">club email list</a>
+d94 1
+a94 1
+href="members.php?page=resources&action=climbing-permissions">special rules</a>
+d101 1
+a101 1
+href="members.php?page=resources&action=climbing-permissions">qualified
+@
+
+
+1.7
+log
+@add climbing permissions
+@
+text
+@d6 4
+a9 1
+<p><b>Rock climbing, although enjoyable, can be extremely dangerous.</b></p>
+d48 1
+a48 1
+      <li>Snacks like: energy bars, trail mix, fruit, dried fruit, jerky, and cookies.(recommended)</li>
+d64 3
+a66 4
+always write to the club email list
+<script>document.write(email('outdoors-club', 'virginia.edu'));</script> in
+order to find climbing partners. You can borrow shoes, harness, chalk bag and
+belaying device for free. Please write to
+@
+
+
+1.6
+log
+@Added sport climbing section per Aarash's request
+@
+text
+@d6 1
+a6 1
+<font size=+1><p><b>Rock climbing, although enjoyable, can be extremely dangerous.</b></p></font>
+d91 4
+d98 5
+a102 3
+gym where there is supervision, however, only <b>qualified</b> leaders can lead indoor
+trips for beginners. The club will pay for transportation. Please
+write to the officers list to arrange the trip a week in advance.</p>
+@
+
+
+1.5
+log
+@added FAQ page
+@
+text
+@d85 51
+a135 8
+<p>Everybody can lead official INDOOR climbing trips. The club will pay for
+transportation. Please write to the officers list to arrange a week in advance.
+To lead other climbing trips you must already climb with the climbing officer
+and prove your ability to lead a fun and safe trip. If you are an experienced
+climber we highly encourage you to lead trips. Climbing is one of our most
+popular activities. The club pays back your membership dues if you have led 4
+official trips. Also by leading a few trips you can become an officer.  The club
+is always in need of officers, since people are always graduating.</p>
+@
+
+
+1.4
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d60 15
+a74 1
+<p>If you are a beginner make sure to climb with experienced climbers. You can always write to the club email list <script>document.write(email('outdoors-club', 'virginia.edu'));</script> in order to find climbing partners. You can borrow shoes, harness, chalk bag and belaying device for free. Please write to <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> 3-4 days in advance to check for the availability and to set up a time to meet to get gear.</p>
+a75 2
+<p>You can borrow top rope, sport climbing or trad gear only if you have already climbed with the climbing officer of the club and you have proved your ability to use the gear properly and safely. Your name will be written in the authorized people’s list in the locker room.</p>
+Make sure to take:
+d85 8
+a92 1
+<p>Everybody can lead official INDOOR climbing trips. The club will pay for transportation. Please write to the officers list to arrange a week in advance. To lead other climbing trips you must already climb with the climbing officer and prove your ability to lead a fun and safe trip. If you are an experienced climber we highly encourage you to lead trips. Climbing is one of our most popular activities. The club pays back your membership dues if you have led 4 official trips. Also by leading a few trips you can become an officer.  The club is always in need of officers, since people are always graduating.</p>
+@
+
+
+1.3
+log
+@added in hyperlinks to the rating system
+@
+text
+@d2 1
+a2 2
+<!-- tab=Member Resources -->
+<!-- subtab=Trip Checklists -->
+d73 1
+a73 1
+<p>Everybody can lead official INDOOR climbing trips. The club will pay for transportation. Please write to the officers list to arrange a week in advance. To lead other climbing trips you must already climb with the climbing officer and prove your ability to lead a fun and safe trip. If you are an experienced climber we highly encourage you to lead trips. Climbing is one of our most popular activities. The club pays back your membership dues if you have led 4 official trips. Also by leading a few trips you can become an officer.  The club is always in need of officers, since people are always graduating.</p>@
+
+
+1.2
+log
+@modified grammar and spellin mostly
+@
+text
+@d20 1
+a20 1
+      <li>You know how to belay a top rope climber, but you climb less than <b>5.8</b></li>
+d25 1
+a25 1
+      <li>You know how to belay and tie in and you climb better than <b>5.8</b> on top rope.</li>
+d30 1
+a30 1
+      <li>You know how to belay a leader, and you climb better than <b>5.9</b> on top rope.</li>
+@
+
+
+1.1
+log
+@first edition climbing checklist
+@
+text
+@d11 1
+a11 1
+<p>There are questions that you may want to think before going to a climbing trip:</p>
+d19 1
+a19 1
+      <li>You have climbed a few times, but you have forgotten how things work</li>
+d22 1
+a22 1
+   Being able to walk, see and use both your hands are the only physical requirements for this level.<br><br>
+d25 1
+a25 1
+      <li>You know how to belay and tie in and you climb better than <b>5.8</b> on top rope</li>
+d30 3
+a32 3
+      <li>You know how to belay a leader, and you climb better than <b>5.9</b> on top rope</li>
+      <li>You sport climb</li>
+      <li>You trad climb</li>
+d45 2
+a46 2
+      <li>Two-Three liters water per day (required)</li>
+      <li>Snacks like bars, trail mix, fruit, dried fruit, jerky, cookies.(recommended)</li>
+d51 1
+a51 1
+      <li>Long shorts or comfortable pants( highly recommended) with any top.</li>
+d63 1
+a63 1
+<p>You can borrow tope rope, sport climbing or trad gear only if you have already climbed with the climbing officer of the club and you have proved your ability to use the gear properly and safely. Your name will be written in the authorized people’s list in the locker room.</p>
+@
+

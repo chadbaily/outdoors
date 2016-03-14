@@ -1,0 +1,42 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.08.23.16.38;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.02.12.28.43;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>View Email List Members</h1>
+
+<p>This page shows a list of all members that are subscribed to email list <b>{C_TITLE}</b>.</p>
+
+{BOX}
+@
+
+
+1.1
+log
+@init
+@
+text
+@@
+

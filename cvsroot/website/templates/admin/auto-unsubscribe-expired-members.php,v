@@ -1,0 +1,44 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.09.08.12.27.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@updates to match new coding
+@
+text
+@{SOME:}
+<h1>Success</h1>
+
+<p>The following subscriptions were deleted:</p>
+
+<table class="borders collapsed">
+  <tr>
+    <th>UID</th><th>Email Address</th>
+  </tr>{ROW:}
+  <tr>
+    <td>{C_UID}</td>
+    <td>{C_EMAIL}</td>
+  </tr>{:ROW}
+</table>
+
+{:SOME}
+{NONE:}
+<h1>Nothing To Do</h1>
+
+<p>There were no subscriptions to delete.</p>
+{:NONE}
+@

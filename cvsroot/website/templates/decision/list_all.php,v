@@ -1,0 +1,67 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.07.03.09.14;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Officer Decisions</h1>
+
+<p>This page records decisions the officers have made on various issues.
+
+{CREATE:}
+<a href="members/decision/create">Add a decision</a>.
+{:CREATE}
+<p>
+
+{CATEGORY}
+
+{CHUNK:}
+<h2>{CATEGORY_NAME}</h2>
+
+<ol>{ROW:}
+  <li value="{C_UID}"><a href="members/decision/read/{C_UID}">{C_TITLE}</a></li>{:ROW}
+</ol>
+
+{:CHUNK}
+
+{NONE:}
+<p class="notice">Sorry, there is nothing to display.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@init: release decision system
+@
+text
+@d6 1
+a6 2
+<a href="members.php?page=decision&action={ACTION_CREATE}">Add a
+decision</a>.
+d16 1
+a16 1
+  <li value="{C_UID}"><a href="members.php?page=decision&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a></li>{:ROW}
+@
+

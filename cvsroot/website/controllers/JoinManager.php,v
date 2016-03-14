@@ -1,0 +1,564 @@
+head	1.17;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.17
+date	2005.02.08.14.41.03;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2005.02.07.18.47.02;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2005.01.31.00.25.46;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.10.21.21.05.31;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.08.20.50.45;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.07.17.41.47;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.04.18.13.06;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.09.21.02.24.56;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.18.14.27.11;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.26.13.38.39;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.20.13.10.45;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.14.23.10.33;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.02.01.06.08;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.19.24;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.17
+log
+@fix redirects
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: JoinManager.php,v 1.16 2005/02/07 18:47:02 at Exp $
+ */
+// {{{require statements
+include_once("Email.php");
+include_once("membership_type.php");
+include_once("member_group.php");
+include_once("membership.php");
+//}}}
+
+class JoinManager {
+    /* {{{checkIfMemberExists
+     *
+     */
+    function checkIfMemberExists($email) {
+        global $obj;
+        $select = "select c_uid from [_]member where c_email={email,char,60} "
+            . "and c_deleted <> 1";
+        $result = $obj['conn']->query($select, array('email' => $email));
+        return ($result->numRows() > 0);
+    } //}}}
+
+    /* {{{createAndStoreObjects
+     *
+     */
+    function createAndStoreObjects(&$form) {
+        global $obj;
+        global $cfg;
+
+        $member =& new member();
+        $member->setOwner($cfg['root_uid']);
+        $member->setCreator($cfg['root_uid']);
+        $member->setEmail($form->getValue('emailAddress'));
+        $member->setPassword($form->getValue('password1'));
+        $member->setFirstName($form->getValue('firstName'));
+        $member->setLastName($form->getValue('lastName'));
+        $member->setBirthDate($form->getValue('dob'));
+        $member->setGender($form->getValue('gender'));
+        $member->setFlag("receive_email", true);
+        $member->setFlag("member_agreement", true);
+        $member->setFlag("student", $form->getValue("student"));
+        $member->insert();
+
+        # Set the user's ID
+        $cfg['user'] = $member->getUID();
+
+        $member->addNote("Agreed to Electronic Services Agreement during join process");
+
+        # Insert a new member_group for the user
+        $mg =& new member_group();
+        $mg->setOwner($cfg['root_uid']);
+        $mg->setMember($member->getUID());
+        $mg->setRelatedGroup($cfg['group_id']['member']);
+        $mg->insert();
+
+        $address =& new address();
+        $address->setTitle("Main Address");
+        $address->setStreet($form->getValue('street'));
+        $address->setCity($form->getValue('city'));
+        $address->setState($form->getValue('state'));
+        $address->setZIP($form->getValue('zip'));
+        $address->setCountry('US');
+        $address->setFlag("primary", true);
+        $address->insert();
+
+        $phone =& new phone_number();
+        $phone->setTitle("Phone Number");
+        $phone->setAreaCode($form->getValue('areaCode'));
+        $phone->setExchange($form->getValue('exchange'));
+        $phone->setNumber($form->getValue('number'));
+        $phone->setType($form->getValue("phoneNumberType"));
+        $phone->setFlag("primary", true);
+        $phone->insert();
+
+        # Insert the chat identity, if it exists
+        if ($form->getValue("chat")) {
+            $chat =& new chat();
+            $chat->setType($form->getValue("chatType"));
+            $chat->setScreenName($form->getValue("chat"));
+            $chat->setFlag("primary", true);
+            $chat->insert();
+        }
+
+        # Create a new membership
+        $type =& new membership_type();
+        $type->select($form->getValue("membership-plan"));
+        $mem =& new membership();
+        $mem->setOwner($cfg['root_uid']);
+        $mem->setType($form->getValue("membership-plan"));
+        $mem->setBeginDate($type->getBeginDate());
+        $mem->setExpirationDate($type->getExpirationDate());
+        $mem->setTotalCost($type->getTotalCost());
+        $mem->setUnitsGranted($type->getUnitsGranted());
+        $mem->setUnit($type->getUnit());
+        $mem->setMember($member->getUID());
+        $mem->insert();
+
+        # Send an email to the member
+        $body = file_get_contents("templates/emails/final-instructions.txt");
+        $email =& new Email();
+        $email->setFrom($cfg['club_admin_email_name']);
+        $email->addHeader("Return-Path", $cfg['club_admin_email']);
+        $email->setSubject("Your $cfg[club_name] Membership");
+        $email->addTo($member->getEmail());
+        $emailVals = array(
+            "C_FULL_NAME" => $member->getFullName(),
+            "CLUB_NAME" => $cfg['club_name'],
+            "MEMBERSHIP" => $type->getTitle(),
+            "FEE" => $type->getTotalCost());
+        $body = Template::replace($body, $emailVals);
+        $email->setBody(Template::finalize($body));
+        $email->loadFooter("templates/emails/footer.txt");
+        $email->send();
+
+        # Redirect the user to the next step!
+        # Set a cookie first, so he doesn't have to log in to get there...
+        setcookie("user", $member->getUID(), null, "/");
+        redirect("$cfg[base_url]/members/join/instructions");
+    } //}}}
+
+}
+?>
+@
+
+
+1.16
+log
+@friendlyurls and set cookie at root level
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.15 2005/01/31 00:25:46 at Exp $
+d136 1
+a136 1
+        redirect("members/join/instructions");
+@
+
+
+1.15
+log
+@add c_deleted
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.14 2004/10/21 21:05:31 at Exp $
+d135 2
+a136 2
+        setcookie("user", $member->getUID());
+        redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.14
+log
+@class names change to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.13 2004/10/08 20:50:45 at Exp $
+d35 2
+a36 1
+        $select = "select c_uid from [_]member where c_email={email,char,60}";
+@
+
+
+1.13
+log
+@no need to give each member his own privileges anymore; the 'self' privilege type does this
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.12 2004/10/07 17:41:47 at Exp $
+d24 3
+a26 2
+include_once("MembershipType.php");
+include_once("Membership.php");
+d47 1
+a47 1
+        $member =& new Member();
+d66 2
+a67 2
+        # Insert a new MemberGroup for the user
+        $mg =& new MemberGroup();
+d73 1
+a73 1
+        $address =& new Address();
+d83 1
+a83 1
+        $phone =& new PhoneNumber();
+d94 1
+a94 1
+            $chat =& new Chat();
+d101 2
+a102 2
+        # Create a new Membership
+        $type =& new MembershipType();
+d104 1
+a104 1
+        $mem =& new Membership();
+@
+
+
+1.12
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.11 2004/10/04 18:13:06 at Exp $
+a23 1
+include_once("Privilege.php");
+a71 30
+        # Give the user the right to change his own password, view his own
+        # history, and choose his interests
+        $priv1 =& new Privilege();
+        $priv1->setOwner($cfg['root_uid']);
+        $priv1->setWhatGrantedTo("user");
+        $priv1->setWhoGrantedTo($member->getUID());
+        $priv1->setAction($cfg['action_id']['change_password']);
+        $priv1->setWhatRelatesTo("object");
+        $priv1->setRelatedTable("[_]member");
+        $priv1->setRelatedUID($member->getUID());
+        $priv1->insert();
+        $priv2 =& new Privilege();
+        $priv2->setOwner($cfg['root_uid']);
+        $priv2->setWhatGrantedTo("user");
+        $priv2->setWhoGrantedTo($member->getUID());
+        $priv2->setAction($cfg['action_id']['view_history']);
+        $priv2->setWhatRelatesTo("object");
+        $priv2->setRelatedTable("[_]member");
+        $priv2->setRelatedUID($member->getUID());
+        $priv2->insert();
+        $priv3 =& new Privilege();
+        $priv3->setOwner($cfg['root_uid']);
+        $priv3->setWhatGrantedTo("user");
+        $priv3->setWhoGrantedTo($member->getUID());
+        $priv3->setAction($cfg['action_id']['choose_activities']);
+        $priv3->setWhatRelatesTo("object");
+        $priv3->setRelatedTable("[_]member");
+        $priv3->setRelatedUID($member->getUID());
+        $priv3->insert();
+        
+@
+
+
+1.11
+log
+@stop using the owner- address of the officers list as the club admin email, and stop BCCing messages all over the place
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.10 2004/09/21 02:24:56 at Exp $
+d165 1
+a165 1
+        Utility::redirect("members.php?page=join&action=final-instructions");
+@
+
+
+1.10
+log
+@migrate away from DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.9 2004/09/20 20:38:39 at Exp $
+a151 1
+        $email->addBCC($cfg['club_admin_email']);
+@
+
+
+1.9
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.8 2004/09/18 14:27:11 at Exp $
+d54 1
+a54 1
+        $member->setBirthDate(new DateTime($form->getValue('dob')));
+@
+
+
+1.8
+log
+@uppercase setRelatedUid()
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.7 2004/08/26 13:38:39 at Exp $
+d158 1
+a158 1
+        $body = Template::replaceValues($body, $emailVals);
+@
+
+
+1.7
+log
+@removed a bit that's not sent from the form
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.6 2004/08/20 13:10:45 at Exp $
+d82 1
+a82 1
+        $priv1->setRelatedUid($member->getUID());
+d91 1
+a91 1
+        $priv2->setRelatedUid($member->getUID());
+d100 1
+a100 1
+        $priv3->setRelatedUid($member->getUID());
+@
+
+
+1.6
+log
+@set owner and creator where needed on privileges etc
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.5 2004/08/14 23:10:33 at Exp $
+a109 1
+        $address->setFlag("private", $form->getValue("addressPrivate"));
+@
+
+
+1.5
+log
+@fixed problem of email not being from anybody
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.4 2004/08/02 01:06:08 at Exp $
+d60 4
+d68 1
+d76 1
+d85 1
+d94 1
+a103 2
+        $address->setOwner($member->getUID());
+        $address->setCreator($member->getUID());
+a114 2
+        $phone->setOwner($member->getUID());
+        $phone->setCreator($member->getUID());
+a125 2
+            $chat->setOwner($member->getUID());
+            $chat->setCreator($member->getUID());
+@
+
+
+1.4
+log
+@fixed bug adding the choose_activities privilege on oneself
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.3 2004/07/26 02:12:31 at Exp $
+d147 2
+a148 2
+        $email->setFrom('');
+        $email->addHeader("Return-Path", "");
+@
+
+
+1.3
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.2 2004/07/20 14:19:24 at Exp $
+d88 6
+a93 6
+        $priv2->setWhoGrantedTo($member->getUID());
+        $priv2->setAction($cfg['action_id']['choose_activities']);
+        $priv2->setWhatRelatesTo("object");
+        $priv2->setRelatedTable("[_]member");
+        $priv2->setRelatedUid($member->getUID());
+        $priv2->insert();
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d75 1
+a75 1
+        $priv1->setRelatedTable("t_member");
+d83 1
+a83 1
+        $priv2->setRelatedTable("t_member");
+d91 1
+a91 1
+        $priv2->setRelatedTable("t_member");
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: JoinManager.php,v 1.11 2004/05/30 01:41:57 baron Exp $
+d35 1
+a35 1
+        $select = "select c_uid from t_member where c_email={email,char,60}";
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

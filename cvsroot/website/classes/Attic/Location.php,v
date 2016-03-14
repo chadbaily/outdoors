@@ -1,0 +1,244 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.18.22.34.41;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.11.06;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Location.php,v 1.3 2004/08/18 22:34:41 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+include_once("LocationActivity.php");
+
+class Location extends DatabaseObject {
+    // {{{declarations
+    var $c_title = null; // String
+    var $c_description = null;
+    var $c_zip_code = null; // String
+    var $locationActivities = null;
+    var $adventures = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Location() {
+        $this->DatabaseObject();
+        $this->table = "[_]location";
+        $this->cascadeFunctions[] = "getLocationActivities";
+        $this->cascadeFunctions[] = "getAdventures";
+    } //}}}
+
+    /* {{{getTitle
+     *
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+
+    /* {{{setTitle
+     *
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getDescription
+     *
+     */
+    function getDescription() {
+        return $this->c_description;
+    } //}}}
+
+    /* {{{setDescription
+     *
+     */
+    function setDescription($value) {
+        $this->c_description = $value;
+    } //}}}
+
+    /* {{{getZipCode
+     *
+     */
+    function getZipCode() {
+        return $this->c_zip_code;
+    } //}}}
+
+    /* {{{setZipCode
+     *
+     */
+    function setZipCode($value) {
+        $this->c_zip_code = $value;
+    } //}}}
+
+    /* {{{getAdventures
+     * You don't need to call initAdventures(), since it will be
+     * called automatically as needed.  If you want the cached list of
+     * Adventure objects to be refreshed, call this method with a TRUE
+     * parameter.
+     */
+    function &getAdventures($refresh = FALSE) {
+        if (!isset($this->adventures) or $refresh) {
+            $this->initAdventures();
+        }
+        return $this->adventures;
+    } //}}}
+
+    /* {{{getLocationActivities
+     * You don't need to call initLocationActivities(), since it will be
+     * called automatically as needed.  If you want the cached list of
+     * LocationActivity objects to be refreshed, call this method with a TRUE
+     * parameter.
+     */
+    function &getLocationActivities($refresh = FALSE) {
+        if (!isset($this->locationActivities) or $refresh) {
+            $this->initLocationActivities();
+        }
+        return $this->locationActivities;
+    } //}}}
+
+    /* {{{initAdventures
+     * Initializes all the location's Adventures.  You don't need to call this
+     * directly; just call getAdventures().
+     */
+    function initAdventures() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->adventures = array();
+        $result = $obj['conn']->query("select * from [_]adventure "
+            . "where c_destination=$this->c_uid or c_departure = $this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->adventures[$row['c_uid']] =& new Adventure();
+            $this->adventures[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{initLocationActivities
+     * Initializes all the location's LocationActivities.  You don't need to call this
+     * directly; just call getLocationActivities().
+     */
+    function initLocationActivities() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->locationActivities = array();
+        $result = $obj['conn']->query("select * from [_]location_activity "
+            . "where c_location=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->locationActivities[$row['c_uid']] =& new LocationActivity();
+            $this->locationActivities[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+}
+?>
+@
+
+
+1.3
+log
+@added cascading to adventures
+@
+text
+@d20 1
+a20 1
+ * $Id: Location.php,v 1.2 2004/07/20 14:11:06 at Exp $
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: Location.php,v 1.1.1.1 2004/05/30 03:10:36 at Exp $
+d32 1
+d42 1
+d87 13
+d113 16
+a134 1
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: Location.php,v 1.4 2004/05/30 01:41:53 baron Exp $
+d39 1
+a39 1
+        $this->table = "t_location";
+d107 1
+a107 1
+        $result = $obj['conn']->query("select * from t_location_activity "
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

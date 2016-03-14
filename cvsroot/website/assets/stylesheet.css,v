@@ -1,0 +1,1853 @@
+head	1.37;
+access;
+symbols
+	test:1.21.0.2
+	init:1.1.1.1
+	socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.37
+date	2005.01.16.17.44.08;	author at;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2004.11.09.17.54.24;	author at;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2004.11.01.01.05.06;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2004.10.25.16.45.17;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2004.10.24.17.03.17;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2004.10.09.21.30.07;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2004.10.06.23.01.13;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.09.29.20.12.54;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.09.29.13.56.36;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.09.29.13.15.33;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.09.29.01.58.14;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.09.22.19.32.48;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.09.19.02.40.01;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.09.14.13.39.02;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.09.14.13.31.23;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.09.09.18.32.33;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.09.08.22.32.18;	author at;	state Exp;
+branches
+	1.21.2.1;
+next	1.20;
+
+1.20
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.09.02.11.37.44;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.09.01.19.55.34;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.08.31.22.31.07;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.08.30.01.14.58;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.08.26.13.41.18;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.08.25.11.42.51;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.08.24.18.36.44;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.08.20.19.27.47;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.18.22.06.25;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.18.15.54.12;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.18.15.47.46;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.18.14.24.50;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.17.21.53.09;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.02.14.34.19;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.07.19.16.45.44;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.19.12.21.28;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.06.08.18.13.55;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.06.01.13.22.26;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+1.21.2.1
+date	2004.09.09.14.05.33;	author at;	state Exp;
+branches;
+next	1.21.2.2;
+
+1.21.2.2
+date	2004.09.09.18.29.43;	author at;	state Exp;
+branches;
+next	1.21.2.3;
+
+1.21.2.3
+date	2004.09.14.13.28.24;	author at;	state Exp;
+branches;
+next	1.21.2.4;
+
+1.21.2.4
+date	2004.09.14.13.37.43;	author at;	state Exp;
+branches;
+next	1.21.2.5;
+
+1.21.2.5
+date	2004.09.14.13.39.02;	author at;	state Exp;
+branches;
+next	1.21.2.6;
+
+1.21.2.6
+date	2004.09.19.02.58.35;	author at;	state Exp;
+branches;
+next	1.21.2.7;
+
+1.21.2.7
+date	2004.09.22.19.31.48;	author at;	state Exp;
+branches;
+next	1.21.2.8;
+
+1.21.2.8
+date	2004.09.29.01.45.37;	author at;	state Exp;
+branches;
+next	1.21.2.9;
+
+1.21.2.9
+date	2004.09.29.12.20.45;	author at;	state Exp;
+branches;
+next	1.21.2.10;
+
+1.21.2.10
+date	2004.09.29.13.14.45;	author at;	state Exp;
+branches;
+next	1.21.2.11;
+
+1.21.2.11
+date	2004.09.29.13.57.03;	author at;	state Exp;
+branches;
+next	1.21.2.12;
+
+1.21.2.12
+date	2004.09.29.20.08.34;	author at;	state Exp;
+branches;
+next	1.21.2.13;
+
+1.21.2.13
+date	2004.10.06.23.00.41;	author at;	state Exp;
+branches;
+next	1.21.2.14;
+
+1.21.2.14
+date	2004.10.09.20.45.57;	author at;	state Exp;
+branches;
+next	1.21.2.15;
+
+1.21.2.15
+date	2004.10.24.17.02.50;	author at;	state Exp;
+branches;
+next	1.21.2.16;
+
+1.21.2.16
+date	2004.10.25.16.44.52;	author at;	state Exp;
+branches;
+next	1.21.2.17;
+
+1.21.2.17
+date	2004.10.31.21.28.33;	author at;	state Exp;
+branches;
+next	1.21.2.18;
+
+1.21.2.18
+date	2004.11.09.17.52.55;	author at;	state Exp;
+branches;
+next	1.21.2.19;
+
+1.21.2.19
+date	2005.01.16.17.41.41;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.37
+log
+@merge changes from test branch
+@
+text
+@/* General styling */
+
+body, html {
+    background:white;
+}
+
+* {
+    font-family:Verdana, Helvetica, Sans-Serif;
+}
+
+th, td, p, dd, dl, li, body, form, input, textarea, option,
+legend, select, fieldset {
+    font-family:Verdana, Helvetica, Sans-Serif;
+    font-size:small;
+}
+
+tt {
+    color:maroon;
+}
+
+img {
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+caption, legend {
+    font-weight:bold;
+    color: #252;
+}
+
+dt {
+    font-weight:bold;
+}
+
+dt, dd {
+    margin-top: .5em;
+}
+
+form {
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+form.action {
+    margin-top: 1em;
+}
+
+fieldset {
+    margin:2em 0;
+    padding:.5em;
+}
+
+input[type='text']:focus, input[type='password']:focus, textarea:focus {
+    background:#eee;
+}
+input.compact {
+    margin:-5px;
+}
+input[type='radio'], input[type='checkbox'] {
+    margin: 0;
+    padding: 0;
+}
+select.compact, select.compact option {
+    font-size:10px;
+}
+
+h1, h2, h3 {
+    font-weight:bold;
+    color: #252;
+}
+h1 {
+    font-size:1.35em;
+    margin-top: 0;
+}
+h2 {
+    font-size:1.2em;
+}
+h3 {
+    font-size:1.15em;
+}
+h4.boxed {
+    padding: 4px;
+    margin: 8px 0;
+    background: #eee;
+    border-style: none none solid solid;
+    border-color: #252;
+    border-width: 1px;
+    font-size:1em;
+}
+
+/* Table Styling */
+
+table {
+    empty-cells:show;
+}
+.borders td, .borders th {
+    border:1px solid gray;
+    padding:3px;
+}
+.borders {
+    border-spacing:0px;
+    border:1px solid gray;
+}
+.collapsed {
+    border-collapse:collapse;
+}
+.elbowroom td, .elbowroom th {
+    padding-right:.5em;
+    padding-left:.5em;
+}
+.top td, .top th {
+    vertical-align: top;
+}
+.odd td {
+    background: #fcfaf2;
+}
+.ruled td {
+    border-bottom: 1px solid #B98601;
+}
+.ruled tr:last-child td {
+    border-bottom: none;
+}
+.ruled a:link, .ruled a:visited {
+    text-decoration: none;
+}
+.ruled a:hover {
+    text-decoration: underline;
+}
+.cleanHeaders th {
+    border-style: none none solid none;
+    border-color: black;
+    border-width: 1px;
+    text-align: left;
+    background: transparent;
+}
+.compact td, .compact th {
+    font-size:smaller;
+}
+.verticalHeaders th {
+    text-align:right;
+    border-right:1px solid #252;
+    white-space:nowrap;
+}
+.verticalHeaders th, .verticalHeaders td {
+    vertical-align:top;
+}
+table.classic {
+    border-top: 1px solid #252;
+    border-bottom: 1px solid #252;
+}
+table.verticalMargins {
+    margin: 1em 0;
+}
+.hoverul:link {
+    text-decoration: none;
+}
+.hoverul:hover {
+    text-decoration: underline;
+}
+
+/* Miscellaneous Styling */
+
+.error {
+    border:1px solid maroon;
+    padding:3px 3px 3px 20px;
+    background: #fc5 url(error.png) no-repeat;
+}
+
+.underage td {
+    color:red;
+    font-weight:bold;
+}
+
+.notice {
+    background: #dfe url(note.png) no-repeat;
+    border:1px solid #252;
+    padding:3px 3px 3px 20px;
+}
+.parameter {
+    border:1px solid black;
+    margin:1px;
+    padding:1px;
+    width:60px;
+}
+.parameter:focus {
+    background:#eee;
+}
+.tiny {
+    font-size:75%;
+    font-style:italic;
+}
+a.tiny {
+    color:black;
+    text-decoration: none;
+}
+.copyright {
+    font-size:75%;
+}
+.copyright a {
+    text-decoration: none;
+    color: black;
+}
+.disabled {
+    text-decoration: line-through;
+    color: gray;
+}
+img.thumbnail-right {
+    margin: 3px 0 3px 3px;
+    padding: 1px;
+    border: 1px solid #252;
+    float: right;
+}
+img.thumbnail-left {
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    border: 1px solid #252;
+    float: left;
+}
+img.framed {
+    padding: 1px;
+    border: 1px solid #252;
+}
+.indented {
+    margin-left: 2em;
+}
+.comboBox {
+    width: 400px;
+}
+
+/* Tabbed Box Styling */
+.tabbedBox table td {
+    background:url(nw.gif) no-repeat #DDD;
+    color:black;
+    text-align: center;
+    border-right:1px solid #FFF;
+    text-decoration:none;
+    border-bottom:1px solid #FFF;
+    padding: 3px;
+}
+.tabbedBox table td.active {
+    background:url(nw.gif) no-repeat #987;
+    color:white;
+    border-right:1px solid #FFF;
+    text-decoration:none;
+    border-bottom:1px solid #987;
+    font-weight: bold;
+}
+.tabbedBox table td a:link, .tabbedBox table td a:visited {
+    color:black;
+    display: block;
+    width: 100%;
+    text-decoration:none;
+}
+.tabbedBox table td.active a:link, .tabbedBox table td.active a:visited {
+    color:white;
+    text-decoration:none;
+}
+.tabbedBox table {
+    width: 100%;
+}
+.tabbedBox td {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    border:1px solid #987;
+    padding: .5em;
+}
+
+/* Calendar Styling */
+
+
+.calendar {
+    border-collapse:collapse;
+    border-spacing:0px;
+    border:1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+}
+.calendar th {
+    border:1px solid black;
+    padding:3px;
+    background: white;
+    font-weight:normal;
+}
+.calendar td {
+    border: 1px solid #000;
+    padding: 0px;
+    vertical-align: top;
+    background: #FFF4BC;
+}
+.calendar div {
+    overflow: hidden;
+    white-space:nowrap;
+}
+a.past {
+    color:#555;
+}
+td.Jan, td.Mar, td.May, td.Jul, td.Sep, td.Nov {
+    background: #CAD599;
+}
+td.hasEvent {
+    font-weight:bold;
+}
+
+/* Annotation Styling */
+table.annotated {
+    border-collapse: collapse;
+    border-spacing:0px;
+    width: 100%;
+}
+.annotated tr td {
+    text-indent: 1em;
+
+    vertical-align: top;
+    padding-right: .5em;
+}
+.annotated tr td.annotation {
+    border-left: 1px dotted #252;
+    border-bottom: 1px dotted #252;
+    width:45%;
+    font-style: italic;
+    padding-right: 0em;
+    padding-left: .5em;
+}
+
+/* Date Chooser Styling */
+.dateChooser td {
+    cursor:default;
+    text-align:center;
+}
+.dateChooser td.dateChooserActive:hover {
+    color:white;
+    background:#0A246A;
+}
+.dateChooser td.dateChooserActiveToday {
+    border: 1px solid red;
+}
+.dateChooser th {
+    background: #aaa;
+    color: white;
+    width: 18px;
+    border: none;
+}
+.dateChooser option, .dateChooser select {
+    font-size:10px;
+}
+.dateChooser {
+    border: 2px outset #aaa;
+    background: white;
+    padding: 1px;
+}
+.dateChooser table {
+    width:160px;
+}
+
+/* Vertical Navigation Styling */
+.navbar ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li {
+    font-size:10px;
+    margin: 0 0 5px 0;
+}
+
+.navbar li a {
+    border:1px #252;
+    border-style: solid solid solid none;
+    display: block;
+    padding: 2px;
+    margin: 0;
+    color: #252;
+    text-decoration: none;
+    width: 100%;
+    background: #eee;
+}
+
+html>body .navbar li a {
+    width: auto;
+}
+
+.navbar li a:hover {
+    text-decoration: none;
+    background: white;
+}
+
+.navbar li a.active {
+    background: #8ae;
+    color: black;
+}
+
+.navbar li a.active:hover {
+    background: #9bf;
+}
+
+.navbar ul ul {
+    margin: 0 0 0 1em;
+    padding: .5em 0 0 0;
+    border: 1px #252;
+    border-style: none none none solid;
+}
+
+
+/* Page Layout */
+#header {
+    margin-bottom: 25px;
+}
+
+#navbar {
+    width: 150px;
+    float: left;
+}
+
+#content {
+    padding: 0px 10px;
+    margin-left: 150px;
+}
+
+#wrapper {
+    border:1px solid #252;
+    width: 799px;
+}
+
+/* Print styles */
+@@media print {
+    th, td, p, dd, dl, li, body, form, input, textarea, option,
+    legend, select, fieldset {
+        font-family:Times New Roman, Times, Serif;
+    }
+    * {
+        font-family:Times New Roman, Times, Serif;
+    }
+    .tabbedBox {
+        display: none;
+    }
+    #header {
+        display: none;
+    }
+    #navbar {
+        display: none;
+    }
+    #wrapper {
+        border: none;
+        display: inline;
+    }
+    #content {
+        display: inline;
+    }
+    .box {
+        border:none;
+    display:inline;
+    }
+}
+
+/* Tinymenu Styles */
+div.tinyMenu {
+    visibility: hidden;
+    position: absolute;
+    background: #ccc;
+    border: 2px outset #aaa;
+    cursor: default;
+}
+
+div.tinyMenu a {
+    display: block;
+    padding: 2px 5px 2px 20px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    white-space:nowrap;
+}
+
+div.tinyMenu a:link, div.tinyMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+div.tinyMenu a:hover {
+    color:white;
+    background:#0A246A;
+    text-decoration: none;
+}
+@
+
+
+1.36
+log
+@merge framed style from test
+@
+text
+@a0 28
+div.tinyMenu {
+    visibility: hidden;
+    position: absolute;
+    background: #ccc;
+    border: 2px outset #aaa;
+    cursor: default;
+}
+
+div.tinyMenu a {
+    display: block;
+    padding: 2px 5px 2px 20px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    white-space:nowrap;
+}
+
+div.tinyMenu a:link, div.tinyMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+div.tinyMenu a:hover {
+    color:white;
+    background:#0A246A;
+    text-decoration: none;
+}
+
+d27 1
+a27 1
+legend {
+d459 29
+@
+
+
+1.35
+log
+@merge changes for action menus as JavaScript; from test branch
+@
+text
+@d249 4
+@
+
+
+1.34
+log
+@merge from test
+@
+text
+@d1 28
+@
+
+
+1.33
+log
+@merge changes from test branch
+@
+text
+@d302 1
+a302 1
+    background: #FD9;
+@
+
+
+1.32
+log
+@merge from test branch
+@
+text
+@d65 3
+@
+
+
+1.31
+log
+@merge changes from test branch
+@
+text
+@d46 4
+@
+
+
+1.30
+log
+@merged from test branch
+@
+text
+@a295 1
+    color: white;
+@
+
+
+1.29
+log
+@more print styling
+@
+text
+@d54 1
+a54 1
+input.radioCompact {
+d57 1
+a57 1
+input[type='radio'] {
+@
+
+
+1.28
+log
+@merged from test branch
+@
+text
+@d426 3
+@
+
+
+1.27
+log
+@merge changes from test branch
+@
+text
+@d54 3
+d418 28
+@
+
+
+1.26
+log
+@add back in underage styling
+@
+text
+@d54 4
+@
+
+
+1.25
+log
+@add editable combo box styles
+@
+text
+@d156 6
+@
+
+
+1.24
+log
+@still more DT styling
+@
+text
+@d204 3
+@
+
+
+1.23
+log
+@merged from test branch
+@
+text
+@d27 1
+a27 1
+dt, legend {
+@
+
+
+1.22
+log
+@merging from test branch
+@
+text
+@d32 8
+@
+
+
+1.21
+log
+@Styling for CSS layout and changes to tabbed box
+@
+text
+@d305 3
+@
+
+
+1.21.2.1
+log
+@test should have a thick red border
+@
+text
+@d389 1
+a389 1
+    border:15px solid red;
+@
+
+
+1.21.2.2
+log
+@added highlighting for the currently chosen day on the datechooser
+@
+text
+@a304 3
+.dateChooser td.dateChooserActiveToday {
+    border: 1px solid red;
+}
+@
+
+
+1.21.2.3
+log
+@styling for DT elements
+@
+text
+@d27 1
+a27 1
+legend {
+a29 8
+}
+
+dt {
+    font-weight:bold;
+}
+
+dt, dd {
+    margin-top: .5em;
+@
+
+
+1.21.2.4
+log
+@more DT styling
+@
+text
+@d27 1
+a27 1
+dt, legend {
+@
+
+
+1.21.2.5
+log
+@still more DT styling
+@
+text
+@d27 1
+a27 1
+legend {
+@
+
+
+1.21.2.6
+log
+@merge changes from trunk onto test branch
+@
+text
+@a203 3
+.comboBox {
+    width: 400px;
+}
+@
+
+
+1.21.2.7
+log
+@add back in styling for underage members
+@
+text
+@a155 6
+
+.underage td {
+    color:red;
+    font-weight:bold;
+}
+
+@
+
+
+1.21.2.8
+log
+@make radio buttons compact
+@
+text
+@a53 4
+input[type='radio'] {
+    margin: 0;
+    padding: 0;
+}
+@
+
+
+1.21.2.9
+log
+@styling for the radio buttons to make them more compact
+@
+text
+@a53 3
+input.radioCompact {
+    margin:-5px;
+}
+@
+
+
+1.21.2.10
+log
+@add print styles
+@
+text
+@a418 28
+
+/* Print styles */
+@@media print {
+    th, td, p, dd, dl, li, body, form, input, textarea, option,
+    legend, select, fieldset {
+        font-family:Times New Roman, Times, Serif;
+    }
+    .tabbedBox {
+        display: none;
+    }
+    #header {
+        display: none;
+    }
+    #navbar {
+        display: none;
+    }
+    #wrapper {
+        border: none;
+        display: inline;
+    }
+    #content {
+        display: inline;
+    }
+    .box {
+        border:none;
+    display:inline;
+    }
+}
+@
+
+
+1.21.2.11
+log
+@more print styling
+@
+text
+@a425 3
+    * {
+        font-family:Times New Roman, Times, Serif;
+    }
+@
+
+
+1.21.2.12
+log
+@change class name, and allow any input to be thusly styled: radioCompact
+@
+text
+@d54 1
+a54 1
+input.compact {
+d57 1
+a57 1
+input[type='radio'], input[type='checkbox'] {
+@
+
+
+1.21.2.13
+log
+@removed the day and week view options for a calendar; all it shows is the month.
+@
+text
+@d296 1
+@
+
+
+1.21.2.14
+log
+@place a margin on top of the 'choose an action' forms
+@
+text
+@a45 4
+form.action {
+    margin-top: 1em;
+}
+
+@
+
+
+1.21.2.15
+log
+@add an option to choose how many to view per page
+@
+text
+@a64 3
+select.compact, select.compact option {
+    font-size:10px;
+}
+@
+
+
+1.21.2.16
+log
+@bold days with adventures
+@
+text
+@d302 1
+a302 1
+    font-weight:bold;
+@
+
+
+1.21.2.17
+log
+@add tiny action menus
+@
+text
+@a0 28
+div.tinyMenu {
+    visibility: hidden;
+    position: absolute;
+    background: #ccc;
+    border: 2px outset #aaa;
+    cursor: default;
+}
+
+div.tinyMenu a {
+    display: block;
+    padding: 2px 5px 2px 20px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    white-space:nowrap;
+}
+
+div.tinyMenu a:link, div.tinyMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+div.tinyMenu a:hover {
+    color:white;
+    background:#0A246A;
+    text-decoration: none;
+}
+
+@
+
+
+1.21.2.18
+log
+@added framed style
+@
+text
+@a248 4
+img.framed {
+    padding: 1px;
+    border: 1px solid #252;
+}
+@
+
+
+1.21.2.19
+log
+@styling changes
+@
+text
+@d1 28
+d55 1
+a55 1
+caption, legend {
+a486 29
+}
+
+/* Tinymenu Styles */
+div.tinyMenu {
+    visibility: hidden;
+    position: absolute;
+    background: #ccc;
+    border: 2px outset #aaa;
+    cursor: default;
+}
+
+div.tinyMenu a {
+    display: block;
+    padding: 2px 5px 2px 20px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    white-space:nowrap;
+}
+
+div.tinyMenu a:link, div.tinyMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+div.tinyMenu a:hover {
+    color:white;
+    background:#0A246A;
+    text-decoration: none;
+@
+
+
+1.20
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@a49 1
+    margin-top: 0;
+d53 1
+d119 21
+d198 2
+a199 16
+.tabbedBox ul {
+    margin: 0 0 4px 0;
+    padding: 0;
+    list-style:none;
+}
+.tabbedBox li {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+.tabbedBox a {
+    background:url(nw.gif) no-repeat #dddddd;
+    display: inline;
+    width:100%;
+    margin: 0;
+    padding: 3px;
+d201 2
+a202 1
+    border-right:1px solid white;
+d204 2
+a205 1
+    border-bottom:1px solid #fff;
+d207 1
+a207 1
+.tabbedBox a.active {
+d209 3
+d213 9
+d223 8
+a230 1
+    font-weight:bold;
+a235 6
+}
+.hoverul:link {
+    text-decoration: none;
+}
+.hoverul:hover {
+    text-decoration: underline;
+@
+
+
+1.19
+log
+@updates to list styling
+@
+text
+@d1 2
+d6 1
+d10 1
+a16 3
+tt, code, pre {
+    font-family:Courier New, Monospace;
+}
+a20 4
+th {
+    background:#eee;
+    border:1px solid #252;
+}
+d26 2
+a27 6
+dt {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: .5em;
+}
+legend {
+d31 1
+d34 2
+a35 2
+    padding:0px;
+    margin:0px;
+d37 1
+d42 1
+a46 7
+@@media print {
+    a:link, a:hover, a:visited {
+        color:black;
+        text-decoration:none;
+    }
+}
+
+d50 1
+a50 1
+    clear: both;
+a53 1
+    margin-top:15px;
+d61 1
+a61 1
+h4 {
+d70 2
+a71 4
+h5 {
+    font-style: italic;
+    margin: 5px 0;
+}
+a75 18
+
+.framed dt {
+    display: block;
+    margin: 1em auto 0 0;
+    background-color: #eee;
+    padding: 5px;
+    border-color: #252;
+    border-width: 0 0 1px 0;
+    border-style: none none solid none;
+}
+.framed dd {
+    margin: 0 2em 0 2em;
+    padding: 5px;
+    border-color: gray;
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+}
+
+d91 1
+a91 1
+.top td {
+d103 7
+a109 1
+.ruled th {
+d116 2
+a117 5
+.ruled a:link, .ruled a:visited {
+    text-decoration: none;
+}
+.ruled a:hover {
+    text-decoration: underline;
+d119 2
+a140 29
+.active {
+    background:url(nw.gif) no-repeat #987;
+    color:white;
+    border-right:1px solid white;
+    text-decoration:none;
+    border-bottom:1px solid #987;
+    font-weight:bold;
+}
+.active a:link, .active a:visited {
+    color:white;
+    text-decoration:none;
+}
+.inactive {
+    background:url(nw.gif) no-repeat #dddddd;
+    color:black;
+    border-right:1px solid white;
+    text-decoration:none;
+    border-bottom:1px solid white;
+}
+.inactive a:link, .inactive a:visited {
+    color:black;
+    text-decoration:none;
+}
+
+.box {
+    border:1px solid #987;
+    padding: .5em;
+}
+
+a155 1
+
+a159 62
+
+.compact td, .compact th {
+    font-size:smaller;
+}
+
+/* Vertical tabbed-box navigation */
+.tabVertical tr td {
+    border:1px #252;
+    border-style: solid solid solid none;
+    font-size: 75%;
+    font-weight:bold;
+    padding: 0;
+    background: #eee;
+}
+.tabVertical tr td.spacer {
+    border-style: none;
+    padding: 0;
+    background: #fff;
+}
+.tabVertical tr td a {
+    display: block;
+    margin: 0px;
+    padding: 3px;
+    text-decoration: none;
+    color: #252;
+}
+.tabVertical tr td a:hover {
+    text-decoration: none;
+    background: white;
+}
+.tabVertical tr td.Vactive {
+    background: #8ae;
+}
+.tabVertical tr td.Vactive a {
+    color: black;
+}
+.tabVertical tr td.Vactive a:hover {
+    background: #9bf;
+}
+table.subTabVertical {
+    border-left: 1px solid gray;
+    margin-left:20px;
+    font-size: 105%;
+}
+.subTabVertical tr td {
+    border-color:gray;
+}
+.subTabVertical tr td a {
+    color: #252;
+}
+.subTabVertical tr td.VactiveSub {
+    border-color:#252;
+    background: #8ae;
+}
+.subTabVertical tr td.VactiveSub a {
+    color: #000;
+}
+.tabVertical tr td.VactiveSub a:hover {
+    background: #9bf;
+}
+
+/* Images that are floated and have a border */
+a165 1
+
+a171 1
+
+d176 43
+d220 2
+a221 2
+    border-collapse:collapse; 
+    border-spacing:0px; 
+d227 1
+a227 1
+    border:1px solid black; 
+d253 1
+d261 1
+d274 1
+a274 13
+.hoverul:link {
+    text-decoration: none;
+}
+.hoverul:hover {
+    text-decoration: underline;
+}
+
+.underage td {
+    color:red;
+    font-weight:bold;
+}
+
+/* Date Chooser Stuff */
+d301 69
+@
+
+
+1.18
+log
+@style for underage members
+@
+text
+@d29 6
+a34 1
+dt, legend {
+d91 1
+a91 1
+dt{
+d100 1
+a100 1
+dd{
+@
+
+
+1.17
+log
+@thinned down TH border
+@
+text
+@a332 1
+
+d350 5
+@
+
+
+1.16
+log
+@font size changes on headers and added stuff for the date chooser
+@
+text
+@d133 1
+a133 1
+    border-width: 2px;
+@
+
+
+1.15
+log
+@make the last row of a ruled table not ruled
+@
+text
+@d59 1
+a59 1
+    font-size:1.65em;
+d63 1
+a63 1
+    font-size:1.5em;
+d66 1
+a66 1
+    font-size:1.25em;
+d352 28
+@
+
+
+1.14
+log
+@tinkered with labels in compact tables
+@
+text
+@d127 3
+@
+
+
+1.13
+log
+@changed ruled styling a bit
+@
+text
+@d8 1
+a8 1
+label, legend, select, fieldset {
+d210 2
+a211 2
+.compact tr th, .compact tr td {
+    font-size:80%;
+@
+
+
+1.12
+log
+@changed .ruled visited style not to be underlined
+@
+text
+@d40 1
+d126 7
+@
+
+
+1.11
+log
+@made the ruled styling include hoverul by default
+@
+text
+@d126 1
+a126 1
+.ruled a:link {
+@
+
+
+1.10
+log
+@changed default color for odd-numbered months
+@
+text
+@d126 6
+@
+
+
+1.9
+log
+@changed the color to highlight a cell when that day has an event
+@
+text
+@d302 1
+a302 1
+    background: #CC9;
+@
+
+
+1.8
+log
+@added styling for alternating row colors in tables
+@
+text
+@d302 1
+a302 1
+    background: #FFFFD5;
+d305 1
+a305 1
+    background: #9CF;
+@
+
+
+1.7
+log
+@change color of days in calendar, and make past adventure links grayed out
+@
+text
+@a106 1
+    border-collapse:collapse;
+d110 7
+d120 6
+d327 7
+@
+
+
+1.6
+log
+@font-size on h4
+@
+text
+@d286 3
+d293 1
+a293 1
+    background: #252;
+@
+
+
+1.5
+log
+@Calendar stuff
+@
+text
+@d74 1
+@
+
+
+1.4
+log
+@Layout for h1
+@
+text
+@d166 4
+d230 1
+a230 1
+    color: gray;
+d262 31
+d300 1
+@
+
+
+1.3
+log
+@new classes for annotation
+@
+text
+@d21 1
+a21 1
+    background:#eee; 
+d25 2
+a26 2
+    border:0; 
+    padding:0; 
+d34 2
+a35 2
+    border:0; 
+    padding:0px; 
+d47 1
+a47 1
+        color:black; 
+d53 1
+a53 1
+    font-weight:bold; 
+d58 2
+a59 1
+    font-size:1.65em; 
+d62 1
+a62 1
+    font-size:1.5em; 
+d65 1
+a65 1
+    font-size:1.25em; 
+d102 1
+a102 1
+    border:1px solid gray; 
+d106 2
+a107 2
+    border-collapse:collapse; 
+    border-spacing:0px; 
+d115 2
+a116 2
+    border:1px solid maroon; 
+    padding:3px 3px 3px 20px; 
+d120 2
+a121 2
+    background: #dfe url(note.png) no-repeat; 
+    border:1px solid #252; 
+d125 3
+a127 3
+    border:1px solid black; 
+    margin:1px; 
+    padding:1px; 
+d135 2
+a136 2
+    color:white; 
+    border-right:1px solid white; 
+d142 1
+a142 1
+    color:white; 
+d147 2
+a148 2
+    color:black; 
+    border-right:1px solid white; 
+d150 1
+a150 1
+    border-bottom:1px solid white; 
+d153 1
+a153 1
+    color:black; 
+d187 1
+a187 1
+    font-size: 75%; 
+d260 1
+a260 1
+    border-spacing:0px; 
+@
+
+
+1.2
+log
+@fixed problem with floats and headings
+@
+text
+@d256 19
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d55 1
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

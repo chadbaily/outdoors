@@ -1,0 +1,291 @@
+head	1.6;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2004.09.29.01.46.41;	author at;	state dead;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.30.02.13.28;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@new view_report pages
+@
+text
+@<?php /*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: report-question.php,v 1.5 2004/09/20 20:38:39 at Exp $
+ *
+ * This page gives a report on attendees and their answers to the adventure's
+ * questions.
+ */
+
+# Check that the member is allowed to see this kind of report
+if ($obj['user']->getUID() != $object->getOwner()
+        && !$obj['user']->isRootUser()
+        && !$obj['user']->isInGroup('officer')) {
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$template = file_get_contents("templates/adventure/view_report-question.php");
+
+$attendees = $object->getAttendees();
+$questions = $object->getQuestions();
+
+# Add the question text to the page
+$i = 0;
+foreach ($questions as $key => $question) {
+    $template = Template::block($template, "HEADER",
+        array("NUM" => ++$i));
+    $template = Template::block($template, "QUESTION",
+        $question->getVarArray());
+}
+
+# Figure out what status code to filter out of the attendees
+$attendeeStatus = Utility::getval('status');
+if (!isset($cfg['status_id'][$attendeeStatus])) {
+    $attendeeStatus =  'default';
+}
+
+$template = Template::replace($template, array(
+        "CURRENT_STATUS" => $attendeeStatus));
+
+# Add the attendees' answers to the page
+if (count($attendees)) {
+    # Extract a template from the template template...
+    $rowTemplate = Template::extract($template, "ROW");
+    $template = Template::unhide($template, "SOME");
+    foreach ($attendees as $key => $attendee) {
+        if ($attendee->getStatus() != $cfg['status_id'][$attendeeStatus]) {
+            continue;
+        }
+        $thisRow = $rowTemplate;
+        # Insert the member's information...
+        $member =& new Member();
+        $member->select($attendee->getMember());
+        $thisRow = Template::block($thisRow, "MEMBER", array(
+            "C_FULL_NAME" => $member->getFullName(),
+            "T_ATTENDEE" => $attendee->getUID()));
+
+        # Insert the attendee's answers to the questions.
+        $answers = $attendee->getAnswers();
+        foreach ($questions as $key => $question) {
+            if (isset($answers[$key])) {
+                if ($question->getType() == "bool") {
+                    $thisRow = Template::block($thisRow,
+                            "ANSWER", array(
+                                "C_ANSWER_TEXT" => ($answers[$key]->getAnswerText() == "1"
+                                            ? "Yes"
+                                            : "No"))
+                                            + $answers[$key]->getVarArray());
+                }
+                else {
+                    $thisRow = Template::block($thisRow,
+                            "ANSWER", $answers[$key]->getVarArray());
+                }
+            }
+            else {
+                # FIXME: this causes a link to page=answer&object= to be
+                # inserted into the page; this is a bad thing.  There needs to
+                # be no link here at all.
+                $thisRow = Template::block($thisRow, "ANSWER",
+                    array("C_ANSWER_TEXT" => "--"));
+            }
+        }
+        $template = Template::replace($template, array("ROW" => $thisRow), 1);
+    }
+}
+else {
+    $template = Template::unhide($template, "NONE");
+}
+
+$res['content'] = $template;
+
+?>
+@
+
+
+1.5
+log
+@shortened template function names
+@
+text
+@d19 1
+a19 1
+ * $Id: report-question.php,v 1.4 2004/09/08 22:45:37 at Exp $
+@
+
+
+1.4
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d19 1
+a19 1
+ * $Id: report-question.php,v 1.3 2004/08/25 11:43:32 at Exp $
+d41 1
+a41 1
+    $template = Template::replaceWithinBlock($template, "HEADER",
+d43 1
+a43 1
+    $template = Template::replaceWithinBlock($template, "QUESTION",
+d53 1
+a53 1
+$template = Template::replaceValues($template, array(
+d60 1
+a60 1
+    $template = Template::unhideBlock($template, "SOME");
+d69 1
+a69 1
+        $thisRow = Template::replaceWithinBlock($thisRow, "MEMBER", array(
+d78 1
+a78 1
+                    $thisRow = Template::replaceWithinBlock($thisRow,
+d86 1
+a86 1
+                    $thisRow = Template::replaceWithinBlock($thisRow,
+d94 1
+a94 1
+                $thisRow = Template::replaceWithinBlock($thisRow, "ANSWER",
+d98 1
+a98 1
+        $template = Template::replaceValues($template, array("ROW" => $thisRow), 1);
+d102 1
+a102 1
+    $template = Template::unhideBlock($template, "NONE");
+@
+
+
+1.3
+log
+@removed more references to security controller
+@
+text
+@d1 1
+a1 2
+<?php
+/*
+d19 1
+a19 1
+ * $Id: report-question.php,v 1.2 2004/07/30 02:13:28 at Exp $
+d33 1
+a33 1
+$box = file_get_contents("templates/adventure/view_report-question-box.php");
+d41 1
+a41 1
+    $box = Template::replaceWithinBlock($box, "HEADER",
+d43 1
+a43 1
+    $box = Template::replaceWithinBlock($box, "QUESTION",
+d53 1
+a53 1
+$box = Template::replaceValues($box, array(
+d58 3
+a60 3
+    # Extract a template from the box template...
+    $rowTemplate = Template::extract($box, "ROW");
+    $box = Template::unhideBlock($box, "SOME");
+d98 1
+a98 1
+        $box = Template::replaceValues($box, array("ROW" => $thisRow), 1);
+d102 1
+a102 1
+    $box = Template::unhideBlock($box, "NONE");
+d105 1
+a105 1
+$res['content'] = $box;
+@
+
+
+1.2
+log
+@fixed unchecked index access
+@
+text
+@d20 1
+a20 1
+ * $Id: report-question.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d30 2
+a31 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: report-question.php,v 1.5 2004/05/30 01:42:08 baron Exp $
+d76 1
+a76 1
+            if ($answers[$key]) {
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

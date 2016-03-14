@@ -1,0 +1,75 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.10.21.21.15.41;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@foreign keys are databased now
+@
+text
+@<h1>Check Database Referential Integrity</h1>
+
+<p>This page checks that values in the database correctly refer to a record in
+their parent tables.  If you see any results below, that row in the named table
+has a value that has no corresponding row in the parent table.  This should be
+fixed as soon as possible.</p>
+
+<hr />
+
+{NONE:}
+<p class='notice'>There were no results.  None of these values in the
+database is orphaned.</p>
+{:NONE}
+
+{SOME:}
+<p class='notice'>There were {NUMROWS} bad rows in {NUMTABLES} tables.</p>
+
+<form action="members.php?page=admin&action=delete-object" method="POST"
+    onSubmit="return confirm('Are you sure you want to DELETE the selected objects?')">
+{RESULTS}
+<p align="right"><input type="submit" value="Delete Selected Objects"></p>
+</form>
+
+{:SOME}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

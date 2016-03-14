@@ -1,0 +1,48 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.02.12.28.43;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    me.c_full_name,
+    su.c_email,
+    su.c_password,
+    su.c_uid
+from [_]member as me
+    inner join [_]subscription as su on su.c_owner = me.c_uid
+where su.c_list = {email_list,int}
+    and su.c_deleted <> 1
+    and me.c_deleted <> 1
+@
+
+
+1.1
+log
+@init
+@
+text
+@d9 2
+@
+

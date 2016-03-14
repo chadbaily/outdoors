@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.22.16.27.56;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    ad.c_uid,
+    ad.c_title
+from [_]classified_ad as ad
+    inner join [_]status as st on st.c_uid = ad.c_status
+where st.c_title <> 'inactive'
+    and ad.c_deleted <> 1
+order by st.c_created_date
+limit {limit,int}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d7 1
+@
+

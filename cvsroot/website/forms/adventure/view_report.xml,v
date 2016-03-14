@@ -1,0 +1,112 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.10.21.21.18.29;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.10.05.12.12.22;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.29.12.20.45;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.29.01.46.43;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@swap position of radio buttons
+@
+text
+@<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="question"
+        tag-name="input" />
+</config>
+
+  <input type="hidden" name="page" value="{PAGE}" />
+  <input type="hidden" name="object" value="{OBJECT}" />
+  <input type="hidden" name="action" value="{ACTION_VIEW_REPORT}" />
+  <p class="compact">View:
+    <select name="status" id="status" onchange="this.form.submit()">
+      <option selected="1" value="1">Joined</option>
+      <option value="5">Waitlisted</option>
+      <option value="0">Both</option>
+    </select>
+    Show questions
+    <input type="radio" name="question" id="question0" value="0" onclick="this.form.submit()" checked="true"/>
+    <label for="question0">none</label>
+    <input type="radio" name="question" id="question2" value="_H" onclick="this.form.submit()" />
+    <label for="question2">horizontal</label>
+    <input type="radio" name="question" id="question1" value="_V" onclick="this.form.submit()" />
+    <label for="question1">vertical</label>
+  </p>
+
+</form>
+@
+
+
+1.3
+log
+@focus the cursor in te username field on load
+@
+text
+@d29 2
+a32 2
+    <input type="radio" name="question" id="question2" value="_H" onclick="this.form.submit()" />
+    <label for="question2">horizontal</label>
+@
+
+
+1.2
+log
+@styling for the radio buttons to make them more compact
+@
+text
+@d14 1
+a14 1
+        element-id="question" />
+d26 7
+a32 2
+    <input type="checkbox" name="question" id="question" value="1" onclick="this.form.submit()" />
+    <label for="question">Show questions</label>
+@
+
+
+1.1
+log
+@new view_report pages
+@
+text
+@d26 1
+a26 1
+    <input type="checkbox" name="question" id="question" value="1" onchange="this.form.submit()" />
+@
+

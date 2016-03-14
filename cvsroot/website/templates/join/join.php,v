@@ -1,0 +1,81 @@
+head	1.3;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.25.20.49.29;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<h1>Join the Club</h1>
+
+{ERROR:}
+<p class=error>The email address you entered is already in use. If this is your
+email address, <a href="members/main/member-home">please log in</a>.  If
+you already started to join the club, you will be able to continue where you left
+off.  <b>If you are a returning member</b>, please log in normally and you will
+be able to renew your membership.</p> 
+{:ERROR}
+
+{FORM}
+@
+
+
+1.2
+log
+@changed wording of error message
+@
+text
+@d5 1
+a5 1
+email address, <a href="members.php?page=main&action=member-home">please log in</a>.  If
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 2
+a8 1
+off.</p> 
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

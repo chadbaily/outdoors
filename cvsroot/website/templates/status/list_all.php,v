@@ -1,0 +1,47 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.34;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.27.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Status Objects</h1>
+
+<p>The following is a list of all status objects in the database:</p>
+
+<ol>{ITEM:}
+  <li><a href="members/status/read/{C_UID}"><b>{C_TITLE}</b></a> {C_DESCRIPTION}</a></li>{:ITEM}
+</ol>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d6 1
+a6 1
+  <li><a href="members.php?page=status&object={C_UID}&action={ACTION_READ}"><b>{C_TITLE}</b></a> {C_DESCRIPTION}</a></li>{:ITEM}
+@
+

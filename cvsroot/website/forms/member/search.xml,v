@@ -1,0 +1,123 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.08.20.18.19.51;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@added the ability to search by attendees of past adventures, and put the query into a SQL file
+@
+text
+@<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="field"
+        required-if="contains"
+        error-element="error"
+        element-id="field" />
+    <element
+        name="contains"
+        error-element="error"
+        required-unless="adventure"
+        element-id="contains" />
+    <element
+        name="adventure"
+        error-element="error"
+        required-unless="contains"
+        element-id="adventure" />
+</config>
+
+<table>
+  <tr hidden="1" id="error">
+    <td colspan="2" class="error">You need to choose what to search for.</td>
+  </tr>
+  <tr>
+    <td>Show members where</td>
+    <td>
+      <select name="field" id="field">
+        <option value="c_first_name" selected="1">First Name</option>
+        <option value="c_last_name" >Last Name</option>
+        <option value="c_email" >Email Address</option>
+      </select>
+      contains
+      <input type="text" name="contains" id="contains" />
+    </td>
+  </tr>
+  <tr>
+    <td>Who attended this adventure with me:</td>
+    <td>
+      <select name="adventure" id="adventure">
+        <option value="">Choose One</option>{ADVENTURE:}
+        <option value="{C_UID}">{C_TITLE|htmlspecialchars|substr,0,50} ({C_START_DATE|_date_format,'m/j/y'})</option>{:ADVENTURE}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+    <input type="submit" value="Go" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+a11 1
+        required="true"
+a15 1
+        required="true"
+d17 1
+d19 5
+d28 1
+a28 1
+    <td colspan="2" class="error">You need to choose an option and enter some text to search for.</td>
+d38 2
+d43 7
+a49 2
+    <td>contains</td>
+    <td><input type="text" name="contains" id="contains" /></td>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

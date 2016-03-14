@@ -1,0 +1,502 @@
+head	1.18;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.18
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2005.01.16.16.59.53;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2005.01.15.04.51.26;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.10.08.19.36.32;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.06.13.56.04;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.05.22.37.30;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.10.05.01.18.22;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.10.04.19.50.24;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.03.22.49.56;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.03.21.37.26;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.03.21.34.31;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.02.19.34.10;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.10.02.02.35.24;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.10.01.17.53.11;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.22.21.56.11;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.18
+log
+@friendlyurls
+@
+text
+@<h1>Items</h1>
+
+<style type="text/css">
+.sort{SORT_COL} {
+    background: #EEE;
+}
+tr.checked_out td {
+    color:#008080;
+}
+tr.missing td {
+    color:#808080;
+    text-decoration: line-through;
+}
+</style>
+
+{FORM}
+
+{NONE:}
+<p class="notice">There were no results.</p>
+{:NONE}
+
+{GENERIC:}
+
+<p>{NUM_ROWS} items found.  Color key: <span style="color:#008080">checked
+out</span>, <span style="color:#808080; text-decoration:
+line-through">missing</span></p>
+
+<table class="borders collapsed elbowroom compact top">
+  <tr>
+    <th>ID#</th>
+    <th>Qty</th>
+    <th>Condition</th>
+    <th>Type</th>
+    <th>Details 1</th>
+    <th>Details 2</th>
+  </tr>{item:}
+  <tr class="{status}">
+    <td class="sortID">
+      <a href="members/item/read/{ID}">{ID}</a>
+    </td>
+    <td class="sortqty">{qty}</td>
+    <td class="sortcondition">{condition}</td>
+    <td class="sorttype">{type}</td>
+    <td class="sortdetails1">{details1}</td>
+    <td class="sortdetails2">{details2}</td>
+  </tr>{:item}
+</table>
+{:GENERIC}
+
+{BY_TYPE:}
+
+<p>{NUM_ROWS} items matched your query.  Color key: <span
+style="color:#008080">checked out</span>, <span style="color:#808080;
+text-decoration: line-through">missing</span>.</p>
+
+<table class="borders collapsed elbowroom compact top" style="background:white">
+  <tr>
+    <th>ID#</th>
+    <th>Qty</th>
+    <th>Condition</th>{header:}
+    <th>{c_name}</th>{:header}
+  </tr>{item:}
+  <tr class="{status_table}">
+    <td class="sortID">
+      <a href="members/item/read/{ID_table}">{ID_table}</a>
+    </td>
+    <td class="sortqty">{qty_table}</td>
+    <td class="sortcondition">{condition_table}</td>{bodyrow:}
+    <td class="sort{c_name}">{{c_name}_table}</td>{:bodyrow}
+  </tr>{:item}
+</table>
+{:BY_TYPE}
+@
+
+
+1.17
+log
+@fix bug 194: show appropriate sort options in menu
+@
+text
+@d39 1
+a39 1
+      <a href="members.php?page=item&action={ACTION_READ}&object={ID}">{ID}</a>
+d52 1
+a52 1
+<p>The following {NUM_ROWS} items matched your query.  Color key: <span
+d65 1
+a65 1
+      <a href="members.php?page=item&action={ACTION_READ}&object={ID_table}">{ID_table}</a>
+@
+
+
+1.16
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d37 3
+a39 3
+  <tr class="{st_title}">
+    <td class="sortc_uid">
+      <a href="members.php?page=item&action={ACTION_READ}&object={c_uid}">{c_uid}</a>
+d41 5
+a45 5
+    <td class="sortc_qty">{c_qty}</td>
+    <td class="sortco_title">{co_title}</td>
+    <td class="sortty_title">{ty_title}</td>
+    <td class="sortc_primary">{c_primary}</td>
+    <td class="sortc_secondary">{c_secondary}</td>
+d63 3
+a65 3
+  <tr class="{st_title_table}">
+    <td class="sortc_uid">
+      <a href="members.php?page=item&action={ACTION_READ}&object={c_uid_table}">{c_uid_table}</a>
+d67 2
+a68 2
+    <td class="sortc_qty">{c_qty_table}</td>
+    <td class="sortco_title">{co_title_table}</td>{bodyrow:}
+@
+
+
+1.15
+log
+@fixed problems with sorting, count not persisting, and other problems with item/list_all
+@
+text
+@d31 1
+d41 1
+d59 1
+d67 1
+@
+
+
+1.14
+log
+@fixed filtering by status
+@
+text
+@d24 1
+a24 4
+<p>{NUM_ROWS} items found (viewing page {THIS_PAGE} of {NUM_PAGES}; skip to
+page{PAGETHRU:} <a
+href="members.php?page={PAGE}&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type=&offset={OFFSET}&status={STAT}&sort={SORT}">{OFFSET}</a>{:PAGETHRU}).
+Click on a header to sort.  Color key: <span style="color:#008080">checked
+d30 7
+a36 7
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=c_uid">ID#</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=co_title">Condition</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=ty_title">Type</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=c_primary">Details 1</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=c_secondary">Details 2</a></th>
+  </tr>{ITEM:}
+  <tr class="{ST_TITLE}">
+d38 1
+a38 1
+      <a href="members.php?page=item&action={ACTION_READ}&object={C_UID}">{C_UID}</a>
+d40 5
+a44 5
+    <td class="sortco_title">{CO_TITLE}</td>
+    <td class="sortty_title">{TY_TITLE}</td>
+    <td class="sortc_primary">{C_PRIMARY}</td>
+    <td class="sortc_secondary">{C_SECONDARY}</td>
+  </tr>{:ITEM}
+d50 3
+a52 3
+<p>The following {NUM_ROWS} items matched your query.  Click on a header to
+sort.  Color key: <span style="color:#008080">checked out</span>, <span
+style="color:#808080; text-decoration: line-through">missing</span>.</p>
+d56 5
+a60 5
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type={ITEM_TYPE}&sort=c_uid">ID#</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type={ITEM_TYPE}&sort=co_title">Condition</a></th>{HEADER:}
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type={ITEM_TYPE}&sort={C_NAME}">{C_NAME}</a></th>{:HEADER}
+  </tr>{ITEM:}
+  <tr class="{ST_TITLE_TABLE}">
+d62 1
+a62 1
+      <a href="members.php?page=item&action={ACTION_READ}&object={C_UID_TABLE}">{C_UID_TABLE}</a>
+d64 3
+a66 3
+    <td class="sortco_title">{CO_TITLE_TABLE}</td>{BODYROW:}
+    <td class="sort{C_NAME}">{{C_NAME|strtoupper}_TABLE}</td>{:BODYROW}
+  </tr>{:ITEM}
+@
+
+
+1.13
+log
+@integrate the status field into the inventory system, instead of using the condition field for everything
+@
+text
+@d26 1
+a26 1
+href="members.php?page={PAGE}&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type=&offset={OFFSET}&sort={SORT}">{OFFSET}</a>{:PAGETHRU}).
+@
+
+
+1.12
+log
+@add a secondary description column to item types
+@
+text
+@d7 7
+a22 2
+<!-- Generic template, not filtered by any type but possibly ordered by
+a column and filtered by a category -->
+d24 6
+a29 1
+<p>{NUM_ROWS} items found (viewing page {THIS_PAGE} of {NUM_PAGES}; skip to page{PAGETHRU:} <a href="members.php?page={PAGE}&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type=&offset={OFFSET}&sort={SORT}">{OFFSET}</a>{:PAGETHRU}).  Click on a header to sort.</p>
+d39 1
+a39 1
+  <tr>
+d43 1
+a44 1
+    <td class="sortco_title">{CO_TITLE}</td>
+d54 2
+a55 1
+sort.</p>
+d63 1
+a63 1
+  <tr>
+@
+
+
+1.11
+log
+@make background white to make it look better when it overflows
+@
+text
+@d24 1
+d26 2
+a27 2
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=c_description">Description</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&sort=co_title">Condition</a></th>
+a33 1
+    <td class="sortc_description">{C_DESCRIPTION}</td>
+d35 2
+@
+
+
+1.10
+log
+@make # column say ID#
+@
+text
+@d44 1
+a44 1
+<table class="borders collapsed elbowroom compact top">
+@
+
+
+1.9
+log
+@organize item types by category
+@
+text
+@d46 1
+a46 1
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&category={CAT}&type={ITEM_TYPE}&sort=c_uid">#</a></th>
+@
+
+
+1.8
+log
+@reformat page-through code
+@
+text
+@d16 2
+a17 2
+<!-- Generic template, not filtered by anything but possibly ordered by
+something -->
+d19 1
+a19 1
+<p>{NUM_ROWS} items found (viewing page {THIS_PAGE} of {NUM_PAGES}; skip to page{PAGETHRU:} <a href="members.php?page={PAGE}&action={ACTION_LIST_ALL}&offset={OFFSET}&sort={SORT}">{OFFSET}</a>{:PAGETHRU}).  Click on a header to sort.</p>
+d23 4
+a26 4
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=c_uid">ID#</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=ty_title">Type</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=c_description">Description</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=co_title">Condition</a></th>
+d46 3
+a48 3
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&type={ITEM_TYPE}&sort=c_uid">#</a></th>
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&type={ITEM_TYPE}&sort=co_title">Condition</a></th>{HEADER:}
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&form-name=1&type={ITEM_TYPE}&sort={C_NAME}">{C_NAME}</a></th>{:HEADER}
+@
+
+
+1.7
+log
+@add the ability to page through records
+@
+text
+@d19 1
+a19 4
+<p>{NUM_ROWS} items found (viewing page {THIS_PAGE} of {NUM_PAGES}).  Click on a header to
+sort.</p>
+
+<p>Skip to page {PAGETHRU:}<a href="members.php?page={PAGE}&action={ACTION_LIST_ALL}&offset={OFFSET}&sort={SORT}">{OFFSET}</a> {:PAGETHRU}</p>
+d23 1
+a23 1
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=c_uid">#</a></th>
+@
+
+
+1.6
+log
+@added #results to the page
+@
+text
+@d19 1
+a19 1
+<p>The following {NUM_ROWS} items matched your query.  Click on a header to
+d22 2
+d26 1
+d32 3
+d36 1
+a36 3
+    <td class="sortc_description">
+      <a href="members.php?page=item&action={ACTION_READ}&object={C_UID}">{C_DESCRIPTION}</a>
+    </td>
+@
+
+
+1.5
+log
+@take out obnoxious note
+@
+text
+@d19 2
+a20 1
+<p>The following are all items in the database.  Click on a header to sort.</p>
+d40 2
+a41 1
+<p>The following items matched your query:</p>
+@
+
+
+1.4
+log
+@add filtering by type
+@
+text
+@d21 1
+a21 1
+<table class="borders collapsed elbowroom">
+@
+
+
+1.3
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d9 2
+d36 20
+@
+
+
+1.2
+log
+@add columns, make sortable
+@
+text
+@a21 1
+    <th><a href="members.php?page=item&action={ACTION_LIST_ALL}&sort=c_title">Name</a></th>
+a26 3
+    <td class="sortc_title">
+      <a href="members.php?page={PAGE}&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+    </td>
+d28 1
+a28 1
+      {C_DESCRIPTION}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d3 16
+d21 4
+a24 1
+    <th>Name</th><th>Description</th>
+d27 2
+a28 1
+    <td>
+d31 1
+a31 1
+    <td>
+d34 1
+d37 1
+@
+

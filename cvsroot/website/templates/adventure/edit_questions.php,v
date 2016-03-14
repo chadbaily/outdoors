@@ -1,0 +1,230 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.24.00.14.13;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.13.19.50.30;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.13.15.19.42;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<h1>Edit Questions for {C_TITLE}</h1>
+
+<table class="tabbedBox" border="0" cellpadding="0" cellspacing="0">
+{TABS}
+</table>
+<div class="box">
+
+<p>Use questions to find out what gear you'll need, meal preferences, allergies,
+and so forth.</p>
+
+<p>You should <b>always</b> ask if there are any medical problems.</p>
+
+<p>You are currently adding questions to the adventure <b>{C_TITLE}</b>.  When
+you are done, the next step is to <a
+href="members/adventure/join/{OBJECT}">join the
+adventure yourself</a>, so you can activate it; or if you're editing an
+adventure that has been posted already, if necessary you can <a
+href="members/adventure/email_attendees/{OBJECT}">email
+the attendees</a> to let them know that you changed the questions.</p>
+
+{NOTICE:}
+<p class="notice">Please notify the attendees if you edit the questions after
+you have activated the adventure.  Tell them to log back in, view the adventure,
+and they should see a link to edit their answers to the question (if needed).</p>
+{:NOTICE}
+
+<fieldset>
+<legend>Most Popular Questions</legend>
+
+Here are the most popular questions for this type of adventure.  Click on a question to
+copy it to your adventure:
+
+<div style="height:16em; overflow:auto">
+<ol>
+  {POPULAR:}
+  <li><a href="members/question/copy/{Q}?adventure={A}">{TEXT}</a></li>
+  {:POPULAR}
+</ol>
+</div>
+
+</fieldset>
+
+<fieldset>
+<legend>Current Questions</legend>
+
+<p>Here are all the questions you have added so far (you can edit or delete a
+question by clicking on it):</p>
+
+<a name="current">&nbsp;</a>
+<table class="compact top">
+  <tr>{EXISTING:}
+    <td>{TEXT}</a>
+    <td nowrap>
+      <a href="members/question/delete/{Q}">delete</a> |
+      <a href="members/question/write/{Q}">edit</a>
+    </td>
+  </tr>{:EXISTING}
+</table>
+</fieldset>
+
+<fieldset>
+<legend>Add A NEW Question</legend>
+
+<p>Use this form to add a question to your adventure.</p>
+
+<p class="error">Please, try to ask questions in the format &ldquo;Do you need a
+pack?&rdquo; instead of &ldquo;Will you be bringing a pack&rdquo; or &ldquo;Do
+you have your own pack.&rdquo;  This will help keep the database easy to manage.
+Thanks!</p>
+
+{SUCCESS:}
+<p class="notice">Success. Your question, <b>{C_QUESTION_TITLE}</b>,
+has been added to this adventure.</p>
+{:SUCCESS}
+
+{FORM}
+
+<p>If you are done, the next step is to <a
+href="members/adventure/join/{OBJECT}">join the
+adventure yourself</a>, so you can activate it; or if you're editing an
+adventure that already has been posted, if necessary you can <a
+href="members/adventure/email_attendees/{OBJECT}">email
+the attendees</a> to let them know that you changed the questions.</p>
+
+</fieldset>
+
+</div>
+@
+
+
+1.4
+log
+@delete questions without confirmation, and redirect back to the adventure; scroll down the page when redirecting
+@
+text
+@d15 1
+a15 1
+href="members.php?page=adventure&action={ACTION_JOIN}&object={OBJECT}">join the
+d18 1
+a18 1
+href="members.php?page=adventure&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}">email
+d36 1
+a36 1
+  <li><a href="members.php?page=question&object={Q}&adventure={A}&action={ACTION_COPY}">{TEXT}</a></li>
+d54 2
+a55 2
+      <a href="members.php?page=question&object={Q}&action={ACTION_DELETE}">delete</a> |
+      <a href="members.php?page=question&object={Q}&action={ACTION_WRITE}">edit</a>
+d79 1
+a79 1
+href="members.php?page=adventure&action={ACTION_JOIN}&object={OBJECT}">join the
+d82 1
+a82 1
+href="members.php?page=adventure&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}">email
+@
+
+
+1.3
+log
+@clarified instructions
+@
+text
+@d49 10
+a58 5
+<ol>
+  {EXISTING:}
+  <li><a href="members.php?page=question&object={Q}&action={ACTION_READ}">{TEXT}</a></li>
+  {:EXISTING}
+</ol>
+@
+
+
+1.2
+log
+@show most popular questions by adventure type, not most popular overall
+@
+text
+@d8 2
+a9 5
+<p>Use this page to associate questions with an adventure.  Think of the
+questions as a survey that you give to adventure attendees.  You can use this to
+find out whether someone is allergic to something, needs certain equipment, is
+vegetarian, etc.  When you are organizing your adventure, the website will help
+you plan by giving you a report on the answers.</p>
+d11 1
+a11 8
+{NOTICE:}
+<p class="notice">There is nothing stopping you from editing the questions after
+you have activated the adventure, but you may want to notify the members if you
+do.  Tell them to log back in, view the adventure, and they should see a link to
+edit their answers to the question (if needed).  Deleting questions won't hurt
+anything.  Of course, you don't want to change a question's text after someone
+has already answered the question either.  That's a media trick :-)</p> 
+{:NOTICE}
+d17 1
+a17 1
+adventure that already has been posted, if necessary you can <a
+d19 7
+a25 2
+the attendees</a> to let them know that you changed the questions.  Otherwise,
+click one of the other tabs above.</p>
+a29 1
+<div style="height:16em; overflow:auto">
+d32 2
+d46 2
+a47 1
+<p>Here are all the questions you have added so far:</p>
+d61 5
+d73 6
+a78 5
+<p>If you are done, the next step is to 
+<a href="members.php?page=adventure&action={ACTION_JOIN}&object={OBJECT}">join the adventure yourself</a>,
+so you can activate it; or if you're editing an adventure that already has been posted, if necessary you can
+<a href="members.php?page=adventure&action={ACTION_EMAIL_ATTENDEES}&object={OBJECT}">email the attendees</a> 
+to let them know that you changed the questions.  Otherwise, click one of the other tabs above.</p>
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d36 1
+a36 1
+Here are the most popular questions in the database.  Click on a question to
+@
+

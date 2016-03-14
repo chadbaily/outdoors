@@ -1,0 +1,349 @@
+head	1.10;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2004.10.23.12.55.43;	author at;	state dead;
+branches;
+next	1.9;
+
+1.9
+date	2004.10.07.17.41.48;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.10.06.17.41.37;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.10.05.02.27.10;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.10.02.19.16.46;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.22.21.51.31;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.21.17.23.49;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.20.20.38.40;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@edit_attributes -> edit_features
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: edit_attributes.php,v 1.9 2004/10/07 17:41:48 at Exp $
+ */
+
+# Create templates
+$template = file_get_contents("templates/item/edit_attributes.php");
+# Grab the nested templates out
+$attr = Template::extract($template, "ATTRIBUTE");
+$template = Template::delete($template, "ATTRIBUTE");
+$option = Template::extract($attr, "OPTION");
+$attr = Template::unhide($attr, "OPTION");
+
+# Get the next and last items in the list
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/next-by-type.sql");
+$cmd->addParameter("type", $object->getType());
+$cmd->addParameter("item", $cfg['object']);
+$next = $cmd->executeScalar();
+if ($next) {
+    $template = Template::unhide($template, "NEXT");
+    $template = Template::replace($template,
+        array ("NEXT_ID" => $next));
+}
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/last-by-type.sql");
+$cmd->addParameter("type", $object->getType());
+$cmd->addParameter("item", $cfg['object']);
+$last = $cmd->executeScalar();
+if ($last) {
+    $template = Template::unhide($template, "LAST");
+    $template = Template::replace($template,
+        array ("LAST_ID" => $last));
+}
+
+# If the form has been submitted, update and create as necessary
+if (postval('edit_attributes')) {
+    # Select the attributes that this type of item is supposed to have
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/item/select-attributes.sql");
+    $cmd->addParameter("item", $cfg['object']);
+    $result =& $cmd->executeReader();
+    while ($row =& $result->fetchRow()) {
+        if ($row['c_uid']) {
+            $cmd =& $obj['conn']->createCommand();
+            $cmd->loadQuery("sql/queries/item_attribute/update.sql");
+            $cmd->addParameter("uid", $row['c_uid']);
+            $cmd->addParameter("value", $_POST[$row['c_name']]);
+            $cmd->executeNonQuery();
+        }
+        else {
+            $at =& new ItemAttribute();
+            $at->setName($row['c_name']);
+            $at->setValue($_POST[$row['c_name']]);
+            $at->setItem($cfg['object']);
+            $at->insert();
+        }
+    }
+    $template = Template::unhide($template, "SUCCESS");
+}
+
+# Re-select the attributes that this type of item is supposed to have
+$cmd =& $obj['conn']->createCommand();
+$cmd->loadQuery("sql/queries/item/select-attributes.sql");
+$cmd->addParameter("item", $cfg['object']);
+$result =& $cmd->executeReader();
+while ($row =& $result->fetchRow()) {
+    $thisAttr = Template::replace($attr, array(
+        "C_NAME" => $row['c_name'],
+        "C_VALUE" => ($row['c_value'] ? $row['c_value'] : "")));
+    # Get a list of possible values for this attribute & item type, and
+    # pre-populate the select menu
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/item_attribute/select-existing-values.sql");
+    $cmd->addParameter("item_type", $object->getType());
+    $cmd->addParameter("name", $row['c_name']);
+    $cmd->addParameter("value", $row['c_value']);
+    $result2 =& $cmd->executeReader();
+    while ($row2 =& $result2->fetchRow()) {
+        $thisAttr = Template::replace($thisAttr, array(
+            "OPTIONS" => "<option>$row2[c_value]</option>"), true);
+    }
+    $template = Template::replace($template, array("ATTRS" => $thisAttr), true);
+}
+
+$res['content'] = $object->insertIntoTemplate($template);
+$res['title'] = "Edit Features for Item $cfg[object]";
+
+?>
+@
+
+
+1.9
+log
+@get rid of utility/Utility.php
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.8 2004/10/06 17:41:37 at Exp $
+@
+
+
+1.8
+log
+@comm -> cmd
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.7 2004/10/05 02:27:10 at Exp $
+d54 1
+a54 1
+if (Utility::postval('edit_attributes')) {
+@
+
+
+1.7
+log
+@add next/last/back-to-list links
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.6 2004/10/02 19:16:46 at Exp $
+d32 5
+a36 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/next-by-type.sql");
+$comm->addParameter("type", $object->getType());
+$comm->addParameter("item", $cfg['object']);
+$next = $comm->executeScalar();
+d42 5
+a46 5
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/last-by-type.sql");
+$comm->addParameter("type", $object->getType());
+$comm->addParameter("item", $cfg['object']);
+$last = $comm->executeScalar();
+d56 4
+a59 4
+    $comm =& $obj['conn']->createCommand();
+    $comm->loadQuery("sql/queries/item/select-attributes.sql");
+    $comm->addParameter("item", $cfg['object']);
+    $result =& $comm->executeReader();
+d62 5
+a66 5
+            $comm =& $obj['conn']->createCommand();
+            $comm->loadQuery("sql/queries/item_attribute/update.sql");
+            $comm->addParameter("uid", $row['c_uid']);
+            $comm->addParameter("value", $_POST[$row['c_name']]);
+            $comm->executeNonQuery();
+d80 4
+a83 4
+$comm =& $obj['conn']->createCommand();
+$comm->loadQuery("sql/queries/item/select-attributes.sql");
+$comm->addParameter("item", $cfg['object']);
+$result =& $comm->executeReader();
+d90 6
+a95 6
+    $comm =& $obj['conn']->createCommand();
+    $comm->loadQuery("sql/queries/item_attribute/select-existing-values.sql");
+    $comm->addParameter("item_type", $object->getType());
+    $comm->addParameter("name", $row['c_name']);
+    $comm->addParameter("value", $row['c_value']);
+    $result2 =& $comm->executeReader();
+@
+
+
+1.6
+log
+@add item number into title
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.5 2004/09/24 17:39:46 at Exp $
+d30 22
+@
+
+
+1.5
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.4 2004/09/22 21:51:31 at Exp $
+d82 1
+a82 1
+$res['title'] = "Edit Item Features";
+@
+
+
+1.4
+log
+@typo
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.3 2004/09/21 17:23:49 at Exp $
+d82 1
+a82 1
+$res['title'] = "Edit Attributes for " . $object->getTitle();
+@
+
+
+1.3
+log
+@don't select duplicated attribute values
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.2 2004/09/20 20:38:40 at Exp $
+d57 1
+a57 1
+# Re-elect the attributes that this type of item is supposed to have
+@
+
+
+1.2
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: edit_attributes.php,v 1.1 2004/09/19 02:48:34 at Exp $
+d72 1
+a72 1
+    $comm->addParameter("item", $cfg['object']);
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: read.php,v 1.3 2004/09/08 22:45:37 at Exp $
+d27 1
+a27 1
+$template = Template::deleteBlock($template, "ATTRIBUTE");
+d29 1
+a29 1
+$attr = Template::unhideBlock($attr, "OPTION");
+d54 1
+a54 1
+    $template = Template::unhideBlock($template, "SUCCESS");
+d63 1
+a63 1
+    $thisAttr = Template::replaceValues($attr, array(
+d75 1
+a75 1
+        $thisAttr = Template::replaceValues($thisAttr, array(
+d78 1
+a78 1
+    $template = Template::replaceValues($template, array("ATTRS" => $thisAttr), true);
+@
+

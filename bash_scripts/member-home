@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+  <base href="http://www.outdoorsatuva.org/">
+  <title>Member Home Page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stylesheet.css" type="text/css">
+  <script type="text/javascript" src="assets/combo-box.js" language="text/javascript"></script>
+  <script type="text/javascript" src="assets/script.js" language="javascript"></script>
+  <script type="text/javascript" src="assets/datechooser.js" language="javascript"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="Outdoors at UVA Upcoming Trips" href="/extras/rss.xml">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<img src="images/header01.jpg" alt="Outdoors at UVa" width="799" height="100" />
+</div>
+
+<div id="navbar" class="navbar">
+<ul>
+<li><a href=''>Home</a></li>
+<li><a href='members/join'>Join Outdoors at UVa</a></li>
+<li><a href='members/main/member-home' class='active'>Member's Area</a>
+<ul>
+<li><a href='members/adventure'>Adventures</a></li>
+<li><a href='members/member/list_all'>Members</a></li>
+<li><a href='members/classified_ad'>Classified Ads</a></li>
+<li><a href='members/profile'>Profile</a></li>
+<li><a href='members/main/inventory'>Inventory</a></li>
+<li><a href='../resources/'>Member Resources</a></li>
+<li><a href='members/report'>Reports</a></li>
+<li><a href='members/expense_report'>Expenses</a></li>
+<li><a href='members/admin'>Admin Tasks</a></li>
+</ul></li></ul>
+</div>
+
+<div id="content">
+
+<h1>Member Home Page</h1>
+
+
+
+<table class="top collapsed">
+  <tr>
+
+    <td width="60%" style="padding-right:10px">
+      <ul>
+      <li>Please <a href="members/main/feedback">give us feedback</a></li>
+      <li>You can <a href="members/main/email">email the club list</a></li>
+      <li>Visit our <a href="http://www.facebook.com/OutdoorsatUVA/"> Facebook page</a></li>
+	  </ul>
+    </td>
+
+    <td width="40%">
+      <a href="/gallery/">
+      <!--Begin Rotating Image Block -->
+	<script type="text/javascript" language="javascript">
+	document.write('<img src="images/rotating_images/image'
+               + Math.floor(Math.random() * 25)
+               + '.jpg" class="thumbnail-left" width="100"' 
+	       + 'height="75" alt="Check out the galleries!">');
+	</script>
+      <!--End Rotating Image Block -->
+      </a>
+       Check out the <a href="http://www.flickr.com/photos/outdoorsuva/">photo
+      galleries</a>.  If you have photos, <a 
+href="http://www.outdoorsatuva.org/resources/?PostingPictures"> 
+post them!</a>
+    </td>
+
+
+  </tr>
+  <tr>
+    <td width="60%" style="padding-right:10px">
+
+      <!-- Begin Upcoming Adventures -->
+      <h4 class="boxed">A Few Upcoming Adventures</h4>
+      <table class="compact collapsed elbowroom" width="100%">
+        <tr>
+          <td></td>
+          <td nowrap>May 10</td>
+          <td>
+            <a href="members/adventure/read/2974">Disaster + Wilderness First Aid Course [Free for Uva Academic Employees! Reimbursable for Trip Leaders!]</a><br>
+          </td>
+        </tr>
+      </table>
+      <div align="right" class="tiny">
+        <a href="members/adventure">More Adventures</a> |
+        <a href="members/adventure/list_all?criteria=joined">Adventures You've Attended</a> |
+        <a href="members/calendar">Calendar of Events</a>
+        <br>
+        <img src="assets/smiley-tiny.png" height="12" width="12" alt="Favorites"> These upcoming adventures match your
+        <a href="members/member/choose_activities/1">interests</a>.
+      </div>
+      <!-- End Upcoming Adventures -->
+
+      <!-- Begin Classified Ads -->
+      <h4 class="boxed">Classifieds</h4>
+      <table class="compact collapsed elbowroom" width="100%">
+        <tr>
+          <td nowrap>Mar 11</td>
+          <td>
+            <a href="members/classified_ad/read/183">3 Day Snowshoe Pass $50</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Mar 9</td>
+          <td>
+            <a href="members/classified_ad/read/182">2 Snowshoe All Day Lift Tickets</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Mar 1</td>
+          <td>
+            <a href="members/classified_ad/read/181">Summer in Maine!</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Feb 7</td>
+          <td>
+            <a href="members/classified_ad/read/180">L.L. Bean Camper's Dome Tent (2-person)</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Jan 22</td>
+          <td>
+            <a href="members/classified_ad/read/179">Head S11 Men's Ski Boots 29.5</a><br>
+          </td>
+        </tr>
+      </table>
+      <div align="right" class="tiny">
+        <a href="members/classified_ad/list_all">View All</a> |
+        <a href="members/classified_ad/create">Post an Ad</a>
+      </div>
+      <!-- End Classified Ads -->
+
+      <!-- Begin Favorite Locations -->
+      <h4 class="boxed">Popular Locations By Activity Type</h4>
+      
+      <p class="notice">Hey you!  You need to 
+      <a href="members/member/choose_activities/1">choose
+      your interests</a> and then I can show you something cool here.</p>
+      
+      
+      <!-- End Favorite Locations -->
+
+      <!-- Begin Calendar -->
+
+      <h4 class="boxed">Calendar of Events</h4>
+
+      <p>Days that are bold have adventures scheduled.  To see the full
+      calendar, <a href="members/calendar">click
+      here</a>.</p>
+
+      <div align="center">
+      <table class='calendar'><tr><th><a href='members/calendar?date=2014-02-01'>&laquo;</a></th><th colspan='5'>March 2014</th><th><a href='members/calendar?date=2014-04-01'>&raquo;</a></th></tr><tr><th width='25'>S</th><th width='25'>M</th><th width='25'>T</th><th width='25'>W</th><th width='25'>R</th><th width='25'>F</th><th width='25'>S</th></tr><tr height=25><td class='Feb hasEvent'>23</td><td class='Feb'>24</td><td class='Feb hasEvent'>25</td><td class='Feb'>26</td><td class='Feb hasEvent'>27</td><td class='Feb'>28</td><td class='Mar hasEvent'>1</td></tr><tr height=25><td class='Mar hasEvent'>2</td><td class='Mar'>3</td><td class='Mar'>4</td><td class='Mar'>5</td><td class='Mar hasEvent'>6</td><td class='Mar'>7</td><td class='Mar hasEvent'>8</td></tr><tr height=25><td class='Mar hasEvent'>9</td><td class='Mar hasEvent'>10</td><td class='Mar hasEvent'>11</td><td class='Mar hasEvent'>12</td><td class='Mar hasEvent'>13</td><td class='Mar hasEvent'>14</td><td class='Mar hasEvent'>15</td></tr><tr height=25><td class='Mar hasEvent'>16</td><td class='Mar'>17</td><td class='Mar'>18</td><td class='Mar'>19</td><td class='Mar'>20</td><td class='Mar'>21</td><td class='Mar'>22</td></tr><tr height=25><td class='Mar'>23</td><td class='Mar'>24</td><td class='Mar'>25</td><td class='Mar'>26</td><td class='Mar'>27</td><td class='Mar'>28</td><td class='Mar'>29</td></tr><tr height=25><td class='Mar'>30</td><td class='Mar'>31</td><td class='Apr'>1</td><td class='Apr'>2</td><td class='Apr'>3</td><td class='Apr'>4</td><td class='Apr'>5</td></tr></table>
+      </div>
+
+      <!-- End Calendar -->
+
+    </td>
+    <td width="40%">
+
+      <!-- Begin Search Form -->
+      <h4 class="boxed">Search</h4>
+      <form action="members/member/list_all" method="GET">
+        <p>Search for members by name:<br>
+        <input type="hidden" name="go" value="1" />
+        <input type="text" name="name" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <form action="members/adventure/list_all" method="GET">
+        <p>Search for adventures by title:<br>
+        <input type="hidden" name="form-name" id="form-name" value="1" />
+        <input type="text" name="title" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <form action="members/location/list_all" method="GET">
+        <p>Search for locations by title:<br>
+        <input type="hidden" name="form-name" id="form-name" value="1" />
+        <input type="text" name="title" value="">
+        <input type="submit" value="Go">
+        </p>
+      </form>
+      <!-- End Search Form -->
+
+      <h4 class="boxed">Your Profile (<a href="members/profile">Manage</a>)</h4>
+
+      <h5>Addresses</h5>
+      <div class="indented">
+      
+      - <a href="members/address/read/1">Main Club Address</a><br>
+      &raquo; <a href="members/address/write/1">update</a><br>
+      
+      &raquo; <a href="members/address">manage addresses</a><br>
+      </div>
+
+      <h5>Phone Numbers</h5>
+      <div class="indented">
+      
+      - <a href="members/phone_number/read/574">(434) 555-1212</a><br>
+      &raquo; <a href="members/phone_number/write/574">update</a><br>
+      
+      &raquo; <a href="members/phone_number">manage phone numbers</a><br>
+      </div>
+
+      <h5>Chat Identities</h5>
+      <div class="indented">
+      
+      &raquo; <a href="members/chat">manage chat identities</a><br>
+      </div>
+
+      <h5>Other</h5>
+      <div class="indented">
+      &raquo; <a href="members/member/optout/1">opt out of emails</a><br>
+      &raquo; <a href="members/member/change_password/1">change your password</a><br>
+      &raquo; <a href="members/member/choose_activities/1">choose favorite activities</a><br>
+      &raquo; <a href="members/member/view_history/1">view membership history</a><br>
+      &raquo; <a href="members/join/renew">renew your membership</a><br>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<!-- Make sure pages without much content don't cause the navbar to overflow the
+    containing box -->
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p class="copyright">
+
+[Outdoors Officers]
+<a href="members/main/logout">Log out</a> |
+
+<a href="http://sourceforge.net/projects/socialclub">Powered by SocialClub</a> |
+<a href="about/copyright-terms-privacy.shtml">Copyright &copy; Outdoors at UVa</a> |
+<a href="about/copyright-terms-privacy.shtml">Terms of Use</a> | 
+<a href="about/copyright-terms-privacy.shtml">Privacy Policy</a> |
+<a href="about/contact.shtml">Contact Us</a> |
+
+</p>
+
+</body>
+</html>

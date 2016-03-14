@@ -1,0 +1,309 @@
+head	1.10;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2005.02.21.12.29.39;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2005.02.10.18.59.37;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2005.02.02.13.02.21;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2005.02.02.02.36.40;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2005.01.31.20.47.07;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.31.15.39.16;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.16.02.06.13;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.14.17.15.08;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.10.21.17.02;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@add privilege for treasurer to create, accept and submit expense reports
+@
+text
+@drop table if exists temp_privileges;
+
+create table temp_privileges (
+    c_what varchar(100),
+    c_group_title varchar(100),
+    c_action_title varchar(100),
+    c_granted_on varchar(100),
+    c_table varchar(100),
+    primary key (c_what, c_group_title, c_action_title, c_granted_on, c_table)
+) type=MyISAM;
+
+insert into temp_privileges
+    (c_what, c_group_title, c_action_title, c_granted_on, c_table)
+values
+    ('group',       'officer',       'write',             'global',       '[_]member'),
+    ('group',       'officer',       'list_all',          'table',        '[_]action'),
+    ('group',       'officer',       'list_all',          'table',        '[_]expense'),
+    ('group',       'officer',       'list_all',          'table',        '[_]expense_report'),
+    ('group',       'officer',       'list_all',          'table',        '[_]group'),
+    ('group',       'officer',       'list_all',          'table',        '[_]item'),
+    ('group',       'officer',       'list_all',          'table',        '[_]report'),
+    ('group',       'officer',       'view_history',      'global',       '[_]member'),
+    ('group',       'officer',       'create',            'table',        '[_]decision'),
+    ('group',       'officer',       'choose_activities', 'global',       '[_]location'),
+    ('group',       'officer',       'view_report',       'global',       '[_]adventure'),
+    ('group',       'officer',       'chgrp_secondary',   'global',       '[_]member'),
+    ('group',       'officer',       'execute',           'object',       '[_]report'),
+    ('group',       'officer',       'view_members',      'global',       '[_]group'),
+    ('group',       'officer',       'add_xref',          'global',       '[_]decision'),
+    ('group',       'officer',       'list_all',          'table',        '[_]checkout'),
+    ('group',       'officer',       'accept',            'global',       '[_]checkout'),
+    ('group',       'officer',       'check_in',          'global',       '[_]checkout'),
+    ('group',       'officer',       'list_all',          'table',        '[_]checkout_item'),
+    ('group',       'officer',       'list_all',          'table',        '[_]checkout_gear'),
+    ('group',       'officer',       'create',            'table',        '[_]checkout'),
+    ('group',       'officer',       'create',            'table',        '[_]checkout_item'),
+    ('group',       'officer',       'create',            'table',        '[_]checkout_gear'),
+    ('group',       'treasurer',     'list_all',          'table',        '[_]expense_report'),
+    ('group',       'treasurer',     'list_all',          'table',        '[_]expense'),
+    ('group',       'treasurer',     'list_all',          'table',        '[_]transaction'),
+    ('group',       'treasurer',     'create',            'table',        '[_]expense_submission'),
+    ('group',       'treasurer',     'list_all',          'table',        '[_]expense_submission'),
+    ('group',       'treasurer',     'list_owned_by',     'table',        '[_]expense_submission'),
+    ('group',       'treasurer',     'list_owned_by',     'table',        '[_]expense_report'),
+    ('group',       'treasurer',     'activate',          'global',       '[_]membership'),
+    ('group',       'treasurer',     'view_notes',        'global',       '[_]expense_report'),
+    ('group',       'treasurer',     'accept',            'global',       '[_]expense_report'),
+    ('group',       'treasurer',     'accept',            'global',       '[_]expense_submission'),
+    ('group',       'treasurer',     'submit',            'global',       '[_]expense_submission'),
+    ('group',       'leader',        'read',              'global',       '[_]absence'),
+    ('group',       'leader',        'list_all',          'table',        '[_]report'),
+    ('group',       'leader',        'list_owned_by',     'table',        '[_]adventure'),
+    ('group',       'leader',        'list_owned_by',     'table',        '[_]expense_report'),
+    ('group',       'leader',        'create',            'table',        '[_]adventure'),
+    ('group',       'leader',        'create',            'table',        '[_]expense'),
+    ('group',       'leader',        'create',            'table',        '[_]expense_report'),
+    ('group',       'leader',        'create',            'table',        '[_]location'),
+    ('group',       'leader',        'create',            'table',        '[_]question'),
+    ('group',       'leader',        'choose_activities', 'global',       '[_]location'),
+    ('group',       'leader',        'view_absences',     'global',       '[_]member'),
+    ('group',       'leader',        'view_waitlist',     'global',       '[_]member'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]condition'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]item'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]item_type'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]item_category'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]checkout'),
+    ('group',       'quartermaster', 'accept',            'global',       '[_]checkout'),
+    ('group',       'quartermaster', 'check_in',          'global',       '[_]checkout'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]checkout_item'),
+    ('group',       'quartermaster', 'list_all',          'table',        '[_]checkout_gear'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]condition'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]item'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]item_type'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]item_category'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]checkout'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]checkout_item'),
+    ('group',       'quartermaster', 'create',            'table',        '[_]checkout_gear'),
+    ('group',       'quartermaster', 'copy',              'global',       '[_]item'),
+    ('group',       'quartermaster', 'edit_features',     'global',       '[_]item'),
+    ('group',       'quartermaster', 'edit_features',     'global',       '[_]item_type'),
+    ('group',       'quartermaster', 'view_notes',        'global',       '[_]item'),
+    ('group',       'member',        'read',              'global',       '[_]decision'),
+    ('group',       'member',        'list_all',          'table',        '[_]activity'),
+    ('group',       'member',        'list_all',          'table',        '[_]adventure'),
+    ('group',       'member',        'list_all',          'table',        '[_]classified_ad'),
+    ('group',       'member',        'list_all',          'table',        '[_]decision'),
+    ('group',       'member',        'list_all',          'table',        '[_]location'),
+    ('group',       'member',        'list_all',          'table',        '[_]member'),
+    ('group',       'member',        'list_all',          'table',        '[_]item'),
+    ('group',       'member',        'list_owned_by',     'table',        '[_]address'),
+    ('group',       'member',        'list_owned_by',     'table',        '[_]chat'),
+    ('group',       'member',        'list_owned_by',     'table',        '[_]classified_ad'),
+    ('group',       'member',        'list_owned_by',     'table',        '[_]phone_number'),
+    ('group',       'member',        'list_owned_by',     'table',        '[_]subscription'),
+    ('group',       'member',        'view_history',      'self',         '[_]member'),
+    ('group',       'member',        'view_history',      'global',       '[_]item'),
+    ('group',       'member',        'create',            'table',        '[_]address'),
+    ('group',       'member',        'create',            'table',        '[_]answer'),
+    ('group',       'member',        'create',            'table',        '[_]attendee'),
+    ('group',       'member',        'create',            'table',        '[_]chat'),
+    ('group',       'member',        'create',            'table',        '[_]classified_ad'),
+    ('group',       'member',        'create',            'table',        '[_]interest'),
+    ('group',       'member',        'create',            'table',        '[_]phone_number'),
+    ('group',       'member',        'join',              'global',       '[_]adventure'),
+    ('group',       'member',        'withdraw',          'global',       '[_]adventure'),
+    ('group',       'member',        'choose_activities', 'self',         '[_]member'),
+    ('group',       'member',        'search',            'table',        '[_]adventure'),
+    ('group',       'member',        'search',            'table',        '[_]location'),
+    ('group',       'member',        'search',            'table',        '[_]member'),
+    ('group',       'member',        'change_password',   'self',         '[_]member'),
+    ('group',       'member',        'view_waitlist',     'global',       '[_]adventure'),
+    ('group',       'member',        'comment',           'global',       '[_]adventure'),
+    ('group',       'member',        'optout',            'self',         '[_]member'),
+    ('group',       'wheel',         'su',                'global',       '[_]member'),
+    ('owner',       '',              'activate',          'global',       '[_]adventure'),
+    ('owner',       '',              'deactivate',        'global',       '[_]adventure'),
+    ('owner',       '',              'deactivate',        'global',       '[_]classified_ad'),
+    ('owner',       '',              'edit_questions',    'global',       '[_]adventure'),
+    ('owner',       '',              'choose_activities', 'global',       '[_]adventure'),
+    ('owner',       '',              'view_report',       'global',       '[_]adventure'),
+    ('owner',       '',              'announce',          'global',       '[_]adventure'),
+    ('owner',       '',              'email_attendees',   'global',       '[_]adventure'),
+    ('owner',       '',              'view_answers',      'global',       '[_]attendee'),
+    ('owner',       '',              'unsubscribe',       'global',       '[_]subscription'),
+    ('owner',       '',              'submit',            'global',       '[_]expense_report'),
+    ('owner_group', '',              'join',              'global',       '[_]attendee'),
+    ('owner_group', '',              'copy',              'global',       '[_]question'),
+    ('owner_group', '',              'withdraw',          'global',       '[_]attendee'),
+    ('owner_group', '',              'waitlist',          'global',       '[_]attendee'),
+    ('owner_group', '',              'mark_absent',       'global',       '[_]attendee'),
+    ('owner_group', '',              'view_answers',      'global',       '[_]attendee');
+
+-- Only delete non-object-level privileges.  This will make sure user
+-- customizations are not wiped out.  Any non-object-level customized
+-- privileges ought to be in this file.
+delete from [_]privilege where c_related_uid = 0;
+
+insert into [_]privilege
+    (c_owner, c_created_date, c_what_granted_to, c_who_granted_to, c_action,
+     c_what_relates_to, c_related_table, c_related_uid)
+    select
+        1,
+        now(),
+        c_what,
+        coalesce(gr.c_uid, 0),
+        ac.c_uid,
+        c_granted_on,
+        c_table,
+        0 -- These are not object-level privileges so this argument is ignored.
+    from temp_privileges
+        left outer join [_]group as gr on c_what = 'group' and gr.c_title = c_group_title
+        inner join [_]action as ac on c_action_title = ac.c_title;
+
+drop table temp_privileges;
+@
+
+
+1.9
+log
+@add privilege to let members view_history on item
+@
+text
+@d41 1
+d48 2
+@
+
+
+1.8
+log
+@member list_owned_by priv on subscription
+@
+text
+@d93 1
+@
+
+
+1.7
+log
+@add privileges for treasurers for expense stuff
+@
+text
+@d91 1
+@
+
+
+1.6
+log
+@add the 'wheel' user group
+@
+text
+@d39 4
+@
+
+
+1.5
+log
+@add quartermaster privileges on the item_category table
+@
+text
+@d105 1
+@
+
+
+1.4
+log
+@add member/view_waitlist action
+@
+text
+@d58 1
+d67 1
+@
+
+
+1.3
+log
+@make inventory visible to everyone; allow quartermasters and officers to check stuff in and out.
+@
+text
+@d54 1
+@
+
+
+1.2
+log
+@initial release of checkin/checkout system
+@
+text
+@d30 8
+d58 2
+d79 1
+@
+
+
+1.1
+log
+@upgrade to privileges system
+@
+text
+@d49 3
+d55 3
+@
+

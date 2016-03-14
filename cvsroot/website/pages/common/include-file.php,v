@@ -1,0 +1,477 @@
+head	1.15;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.15
+date	2005.02.09.02.54.37;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2005.02.09.02.51.01;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.10.23.14.12.27;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.10.23.12.54.10;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.09.08.22.45.37;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.24.03.26.45;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.20.20.33.13;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.18.22.27.07;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.12.14.13.30;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.09.14.39.42;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.26.12.09.36;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.05.31.01.36.58;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.15
+log
+@more verbose logging
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ *
+ * $Id: include-file.php,v 1.14 2005/02/09 02:51:01 at Exp $
+ *
+ * This file is included from many pages that have the generic directory
+ * structure of files named with the name of the action.  If the action file
+ * exists, this file will include it; if not, it will include the
+ * not-implemented file.  If there's no action to use when determining a file,
+ * default.php is included instead.
+ *
+ */
+
+if ($cfg['action']) {
+
+    # If the action requires a specific object, create it and call it $object.
+    if (isset($cfg['action_title'][$cfg['action']])
+        && in_array($cfg['action'], $cfg['require_object_actions'])) {
+        if (!$cfg['object']) {
+            # Error: there's no way to identify the object!
+            trigger_error("Object required, referred from $_SERVER[HTTP_REFERER]", E_USER_ERROR);
+            $res['content'] = file_get_contents("templates/misc/require-object.php");
+            $res['title'] = "Error: Object Required";
+            return;
+        }
+        $object =& new $cfg['page']();
+        $object->select($cfg['object'], false);
+        if (!$object->getUID()) {
+            trigger_error("No row $cfg[object] in $object->table", E_USER_ERROR);
+            $res['content'] = "
+            <h1>Error Identifying Object</h1>
+
+            <p>We're sorry, but there has been an error.  This action requires
+            an object to act upon, but the system could not find the object your
+            browser specified.  The object could have been removed from the
+            database, or your browser may have sent an identifier incorrectly.</p>";
+
+            $res['title'] = "Error Identifying Object";
+
+            return;
+        }
+
+        # Check permissions
+        if (!$object->permits($cfg['action'])) {
+            # Email the webmasters
+            mail($cfg['webmaster_email'],
+                "Permission Error",
+                "User " . $obj['user']->toString() . " (" .  $obj['user']->getFullName()
+                    . ") is not allowed to take action {$cfg['action_summary'][$cfg['action']]} "
+                    . "($cfg[action]) on object " . $object->toString() . "; referred from "
+                    . "$_SERVER[HTTP_REFERER] on $_SERVER[REQUEST_URI]");
+            $res['content'] = "
+            <h1>Permission Error</h1>
+
+            <p>Sorry, but you are not allowed to take this action
+            <b>({$cfg['action_summary'][$cfg['action']]})</b> on this object.</p>";
+
+            $res['title'] = "Permission Error";
+
+            return;
+        }
+
+    }
+    elseif (isset($cfg['action_title'][$cfg['action']])) {
+        # It's assumed that the action is on a table (see initialize.sql and look
+        # at the section of insterts into [_]flag -- they are mutex).  Check
+        # permissions:
+        $table =& new table("$cfg[table_prefix]$cfg[page]");
+        if (!$table->permits($cfg['action'])) {
+            mail($cfg['webmaster_email'],
+                "Permission Error",
+                "User " . $obj['user']->toString() . " (" .  $obj['user']->getFullName()
+                    . ") is not allowed to take action {$cfg['action_summary'][$cfg['action']]} "
+                    . "($cfg[action]) on table $cfg[page]; referred from $_SERVER[HTTP_REFERER] "
+                    . "on $_SERVER[REQUEST_URI]");
+            $res['content'] = "
+            <h1>Permission Error</h1>
+
+            <p>Sorry, but you are not allowed to take this action
+            <b>({$cfg['action_summary'][$cfg['action']]})</b> on this table.</p>";
+
+            $res['title'] = "Permission Error";
+
+            return;
+        }
+
+    }
+
+    # Include the file identified by the action parameter.  Use the action
+    # parameter to look up the action's title, which will be the filename.
+    if (isset($cfg['action_title'][$cfg['action']])
+        && file_exists("$cfg[page_path]/{$cfg['action_title'][$cfg['action']]}.php"))
+    {
+        # If the action is implemented directly in the page's subdirectiory,
+        # include the file
+        include_once("$cfg[page_path]/{$cfg['action_title'][$cfg['action']]}.php");
+    } elseif (isset($cfg['action_title'][$cfg['action']])
+        && file_exists("pages/common/{$cfg['action_title'][$cfg['action']]}.php"))
+    {
+        # If the action is implemented in the common directory, include the file
+        include_once("pages/common/{$cfg['action_title'][$cfg['action']]}.php");
+    } elseif (file_exists("pages/$cfg[page]/$cfg[action].php")) {
+        # If the action names the file directly instead of referring to it by
+        # number, include that file:
+        include_once("pages/$cfg[page]/$cfg[action].php");
+    } else {
+        # The action isn't implemented at all
+        include_once("pages/common/not-implemented.php");
+    }
+}
+elseif (file_exists("$cfg[page_path]/default.php")) {
+    # Default action
+    include_once("$cfg[page_path]/default.php");
+}
+else {
+    # There isn't even a default action defined!  Use the common default page
+    include_once("pages/common/default.php");
+}
+
+?>
+@
+
+
+1.14
+log
+@trigger an error when there is no object parameter
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.13 2004/10/23 14:12:27 at Exp $
+d37 1
+a37 1
+            trigger_error("Object required", E_USER_ERROR);
+@
+
+
+1.13
+log
+@use table-name prefixing to make sure privileges are fetched correctly
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.12 2004/10/23 12:54:10 at Exp $
+d37 1
+@
+
+
+1.12
+log
+@change class names to match table names
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.11 2004/09/08 22:45:37 at Exp $
+d83 1
+a83 1
+        $table =& new table("$cfg[page]");
+@
+
+
+1.11
+log
+@new navbar and tabbed-box scheme; coalesced templates
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.10 2004/08/24 03:26:45 at Exp $
+a34 1
+        $cfg['type'] = DatabaseObject::tableToType("[_]$cfg[page]");
+d41 1
+a41 1
+        $object =& new $cfg['type']();
+d83 1
+a83 1
+        $table =& new Table("[_]$cfg[page]");
+@
+
+
+1.10
+log
+@security stuff moved out of SecurityManager and into DatabaseObject and Table; new scheme for default page on an object type
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.9 2004/08/20 20:33:13 at Exp $
+a133 5
+}
+
+# Digest the results
+if (isset($res['usetab']) && isset($res['tabfile']) && $res['tabfile']) {
+    include_once("tabbed-boxes/$res[tabfile]");
+@
+
+
+1.9
+log
+@various fixes for table-to-type conversion
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.8 2004/08/18 22:27:07 at Exp $
+d60 1
+a60 1
+        if (!$obj['security']->isAllowedOnObject($cfg['action'], $obj['user'], $object)) {
+d84 2
+a85 1
+        if (!$obj['security']->isAllowedOnTable($cfg['action'], $obj['user'], "[_]$cfg[page]")) {
+d132 2
+a133 3
+    # There isn't even a default action defined!
+    $res['title'] = "Not Implemented";
+    $res['content'] = file_get_contents("templates/common/default.php");
+@
+
+
+1.8
+log
+@upgraded to E_USER_ERROR when an object not found
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.7 2004/08/12 14:13:30 at Exp $
+d35 1
+a35 1
+        $cfg['type'] = DatabaseObject::tableToType("t_$cfg[page]");
+a122 1
+        $type = DatabaseObject::tableToType("[_]" . $cfg['page']);
+@
+
+
+1.7
+log
+@added the ability to email the webmasters when there is a permission error
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.6 2004/08/09 14:39:42 at Exp $
+d45 1
+a45 1
+            trigger_error("No row $cfg[object] in $object->table", E_USER_NOTICE);
+@
+
+
+1.6
+log
+@Check to make sure the action is one of the DB-defined actions, not a filename action, before trying to check permissions on the table.
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.5 2004/08/06 18:49:26 at Exp $
+d61 7
+d85 6
+@
+
+
+1.5
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.4 2004/07/26 12:09:36 at Exp $
+d73 1
+a73 1
+    else {
+@
+
+
+1.4
+log
+@fix table-name prefix
+@
+text
+@d5 1
+a5 1
+ * 
+d10 1
+a10 1
+ * 
+d15 1
+a15 1
+ * 
+d19 2
+a20 2
+ * 
+ * $Id: include-file.php,v 1.3 2004/07/26 02:12:31 at Exp $
+d33 1
+a33 1
+    if (isset($cfg['action_title'][$cfg['action']]) 
+d73 18
+a90 1
+    
+d94 1
+a94 1
+        && file_exists("$cfg[page_path]/{$cfg['action_title'][$cfg['action']]}.php")) 
+@
+
+
+1.3
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.2 2004/05/31 01:36:58 at Exp $
+d35 1
+a35 1
+        $cfg['type'] = DatabaseObject::tableToType("[_]$cfg[page]");
+@
+
+
+1.2
+log
+@updates to forms, templates to get working with new version (no new features)
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d35 1
+a35 1
+        $cfg['type'] = DatabaseObject::tableToType("t_$cfg[page]");
+d93 1
+a93 1
+        $type = DatabaseObject::tableToType("t_" . $cfg['page']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: include-file.php,v 1.5 2004/05/30 01:42:13 baron Exp $
+d76 3
+a78 1
+    if (file_exists("$cfg[page_path]/{$cfg['action_title'][$cfg['action']]}.php")) {
+d82 3
+a84 1
+    } elseif (file_exists("pages/common/{$cfg['action_title'][$cfg['action']]}.php")) {
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

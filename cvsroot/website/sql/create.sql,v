@@ -1,0 +1,2505 @@
+head	1.45;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.45
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2005.01.29.22.43.20;	author at;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2005.01.15.02.34.15;	author at;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2005.01.15.02.33.39;	author at;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2005.01.15.02.27.34;	author at;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2005.01.12.03.38.59;	author at;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2005.01.12.03.16.23;	author at;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2004.11.07.03.03.51;	author at;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2004.11.02.20.05.27;	author at;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2004.11.01.01.52.40;	author at;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2004.10.28.01.37.39;	author at;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2004.10.26.16.17.47;	author at;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2004.10.23.14.52.32;	author at;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2004.10.12.21.23.28;	author at;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2004.10.11.00.40.03;	author at;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2004.10.10.20.00.02;	author at;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2004.10.09.22.11.57;	author at;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2004.10.08.20.20.53;	author at;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2004.10.07.03.40.17;	author at;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2004.10.06.22.38.06;	author at;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2004.10.05.22.58.21;	author at;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2004.10.05.21.02.31;	author at;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2004.10.05.15.47.43;	author at;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2004.10.04.14.06.18;	author at;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2004.10.04.12.42.20;	author at;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2004.10.02.00.08.32;	author at;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2004.10.01.23.33.36;	author at;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2004.09.22.16.49.57;	author at;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2004.09.22.12.58.13;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.09.19.02.56.37;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.09.18.02.37.14;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.09.09.16.11.18;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.09.08.22.52.14;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.09.07.13.57.56;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.03.11.35.06;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.25.02.55.48;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.08.20.12.47.42;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.15.12.46.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.06.17.13.11;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.02.00.33.44;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.38.22;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.45
+log
+@add c_deleted column to database tables
+@
+text
+@/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software.  You can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 2 of the License, or (at your option) any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: create.sql,v 1.44 2005/01/29 22:43:20 at Exp $
+ *
+ * NOTE you must not have an unmatched quote in your comments, or MySQL will
+ * barf.  The same goes for semicolons, parentheses etc.
+ *
+ * If you change this file, you are responsible for updating sql/initialize.sql
+ * and sql/upgrade.sql as well.
+ *
+ * Explanation of Table Structure and Naming Conventions
+ *
+ * These tables, with the exception of [_]flags and [_]unixperms which are bitmask
+ * definitions, and [_]implemented_action which is an association matrix, and
+ * [_]table which is a list of tables, have a common set of columns that mean as 
+ * follows:
+ *  c_uid
+ *      is the primary key.
+ *  c_owner
+ *      is the user that owns the row, and relates to [_]member
+ *  c_creator
+ *      is the user that created the row, and relates to [_]member
+ *  c_group
+ *      is the group that owns the row, and relates to [_]group.  This is NOT the
+ *      group that the member belongs to (in the case of [_]member, this confuses
+ *      many people).
+ *  c_unixperms
+ *      is a bitmask field that defines read, write, and delete permissions on
+ *      the row for user, group, and other.  This is inspired by unix
+ *      permissions.  Read the 'ls' man page for a good explanation.  The
+ *      default value of 500 corresponds to 111110100.  If you want to know what
+ *      permissions are set on an object, run the following:
+ *      select c_title from [_]unixperm where c_bitmask & c_unixpermns
+ *  c_created_date
+ *      obvious
+ *  c_last_modified
+ *      timestamp columns will auto-update in MySql.  Do not assign a value to
+ *      this row, and it will take care of itself whenever you update the row.
+ *  c_status
+ *      relates to [_]status.
+ *  c_flags
+ *      is a bitmasked combination of flags defined in [_]flag.  If you want to
+ *      know what a value means, try the following query:
+ *      select c_title from [_]flag where c_bitmask & c_flags
+ *  c_deleted
+ *      is a tinyint that is 1 when the record is deleted.
+ *
+ *  Naming Conventions
+ *  *   Any value of type date or datetime must have 'date' in its name
+ *      somewhere.
+ *  *   When pairing up begin/end columns, use the following pairs:
+ *      - begin/expire
+ *      - start/end
+ *      What this means is, do NOT use begin/end as a pair.
+ */
+
+create table [_]absence (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 3, -- treasurer
+    -- Members of the group are allowed to read and write, but ordinary users
+    -- are not allowed to even read the absence.
+    c_unixperms       int unsigned    not null default 496, -- 111110000
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_attendee        int unsigned    not null, -- > [_]attendee
+    c_comment         varchar(100),             -- Short comment on absence
+    c_severity        varchar(20),              -- Severity of the incident
+    index (c_attendee),
+    primary key  (c_uid)
+) type=MyISAM;
+
+/*
+ * Some actions apply not to specific objects, but to the entire set of objects
+ * (or rather to the database table).
+ *
+ * For coding simplicity, titles should be all one word, only alphanumeric and _
+ * characters.  The title is used in code, but the short and long descriptions
+ * are for people to see.  The long description is really only for admin users
+ * to understand what is going on.  The summary is for use in a drop-down menu
+ * of actions, so it should be something useful, like "Change Permissions."
+ */
+
+create table [_]action (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1,   -- root
+    c_creator         int unsigned    not null default 1,   -- root
+    c_group           int unsigned    not null default 2,   -- officer
+    -- Members of the group are not allowed to write an action created by
+    -- someone else.
+    c_unixperms       int unsigned    not null default 484, -- 111100100
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),   -- unique string, lowercase with _
+    c_summary         varchar(25),    -- a few words
+    c_label           varchar(25),    -- for UI.  & creates an access key
+    c_row             tinyint         not null default 0,   -- for UI
+    c_description     varchar(255),   -- a full description of the action
+    -- Whether the action applies to a table or to objects in a table
+    unique index(c_title),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]activity (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_category        int unsigned    not null default 1, -- > [_]activity_category
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Each activity has a category.
+create table [_]activity_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root 
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]address (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(60),
+    c_street          varchar(60),
+    c_city            varchar(60),
+    c_state           varchar(60),
+    c_zip             varchar(20),
+    c_country         varchar(60)     not null default 'US',
+    index (c_owner),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]adventure (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_fee             decimal(6,2)    not null,
+    c_max_attendees   int unsigned    not null,
+    c_signup_date     datetime        not null,
+    c_title           varchar(255),
+    c_description     text,
+    c_start_date      datetime,
+    c_end_date        datetime,
+    c_departure       int unsigned    not null, -- > [_]location
+    c_destination     int unsigned    not null, -- > [_]location
+    c_average_rating  float           not null default 0,
+    c_num_ratings     int unsigned    not null default 0,
+    index (c_start_date),
+    index (c_signup_date),
+    index (c_end_date),
+    index (c_owner),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]adventure_comment (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_adventure       int unsigned    not null, -- > [_]adventure
+    c_rating          int unsigned    not null, -- > [_]rating
+    c_subject         varchar(255),
+    c_text            text,
+    unique index(c_owner, c_adventure),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]adventure_activity (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_adventure       int unsigned    not null, -- > [_]adventure
+    c_activity        int unsigned    not null, -- > [_]activity
+    unique index (c_adventure, c_activity),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]answer (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_question        int unsigned    not null, -- > [_]question
+    c_attendee        int unsigned    not null, -- > [_]attendee
+    c_answer_text     text,
+    index (c_question),
+    index (c_owner),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]attendee (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 4, -- leader
+    -- Members of the group are allowed the extra privilege of deleting an
+    -- attendee that someone else has created.
+    c_unixperms       int unsigned    not null default 508, -- 111111100
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_adventure       int unsigned    not null, -- > [_]adventure
+    c_member          int unsigned    not null, -- > [_]member
+    -- Just for record-keeping purposes, so we know how much the adventure fee was
+    -- at the time the member joined it.
+    c_amount_paid     decimal(2,2)    not null default 0,
+    -- Again, for record-keeping purposes
+    c_joined_date     datetime        not null,
+    index (c_adventure, c_member),
+    index (c_status),
+    index (c_joined_date),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]chat (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_screenname      varchar(100)    not null,
+    c_type            int unsigned    not null default 1, -- > [_]chat_type
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]chat_type (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_abbreviation    varchar(5),
+    c_description     varchar(255),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]checkout (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    -- The owner checks out the items.  The member is who they are checked out TO.
+    c_member          int unsigned    not null default 0, -- > [_]member
+    -- Generally speaking, what type of checkout is this?
+    c_activity        int unsigned    not null default 0, -- > [_]activity_category
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]checkout_gear (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_checkout        int unsigned    not null default 0, -- > [_]checkout
+    c_type            int unsigned    not null default 0, -- > [_]item_type
+    c_qty             int unsigned    not null default 0,
+    c_description     varchar(100)    not null default '',
+    c_checkin_member  int unsigned    not null default 0, -- > [_]member
+    primary key  (c_uid),
+    index(c_checkout)
+) type=MyISAM;
+
+create table [_]checkout_gear_qty (
+    c_type int not null default 0,
+    c_qty int not null default 0,
+    primary key(c_type)
+) type=MyISAM;
+
+create table [_]checkout_item (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_checkout        int unsigned    not null default 0, -- > [_]checkout
+    c_item            int unsigned    not null default 0, -- > [_]item
+    primary key  (c_uid),
+    unique index(c_checkout, c_item)
+) type=MyISAM;
+
+create table [_]checkout_item_qty (
+    c_type int not null default 0,
+    c_qty int not null default 0,
+    c_qty_out int not null default 0,
+    primary key(c_type)
+) type=MyISAM;
+
+create table [_]classified_ad (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100)    not null,
+    c_text            text            not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Defines possible values for the condition of an item.
+create table [_]condition (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100)    not null,
+    c_rank            int unsigned    not null default 0,
+    c_description     varchar(255)    not null,
+    primary key  (c_uid),
+    unique index (c_title)
+) type=MyISAM;
+
+create table [_]decision (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 760,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100)    not null,
+    c_text            text            not null,
+    c_category        int unsigned    not null, -- > [_]decision_category
+    primary key  (c_uid),
+    index (c_category),
+    index (c_title)
+) type=MyISAM;
+
+create table [_]decision_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]decision_xref (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_decision        int unsigned    not null, -- > [_]decision
+    c_xref            int unsigned    not null, -- > [_]decision
+    primary key  (c_uid),
+    unique index (c_decision, c_xref)
+) type=MyISAM;
+
+create table [_]email_list (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    c_name            varchar(100),   -- name that the list software uses
+                                      -- e.g. outdoors-club
+    c_password        varchar(30),    -- list password
+    c_owner_address   varchar(50),    -- email addy of list owner
+    c_mgmt_address    varchar(50),    -- send automated requests here
+    c_list_address    varchar(40),    -- send to the whole list
+    c_type            varchar(30),    -- eg MailmanList, MajordomoList
+    c_subject_prefix  varchar(30),    -- a prefix to all subjects sent
+    primary key  (c_uid)
+) type=MyISAM;
+
+/* These flags match up to the c_flags field in various tables, and are used as
+ * a bitmask to decide whether a flag is set or not.  For example, suppose the
+ * flag "email_me" has bitmask of 1.  This represents the bitmask 00..001.  This
+ * can be AND-ed with c_flags to see if the flag has a value of true or false.
+ * This table is not consistent with the other tables because we do not think it
+ * will ever be manipulated through the website directly.  These values should
+ * be pretty much hard coded by inserting them from the initialize.sql script.
+ *
+ * Try the following query to find actions that do not apply to objects:
+ *
+ * select ac.c_title, fl.c_title
+ * from t_action as ac
+ * inner join t_flag as fl on (fl.c_bitmask & ac.c_flags = 0)
+ * where fl.c_title = 'applies_to_object'
+ */
+create table [_]flag (
+    c_title           varchar(100)    not null,
+    c_bitmask         int unsigned    not null,
+    primary key (c_title),
+    unique index (c_bitmask)
+) type=MyISAM;
+
+create table [_]expense (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_report          int unsigned    not null, -- > [_]expense_report
+    c_category        int unsigned    not null, -- > [_]expense_category
+    c_expense_date    date            not null,
+    c_adventure       varchar(100)    not null,
+    c_merchant        varchar(30)     not null,
+    c_description     varchar(60)     not null,
+    c_amount          decimal(6,2)    not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(30)     not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Expense reports initially belong to the member that creates them.  But after
+-- the member accepts the expense report, the owner becomes root, and the member
+-- cannot edit or delete it anymore.
+create table [_]expense_report (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- treasurer
+    c_creator         int unsigned    not null default 3, -- treasurer
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 508, -- nonstandard!
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_report_note (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 3, -- root
+    c_creator         int unsigned    not null default 3, -- root
+    c_group           int unsigned    not null default 3, -- treasurer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_report          int unsigned    not null, -- > [_]expense_report
+    c_new_status      int unsigned    not null, -- > status
+    primary key  (c_uid),
+) type=MyISAM;
+
+create table [_]expense_submission (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]expense_submission_expense (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_submission      int unsigned    not null, -- > [_]expense_submission
+    c_expense         int unsigned    not null, -- > [_]expense
+    primary key  (c_uid),
+    index (c_submission),
+    unique index(c_expense)
+) type=MyISAM;
+
+-- Defines relationships between data in the database.  There may be multiple
+-- rows per relationship.
+create table [_]foreign_key (
+    c_parent_table    varchar(50) not null,
+    c_child_table     varchar(50) not null,
+    c_parent_col      varchar(50) not null,
+    c_child_col       varchar(50) not null,
+    primary key (c_parent_table, c_child_table, c_parent_col, c_child_col)
+) type=MyISAM;
+
+create table [_]group (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1,   -- root
+    c_creator         int unsigned    not null default 1,   -- root
+    c_group           int unsigned    not null default 1,   -- root
+    -- No one but the creator is allowed to alter a group.
+    c_unixperms       int unsigned    not null default 484, -- 111100100
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    unique index (c_title),
+    primary key  (c_uid)
+) type=MyISAM;
+
+/* This table maintains an association between actions and data types, to
+ * specify which actions apply to which data types.  The columns mean as
+ * follows:
+ *  c_table 
+ *      is the name of the table a piece of data lives in.  If it is empty, the
+ *      action applies to ALL tables.
+ *  c_action
+ *      is an action that applies to (is implemented by) objects in c_table.
+ */
+create table [_]implemented_action (
+    c_table           varchar(100)    not null,
+    c_action          int unsigned    not null, -- > [_]action
+    primary key (c_table, c_action)
+) type=MyISAM;
+
+create table [_]interest (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_activity        int unsigned    not null, -- > [_]activity
+    unique index (c_member, c_activity),
+    primary key (c_uid)
+) type=MyISAM;
+
+-- Defines an item of inventory.
+create table [_]item (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_condition       int unsigned    not null, -- > condition
+    c_type            int unsigned    not null, -- > type
+    c_description     text            not null,
+    c_purchase_date   date,
+    c_qty             int unsigned    not null,
+    primary key  (c_uid),
+    index (c_type, c_condition)
+) type=MyISAM;
+
+-- Records a note on an item, along with the new condition.
+create table [_]item_note (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_item            int unsigned    not null, -- > item
+    c_condition       int unsigned    not null, -- > condition
+    c_note            varchar(255)    not null,
+    primary key  (c_uid),
+    index (c_item, c_creator)
+) type=MyISAM;
+
+-- Records a feature on an item, which is a named value
+create table [_]item_feature (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_item            int unsigned    not null, -- > item
+    c_name            varchar(10)     not null,
+    c_value           varchar(100)    not null,
+    primary key  (c_uid),
+    unique index (c_item, c_name)
+) type=MyISAM;
+
+-- Each item type has a category.
+create table [_]item_category (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Records a feature that every item of a certain type should have.  Taken
+-- all together, the set of item_type_features for a given item_type define
+-- the features that every item of that type is expected to have.
+create table [_]item_type_feature (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_type            int unsigned    not null, -- > item_type
+    c_name            varchar(10)     not null,
+    primary key  (c_uid),
+    unique index (c_type, c_name)
+) type=MyISAM;
+
+-- Defines a type of item.  Each type of item has its own set of features,
+-- which are defined in item_type_feature.  Thus a type of item is a sort
+-- of template for the named values that belong to this class of item.
+create table [_]item_type (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100)    not null,
+    c_category        int unsigned    not null default 1, -- > [_]item_category
+    c_primary_feature varchar(10)     not null,
+    c_secondary_feature varchar(10)   not null,
+    unique index (c_category, c_title),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]location (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 4, -- leader
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     text,
+    c_zip_code        varchar(20),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]location_activity (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 4, -- leader
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_location        int unsigned    not null, -- > [_]location
+    c_activity        int unsigned    not null, -- > [_]activity
+    primary key  (c_uid),
+    unique index(c_location, c_activity)
+) type=MyISAM;
+
+-- This table is somewhat different as regards group ownership and privileges.
+-- This is so that members can view other member records, but a user who is a
+-- member of the guest group cannot view member records.
+create table [_]member (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 6, -- member
+    -- Members of the 'member' group can take the 'read' action, but no privileges
+    -- are granted to 'other' at all.  Thus the guest user cannot view member
+    -- info.
+    c_unixperms       int unsigned    not null default 480, -- nonstandard 111100000
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1, -- default
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_email           varchar(60),
+    c_password        varchar(30) binary,
+    c_first_name      varchar(30),
+    c_last_name       varchar(30),
+    -- This is redundant, but stored here to ease coding, especially automatic
+    -- insertion into text
+    c_full_name       varchar(60),
+    c_birth_date      date,
+    c_gender          enum('m','f'),
+    unique index (c_email),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]member_group (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_related_group   int unsigned    not null, -- > [_]group
+    unique index (c_member, c_related_group),
+    primary key(c_uid)
+) type=MyISAM;
+
+create table [_]member_note (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_note            text,
+    primary key(c_uid)
+) type=MyISAM;
+
+create table [_]membership (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 3,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_type            int unsigned    not null, -- > [_]membership_type
+    -- These two are allowed to be null because they are not set until
+    -- the membership is activated, or, in the case the membership type
+    -- has its own start and expiration dates, they are copied from the
+    -- membership type.
+    c_begin_date      date,
+    c_expiration_date date,
+    -- The following are set when the membership is created.  This is for
+    -- record-keeping (what if someone signs up, then the membership_type
+    -- gets changed and now you do not know what the member saw at signup?).
+    c_units_granted   int             not null default 0,
+    c_unit            varchar(50),    -- day, month, week, year
+    -- The total cost for the membership type when the member signed up.  This
+    -- is never changed (that would change history).
+    c_total_cost      decimal(6,2)    not null default 0,
+    -- The amount the member actually paid for the membership when it was
+    -- activated.
+    c_amount_paid     decimal(6,2)    not null default 0,
+    index (c_status, c_begin_date, c_expiration_date),
+    primary key (c_uid)
+) type=MyISAM;
+
+create table [_]membership_type (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    -- The following properties only apply if this is not a flexible plan, and describe when
+    -- the membership is valid and when it expires
+    c_begin_date      date,
+    c_expiration_date date,
+    -- When to start and stop showing this plan on the signup form
+    c_show_date       date,
+    c_hide_date       date,
+    -- The following property only applies if this is a flexible plan.  It describes
+    -- how many units of time to add onto a membership expiration date
+    c_units_granted   int             not null default 0,
+    -- Unit of measure for cost, and unit cost of the membership plan
+    c_unit            varchar(50),    -- day, month, week, year
+    c_unit_cost       decimal(6,2)    not null default 0,
+    -- Total cost of the membership plan
+    c_total_cost      decimal(6,2)    not null default 0,
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Members are opted in to every category of email unless they opt out.
+create table [_]optout (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_member          int unsigned    not null, -- > [_]member
+    c_category        int unsigned    not null, -- > [_]activity_category
+    unique index (c_member, c_category),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]phone_number (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_type            int unsigned    not null default 1, -- > [_]phone_number_type
+    c_title           varchar(100),
+    c_country_code    varchar(5)      not null default "",
+    c_area_code       varchar(5),
+    c_exchange        varchar(5),
+    c_number          varchar(5),
+    c_extension       varchar(8)      not null default "",
+    -- This is redundant, but stored here to ease coding, especially automatic
+    -- insertion into text
+    c_phone_number    varchar(100),
+    index (c_owner),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]phone_number_type (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    c_abbreviation    varchar(10),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]privilege (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    -- Whether granted to user, group, owner, owner_group
+    c_what_granted_to varchar(30)     not null default 'nothing',
+    -- Which user or group it applies to (only needed if c_what_granted_to is
+    -- "user" or "group")
+    c_who_granted_to  int unsigned    not null default 0,
+    -- The action that the privilege grants.  Defaults to 'read' if not specified
+    c_action          int unsigned    not null default 1,
+    -- What the privilege applies to: a table, an object in a table, all of the objects 
+    -- in the specified table, or oneself.  The values should hence be 'table', 'object',
+    -- 'global' or 'self'.
+    c_what_relates_to varchar(30)     not null default 'nothing',
+    -- The table to which the privilege applies (never optional), though it
+    -- doesn't matter for a 'self' privilege which only applies to objects in the
+    -- [_]member table.
+    c_related_table   varchar(100)    not null default '',
+    -- The object to which the privilege applies (only needed if the privilege is
+    -- an object privilege; global and table privileges don't care about this value)
+    c_related_uid     int unsigned    not null default 0,
+    primary key  (c_uid),
+    unique index(
+        c_what_granted_to, c_who_granted_to, c_action,
+        c_what_relates_to, c_related_table, c_related_uid)
+) type=MyISAM;
+
+create table [_]question (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 4, -- leader
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_adventure       int unsigned    not null, -- > [_]adventure
+    c_type            enum('bool','text'),
+    c_text            text,
+    index (c_adventure),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]rating (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(10),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]report (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 1, -- root
+    -- Nonstandard permissions are granted on reports: members of the group are
+    -- allowed to read but not alter it.  Only the owner can alter a report.
+    c_unixperms       int unsigned    not null default 480, -- 111100000
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    c_query           text,
+    c_instructions    text,
+    primary key  (c_uid)
+) type=MyISAM;
+
+-- Tables [_]session and [_]session_page are meta-data, so they don't have all
+-- the usual c_owner, etc columns.  They should remain pretty well hidden in the
+-- website.
+create table [_]session (
+    c_uid             int unsigned    not null auto_increment,
+    c_created_date    datetime        not null,
+    c_member          int unsigned    not null, -- > [_]member
+    c_ip              varchar(30)     not null,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]session_page (
+    c_uid             int unsigned    not null auto_increment,
+    c_created_date    datetime        not null,
+    c_session         int unsigned    not null, -- > [_]session
+    c_member          int unsigned,             -- > [_]member
+    c_method          varchar(4)      not null default '',
+    c_page            varchar(20)     not null default '',
+    c_action          varchar(40)     not null default '',
+    c_object          int unsigned,
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]status (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1,   -- root
+    c_creator         int unsigned    not null default 1,   -- root
+    c_group           int unsigned    not null default 2,   -- officer
+    -- members of the group and others are allowed to read but not alter
+    c_unixperms       int unsigned    not null default 484, -- 111100100
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1, -- > [_]status  :-)
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_title           varchar(100),
+    c_description     varchar(255),
+    unique index (c_title),
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]subscription (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 2, -- officer
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_list            int unsigned    not null, -- > [_]email_list
+    c_email           varchar(60),    -- The address that is subscribed
+    c_password        varchar(255),   -- The password used to subscribe
+    primary key  (c_uid)
+) type=MyISAM;
+
+create table [_]table (
+    c_name            varchar(100),
+    primary key (c_name)
+) type=MyISAM;
+
+create table [_]transaction (
+    c_uid             int unsigned    not null auto_increment,
+    c_owner           int unsigned    not null default 1, -- root
+    c_creator         int unsigned    not null default 1, -- root
+    c_group           int unsigned    not null default 5, -- quartermaster
+    c_unixperms       int unsigned    not null default 500,
+    c_created_date    datetime        not null,
+    c_last_modified   timestamp       not null,
+    c_status          int unsigned    not null default 1,
+    c_flags           int unsigned    not null default 0,
+    c_deleted         tinyint         not null default 0,
+    c_category        int unsigned    not null default 0, -- > [_]expense_category
+    c_amount          decimal(6,2)    not null,
+    c_from            int unsigned    not null, -- > [_]member
+    c_to              int unsigned    not null, -- > [_]member
+    c_description     varchar(100)    not null default '',
+    c_expense         int unsigned    not null default 0, -- > [_]expense (optional)
+    primary key  (c_uid),
+    index (c_from, c_to)
+) type=MyISAM;
+
+create table [_]unixperm (
+    c_title           varchar(100)    not null,
+    c_bitmask         int unsigned    not null,
+    primary key  (c_title),
+    unique index (c_bitmask)
+) type=MyISAM;
+@
+
+
+1.44
+log
+@move changes from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.43 2005/01/16 14:33:38 at Exp $
+d61 2
+d85 1
+d116 1
+d137 1
+d154 1
+d169 1
+d190 1
+d219 1
+d238 1
+d255 1
+d276 1
+d300 1
+d316 1
+d333 1
+d351 1
+d377 1
+d401 1
+d418 1
+d436 1
+d455 1
+d470 1
+d487 1
+d533 1
+d554 1
+d572 1
+d587 1
+d603 1
+d617 1
+d646 1
+d678 1
+d696 1
+d717 1
+d736 1
+d755 1
+d773 1
+d793 1
+d812 1
+d829 1
+d852 1
+d876 1
+d893 1
+d909 1
+d943 1
+d975 1
+d992 1
+d1017 1
+d1034 1
+d1069 1
+d1087 1
+d1104 1
+d1146 1
+d1163 1
+d1185 1
+@
+
+
+1.43
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.42 2005/01/15 02:34:15 at Exp $
+d345 6
+d365 7
+@
+
+
+1.42
+log
+@move to drop.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.41 2005/01/15 02:33:39 at Exp $
+d656 1
+@
+
+
+1.41
+log
+@update table-drop lists
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.40 2005/01/15 02:27:34 at Exp $
+d26 2
+a27 63
+ */
+
+drop table if exists [_]absence;
+drop table if exists [_]action;
+drop table if exists [_]activity;
+drop table if exists [_]activity_category;
+drop table if exists [_]address;
+drop table if exists [_]adventure;
+drop table if exists [_]adventure_activity;
+drop table if exists [_]adventure_comment;
+drop table if exists [_]answer;
+drop table if exists [_]attendee;
+drop table if exists [_]chat;
+drop table if exists [_]chat_type;
+drop table if exists [_]checkout;
+drop table if exists [_]checkout_gear;
+drop table if exists [_]checkout_item;
+drop table if exists [_]classified_ad;
+drop table if exists [_]condition;
+drop table if exists [_]decision;
+drop table if exists [_]decision_category;
+drop table if exists [_]decision_xref;
+drop table if exists [_]email_list;
+drop table if exists [_]expense;
+drop table if exists [_]expense_category;
+drop table if exists [_]expense_report;
+drop table if exists [_]expense_report_note;
+drop table if exists [_]expense_submission;
+drop table if exists [_]expense_submission_expense;
+drop table if exists [_]flag;
+drop table if exists [_]foreign_key;
+drop table if exists [_]group;
+drop table if exists [_]implemented_action;
+drop table if exists [_]interest;
+drop table if exists [_]item;
+drop table if exists [_]item_category;
+drop table if exists [_]item_feature;
+drop table if exists [_]item_note;
+drop table if exists [_]item_type;
+drop table if exists [_]item_type_feature;
+drop table if exists [_]location;
+drop table if exists [_]location_activity;
+drop table if exists [_]member;
+drop table if exists [_]member_group;
+drop table if exists [_]member_note;
+drop table if exists [_]membership;
+drop table if exists [_]membership_type;
+drop table if exists [_]optout;
+drop table if exists [_]phone_number;
+drop table if exists [_]phone_number_type;
+drop table if exists [_]privilege;
+drop table if exists [_]question;
+drop table if exists [_]rating;
+drop table if exists [_]report;
+drop table if exists [_]session;
+drop table if exists [_]session_page;
+drop table if exists [_]status;
+drop table if exists [_]subscription;
+drop table if exists [_]table;
+drop table if exists [_]transaction;
+drop table if exists [_]unixperm;
+
+/* Explanation of Table Structure and Naming Conventions
+@
+
+
+1.40
+log
+@merged new tables
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.39 2005/01/14 15:08:49 at Exp $
+d34 1
+a35 1
+drop table if exists [_]adventure_activity;
+d40 3
+d61 2
+d64 1
+a64 2
+drop table if exists [_]item_feature;
+drop table if exists [_]item_category;
+a65 1
+drop table if exists [_]item_type;
+d69 1
+a70 1
+drop table if exists [_]member_group;
+@
+
+
+1.39
+log
+@initial release of checkin/checkout system
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.38 2005/01/12 03:38:59 at Exp $
+d365 52
+@
+
+
+1.38
+log
+@increase column size for foreign keys
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.37 2005/01/12 03:16:23 at Exp $
+d750 1
+a750 1
+    c_category        int unsigned    not null default 1,
+d1124 1
+a1124 1
+    c_category        int unsigned    not null default 0, -- > [_]category
+@
+
+
+1.37
+log
+@merge upgrade.sql changes into create.sql and initialize.sql, and move privileges into privileges.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.36 2004/11/07 03:03:51 at Exp $
+a492 10
+-- Defines relationships between data in the database.  There may be multiple
+-- rows per relationship.
+create table [_]foreign_key (
+    c_parent_table    varchar(30) not null,
+    c_child_table     varchar(30) not null,
+    c_parent_col      varchar(30) not null,
+    c_child_col       varchar(30) not null,
+    primary key (c_parent_table, c_child_table, c_parent_col, c_child_col)
+) type=MyISAM;
+
+d587 10
+@
+
+
+1.36
+log
+@merge session tables into create.sql from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.35 2004/11/02 20:05:27 at Exp $
+d50 2
+d82 1
+d569 30
+d1112 20
+@
+
+
+1.35
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.34 2004/11/01 01:52:40 at Exp $
+d75 2
+d1017 23
+@
+
+
+1.34
+log
+@merge changes for expense reports
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.33 2004/10/28 01:37:39 at Exp $
+d473 7
+@
+
+
+1.33
+log
+@fix bad default values for c_group on optout and activity_category
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.32 2004/10/26 16:17:47 at Exp $
+d46 4
+d489 66
+@
+
+
+1.32
+log
+@correct typo in [_]answer table
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.31 2004/10/23 14:52:32 at Exp $
+d192 1
+a192 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d378 1
+a378 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d540 1
+a540 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d559 1
+a559 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d577 1
+a577 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d595 1
+a595 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d612 1
+a612 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d631 1
+a631 1
+    c_group           int unsigned    not null default 5, -- treasurer
+d805 1
+a805 1
+    c_group           int unsigned    not null default 5, -- treasurer
+@
+
+
+1.31
+log
+@merge upgrade.sql into create/initialize.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.30 2004/10/12 21:23:28 at Exp $
+d295 1
+a295 1
+    c_attende         int unsigned    not null, -- > [_]attendee
+@
+
+
+1.30
+log
+@comments
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.29 2004/10/11 00:40:03 at Exp $
+d295 1
+a295 1
+    c_member          int unsigned    not null, -- > [_]member
+@
+
+
+1.29
+log
+@merge changes over from upgrade.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.28 2004/10/10 20:00:02 at Exp $
+d25 1
+a25 2
+ * and sql/upgrade.sql as well.  If you change this file, please also update the
+ * admin pages that check the database for bad data.
+@
+
+
+1.28
+log
+@change table names to feature instead of attribute
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.27 2004/10/09 22:11:57 at Exp $
+d48 1
+d476 10
+@
+
+
+1.27
+log
+@merge changes in for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.26 2004/10/08 20:20:53 at Exp $
+d53 1
+a53 1
+drop table if exists [_]item_attribute;
+d55 1
+a55 1
+drop table if exists [_]item_type_attribute;
+d183 1
+a183 1
+    c_category        int unsigned    not null default 1,
+d562 2
+a563 2
+-- Records an attribute on an item, which is a named value
+create table [_]item_attribute (
+d595 4
+a598 4
+-- Records an attribute that every item of a certain type should have.  Taken
+-- all together, the set of item_type_attributes for a given item_type define
+-- the attributes that every item of that type is expected to have.
+create table [_]item_type_attribute (
+d614 2
+a615 2
+-- Defines a type of item.  Each type of item has its own set of attributes,
+-- which are defined in item_type_attribute.  Thus a type of item is a sort
+@
+
+
+1.26
+log
+@add 'self' privileges.
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.25 2004/10/07 03:40:17 at Exp $
+d32 1
+d64 1
+d183 16
+d787 17
+@
+
+
+1.25
+log
+@merge decisions system in
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.24 2004/10/06 22:38:06 at Exp $
+d118 1
+a118 1
+create table [_]absence(
+d170 1
+a170 1
+create table [_]activity(
+d829 3
+a831 3
+    -- Whether the privilege applies to a table, an object in a table, or all of
+    -- the objects in the specified table.  The values should hence be 'table',
+    -- 'object', or 'global'.
+d833 3
+a835 1
+    -- The table to which the privilege applies (never optional)
+@
+
+
+1.24
+log
+@merge in changes to rank conditions
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.23 2004/10/05 22:58:21 at Exp $
+d42 3
+d371 48
+@
+
+
+1.23
+log
+@upgrade.sql -> create.sql
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.22 2004/10/05 21:02:31 at Exp $
+d364 1
+@
+
+
+1.22
+log
+@change index to unique
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.21 2004/10/05 15:47:43 at Exp $
+d559 2
+a560 1
+    c_primary_feature varchar(100)    not null,
+@
+
+
+1.21
+log
+@change indexing on [_]item_type
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.20 2004/10/04 14:06:18 at Exp $
+d507 1
+a507 1
+    index (c_item, c_name)
+@
+
+
+1.20
+log
+@change item attributes to have a max length of 10, and reformat the entry screen
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.19 2004/10/04 12:42:20 at Exp $
+d560 1
+a560 2
+    unique index (c_title),
+    index (c_category),
+@
+
+
+1.19
+log
+@merged changes from upgrade.sql to create and initialize scripts
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.18 2004/10/02 00:08:32 at Exp $
+d504 1
+a504 1
+    c_name            varchar(100)    not null,
+d539 1
+a539 1
+    c_name            varchar(100)    not null,
+@
+
+
+1.18
+log
+@merge in changes for inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.17 2004/10/01 23:33:36 at Exp $
+d50 1
+d510 15
+d558 1
+d561 1
+@
+
+
+1.17
+log
+@added in a space
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.16 2004/09/24 17:39:46 at Exp $
+d356 1
+a356 1
+    c_group           int unsigned    not null default 2, -- officer
+d459 1
+a459 1
+    c_group           int unsigned    not null default 2, -- officer
+d478 1
+a478 1
+    c_group           int unsigned    not null default 2, -- officer
+d496 1
+a496 1
+    c_group           int unsigned    not null default 2, -- officer
+d516 1
+a516 1
+    c_group           int unsigned    not null default 2, -- officer
+d535 1
+a535 1
+    c_group           int unsigned    not null default 2, -- officer
+@
+
+
+1.16
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.15 2004/09/22 16:49:57 at Exp $
+d546 1
+@
+
+
+1.15
+log
+@merged classified ads in
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.14 2004/09/22 12:58:13 at Exp $
+d467 1
+a467 2
+    c_title           varchar(100)    not null,
+    c_description     varchar(255)    not null,
+d542 2
+a543 1
+    c_description     varchar(255)    not null,
+@
+
+
+1.14
+log
+@merge upgrades into create script
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.13 2004/09/19 02:56:37 at Exp $
+d40 1
+d333 15
+@
+
+
+1.13
+log
+@changes for the inventory system
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.12 2004/09/18 02:37:14 at Exp $
+d40 1
+d46 5
+d335 17
+d438 92
+@
+
+
+1.12
+log
+@added a column to [_]attendee
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.11 2004/09/09 16:11:18 at Exp $
+d727 1
+a727 1
+    primary key (c_name),
+@
+
+
+1.11
+log
+@add rows as tinyint to actions
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.10 2004/09/08 22:52:14 at Exp $
+d290 2
+d294 1
+@
+
+
+1.10
+log
+@added label and row to actions
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.9 2004/09/07 13:57:56 at Exp $
+d152 1
+a152 1
+    c_row             int             not null default 0,   -- for UI
+@
+
+
+1.9
+log
+@fixed a key
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.8 2004/09/03 11:35:06 at Exp $
+d151 2
+@
+
+
+1.8
+log
+@removed the c_member column from adventure comments
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.7 2004/08/25 02:55:48 at Exp $
+d233 1
+a233 1
+    unique index(c_member, c_adventure),
+@
+
+
+1.7
+log
+@adda unique index on [_]adventure_comment
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.6 2004/08/20 12:47:42 at Exp $
+a229 1
+    c_member          int unsigned    not null, -- > [_]member
+@
+
+
+1.6
+log
+@added a unique index
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.5 2004/08/15 12:46:40 at Exp $
+d234 1
+a234 1
+    index (c_adventure),
+@
+
+
+1.5
+log
+@added unique index on [_]member_group
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.4 2004/08/06 17:13:11 at Exp $
+d277 1
+a277 1
+    -- Members of the group are allowed the extra privelege of deleting an
+d633 3
+a635 1
+    index(c_related_table, c_related_uid)
+@
+
+
+1.4
+log
+@made interest, adeventure_activity and location_activity have unique indexes
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.3 2004/08/02 00:33:44 at Exp $
+d484 1
+a484 1
+    index (c_member, c_related_group),
+@
+
+
+1.3
+log
+@changed some values to not null and gave defaults in address and phone_number
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.2 2004/07/20 14:38:22 at Exp $
+d250 1
+a250 2
+    index (c_adventure),
+    index (c_activity),
+d407 1
+a407 1
+    index (c_member, c_activity),
+@
+
+
+1.2
+log
+@added prefix names to tables
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d186 1
+a186 1
+    c_country         varchar(60),
+d579 1
+a579 1
+    c_country_code    varchar(5),
+d583 1
+a583 1
+    c_extension       varchar(8),
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d19 1
+a19 1
+ * $Id: create.sql,v 1.13 2004/05/30 03:08:37 baron Exp $
+d29 33
+a61 33
+drop table if exists t_absence;
+drop table if exists t_action;
+drop table if exists t_activity;
+drop table if exists t_address;
+drop table if exists t_adventure;
+drop table if exists t_adventure_comment;
+drop table if exists t_adventure_activity;
+drop table if exists t_answer;
+drop table if exists t_attendee;
+drop table if exists t_chat;
+drop table if exists t_chat_type;
+drop table if exists t_email_list;
+drop table if exists t_flag;
+drop table if exists t_group;
+drop table if exists t_implemented_action;
+drop table if exists t_interest;
+drop table if exists t_location;
+drop table if exists t_location_activity;
+drop table if exists t_member;
+drop table if exists t_member_note;
+drop table if exists t_member_group;
+drop table if exists t_membership;
+drop table if exists t_membership_type;
+drop table if exists t_phone_number;
+drop table if exists t_phone_number_type;
+drop table if exists t_privilege;
+drop table if exists t_question;
+drop table if exists t_rating;
+drop table if exists t_report;
+drop table if exists t_status;
+drop table if exists t_subscription;
+drop table if exists t_table;
+drop table if exists t_unixperm;
+d65 3
+a67 3
+ * These tables, with the exception of t_flags and t_unixperms which are bitmask
+ * definitions, and t_implemented_action which is an association matrix, and
+ * t_table which is a list of tables, have a common set of columns that mean as 
+d72 1
+a72 1
+ *      is the user that owns the row, and relates to t_member
+d74 1
+a74 1
+ *      is the user that created the row, and relates to t_member
+d76 2
+a77 2
+ *      is the group that owns the row, and relates to t_group.  This is NOT the
+ *      group that the member belongs to (in the case of t_member, this confuses
+d85 1
+a85 1
+ *      select c_title from t_unixperm where c_bitmask & c_unixpermns
+d92 1
+a92 1
+ *      relates to t_status.
+d94 1
+a94 1
+ *      is a bitmasked combination of flags defined in t_flag.  If you want to
+d96 1
+a96 1
+ *      select c_title from t_flag where c_bitmask & c_flags
+d107 1
+a107 1
+create table t_absence(
+d119 1
+a119 1
+    c_attendee        int unsigned    not null, -- > t_attendee
+d137 1
+a137 1
+create table t_action (
+d157 1
+a157 1
+create table t_activity(
+d171 1
+a171 1
+create table t_address (
+d191 1
+a191 1
+create table t_adventure (
+d208 2
+a209 2
+    c_departure       int unsigned    not null, -- > t_location
+    c_destination     int unsigned    not null, -- > t_location
+d219 1
+a219 1
+create table t_adventure_comment (
+d229 3
+a231 3
+    c_adventure       int unsigned    not null, -- > t_adventure
+    c_member          int unsigned    not null, -- > t_member
+    c_rating          int unsigned    not null, -- > t_rating
+d238 1
+a238 1
+create table t_adventure_activity (
+d248 2
+a249 2
+    c_adventure       int unsigned    not null, -- > t_adventure
+    c_activity        int unsigned    not null, -- > t_activity
+d255 1
+a255 1
+create table t_answer (
+d265 2
+a266 2
+    c_question        int unsigned    not null, -- > t_question
+    c_member          int unsigned    not null, -- > t_member
+d273 1
+a273 1
+create table t_attendee (
+d285 2
+a286 2
+    c_adventure       int unsigned    not null, -- > t_adventure
+    c_member          int unsigned    not null, -- > t_member
+d295 1
+a295 1
+create table t_chat (
+d306 1
+a306 1
+    c_type            int unsigned    not null default 1, -- > t_chat_type
+d310 1
+a310 1
+create table t_chat_type (
+d326 1
+a326 1
+create table t_email_list (
+d357 1
+a357 1
+create table t_flag (
+d364 1
+a364 1
+create table t_group (
+d390 1
+a390 1
+create table t_implemented_action (
+d392 1
+a392 1
+    c_action          int unsigned    not null, -- > t_action
+d396 1
+a396 1
+create table t_interest (
+d406 2
+a407 2
+    c_member          int unsigned    not null, -- > t_member
+    c_activity        int unsigned    not null, -- > t_activity
+d412 1
+a412 1
+create table t_location (
+d428 1
+a428 1
+create table t_location_activity (
+d438 2
+a439 2
+    c_location        int unsigned    not null, -- > t_location
+    c_activity        int unsigned    not null, -- > t_activity
+d447 1
+a447 1
+create table t_member (
+d473 1
+a473 1
+create table t_member_group (
+d483 2
+a484 2
+    c_member          int unsigned    not null, -- > t_member
+    c_related_group   int unsigned    not null, -- > t_group
+d489 1
+a489 1
+create table t_member_note (
+d499 1
+a499 1
+    c_member          int unsigned    not null, -- > t_member
+d504 1
+a504 1
+create table t_membership (
+d514 2
+a515 2
+    c_member          int unsigned    not null, -- > t_member
+    c_type            int unsigned    not null, -- > t_membership_type
+d537 1
+a537 1
+create table t_membership_type (
+d567 1
+a567 1
+create table t_phone_number (
+d577 1
+a577 1
+    c_type            int unsigned    not null default 1, -- > t_phone_number_type
+d591 1
+a591 1
+create table t_phone_number_type (
+d607 1
+a607 1
+create table t_privilege (
+d637 1
+a637 1
+create table t_question (
+d647 1
+a647 1
+    c_adventure       int unsigned    not null, -- > t_adventure
+d654 1
+a654 1
+create table t_rating (
+d668 1
+a668 1
+create table t_report (
+d687 1
+a687 1
+create table t_status (
+d696 1
+a696 1
+    c_status          int unsigned    not null default 1, -- > t_status  :-)
+d704 1
+a704 1
+create table t_subscription (
+d714 1
+a714 1
+    c_list            int unsigned    not null, -- > t_email_list
+d720 1
+a720 1
+create table t_table (
+d725 1
+a725 1
+create table t_unixperm (
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

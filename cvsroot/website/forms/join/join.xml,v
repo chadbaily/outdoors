@@ -1,0 +1,561 @@
+head	1.8;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2005.02.07.18.47.49;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.09.20.04.53;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.08.22.36.34;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.30.01.15.19;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.25.11.45.28;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.24.03.18.27;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.16.18.14.39;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@friendlyurls
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+
+    <element
+        required="1"
+        name="firstName"
+        pre-processing="ucwords"
+        element-id="firstName" />
+    <element
+        required="1"
+        name="lastName"
+        pre-processing="ucwords"
+        element-id="lastName" />
+    <element
+        required="1"
+        data-type="email"
+        name="emailAddress"
+        element-id="emailAddress" />
+    <element
+        required="1"
+        name="password1"
+        element-id="password1"
+        />
+    <element
+        required="1"
+        name="password2"
+        compare-to-id="password1"
+        compare-type="equal"
+        element-id="password2"
+        />
+
+    <element
+        required="1"
+        name="street"
+        pre-processing="ucwords"
+        element-id="street"
+        />
+    <element
+        required="1"
+        name="city"
+        pre-processing="ucwords"
+        element-id="city"
+        />
+    <element
+        required="1"
+        name="state"
+        pre-processing="strtolower,ucfirst"
+        element-id="state"
+        />
+    <element
+        required="1"
+        data-type="number"
+        name="zip"
+        element-id="zip"
+        />
+
+    <element
+        data-type="number"
+        name="areaCode"
+        error-element="phone-error"
+        required="1"
+        element-id="areaCode"
+        />
+    <element
+        data-type="number"
+        name="exchange"
+        error-element="phone-error"
+        required="1"
+        element-id="exchange"
+        />
+    <element
+        data-type="number"
+        error-element="phone-error"
+        name="number"
+        element-id="number"
+        required="1"
+        />
+    <element
+        name="phoneNumberType"
+        error-element="phone-error"
+        element-id="phoneNumberType"
+        required="1" />
+
+    <element
+        name="chat"
+        element-id="chat" />
+    <element
+        name="chatType"
+        required-if="chat"
+        error-element="chat-error"
+        element-id="chatType" />
+
+    <element
+        required="1"
+        tag-name="input"
+        name="student" />
+    <element
+        required="1"
+        tag-name="input"
+        name="gender" />
+    <element
+        required="1"
+        data-type="date"
+        name="dob"
+        element-id="dob" />
+
+    <element
+        tag-name="input"
+        name="membership-plan"
+        required="1" />
+
+    <element
+        required="1"
+        error-element="agreement-error"
+        name="electronic-services-agreement"
+        element-id="electronic-services-agreement"
+        />
+    <element
+        required="1"
+        error-element="agreement-error"
+        name="email-policy"
+        element-id="email-policy"
+        />
+
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<fieldset>
+<legend>Name and Account Login Information</legend>
+
+<p>If you are already a member, or have been a member in the past, you probably
+do not need to join the club.  Instead, you just need to renew your membership.
+To renew your membership, <a href="members/main/member-home">log
+in</a> and follow the instructions.  If you are having trouble, please contact
+the officers and we will help you as soon as possible.</p>
+
+<table width="100%" >
+
+  <tr hidden="1" id="firstName-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>First Name</td>
+    <td><input type="text" name="firstName" id="firstName" /></td>
+  </tr>
+
+  <tr hidden="1" id="lastName-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td><input type="text" name="lastName" id="lastName" /></td>
+  </tr>
+
+  <tr hidden="1" id="gender-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td>
+      <input type="radio" name="gender" value="m" id="gender" />
+      <label for="gender">Male</label>
+      <input type="radio" name="gender" id="gender2" value="f" />
+      <label for="gender2">Female</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="student-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Are you a college student?</td>
+    <td>
+      <input type="radio" name="student" id="student1" value="1" />
+      <label for="student1">Yes</label>
+      <input type="radio" name="student" id="student0" value="0" />
+      <label for="student0">No</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="dob-error">
+    <td colspan="2" class="error">You must enter your birth date in the format
+    YYYY-MM-DD.</td>
+  </tr>
+  <tr>
+    <td>Date of Birth (YYYY-MM-DD)</td>
+    <td>
+      <input type="text" id="dob" name="dob" size="10" maxlength="10" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'dob', 'chooserSpan', 1950, 2010, 'Y-m-d');" />
+      <div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="emailAddress-error">
+    <td colspan="2" class="error">This field is required and must be a valid email address.</td>
+  </tr>
+  <tr>
+    <td>Email Address (your email address is your login name)</td>
+    <td><input type="text" name="emailAddress" id="emailAddress" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" class="notice">Passwords are not encrypted.  Do NOT use a
+    password that you use elsewhere, such as the password to your email account.
+    Create a NEW password.</td>
+  </tr>
+
+  <tr hidden="1" id="password2-comparison-error">
+    <td colspan="2" class="error">Your passwords do not match.</td>
+  </tr>
+  <tr hidden="1" id="password1-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+
+  <tr>
+    <td>Create a Club Password</td>
+    <td><input type="password" name="password1" id="password1" /></td>
+  </tr>
+  <tr hidden="1" id="password2-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+
+  <tr>
+    <td>Enter your password again for confirmation</td>
+    <td><input type="password" name="password2" id="password2" /></td>
+  </tr>
+
+</table>
+</fieldset>
+
+<fieldset>
+<legend>Contact Information</legend>
+
+<table width="100%" >
+
+  <tr>
+    <td colspan="3">Address</td>
+  </tr>
+
+  <tr hidden="1" id="street-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td width="10"> </td>
+    <td>Street</td>
+    <td><input maxlength="60" type="text" name="street" id="street" /></td>
+  </tr>
+
+  <tr hidden="1" id="city-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>City</td>
+    <td><input maxlength="60" type="text" name="city" id="city" /></td>
+  </tr>
+
+  <tr hidden="1" id="state-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>State</td>
+    <td><input type="text" name="state" id="state" maxlength="2" /></td>
+  </tr>
+
+  <tr hidden="1" id="zip-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required and should only contain numbers.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Zip Code</td>
+    <td><input maxlength="60" type="text" name="zip" id="zip" /></td>
+  </tr>
+
+  <tr hidden="1" id="phone-error">
+    <td colspan="3" class="error">Please enter only numbers in the boxes
+    below, and choose a phone number type.</td>
+  </tr>
+  <tr>
+    <td colspan="2">Phone Number (you can enter more numbers later)</td>
+    <td nowrap="true">
+        (<input type="text" maxlength="3" size="3" name="areaCode" id="areaCode" />)
+        <input type="text" maxlength="3" size="3" name="exchange" id="exchange" /> -
+        <input type="text" maxlength="4" size="4" name="number" id="number" />
+        <select name="phoneNumberType" id="phoneNumberType">
+            <option value="">Choose One</option>{PHONE_TYPES:}
+            <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:PHONE_TYPES}
+        </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="chat-error">
+    <td> </td>
+    <td colspan="2" class="error">If you enter a chat identity, you must also
+    choose the type.</td>
+  </tr>
+
+  <tr>
+    <td colspan="2">Instant Messenger/Chat (optional; you can enter more
+    identities later)</td>
+    <td nowrap="true">
+      <input maxlength="100" type="text" name="chat" id="chat" size="8" />
+      <select name="chatType" id="chatType">
+        <option value="">Choose One</option>{CHAT:}
+        <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:CHAT}
+      </select>
+    </td>
+  </tr>
+
+</table>
+
+</fieldset>
+
+<fieldset>
+<legend>Choose a Membership Plan</legend>
+
+<p class="error" hidden="1" id="membership-plan-error">This field is required.</p>
+
+<table width="100%" class="top ruled compact cleanHeaders">
+  <tr>
+    <th colspan="2">Membership Plan</th>
+    <th nowrap="true">Begin/Expire Dates</th>
+    <th>Cost</th>
+  </tr>{PLAN:}
+  <tr>
+    <td>
+      <input type="radio" name="membership-plan" id="membership-plan{C_UID}" value="{C_UID}" />
+    </td>
+    <td>
+      <label for="membership-plan{C_UID}"><b>{C_TITLE|htmlspecialchars}:</b>  {C_DESCRIPTION|htmlspecialchars}</label>
+    </td>
+    <td nowrap="true">{C_BEGIN_DATE|_date_format,'n/j/y'} to {C_EXPIRATION_DATE|_date_format,'n/j/y'}</td>
+    <td>${C_TOTAL_COST}</td>
+  </tr>{:PLAN}
+</table>
+
+</fieldset>
+
+<fieldset>
+<legend>Agreement</legend>
+<table>
+
+  <tr hidden="1" id="agreement-error">
+    <td colspan="2" class="error">In order to join {CLUB_NAME}, you must agree to all terms and conditions.</td>
+  </tr>
+
+  <tr>
+    <td>
+
+      Membership is subject to legal terms and conditions.  Please read the
+      Electronic Services Agreement and Email Policy by clicking the link below.
+      If you agree, indicate this by clicking the checkboxes below.
+
+      <br />
+      <a href="index.php?page=policies&amp;action=electronic-services-agreement"
+      target="_blank">Electronic Services Agreement</a>
+      <br />
+      <a href="index.php?page=policies&amp;action=email" target="_blank">Email Policy</a>
+
+      <br />
+      <input type="checkbox" name="electronic-services-agreement"
+      id="electronic-services-agreement" value="1"/>
+      <label for="electronic-services-agreement">I have read and agree to the
+      Electronic Services Agreement.</label>
+      <br />
+      <input type="checkbox" name="email-policy" id="email-policy" value="1"/>
+      <label for="email-policy">I have read and agree to the Email Policy.</label>
+
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right">
+    <input type="submit" value="Proceed to Next Step" />
+    </td>
+  </tr>
+</table>
+</fieldset>
+</form>
+@
+
+
+1.7
+log
+@limit input to what the database can accept
+@
+text
+@d142 1
+a142 1
+To renew your membership, <a href="members.php?page=main&amp;action=member-home">log
+@
+
+
+1.6
+log
+@styling
+@
+text
+@d257 1
+a257 1
+    <td><input type="text" name="street" id="street" /></td>
+d267 1
+a267 1
+    <td><input type="text" name="city" id="city" /></td>
+d287 1
+a287 1
+    <td><input type="text" name="zip" id="zip" /></td>
+d317 1
+a317 1
+      <input type="text" name="chat" id="chat" size="8" />
+@
+
+
+1.5
+log
+@date chooser stuff
+@
+text
+@d334 1
+a334 1
+<table width="100%" class="top ruled compact">
+@
+
+
+1.4
+log
+@added more neater stylinger to the membership plan section
+@
+text
+@d198 3
+@
+
+
+1.3
+log
+@membershiptypes are now better described
+@
+text
+@d331 1
+a331 1
+<table width="100%">
+d333 2
+a334 2
+    <th>Membership Plan</th>
+    <th>Begin/Expire Dates</th>
+d340 3
+a342 1
+      <label for="membership-plan{C_UID}">{C_TITLE|htmlspecialchars}  --  {C_DESCRIPTION|htmlspecialchars}</label>
+@
+
+
+1.2
+log
+@added instructions about renewal
+@
+text
+@d333 3
+a335 2
+    <th width="50%">Membership Plan</th>
+    <th width="25%">Cost</th>
+d340 1
+a340 1
+      <label for="membership-plan{C_UID}">{C_TITLE|htmlspecialchars}</label>
+d342 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d140 6
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

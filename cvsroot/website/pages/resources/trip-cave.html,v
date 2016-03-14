@@ -1,0 +1,513 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.01.25.15.53.34;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.25.15.44.12;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.12.14.03.58.09;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.12.13.03.37.26;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.12.13.03.20.15;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.12.13.03.19.18;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@add crosslinks, check grammar
+@
+text
+@<!-- title=Caving Trip Checklist -->
+<!-- navbar=Member's Area/Member Resources/Trip Checklists -->
+
+<h1>Caving Trip Checklist</h1>
+
+<p><b>Trip leaders should require caving trip attendees to read this checklist
+before going on the trip, to help them understand what good caving is
+like.</b></p>
+
+<p>Caving is fun, but it's dangerous and there is a set of rules for caving
+considerately, which may not be obvious.  The three main things to think about
+are 1) safety, 2) conservation and 3) consideration of others.  This trip
+checklist is not exhaustive, and after reading it you are <b>not</b> prepared to
+just go caving.  This checklist assumes you already know what you're doing to
+some extent.  Hopefully you have caved with good cavers and this is all old
+news.</p>
+
+<p>There are some links at the bottom of this page.</p>
+
+<h2>1. Safety</h2>
+
+<p>Caving safely is the most important thing.  Caving is dangerous, but if you
+know what you are doing, you should have no problem.  Like any other sport,
+however, there are a lot of gotchas &mdash; and even very experienced cavers
+get in trouble, because just like any other sport, the unexpected can and will
+happen.  To cave safely, you need to have proper equipment, use proper
+technique, and be prepared for emergencies.</p>
+
+<p>The most common problems in caves come from falling, being hit by falling
+objects, and hypothermia.  Hypothermic cavers are especially likely to fall or
+do something else dangerous, too, because hypothermia shuts down the brain.
+Cavers also become lost, get stuck, get somewhere and become too tired to exit,
+and run out of light.  The single biggest risk factor in caving is lack of
+experience.  Experienced cavers are those who have been on hundreds of trips,
+not dozens (if this seems like a high number, consider what it means to be an
+experienced skydiver).</p>
+
+<p>There are lots of dangerous sports, but caving is different because if
+something happens, it's a very serious situation.  Cave rescues are incredibly
+difficult, often take a long time, and are very expensive.  They also have
+far-reaching effects; a cave rescue impacts a lot of people for a long time.
+The same cannot be said of most other sports.  You, and many other people,
+have serious problems if something goes bad in a cave.</p>
+
+<h3>1.1 Equipment</h3>
+
+<p>You must have the following equipment:</p>
+
+<ol>
+
+<li>A helmet, which stays <b>on your head</b> at all times.</li>
+
+<li>A headlamp, which is helmet-mounted.  Handheld light is unacceptable.  Every
+caver must have a light; if anyone relies on another person's light, the risk of
+problems is much greater.  You should know how to operate and maintain your
+headlamp before you go into the cave, because you may have to operate it by
+feel, in absolute darkness, in a tight spot.  If it is battery-powered, you need
+to make sure the batteries are charged.  Carbide lamps are seldom used anymore;
+if you are caving with carbide, you probably know what you're doing and don't
+need this checklist.</p>
+
+<li>Spare parts (batteries and bulbs) for your headlamp.</li>
+
+<li>Two backup sources of light, which are <i>completely independent</i> from
+your main source (extra batteries are not a backup light).  Your total light
+should add up to 72 hours; and you should be able to complete the entire trip
+using any one of them.  Cyalume glow-sticks are <b>not</b> good sources of
+backup light, because they are not mountable, not bright enough and can
+accidentally get activated and go bad, and there is no way to test them.  LED
+lights are a good choice.</li>
+
+<li>A small backpack, or other way to keep your stuff dry and safe.  You must
+not hand-carry your gear, and it should be <b>secure</b> so you don't lose it
+while you are crawling through a passage no bigger than your hips, with your
+pack strapped to your ankle.  Keep in mind that caving is usually a very muddy
+sport with lots of crawling and other wear and tear on clothes.  Your pack will
+likely be unusable for anything but caving after you get out of the cave.</li>
+
+<li>Boots.  Not shoes.  Waterproof may be good if it's a wet cave.</li>
+
+<li>A first aid kit (to be carried by one of the leaders).</li>
+
+<li>A hypothermia kit, consisting of a 32-gallon or similar large plastic trash
+bag, a long-burning candle, and matches.  The candle and matches need to be kept
+in a waterproof container.  <b>Each caver</b> needs their own hypothermia kit.
+To use the kit, punch a hole in the bottom of the bag, sit the hypothermic
+person on his butt with knees raised, and put the candle under his knees.  Then
+put the bag over him with his head poking through the hole, so he is in a little
+trash-bag tent.  He'll warm up fast.</li>
+
+<li>Food and water.  Even if it's a short trip, you need these in case there is
+an emergency and you have to stay in the cave.  Your food should be "rugged" so
+it doesn't get crushed.  Bananas and peanut butter sandwiches don't survive
+well.</li>
+
+<li>A trash bag and change of clothes.  Most people will not let a caver into
+their car after they come out :-)  By the way, cave mud can easily destroy a
+washing machine, and even if it doesn't, it's liable to remain in the machine
+and destroy the clothes next time someone washes.  Use a hose instead.</li>
+
+<li>Container in case nature calls (leaving human waste in caves is unacceptable).</li>
+
+<li>Dress to get muddy, wet, and cold, and yet be working hard (think hot and
+sweaty).  This means to avoid cotton and dress in layers.  Cotton kills!  Caves
+are just the environment to cause hypothermia, and cotton is the worst fabric.
+Coveralls are good for the outside layer.  Jeans will get destroyed.</li>
+
+<li>Highly recommended: Gloves and knee pads.  They keep you warmer and prevent
+injuries, not only to your knees, but they help you move better.  You are
+risking injury if you are mincing around protecting your knees and hands,
+because you're not paying attention to the rest of your body.</li>
+
+</ol>
+
+<h3>1.2 Technique</h3>
+
+<p>The following safety rules apply:</p>
+
+<ol>
+
+<li>No hand-held gear.  Keep your hands free at all times.</li>
+
+<li>Keep your helmet on and the strap buckled.</li>
+
+<li>You are responsible for the person in front of you and the person behind
+you.  This way everyone but the first and last person has two people watching
+and helping.  Once you have chosen the order of people in the line, don't change
+it unless the group stops and decides to re-order itself.  Everyone needs to be
+able to count on knowing who is where at all times.</li>
+
+<li>No fewer than four people, ever.  If someone gets hurt, at least one person
+needs to stay with the injured person, and you need at least two more people so
+there isn't one person leaving to get help alone.</li>
+
+<li>No more than ten people.  Ten people is really pushing it and should only be
+attempted in an easy cave.  Ten people in a cave is a lot different from ten
+people on a trail; in a cave, you usually cannot communicate with anyone but the
+person in front of you and the person behind you.  Tough spots become real
+problems as the trip size grows.</li>
+
+<li>Take it easy!  Caving is more tiring than you think.  Exhaustion is a real
+safety problem.</li>
+
+<li>There needs to be at least one leader, and if there are more than four on
+the trip, there should be at least two leaders.  The leader(s) need to be
+familiar with the cave, and accustomed to navigating caves without maps or
+markers.  Markers are a bad idea, as conscientious cavers do not leave anything
+in the cave, and someone else may remove your trail of breadcrumbs marking your
+way out.</li>
+
+<li>The leaders need to be familiar with good caving practices.  Familiar means
+familiar enough to teach others to be good cavers.  If you are leading
+beginners, pause outside the cave for a half-hour or so and teach them what to
+expect and how to act.  Then pay close attention to them, as caving is a skill
+that takes practice, and they will do things wrong in the beginning.</li>
+
+<li>The slowest person sets the pace.  A cave is no place to be macho.  Don't
+push people, and don't take risks.  Never let your group get separated.  It is
+very easy to get separated, and even an experienced caver can get lost in an
+easy cave.  Remember, you are responsible for the person in front, and the
+person behind; stay close to both of them, and tell the person in front to wait
+if need be.  Don't feel bad about doing this!  It's your duty.</li>
+
+<li>Never cave under the influence of anything.  If you are the leader, don't
+allow an impaired person into the cave with you (but don't leave them alone
+outside, either).  It's better to make them sit the trip out than to put your
+own neck on the line.  You should also know if there are any medical problems,
+including asthma (lots of people somehow neglect to mention asthma, so ask
+explicitly).</li>
+
+<li>If you cave for a while, you will certainly see someone become hypothermic
+(it might be yourself).  Everyone must be on guard.  Don't wait to discover it
+after it's happened; while you wait, someone could get hurt.  If you are leading
+the trip, explain about hypothermia before you enter the cave, and make sure
+everyone knows the signs and knows to keep an eye on their partners.  Caves have
+just the right combination of environmental factors, and caving is just the
+right kind of physical activity, to cause hypothermia.  Dehydration and
+exhaustion increase the risk.</li>
+
+</ol>
+
+<h3>1.3 Emergency Preparation</h3>
+
+<ol>
+
+<li>Always decide ahead of time what cave you are visiting, and make sure your
+trip description on the website is accurate as far as location and return time.
+Always let someone know who is <b>actually going</b> on the trip (not just who
+is signed up).  Don't leave it open-ended and then decide after you leave.  This
+isn't like hiking, where you can get together and say "where do you want to go?"
+If this is not an official trip, take the same precautions.  Make sure someone
+knows where you're going, when you'll return, and what to do if you're late (how
+late till we call help?  <a
+href="http://caves.org/committee/er-ncrc/emergency_contact.html">Who should we call?</a>).
+When you get to the cave, leave the same information (all of it!) on your
+dashboard, visible for all the world to see.  This is vital if a rescue is
+called.  If you think you're going to one cave, but go to another, you're doing
+the rescuers no favors.  They need to know who's where before they can
+help.</li>
+
+<li>If something goes wrong, keep cool.</li>
+
+<li>If you're lost, don't worry; stay where you are.  You notified someone about
+your trip, told them when you'd be back, and help will be on the way after that
+time has passed.  Keep warm, conserve light, and enjoy the chance to meditate.</li>
+
+<li>If someone gets hurt, make sure you don't get hurt trying to help.  That
+makes things much, much worse.  Take the normal precautions about shock etc;
+take a set of vitals, and write them down along with the time you took them
+(monitor the vitals as needed).  Send two competent people out to get help
+(don't send inexperienced cavers; the extra adrenaline, combined with
+inexperience or lack of familiarity with the cave, is a disaster).  Send car
+keys, info on who to call, a written description of the problem, a list of what
+you have and what you need from the rescuers, and a set of vitals with the
+people leaving.  Then stay warm and wait for help.</li>
+
+<li>If you run out of light, don't try to go anywhere.  You'll only hurt
+yourself.  Wait for help and be thankful you let someone know where you are.</li>
+
+</ol>
+
+<h2>2. Conservation</h2>
+
+<p>Caves are very special and sensitive ecosystems, unlike any other places in
+the world, and human disruption is permanent and very undesirable.  You should
+follow the rule "take nothing but photos, leave nothing but footprints, and kill
+nothing but time."  Responsible cavers are respectful and want to avoid any
+impact in the cave.  There is always some impact; you increase the
+CO<sub>2</sub> level in the air, introduce extra energy, light and warmth, and
+so on.  But you can avoid major impact on the cave by following these rules:</p>
+
+<ol>
+
+<li>Don't pollute or leave anything in the cave, period.  The next cavers should
+not know you were there.</li>
+
+<li>If you see anything left by the last cavers, take it out.  It's the right
+thing to do.  This is why you don't navigate with markers.</li>
+
+<li>Caves provide the only habitat for many species of bats, and many of these
+species are endangered.  During the winter they hibernate, and during the summer
+they raise young.  They should be respected at all times.  Bats are generally
+safer than two-legged animals, and do not generally carry rabies or other
+diseases, but you should never disturb a bat.  Specifically,
+
+<ul>
+
+<li><b>Caving is a <i>silent</i> sport</b>!  If you disturb a bat by talking,
+especially while it is hibernating, you may have just killed it.  Bats slow
+their metabolism when they hibernate.  If you wake it, just once, its metabolism
+increases and it will probably not have enough energy to survive the winter.  <b>If
+you need to communicate, whisper</b>.  Even during the summer, and even in a
+cave that you don't think is a hibernaculum &mdash; it is very important to
+develop the habit of caving in silence.  If you encounter other cavers who are
+being noisy, try to explain these rules in a nice way.  Many cavers don't know
+about bats, and how will they ever know if someone doesn't tell them?  If you
+see bats, don't even whisper near them; wait till you are away from them to
+communicate.</li>
+
+<li>Don't shine your light on a bat.  If you see bats, point them out to others,
+stay on the other side of the passage if you can, and try to avoid lighting
+them.  Don't take photos, because a flash will probably wake a bat.</li>
+
+</ul>
+
+</li>
+
+<li>Never touch formations.  They grow by minerals being deposited
+from the water that drips off them.  This process is unbelievably slow, taking
+tens of thousands of years.  If you touch a formation, the oils on your skin
+will prevent any further growth, not to mention possibly visibly marring
+it.</li>
+
+<li>This is almost too obvious, but if you've been caving and seen broken
+formations you understand why it needs to be said: don't damage formations.
+They are not souvenirs.</li>
+
+<li>Don't remove anything from caves, other than obvious trash like candy
+wrappers; even sticks or bones are there for a reason.  Many caves have a long
+human history, and old torches from salt-peter mining, old ladders, bones, etc
+are legally protected.  Aside from the stupidity of removing anything from a
+cave, if someone turns you in, you're in legal trouble.  The NSS also has
+rewards out for catching anyone vandalizing a cave.</li>
+
+<li>If you see anyone being irresponsible, talk to them or turn them in, as
+appropriate.  All responsible cavers do.  You're not being a jerk, you're
+earning good karma.</li>
+
+</ol>
+
+<h2>3. Consideration of Others</h2>
+
+<p>Caves are not like rivers, trails, or cliffs that are owned by the public and
+open to the public.  Cavers are a community, and caves are usually privately
+owned; the poor judgement of one group of cavers can have a bad effect on the
+entire community.  Every caver knows of caves that have been closed because of
+some debacle or other.  You should not overlook the possible trouble when a cave
+rescue is needed, either; many cave owners have closed caves after a rescue.</p>
+
+<p>You should obtain permission from the cave owner before going or planning to
+go.  Again, most caves are privately owned.  Just because other cavers don't
+ask, doesn't mean you shouldn't.  Many landowners don't want throngs of cavers,
+but have no time or patience to fight for control of their cave every day (on
+the other hand, some landowners <b>will have you arrested</b> with no chance
+for an explanation or &ldquo;I didn't know this was a private cave!&rdquo;).
+Just because they don't fight with everyone doesn't mean they are happy about
+it.  They often want you to ask permission and sign a liability waiver before
+entering.  They also have special requests, such as "please close the gate, even
+if some other idiot went up there without my permission and left it open." Leave
+everything as you find it (closed gates remain closed), don't disturb crops or
+animals, and don't climb fences (fence is expensive, especially in steep areas
+where caves are found, and climbing destroys it).  Be as considerate of the
+landowner as you can.  Usually you will know what the landowner wants if you
+have talked to him or her.</p>
+
+<p>If the cave is on government property, you may need permission in advance
+from the appropriate agency.  If you think a cave needs no permission to enter,
+check first and make sure.  Don't take someone's word for it unless you really
+know they're on top of things.</p>
+
+<p>Most caves are mapped, but getting a map is a privilege you earn.  You can't
+just go buy a map in most cases.  This is to protect the cave, and keep the
+caving community from being overrun with people who might take advantage of it,
+without putting in the time to demonstrate a serious commitment to safety,
+conservation and consideration.</p>
+
+<p>Finally, understand that the caving community has many devoted members who
+are sensitive to things you don't think are a big deal.  If you run into one of
+these people, try to learn as much as you can from them, and respect them; they
+can teach you things the average caver can't.</p>
+
+<h2>4. Links</h2>
+
+<ul>
+
+<li><a href="http://www.caves.org">The National Speleological Society</a> (NSS)</li>
+
+<li><a href="http://www.caves.org/safety/">More on safety,</a> and 
+    <a href="http://www.caves.org/brochure/res-cave.pdf">a brochure</a></li>
+
+<li><a href="http://www.caves.org/conservation">NSS Conservation homepage</a></li>
+
+</ul>
+@
+
+
+1.5
+log
+@add crosslinks, check grammar
+@
+text
+@d276 12
+a287 8
+They are not souvenirs.  In fact, other than obvious trash like candy wrappers,
+don't remove anything from caves; even sticks or bones are there for a reason.
+Many caves have a long history, and old torches from salt-peter mining, old
+ladders, bones, etc are legally protected.  Aside from the stupidity of removing
+anything from a cave, if someone turns you in, you're in legal trouble.  The NSS
+also has rewards out for catching anyone vandalizing a cave.  If you see anyone
+being irresponsible, talk to them or turn them in, as appropriate.  All
+responsible cavers do.  You're not being a jerk, you're earning good karma.</li>
+d303 5
+a307 3
+but have no time or patience to fight for control of their cave every day.  Just
+because they don't fight with everyone doesn't mean they are happy about it.
+They often want you to ask permission and sign a liability waiver before
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d42 2
+a43 2
+The same cannot be said of most other sports.  You have serious problems if
+something goes bad in a cave.</p>
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d6 4
+d24 4
+a27 4
+however, there are a lot of gotchas &mdash; and even very experienced cavers get
+in trouble, because just like any other sport, the unexpected can happen.  To
+make sure your caving trip is safe, you need to have proper equipment, use
+proper technique, and be properly prepared for emergencies.</p>
+d67 4
+a70 2
+using any one of them.  Cyalume glow-sticks are usually good sources of backup
+light.  LED lights are another good choice.</li>
+d108 4
+a111 1
+<li>Optional: Gloves, knee pads</li>
+d144 6
+a149 6
+<li>There needs to be at least one (if there are more than four on the trip,
+there should be at least two) leader.  The leader(s) need to be familiar
+with the cave, and accustomed to navigating caves without maps or
+markers.  Markers are a bad idea, as conscientious cavers do not leave
+anything in the cave, and someone else may remove your trail of
+breadcrumbs marking your way out.</li>
+d151 1
+a151 1
+<p>The leaders need to be familiar with good caving practices.  Familiar means
+@
+
+
+1.2
+log
+@one last sentence
+@
+text
+@d85 4
+a88 5
+</ol>
+
+<p>You will probably find the following useful:</p>
+
+<ol>
+d95 1
+a95 2
+<li>Gloves, knee pads, water, food (non-crushable!  Bananas don't survive well),
+container in case nature calls (leaving human waste in caves is unacceptable).</li>
+d102 2
+d136 11
+a146 7
+there should be at least two) people familiar with good caving practices.
+Familiar means familiar enough to teach others to be good cavers.</li>
+
+<li>The leader(s) need to be familiar with the cave, and accustomed to
+navigating caves without maps or markers.  Markers are a bad idea, as
+conscientious cavers do not leave anything in the cave, and someone else may
+remove your trail of breadcrumbs marking your way out.</li>
+d303 8
+a310 1
+check first and make sure.  Don't take just anyone's word for it.</p>
+d313 3
+a315 8
+are sensitive to things you don't think are a big deal.  If you dedicated your
+life to it, you'd come around to their viewpoint.  If you run into one of these
+people, the best thing to do is listen with a lot of respect and try to learn as
+much as you can.  If you are a beginning caver, you have no idea the depth to
+which many people take caving.  It's far more than a sport; they do it for a
+much greater cause than enjoyment.  They are concerned about caves in the same
+way you might be concerned about your family's welfare.  Many of these people
+make it their life's work to educate, preserve, and protect.</p>
+@
+
+
+1.1
+log
+@added caving guidelines
+@
+text
+@d11 4
+a14 1
+some extent.  There are some links at the bottom of this page.</p>
+@
+

@@ -1,0 +1,13 @@
+#
+# Filter all incoming email through spamassassin to add in headers
+#
+ :0fw
+| /local/bin/spamc
+
+#
+# Delete the obvious spam
+#
+:0 : spam.lock
+* ^X-Spam-Status: Yes
+#* ^X-Spam-Level: *****
+/dev/null

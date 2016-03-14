@@ -1,0 +1,268 @@
+head	1.13;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.13
+date	2004.08.16.13.34.23;	author at;	state dead;
+branches;
+next	1.12;
+
+1.12
+date	2004.08.16.13.34.06;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.08.06.18.49.26;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.08.06.17.05.15;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.08.03.13.40.39;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.08.03.12.08.18;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.08.02.01.10.11;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.07.30.02.39.20;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.07.30.02.16.18;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.07.30.02.13.34;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.30.01.21.28;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.28.13.23.30;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.28.13.19.52;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@moved to bug tracker
+@
+text
+@@
+
+
+1.12
+log
+@moved to bug tracker
+@
+text
+@@
+
+
+1.11
+log
+@centralized the privilege-checking code for tables, just like with objects
+@
+text
+@a0 40
+Make a nice way for the officers to manage activating memberships
+
+Make the pages/common/include-file.php file know when an action is on a table,
+and do a nice abort with a pretty error message if it's not permissible.
+
+De-dupe the join pages.  Peaple shouldn't be allowed have two memberships.
+
+Add a membership-about-to-expire notice to the member home page for the 30 days
+prior to the membership expiring.  Link it to the renew page.
+
+Fix the calendar.  The week and day views aren't implemented yet.
+
+Add a "printable" option.
+
+Don't let members post more than one comment on an adventure.  Display the
+number of comments and average rating somehow.
+
+Set the script to keep going if the user hits stop.  shutdown or abort or
+something...
+
+Remove the abortPage method of Utility.
+
+Make controller calls static.
+
+Rewrite the date-picker.
+
+Add polls.
+
+Allow members to see who went on past trips.
+
+Link to the old site's gallery in a new window.
+
+Expand the magical file-reading scheme for the "about" section to allow
+unlimited depth of nesting.
+
+Expand the tabbed-box stuff to allow unlimited depth of nesting.
+
+Finish the constitution.
+
+Fix the data-integrity-checking scripts under the admin section.
+@
+
+
+1.10
+log
+@*** empty log message ***
+@
+text
+@a20 2
+Remove the notAllowedOnTable method of the security controller.
+
+@
+
+
+1.9
+log
+@*** empty log message ***
+@
+text
+@a24 2
+Add proper privileges upon importing members.
+
+a40 4
+
+Add member policies under the "Resources" tab.
+
+Add how-to and trip checklist information under the "Resources" tab.
+@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@d3 3
+@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@a29 4
+Finish the profile section.  Members need to be able to set their privacy
+preferences (set the private bit on themselves, their addresses, phone numbers
+and chat identities).
+
+a32 3
+
+Add error messages when a password is wrong, instead of just re-presenting the
+password dialog.
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d12 2
+a13 2
+Don't let members post more than one comment on an adventure.  
+Display the number of comments and average rating somehow.
+d18 6
+d30 3
+a32 2
+Finish the profile section.  Members need to be able to set their privacy preferences
+(set the private bit on themselves, their addresses, phone numbers and chat identities).
+d38 2
+a39 1
+Add error messages when a password is wrong, instead of just re-presenting the password dialog.
+d41 2
+a42 1
+Expand the magical file-reading scheme for the "about" section to allow unlimited depth of nesting.
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d1 2
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@a40 2
+Alter the data-import sql script to ignore deleted items.
+
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d3 3
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@a25 2
+Create a non-public member's information tab that only shows up when you are logged in.  "Resources" should be the tab name.
+
+@
+
+
+1.1
+log
+@init
+@
+text
+@d3 2
+d42 1
+a42 1
+Fix the data-integrity-checking scripts under the admin section.@
+

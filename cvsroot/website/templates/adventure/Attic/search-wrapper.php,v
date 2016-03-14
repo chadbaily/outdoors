@@ -1,0 +1,111 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.08.23.11.21;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.01.14.38.58;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@<h1>Search Adventures</h1>
+
+<p>Use this form to search for adventures.  You can narrow the search by
+filling in more fields.  You need to fill in at least one field, but it doesn't
+matter which.</p>
+
+{FORM}
+
+{SOME:}
+<hr>
+<h1>Results</h1>
+<p>The following adventures matched your search terms:</p>
+<table class="ruled compact cleanHeaders">
+ <tr><th>Title</th><th>Location</th><th>Date</th></tr>
+ {ROW:}
+ <tr>
+   <td><a href="members.php?page=adventure&action={ACTION_READ}&object={C_UID}">{C_TITLE}</a></td>
+   <td><a
+   href="members.php?page=location&object={C_DESTINATION}&action={ACTION_READ}">{DESTINATION_TITLE}</a></td>
+   <td nowrap>{C_START_DATE|_date_format,'M j, Y'}</td>
+ </tr>
+ {:ROW}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">Sorry, no adventures found.</p>
+{:NONE}
+@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@@
+
+
+1.2
+log
+@table styling
+@
+text
+@d13 1
+a13 1
+<table class="ruled compact">
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d13 1
+a13 1
+<table>
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

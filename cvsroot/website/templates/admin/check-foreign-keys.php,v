@@ -1,0 +1,63 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.21.21.15.41;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>Check Foreign Keys</h1>
+
+<p>This page checks that values in the database correctly refer to a record in
+their parent tables.  If you see any results below, that row in the named table
+has a value that has no corresponding row in the parent table.  This should be
+fixed as soon as possible.</p>
+
+<hr />
+
+{NONE:}
+<p class='notice'>There were no results.</p>
+{:NONE}
+
+{SOME:}
+<p class='notice'>There were {NUMROWS} bad rows in {NUMTABLES} tables.</p>
+
+<form action="members/admin/delete-object" method="POST"
+    onSubmit="return confirm('Are you sure you want to DELETE the selected objects?\r\n\r\nYou should only do this if you KNOW that this is the right solution to the problem.')">
+{RESULTS}
+<p align="right"><input type="submit" value="Delete Selected Objects"></p>
+</form>
+
+{:SOME}
+@
+
+
+1.1
+log
+@foreign keys are databased now
+@
+text
+@d17 1
+a17 1
+<form action="members.php?page=admin&action=delete-object" method="POST"
+@
+

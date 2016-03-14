@@ -1,0 +1,287 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.18.14.13.43;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@not needed anymore
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: auto-cancel-stale-memberships.php,v 1.3 2004/08/25 11:43:32 at Exp $
+ *
+ * This script checks for members that signed up, but never paid.  Their
+ * membership is therefore sitting there waiting for them to pay, and if they
+ * try to log in and join, it won't let them because it wants them to pay for
+ * the old membership instead.  So we want to auto-expire these old memberships
+ * and let people renew with a new membership instead.
+ *
+ * This script is accessible from a web browser, because there's not a good way
+ * to run Perl or PHP scripts from a Cron job on the SCS server.  I'd love to
+ * use Python, but guess what... version 1.5 from the year 1.5 BC.  So my Cron
+ * job is just going to use wget to invoke this page.
+ */
+
+include_once("MembershipType.php");
+include_once("Account.php");
+include_once("Transaction.php");
+include_once("Email.php");
+
+# Check that the user has correct permissions
+if (!$obj['user']->isInGroup('root')
+        and !$obj['user']->isInGroup('treasurer')) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+# Log that the page was accessed
+$time = date("Y-m-d H:i:s");
+$obj['user']id = $_COOKIE['user'];
+$login = $_COOKIE['loggedin'];
+$logMessage = "
+[$time] This page was accessed.
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User:          $_SERVER[PHP_AUTH_USER]
+";
+error_log($logMessage, 3, $error_log);
+
+# Get a list of all membership types
+$mt =& new MembershipType();
+$membershipTypes = $mt->selectAll();
+
+# Get a list of members that have inactive memberships whose end_date date has
+# passed 
+$members = array();
+$result = $obj['conn']->query("select me.*
+    from [_]member as me
+    inner join [_]membership as ms on ms.c_member = me.c_uid
+    inner join [_]membership_type as mt on mt.c_uid = ms.c_type
+    where ms.c_status = {$cfg['status_id']['inactive']}
+    and mt.c_end_date <= current_date;");
+while ($row = $result->fetchRow()) {
+    $member =& new Member();
+    $member->initFromRow($row);
+    $members[$row['c_uid']] = $member;
+}
+
+if (count($members)) {
+
+    # Log the members that are in the list to cancel
+    $memberUIDs = implode(",", array_keys($members));
+    $time = date("Y-m-d H:i:s");
+    $logMessage = "
+[$time] The following members have stale memberships to cancel:
+($memberUIDs)
+URL:           $_SERVER[REQUEST_URI]
+User-Agent:    $_SERVER[HTTP_USER_AGENT]
+User:          $_SERVER[PHP_AUTH_USER]
+";
+    error_log($logMessage, 3, $error_log);
+
+    # Get a list of account IDs and balances for those members that need to be
+    # cancelled.
+    $accounts = array();
+    $result = $obj['conn']->query("select ac.* from [_]account as ac
+        inner join [_]member as me on me.c_account = ac.c_uid
+        inner join [_]membership as ms on ms.c_member = me.c_uid
+        inner join [_]membership_type as mt on mt.c_uid = ms.c_type
+        where ms.c_status = {$cfg['status_id']['inactive']}
+        and mt.c_end_date <= current_date;");
+    while ($row = $result->fetchRow()) {
+        $account =& new Account();
+        $account->initFromRow($row);
+        $accounts[$row['c_uid']] = $account;
+    }
+
+    # Get all memberships that are inactive for each member; build a
+    # two-dimensional array out of them.
+
+    $memberships = array();
+    $result = $obj['conn']->query("select ms.* from [_]account as ac
+        inner join [_]member as me on me.c_account = ac.c_uid
+        inner join [_]membership as ms on ms.c_member = me.c_uid
+        inner join [_]membership_type as mt on mt.c_uid = ms.c_type
+        where ms.c_status = {$cfg['status_id']['inactive']}
+        and mt.c_end_date <= current_date;");
+    while ($row = $result->fetchRow()) {
+        $membership =& new Membership();
+        $membership->initFromRow($row);
+        $memberships[$row['c_member']][$row['c_uid']] = $membership;
+    }
+
+    # For each member, adjust the member's account balance by the amount of the membership dues
+    # (this should remove the debt for the dues) for each stale membership.
+    # There should only be one stale membership per member, but you never know.
+    # If by some chance there's more than one, it'll get taken care of tomorrow.
+    foreach ($members as $key => $member) {
+        $account = $accounts[$member->getAccount()];
+        $membershipsTemp = $memberships[$member->getUID()];
+
+        foreach ($membershipsTemp as $key => $membership) {
+
+            $membershipType = $membershipTypes[$membership->getMembershipType()];
+
+            # Adjust the account
+            $trans =& new Transaction();
+            $trans->setToAccount($account->getUID());
+            $trans->setFromAccount($cfg['root_account']);
+            $trans->setAmount($membershipType->getFee());
+            $trans->setRelatesTo($membership->getUID());
+            $trans->setRelatedUID($membership->getTable());
+            $trans->setComment("Automatic adjustment: cancelling stale"
+                . " membership '" . $membershipType->getTitle() .  "'");
+            $trans->insert($member->getUID());
+
+            # Update the membership to 'cancelled' status
+            $membership->setStatus($cfg['status_id']['cancelled']);
+            $membership->update();
+        }
+    }
+
+
+    # Send an email to the members, saying 'your account was automatically
+    # cancelled.'
+    $mail =& new Email($email_path);
+    $mail->loadTemplate("auto-cancel-notice");
+    $mail->loadFooter("footer");
+    $mail->setFrom($cfg['club_admin_email']);
+    $mail->addTo($cfg['club_admin_email']);
+    $mail->setSubject("Automatic cancellation notice");
+    foreach ($members as $key => $member) {
+        $mail->addBCC($member->getEmail());
+    }
+    $mail->send();
+
+    $contents = "<h1>Success</h1>"
+        . "<p>All members were successfully cancelled.</p>";
+
+}
+else {
+    $contents = "<h1>No Members To Cancel</h1>"
+        . "<p>There are no members with stale memberships.</p>";
+}
+
+$tabbedBox->setContents($contents);
+
+?>
+@
+
+
+1.3
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-cancel-stale-memberships.php,v 1.2 2004/07/20 14:21:23 at Exp $
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-cancel-stale-memberships.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d40 2
+a41 2
+if (!$obj['security']->isInGroup($obj['user'], $cfg['group_id']['root'])
+        and !$obj['security']->isInGroup($obj['user'], $cfg['group_id']['treasurer'])) {
+d43 2
+a44 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: auto-cancel-stale-memberships.php,v 1.3 2004/05/30 01:42:05 baron Exp $
+d66 3
+a68 3
+    from t_member as me
+    inner join t_membership as ms on ms.c_member = me.c_uid
+    inner join t_membership_type as mt on mt.c_uid = ms.c_type
+d94 4
+a97 4
+    $result = $obj['conn']->query("select ac.* from t_account as ac
+        inner join t_member as me on me.c_account = ac.c_uid
+        inner join t_membership as ms on ms.c_member = me.c_uid
+        inner join t_membership_type as mt on mt.c_uid = ms.c_type
+d110 4
+a113 4
+    $result = $obj['conn']->query("select ms.* from t_account as ac
+        inner join t_member as me on me.c_account = ac.c_uid
+        inner join t_membership as ms on ms.c_member = me.c_uid
+        inner join t_membership_type as mt on mt.c_uid = ms.c_type
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

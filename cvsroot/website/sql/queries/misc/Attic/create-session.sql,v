@@ -1,0 +1,41 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.11.08.18.29.41;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.07.02.49.28;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@move session queries to sql/queries/session
+@
+text
+@insert into [_]session (c_created_date, c_member, c_ip)
+select now(), me.c_uid, {ip,char,15}
+from [_]member as me
+where me.c_email = {user,char,60}
+@
+
+
+1.1
+log
+@add session-tracking to website
+@
+text
+@@
+

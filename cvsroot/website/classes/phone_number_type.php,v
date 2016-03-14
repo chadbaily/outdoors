@@ -1,0 +1,103 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2004.10.21.20.54.45;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: phone_number_type.php,v 1.2 2004/07/20 14:11:06 at Exp $
+ */
+
+include_once("database_object.php");
+
+class phone_number_type extends database_object {
+    // {{{declarations
+    var $c_title = null;
+    var $c_description = null;
+    var $c_abbreviation = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function phone_number_type() {
+        $this->database_object();
+    } //}}}
+
+    /* {{{getTitle
+     *
+     */
+    function getTitle() {
+        return $this->c_title;
+    } //}}}
+
+    /* {{{setTitle
+     *
+     */
+    function setTitle($value) {
+        $this->c_title = $value;
+    } //}}}
+
+    /* {{{getDescription
+     *
+     */
+    function getDescription() {
+        return $this->c_description;
+    } //}}}
+
+    /* {{{setDescription
+     *
+     */
+    function setDescription($value) {
+        $this->c_description = $value;
+    } //}}}
+
+    /** {{{getAbbreviation
+     */
+    function getAbbreviation() {
+        return $this->c_abbreviation;
+    } //}}}
+
+    /** {{{getAbbreviation
+     */
+    function setAbbreviation($value) {
+        $this->c_abbreviation = $value;
+    } //}}}
+
+}
+?>
+@

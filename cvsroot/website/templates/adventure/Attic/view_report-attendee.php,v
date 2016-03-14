@@ -1,0 +1,72 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.09.29.01.56.52;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.21;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@merged into view_report.php
+@
+text
+@<p>The following members are attending this adventure.  Waitlisted members are not shown.</p>
+
+{SOME:}
+<table class="ruled collapsed compact elbowroom">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Gender</th>
+    <th>Birthdate</th>
+    <th>Absences</th>
+  </tr>
+{ROW:}
+  <tr>
+    <td>
+        <a href="members.php?page=attendee&object={C_ATTENDEE}&action={ACTION_READ}"
+            title="View details for this attendee record">&raquo;</a>
+        <a href="members.php?page=member&object={T_MEMBER}&action={ACTION_READ}"
+            title="View details for this member">{C_FULL_NAME}</a>
+    </td>
+    <td><a href="mailto:{C_EMAIL}">{C_EMAIL}</a></td>
+    <td nowrap>{NUMBERS}</td>
+    <td>{C_GENDER}</td>
+    <td>{C_BIRTH_DATE|_date_format,'M j, y'}</td>
+    <td>{C_ABSENCES}</td>
+  </tr>
+{:ROW}
+</table>
+
+<p>This adventure has a total of {NUM_ATTENDEES} attendees.</p>
+{:SOME}
+
+{NONE:}
+<p class="notice">There are no attendees for this adventure.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@@
+

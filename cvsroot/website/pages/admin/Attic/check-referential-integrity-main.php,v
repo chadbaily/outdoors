@@ -1,0 +1,299 @@
+head	1.7;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2004.10.23.12.47.35;	author at;	state dead;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.20.20.38.39;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.09.09.23.37.37;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.25.11.43.32;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.07.26.02.12.31;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.20.14.21.23;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@moved to check-foreign-keys.php
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: check-referential-integrity-main.php,v 1.6 2004/09/20 20:38:39 at Exp $
+ *
+ * This page checks referential integrity for "foreign keys" of all database
+ * objects.  Foreign keys that all database objects share in common, such as
+ * owner and creator, are in a different file.
+ */
+
+# Check permissions.  Only members of the "root" groups are allowed to access
+# this page.
+if (!$obj['user']->isRootUser()) {
+    # The user is not allowed to access this page.
+    include_once("pages/common/not-permitted.php");
+    return false;
+}
+
+$wrapper = file_get_contents("templates/admin/check-integrity.php");
+$contents = "";
+
+# A model query, which we will use to build actual queries later.  This query
+# ignores foreign key relations in which the foreign key is null, such as a
+# [_]member for which there is no [_]school record (the last line of the query
+# ignores that NULL [_]member.c_school value)
+$modelQuery =
+    "select child.c_uid, child.{FOREIGN}
+    from {CHILD} as child
+    left outer join {PARENT} as parent on child.{FOREIGN} = parent.c_uid
+    where parent.c_uid is null
+    and child.{FOREIGN} is not null";
+
+# Build an array of all the different ways we want to query the database.  Each
+# element of the array is an array with three values: CHILD, which is the table
+# we want to check, FOREIGN, which is the column that points to a c_uid in the
+# parent table, and PARENT, which is the name of the parent table.
+#
+# Basically, what we are doing here is defining all the foreign key relations
+# in the database.
+$queryParams = array(
+    array("[_]absence", "c_attendee", "[_]attendee"),
+    array("[_]adventure", "c_departure", "[_]location"),
+    array("[_]adventure", "c_destination", "[_]location"),
+    array("[_]adventure_comment", "c_adventure", "[_]adventure"),
+    array("[_]adventure_comment", "c_rating", "[_]rating"),
+    array("[_]adventure_activity", "c_adventure", "[_]adventure"),
+    array("[_]adventure_activity", "c_activity", "[_]activity"),
+    array("[_]answer", "c_question", "[_]question"),
+    array("[_]answer", "c_member", "[_]member"),
+    array("[_]attendee", "c_adventure", "[_]adventure"),
+    array("[_]attendee", "c_member", "[_]member"),
+    array("[_]chat", "c_type", "[_]chat_type"),
+    array("[_]interest", "c_member", "[_]member"),
+    array("[_]interest", "c_activity", "[_]activity"),
+    array("[_]member_group", "c_member", "[_]member"),
+    array("[_]member_group", "c_related_group", "[_]group"),
+    array("[_]member_note", "c_member", "[_]member"),
+    array("[_]membership", "c_member", "[_]member"),
+    array("[_]membership", "c_type", "[_]membership_type"),
+    array("[_]phone_number", "c_type", "[_]phone_number_type"),
+    array("[_]question", "c_adventure", "[_]adventure"),
+    array("[_]location_activity", "c_location", "[_]location"),
+    array("[_]location_activity", "c_activity", "[_]activity"),
+    );
+
+# Query the database and format each result as a list
+$numBadTables = 0;
+$numBadRows = 0;
+foreach ($queryParams as $key => $query) {
+    $result =& $obj['conn']->query(Template::replace($modelQuery, array(
+        "CHILD" => $query[0],
+        "FOREIGN" => $query[1],
+        "PARENT" => $query[2])));
+
+    if ($result->numRows() > 0) {
+        $numBadTables++;
+        $contents .= "<p>The following rows in <tt>$query[0]</tt> are orphaned:</p>";
+        while ($row = $result->fetchRow()) {
+            $numBadRows++;
+            $contents .= "\n<div style='padding-left:20px'>"
+                . "<input type='checkbox' name='{$query[0]}[]'"
+                . " value='$row[c_uid]' id='$query[0]$row[c_uid]'>"
+                . "<label for='$query[0]$row[c_uid]'>Row $row[c_uid]:"
+                . " <tt>$query[1]</tt> = " . $row[$query[1]] . "</label></div>";
+        }
+    }
+}
+
+if ($numBadTables > 0) {
+    $wrapper = Template::replace($wrapper, array(
+        "NUMROWS" => $numBadRows,
+        "RESULTS" => $contents,
+        "NUMTABLES" => $numBadTables));
+    $wrapper = Template::unhide($wrapper, "SOME");
+}
+else {
+    $wrapper = Template::unhide($wrapper, "NONE");
+}
+
+$res['content'] = $wrapper;
+
+?>
+@
+
+
+1.6
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.5 2004/09/09 23:37:37 at Exp $
+@
+
+
+1.5
+log
+@unsure what I did this for
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.4 2004/08/25 11:43:32 at Exp $
+d86 1
+a86 1
+    $result =& $obj['conn']->query(Template::replaceValues($modelQuery, array(
+d106 1
+a106 1
+    $wrapper = Template::replaceValues($wrapper, array(
+d110 1
+a110 1
+    $wrapper = Template::unhideBlock($wrapper, "SOME");
+d113 1
+a113 1
+    $wrapper = Template::unhideBlock($wrapper, "NONE");
+@
+
+
+1.4
+log
+@removed more references to security controller
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.3 2004/07/26 02:12:31 at Exp $
+a60 1
+    array("[_]adventure_comment", "c_member", "[_]member"),
+@
+
+
+1.3
+log
+@added table-name prefixing
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.2 2004/07/20 14:21:23 at Exp $
+d31 2
+a32 1
+    $obj['security']->notAllowedOnPage($obj['user']);
+@
+
+
+1.2
+log
+@put table name prefixes into code
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d56 24
+a79 24
+    array("t_absence", "c_attendee", "t_attendee"),
+    array("t_adventure", "c_departure", "t_location"),
+    array("t_adventure", "c_destination", "t_location"),
+    array("t_adventure_comment", "c_adventure", "t_adventure"),
+    array("t_adventure_comment", "c_member", "t_member"),
+    array("t_adventure_comment", "c_rating", "t_rating"),
+    array("t_adventure_activity", "c_adventure", "t_adventure"),
+    array("t_adventure_activity", "c_activity", "t_activity"),
+    array("t_answer", "c_question", "t_question"),
+    array("t_answer", "c_member", "t_member"),
+    array("t_attendee", "c_adventure", "t_adventure"),
+    array("t_attendee", "c_member", "t_member"),
+    array("t_chat", "c_type", "t_chat_type"),
+    array("t_interest", "c_member", "t_member"),
+    array("t_interest", "c_activity", "t_activity"),
+    array("t_member_group", "c_member", "t_member"),
+    array("t_member_group", "c_related_group", "t_group"),
+    array("t_member_note", "c_member", "t_member"),
+    array("t_membership", "c_member", "t_member"),
+    array("t_membership", "c_type", "t_membership_type"),
+    array("t_phone_number", "c_type", "t_phone_number_type"),
+    array("t_question", "c_adventure", "t_adventure"),
+    array("t_location_activity", "c_location", "t_location"),
+    array("t_location_activity", "c_activity", "t_activity"),
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: check-referential-integrity-main.php,v 1.5 2004/05/30 01:42:05 baron Exp $
+d39 2
+a40 2
+# t_member for which there is no t_school record (the last line of the query
+# ignores that NULL t_member.c_school value)
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

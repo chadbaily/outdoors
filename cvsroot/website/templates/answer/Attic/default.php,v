@@ -1,0 +1,59 @@
+head	1.2;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.08.24.02.16.18;	author at;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.36;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@moved to default functionality
+@
+text
+@<h1>Answers</h1>
+
+<p>This is the default page for the Answer object type.</p>
+
+<ol>
+  <li><a href="members.php?page=answer&action={ACTION_LIST_OWNED_BY}">List all answers you own</a></li>
+  <li><a href="members.php?page=answer&action={ACTION_LIST_ALL}">List all answers in the database</a></li>
+</ol>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

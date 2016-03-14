@@ -1,0 +1,428 @@
+head	1.14;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.14
+date	2005.02.07.18.45.57;	author at;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2004.12.28.15.44.10;	author at;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2004.12.28.15.41.02;	author at;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2004.12.28.15.21.08;	author at;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2004.11.08.18.29.41;	author at;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2004.11.07.02.49.28;	author at;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2004.09.20.20.38.38;	author at;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2004.09.09.14.40.25;	author at;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2004.08.19.21.23.15;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.08.03.02.04.05;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.02.14.29.38;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.07.30.02.28.11;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.07.25.20.35.37;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.14
+log
+@friendlyurls and set cookie at root level
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: authorize.php,v 1.13 2004/12/28 15:44:10 at Exp $
+ *
+ * Purpose: requires authentication.  The variable $cfg['login_mode'] is
+ * used to instruct this file whether the current page requires the user to be
+ * totally logged in, or if 'partial' mode is acceptable (where the user can
+ * access things like the renewal page, etc), or if 'optional' mode is
+ * acceptable (the user doesn't have to log in, but if s/he IS logged in
+ * already, this file will create the usual Member object).
+ *
+ * The $cfg['login_mode'] variable has the default value of 'full' and might
+ * have been overriden to 'partial', 'none', or 'optional' by an including
+ * script.
+ */
+
+# Assume that the user isn't logged in.
+$cfg['user'] = 0;
+
+# Gather login information
+$form =& new XmlForm("forms/main/login.xml");
+$form->snatch();
+$form->validate();
+if ($form->isValid()) {
+    $cfg['auth']['user'] = $form->getValue("user");
+    $cfg['auth']['pass'] = $form->getValue("pass");
+}
+
+# Include the correct file to do the authentication.
+if (file_exists("authorize/authorize-$cfg[login_mode].php")) {
+    require_once("authorize/authorize-$cfg[login_mode].php");
+}
+else {
+    trigger_error("There is no authentication mode '$cfg[login_mode]'", E_USER_ERROR);
+}
+
+# Check the webserver's time against the database server's time.
+# Allow 30 seconds of difference before aborting the page execution.
+if (isset($cfg['db_server_time']) && $cfg['db_server_time']
+        && abs(strtotime($cfg['db_server_time']) - time()) > 30) {
+    $res['navbar'] = "Member's Area";
+    $res['content'] = "Error: the database server's time is incorrect.  "
+        . "I have notified the webmasters.";
+    trigger_error("DB server time: $cfg[db_server_time].  "
+        . "Webserver time: " .  time(), E_USER_ERROR);
+
+    # Create the main template for the page
+    $page = file_get_contents("templates/main/main.php");
+
+    # Plug the content into the main page
+    $page = Template::replace($page, array(
+        "TITLE" => "Database Time Server Error",
+        "CONTENT" => $res['content']));
+
+    echo Template::finalize($page);
+    exit;
+}
+
+if (!$cfg['login_status']) {
+    # Login failed.  Delete the existing cookie.
+    setcookie("auth", "", time() - 3600, "/");
+
+    $res['navbar'] = "Member's Area";
+    $res['content'] = $form->toString();
+
+    # Create the main template for the page
+    $page = file_get_contents("templates/main/main.php");
+
+    # Plug the content into the main page
+    $page = Template::replace($page, array(
+        "TITLE" => "Please Log In",
+        "BASE" => "$cfg[site_url]$cfg[base_url]/",
+        "CONTENT" => $res['content']));
+
+    # Unhide stuff if the login failed
+    if (!$cfg['login_password']) {
+        $page = Template::unhide($page, "PASSWORD");
+    }
+    if (!$cfg['login_exists']) {
+        $page = Template::unhide($page, "USER");
+    }
+
+    echo Template::finalize($page);
+    exit;
+}
+elseif ($form->isValid()) {
+    # Login succeeded.  Create a session in the DB.
+    $cfg['auth']['session'] = create_session($cfg['auth']['user']);
+    setcookie("auth", base64_encode(serialize($cfg['auth'])), null, "/");
+}
+
+if ($cfg['auth']['session']) {
+    # Add a page hit to the session log
+    $cmd =& $obj['conn']->createCommand();
+    $cmd->loadQuery("sql/queries/session/add-page.sql");
+    $cmd->addParameter("session", $cfg['auth']['session']);
+    $cmd->addParameter("method", $_SERVER['REQUEST_METHOD']);
+    if (isset($cfg['user'])) {
+        $cmd->addParameter("member", $cfg['user']);
+    }
+    if (isset($cfg['page'])) {
+        $cmd->addParameter("page", $cfg['page']);
+    }
+    if (isset($cfg['action'])) {
+        $cmd->addParameter("action", $cfg['action']);
+    }
+    if (isset($cfg['object'])) {
+        $cmd->addParameter("object", $cfg['object']);
+    }
+    $cmd->executeNonQuery();
+}
+
+?>
+@
+
+
+1.13
+log
+@isset() variable before  testing against it
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.12 2004/12/28 15:41:02 at Exp $
+d78 1
+a78 1
+    setcookie("auth", "", time() - 3600);
+d89 1
+d106 1
+a106 1
+    setcookie("auth", base64_encode(serialize($cfg['auth'])));
+@
+
+
+1.12
+log
+@fix bug on login caused by db_time_server not being set
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.11 2004/12/28 15:21:08 at Exp $
+d56 2
+a57 1
+if ($cfg['db_server_time'] && abs(strtotime($cfg['db_server_time']) - time()) > 30) {
+@
+
+
+1.11
+log
+@check DB server for time differences and abort if there is > 30 sec difference
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.10 2004/11/08 18:29:41 at Exp $
+d56 1
+a56 1
+if (abs(strtotime($cfg['db_server_time']) - time()) > 30) {
+@
+
+
+1.10
+log
+@move session queries to sql/queries/session
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.9 2004/11/07 02:49:28 at Exp $
+d52 21
+@
+
+
+1.9
+log
+@add session-tracking to website
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.8 2004/09/20 20:38:38 at Exp $
+d89 1
+a89 1
+    $cmd->loadQuery("sql/queries/misc/session-add-page.sql");
+@
+
+
+1.8
+log
+@shortened template function names
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.7 2004/09/09 14:40:25 at Exp $
+d22 1
+a22 1
+ * Purpose: requires HTTP authorization.  The variable $cfg['login_mode'] is
+d42 2
+a43 2
+    $cfg['PHP_AUTH_USER'] = $form->getValue("user");
+    $cfg['PHP_AUTH_PW'] = $form->getValue("pass");
+d55 2
+a56 3
+    # Delete the current password cookies...
+    setcookie("PHP_AUTH_PW", "", time() - 3600);
+    setcookie("PHP_AUTH_USER", "", time() - 3600);
+d81 3
+a83 2
+    setcookie("PHP_AUTH_USER", base64_encode($form->getValue("user")));
+    setcookie("PHP_AUTH_PW", base64_encode($form->getValue("pass")));
+d86 20
+@
+
+
+1.7
+log
+@removed reference to non-existent file
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.6 2004/09/03 20:38:24 at Exp $
+d66 1
+a66 1
+    $page = Template::replaceValues($page, array(
+d72 1
+a72 1
+        $page = Template::unhideBlock($page, "PASSWORD");
+d75 1
+a75 1
+        $page = Template::unhideBlock($page, "USER");
+@
+
+
+1.6
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.5 2004/08/19 21:23:15 at Exp $
+a60 3
+
+    # Plug the page into the main tabbed box
+    include_once("tabbed-boxes/main.php");
+@
+
+
+1.5
+log
+@changed to a nicer message of Please Log In
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.4 2004/08/03 02:04:05 at Exp $
+d59 1
+a59 2
+    $res['usetab'] = true;
+    $res['tabfile'] = "main.php";
+d71 1
+a71 1
+        "BODY" => $res['content']));
+@
+
+
+1.4
+log
+@delete user/pass cookies when login fails
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.3 2004/08/02 14:29:38 at Exp $
+d71 1
+a71 1
+        "TITLE" => "Not Authorized",
+@
+
+
+1.3
+log
+@fixed so cookies aren't set until the member gets the password right
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.2 2004/07/30 02:28:11 at Exp $
+d55 4
+@
+
+
+1.2
+log
+@added the ability to display error messages when someone's login fails.
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.1 2004/07/25 20:35:37 at Exp $
+a41 2
+    setcookie("PHP_AUTH_USER", base64_encode($form->getValue("user")));
+    setcookie("PHP_AUTH_PW", base64_encode($form->getValue("pass")));
+d80 4
+@
+
+
+1.1
+log
+@moved from misc/
+@
+text
+@d20 1
+a20 1
+ * $Id: authorize.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+d67 1
+a67 1
+    # Plug the content into the main page and finalize it
+d71 8
+@
+

@@ -1,0 +1,92 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.08.23.11.20;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@friendlyurls
+@
+text
+@<h1>View Adventures</h1>
+
+{ALL:}
+<p>The following are all adventures in the database:</p>
+{:ALL}
+
+{OWNED:}
+<p>The following are all adventures you're leading:</p>
+{:OWNED}
+
+{JOINED:}
+<p>The following are all adventures you've joined:</p>
+{:JOINED}
+
+{PAST:}
+<p>The following are all past adventures for a year.  You may also <a href="members/adventure/list_all?criteria=past&all=true">see all adventures</a>.</p>
+{:PAST}
+
+{UPCOMING:}
+<p>The following are all upcoming adventures:</p>
+{:UPCOMING}
+
+{SOME:}
+<table class="compact ruled cleanHeaders">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Date</th>
+  </tr>
+{ROW:}
+  <tr>
+    <td>
+      <a href="members/adventure/read/{C_UID}">{C_TITLE}</a>
+    </td>
+    <td>
+      <a href="members/location/read/{LOC_UID}">{LOC_TITLE}</a>
+    </td>
+    <td nowrap>{C_START_DATE|_date_format,'{FORMAT}'}</td>
+  </tr>
+{:ROW}
+</table>
+{:SOME}
+
+{NONE:}
+<p class="notice">Sorry, no adventures found.</p>
+{:NONE}
+@
+
+
+1.1
+log
+@tabbed box changes, coalesced wrappers and boxes into one template
+@
+text
+@d16 1
+a16 1
+<p>The following are all past adventures for a year.  You may also <a href="members.php?page=adventure&action={ACTION_LIST_ALL}&criteria=past&all=true">see all adventures</a>.</p>
+d33 1
+a33 1
+      <a href="members.php?page=adventure&object={C_UID}&action={ACTION_READ}">{C_TITLE}</a>
+d36 1
+a36 1
+      <a href="members.php?page=location&object={LOC_UID}&action={ACTION_READ}">{LOC_TITLE}</a>
+@
+

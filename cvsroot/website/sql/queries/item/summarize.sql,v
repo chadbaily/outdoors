@@ -1,0 +1,180 @@
+head	1.6;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2005.01.30.21.55.33;	author at;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2005.01.18.03.52.33;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2005.01.17.16.51.38;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.16.14.37.36;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2005.01.16.14.33.38;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@remove spurious semicolons
+@
+text
+@-- MySQL does not support subselects as of this version, so to count the items
+-- correctly it is necessary to select the checkout_gear into another table and
+-- then join against it.
+replace into [_]checkout_gear_qty (c_type, c_qty)
+    select ty.c_uid, sum(cg.c_qty)
+    from [_]item_type as ty
+        left outer join [_]checkout_gear as cg
+            on ty.c_uid = cg.c_type
+            and cg.c_status = {checked_out,int}
+            and cg.c_deleted <> 1
+    where ty.c_deleted <> 1
+    group by ty.c_uid
+-- DIVIDER
+-- Same with the checkout_item
+replace into [_]checkout_item_qty (c_type, c_qty, c_qty_out)
+    select ty.c_uid,
+    sum(case when (it.c_status = {missing,int}) then 0 else it.c_qty end),
+    sum(case when (it.c_status = {checked_out,int}) then it.c_qty else 0 end)
+    from [_]item_type as ty
+        left outer join [_]item as it
+            on it.c_type = ty.c_uid
+            and it.c_deleted <> 1
+    where ty.c_deleted <> 1
+    group by ty.c_uid
+-- DIVIDER
+select
+    ic.c_uid as ic_uid,
+    ic.c_title as ic_title,
+    ty.c_uid as ty_uid,
+    ty.c_title as ty_title,
+    ciq.c_qty as existing,
+    cgq.c_qty + ciq.c_qty_out as items_out
+from [_]item_type as ty
+    inner join [_]item_category as ic on ty.c_category = ic.c_uid
+    inner join [_]checkout_gear_qty as cgq on cgq.c_type = ty.c_uid
+    inner join [_]checkout_item_qty as ciq on ciq.c_type = ty.c_uid
+where ty.c_deleted <> 1
+    and ic.c_deleted <> 1
+order by ic.c_title, ty.c_title
+@
+
+
+1.5
+log
+@add c_deleted column to database tables
+@
+text
+@d12 1
+a12 1
+    group by ty.c_uid;
+d24 1
+a24 1
+    group by ty.c_uid;
+d39 1
+a39 1
+order by ic.c_title, ty.c_title;
+@
+
+
+1.4
+log
+@bug 203: display quantity in-stock when checking out gear
+@
+text
+@d10 2
+d22 2
+d37 2
+@
+
+
+1.3
+log
+@use aggregate table to hold quantity of gear checked out
+@
+text
+@d12 10
+d27 2
+a28 4
+    sum(it.c_qty) as existing,
+    sum(case when (it.c_status = {checked_out,int}) then it.c_qty else 0 end) as items_out,
+    -- Use max instead of sum because there may be multiple rows
+    max(cg.c_qty) as gear_out
+d31 2
+a32 5
+    left join [_]item as it
+        on it.c_type = ty.c_uid
+        and it.c_status not in ({missing,int}, {deleted,int})
+    left join [_]checkout_gear_qty as cg on cg.c_type = ty.c_uid
+group by ic.c_uid, ic.c_title, ty.c_uid, ty.c_title
+@
+
+
+1.2
+log
+@fix missing table prefix
+@
+text
+@d2 10
+a11 5
+-- correctly it is necessary to group at a finer level of detail than would be
+-- ideal.  Ideally we would not want to group by cg.c_uid, but would just group at
+-- the category and type levels.  In that situation we would do a subselect on
+-- the cg table to get a sum of the quantities of gear that are checked out
+-- and join against the subselect.
+a17 2
+    -- Quantity of items that are checked out.  When the next column creates
+    -- multiple rows, only the first need be counted.
+d19 2
+a20 5
+    -- Quantity of gear that are checked out.  This may cause multiple rows,
+    -- and the client program must do the final level of rollup to handle this.
+    cast(sum(case when (cg.c_uid is null) then 0 else cg.c_qty end) 
+        / case when (count(cg.c_uid)) = 0 then 1 else count(cg.c_uid) end as unsigned)
+    as gear_out
+d26 2
+a27 4
+    left join [_]checkout_gear as cg
+        on cg.c_type = ty.c_uid
+        and cg.c_status = {checked_out,int}
+group by ic.c_uid, ic.c_title, ty.c_uid, ty.c_title, cg.c_uid
+@
+
+
+1.1
+log
+@upgrade to track inventory quantities (bug 189)
+@
+text
+@d26 1
+a26 1
+    left join test_checkout_gear as cg
+@
+

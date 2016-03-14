@@ -1,0 +1,59 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.02.07.18.50.32;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.11.02.20.05.28;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.10.31.21.28.33;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@friendlyurls
+@
+text
+@<a href="#" title="Click for Actions" onClick="tinyMenu(this, '{PAGE}', {OBJECT}, 'tiny{PAGE}{OBJECT}', [{actions:}['{c_title}', '{c_summary}'],{:actions}]); return false;">&raquo;</a><div class="tinyMenu" id="tiny{PAGE}{OBJECT}"></div>
+@
+
+
+1.2
+log
+@upgrade expenses system; allow browsing expenses, allow marking them as reimbursable, and some tweaks to report layout
+@
+text
+@d1 1
+a1 1
+<a href="#" title="Click for Actions" onClick="tinyMenu(this, '{PAGE}', {OBJECT}, 'tiny{PAGE}{OBJECT}', [{actions:}[{c_uid}, '{c_summary}'],{:actions}]); return false;">&raquo;</a><div class="tinyMenu" id="tiny{PAGE}{OBJECT}"></div>
+@
+
+
+1.1
+log
+@add tiny action menus
+@
+text
+@d1 1
+a1 3
+<!-- {PAGE} {OBJECT} -->
+<a href="#" title="Click for Actions" onClick="tinyMenu(this, '{PAGE}', {OBJECT}, 'tiny{PAGE}{OBJECT}', [{actions:}[{c_uid}, '{c_summary}'],{:actions}]); return false;">&raquo;</a>
+<div class="tinyMenu" id="tiny{PAGE}{OBJECT}"></div>
+@
+

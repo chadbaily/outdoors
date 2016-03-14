@@ -1,0 +1,50 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2004.11.11.19.50.16;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.08.18.25.30;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@linkify session
+@
+text
+@select
+    sp.c_created_date,
+    me.c_full_name,
+    sp.c_method,
+    sp.c_page,
+    coalesce(ac.c_title, sp.c_action) as c_action,
+    sp.c_action as action_uid,
+    c_object
+from [_]session_page as sp
+    inner join [_]member as me on me.c_uid = sp.c_member
+    left outer join [_]action as ac on ac.c_uid = sp.c_action
+where sp.c_session = {session,int}
+@
+
+
+1.1
+log
+@init
+@
+text
+@d7 1
+@
+

@@ -1,0 +1,179 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.09.20.20.38.41;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.08.06.17.37.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.05.31.01.36.58;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@shortened template function names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: update.php,v 1.3 2004/08/06 17:37:24 at Exp $
+ */
+
+include_once("JoinManager.php");
+
+# Create templates
+$wrapper = file_get_contents("templates/profile/update.php");
+
+# Create the form
+$form =& new XMLForm("forms/profile/update.xml");
+
+# Fill the form with the user's data
+$form->setValue("firstName", $obj['user']->getFirstName());
+$form->setValue("lastName", $obj['user']->getLastName());
+$form->setValue("gender", $obj['user']->getGender());
+$form->setValue("student", $obj['user']->getFlag("student"));
+$form->setValue("emailAddress", $obj['user']->getEmail());
+
+# Now overwrite this data with whatever the user submitted
+$form->snatch();
+$form->validate();
+
+if ($form->isValid()) {
+    # Check that the member isn't trying to change his/her email address to one
+    # that's already in use
+    if ($obj['user']->getEmail() != $form->getValue("emailAddress")
+            && JoinManager::checkIfMemberExists($form->getValue("emailAddress"))) {
+        $wrapper = Template::unhide($wrapper, "INUSE");
+    }
+    else {
+        # Update the database with the form values
+        $emailChanged = ($obj['user']->getEmail() != $form->getValue("emailAddress"));
+        $obj['user']->setFirstName($form->getValue("firstName"));
+        $obj['user']->setLastName($form->getValue("lastName"));
+        $obj['user']->setGender($form->getValue("gender"));
+        $obj['user']->setFlag("student", $form->getValue("student"));
+        $obj['user']->setEmail($form->getValue("emailAddress"));
+        $obj['user']->update();
+        $wrapper = Template::unhide($wrapper, "SUCCESS");
+        if ($emailChanged) {
+            $wrapper = Template::unhide($wrapper, "EMAIL");
+        }
+    }
+}
+
+$res['content'] = Template::replace($wrapper, array(
+    "FORM" => $form->toString()));
+$res['title'] = "Update Member Profile";
+
+?>
+@
+
+
+1.3
+log
+@moved all privacy settings to the default profile page
+@
+text
+@d20 1
+a20 1
+ * $Id: update.php,v 1.2 2004/05/31 01:36:58 at Exp $
+d47 1
+a47 1
+        $wrapper = Template::unhideBlock($wrapper, "INUSE");
+d58 1
+a58 1
+        $wrapper = Template::unhideBlock($wrapper, "SUCCESS");
+d60 1
+a60 1
+            $wrapper = Template::unhideBlock($wrapper, "EMAIL");
+d65 1
+a65 1
+$res['content'] = Template::replaceValues($wrapper, array(
+@
+
+
+1.2
+log
+@updates to forms, templates to get working with new version (no new features)
+@
+text
+@d20 1
+a20 1
+ * $Id: update.php,v 1.1.1.1 2004/05/30 03:10:35 at Exp $
+a35 1
+$form->setValue("private", $obj['user']->getFlag("private"));
+a55 1
+        $obj['user']->setFlag("private", $form->getValue("private"));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+ * $Id: update.php,v 1.5 2004/05/30 01:42:20 baron Exp $
+a24 2
+$manager =& new JoinManager();
+
+d36 1
+d47 1
+a47 1
+            && $manager->checkIfMemberExists($form->getValue("emailAddress"))) {
+d57 1
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@

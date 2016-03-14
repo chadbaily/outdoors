@@ -1,0 +1,264 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2004.10.21.20.54.19;	author at;	state dead;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.24.17.39.46;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.20.19.47.28;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.09.19.02.48.34;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@classes moved to files that match the database table names
+@
+text
+@<?php
+/*
+ * This file is part of SocialClub (http://socialclub.sourceforge.net)
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307  USA
+ * 
+ * $Id: Item.php,v 1.3 2004/09/24 17:39:46 at Exp $
+ */
+
+include_once("DatabaseObject.php");
+include_once("ItemAttribute.php");
+include_once("ItemNote.php");
+
+class Item extends DatabaseObject {
+    // {{{declarations
+    var $c_purchase_date = null;
+    var $c_type = null;
+    var $c_description = null;
+    var $c_condition = null;
+    var $itemAttributes = null;
+    var $itemNotes = null;
+    // }}}
+
+    /* {{{constructor
+     *
+     */
+    function Item() {
+        $this->DatabaseObject();
+        $this->table = "[_]item";
+        $this->cascadeFunctions[] = "getItemAttributes";
+        $this->cascadeFunctions[] = "getItemNotes";
+    } //}}}
+
+    /* {{{getPurchaseDate
+     *
+     */
+    function getPurchaseDate() {
+        return $this->c_purchase_date;
+    } //}}}
+    
+    /* {{{setPurchaseDate
+     *
+     */
+    function setPurchaseDate($value) {
+        $this->c_purchase_date = date("Y-m-d", strtotime($value));
+    } //}}}
+
+    /* {{{getDescription
+     *
+     */
+    function getDescription() {
+        return $this->c_description;
+    } //}}}
+    
+    /* {{{setDescription
+     *
+     */
+    function setDescription($value) {
+        $this->c_description = $value;
+    } //}}}
+
+    /* {{{getCondition
+     *
+     */
+    function getCondition() {
+        return $this->c_condition;
+    } //}}}
+    
+    /* {{{setCondition
+     *
+     */
+    function setCondition($value) {
+        $this->c_condition = $value;
+    } //}}}
+
+    /* {{{getType
+     *
+     */
+    function getType() {
+        return $this->c_type;
+    } //}}}
+    
+    /* {{{setType
+     *
+     */
+    function setType($value) {
+        $this->c_type = $value;
+    } //}}}
+
+    /* {{{getItemAttributes
+     */
+    function getItemAttributes($refresh = FALSE) {
+        if (is_null($this->itemAttributes) || $refresh) {
+            $this->initItemAttributes();
+        }
+        return $this->itemAttributes;
+    } //}}}
+
+    /* {{{initItemAttributes
+     */
+    function initItemAttributes() {
+        global $obj;
+        global $cfg;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->itemAttributes = array();
+        $result = $obj['conn']->query("select * from [_]item_attribute where c_item=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->itemAttributes[$row['c_uid']] =& new ItemAttribute();
+            $this->itemAttributes[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+    /* {{{getItemNotes
+     */
+    function &getItemNotes($refresh = FALSE) {
+        if (!isset($this->itemNotes) or $refresh) {
+            $this->initItemNotes();
+        }
+        return $this->itemNotes;
+    } //}}}
+
+
+    /* {{{initItemNotes
+     * Initializes all the item's ItemNotes.
+     */
+    function initItemNotes() {
+        global $obj;
+        $this->ensureUID(__LINE__, __FILE__);
+        $this->itemNotes = array();
+        $result = $obj['conn']->query("select * from [_]item_note "
+            . "where c_item=$this->c_uid");
+        while ($row = $result->fetchRow()) {
+            $this->itemNotes[$row['c_uid']] =& new ItemNote();
+            $this->itemNotes[$row['c_uid']]->initFromRow($row);
+        }
+    } //}}}
+
+}
+?>
+@
+
+
+1.3
+log
+@rebuild item system, making most things 'features' of items; no hardcoded title and description
+@
+text
+@d20 1
+a20 1
+ * $Id: Item.php,v 1.2 2004/09/20 19:47:28 at Exp $
+@
+
+
+1.2
+log
+@migrate away from using DateTime
+@
+text
+@d20 1
+a20 1
+ * $Id: Item.php,v 1.1 2004/09/19 02:48:34 at Exp $
+a28 2
+    var $c_title = null;
+    var $c_description = null;
+d31 1
+d47 1
+a47 1
+    /* {{{getTitle
+d50 2
+a51 2
+    function getTitle() {
+        return $this->c_title;
+d54 1
+a54 1
+    /* {{{setTitle
+d57 2
+a58 2
+    function setTitle($value) {
+        $this->c_title = $value;
+a72 14
+    } //}}}
+
+    /* {{{getPurchaseDate
+     *
+     */
+    function getPurchaseDate() {
+        return $this->c_purchase_date;
+    } //}}}
+    
+    /* {{{setPurchaseDate
+     *
+     */
+    function setPurchaseDate($value) {
+        $this->c_purchase_date = date("Y-m-d", strtotime($value));
+@
+
+
+1.1
+log
+@init
+@
+text
+@d20 1
+a20 1
+ * $Id: Activity.php,v 1.3 2004/08/18 22:27:27 at Exp $
+d80 1
+a80 1
+        return new DateTime($this->c_purchase_date);
+d87 1
+a87 2
+        Utility::checkType("DateTime", $value, __LINE__, __FILE__);
+        $this->c_purchase_date = $value->toString("Y-m-d");
+@
+

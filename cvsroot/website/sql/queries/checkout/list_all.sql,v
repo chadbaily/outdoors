@@ -1,0 +1,80 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2005.01.30.20.48.40;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2005.01.14.15.08.49;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.11.20.15.17.47;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@add c_deleted column to database tables
+@
+text
+@select
+    co.c_uid,
+    co.c_created_date,
+    me.c_first_name,
+    me.c_last_name,
+    off.c_full_name as officer_name,
+    st.c_title as st_title
+from [_]checkout as co
+    inner join [_]member as me on me.c_uid = co.c_member
+    inner join [_]member as off on off.c_uid = co.c_creator
+    inner join [_]status as st on st.c_uid = co.c_status
+where ({status,int} is null or co.c_status = {status,int})
+    and ({member,int} is null or co.c_member = {member,int})
+    and co.c_deleted <> 1
+    and me.c_deleted <> 1
+    and off.c_deleted <> 1
+@
+
+
+1.2
+log
+@initial release of checkin/checkout system
+@
+text
+@d14 3
+@
+
+
+1.1
+log
+@create checkout system first incarnation; checking items out is at the level of individual items and is too precise.  This system is not deployed.
+@
+text
+@d2 2
+a3 1
+    co.*,
+d6 2
+a7 2
+    count(ci.c_uid) as num_items,
+    st.c_title as status_title
+d10 2
+a11 2
+    inner join [_]status as st on co.c_status = st.c_uid
+    left outer join [_]checkout_item as ci on ci.c_checkout = co.c_uid
+a13 1
+group by co.c_uid
+@
+

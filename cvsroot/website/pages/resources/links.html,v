@@ -1,0 +1,105 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2005.02.07.18.49.28;	author at;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2004.09.22.02.06.36;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.03.20.38.24;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.08.28.04.54.35;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.08.27.15.13.48;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@friendlyurls
+@
+text
+@<!-- navbar=Member's Area/Member Resources/Links -->
+<!-- title=Links -->
+
+<h1>Links</h1>
+
+<p>We hope the following links will enhance your outdoors experience!  We are
+not affiliated with any of these websites, nor do we endorse them, but we've
+found them useful ourselves and hope they help you too.</p>
+
+<ul>
+  <li><a target="_blank" href="http://www.topozone.com">TopoZone</a> &mdash; Topo maps.</a></li>
+  <li><a target="_blank" href="http://www.localhikes.com">LocalHikes</a> &mdash; Volunteer-entered
+  hike reports.</a></li>
+  <li><a target="_blank" href="http://www.rockclimbing.com">RockClimbing.com</a> &mdash; Route information, often with pictures, as well as an active climber community.</a></li>
+  <li><a target="_blank" href="http://virginiasports.collegesports.com/sports/m-footbl/sched/va-m-footbl-sched.html">UVa
+  Football Games</a> so you know when to get out of town.</li>
+</ul>
+
+<p>If you'd like, you can <a
+href="members/main/feedback">suggest a link</a>.</p>
+@
+
+
+1.4
+log
+@added link to uva football
+@
+text
+@d20 1
+a20 1
+href="members.php?page=main&action=feedback">suggest a link</a>.</p>
+@
+
+
+1.3
+log
+@migration from tabbed-boxes to navbar, and from table to CSS layout
+@
+text
+@d15 2
+@
+
+
+1.2
+log
+@added climbing link
+@
+text
+@d1 1
+a1 2
+<!-- tab=Member Resources -->
+<!-- subtab=Links -->
+@
+
+
+1.1
+log
+@updated to add a page of links
+@
+text
+@d15 1
+@
+

@@ -1,0 +1,146 @@
+head	1.4;
+access;
+symbols
+	init:1.1.1.1 socialclub:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2005.02.09.15.13.58;	author at;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2004.09.20.18.26.50;	author at;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2004.09.18.02.38.25;	author at;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2004.05.30.03.10.35;	author at;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@removed unused object hidden fields
+@
+text
+@<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        required="1"
+        data-type="number"
+        name="amount-paid"
+        element-id="amount-paid" />
+    <element
+        required="1"
+        data-type="datetime"
+        name="joined"
+        element-id="joined" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="amount-paid-error">
+    <td colspan="2" class="error">
+    This field is required and must contain a number.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Amount Paid</td>
+    <td>
+      <input type="text" name="amount-paid" id="amount-paid" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="joined-error">
+    <td colspan="2" class="error">
+    This field is required and must be in the format YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Date Joined</td>
+    <td>
+      <input type="text" maxlength="19" name="joined" id="joined" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'joined', 'chooserSpan', 2004, 2010, 'Y-m-d H:i:s');" />
+      <div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>
+@
+
+
+1.3
+log
+@use uppercase H for 24-hour time
+@
+text
+@a2 1
+    <input type="hidden" name="object" id="object" />
+a8 3
+    <element
+        name="object"
+        element-id="object" />
+@
+
+
+1.2
+log
+@added joined_date column
+@
+text
+@d50 1
+a50 1
+      <img src="assets/cal.gif" onClick="showChooser(this, 'joined', 'chooserSpan', 2004, 2010, 'Y-m-d h:i:s');" />
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d18 5
+d37 16
+@
+
+
+1.1.1.1
+log
+@init
+@
+text
+@@
