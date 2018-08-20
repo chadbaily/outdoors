@@ -11,7 +11,7 @@ use English qw(-no_match_vars);
 my $db        = "at_main1";
 my $host      = "db57b.pair.com";
 my $user      = "at";
-my $pass      = "wzPq8AtV1234";
+my $pass      = "mR9jfSA8";
 my $prefix    = "m_";
 #set this to when the email should be sent
 my $days_remaining = 14;
@@ -90,3 +90,4 @@ while ($recip = $recips->fetchrow_hashref()) {
 
 print("Finished script successfully");
         
+

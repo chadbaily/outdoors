@@ -11,7 +11,7 @@ use English qw(-no_match_vars);
 my $db        = "at_main1";
 my $host      = "db57b.pair.com";
 my $user      = "at";
-my $pass      = "wzPq8AtV1234";
+my $pass      = "At_12_pass";
 my $prefix    = "m_";
 # ===========================================================================
 # STOP CONFIGURING HERE
@@ -103,3 +103,4 @@ while ($adventure = $adventures->fetchrow_hashref()) {
     $insert_statement->execute();
   }
 }
+

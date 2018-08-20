@@ -1,4 +1,0 @@
-58.146.104.241 - - [27/Apr/2013:09:00:47 -0400] "HEAD /cpanel HTTP/1.1" 404 131 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
-54.224.30.141 - - [27/Apr/2013:19:09:13 -0400] "HEAD / HTTP/1.0" 200 149 "-" "-"
-76.104.26.89 - - [27/Apr/2013:23:47:46 -0400] "GET / HTTP/1.1" 403 410 "-" "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31"
-76.104.26.89 - - [27/Apr/2013:23:47:46 -0400] "GET /favicon.ico HTTP/1.1" 404 416 "-" "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31"

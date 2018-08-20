@@ -1,4 +1,0 @@
-174.140.165.115 - - [11/Jul/2013:00:58:05 -0400] "GET /td?aid=e9xmkgg5h6&said=26427 HTTP/1.1" 404 371 "-" "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/5.0);(b:2600;c:INT-3360;l:09)"
-183.91.14.60 - - [11/Jul/2013:06:39:34 -0400] "GET http://www.google.com/ HTTP/1.0" 200 5132 "-" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
-66.71.243.234 - - [11/Jul/2013:07:00:11 -0400] "GET / HTTP/1.0" 200 5259 "-" "-"
-90.156.209.140 - - [11/Jul/2013:21:16:05 -0400] "GET /a1b2c3d4e5f6g7h8i9/nonexistentfile.php HTTP/1.0" 404 407 "-" "-"

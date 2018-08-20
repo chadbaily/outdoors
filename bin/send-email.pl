@@ -11,7 +11,7 @@ use English qw(-no_match_vars);
 my $db        = "at_main1";
 my $host      = "db57b.pair.com";
 my $user      = "at";
-my $pass      = "mR9jfSA8";
+my $pass      = "wzPq8AtV1234";
 my $prefix    = "m_";
 # Another possibility: my $mailer = "/var/qmail/bin/qmail-inject";
 my $mailer    = '/usr/sbin/sendmail -i -t';
@@ -56,7 +56,10 @@ $prep->execute();
 while ($prep->rows) {
     # Get this email's info
     my $email = $prep->fetchrow_hashref();
-	my $recip = 'uvaoutdoorstrips@gmail.com';
+    #my $recip = 'uvaoutdoorstrips@gmail.com';
+    my $recip = 'outdoors@outdoorsatuva.org';
+    
+
     # Get the recipients for the email
     my $recips = $dbh->prepare("select er.c_uid, me.c_email "
         . "from ${prefix}member as me "

@@ -18,7 +18,7 @@ my $master_pass      = "wzPq8AtV1234";
 my $staging_db       = "at_staging";
 my $staging_host     = "db30.pair.com";
 my $staging_user     = "at_2";
-my $staging_pass     = "Password22";
+my $staging_pass     = "Password2";
 
 #Dump the database
 `mysqldump --user=$master_user --host=$master_host --password=$master_pass --no-create-db --add-drop-table $master_db > $dumpfile`;

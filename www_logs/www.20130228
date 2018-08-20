@@ -1,4 +1,0 @@
-76.104.26.89 - - [28/Feb/2013:08:03:22 -0500] "GET / HTTP/1.1" 500 721 "-" "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17"
-76.104.26.89 - - [28/Feb/2013:08:03:22 -0500] "GET /favicon.ico HTTP/1.1" 500 721 "-" "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17"
-71.206.174.64 - - [28/Feb/2013:09:37:04 -0500] "GET / HTTP/1.1" 500 721 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0"
-71.206.174.64 - - [28/Feb/2013:09:37:05 -0500] "GET /favicon.ico HTTP/1.1" 500 721 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0"

@@ -1,3 +1,0 @@
-93.174.88.31 - - [11/Jun/2013:00:04:18 -0400] "GET http://gameframe.net/headers HTTP/1.1" 404 357 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-159.182.38.3 - - [11/Jun/2013:23:29:48 -0400] "HEAD /manager/status HTTP/1.1" 404 187 "-" "Java/1.6.0_35"
-54.234.219.150 - - [11/Jun/2013:23:53:15 -0400] "GET /CFIDE/Administrator/ HTTP/1.0" 404 389 "-" "-"

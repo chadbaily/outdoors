@@ -1,5 +1,0 @@
-189.35.111.48 - - [08/May/2013:02:40:39 -0400] "HEAD /manager/status HTTP/1.1" 404 187 "-" "Java/1.6.0_34"
-124.127.133.134 - - [08/May/2013:12:14:42 -0400] "GET /manager/html HTTP/1.1" 404 418 "-" "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"
-93.174.88.31 - - [08/May/2013:19:22:00 -0400] "GET http://gameframe.net/headers HTTP/1.1" 404 357 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-183.129.224.210 - - [08/May/2013:20:45:38 -0400] "HEAD /manager/status HTTP/1.1" 404 187 "-" "Java/1.6.0_10-rc2"
-199.36.142.83 - - [08/May/2013:22:53:32 -0400] "HEAD / HTTP/1.0" 200 148 "-" "-"

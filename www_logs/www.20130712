@@ -1,5 +1,0 @@
-123.201.33.242 - - [12/Jul/2013:09:18:32 -0400] "HEAD / HTTP/1.0" 200 148 "-" "-"
-188.132.241.132 - - [12/Jul/2013:13:33:05 -0400] "GET /td?aid=e9xmkgg5h6&said=26427 HTTP/1.1" 404 371 "-" "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/5.0);(b:2600;c:INT-3360;l:09)"
-193.111.139.189 - - [12/Jul/2013:14:47:21 -0400] "GET /td?aid=e9xmkgg5h6&said=26427 HTTP/1.1" 404 371 "-" "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/5.0);(b:2600;c:INT-3360;l:09)"
-121.66.29.155 - - [12/Jul/2013:18:46:53 -0400] "GET /manager/html HTTP/1.1" 404 418 "-" "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"
-64.34.168.87 - - [12/Jul/2013:23:00:57 -0400] "GET /phppath/php HTTP/1.0" 404 380 "-" "-"

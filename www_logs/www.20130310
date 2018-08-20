@@ -1,7 +1,0 @@
-94.23.45.14 - - [10/Mar/2013:22:35:45 -0400] "HEAD / HTTP/1.0" 500 162 "-" "-"
-116.228.187.106 - - [10/Mar/2013:23:56:56 -0400] "GET /w00tw00t.at.blackhats.romanian.anti-sec:) HTTP/1.1" 500 730 "-" "ZmEu"
-116.226.72.124 - - [10/Mar/2013:23:56:57 -0400] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 500 730 "-" "ZmEu"
-116.226.72.124 - - [10/Mar/2013:23:56:57 -0400] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 500 730 "-" "ZmEu"
-116.226.72.124 - - [10/Mar/2013:23:56:58 -0400] "GET /pma/scripts/setup.php HTTP/1.1" 500 730 "-" "ZmEu"
-116.226.72.124 - - [10/Mar/2013:23:56:59 -0400] "GET /myadmin/scripts/setup.php HTTP/1.1" 500 730 "-" "ZmEu"
-116.226.72.124 - - [10/Mar/2013:23:56:59 -0400] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 500 730 "-" "ZmEu"

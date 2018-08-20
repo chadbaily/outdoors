@@ -1,151 +1,3 @@
-ls
-cd ..
-ls
-cd pages/
-ls
-cd join
-ls
-cd ..
-ls
-cd ..
-ls
-cd staging
-ls
-cd pages/
-ls
-cd join
-ls
-cd ..
-cd ..
-cd ..
-cd templates/
-ls
-cd ..
-ls
-cd forms/
-ls
-cd join/
-ls
-vi join.xml 
-exit
-cd public_html/
-ls
-cd about/
-ls
-cd application
-ls
-cd old_2013/
-ls
-ls -ltr
-exit
-cd public_html/
-cd about/
-vi schedule.shtml
-exit
-cd public_html/
-ls
-cd forms/
-ls
-cd join/
-ls
-pwd
-exit
-ls
-ls
-cdoublic_html
-cd public_html
-ls
-cd about
-ls
-cd ..
-cd about
-help svn
-man svn
-cd
-ls
-cd bash_scripts/
-ls
-less shellcowboy.sh 
-ls
-vi shellcowboy.sh 
-cd ../public_html/resources/
-ls
-cd lib/
-ls
-cd ../templates/
-ls
-cd ..
-ls
-cd ..
-ls
-cd public_html/about/
-ls
-cd application
-ls
-cd old_2013/
-ls -ltr
-ls -ltr
-exit
-ls
-cp -a ~/. /Users/Cole/git/GH/outdoors.git
-cp -a ~/. C:/Users/Cole/git/GH/outdoors.git
-echo $HOMR
-echo $HOME
-cd public_html
-cd about
-ls
-pico officers.shtml
-scp outdoorsatuva@outdoorsatuva.pairserver.com
-cd officers.shtml
-cd
-sudo aptitude install sshfs
-cd public_html/about/
-ls
-vi officers.shtml 
-vi committees.shtml 
-exit
-cd public_html/gallery/
-ls
-less login.txt 
-vi login.txt 
-cd /usr/www/users/
-ls
-sudo ls
-cd ..
-ls
-cd users
-cd at
-cd ..
-ls -l
-cd users
-mkdir at
-exit
-cd bin
-ls
-pwd
-cd public_html/pub-files
-ls
-ls -ltr
-cp Outdoors_At_UVa_Leaders_Manual_12Oct2014.docx Outdoors_At_UVa_Leaders_Manual.docx
-cp Outdoors_At_UVa_Leaders_Manual_12Oct2014.pdf Outdoors_At_UVa_Leaders_Manual.pdf
-exit
-cd public_html/
-ls
-cd pages/
-ls
-cd member
-ls
-less view_absences.php 
-cd
-ls
-cd public_html/
-ls
-cd sql/absence/select-by-member.sql 
-cd sql/absence/
-ls
-less count-by-member.sql 
-less select-by-member.sql 
-exit
 cd public_html/sql/
 ls
 cd member
@@ -498,3 +350,151 @@ ls
 cd public_html
 ls
 exit
+ls
+ls -a
+git remote show
+git init
+git remote add origin https://github.com/jcs4te/OutdoorsSite
+git add -A
+git commit -m "initial commit"
+git push origin master
+git pull origin master
+ls
+git push origin master
+ls
+cd public_html
+ls
+cd ..
+ls
+cd bash_scripts
+ls
+cd ..
+ls
+cd mail
+ls
+cd ..
+ls
+cd public_html
+ls
+cd utility
+ls
+vim Email.php 
+ls
+cd ..
+ls
+cd forms
+ls
+cd email_list
+ls
+cd ..
+ls
+cd ..
+ls
+cd cgi-bin
+ls
+cd ..
+cd fcgi-bin
+ls
+cd ..
+cd controllers
+ls
+cd ..
+ls /etc/
+ls /etc/crontab
+vim /etc/crontab
+ls /etc/
+ls /var/spool/
+ls
+cd public_ftp
+ls
+cd ..
+vim crontab.backup
+ls /usr/home/
+ls /usr/home/at/bin
+ls /bin
+find / -type f -name "*.pl"
+find / -type f -name "send-reminder.pl"
+clear
+cat crontab.backup
+sudo ls /usr
+su
+sudo su
+/usr/bin/sudo su
+ls
+cd bin
+ls
+vim send-reminder.pl
+ls
+vim send-email.pl
+ls
+vim mass-email.pl
+ls
+cat crontab.backup 
+./bin/send-email.pl.
+ls -la
+ls -la bin
+ls -la ./bin
+cd bin
+ls
+vim lock.txt 
+vim mass-email.pl
+vim send-email.pl
+ls -la
+cat lock.txt 
+cat send-email.pl
+chmod send-email.pl 644
+chmod 644 send-email.pl
+ls -la
+chmod 577 send-email.pl
+ls la
+ls -la
+chmod 775 send-email.pl
+ls -la
+./send-email.pl
+ls
+vim lock.txt 
+vim send-email.pl
+./send-email.pl
+exit
+crontab -l
+chmod -x ./bin/send-email.pl
+mail
+mail -N
+mail
+mail
+mail
+mail
+mail
+ls
+cd bin
+ls
+vim send-email.pl
+chmod +x send-email.pl
+mail
+./send-email.pl
+mail
+crontab -l
+vim send-email.pl
+mail
+mail
+./send-email.pl
+mail
+vim send-email.pl
+mail
+./send-email.pl
+vim send-email.pl
+vim send-email.pl
+./send-email.pl
+mail *
+mail
+mail
+q
+mail
+mail
+mail
+./send-email.pl
+ls
+vim mass-email.pl
+vim send-email.pl.old 
+send-email.pl.apc.bak 
+vim send-email.pl.apc.bak 

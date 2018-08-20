@@ -11,7 +11,7 @@ use English qw(-no_match_vars);
 my $db        = "at_main1";
 my $host      = "db57b.pair.com";
 my $user      = "at";
-my $pass      = "wzPq8AtV1234";
+my $pass      = "At_12_pass";
 my $prefix    = "m_";
 #set this to when the email should be sent
 my $days_remaining = 14;
@@ -42,7 +42,7 @@ EOF
 my $subject = "Your membership is expiring soon!";
 my $message = <<EOF; 
 Your Outdoors at UVA membership is expiring soon! 
-To renew your membership, just go to http://www.outdoorsatuva.org/members/join/renew. You'll be able to pick from a 12-month membership for \$50 and a 5-month one for \$30. Just follow the instructions for dropping off or mailing your dues and a new waiver.  Again this year, you'll get your dues back if you lead 4 or more club trips (one of which must be an intro trip). If you've led 4 trips in the past year, you still need to renew your membership above and hand in a waiver - we will waive the dues. Really active members also have the chance to become club officers.
+To renew your membership, just login to the website (http://www.outdoorsatuva.org) and click renew at the top of the member's home page. You'll be able to pick from a 12-month membership for \$30 and a 5-month one for \$20. Just follow the instructions for dropping off or mailing your dues and a new waiver.  Again this year, you'll get your dues back if you lead 4 or more club trips.  Really active members also have the chance to become club officers.
 
 Remember that as a member, you can borrow club gear, sign up for trips, and receive discounts from local merchants. On all official trips, the club will again cover gas and lodging costs. For overnight trips, the club will pay for most food expenses.
  
@@ -90,3 +90,4 @@ while ($recip = $recips->fetchrow_hashref()) {
 
 print("Finished script successfully");
         
+
