@@ -1,0 +1,396 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Officers</h1>
+
+<p>If you have a question for the officers, please check our <a
+href="about/faq.shtml">frequently asked questions</a> page first.  If that
+doesn't help, please <a href="about/contact.shtml">contact us
+directly</a>.</p>
+
+<style type="text/css">
+.officertable img {margin-top:13px}
+</style>
+<table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
+
+<tr>
+   <td valign=top><img src="images/officer_gibson_v2.jpg"  alt="Wobble Lord"></td>
+  <td valign=top width="100%">
+	 <dl>
+	   <dt><b>Joe Gibson</b></dt>
+		 <dd>President / Wobble Lord <script>document.write(email('jfg9xc',
+		 'virginia.edu'))</script></dd>
+	</dl>
+    As a child in the suburbs of northern Virginia, I crowned myself supreme leader of the small swath of forest behind my house. I knew every tree, root, rock, and nest in my dominion. As I grew older, I began to explore beyond my tiny kingdom to enter faraway arboreal realms on foot, mountain bike, and slackline. Here at UVA it seems the expedition never ends, be it on the Lawn or in the mountains. I'm always looking for something new to try, and new places to explore.
+</tr>
+						   
+<tr>
+  <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+  <td valign=top><img src="images/officer_groves_v2.jpg"  alt="Ancestral Navigator"></td>
+  <td valign=top width="100%">
+  <dl>
+	 <dt><b>Helena Groves</b></dt>
+	  <dd>Vice President / Ancestral Navigator <script>document.write(email('hig8gn',
+					   'virginia.edu'))</script></dd>
+  </dl>
+  North Cackalack born and raised, I grew up blessed by the wonders of both the Outer Banks and the Blue Ridge Mountains. It was here, hunting and fishing from the earliest possible age, that I fell in love with the outdoors. Eager to explore more of my native state, I began backpacking and camping extensively throughout high school. By some random stroke of fate, I got hooked on snowsports along the way. Now I'm "on the mountain" the majority of the winter and couldn't be happier. Snowboarding gives me an excuse to be outside year round, not that you'd ever need one. Suffering from a chronic case of wanderlust, I'm constantly looking for adventure. My current excursion involves venturing in the Himalayas and the Tibetan Plateau, hopefully herding yaks and meditating on mountain precipices. Despite these ambitions to travel, Southern Appalachia will always be my home. I just can't get enough of the Bluegrass music or the BBQ. Throught OutdoorsatUVa, I look forward to gaining more experience climbing, kayaking, and mountain biking. See y'all outside! 
+</tr>
+
+<tr>
+  <td colspan=2>
+ <hr noshade size="1" width="100%">
+ </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src= "images/officers_early.jpg"  alt="Webmaster"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Ben Early</b></dt>
+      <dd> Co-Chief of Fleet Management / Bongo Bodhisattva <script>document.write(email('bce7jz',
+'virginia.edu'))</script></dd>
+   </dl>
+   My first road trip across the country post high school graduation really implanted my passion in 
+   the outdoors. After watching a handful of mountain biking youtubes, we strapped some makeshift 
+   bikes on the back of a car and drove out to colorado. Every summer since then, I've road tripped out 
+   west in some fashion, adventuring in everything from mountaineering to stand-up paddle boarding down 
+   glacial runoff. My goal in the Outdoors Club is to continue venturing on all sorts of whargnar expeditions 
+   from the c-ville home base. More importantly, I want to link up with as many other crazy-kewl peeps as possible
+   in the most "fresh" OC of the land. 
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src= "images/officer_guncheon_2.jpg"  alt="Webmaster"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Kit Guncheon</b></dt>
+      <dd> Shredhorse Wrangler / Shreddy Roosevelt <script>document.write(email('kmg7ck',
+'virginia.edu'))</script></dd>
+   </dl>
+   Shred Shred Shred Shred.
+   I've been shredding since day one. From the times I hit my head on the diving board to when I tried 
+   to catch a boomerang and almost blinded myself, I've always sought out thrill. Growing up, I shredded
+   on a skateboard every day up until high school, when I started exploring the world beyond the paved 
+   paradise of Mechanicsville, Va. First exploring mountains by foot, I quickly fell in love with the human 
+   experience of conquering a towering peak. There's something special about using your own body to bring yourself 
+   to such a pristine and powerful place like a mountaintop. I've found other outlets for my need to shred 
+   in the forms of mountain biking (shredhorsing), climbing (monkey thrashing), and heelying OS (original shredder). 
+   I'm always looking to get out there and push myself closer to the edge of life. It's here I want to be. 
+   Come with me, and let's shred. 
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+  <td valign=top><img src="images/officer_hammer.jpg"  alt="Gecko Hands"></td>
+  <td valign=top width="100%">
+  <dl>
+  <dt><b>Juliet Hammer</b></dt>
+ <dd>Climbing Guru / Gecko Hands <script>document.write(email('jah3ym',
+			'virginia.edu'))</script></dd>
+	  </dl>
+	  I like to rock climb.
+</tr>
+
+<tr>
+  <td colspan=2>
+  <hr noshade size="1" width="100%">
+  </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS8r0gGXLdK5LfB8Dcmc9bmZsDCdV6n4rWWYhf9W9naKs0AYzgRiA"  alt="Cat Whisperer"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Lucie Hanes</b></dt>
+      <dd> Climbing Guru / Cat Whisperer <script>document.write(email('lth7qb',
+'virginia.edu'))</script></dd>
+   </dl>
+   Blurb coming soon!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/committee_inglis_v2.jpg"  alt="Vaquero"></td>
+   <td valign=top width="100%">
+   <dl>
+<dt><b>Andrews Inglis</b></dt>
+  <dd>Gear Wrangler / Vaquero <script>document.write(email('mai7eq',
+			 'virginia.edu'))</script></dd>
+  </dl>
+  Growing up in the foothills of the Blue Ridge mountains in South Carolina, I was always getting outside.
+  Whether it was building forts in the woods behind my house with my siblings, or going on weekend backpacking
+  trips in the very close by North Carolina mountains, I have always felt at home in Mother Nature. Outdoors
+  Club gives me great excuses to get outside on the weekends and try new things. While bakcpacking and
+  hiking have always been my passion, thanks to the club I'm getting into climbing and dabbling in snow
+  sports. Basically, being outside is the best thing ever. Try it!
+ </tr>
+
+<tr>
+	<td colspan=2>
+ <hr noshade size="1" width="100%">
+  </td>
+</tr>
+
+<tr>
+ <td valign=top><img src="images/committee_kessenich_v2.jpg"  alt="River Otter"></td>
+  <td valign=top width="100%">
+ <dl>
+ <dt><b>Hannah Kessenich</b></dt>
+ <dd>Treasurer / Buoyancy Artisan <script>document.write(email('hek5gr',
+	 'virginia.edu'))</script></dd>
+  </dl>
+  Seven years as a camper at Camp Green Cove in the mountains of Western North Carolina inspired my passion for whitewater canoeing 
+  and kayaking. My incredible experience at camp led me to a life-changing kayaking expedition to Chile, a summer spent teaching at 
+  the US National Whitewater Center in Charlotte, and now a summer back at camp (as a counselor this time). Outdoors at UVa has allowed 
+  me to take my kayaking to a whole new level, and to share my love of the Great Outdoors. I believe that some of the world's most 
+  beautiful places can only be reached by whitewater, and I hope to help others get there!
+</tr>
+
+<tr>
+ <td colspan=2>
+ <hr noshade size="1" width="100%">
+ </td>
+ </tr>
+			   
+
+<tr>
+   <td valign=top><img src="images/officer_romero_v3.jpg"  alt="Elemental Conjurer"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Charles Romero</b></dt>
+      <dd>Website Tinkerer / Elemental Conjurer <script>document.write(email('charles.romero',
+'gmail.com'))</script></dd>
+   </dl>
+I grew up in the mountains: I lived in West Virginia until middle school, when my family moved to Colorado, 
+and I did my undergraduate at the University of Colorado. My central passions have been skiing and fly fishing. 
+I do miss the alpine environment of Colorado, but I've found that Virginia has its own charms too, 
+and a lot of it is near Charlottesville! Since coming to Virginia, and joining Outdoors@UVa, 
+I've added rock climbing to my passions. Regardless of what activity I choose, any day I can get outside is a good day, 
+and it's made even better if I can share that with others.
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src= "images/rsz_officers_songer.jpg"  alt="Webmaster"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Cole Songer</b></dt>
+      <dd> Webmaster / Tonal Sherpa <script>document.write(email('jcs4te',
+'virginia.edu'))</script></dd>
+   </dl>
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="images/officer_winstead.jpg"  alt="Serpent Wielder"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Chris Winstead-Derlega</b></dt>
+      <dd>Alliance Forger / Serpent Wielder <script>document.write(email('cew2x',
+'virginia.edu'))</script></dd>
+   </dl>
+There is a minimalism to the outdoors, simply walk OUT your DOOR. Since an early age I have been RUNNING,
+ not walking, outdoors into the ocean, the mountains, the snow, and the forest. Growing up in Norfolk, VA,
+ I surfed, canoed, hiked, snowboarded, and biked. Since making Charlottesville home I have leapt into road/mtn biking,
+ kayaking, climbing, and even snowshoeing.  I am always up for a classic adventure, exploring new paths, new 
+ watering holes (blue is the best), new trees or new routes. The Outdoors Club at UVA gets me to run out my door more often and into more places.
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+  <td colspan=2>
+  <dt><b> Officers Emeritus </b></dt>
+  <hr noshade size="1" width="100%">
+  </td>
+</tr>
+<tr>
+   <td valign=top><img src="images/officer_brooks_v2.jpg"  alt="Lion Rider"></td>
+	  <td valign=top width="100%">
+  <dl>
+   <dt><b>Josh Brooks</b></dt>
+	 <dd>Ex-President/Lion Rider <script>document.write(email('jdb8nr',
+	 'virginia.edu'))</script></dd>
+	</dl>
+   From smallmouth fishing in tandem canoes down the calm waters of the James, to kayaking deep into class V gorges, the river is my home and my passion. 
+   Any given weekend, you will 
+ find me near the river, either playing or photographing others as they enjoy the healing powers of this country's moving waters. OutdoorsatUVa has fostered my passion for the
+	water, and my goal as an officer is to help others find a similar outdoor passion.
+</tr>
+
+<tr>
+   <td colspan=2>
+  <hr noshade size="1" width="100%">
+ </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="images/officer_becca.jpg"  alt="Becca Percy"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Becca Percy</b></dt>
+      <dd>Life Consultant <script>document.write(email('moon1shadow',
+'gmail.com'))</script></dd>
+   </dl>
+
+My love for the outdoors started well before my memories. Growing in the Vermont countryside, I spent far more time outdoors than watching television. I was sleeping in a tent before walking or talking, hiking before kindergarten, and backpacking in elementary school. By high school graduation I had dabbled in rock climbing. After a brief hiatus in undergrad, I have returned to all of these sports in force. Currently I am most active in rock climbing and backpacking, both attending and leading trips regularly. Other activities are berrypicking, swimming in streams, day hikes, camping, stargazing, snowshoeing, and most other outdoor activities. The mountains are one of the most relaxing and rewarding places to spend a weekend whether on rock, a mountaintop, a long hike, or a short wander. Come and relax in the woods!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+ <td valign=top><img src="images/officer_powell_v2.jpg"  alt="River Otter"></td>
+  <td valign=top width="100%">
+<dl>
+ <dt><b>Emily Powell</b></dt>
+	 <dd>Graduate Advisor / PR Coordinator / River Otter <script>document.write(email('emp8t',
+		 'virginia.edu'))</script></dd>
+	</dl>
+   I've loved playing outside since I was a kid, and rivers have always had a special pull for me. I learned to fish when I was three or four; 
+   fishing led to canoeing, which in turn led to whitewater kayaking. I've taught kayaking for Passages Adventure Camp and Outdoors at UVA
+   and for the Jackson Hole Kayak School in Wyoming. Thanks to this passion for wild rivers and places, I'm back at UVA pursuing a Master's
+   in Environmental Planning, focusing (naturally) on watershed management. I'm thrilled to be back here, and to have the opportunity to teach
+   kayaking for the club once again!
+</tr>
+
+<tr>
+ <td colspan=2>
+  <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top>
+  <dl>
+	<dt><b>Former Presidents</b></dt>
+	 </dl>
+	<ul>
+
+    <li><b>Chris Bachmann</b> (2001-2003)</li>
+	<li><b>Thiago Ize</b>     (2001-2004)</li>
+    <li><b>Matt Rosefsky</b>  (2001-2004)</li>
+    <li><b>Aarash Sofla</b> (2001-2008)</li>
+	<li><b>Sophie Johnson</b> (2002-2006)</li>
+    <li><b>Case Taintor</b> (2002-2006)</li>
+    <li><b>Katrina Salmons</b> (2005-2011)</li>
+    <li><b>Eric Stauffer</b> (2006-2008)</li>
+    <li><b>Lila Warren</b>  (2006-2009)</li>
+	<li><b>Meghan Magennis</b> (2007-2008)</li>
+    <li><b>Bob Weaver</b>  (2007-2009)</li>
+    <li><b>Emily Powell</b> (2008-2010)</li>
+    <li><b>Lindsay Jamerson</b> (2008-2011)</li>
+    <li><b>Lynn Nichols</b> (2010-2011)</li>
+	<li><b>Rebecca Green</b> (-2012)</li>
+    <li><b>Emily Wetzel</b>  (-2012)</li>
+	<li><b>Michael Crocket</b> (2012-2013)</li>
+	<li><b>Helena Groves</b> (2013-2015)</li>
+	<li><b>Joseph Gibson</b> (2013-2015)</li>
+
+
+   </td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Former Officers (non presidents)</b></dt>
+   </dl>
+   <ul>
+
+    
+    <li>Emily Anderson (2001-2002)</li>
+    <li>Dave Clark (2001-2004)</li>
+    <li>Deryn Goodwin  (2001-2002)</li>
+    <li>Jeff Scherr    (2001-2003)</li>
+    <li>Baron Schwartz     (2001-2006)</li>
+	<li>Kahlil Detrich (2003-2004)</li>
+    <li>Jim Sumner     (2003-2004)</li>
+    <li>David Wade     (2003-2004)</li>
+    <li>Rick Evans (2004-2006)</li>
+    <li>Marc Schwartz (2004-2006)</li>
+    <li>Lindsey Brown (2005-2006)</li>
+    <li>Quintin Brubaker (2005-2007)</li>
+    <li>Ryan Hauer (2005-2006)</li>
+    <li>Andrew Olesen (2005-2007)</li>
+    <li>Brian Tai (2007-2008)</li>
+    <li>Campbell Grant  (2007-2009)</li>
+    <li>Chris Chin (2008-2009)</li>
+    <li>Ryan Gilchrist (2008-2010)</li>
+    <li>Cristina Liebolt (2008-2010)</li>
+    <li>Joe Thompson (2009-2011)
+    <li>Ryan Elliott (2010-2011)</li>
+    <li>Amelia Rode (2010-2011)</li>
+    <li>Andrew Richers (2011-2012)</li>
+    <li>Andrew Cassidy (-2011)</li>
+	<li>David Abbott (-2012)</li>
+	<li>Jackson Bewley (2012-2014)</li>
+    <li>Max McHale (2012-2013)</li>
+    <li>Lindsey Shall (2012-2013)</li>
+	<li>Mitchell Oliver (2013-2014)</li>
+	<li>Olivia Rappe (2013-2014)</li>
+   </ul>
+</td>
+</tr>
+   
+</tbody> 
+</table>
+</div>
+
+<!-- Make sure pages without much content don't cause the navbar to overflow the
+    containing box -->
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p class="copyright">
+
+<a href="http://sourceforge.net/projects/socialclub">Powered by SocialClub</a> |
+<a href="about/copyright-terms-privacy.shtml">Copyright &copy; Outdoors at UVa</a> |
+<a href="about/copyright-terms-privacy.shtml">Terms of Use</a> | 
+<a href="about/copyright-terms-privacy.shtml">Privacy Policy</a> |
+<a href="about/contact.shtml">Contact Us</a> |
+
+</p>
+
+
+</body>
+</html>
