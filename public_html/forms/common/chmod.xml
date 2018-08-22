@@ -1,0 +1,211 @@
+<?xml version="1.0" ?>
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+
+    <element
+        name="owner_read"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="group_read"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="other_read"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="owner_write"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="group_write"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="other_write"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="owner_delete"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="group_delete"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+    <element
+        name="other_delete"
+        required="1"
+        error-element="error"
+        tag-name="input" />
+
+</config>
+
+<table class="collapsed elbowroom verticalHeaders">
+
+  <tr hidden="1" id="error">
+    <td colspan="3" class="error">Some information below is missing or
+    incorrect. Please choose an option for all fields.</td>
+  </tr>
+
+  <tr>
+    <th>Read</th>
+    <td>
+      Owner:
+    </td>
+    <td>
+      <input type="radio" name="owner_read" value="1" id="owner_read1" />
+        <label for="owner_read1">Yes</label>
+      <input type="radio" name="owner_read" value="0" id="owner_read0" />
+        <label for="owner_read0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Group:
+    </td>
+    <td>
+      <input type="radio" name="group_read" value="1" id="group_read1" />
+        <label for="group_read1">Yes</label>
+      <input type="radio" name="group_read" value="0" id="group_read0" />
+        <label for="group_read0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Other:
+    </td>
+    <td>
+      <input type="radio" name="other_read" value="1" id="other_read1" />
+        <label for="other_read1">Yes</label>
+      <input type="radio" name="other_read" value="0" id="other_read0" />
+        <label for="other_read0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">&#160;</td>
+  </tr>
+
+  <tr>
+    <th>Modify</th>
+    <td>
+      Owner:
+    </td>
+    <td>
+      <input type="radio" name="owner_write" value="1" id="owner_write1" />
+        <label for="owner_write1">Yes</label>
+      <input type="radio" name="owner_write" value="0" id="owner_write0" />
+        <label for="owner_write0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Group:
+    </td>
+    <td>
+      <input type="radio" name="group_write" value="1" id="group_write1" />
+        <label for="group_write1">Yes</label>
+      <input type="radio" name="group_write" value="0" id="group_write0" />
+        <label for="group_write0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Other:
+    </td>
+    <td>
+      <input type="radio" name="other_write" value="1" id="other_write1" />
+        <label for="other_write1">Yes</label>
+      <input type="radio" name="other_write" value="0" id="other_write0" />
+        <label for="other_write0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">&#160;</td>
+  </tr>
+
+  <tr>
+    <th>Delete</th>
+    <td>
+      Owner:
+    </td>
+    <td>
+      <input type="radio" name="owner_delete" value="1" id="owner_delete1" />
+        <label for="owner_delete1">Yes</label>
+      <input type="radio" name="owner_delete" value="0" id="owner_delete0" />
+        <label for="owner_delete0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Group:
+    </td>
+    <td>
+      <input type="radio" name="group_delete" value="1" id="group_delete1" />
+        <label for="group_delete1">Yes</label>
+      <input type="radio" name="group_delete" value="0" id="group_delete0" />
+        <label for="group_delete0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <th> </th>
+    <td>
+      Other:
+    </td>
+    <td>
+      <input type="radio" name="other_delete" value="1" id="other_delete1" />
+        <label for="other_delete1">Yes</label>
+      <input type="radio" name="other_delete" value="0" id="other_delete0" />
+        <label for="other_delete0">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">&#160;</td>
+  </tr>
+
+  <tr>
+    <td colspan="3" align="right">
+    <input type="reset" value="Reset Form" />
+    <input type="submit" value="Update Permissions" />
+    </td>
+  </tr>
+
+</table>
+</form>

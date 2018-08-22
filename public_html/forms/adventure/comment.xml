@@ -1,0 +1,74 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="subject"
+        pre-processing="trim,ucfirst"
+        element-id="subject" />
+    <element
+        name="comment"
+        pre-processing="trim,ucfirst"
+        element-id="comment" />
+    <element
+        required="1"
+        name="rating"
+        element-id="rating" />
+    <element
+        name="anonymous"
+        required="1"
+        tag-name="input" />
+</config>
+
+<table width="100%">
+
+  <tr id="anonymous1-error" hidden="1">
+    <td colspan="2" class="error">You must choose a value</td>
+  </tr>
+  <tr>
+    <td>Remain anonymous?</td>
+    <td>
+      <input type="radio" name="anonymous" id="anonymous1" value="1" checked="1" />
+      <label for="anonymous1">Yes</label>
+      <input type="radio" name="anonymous" id="anonymous0" value="0" />
+      <label for="anonymous0">No</label>
+    </td>
+  </tr>
+
+  <tr id="rating-error" hidden="1">
+    <td colspan="2" class="error">You must choose a value</td>
+  </tr>
+  <tr>
+    <td nowrap="1" width="10%">I rate this adventure:</td>
+    <td>
+      <select name="rating" id="rating">
+        <option value="">Choose One</option>{OPTION:}
+        <option value="{C_UID}">{C_UID} - {C_TITLE}</option>{:OPTION}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Subject</td>
+    <td><input type="text" style="width:100%" maxlength="255" name="subject" id="subject" /></td>
+  </tr>
+
+  <tr>
+    <td>Comment</td>
+    <td>
+      <textarea name="comment" style="width:100%" id="comment" rows="5" cols="30">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Post Comment" />
+    </td>
+  </tr>
+</table>
+</form>

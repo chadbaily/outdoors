@@ -1,0 +1,46 @@
+<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="category"
+        element-id="category" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+    <element
+        name="name"
+        element-id="name" />
+</config>
+
+<table class="collapsed verticalHeaders">
+  <tr>
+    <td>Filter by</td>
+    <td>
+        <select name="category" id="category" onChange="this.form.submit()">
+          <option value="">[Summary]</option>{cat:}
+          <option value="{c_uid}">{c_title}</option>{:cat}
+        </select>
+        From/To
+        <input type="text" name="name" id="name" title="Use % for a wildcard" />
+    </td>
+  </tr>
+  <tr>
+    <td>Date range</td>
+    <td>
+        <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+        To
+        <input type="text" id="end" name="end" maxlength="10" size="10" />
+        <input type="submit" value="Go" />
+    </td>
+  </tr>
+</table>
+
+</form>

@@ -1,0 +1,71 @@
+<table border='0' width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			Bug <b>#{$bug_id}</b>
+		</td>
+		<td>
+			Created: <b>{$created_date|date:DATE_FORMAT}</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Reporter: <b>{$reporter|maskemail}</b>
+		</td>
+		<td>Assigned To: <b>{$owner|maskemail}</td>
+	</tr>
+	<tr>
+	  	<td>Status: <b>{$status_name}</b></td>
+	  	<td>Resolution: <b>{$resolution_name}</b></td>
+	</tr>
+	<tr>
+		<td>
+			Project: {$project_name}
+		</td>
+		<td>
+			Component: {$component_name}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Version: {$version_name}
+		</td>
+		<td>
+			Severity: {$severity_name}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Priority: {$priority}
+		</td>
+		<td colspan="2">
+			OS: {$os_name}
+		</td>
+	</tr>
+</table>
+<br>
+Summary: {$title|stripslashes}
+<br>
+URL: {$url}
+<br>
+Bug Dependencies: {$bug_dependencies}
+<br>
+<br>
+Comments:
+<hr size="1">
+<i>----- Posted by {$reporter|maskemail} at {$created_date|date:TIME_FORMAT} on {$created_date|date:DATE_FORMAT} -----</i>
+<br>
+{$description|stripslashes|format_comments|nl2br}
+<br>
+<br>
+{section name=comment loop=$comments}
+<i>----- Posted by {$comments[comment].login|maskemail} at {$comments[comment].created_date|date:TIME_FORMAT} on {$comments[comment].created_date|date:DATE_FORMAT}-----</i>
+<br>
+{$comments[comment].comment_text|stripslashes|format_comments|nl2br}
+<br>
+<br>
+{/section}
+
+<br>
+<a class="bugdisplaylinks" href="{$smarty.server.PHP_SELF}?op=show&bugid={$bug_id}">Back to bug #{$bug_id}</a>
+<br>
+<br>

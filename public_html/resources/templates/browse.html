@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+  <base href="http://www.outdoorsatuva.org/">
+  <title>Member Resources -- ###SPLIT_PAGE###</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="assets/stylesheet.css" type="text/css">
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header"><img alt="Outdoors at UVa" src="images/header01.jpg" width="799" height="100" alt="header"></div>
+
+<div id="navbar" class="navbar">
+<ul>
+<li><a href='index.php'>Home</a></li>
+<li><a href='members/join'>Join Outdoors at UVa</a></li>
+<li><a href='members/main/member-home' class='active'>Member's Area</a>
+<ul>
+<li><a href='members/adventure'>Adventures</a></li>
+<li><a href='members/member'>Members</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/1srgTqgGdCj4B-MhF76eLqVhSWUn_IQ7ww_z1VFIGvAU/edit?usp=sharing">Gear Inventory</a></li>
+<li><a href="about/officers.shtml">Meet the Officers</a></li>
+<li><a href='resources' class='active'>Member Resources</a></li>
+<li><a href="https://www.facebook.com/groups/OutdoorsAtUVA/">Facebook Group</a></li>
+<li><a href="https://www.instagram.com/outdoorsatvirginia/">Instagram</a></li>
+<li><a href='members/classified_ad'>Classified Ads</a></li>
+<li><a href='members/profile'>Profile</a></li>
+</ul></li></ul>
+</div>
+
+<div id="content">
+<h1>###SPLIT_PAGE###</h1>
+###IF:ADMIN###
+###IF LOCK###[<a href="###SCRIPTURL###?unlock=###PAGEURL###">Unlock page</a>]
+###IF !LOCK###[<a href="###SCRIPTURL###?lock=###PAGEURL###">Lock page</a>]
+- - 
+[<a href="###SCRIPTURL###?remove=###PAGEURL###">Remove page</a>]
+<hr noshade>
+###ENDIF:ADMIN###
+<p />
+###CONTENT###
+
+<div style="font-size:x-small; color:gray">
+<hr noshade size="1">
+###IF ADMIN###<a href="###SCRIPTURL###?edit=###PAGEURL###">EditText</a> of this page
+###IF:!ADMIN###
+###IF LOCK###Page locked
+###IF !LOCK###<a href="###SCRIPTURL###?edit=###PAGEURL###">EditText</a> of this page
+###ENDIF:!ADMIN###
+(last edited ###LASTMODIFIED###)
+[<a href="###SCRIPTURL###?info=###PAGEURL###">info</a>]
+[<a href="###SCRIPTURL###?diff=###PAGEURL###">diff</a>]
+[<a href="###SCRIPTURL###?refs=###PAGEURL###">incoming links</a>])
+<hr noshade size="1">
+<small>###RELATEDPAGES###</small>
+</div>
+</div>
+
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p class="copyright">
+
+<a href="index.php?page=policies&action=copyright-terms-privacy">Copyright &copy; Outdoors at UVa</a> |
+<a href="index.php?page=policies&action=copyright-terms-privacy">Terms of Use</a> | 
+<a href="index.php?page=policies&action=copyright-terms-privacy">Privacy Policy</a> |
+<a href="index.php?page=contact">Contact Us</a>
+
+</p>
+
+
+</body>
+</html>

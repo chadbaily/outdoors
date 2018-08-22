@@ -1,0 +1,123 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        data-type="integer"
+        name="area-code"
+        element-id="area-code" />
+    <element
+        required="1"
+        data-type="integer"
+        name="exchange"
+        element-id="exchange" />
+    <element
+        required="1"
+        data-type="integer"
+        name="number"
+        element-id="number" />
+    <element
+        data-type="integer"
+        name="extension"
+        element-id="extension" />
+    <element
+        required="1"
+        name="type"
+        element-id="type" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><input type="text" name="title" id="title" /></td>
+  </tr>
+
+  <tr hidden="1" id="area-code-error">
+    <td colspan="2" class="error">
+    This field is required and must be an integer.
+    </td>
+  </tr>
+  <tr>
+    <td>Area Code</td>
+    <td>
+      <input type="text" maxlength= "3" name="area-code" id="area-code" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="exchange-error">
+    <td colspan="2" class="error">
+    This field is required and must be an integer.
+    </td>
+  </tr>
+  <tr>
+    <td>Exchange</td>
+    <td>
+      <input type="text" maxlength= "3" name="exchange" id="exchange" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="number-error">
+    <td colspan="2" class="error">
+    This field is required and must be an integer.
+    </td>
+  </tr>
+  <tr>
+    <td>Number</td>
+    <td>
+      <input type="text" maxlength="4" name="number" id="number" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="extension-error">
+    <td colspan="2" class="error">
+    This field must be a number.
+    </td>
+  </tr>
+  <tr>
+    <td>Extension</td>
+    <td>
+      <input type="text" name="extension" id="extension" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="type-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Type:</td>
+    <td>
+      <select name="type" id="type">
+        <option value="">Choose One</option>{TYPE:}
+        <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:TYPE}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Phone Number" />
+    </td>
+  </tr>
+</table>
+</form>

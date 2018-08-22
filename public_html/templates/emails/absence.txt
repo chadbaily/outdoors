@@ -1,0 +1,6 @@
+Hello there, 
+
+If you are receiving this email, it is because a trip leader reported you as absent on a recent adventure, '{TITLE}'. If you have not already done so, we would appreciate it if you could email the trip leader at {LEADER_EMAIL} and let him or her know why you couldn't make it. Note: If there was a fee associated with the adventure, the trip leader may ask you to cover it. While we understand that plans can change last minute, please be aware that absences and late withdrawlas often prevent waitlisted members from attending and can be frustrating for our trip leaders who volunteer their time to organize and lead trips. Our mission is to get people outside, and we hope that next time you can make it!
+
+Thanks,
+The Officers

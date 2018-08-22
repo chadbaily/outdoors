@@ -1,0 +1,28 @@
+<!-- -*- sgml -*- -->
+<sect1 id="installation">
+<title>Installation Instructions</title>
+
+<procedure id="install-procedure">
+<step>
+<para>Copy the directory tree from the tarball (or zip archive) to a location suitable for serving web pages.</para>
+</step>
+
+<step>
+<para>With your web browser, go the location where you installed the package.  You will be presented with a web page that will help you configure and install the application.</para>
+</step>
+
+<step>
+<para>After completing the installation, login and start reporting bugs.</para>
+
+<note>
+<para>Optional: Install JpGraph (<ulink url="http://www.aditus.nu/jpgraph/">http://www.aditus.nu/jpgraph</ulink>) if you wish to use it for the summary bug display on the home page.</para>
+</note>
+</step>
+
+</procedure>
+
+</sect1>
+
+<!-- Local Variables: -->
+<!-- sgml-parent-document: "phpbt.sgml" -->
+<!-- End: -->

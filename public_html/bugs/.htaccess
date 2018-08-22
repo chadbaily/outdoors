@@ -1,0 +1,5 @@
+php_value magic_quotes_gpc "Off"
+AuthType Basic
+AuthName "Bugs Website (NOT for general use!)"
+AuthUserFile /usr/home/outdoorsatuva/public_html/test/.htpasswd
+Require user test

@@ -1,0 +1,87 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 13:26:11
+         compiled from report.html */ ?>
+<?php $this->_load_plugins(array(
+array('function', 'build_select', 'report.html', 5, false),
+array('modifier', 'maskemail', 'report.html', 21, false),
+array('modifier', 'default', 'report.html', 21, false),
+array('modifier', 'stripslashes', 'report.html', 23, false),)); ?><form action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+">
+Bug statistics for 
+<select name="projectid" onChange="document.location.href='<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?projectid='+this.options[this.selectedIndex].value">
+	<option value="0">All projects</option>
+	<?php $this->_plugins['function']['build_select'][0](array('box' => "project",'selected' => $GLOBALS['HTTP_GET_VARS']['projectid']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+</select>
+<input type="submit" value="Go">
+</form>
+
+<h3>Bug Resolutions</h3>
+<table border="0" cellpadding="4">
+	<tr>
+		<?php if (isset($this->_sections["col"])) unset($this->_sections["col"]);
+$this->_sections["col"]['name'] = "col";
+$this->_sections["col"]['loop'] = is_array($this->_tpl_vars['resfields']) ? count($this->_tpl_vars['resfields']) : max(0, (int)$this->_tpl_vars['resfields']);
+$this->_sections["col"]['show'] = true;
+$this->_sections["col"]['max'] = $this->_sections["col"]['loop'];
+$this->_sections["col"]['step'] = 1;
+$this->_sections["col"]['start'] = $this->_sections["col"]['step'] > 0 ? 0 : $this->_sections["col"]['loop']-1;
+if ($this->_sections["col"]['show']) {
+    $this->_sections["col"]['total'] = $this->_sections["col"]['loop'];
+    if ($this->_sections["col"]['total'] == 0)
+        $this->_sections["col"]['show'] = false;
+} else
+    $this->_sections["col"]['total'] = 0;
+if ($this->_sections["col"]['show']):
+
+            for ($this->_sections["col"]['index'] = $this->_sections["col"]['start'], $this->_sections["col"]['iteration'] = 1;
+                 $this->_sections["col"]['iteration'] <= $this->_sections["col"]['total'];
+                 $this->_sections["col"]['index'] += $this->_sections["col"]['step'], $this->_sections["col"]['iteration']++):
+$this->_sections["col"]['rownum'] = $this->_sections["col"]['iteration'];
+$this->_sections["col"]['index_prev'] = $this->_sections["col"]['index'] - $this->_sections["col"]['step'];
+$this->_sections["col"]['index_next'] = $this->_sections["col"]['index'] + $this->_sections["col"]['step'];
+$this->_sections["col"]['first']      = ($this->_sections["col"]['iteration'] == 1);
+$this->_sections["col"]['last']       = ($this->_sections["col"]['iteration'] == $this->_sections["col"]['total']);
+?>
+			<th><?php echo $this->_tpl_vars['resfields'][$this->_sections['col']['index']]; ?>
+</th>
+		<?php endfor; endif; ?>
+	</tr>
+	<?php if (isset($this->_sections["developer"])) unset($this->_sections["developer"]);
+$this->_sections["developer"]['name'] = "developer";
+$this->_sections["developer"]['loop'] = is_array($this->_tpl_vars['developers']) ? count($this->_tpl_vars['developers']) : max(0, (int)$this->_tpl_vars['developers']);
+$this->_sections["developer"]['show'] = true;
+$this->_sections["developer"]['max'] = $this->_sections["developer"]['loop'];
+$this->_sections["developer"]['step'] = 1;
+$this->_sections["developer"]['start'] = $this->_sections["developer"]['step'] > 0 ? 0 : $this->_sections["developer"]['loop']-1;
+if ($this->_sections["developer"]['show']) {
+    $this->_sections["developer"]['total'] = $this->_sections["developer"]['loop'];
+    if ($this->_sections["developer"]['total'] == 0)
+        $this->_sections["developer"]['show'] = false;
+} else
+    $this->_sections["developer"]['total'] = 0;
+if ($this->_sections["developer"]['show']):
+
+            for ($this->_sections["developer"]['index'] = $this->_sections["developer"]['start'], $this->_sections["developer"]['iteration'] = 1;
+                 $this->_sections["developer"]['iteration'] <= $this->_sections["developer"]['total'];
+                 $this->_sections["developer"]['index'] += $this->_sections["developer"]['step'], $this->_sections["developer"]['iteration']++):
+$this->_sections["developer"]['rownum'] = $this->_sections["developer"]['iteration'];
+$this->_sections["developer"]['index_prev'] = $this->_sections["developer"]['index'] - $this->_sections["developer"]['step'];
+$this->_sections["developer"]['index_next'] = $this->_sections["developer"]['index'] + $this->_sections["developer"]['step'];
+$this->_sections["developer"]['first']      = ($this->_sections["developer"]['iteration'] == 1);
+$this->_sections["developer"]['last']       = ($this->_sections["developer"]['iteration'] == $this->_sections["developer"]['total']);
+?>
+		<tr<?php if (!($this->_sections['developer']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+			<?php if (count((array)$this->_tpl_vars['developers'][$this->_sections['developer']['index']])):
+    foreach ((array)$this->_tpl_vars['developers'][$this->_sections['developer']['index']] as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+?>
+				<?php if ($this->_tpl_vars['key'] == "Assigned To"): ?>
+					<td><?php echo $this->_run_mod_handler('default', true, $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['item']), Unassigned); ?>
+</td>
+				<?php else: ?>
+					<td align="center"><?php echo $this->_run_mod_handler('default', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['item']), 0); ?>
+</td>
+				<?php endif; ?>
+			<?php endforeach; endif; ?>
+		</tr>
+	<?php endfor; endif; ?>
+</table>

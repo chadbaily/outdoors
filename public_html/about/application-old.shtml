@@ -1,0 +1,144 @@
+<!--#include virtual="header.html" -->
+<h1>Outdoors at UVa Officer Application</h1>
+
+<h2>APPLICATION DUE BY MONDAY, APRIL 9, 2007</h2>
+
+<p>We are currently looking to add officers for next year.
+Please fill out the following if you are interested in becoming an 
+officer in Outdoors at UVa.  This application is designed to give us a 
+good idea of the skills and background that you would bring to the club, as well as your interest in becoming
+ an officer in the club.  
+Please fill it out to the best of your abilities and let the
+<script>document.write('<a href=\"mailto:','outdoors-officers','@','virginia.edu','\">officers</a>')</script> 
+know if you have any questions.</p>
+
+<p>All officers work together to improve the club and decide on club
+policies.  There is generally a lot of e-mail that gets sent to the
+officers list, and as an officer you must be willing to read and respond
+to these e-mails.  A few officers handle money, some lead more trips than
+others, and some deal with gear more than others.  The roles are flexible,
+but we all put a lot of energy into the club.  The single most important aspect that we look for in new officers is a passion for the Club.</p>
+
+
+<form method=post action="/about/makepage.pl">
+<hr>
+<h2>Personal Information</h2>
+<table width="100%">
+  <col width="25%">
+  <col width="75%">
+  <tr>
+    <td>Full Name</td>
+    <td><input type="text" name="name"></td>
+  </tr>
+
+  <tr>
+    <td>E-mail address</td>
+    <td><input type="text" name="email"></td>
+  </tr>
+
+  <tr>
+    <td>Year in School</td>
+    <td><input type="text" name="year"></td>
+  </tr>
+
+  <tr>
+    <td>Number of years you'll be at UVA or in Charlottesville 
+(expected)</td>
+    <td><input type="text" name="timeleft"></td>
+  </tr>
+</table>
+<hr>
+<h2>Experience</h2>
+<table width="100%">
+  <col width="25%">
+  <col width="75%">
+
+  <tr>
+    <td>What outdoor-related clubs have you been involved in?<br>
+        (Boy Scouts, NOLS, High school clubs, etc.)<br></td>
+    <td><TEXTAREA name="clubs" rows="10" cols="60" wrap="soft"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>List and describe any leadership positions in any clubs or 
+organizations</td>
+    <td><TEXTAREA name="leadership" rows="10" cols="60"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">List your experiences in the following activities:(leave blank if no experience)<br>
+                 <b>We do not expect you to be an expert at any or all of these activities!</b><br>
+		Please include <b>any</b> (and all) information that you think is important.<br>
+                Elaborate if possible! </td>
+  </tr>
+
+  <tr>
+    <td>Climbing:<br>(List whether you do sport/top rope/trad and 
+what level for each)</td>
+    <td><TEXTAREA rows="3" cols="60" name="climbing"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Kayaking:<br>(List what rivers you can paddle and class you 
+feel comfortable on)</td>
+    <td><TEXTAREA rows="3" cols="60" name="kayaking"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Mountain Biking:</td>
+    <td><TEXTAREA rows="3" cols="60" name="mtnbiking"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Hiking/Backpacking:</td>
+    <td><TEXTAREA rows="3" cols="60" name="backpacking"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Caving:</td>
+    <td><TEXTAREA rows="3" cols="60" name="caving"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Snowsports:</td>
+    <td><TEXTAREA rows="3" cols="60" name="snowsports"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>Other:<br>(such as environmental service, etc.)</td>
+    <td><TEXTAREA rows="3" cols="60" name="other"></TEXTAREA></td>
+  </tr>
+  
+</table>
+
+<hr>
+<h2>Officer Information</h2>
+
+<table width="100%">
+  <col width="25%">
+  <col width="75%">
+
+  <tr>
+    <td>Why do you want to be an officer?</td>
+    <td><TEXTAREA rows="5" cols="60" name="whyofficer"></TEXTAREA></td>
+  </tr>
+
+  <tr>
+    <td>What duties would you be interested in?<br>(Check all that 
+apply)</td>
+    <td><input type="checkbox" name="gear" value="checked">Purchasing gear<br>
+        <input type="checkbox" name="treasurer" value="checked">Treasurer<br>
+        <input type="checkbox" name="quartermaster" value="checked">Quartermaster (handling gear)<br>
+        <input type="checkbox" name="tripadvisor" value="checked">Advising Leaders</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Submit this Information"></td>
+  </tr>
+</table>
+
+
+</form>
+
+<!--#include virtual="footer.html" -->

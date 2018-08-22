@@ -1,0 +1,20 @@
+<form name="the-form" id="the-form" method="POST">
+    <input type="hidden" name="submitted" id="submitted" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="submitted"
+    form-id="the-form">
+    <element
+        name="val"{typed:}
+        data-type="{type}"{:typed}
+        required="1"
+        element-id="val" />
+</config>
+
+<span hidden="1" class="tiny error" id="val-error">Your data is incorrect.<br /></span>
+<input type="text" name="val" id="val" />
+<input type="submit" value="Save" />
+
+</form>

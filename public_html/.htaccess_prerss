@@ -1,0 +1,13 @@
+php_value include_path ".:classes:controllers:utility"
+php_value magic_quotes_gpc "Off"
+php_value register_globals "Off"
+php_value allow_call_time_pass_reference "On"
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 http://www.outdoorsatuva.org
+ErrorDocument 403 http://www.outdoorsatuva.org
+
+RewriteEngine on
+RewriteRule ^members/([a-z_]+)/([a-z_\-]+)/([0-9]+) index.php?page=$1&action=$2&object=$3 [QSA]
+RewriteRule ^members/([a-z_]+)/([a-z_\-]+) index.php?page=$1&action=$2 [QSA]
+RewriteRule ^members/([a-z_]+) index.php?page=$1 [QSA]

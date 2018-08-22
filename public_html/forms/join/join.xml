@@ -1,0 +1,401 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+
+    <element
+        required="1"
+        name="firstName"
+        pre-processing="ucwords"
+        element-id="firstName" />
+    <element
+        required="1"
+        name="lastName"
+        pre-processing="ucwords"
+        element-id="lastName" />
+    <element
+        required="1"
+        data-type="email"
+        name="emailAddress"
+        element-id="emailAddress" />
+    <element
+        required="1"
+        name="confirmEmailAddress"
+        error-element="confirm-email-error"
+        compare-type="equal"
+        compare-to-id="emailAddress"
+        element-id="confirmEmailAddress" />
+    <element
+        required="1"
+        name="password1"
+        element-id="password1"
+        />
+    <element
+        required="1"
+        name="password2"
+        compare-to-id="password1"
+        compare-type="equal"
+        element-id="password2"
+        />
+
+    <element
+        required="1"
+        name="street"
+        pre-processing="ucwords"
+        element-id="street"
+        />
+    <element
+        required="1"
+        name="city"
+        pre-processing="ucwords"
+        element-id="city"
+        />
+    <element
+        required="1"
+        name="state"
+        pre-processing="strtolower,ucfirst"
+        element-id="state"
+        />
+    <element
+        required="1"
+        data-type="number"
+        name="zip"
+        element-id="zip"
+        />
+
+    <element
+        data-type="number"
+        name="areaCode"
+        error-element="phone-error"
+        required="1"
+        element-id="areaCode"
+        />
+    <element
+        data-type="number"
+        name="exchange"
+        error-element="phone-error"
+        required="1"
+        element-id="exchange"
+        />
+    <element
+        data-type="number"
+        error-element="phone-error"
+        name="number"
+        element-id="number"
+        required="1"
+        />
+    <element
+        name="phoneNumberType"
+        error-element="phone-error"
+        element-id="phoneNumberType"
+        required="1" />
+
+    <element
+        name="chat"
+        element-id="chat" />
+    <element
+        name="chatType"
+        required-if="chat"
+        error-element="chat-error"
+        element-id="chatType" />
+
+    <element
+        required="1"
+        tag-name="input"
+        name="student" />
+    <element
+        required="1"
+        tag-name="input"
+        name="gender" />
+    <element
+        required="1"
+        data-type="date"
+        name="dob"
+        element-id="dob" />
+
+    <element
+        tag-name="input"
+        name="membership-plan"
+        required="1" />
+
+</config>
+
+<h2> How to Join the Club</h2>
+
+<p><strong>There are now two ways to join the club!</strong></p>
+<ol>
+  <li>The old way, which requires manual activation</li>
+  <li>The new way!! Which activates you automatically!</li>
+  <ul>
+	  <li>Give it a shot <a href='https://outdoors-at-uva-signup.herokuapp.com/signup' target="_blank">here</a>.</li>
+	</ul>
+</ol>
+
+<p><b>Each step must be done</b> (once). If you use the same
+email address for each step, your membership will be easier to
+process (and you will be activated quickly).</p>
+
+<ol>
+  <li>Fill out the form below</li>
+
+  <li>Pay Membership dues</li>
+	<ul>
+	  <li> Instructions available on the next page, but are also available <a href='about/donate.shtml'>here</a>.</li>
+	</ul>
+  <li>Sign Waiver</li>
+	<ul>
+	  <li> <strong>PREFERRED METHOD</strong>: You can sign your waiver electronically <a href="https://app.hellosign.com/s/c101b9bb"> here</a>!
+<strong>(Please use the same email you used for creating your member account for the waiver)</strong> </li>
+<li>We have a blank version of our waiver that you may print, fill out, sign, and turn into our mailbox, or at a gear room/info session. (NOT preferred - wastes paper!)
+</li>
+	</ul>
+</ol>
+
+<h3> When to expect activation </h3>
+
+<p>Because officers must confirm that you have paid membership dues and signed
+the waiver before you can be activated, activation is not instantaneous. 
+Electronic payment and waiver signatures <b>with the same email address (for all
+three steps)</b> tend to be activated within 72 hours;
+however, within the first couple weeks of a semester, the activation time can be
+longer due to the "activation rush". Be aware that if your payment does not match your membership, or
+something is missing, then your activation may take longer. You should see an
+email from us within 72 hours if you need to correct your payment.
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<fieldset>
+<legend>Name and Account Login Information</legend>
+
+<p>If you are already a member, or have been a member in the past, you probably
+do not need to join the club.  Instead, you just need to renew your membership.
+To renew your membership, <a href="members/join/renew">log
+in</a> and follow the instructions.  If you are having trouble, please contact
+the officers and we will help you as soon as possible.</p>
+
+<table width="100%" >
+
+  <tr hidden="1" id="firstName-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>First Name</td>
+    <td><input type="text" name="firstName" id="firstName" /></td>
+  </tr>
+
+  <tr hidden="1" id="lastName-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td><input type="text" name="lastName" id="lastName" /></td>
+  </tr>
+
+  <tr hidden="1" id="gender-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td>
+      <input type="radio" name="gender" value="m" id="gender" />
+      <label for="gender">Male</label>
+      <input type="radio" name="gender" id="gender2" value="f" />
+      <label for="gender2">Female</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="student-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td>Are you a student at UVa?</td>
+    <td>
+      <input type="radio" name="student" id="student1" value="1" />
+      <label for="student1">Yes</label>
+      <input type="radio" name="student" id="student0" value="0" />
+      <label for="student0">No</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="dob-error">
+    <td colspan="2" class="error">You must enter your birth date in the format
+    YYYY-MM-DD.</td>
+  </tr>
+  <tr>
+    <td>Date of Birth (YYYY-MM-DD)</td>
+    <td>
+      <input type="text" id="dob" name="dob" size="10" maxlength="10" />
+      <img src="assets/cal.gif" onClick="showChooser(this, 'dob', 
+'chooserSpan', 1950, 2020, 'Y-m-d');" />
+      <div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="emailAddress-error">
+    <td colspan="2" class="error">This field is required and must be a valid email address.</td>
+  </tr>
+  <tr>
+    <td>Email Address (your email address is your login name)</td>
+    <td><input type="text" name="emailAddress" id="emailAddress" /></td>
+  </tr>
+
+  <tr hidden="1" id="confirm-email-error">
+    <td colspan="2" class="error">Your email address doesn't match.</td>
+  </tr>
+  <tr>
+    <td>Confirm Email Address</td>
+    <td><input type="text" name="confirmEmailAddress" id="confirmEmailAddress" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" class="notice">Passwords are not encrypted.  Do NOT use a
+    password that you use elsewhere, such as the password to your email account.
+    Create a NEW password.</td>
+  </tr>
+
+  <tr hidden="1" id="password2-comparison-error">
+    <td colspan="2" class="error">Your passwords do not match.</td>
+  </tr>
+  <tr hidden="1" id="password1-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+
+  <tr>
+    <td>Create a Club Password</td>
+    <td><input type="password" name="password1" id="password1" /></td>
+  </tr>
+  <tr hidden="1" id="password2-error">
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+
+  <tr>
+    <td>Enter your password again for confirmation</td>
+    <td><input type="password" name="password2" id="password2" /></td>
+  </tr>
+
+</table>
+</fieldset>
+
+<fieldset>
+<legend>Contact Information</legend>
+
+<table width="100%" >
+
+  <tr>
+    <td colspan="3">Address</td>
+  </tr>
+
+  <tr hidden="1" id="street-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td width="10"> </td>
+    <td>Street</td>
+    <td><input maxlength="60" type="text" name="street" id="street" /></td>
+  </tr>
+
+  <tr hidden="1" id="city-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>City</td>
+    <td><input maxlength="60" type="text" name="city" id="city" /></td>
+  </tr>
+
+  <tr hidden="1" id="state-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>State</td>
+    <td><input type="text" name="state" id="state" maxlength="2" /></td>
+  </tr>
+
+  <tr hidden="1" id="zip-error">
+    <td> </td>
+    <td colspan="2" class="error">This field is required and should only contain numbers.</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Zip Code</td>
+    <td><input maxlength="60" type="text" name="zip" id="zip" /></td>
+  </tr>
+
+  <tr hidden="1" id="phone-error">
+    <td colspan="3" class="error">Please enter only numbers in the boxes
+    below, and choose a phone number type.</td>
+  </tr>
+  <tr>
+    <td colspan="2">Phone Number (you can enter more numbers later)</td>
+    <td nowrap="true">
+        (<input type="text" maxlength="3" size="3" name="areaCode" id="areaCode" />)
+        <input type="text" maxlength="3" size="3" name="exchange" id="exchange" /> -
+        <input type="text" maxlength="4" size="4" name="number" id="number" />
+        <select name="phoneNumberType" id="phoneNumberType">
+            <option value="">Choose One</option>{phone_types:}
+            <option value="{c_uid}">{c_title|htmlspecialchars}</option>{:phone_types}
+        </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="chat-error">
+    <td> </td>
+    <td colspan="2" class="error">If you enter a chat identity, you must also
+    choose the type.</td>
+  </tr>
+
+  <tr>
+    <td colspan="2">Instant Messenger/Chat (optional; you can enter more
+    identities later)</td>
+    <td nowrap="true">
+      <input maxlength="100" type="text" name="chat" id="chat" size="8" />
+      <select name="chatType" id="chatType">
+        <option value="">Choose One</option>{chat:}
+        <option value="{c_uid}">{c_title|htmlspecialchars}</option>{:chat}
+      </select>
+    </td>
+  </tr>
+
+</table>
+
+</fieldset>
+
+<fieldset>
+<legend>Choose a Membership Plan</legend>
+
+<p class="error" hidden="1" id="membership-plan-error">This field is required.</p>
+
+<table width="100%" class="top ruled compact cleanHeaders">
+  <tr>
+    <th colspan="2">Membership Plan</th>
+    <th nowrap="true">Begin/Expire Dates</th>
+    <th>Cost</th>
+  </tr>{plan:}
+  <tr>
+    <td>
+      <input type="radio" name="membership-plan" id="membership-plan{c_uid}" value="{c_uid}" />
+    </td>
+    <td>
+      <label for="membership-plan{c_uid}"><b>{c_title|htmlspecialchars}:</b>  {c_description|htmlspecialchars}</label>
+    </td>
+    <td nowrap="true">{c_begin_date} to {c_expiration_date}</td>
+    <td>${c_total_cost}</td>
+  </tr>{:plan}
+</table>
+
+</fieldset>
+
+<p align="right"><input type="submit" value="Proceed to Next Step" /></p>
+
+</form>

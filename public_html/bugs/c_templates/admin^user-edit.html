@@ -1,0 +1,96 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-15 08:30:46
+         compiled from admin/user-edit.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/user-edit.html', 39, false),
+array('modifier', 'htmlspecialchars', 'admin/user-edit.html', 48, false),
+array('function', 'build_select', 'admin/user-edit.html', 62, false),)); ?><?php $this->_assign_smarty_interface(); ?>
+<script language="JavaScript">
+<!--
+	var hadAdmin = <?php echo $this->_tpl_vars['hadadmin']; ?>
+;
+	var numAdmins = <?php echo $this->_tpl_vars['numadmins']; ?>
+;
+
+	<?php echo '
+	function checkAdmin(slct) {
+		var adminSelected = false;
+
+		if (hadAdmin && numAdmins == 1) {
+			for (current = 0; current < slct.options.length; current++ ) {
+				if (slct.options[current].selected && slct.options[current].value == 1) {
+					adminSelected = true;
+				}
+			}
+			if (!adminSelected) {
+				alert(\'This is the only admin user for the system.  Removing this user from the Admin group would be unwise.\');
+			}
+		}
+	}
+	'; ?>
+
+// -->
+</script>
+<b><?php echo $this->_tpl_vars['page_title']; ?>
+&nbsp;</b>
+<hr size="1">
+<form action="user.php" method="post">
+<input type="hidden" name="user_id" value="<?php echo $this->_tpl_vars['user_id']; ?>
+">
+<input type="hidden" name="filter" value="<?php echo $this->_tpl_vars['filter']; ?>
+">
+<input type="hidden" name="use_js" value="<?php echo $this->_smarty_vars['request']['use_js']; ?>
+">
+<table border='0'>
+<?php if ($this->_tpl_vars['error']): ?>
+  <tr>
+		<td colspan="2" class="error"><?php echo $this->_tpl_vars['error']; ?>
+</td>
+  </tr>
+<?php endif; ?>
+<?php if (! EMAIL_IS_LOGIN): ?>
+<tr>
+  <td align="right" valign="top">Login:</td>
+  <td><input type="text" size="20" maxlength="40" name="login" value="<?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['login']); ?>
+"></td>
+</tr>
+<?php endif; ?>
+<tr>
+  <td align="right" valign="top">Email:</td>
+  <td><input type="text" size="20" maxlength="40" name="email" value="<?php echo $this->_tpl_vars['email']; ?>
+"></td>
+</tr>
+<tr>
+  <td align="right" valign="top">FirstName:</td>
+  <td><input type="text" size="20" maxlength="40" name="first_name" value="<?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['first_name'])); ?>
+"></td>
+</tr>
+<tr>
+  <td align="right" valign="top">LastName:</td>
+  <td><input type="text" size="20" maxlength="40" name="last_name" value="<?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['last_name'])); ?>
+"></td>
+</tr>
+<tr>
+  <td align="right" valign="top">Password:</td>
+  <td><input type="text" size="20" maxlength="40" name="password" value="<?php echo $this->_tpl_vars['password']; ?>
+"></td>
+</tr>
+<tr>
+  <td align="right" valign="top">User Groups:</td>
+  <td>
+    <select name="fusergroup[]" size="5" multiple onClick="checkAdmin(this)">
+    <?php $this->_plugins['function']['build_select'][0](array('box' => "group",'selected' => $this->_tpl_vars['user_groups']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+    </select>
+  </td>
+</tr>
+<tr>
+        <td align="right" valign="top">Active:</td>
+        <td><input type="checkbox" name="active" value="1" <?php if ($this->_tpl_vars['active']): ?>checked<?php endif; ?>></td>
+</tr>
+<tr>
+        <td align="right" valign="top">Email Notify:</td>
+        <td><input type="checkbox" name="fe_notice" value="1" <?php if ($this->_tpl_vars['email_notices']): ?>checked<?php endif; ?>></td>
+</tr>
+</table>
+<br>
+<input type='submit' name='submit' value='Submit'>
+</form>

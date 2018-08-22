@@ -1,0 +1,54 @@
+<?php /* Smarty version 2.3.0, created on 2004-09-18 00:46:20
+         compiled from bugvotes.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'maskemail', 'bugvotes.html', 8, false),
+array('modifier', 'date', 'bugvotes.html', 9, false),)); ?><table border="0" cellspacing="2" cellpadding="2">
+	<tr bgcolor="#eeeeee">
+		<th>Who</th>
+		<th>When</th>
+	</tr>
+	<?php if (isset($this->_sections["vote"])) unset($this->_sections["vote"]);
+$this->_sections["vote"]['name'] = "vote";
+$this->_sections["vote"]['loop'] = is_array($this->_tpl_vars['votes']) ? count($this->_tpl_vars['votes']) : max(0, (int)$this->_tpl_vars['votes']);
+$this->_sections["vote"]['show'] = true;
+$this->_sections["vote"]['max'] = $this->_sections["vote"]['loop'];
+$this->_sections["vote"]['step'] = 1;
+$this->_sections["vote"]['start'] = $this->_sections["vote"]['step'] > 0 ? 0 : $this->_sections["vote"]['loop']-1;
+if ($this->_sections["vote"]['show']) {
+    $this->_sections["vote"]['total'] = $this->_sections["vote"]['loop'];
+    if ($this->_sections["vote"]['total'] == 0)
+        $this->_sections["vote"]['show'] = false;
+} else
+    $this->_sections["vote"]['total'] = 0;
+if ($this->_sections["vote"]['show']):
+
+            for ($this->_sections["vote"]['index'] = $this->_sections["vote"]['start'], $this->_sections["vote"]['iteration'] = 1;
+                 $this->_sections["vote"]['iteration'] <= $this->_sections["vote"]['total'];
+                 $this->_sections["vote"]['index'] += $this->_sections["vote"]['step'], $this->_sections["vote"]['iteration']++):
+$this->_sections["vote"]['rownum'] = $this->_sections["vote"]['iteration'];
+$this->_sections["vote"]['index_prev'] = $this->_sections["vote"]['index'] - $this->_sections["vote"]['step'];
+$this->_sections["vote"]['index_next'] = $this->_sections["vote"]['index'] + $this->_sections["vote"]['step'];
+$this->_sections["vote"]['first']      = ($this->_sections["vote"]['iteration'] == 1);
+$this->_sections["vote"]['last']       = ($this->_sections["vote"]['iteration'] == $this->_sections["vote"]['total']);
+?>
+		<tr<?php if (!($this->_sections['vote']['iteration'] % 2)  ): ?> class="alt" bgcolor="#dddddd"<?php endif; ?>>
+			<td><?php echo $this->_run_mod_handler('maskemail', true, $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['login']); ?>
+</td>
+			<td><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['created_date'], DATE_FORMAT); ?>
+ <?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['created_date'], TIME_FORMAT); ?>
+</td>
+		</tr>
+	<?php endfor; else: ?>
+		<tr>
+			<td colspan="2" align="center"><?php echo $this->_tpl_vars['STRING']['no_votes']; ?>
+</td>
+		</tr>
+	<?php endif; ?>
+</table>
+<br>
+<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=show&bugid=<?php echo $GLOBALS['HTTP_GET_VARS']['bugid']; ?>
+">Back to bug #<?php echo $GLOBALS['HTTP_GET_VARS']['bugid']; ?>
+</a>
+<br>
+<br>

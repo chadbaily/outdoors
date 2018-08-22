@@ -1,0 +1,28 @@
+<form action="{$smarty.server.PHP_SELF}">
+Bug statistics for 
+<select name="projectid" onChange="document.location.href='{$smarty.server.PHP_SELF}?projectid='+this.options[this.selectedIndex].value">
+	<option value="0">All projects</option>
+	{build_select box=project selected=$smarty.get.projectid}
+</select>
+<input type="submit" value="Go">
+</form>
+
+<h3>Bug Resolutions</h3>
+<table border="0" cellpadding="4">
+	<tr>
+		{section name=col loop=$resfields}
+			<th>{$resfields[col]}</th>
+		{/section}
+	</tr>
+	{section name=developer loop=$developers}
+		<tr{if $smarty.section.developer.iteration is even} class="alt"{/if}>
+			{foreach key=key item=item from=$developers[developer]}
+				{if $key eq "Assigned To"}
+					<td>{$item|maskemail|default:Unassigned}</td>
+				{else}
+					<td align="center">{$item|stripslashes|default:0}</td>
+				{/if}
+			{/foreach}
+		</tr>
+	{/section}
+</table>

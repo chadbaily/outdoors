@@ -1,0 +1,6 @@
+Dear {TO_NAME},
+
+You have been waitlisted for adventure {C_TITLE}.  If another member withdraws from the adventure, you will be automatically moved off the waitlist and notified by email.
+
+Regards,
+{LEADER_NAME}

@@ -1,0 +1,50 @@
+<?php /* Smarty version 2.3.0, created on 2004-09-09 12:21:30
+         compiled from bugattachmentform.html */ ?>
+<?php $this->_assign_smarty_interface(); ?>
+<form enctype="multipart/form-data" action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+" method="post">
+<input type="hidden" name="bugid" value="<?php echo $this->_tpl_vars['bugid']; ?>
+">
+<input type="hidden" name="use_js" value="<?php echo $this->_smarty_vars['request']['use_js']; ?>
+">
+<table border="0" align="center">
+	<tr>
+		<td colspan="2" align="center">
+			Please choose a file to upload and enter a one-line description.  
+			<br>
+			Maximum file size: <?php echo $this->_tpl_vars['max_size']; ?>
+ bytes
+			<br>
+			<br>
+		</td>
+	</tr>
+	<?php if ($this->_tpl_vars['error']): ?>
+		<tr>
+			<td colspan="2" class="error"><?php echo $this->_tpl_vars['error']; ?>
+</td>
+		</tr>
+	<?php endif; ?>
+	<tr>
+		<td>
+			File:
+		</td>
+		<td>
+			<input type="file" name="attachment">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description:
+		</td>
+		<td>
+			<input type="text" name="description" maxlength="255" value="<?php echo $this->_tpl_vars['description']; ?>
+">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<input type="submit" name="submit" value="Upload attachment">
+		</td>
+	</tr>
+</table>
+</form>			

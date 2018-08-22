@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Use this script to upgrade between two versions.  Check the contents of your
+# VERSION file to find out what you're upgrading from and to.  If you need to
+# upgrade several versions, run the scripts to upgrade from one to the next,
+# one at a time.  Look at the files in the upgrade-scripts directory.
+
+# Example:
+# bash$ ./upgrade sc_ localhost socialclub socialclub onyx 2005-09-01 2006-03-26
+
+echo "Have you backed up your data?  Hit Enter to continue, Ctrl-C to stop."
+read trash
+
+if [ $7 ]
+then
+    if [ -f "upgrade-scripts/$6_$7.sql" ]
+	then
+		echo "Upgrading from $6 to $7..."
+		sed -e "s/\[_]/$1/g" upgrade-scripts/$6_$7.sql | mysql -h$2 -u$4 -p$5 $3 \
+        && echo "Looks like it succeeded.  Good work, team."
+	fi
+else
+    echo "Usage: ./upgrade <tableprefix> <host> <db> <user> <pw> <from> <to>"
+    echo "Where <from> and <to> are version numbers, in YYYY-MM-DD format"
+fi

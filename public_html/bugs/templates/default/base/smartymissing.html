@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Smarty Templates Missing</title>
+		<link rel="stylesheet" href="styles/default.css" type="text/css">
+	</head>
+	<body>
+		<div class="error">An error has occurred</div>
+		<div align="center">
+			<?php if (SMARTY_PATH == '') { ?>
+				The Smarty templates class is not in your include path.  Either specify
+				the location of smarty via the SMARTY_PATH define in config.php 
+				(and don't forget the trailing slash) or install smarty in your include path.  
+			<?php } else { ?>
+				The Smarty templates class could not be found at <?php echo SMARTY_PATH.'Smarty.class.php'; ?>.
+			<?php } ?>
+			Without this class being available, phpBugTracker will not be able to work.
+			Smarty can be downloaded from <a href="http://www.phpinsider.com/php/code/Smarty/">the smarty
+			website</a>.  Please reload this page when smarty has been installed.
+		</div>
+	</body>
+</html>
+	

@@ -1,0 +1,8 @@
+Options +Indexes
+AuthType Basic
+AuthName "Outdoors at UVa documents"
+AuthGroupFile /dev/null
+AuthUserfile /home/at/public_html/documents/.htpasswd
+<Limit GET POST PUT>
+require valid-user
+</Limit>

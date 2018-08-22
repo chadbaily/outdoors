@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        name="description"
+        element-id="description" />
+    <element
+        required="1"
+        name="purchase-date"
+        data-type="date"
+        element-id="purchase-date" />
+    <element
+        required="1"
+        name="status"
+        element-id="status" />
+    <element
+        required="1"
+        name="type"
+        element-id="type" />
+    <element
+        required="1"
+        name="condition"
+        element-id="condition" />
+    <element
+        name="qty"
+        data-type="integer"
+        required="1"
+        element-id="qty" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="type-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Type</td>
+    <td>
+      <select name="type" id="type">
+        <option value="">Choose a Category</option>{GROUP:}
+        <optgroup label="{CAT_TITLE|htmlspecialchars}">{TYPE:}
+          <option value="{C_UID}">{C_TITLE|htmlspecialchars}</option>{:TYPE}
+        </optgroup>{:GROUP}{TYPES}
+      </select>
+      <a href="members/item_type/create">create new</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Details (optional)<br />
+      (use features to record details)</td>
+    <td>
+      <input type="text" name="description" id="description" style="width:400px" maxlength="255"/>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="purchase-date-error">
+    <td colspan="2" class="error">
+    This field is required and must be a date in the format YYYY-MM-DD.
+    </td>
+  </tr>
+  <tr>
+    <td>Purchase Date</td>
+    <td>
+      <input type="text" name="purchase-date" id="purchase-date" maxlength="10"/>
+      <img src="assets/cal.gif" onClick="showChooser(this, 'purchase-date', 'chooserSpan', 1999, 2010, 'Y-m-d');" />
+      <div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="condition-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Condition</td>
+    <td>
+      <select name="condition" id="condition">
+        <option value="">Choose One</option>{OPTION:}
+        <option value="{C_UID}">{C_TITLE}</option>{:OPTION}
+      </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="status-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td>
+      <select name="status" id="status">
+        <option value="">Choose One</option>{STATUS:}
+        <option value="{C_UID}">{C_TITLE}</option>{:STATUS}
+      </select>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="qty-error">
+    <td colspan="2" class="error">This field must contain an integer.</td>
+  </tr>
+  <tr>
+    <td>Quantity</td>
+    <td>
+        <input type="text" name="qty" id="qty" size="5" value="1" />
+        (did you read the note above?)
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Create Item" />
+    </td>
+  </tr>
+</table>
+</form>

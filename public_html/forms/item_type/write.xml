@@ -1,0 +1,89 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        pre-processing="ucwords"
+        name="title"
+        element-id="title" />
+    <element
+        required="1"
+        name="category"
+        element-id="category" />
+    <element
+        name="primary-feature"
+        element-id="primary-feature" />
+    <element
+        name="secondary-feature"
+        element-id="secondary-feature" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td>
+      <input type="text" name="title" id="title" style="width:400px" maxlength="100"/>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="category-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>
+      <select name="category" id="category">{CAT:}
+        <option value="{C_UID}">{C_TITLE}</option>{:CAT}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2"><p>Choose which columns you want to appear in the main
+      display.</p></td>
+  </tr>
+
+  <tr>
+    <td>Primary feature</td>
+    <td>
+      <select name="primary-feature" id="primary-feature">
+        <option value="">Primary Feature</option>{OPTION:}
+        <option value="{C_NAME}">{C_NAME}</option>{:OPTION}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Secondary feature</td>
+    <td>
+      <select name="secondary-feature" id="secondary-feature">
+        <option value="">Secondary Feature</option>{OPTION:}
+        <option value="{C_NAME}">{C_NAME}</option>{:OPTION}
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+</table>
+</form>

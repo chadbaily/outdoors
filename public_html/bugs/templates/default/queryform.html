@@ -1,0 +1,156 @@
+<script type="text/JavaScript">
+<!-- 
+versions = new Array();
+closedversions = new Array();
+components = new Array();
+versions['All'] = new Array(new Array('','All'));
+closedversions['All'] = new Array(new Array('','All'));
+components['All'] = new Array(new Array('','All'));
+{project_js}
+
+{literal}
+function updateMenus(f) {
+  sel = f.projects[f.projects.selectedIndex].text;
+  f.versions.length = versions[sel].length;
+  for (var x = 0; x < versions[sel].length; x++) {
+    f.versions.options[x].value = versions[sel][x][0];
+    f.versions.options[x].text = versions[sel][x][1];
+  }
+  f.components.length = components[sel].length;
+  for (var x = 0; x < components[sel].length; x++) {
+    f.components.options[x].value = components[sel][x][0];
+    f.components.options[x].text = components[sel][x][1];
+  }
+}
+{/literal}
+//-->
+</script>
+<form method="get" action="query.php" name="query">
+    <table>
+	<tr>
+	    <th align="left">{$STRING.QUERY.Status}:</th>
+	    <th align="left">{$STRING.QUERY.Resolution}:</th>
+	    <th align="left">{$STRING.QUERY.OpSys}:</th>
+	    <th align="left">{$STRING.QUERY.Priority}:</th>
+	    <th align="left">{$STRING.QUERY.Severity}:</th>
+	    <th align="left">{$STRING.QUERY.Database}:</th>
+	    <th align="left">{$STRING.QUERY.ReportedOnSite}:</th>
+	</tr><tr>
+	    <td align="left" valign="top"><select name="status[]"
+		multiple size="7">{build_select box=status}</select></td>
+	    <td align="left" valign="top"><select name="resolution[]"
+		multiple size="7">{build_select box=resolution}</select></td>
+	    <td align="left" valign="top"><select name="os[]"
+		multiple size="7">{build_select box=os}</select></td>
+	    <td align="left" valign="top"><select name="priority[]"
+		multiple size="7">{build_select box=priority}</select></td>
+	    <td align="left" valign="top"><select name="severity[]"
+		multiple size="7">{build_select box=severity}</select></td>
+	    <td align="left" valign="top"><select name="database[]"
+		multiple size="7">{build_select box=database}</select></td>
+	    <td align="left" valign="top"><select name="site[]"
+		multiple size="7">{build_select box=site}</select></td>
+	</tr>
+    </table>
+    <br><br>
+    <table>
+	<tr>
+	    <td><table border="1" cellspacing="0" cellpadding="0">
+		    <tr>
+			<td><table cellspacing="0" cellpadding="0" border="0">
+				<tr>
+				    <td rowspan="2" valign="top"><select
+					name="emailsearch1">
+					    <option value="email">Email</option>
+					    <option value="login">Login</option>
+					</select>: <input name="email1"
+					    size="30" value="">&nbsp;{$STRING.QUERY.MatchingAs}&nbsp;
+					<select name="emailtype1">
+					    <option value="rlike">{$STRING.QUERY.MatchingAs_Regexp}</option>
+					    <option value="not rlike">{$STRING.QUERY.MatchingAs_NotRegexp}</option>
+					    <option selected value="like">{$STRING.QUERY.MatchingAs_Substring}</option>
+					    <option value="=">{$STRING.QUERY.MatchingAs_Exact}</option>
+					</select></td>
+				    <td><input type="checkbox"
+					name="emailfield1[]" value="owner"
+					checked>{$STRING.QUERY.eMail_AssignedTo}</td>
+				</tr><tr>
+				    <td><input type="checkbox" name="emailfield1[]"
+					value="reporter">{$STRING.QUERY.eMail_Reporter}</td>
+				</tr>
+			    </table></td>
+		    </tr>
+	    </table></td>
+	</tr>
+    </table>
+    <table border="0">
+	<tr>
+	    <td align="right">{$STRING.QUERY.Summary}:</td>
+	    <td><input name="title" size="30" value=""></td>
+	    <td><select name="title_type">
+		    <option value="like" selected>{$STRING.QUERY.MatchingAs_Substring}</option>
+		    <option value="rlike">{$STRING.QUERY.MatchingAs_Regexp}</option>
+		    <option value="not rlike">{$STRING.QUERY.MatchingAs_NotRegexp}</option>
+	    </select></td>
+	</tr><tr>
+	    <td align="right">{$STRING.QUERY.DescriptionEntry}:</td>
+	    <td><input name="description" size="30" value=""></td>
+	    <td><select name="description_type">
+		    <option value="like" selected>{$STRING.QUERY.MatchingAs_Substring}</option>
+		    <option value="rlike">{$STRING.QUERY.MatchingAs_Regexp}</option>
+		    <option value="not rlike">{$STRING.QUERY.MatchingAs_NotRegexp}</option>
+	    </select></td>
+	</tr><tr>
+	    <td align="right">URL:</td>
+	    <td><input name="url" size="30" value=""></td>
+	    <td><select name="url_type">
+		    <option value="like" selected>{$STRING.QUERY.MatchingAs_Substring}</option>
+		    <option value="rlike">{$STRING.QUERY.MatchingAs_Regexp}</option>
+		    <option value="not rlike">{$STRING.QUERY.MatchingAs_NotRegexp}</option>
+	    </select></td>
+	</tr>
+    </table>
+    <hr align="left" width="100%">
+    <table>
+	<tr>
+	    <td><b>{$STRING.QUERY.Project}:</b></td>
+	    <td><select name="projects" onChange="updateMenus(this.form)">
+		    <option value=''>{$STRING.QUERY.opt_All}</option>{build_select box=project}</select></td>
+	</tr><tr>
+	    <td><b>{$STRING.QUERY.Version}:</b></td>
+	    <td><select name="versions"><option value=''>{$STRING.QUERY.opt_All}</option></select></td>
+	</tr><tr>
+	    <td><b>{$STRING.QUERY.Component}:</b></td>
+	    <td><select name="components"><option value=''>{$STRING.QUERY.opt_All}</option></select></td>
+	</tr>
+    </table>
+    <hr align="left" width="100%">
+    <input type="hidden" name="op" value="doquery">
+    <b>{$STRING.QUERY.SortBy}:</b>
+    <select name="order">
+	<option value="bug_id">{$STRING.QUERY.SortBy_BugNumber}</option>
+        <option selected value="severity.sort_order">{$STRING.QUERY.SortBy_Severity}</option>
+        <option value="reporter.login">{$STRING.QUERY.SortBy_Reporter}</option>
+        <option value="status.sort_order">{$STRING.QUERY.SortBy_Status}</option>
+        <option value="priority">{$STRING.QUERY.SortBy_Priority}</option>
+    </select>
+    <select name="sort">
+	<option selected value="asc">{$STRING.QUERY.SortAsc}</option>
+	<option value="desc">{$STRING.QUERY.SortDesc}</option>
+    </select>
+    </nobr>
+    <br><br>
+{if $smarty.session.uid}
+    {$STRING.QUERY.SaveThisQueryAs}: <input maxlength="40" type="text" name="savedqueryname">
+    <br><br>
+{/if}
+    <input type="reset" value="{$STRING.QUERY.ResetBackToDefaultQuery}">
+    <input type="submit" value="{$STRING.QUERY.SubmitQuery}"> 
+{if count($queries)}
+    <br><br><b>{$STRING.QUERY.SavedQueries}</b><br>
+    {section name=query loop=$queries}
+    <a href="{$smarty.server.PHP_SELF}?{$queries[query].saved_query_string}">{$queries[query].saved_query_name}</a> (<a href="{$smarty.server.PHP_SELF}?op=delquery&queryid={$queries[query].saved_query_id}&form=advanced" onClick="return confirm('Are you sure you want to delete this saved query?');">Delete</a>)<br>
+    {/section}
+{/if}
+</form>
+<br>{$STRING.QUERY.GoToThe} <a href="{$smarty.server.PHP_SELF}?op=query">{$STRING.QUERY.SimpleQueryPage}</a>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="leader"
+        element-id="leader" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+</config>
+
+<table>
+  <tr>
+    <td>Filter by: </td>
+    <td>
+
+    <select name="status" id="status" onChange="this.form.submit()" >
+      <option value="">[All Statuses]</option>{STATUS:}
+      <option value="{id}">{c_title}</option>{:STATUS}
+    </select>
+
+    <select name="leader" id="leader" onChange="this.form.submit()" >
+      <option value="">[All Leaders]</option>{leader:}
+      <option value="{c_uid}">{c_full_name}</option>{:leader}
+    </select>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Date range:</td>
+    <td>
+
+    <input type="text" id="begin" name="begin" maxlength="10" size="10" />
+    <img alt="Calendar" title="Calendar"
+        src="assets/cal.gif" width="16" height="16" border="0"
+        onClick="showChooser(this, 'begin', 'beginSpan', 2004, 2020, 'Y-m-d');" />
+        <div class="dateChooser" id="beginSpan" style="display:none; visibility:hidden; width:160px">
+        </div>
+    To
+    <input type="text" id="end" name="end" maxlength="10" size="10" />
+    <img alt="Calendar" title="Calendar"
+        src="assets/cal.gif" width="16" height="16" border="0"
+        onClick="showChooser(this, 'end', 'endSpan', 2004, 2020, 'Y-m-d');" />
+        <div class="dateChooser" id="endSpan" style="display:none; visibility:hidden; width:160px">
+        </div>
+    <input type="submit" value="Go" />
+
+    </td>
+  </tr>
+</table>
+
+</form>

@@ -1,0 +1,41 @@
+<form enctype="multipart/form-data" action="{$smarty.server.PHP_SELF}" method="post">
+<input type="hidden" name="bugid" value="{$bugid}">
+<input type="hidden" name="use_js" value="{$smarty.request.use_js}">
+<table border="0" align="center">
+	<tr>
+		<td colspan="2" align="center">
+			Please choose a file to upload and enter a one-line description.  
+			<br>
+			Maximum file size: {$max_size} bytes
+			<br>
+			<br>
+		</td>
+	</tr>
+	{if $error}
+		<tr>
+			<td colspan="2" class="error">{$error}</td>
+		</tr>
+	{/if}
+	<tr>
+		<td>
+			File:
+		</td>
+		<td>
+			<input type="file" name="attachment">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description:
+		</td>
+		<td>
+			<input type="text" name="description" maxlength="255" value="{$description}">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<input type="submit" name="submit" value="Upload attachment">
+		</td>
+	</tr>
+</table>
+</form>			

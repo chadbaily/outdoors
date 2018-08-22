@@ -1,0 +1,75 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 09:09:42
+         compiled from admin/projectlist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/projectlist.html', 14, false),
+array('modifier', 'date', 'admin/projectlist.html', 15, false),)); ?><table border="0" width="100%">
+  <tr>
+    <td valign="top">
+      <b>&nbsp;<?php echo $this->_tpl_vars['page_title']; ?>
+</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=add"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ Project</a>
+      <hr size="1">
+			<table border="0" cellpadding="2" cellspacing="1" width="100%">
+				<tr>
+					<th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+">Project</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['createddate']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['createddate']['url']; ?>
+">Created</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['active']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['active']['url']; ?>
+">Active</a></th>
+				</tr>
+				<?php if (isset($this->_sections["project"])) unset($this->_sections["project"]);
+$this->_sections["project"]['name'] = "project";
+$this->_sections["project"]['loop'] = is_array($this->_tpl_vars['projects']) ? count($this->_tpl_vars['projects']) : max(0, (int)$this->_tpl_vars['projects']);
+$this->_sections["project"]['show'] = true;
+$this->_sections["project"]['max'] = $this->_sections["project"]['loop'];
+$this->_sections["project"]['step'] = 1;
+$this->_sections["project"]['start'] = $this->_sections["project"]['step'] > 0 ? 0 : $this->_sections["project"]['loop']-1;
+if ($this->_sections["project"]['show']) {
+    $this->_sections["project"]['total'] = $this->_sections["project"]['loop'];
+    if ($this->_sections["project"]['total'] == 0)
+        $this->_sections["project"]['show'] = false;
+} else
+    $this->_sections["project"]['total'] = 0;
+if ($this->_sections["project"]['show']):
+
+            for ($this->_sections["project"]['index'] = $this->_sections["project"]['start'], $this->_sections["project"]['iteration'] = 1;
+                 $this->_sections["project"]['iteration'] <= $this->_sections["project"]['total'];
+                 $this->_sections["project"]['index'] += $this->_sections["project"]['step'], $this->_sections["project"]['iteration']++):
+$this->_sections["project"]['rownum'] = $this->_sections["project"]['iteration'];
+$this->_sections["project"]['index_prev'] = $this->_sections["project"]['index'] - $this->_sections["project"]['step'];
+$this->_sections["project"]['index_next'] = $this->_sections["project"]['index'] + $this->_sections["project"]['step'];
+$this->_sections["project"]['first']      = ($this->_sections["project"]['iteration'] == 1);
+$this->_sections["project"]['last']       = ($this->_sections["project"]['iteration'] == $this->_sections["project"]['total']);
+?>
+					<tr<?php if (!($this->_sections['project']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+						<td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&id=<?php echo $this->_tpl_vars['projects'][$this->_sections['project']['index']]['project_id']; ?>
+"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['projects'][$this->_sections['project']['index']]['project_name']); ?>
+</a></td>
+						<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['projects'][$this->_sections['project']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+						<td align="center"><?php if ($this->_tpl_vars['projects'][$this->_sections['project']['index']]['active']): ?>Yes<?php else: ?>No<?php endif; ?></td>
+					</tr>
+				<?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+			</table>
+    </td>
+	</tr>
+</table>

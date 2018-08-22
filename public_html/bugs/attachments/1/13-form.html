@@ -1,0 +1,202 @@
+<html>
+<head><title>Forms</title></head>
+<body>
+<script language="javascript">
+
+// Define objects to hold users, groups, object types, and actions
+var users = [
+    {id: 1, name: "Baron Schwartz"},
+    {id: 2, name: "Nathaniel Schwartz"},
+    {id: 3, name: "Aedin Schwartz"},
+    ];
+var groups = [
+    {id: 1, name: "root"},
+    {id: 2, name: "officer"},
+    ];
+var objectTypes = [
+    {id: "[_]adventure", actions: [1,2,3]},
+    {id: "[_]member", actions: [4,5,6]},
+    {id: "[_]report", actions: [7,8,9]},
+    ];
+var actions = new Object();
+actions[1] = {id: 1, name: "one", object: 1, table: 0};
+actions[2] = {id: 2, name: "two", object: 1, table: 0};
+actions[3] = {id: 3, name: "three", object: 1, table: 0};
+actions[4] = {id: 4, name: "four", object: 1, table: 0};
+actions[5] = {id: 5, name: "five", object: 0, table: 1};
+actions[6] = {id: 6, name: "six", object: 0, table: 1};
+actions[7] = {id: 7, name: "seven", object: 0, table: 1};
+actions[8] = {id: 8, name: "eight", object: 1, table: 0};
+actions[9] = {id: 9, name: "nine", object: 1, table: 0};
+
+
+function setWhatGrantedTo(obj) {
+    obj.form.elements["who_granted_to"].disabled = true;
+    obj.form.elements["what_relates_to"].disabled = true;
+    obj.form.elements["related_table"].disabled = true;
+    obj.form.elements["action"].disabled = true;
+    obj.form.elements["related_uid"].disabled = true;
+    switch (obj.options[obj.selectedIndex].value) {
+    case "user":
+        obj.form.elements["who_granted_to"].disabled = false;
+        populateUsers(obj);
+        break;
+    case "group":
+        obj.form.elements["who_granted_to"].disabled = false;
+        populateGroups(obj);
+        break;
+    case "owner":
+        obj.form.elements["what_relates_to"].disabled = false;
+        break;
+    case "owner_group":
+        obj.form.elements["what_relates_to"].disabled = false;
+        break;
+    default:
+        break;
+    }
+}
+
+function setWhoGrantedTo(obj) {
+    obj.form.elements["what_relates_to"].disabled = false;
+    obj.form.elements["related_table"].disabled = true;
+    obj.form.elements["action"].disabled = true;
+    obj.form.elements["related_uid"].disabled = true;
+    if (obj.options[obj.selectedIndex].value == "0") {
+        obj.form.elements["what_relates_to"].disabled = true;
+    }
+}
+
+function setWhatRelatesTo(obj) {
+    obj.form.elements["related_table"].disabled = true;
+    obj.form.elements["action"].disabled = true;
+    obj.form.elements["related_uid"].disabled = true;
+    if (obj.options[obj.selectedIndex].value != "") {
+        obj.form.elements["related_table"].disabled = false;
+        setRelatedTable(obj.form.elements["related_table"]);
+    }
+    if (obj.options[obj.selectedIndex].value == "object") {
+        obj.form.elements["related_uid"].disabled = false;
+    }
+}
+
+function populateUsers(obj) {
+    with (obj.form.elements["who_granted_to"]) {
+        options.length = 1;
+        for (var i = 0; i < users.length; ++i) {
+            options[options.length] = new Option(users[i].name, users[i].id, false, false);
+        }
+    }
+}
+
+function populateGroups(obj) {
+    with (obj.form.elements["who_granted_to"]) {
+        options.length = 1;
+        for (var i = 0; i < groups.length; ++i) {
+            options[options.length] = new Option(groups[i].name, groups[i].id, false, false);
+        }
+    }
+}
+
+function setRelatedTable(obj) {
+    var appliesTo = obj.form.elements["what_relates_to"].options[obj.form.elements["what_relates_to"].selectedIndex].value;
+    obj.form.elements["action"].options.length = 1;
+    obj.form.elements["action"].disabled = true;
+    if (obj.options[obj.selectedIndex].value != "") {
+        obj.form.elements["action"].disabled = false;
+        populateActions(obj, appliesTo);
+    }
+}
+
+function populateActions(obj, appliesTo) {
+    var which = obj.options[obj.selectedIndex].value;
+    var theObject;
+    // Find the objectTypes entry
+    for (var i = 0; i < objectTypes.length; ++i) {
+        if (objectTypes[i].id == which) {
+            theObject = objectTypes[i];
+            break;
+        }
+    }
+    if (theObject != null) {
+        with (obj.form.elements["action"]) {
+            options.length = 1;
+            var theAction;
+            for (var i in theObject.actions) {
+                theAction = actions[theObject.actions[i]];
+                if ((appliesTo == "table" && theAction.table)
+                    || ((appliesTo == "object" || appliesTo == "global") && theAction.object))
+                {
+                    options[options.length] = new Option(theAction.name, theAction.id, false, false);
+                }
+            }
+        }
+    }
+}
+
+</script>
+<form name="theform" id="the-form" method="post" action="/test/members.php?page=adventure&amp;action=37&amp;object=1683"
+    onSubmit="return false;">
+    <input name="form-name" id="form-name" value="1" type="hidden">
+    <table class="top">
+        <tbody>
+        <tr>
+            <td>Choose what to grant this privilege to:</td>
+            <td>
+                <select onChange="setWhatGrantedTo(this);" name="what_granted_to" id="what_granted_to"><option value="" selected="1">Choose One</option><option value="user">A User</option><option value="group">A Group</option><option value="owner">The Object's Owner</option><option value="owner_group">The Object's Group</option></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Choose who to grant this privilege to (which user or group,
+            depending on what you selected above).  If you selected
+                <b>The Object's
+            Owner</b> or
+                <b>The Object's Group</b> above, you can leave this blank.
+
+            </td>
+            <td>
+                <select onChange="setWhoGrantedTo(this);" disabled="1" name="who_granted_to" id="who_granted_to">
+                    <option value="0">Select One</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Choose what the privilege applies to:</td>
+            <td>
+                <select onChange="setWhatRelatesTo(this);" name="what_relates_to" id="what_relates_to" disabled>
+                <option value="" selected="1">Choose One</option><option value="object">A Single Object</option><option value="table">A Database Table</option><option value="global">All Objects in a Database Table</option></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Choose the table that the privilege applies to:</td>
+            <td>
+                <select disabled="true" onChange="setRelatedTable(this)" name="related_table" id="related_table"><option value="" selected="1">Choose One</option><option value="[_]absence">[_]absence</option><option value="[_]action">[_]action</option><option value="[_]activity">[_]activity</option><option value="[_]address">[_]address</option><option value="[_]adventure">[_]adventure</option><option value="[_]adventure_activity">[_]adventure_activity</option><option value="[_]adventure_comment">[_]adventure_comment</option><option value="[_]answer">[_]answer</option><option value="[_]attendee">[_]attendee</option><option value="[_]chat">[_]chat</option><option value="[_]chat_type">[_]chat_type</option><option value="[_]email_list">[_]email_list</option><option value="[_]group">[_]group</option><option value="[_]interest">[_]interest</option><option value="[_]location">[_]location</option><option value="[_]member">[_]member</option><option value="[_]membership">[_]membership</option><option value="[_]membership_history">[_]membership_history</option><option value="[_]membership_type">[_]membership_type</option><option value="[_]member_group">[_]member_group</option><option value="[_]member_note">[_]member_note</option><option value="[_]phone_number">[_]phone_number</option><option value="[_]phone_number_type">[_]phone_number_type</option><option value="[_]privilege">[_]privilege</option><option value="[_]question">[_]question</option><option value="[_]rating">[_]rating</option><option value="[_]report">[_]report</option><option value="[_]status">[_]status</option><option value="[_]subscription">[_]subscription</option></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Choose the action that the privilege will grant.  Note that many
+            actions are only defined on certain types of objects, so your
+            privilege may be meaningless if you permit an action that doesn't
+            apply to the object anyway.</td>
+            <td>
+                <select disabled="true" name="action" id="action"><option value="" selected="1">Choose One</option></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter the UID of the object in the table that the privilege applies to.  This
+            is only required if you chose
+                <b>A Single Object</b> above.
+
+            </td>
+            <td>
+                <input disabled="true" name="related_uid" id="related_uid" value="" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input value="Add Privilege" type="submit">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+</body>
+</html>

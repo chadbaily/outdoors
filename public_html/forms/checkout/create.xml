@@ -1,0 +1,48 @@
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        required="1"
+        name="member"
+        error-element="error-element"
+        element-id="member" />
+    <element
+        required="1"
+        name="activity"
+        error-element="error-element"
+        element-id="activity" />
+    <element
+        required="1"
+        name="due"
+        data-type="date"
+        element-id="due" />
+</config>
+
+<p class="error" hidden="1" id="error-element">You must select some values.</p>
+
+<select name="member" id="member">
+  <option value="">Select one</option>{member:}
+  <option value="{c_uid}">{c_last_name}, {c_first_name}</option>{:member}
+</select>
+
+<select name="activity" id="activity">
+  <option value="">Select one</option>{option:}
+  <option value="{c_uid}">{c_title}</option>{:option}
+</select>
+
+<p><span class="error" id="due-error" hidden="1">You must enter a
+value.</span>  Please specify a due date for this equipment:</p>
+
+<input type="text" name="due" id="due" size="10" />
+<img src="assets/cal.gif" onClick="showChooser(this, 'due', 'chooserSpan', 2005, 2020, 'Y-m-d');" />
+<div id="chooserSpan" class="dateChooser" style="display:none; visibility:hidden; width:160px">
+</div>
+
+<input type="submit" value="Go" />
+
+</form>

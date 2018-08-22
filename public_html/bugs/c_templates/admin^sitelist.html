@@ -1,0 +1,99 @@
+<?php /* Smarty version 2.3.0, created on 2005-01-16 09:12:26
+         compiled from admin/sitelist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/sitelist.html', 25, false),
+array('modifier', 'htmlspecialchars', 'admin/sitelist.html', 25, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+';
+	<?php echo '
+		
+	function popupSite(id) {
+		window.open(me + \'?op=edit&use_js=1&site_id=\'+id, \'ewin\', \'dependent=yes,width=350,height=300,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<b>&nbsp;<?php echo $this->_tpl_vars['STRING']['sitelist']; ?>
+</b> - <a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=edit&site_id=0" onClick="popupSite(0); return false;"><?php echo $this->_tpl_vars['STRING']['addnewsite']; ?>
+</a>
+			<hr size="1">
+			<table border="0" cellpadding="2" cellspacing="1" width="100%">
+				<tr>
+					<th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+"><?php echo $this->_tpl_vars['STRING']['name']; ?>
+</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['sortorder']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['sortorder']['url']; ?>
+"><?php echo $this->_tpl_vars['STRING']['sortorder']; ?>
+</a></th>
+					<th><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</th>
+				</tr>
+				<?php if (isset($this->_sections["site"])) unset($this->_sections["site"]);
+$this->_sections["site"]['name'] = "site";
+$this->_sections["site"]['loop'] = is_array($this->_tpl_vars['sites']) ? count($this->_tpl_vars['sites']) : max(0, (int)$this->_tpl_vars['sites']);
+$this->_sections["site"]['show'] = true;
+$this->_sections["site"]['max'] = $this->_sections["site"]['loop'];
+$this->_sections["site"]['step'] = 1;
+$this->_sections["site"]['start'] = $this->_sections["site"]['step'] > 0 ? 0 : $this->_sections["site"]['loop']-1;
+if ($this->_sections["site"]['show']) {
+    $this->_sections["site"]['total'] = $this->_sections["site"]['loop'];
+    if ($this->_sections["site"]['total'] == 0)
+        $this->_sections["site"]['show'] = false;
+} else
+    $this->_sections["site"]['total'] = 0;
+if ($this->_sections["site"]['show']):
+
+            for ($this->_sections["site"]['index'] = $this->_sections["site"]['start'], $this->_sections["site"]['iteration'] = 1;
+                 $this->_sections["site"]['iteration'] <= $this->_sections["site"]['total'];
+                 $this->_sections["site"]['index'] += $this->_sections["site"]['step'], $this->_sections["site"]['iteration']++):
+$this->_sections["site"]['rownum'] = $this->_sections["site"]['iteration'];
+$this->_sections["site"]['index_prev'] = $this->_sections["site"]['index'] - $this->_sections["site"]['step'];
+$this->_sections["site"]['index_next'] = $this->_sections["site"]['index'] + $this->_sections["site"]['step'];
+$this->_sections["site"]['first']      = ($this->_sections["site"]['iteration'] == 1);
+$this->_sections["site"]['last']       = ($this->_sections["site"]['iteration'] == $this->_sections["site"]['total']);
+?>
+				<tr<?php if (!($this->_sections['site']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=edit&site_id=<?php echo $this->_tpl_vars['sites'][$this->_sections['site']['index']]['site_id']; ?>
+" onClick="popupSite(<?php echo $this->_tpl_vars['sites'][$this->_sections['site']['index']]['site_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['sites'][$this->_sections['site']['index']]['site_name'])); ?>
+</a></td>
+					<td align="center"><?php echo $this->_tpl_vars['sites'][$this->_sections['site']['index']]['sort_order']; ?>
+</td>
+					<td align="center">
+						<?php if (! $this->_tpl_vars['sites'][$this->_sections['site']['index']]['bug_count']): ?>
+							<a href="<?php echo $this->_tpl_vars['SCRIPT_NAME']; ?>
+?op=del&site_id=<?php echo $this->_tpl_vars['sites'][$this->_sections['site']['index']]['site_id']; ?>
+" onClick="return confirm('<?php echo $this->_tpl_vars['STRING']['suredeletesite']; ?>
+')"><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</a>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php endfor; endif; ?>
+				<tr>
+					<td colspan="4" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+</table>

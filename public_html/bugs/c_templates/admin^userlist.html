@@ -1,0 +1,105 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 09:10:23
+         compiled from admin/userlist.html */ ?>
+<?php $this->_load_plugins(array(
+array('function', 'build_select', 'admin/userlist.html', 19, false),
+array('modifier', 'stripslashes', 'admin/userlist.html', 32, false),
+array('modifier', 'date', 'admin/userlist.html', 34, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+';
+	<?php echo '
+		
+	function popupUser(id) {
+		window.open(me + \'?op=edit&use_js=1&user_id=\'+id, \'ewin\', \'dependent=yes,width=350,height=300,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<b>&nbsp;<?php echo $this->_tpl_vars['page_title']; ?>
+</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&user_id=0&filter=<?php echo $this->_tpl_vars['filter']; ?>
+" onClick="popupUser(0); return false;"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ User</a>
+			<hr size="1">
+			<form>
+			<div align="center">
+				<select name="filter" onChange="document.location.href='<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?filter=' + this.options[this.selectedIndex].value"><?php $this->_plugins['function']['build_select'][0](array('box' => "user_filter",'selected' => $this->_tpl_vars['filter']), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?></select> 
+				<input type="submit" value="Filter">
+			</div>
+			</form>
+			<table border="0" width="100%">
+				<tr>
+					<th class="<?php echo $this->_tpl_vars['headers']['login']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['login']['url']; ?>
+">Login</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+">Name</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['date']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['date']['url']; ?>
+">Created</a></th>
+					<th class="<?php echo $this->_tpl_vars['headers']['active']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['active']['url']; ?>
+">Active</a></th>
+				</tr>
+				<?php if (isset($this->_sections["user"])) unset($this->_sections["user"]);
+$this->_sections["user"]['name'] = "user";
+$this->_sections["user"]['loop'] = is_array($this->_tpl_vars['users']) ? count($this->_tpl_vars['users']) : max(0, (int)$this->_tpl_vars['users']);
+$this->_sections["user"]['show'] = true;
+$this->_sections["user"]['max'] = $this->_sections["user"]['loop'];
+$this->_sections["user"]['step'] = 1;
+$this->_sections["user"]['start'] = $this->_sections["user"]['step'] > 0 ? 0 : $this->_sections["user"]['loop']-1;
+if ($this->_sections["user"]['show']) {
+    $this->_sections["user"]['total'] = $this->_sections["user"]['loop'];
+    if ($this->_sections["user"]['total'] == 0)
+        $this->_sections["user"]['show'] = false;
+} else
+    $this->_sections["user"]['total'] = 0;
+if ($this->_sections["user"]['show']):
+
+            for ($this->_sections["user"]['index'] = $this->_sections["user"]['start'], $this->_sections["user"]['iteration'] = 1;
+                 $this->_sections["user"]['iteration'] <= $this->_sections["user"]['total'];
+                 $this->_sections["user"]['index'] += $this->_sections["user"]['step'], $this->_sections["user"]['iteration']++):
+$this->_sections["user"]['rownum'] = $this->_sections["user"]['iteration'];
+$this->_sections["user"]['index_prev'] = $this->_sections["user"]['index'] - $this->_sections["user"]['step'];
+$this->_sections["user"]['index_next'] = $this->_sections["user"]['index'] + $this->_sections["user"]['step'];
+$this->_sections["user"]['first']      = ($this->_sections["user"]['iteration'] == 1);
+$this->_sections["user"]['last']       = ($this->_sections["user"]['iteration'] == $this->_sections["user"]['total']);
+?>
+				<tr<?php if (!($this->_sections['user']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&user_id=<?php echo $this->_tpl_vars['users'][$this->_sections['user']['index']]['user_id']; ?>
+&filter=<?php echo $this->_tpl_vars['filter']; ?>
+" onClick="popupUser(<?php echo $this->_tpl_vars['users'][$this->_sections['user']['index']]['user_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['users'][$this->_sections['user']['index']]['login']); ?>
+</a></td>
+					<td align="center"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['users'][$this->_sections['user']['index']]['first_name']); ?>
+ <?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['users'][$this->_sections['user']['index']]['last_name']); ?>
+</td>
+					<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['users'][$this->_sections['user']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+					<td align="center"><?php if ($this->_tpl_vars['users'][$this->_sections['user']['index']]['active']): ?>Yes<?php else: ?>No<?php endif; ?></td>
+				</tr>
+				<?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

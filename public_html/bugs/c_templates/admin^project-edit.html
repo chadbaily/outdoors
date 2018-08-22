@@ -1,0 +1,198 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 13:34:57
+         compiled from admin/project-edit.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/project-edit.html', 33, false),
+array('modifier', 'htmlspecialchars', 'admin/project-edit.html', 33, false),
+array('modifier', 'date', 'admin/project-edit.html', 77, false),
+array('function', 'build_select', 'admin/project-edit.html', 39, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+';
+	var projectId = '<?php echo $this->_tpl_vars['project_id']; ?>
+';
+	<?php echo '
+
+	function popupComponent(id) {
+		window.open(me + \'?op=edit_component&project_id=\'+projectId+\'&use_js=1&id=\'+id, \'ewin\', \'dependent=yes,width=450,height=300,scrollbars=1\');
+		return false;
+	}
+
+	function popupVersion(id) {
+		window.open(me + \'?op=edit_version&project_id=\'+projectId+\'&use_js=1&id=\'+id, \'ewin\', \'dependent=yes,width=250,height=150,scrollbars=1\');
+		return false;
+	}
+	'; ?>
+
+// -->
+</script>
+
+<form action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+" method="post">
+<input type="hidden" name="id" value="<?php echo $this->_tpl_vars['project_id']; ?>
+">
+<input type="hidden" name="do" value="project">
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+	<?php if ($this->_tpl_vars['error']): ?>
+  	<tr>
+			<td colspan="2" class="error"><?php echo $this->_tpl_vars['error']; ?>
+</td>
+  	</tr>
+	<?php endif; ?>
+	<tr>
+		<td valign="top" width="360">
+			Name:
+			<br>
+			<input type="text" size="30" maxlength="30" name="project_name" value="<?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['project_name'])); ?>
+">
+		</td>
+		<td valign="top" rowspan="3">
+			Only users in the following groups can see this project:
+			<br>
+			<select name="usergroup[]" size="10" multiple>
+      	<?php $this->_plugins['function']['build_select'][0](array('box' => "group",'selected' => $this->_tpl_vars['project_groups'],'project' => "1"), $this); if($this->_extract) { extract($this->_tpl_vars); $this->_extract=false; } ?>
+      </select>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Description:
+			<br>
+			<textarea name="project_desc" cols=40 rows=5 wrap=virtual><?php echo $this->_run_mod_handler('htmlspecialchars', true, $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['project_desc'])); ?>
+</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Active:
+			<br>
+			<input type="checkbox" name="active" value="1" <?php if ($this->_tpl_vars['active']): ?>checked<?php endif; ?>>
+		</td>
+	</tr>
+</table>
+<input type='submit' name='submit' value='Submit'>
+</form>
+<br>
+<table border="0" width="100%">
+	<tr>
+		<td width="50%" valign="top">
+			<br>
+			&nbsp;<b>Versions</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit_version&project_id=<?php echo $this->_tpl_vars['project_id']; ?>
+&id=0" onClick="return popupVersion(0);"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ Version</a>
+			<hr size="1">
+			<table border="0" cellpadding="2" width="100%">
+				<tr>
+					<th>Version</th>
+					<th>Created</th>
+					<th>Active</th>
+					<th>Delete</th>
+				</tr>
+				<?php if (isset($this->_sections["version"])) unset($this->_sections["version"]);
+$this->_sections["version"]['name'] = "version";
+$this->_sections["version"]['loop'] = is_array($this->_tpl_vars['versions']) ? count($this->_tpl_vars['versions']) : max(0, (int)$this->_tpl_vars['versions']);
+$this->_sections["version"]['show'] = true;
+$this->_sections["version"]['max'] = $this->_sections["version"]['loop'];
+$this->_sections["version"]['step'] = 1;
+$this->_sections["version"]['start'] = $this->_sections["version"]['step'] > 0 ? 0 : $this->_sections["version"]['loop']-1;
+if ($this->_sections["version"]['show']) {
+    $this->_sections["version"]['total'] = $this->_sections["version"]['loop'];
+    if ($this->_sections["version"]['total'] == 0)
+        $this->_sections["version"]['show'] = false;
+} else
+    $this->_sections["version"]['total'] = 0;
+if ($this->_sections["version"]['show']):
+
+            for ($this->_sections["version"]['index'] = $this->_sections["version"]['start'], $this->_sections["version"]['iteration'] = 1;
+                 $this->_sections["version"]['iteration'] <= $this->_sections["version"]['total'];
+                 $this->_sections["version"]['index'] += $this->_sections["version"]['step'], $this->_sections["version"]['iteration']++):
+$this->_sections["version"]['rownum'] = $this->_sections["version"]['iteration'];
+$this->_sections["version"]['index_prev'] = $this->_sections["version"]['index'] - $this->_sections["version"]['step'];
+$this->_sections["version"]['index_next'] = $this->_sections["version"]['index'] + $this->_sections["version"]['step'];
+$this->_sections["version"]['first']      = ($this->_sections["version"]['iteration'] == 1);
+$this->_sections["version"]['last']       = ($this->_sections["version"]['iteration'] == $this->_sections["version"]['total']);
+?>
+				<tr<?php if (!($this->_sections['version']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit_version&id=<?php echo $this->_tpl_vars['versions'][$this->_sections['version']['index']]['version_id']; ?>
+" onClick="popupVersion(<?php echo $this->_tpl_vars['versions'][$this->_sections['version']['index']]['version_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['versions'][$this->_sections['version']['index']]['version_name']); ?>
+</a></td>
+					<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['versions'][$this->_sections['version']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+					<td align="center"><?php if ($this->_tpl_vars['versions'][$this->_sections['version']['index']]['active']): ?>Yes<?php else: ?>No<?php endif; ?></td>
+					<td align="center"><?php if (! $this->_tpl_vars['versions'][$this->_sections['version']['index']]['bug_count']): ?><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=del_version&id=<?php echo $this->_tpl_vars['versions'][$this->_sections['version']['index']]['version_id']; ?>
+&project_id=<?php echo $this->_tpl_vars['project_id']; ?>
+">Delete</a><?php endif; ?></td>
+				</tr>
+				<?php endfor; else: ?>
+					<tr>
+						<td colspan="4" align="center"><?php echo $this->_tpl_vars['STRING']['noversions']; ?>
+</td>
+					</tr>
+				<?php endif; ?>
+			</table>
+		</td>
+		<td width="50%" valign="top">
+			<br>
+			&nbsp;<b>Components</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit_component&project_id=<?php echo $this->_tpl_vars['project_id']; ?>
+&id=0" onClick="return popupComponent(0);"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ Component</a>
+			<hr size="1">
+			<table border="0" cellpadding="2" width="100%">
+				<tr>
+					<th>Component</th>
+					<th>Created</th>
+					<th>Active</th>
+					<th>Delete</th>
+				</tr>
+				<?php if (isset($this->_sections["component"])) unset($this->_sections["component"]);
+$this->_sections["component"]['name'] = "component";
+$this->_sections["component"]['loop'] = is_array($this->_tpl_vars['components']) ? count($this->_tpl_vars['components']) : max(0, (int)$this->_tpl_vars['components']);
+$this->_sections["component"]['show'] = true;
+$this->_sections["component"]['max'] = $this->_sections["component"]['loop'];
+$this->_sections["component"]['step'] = 1;
+$this->_sections["component"]['start'] = $this->_sections["component"]['step'] > 0 ? 0 : $this->_sections["component"]['loop']-1;
+if ($this->_sections["component"]['show']) {
+    $this->_sections["component"]['total'] = $this->_sections["component"]['loop'];
+    if ($this->_sections["component"]['total'] == 0)
+        $this->_sections["component"]['show'] = false;
+} else
+    $this->_sections["component"]['total'] = 0;
+if ($this->_sections["component"]['show']):
+
+            for ($this->_sections["component"]['index'] = $this->_sections["component"]['start'], $this->_sections["component"]['iteration'] = 1;
+                 $this->_sections["component"]['iteration'] <= $this->_sections["component"]['total'];
+                 $this->_sections["component"]['index'] += $this->_sections["component"]['step'], $this->_sections["component"]['iteration']++):
+$this->_sections["component"]['rownum'] = $this->_sections["component"]['iteration'];
+$this->_sections["component"]['index_prev'] = $this->_sections["component"]['index'] - $this->_sections["component"]['step'];
+$this->_sections["component"]['index_next'] = $this->_sections["component"]['index'] + $this->_sections["component"]['step'];
+$this->_sections["component"]['first']      = ($this->_sections["component"]['iteration'] == 1);
+$this->_sections["component"]['last']       = ($this->_sections["component"]['iteration'] == $this->_sections["component"]['total']);
+?>
+				<tr<?php if (!($this->_sections['component']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+					<td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit_component&id=<?php echo $this->_tpl_vars['components'][$this->_sections['component']['index']]['component_id']; ?>
+" onClick="popupComponent(<?php echo $this->_tpl_vars['components'][$this->_sections['component']['index']]['component_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['components'][$this->_sections['component']['index']]['component_name']); ?>
+</a></td>
+					<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['components'][$this->_sections['component']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+					<td align="center"><?php if ($this->_tpl_vars['components'][$this->_sections['component']['index']]['active']): ?>Yes<?php else: ?>No<?php endif; ?></td>
+					<td align="center"><?php if (! $this->_tpl_vars['components'][$this->_sections['component']['index']]['bug_count']): ?><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=del_component&id=<?php echo $this->_tpl_vars['components'][$this->_sections['component']['index']]['component_id']; ?>
+&project_id=<?php echo $this->_tpl_vars['project_id']; ?>
+">Delete</a><?php endif; ?></td>
+				</tr>
+				<?php endfor; else: ?>
+					<tr>
+						<td colspan="4" align="center"><?php echo $this->_tpl_vars['STRING']['nocomponents']; ?>
+</td>
+					</tr>
+				<?php endif; ?>
+			</table>
+		</td>
+	</tr>
+</table>

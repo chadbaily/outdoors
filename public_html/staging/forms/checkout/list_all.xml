@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        name="status"
+        element-id="status" />
+    <element
+        name="member"
+        element-id="member" />
+    <element
+        name="begin"
+        element-id="begin" />
+    <element
+        name="end"
+        element-id="end" />
+    <element
+        name="due"
+        element-id="due" />
+    <element
+        name="type"
+        element-id="type" />
+    <element
+        name="item"
+        data-type="integer"
+        element-id="item" />
+</config>
+
+<fieldset>
+<legend>Filtering Options</legend>
+
+<table class="compact collapsed elbowroom verticalHeaders">
+  <tr>
+    <th>View</th>
+    <td>
+
+    checkout sheets for
+    <select name="member" id="member">
+      <option value="">[everyone]</option>{member:}
+      <option value="{c_member}">{c_last_name}, {c_first_name}</option>{:member}
+    </select>
+
+    in
+    <select name="status" id="status">
+      <option value="">[any]</option>{STATUS:}
+      <option value="{id}">{c_title}</option>{:STATUS}
+    </select>
+    status
+
+    </td>
+  </tr>
+  <tr>
+    <th>With</th>
+    <td>
+
+      item #
+      <input type="text" size="5" id="item" name="item" />
+      <span class="error" id="item-error" hidden="1">enter an integer</span>
+
+      and items of type
+      <select name="type" id="type">
+        <option value="">[any type]</option>{GROUP:}
+        <optgroup label="{cat_title|htmlspecialchars}">{TYPE:}
+          <option value="{c_uid}">{c_title|htmlspecialchars}</option>{:TYPE}
+        </optgroup>{:GROUP}{TYPES}
+      </select>
+
+    </td>
+  </tr>
+  <tr>
+    <th>Dates</th>
+    <td>
+
+    checked out between
+    <input type="text" size="9" name="begin" id="begin" />
+    and
+    <input type="text" size="9" name="end" id="end" />
+    due by
+    <input type="text" size="9" name="due" id="due" />
+
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+
+    <input type="submit" value="Go" />
+
+    </td>
+  </tr>
+
+</table>
+</fieldset>
+</form>

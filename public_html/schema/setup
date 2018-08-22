@@ -1,0 +1,13 @@
+# Usage:
+# bash$ ./setup <tableprefix> <database>
+# For example,
+# bash$ ./setup test_ socialclub
+
+# Pipe the files through sed and replace the table
+# aliases with real table names, then feed the results to mysql.
+sed -e "s/\[_]/$1/g" drop.sql | mysql $2
+sed -e "s/\[_]/$1/g" create.sql | mysql $2
+sed -e "s/\[_]/$1/g" initialize.sql | mysql $2
+sed -e "s/\[_]/$1/g" privileges.sql | mysql $2
+sed -e "s/\[_]/$1/g" foreign-keys.sql | mysql $2
+sed -e "s/\[_]/$1/g" implemented-actions.sql | mysql $2

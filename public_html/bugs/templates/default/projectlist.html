@@ -1,0 +1,15 @@
+<H2>First, you must pick a product on which to enter
+a bug.</H2>
+
+<table>
+	{section name=project loop=$projects}
+	<tr>
+		<td align="right" valign="top">
+			<a href="bug.php?op=add&project={$projects[project].project_id}">{$projects[project].project_name|stripslashes}</a>:
+		</td>
+		<td valign="top">
+			{$projects[project].project_desc|stripslashes|nl2br}
+		</td>
+	</tr>
+	{/section}
+</table>

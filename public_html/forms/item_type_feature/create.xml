@@ -1,0 +1,31 @@
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="name"
+        data-type="regexp"
+        expression="/^[a-z_]+$/"
+        element-id="name" />
+</config>
+
+<p hidden="1" id="name-error" class="error"> This field is required and must
+only contain lowercase letters and underscores.</p>
+
+<p>Name (lowercase letters and underscores)
+<input type="text" name="name" id="name" size="10" maxlength="10"/>
+<script>
+window.onload = function() {
+    document.forms[0].elements['name'].select();
+}
+</script>
+<input type="submit" value="Add Feature" />
+</p>
+
+</form>

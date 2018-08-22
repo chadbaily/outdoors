@@ -1,0 +1,16 @@
+{LEADER_NAME} has created a new adventure, '{C_TITLE}'.  Here are the adventure details, for your reference:
+
+      Departure: {DEPARTURE}
+    Destination: {DESTINATION}
+          Start: {C_START_DATE|_date_format,'l, M j, Y \a\t g:i A'}
+            End: {C_END_DATE|_date_format,'l, M j, Y \a\t g:i A'} 
+Signup Deadline: {C_SIGNUP_DATE|_date_format,'l, M j, Y \a\t g:i A'} 
+            Fee: ${C_FEE|number_format,2}
+    Description: 
+===================
+{C_DESCRIPTION}
+
+If you'd like full, up-to-date details on any of the above, you can click on the following link to view the adventure details:
+{BASEURL}/members/adventure/read/{T_ADVENTURE}
+You may also join the adventure by clicking on
+{BASEURL}/members/adventure/join/{T_ADVENTURE}

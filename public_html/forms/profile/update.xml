@@ -1,0 +1,96 @@
+<form name="theform" id="the-form" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="firstName"
+        required="1"
+        element-id="firstName" />
+    <element
+        name="lastName"
+        required="1"
+        element-id="lastName" />
+    <element
+        name="gender"
+        required="1"
+        tag-name="input" />
+    <element
+        name="student"
+        required="1"
+        tag-name="input" />
+    <element
+        required="1"
+        name="emailAddress"
+        data-type="email"
+        element-id="emailAddress" />
+</config>
+
+<table>
+
+  <tr hidden="1" id="firstName-error">
+    <td class="error" colspan="2">You must enter a value.</td>
+  </tr>
+
+  <tr>
+    <td>First Name:</td>
+    <td><input type="text" name="firstName" id="firstName" /></td>
+  </tr>
+
+  <tr hidden="1" id="lastName-error">
+    <td class="error" colspan="2">You must enter a value.</td>
+  </tr>
+
+  <tr>
+    <td>Last Name:</td>
+    <td><input type="text" name="lastName" id="lastName" /></td>
+  </tr>
+
+  <tr hidden="1" id="gender-error">
+    <td class="error" colspan="2">You must choose an option.</td>
+  </tr>
+
+  <tr>
+    <td>Gender:</td>
+    <td>
+      <input type="radio" name="gender" value="m" id="gender1" />
+      <label for="gender1">Male</label>
+      <input type="radio" name="gender" value="f" id="gender2" />
+      <label for="gender2">Female</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="student-error">
+    <td class="error" colspan="2">You must choose an option.</td>
+  </tr>
+
+  <tr>
+    <td>Are you a college student?</td>
+    <td>
+      <input type="radio" name="student" value="1" id="student1" />
+      <label for="student1">Yes</label>
+      <input type="radio" name="student" value="0" id="student2" />
+      <label for="student2">No</label>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="emailAddress-error">
+    <td class="error" colspan="2">You must enter a valid email address.</td>
+  </tr>
+
+  <tr>
+    <td>Email Address (your email address is your username):</td>
+    <td><input type="text" name="emailAddress" id="emailAddress" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="right">
+      <input type="submit" value="Save Changes" />
+    </td>
+  </tr>
+
+</table>
+</form>

@@ -1,0 +1,49 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Equipment Policy for Members</h1>
+
+<p>Outdoors at UVa has a large inventory of gear for all the outdoors activities that we do.  As a club member, you will be able to check out gear for a week at no charge.  Available gear includes:</p>
+
+<ul>
+ <li>Tents</li>
+ <li>Sleeping Bags/Pads</li>
+ <li>Backpacks</li>
+ <li>Climbing Harnesses and Shoes</li>
+ <li>Trad Rack, Quickdraws, and Dynamic Ropes</li>
+ <li>Stoves</li>
+ <li>Canoes</li>
+ <li>Kayaks</li>
+ <li>PFDs</li>
+ <li>Mountain Bikes</li>
+ <li>Caving Equipment</li>
+ <li>Cross Country Skis</li>
+</ul>
+
+<p>There are a few restrictions on gear check out.  These restrictions are:</p>
+
+<ul>
+
+ <li><b>You must not try to get gear yourself.</b>  If you go to the gear room
+ yourself and try to get in, or even get in the building, the Club will suffer
+ severe consequences.  We had problems in the past and very nearly lost our
+ gear-room privileges.  If you need to get or return gear, you <b>must</b>
+ coordinate it with the officers.</li>
+
+ <li>Official club trips take precedence!  From time to time, a trip will need
+ all the tents or sleeping bags.</li>
+
+ <li>All gear must be returned in a week, or we will impose a $5 per week late
+ fee.  If you would like to check out gear for a longer period, please ask the
+ officers.</li>
+
+ <li>Each member may check out <i>personal</i> gear for <b>one</b> non-member
+ friend. (e.g. one member cannot check out multiple tents, because a tent is not
+ personal gear)</li>
+
+</ul>
+
+<p>If you would like to check out gear, you must e-mail
+<script>document.write(email('outdoors-officers', 'virginia.edu'))</script> and
+set up a time to get into the gear room.  Please request gear as soon as you
+know you need it &mdash; please don't wait till the last minute!</p>
+<!--#include virtual="footer.html" -->

@@ -1,0 +1,304 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Officers</h1>
+
+<p>If you have a question for the officers, please check our <a
+href="about/faq.shtml">frequently asked questions</a> page first.  If that
+doesn't help, please <a href="about/contact.shtml">contact us
+directly</a>.</p>
+
+<style type="text/css">
+.officertable img {margin-top:13px}
+</style>
+<table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
+
+
+<tr>
+   <td valign=top><img src="images/officer_chris.jpg" alt="Chris Chin"></td>
+   <td valign=top width="100%">
+     <dl>
+       <dt><b>Chris Chin</b></dt>
+       <dd>Vice President. <script>document.write(email('cwc2t','virginia.edu'))</script></dd>
+     </dl>
+     I started pretty late with my outdoorsy-ness. It wasn't until I joined the Boy Scouts midway through high school that I became hooked. It all started with a bit of camping, then day hikes, then backpacking for weeks. Snowboarding was my next big adventure and I always made it a point to take advantage of what little snow we got in Northern Virginia to hit up the local slopes. After I joined the club, I went on my first climbing trip and instantly fell in love with the sport. Now I spend my time divided between my studies, longboarding, snowboarding, and climbing with the occasional camping or hiking trip. I hope to get a chance to get to know everyone on our trips. Remember, Thomas Jefferson wanted you to do it outdoors!
+   </td>
+</tr>
+
+<tr>
+   <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+
+<tr>
+   <td valign=top><img src="images/officer_billy.jpg"  alt="Billy Kohlbrenner"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Billy Kohlbrenner</b></dt>
+      <dd>Vice-President. <script>document.write(email('wek2k',
+'virginia.edu'))</script></dd>
+   </dl>
+Growing up in Northern Virginia is not necessarily a recipe for really falling in love with the backcountry and all it has to offer, but somehow for me it worked out just fine. I started young, camping with the Boy Scouts, backpacking with my father and brother, and by age 12 I started climbing. By 15, I loved the outdoors so much that I never spent a single summer of high school at home. I would be backpacking for months or working as a climbing instructor and caving director for a high adventure summer program. During high school though, I really didn't have time during the school year to do all of the climbing and hiking I loved so much. I suddenly had a lot more time on my hands when I came to UVA, and the club was an open door for me. I love climbing and I really believe that you can see all the world has to offer while hanging from a rope.
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="images/officer_meghan.jpg"  alt="Meghan Magennis"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Meghan Magennis</b></dt>
+      <dd>Co-President. <script>document.write(email('mem8sp',
+'virginia.edu'))</script></dd>
+   </dl>
+There's no place a car will take you that looks like the top of a mountain
+or the middle of a river! I love being in the woods and fresh air; hiking
+and backpacking are my favorite activities. In addition to exploring local
+trails in Shenandoah National Park, I've been to the White Mountains,
+Joshua Tree, and the Grand Canyon with the club. In addition to land
+activities, I hope to add paddling to my list this year. This club is a
+wonderful resource for learning and sharing great skills so don't hesitate
+to sign up for a trip! It's also easy to lead a trip, so please email me
+with any questions!
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+
+<tr>
+   <td valign=top><img src="images/officer_emily.jpg" alt="Emily Powell"></td>
+   <td valign=top width="100%">
+     <dl>
+       <dt><b>Emily Powell</b></dt>
+       <dd>Vice President. <script>document.write(email('emp8t','virginia.edu'))</script></dd>
+     </dl>
+
+   </td>
+</tr>
+
+<tr>
+   <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+
+
+
+<tr> 
+   <td valign=top><img src="images/officer_katrina.jpg" alt="Katrina Salmons"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Katrina Salmons</b></dt>
+      <dd>VP Emeritus, Climbing Guru.
+      <script>document.write(email('katrina.salmons', 'gmail.com'))</script>
+      </dd>
+   </dl>
+
+    I am compulsively, magnetically attracted to rock.  I love rock and it loves
+    me.  When I was little I would beg my dad to take me bouldering, I would
+    dream up places we'd never been.  And, now thanks to our fabulous Outdoors
+    Club I can climb any time I want.  Currently I've been doing a lot of sport
+    climbing, but hopefully soon I'll be getting into trad!  When I can&rsquo;t
+    climb I might decide to camp in the woods, take a hike, clean up a highway,
+    or just watch the stars.  And lastly, my love of rock is balanced by a crazy
+    fear of the water. 
+
+     </td>
+    </tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<!---
+<tr> 
+   <td valign=top><img src="images/officer_baron.jpg" alt="Baron Schwartz"></td>
+   <td valign=top width="100%"> 
+   <dl> 
+      <dt><b>Baron Schwartz</b></dt>
+      <dd>VP Emeritus, HttpKangaroo, Product of Natural Subselection, and Vi Expert.
+      <script>document.write(email('baron', 'sequent.org'))</script>,
+      </dd>
+   </dl>
+   Hi!  I've been involved with the club since its revival a few years ago.  I'm
+   now graduated, but I live in Charlottesville and have had such good times and
+   met so many awesome people through the club that I stick around and plan to
+   keep on doing it.  I work on the website a good bit, because I'm a programmer
+   and it's so much fun to work on something that I'm not getting told to do!  I
+   love hiking and running, camping and hiking, skiing and hiking, and just
+   about everything else we do and hiking.  I also love just going out and looking at the
+   stars or something.  I've been known to be hard-core but I don't need to in
+   order to be happy. 
+     </td>
+    </tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+--!>
+
+<tr> 
+     <td valign=top><img src="images/officer_aarash.jpg" alt="Aarash Sofla"></td>
+     <td valign=top width="100%"> 
+      <dl> 
+       <dt><b>Aarash Sofla</b></dt>
+       <dd>President Emeritus, Head Climbing Instructor. <script>document.write(email('rock',
+'virginia.edu'))</script></dd>
+      </dl>
+      For 10 years before coming to UVa I was barely seen in towns on weekends.
+      Moving around hot deserts to crevassed glaciers, boulders to big walls, 
+      seaside to high altitude. My favorites are alpine climbing, high altitude
+      mountaineering, aid climbing and recently skydiving. In 1999 I was 
+      certified as a climbing trainer and mountain guide. Here in the club I 
+      serve as a climbing instructor-advisor. We think to have the best climbing
+      team of Virginia here at UVa. Let's do it.
+     </td>
+</tr>
+
+<tr>
+   <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/officer_eric.jpg" alt="Eric Stauffer"></td>
+   <td valign=top width="100%">
+     <dl>
+       <dt><b>Eric Stauffer</b></dt>
+       <dd>Co-President. <script>document.write(email('eas6v','virginia.edu'))</script></dd>
+     </dl>
+     My passion for the outdoors began at a young age, when I started 
+     hiking with my dad.  I later attended an outdoor 
+     adventure camp for a few weeks every summer during my early teenage years.  
+     It was there, in the mountains of West Virginia, where I first tried 
+     backpacking, rafting, climbing, caving, mountain biking, and kayaking.  I 
+     was hooked and haven't looked back since.  Lately, climbing has become my 
+     favorite outdoor pursuit.  I also really enjoy hiking, backpacking, 
+     mountain biking, scuba diving, or simply relaxing outside.  Feel free to 
+     email me about leading any trips, either in the local area or beyond!
+   </td>
+</tr>
+
+<tr>
+   <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="images/officer_brian.jpg"  alt="Brian Tai"></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Brian Tai</b></dt>
+      <dd>Vice-President. <script>document.write(email('bct4e',
+'virginia.edu'))</script></dd>
+   </dl>
+     I am living proof that you can be a hardcore engineer and still get outside. I rotate my       time between being a code ninja, a yeti on the mountain, and a guy lost in the woods      pretty regularly. I always say I'll try anything twice, and am a fan of others who share      that belief. I may not know the absolute best route to the next geo-cache but I'm pretty      sure I'll have the most fun getting there.
+   </td>
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/officer_lila.jpg" alt="Lila Warren"></td>
+   <td valign=top width="100%">
+     <dl>
+       <dt><b>Lila Warren</b></dt>
+       <dd>Vice-President. <script>document.write(email('lhw8e','virginia.edu'))</script></dd>
+     </dl>
+     I have been an outdoor enthusiast since birth! I grew up in the countryside
+     of Virginia, canoeing, fishing, and hiking with my family; I also started
+     riding horses and snowboarding at an early age. In high school I went on an
+     Outward Bound course in North Carolina, and also learned the basics of
+     snowshoeing and glacier mountaineering on a trip to the Adirondacks of New
+     York. My favorite outdoor activities are backpacking, snowboarding,
+     horseback riding, and, most recently, flyfishing. Although I'm a country
+     girl at heart, I also love the beach. Let me know if you have any questions
+     or new ideas for trips - and, if you're ever up for an off-the-beaten-path
+     adventure, I'm game. I have been in love with the outdoors from square one.
+     Happy Trails!
+   </td>
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/officer_bob.jpg" alt="Bob Weaver"></td>
+   <td valign=top width="100%">
+     <dl>
+       <dt><b>Bob Weaver</b></dt>
+       <dd>Vice-President. <script>document.write(email('rhw3h','virginia.edu'))</script></dd>
+     </dl>
+     I became an outdoorsman at the age of six months on my first camping trip.  Ever since 	     I have loved every type of outdoors activity I have tried.  When I was eight, I 	          discovered that skiing is the greatest activity of all time.  During high school I 	     found mountain biking to be a close second.  I also love backpacking, hiking, 	          climbing, rafting, camping, kayaking, trail running, slacklining, stargazing, 	          mountaineering, snowshoeing, and basically everything else – especially if it’s cold 	     out and the world is pure and white.  Life is just too short to be spent in libraries 	     – the best learning happens around a campfire with good friends or people you just 	     met.  I hope to introduce you to some of my passions and to learn some new ones from 	     you.
+   </td>
+</tr>
+
+<tr>
+   <td colspan=2>
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top></td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Past Officers</b></dt>
+      <dd>Former presidents are in bold.</dd>
+   </dl>
+   <ul>
+
+    <li>Emily Anderson (2001-2002)</li>
+    <li><b>Chris Bachmann</b> (2001-2003)</li>
+    <li>Lindsey Brown (2005-2006)</li>
+    <li>Quintin Brubaker (2005-2007)</li>
+    <li>Dave Clark (2001-2004)</li>
+    <li>Kahlil Detrich (2003-2004)</li>
+    <li>Rick Evans (2004-2006)</li>
+    <li>Deryn Goodwin  (2001-2002)</li>
+    <li>Ryan Hauer (2005-2006)</li>
+    <li><b>Thiago Ize</b>     (2001-2004)</li>
+    <li><b>Sophie Johnson</b> (2002-2006)</li>
+    <li>Andrew Olesen (2005-2007)</li>
+    <li><b>Matt Rosefsky</b>  (2001-2004)</li>
+    <li>Jeff Scherr    (2001-2003)</li>
+    <li>Baron Schwartz     (2001-2006)</li>
+    <li>Marc Schwartz (2004-2006)</li>
+    <li>Jim Sumner     (2003-2004)</li>
+    <li><b>Case Taintor</b> (2002-2006)</li>
+    <li>David Wade     (2003-2004)</li>
+   </ul>
+</td>
+</tr>
+   
+</tbody> 
+</table>
+<!--#include virtual="footer.html" -->

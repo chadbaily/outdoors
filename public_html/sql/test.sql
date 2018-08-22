@@ -1,0 +1,29 @@
+select
+    ic.c_uid as ic_uid,
+    ic.c_title as ic_title,
+    ty.c_uid as ty_uid,
+    ty.c_title as ty_title,
+    it.existing,
+    it.it_out, cg.g_out,
+    sum(coalesce(it.it_out, 0) + coalesce(cg.g_out, 0)) as items_out
+from m_item_category as ic 
+    inner join m_item_type as ty on ty.c_category = ic.c_uid
+    left outer join (
+        select it.c_type,
+            sum(if(it.c_status = 512, 0, it.c_qty)) as existing,
+            sum(if(it.c_status & 128, it.c_qty, 0)) as it_out
+        from m_item as it
+        where it.c_deleted = 0
+        group by it.c_type
+    ) as it on it.c_type = ty.c_uid
+    left outer join (
+        select cg.c_type, sum(c_qty) as g_out
+        from m_checkout_gear as cg
+        where cg.c_status = 128 and cg.c_deleted = 0
+        group by cg.c_type
+    ) as cg on ty.c_uid = cg.c_type
+where ty.c_deleted = 0
+    and ic.c_deleted = 0
+group by ic.c_uid, ic.c_title, ty.c_uid, ty.c_title
+order by ic.c_title, ty.c_title
+limit 5;

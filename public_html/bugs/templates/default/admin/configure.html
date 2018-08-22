@@ -1,0 +1,39 @@
+<form action="{$smarty.server.PHP_SELF}" method="post">
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<b>&nbsp;{$page_title}</b>
+			<hr size="1">
+			<table border="0">
+				<tr>
+					<th>Variable</th>
+					<th>Value</th>
+					<th>Information</th>
+				</tr>
+				{section name=var loop=$vars}
+				<tr{if $smarty.section.var.iteration is even} class="alt"{/if}>
+					<td>{$vars[var].varname}</td>
+					<td>
+						{if $vars[var].vartype eq "multi"}
+							<select name="{$vars[var].varname}">{build_select box=$vars[var].varname selected=$vars[var].varvalue}</select>
+						{elseif $vars[var].vartype eq "bool"}
+							<input type="radio" name="{$vars[var].varname}" value="1"{if $vars[var].varvalue} checked{/if}> Yes 
+							<input type="radio" name="{$vars[var].varname}" value="0"{if not $vars[var].varvalue} checked{/if}> No 
+						{else}
+							<input type="text" name="{$vars[var].varname}" value="{$vars[var].varvalue}">
+						{/if}
+					</td>
+					<td>{$vars[var].description}</td>
+				</tr>
+				{/section}
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<input type="reset" value="Reset Form">
+			<input type="submit" name="submit" value="Submit Changes">
+		</td>
+	</tr>
+</table>
+</form>

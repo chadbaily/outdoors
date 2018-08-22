@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<form name="theform" id="theform" method="POST">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    error-element="overall-error"
+    form-id="theform">
+    <element
+        required="1"
+        name="title"
+        pre-processing="titlecase"
+        element-id="title" />
+    <element
+        required="1"
+        name="description"
+        pre-processing="trim"
+        element-id="description" />
+    <element
+        required="1"
+        name="start"
+        data-type="datetime"
+        compare-to-id="end"
+        compare-type="less"
+        element-id="start" />
+    <element
+        required="1"
+        name="end"
+        data-type="datetime"
+        element-id="end" />
+    <element
+        required="1"
+        name="signup"
+        data-type="datetime"
+        compare-to-id="start"
+        compare-type="lessequal"
+        element-id="signup" />
+    <element
+        required="1"
+        name="departure"
+        element-id="departure" />
+    <element
+        required="1"
+        name="destination"
+        element-id="destination"
+        />
+    <element
+        required="1"
+        name="fee"
+        data-type="number"
+        element-id="fee"
+        />
+    <element
+        required="1"
+        name="attendees"
+        data-type="number"
+        element-id="attendees"
+        />
+    <element
+        name="waitlist"
+        element-id="waitlist" />
+    <element
+        type="array"
+        name="activity"
+        tag-name="input" />
+</config>
+
+<p class="error" id="overall-error" hidden="1">Some information is incorrect.
+Please correct the errors marked below and resubmit.</p>
+
+<table width="100%">
+
+  <tr hidden="1" id="departure-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%">Departure location</td>
+    <td>
+      <select id="departure" name="departure">
+      <option value="">Choose one</option>
+      {DEPART:}
+      <option value="{C_UID}">{C_TITLE|htmlspecialchars|substr,0,60}</option>
+      {:DEPART}
+      </select>
+      <a href="members/location/create"
+        target="_blank">Create New</a>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="destination-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Destination location</td>
+    <td>
+      <select id="destination" name="destination">
+      <option value="">Choose one</option>
+      {DEST:}
+      <option value="{C_UID}">{C_TITLE|htmlspecialchars|substr,0,60}</option>
+      {:DEST}
+      </select>
+      <a href="members/location/create"
+        target="_blank">Create New</a>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="title-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Title</td>
+    <td><input type="text" name="title" id="title" size="60" 
+        maxlength="255" style="width:100%" /></td>
+  </tr>
+
+  <tr hidden="1" id="description-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Description</td>
+    <td>
+      <textarea name="description" wrap="soft" id="description" rows="16" cols="60"
+        style="width:100%">
+      </textarea>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-comparison-error">
+    <td colspan="2" class="error">
+    The start date must be before the end date.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-data-error">
+    <td colspan="2" class="error">
+    Please enter the start date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="start-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Start date and time</td>
+    <td>
+    <input type="text" name="start" id="start" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'start', 'startSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="startSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="end-data-error">
+    <td colspan="2" class="error">
+    Please enter the end date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="end-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>End date and time</td>
+    <td>
+    <input type="text" name="end" id="end" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'end', 'endSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="endSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-comparison-error">
+    <td colspan="2" class="error">
+    The signup date must not be after the start date.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-data-error">
+    <td colspan="2" class="error">
+    Please enter the signup date in the form YYYY-MM-DD HH:MM:SS.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="signup-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Signup/withdraw deadline</td>
+    <td>
+    <input type="text" name="signup" id="signup" />
+    <img alt="Calendar" title="Calendar"
+      src="assets/cal.gif" width="16" height="16" border="0"
+      onClick="showChooser(this, 'signup', 'signupSpan', 2004, 2020, 'Y-m-d H:i:s');" />
+      <div class="dateChooser" id="signupSpan" style="display:none; visibility:hidden; width:160px">
+      </div>
+    </td>
+  </tr>
+
+  <tr hidden="1" id="fee-data-error">
+    <td colspan="2" class="error">
+    This field must contain a number.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="fee-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Fee</td>
+    <td>
+      <input type="text" name="fee" id="fee" value="" />
+    </td>
+  </tr>
+
+  <tr hidden="1" id="attendees-data-error">
+    <td colspan="2" class="error">
+    This field must contain a number.
+    </td>
+  </tr>
+
+  <tr hidden="1" id="attendees-error">
+    <td colspan="2" class="error">
+    This field is required.
+    </td>
+  </tr>
+
+  <tr>
+    <td>Maximum # of attendees</td>
+    <td>
+      <input type="text" name="attendees" id="attendees" value="" />
+    </td>
+  </tr>
+
+  <tr>
+    <td>Waitlist only?</td>
+    <td>
+      <input type="checkbox" name="waitlist" id="waitlist" value="1" />
+      <label for="waitlist">If you check this box, all attendees will be
+      waitlisted when they join.  <b>Do not use without officer approval</b>.
+      This is a last resort only for trips that are very difficult to schedule
+      fairly.</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Choose all activities you think this adventure fits
+      into.  This will help to classify adventures and make it possible to
+      search for adventures of a certain type.
+    </td>
+    <td>
+      <table width="100%" class="top compact">
+        {ACTIVITY_ROW:}
+        <tr>{ACTIVITY:}
+          <td><input type="checkbox" class="compact" name="activity[]" value="{C_UID}" id="activity{C_UID}" /></td>
+          <td width="{WIDTH}%"><label for="activity{C_UID}">{C_TITLE|htmlspecialchars}</label></td>{:ACTIVITY}
+        </tr>
+        {:ACTIVITY_ROW}
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+    You are ready to go to the next step, adding questions to the adventure.
+    Your adventure won't be posted until you join it yourself, activate it, and (optionally)
+    announce it to the mailing list.
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" colspan="2">
+    <input type="submit" value="Go to Next Step" />
+    </td>
+  </tr>
+
+</table>
+</form>

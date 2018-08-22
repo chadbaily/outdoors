@@ -1,0 +1,10 @@
+/.cvsignore/1.1/Thu Mar 12 03:15:59 2009//
+/create.sql/1.10/Wed Mar  5 00:14:14 2008//
+/drop.sql/1.5/Mon Mar 27 03:46:25 2006//
+/foreign-keys.sql/1.5/Thu Mar 12 03:15:59 2009//
+/implemented-actions.sql/1.7/Mon Mar 27 03:46:25 2006//
+/initialize.sql/1.10/Thu Mar 12 03:15:59 2009//
+/privileges.sql/1.4/Mon Mar 27 03:46:25 2006//
+/setup/1.2/Mon Mar 27 03:46:25 2006//
+/upgrade/1.1/Mon Mar 27 03:46:25 2006//
+D/upgrade-scripts////

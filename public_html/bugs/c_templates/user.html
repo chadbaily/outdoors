@@ -1,0 +1,168 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-07 23:27:41
+         compiled from user.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'date', 'user.html', 83, false),)); ?><table border="0" cellpadding="0" cellspacing="0" width="600">
+    <tr>
+	<td width="300" valign="top">
+	    <form action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+" method="post">
+		<input type="hidden" name="do" value="changepassword">
+		<table border="0" cellpadding="0" cellspacing="0" width="300">
+		    <tr>
+			<td colspan="2" width="300"><b><?php echo $this->_tpl_vars['STRING']['USER_PREF']['ChangePassword']; ?>
+</b></td>
+		    </tr>
+<?php if ($this->_tpl_vars['error']): ?>
+		    <tr>
+			<td colspan="2" width="300" class="error"><?php echo $this->_tpl_vars['error']; ?>
+</td>
+		    </tr>
+<?php endif; ?>
+		    <tr>
+			<td colspan="2" width="300"><?php echo $this->_tpl_vars['STRING']['USER_PREF']['EnterNewPassword']; ?>
+</td>
+		    </tr>
+		    <tr>
+			<td><?php echo $this->_tpl_vars['STRING']['USER_PREF']['Password']; ?>
+: </td>
+			<td><input type="password" name="pass1"></td>
+		    </tr><tr>
+			<td><?php echo $this->_tpl_vars['STRING']['USER_PREF']['Verify']; ?>
+: </td>
+			<td><input type="password" name="pass2"></td>
+		    </tr><tr>
+			<td colspan="2" align="center"><br>
+			    <input type="reset"> <input type="submit" value="Submit"></td>
+		    </tr>
+		</table></form></td>
+	<td width="300" valign="top"><form action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+" method="post">
+		<input type="hidden" name="do" value="changeprefs">
+		<table border="0" cellpadding="0" cellspacing="0" width="300">
+		    <tr>
+			<td colspan="2" width="300"><b><?php echo $this->_tpl_vars['STRING']['USER_PREF']['ChangePreferences']; ?>
+</b></td>
+		    </tr><tr>
+			<td colspan="2" width="300" class="error"></td>
+		    </tr>
+<?php if (isset($this->_sections["pref"])) unset($this->_sections["pref"]);
+$this->_sections["pref"]['name'] = "pref";
+$this->_sections["pref"]['loop'] = is_array($this->_tpl_vars['preferences']) ? count($this->_tpl_vars['preferences']) : max(0, (int)$this->_tpl_vars['preferences']);
+$this->_sections["pref"]['show'] = true;
+$this->_sections["pref"]['max'] = $this->_sections["pref"]['loop'];
+$this->_sections["pref"]['step'] = 1;
+$this->_sections["pref"]['start'] = $this->_sections["pref"]['step'] > 0 ? 0 : $this->_sections["pref"]['loop']-1;
+if ($this->_sections["pref"]['show']) {
+    $this->_sections["pref"]['total'] = $this->_sections["pref"]['loop'];
+    if ($this->_sections["pref"]['total'] == 0)
+        $this->_sections["pref"]['show'] = false;
+} else
+    $this->_sections["pref"]['total'] = 0;
+if ($this->_sections["pref"]['show']):
+
+            for ($this->_sections["pref"]['index'] = $this->_sections["pref"]['start'], $this->_sections["pref"]['iteration'] = 1;
+                 $this->_sections["pref"]['iteration'] <= $this->_sections["pref"]['total'];
+                 $this->_sections["pref"]['index'] += $this->_sections["pref"]['step'], $this->_sections["pref"]['iteration']++):
+$this->_sections["pref"]['rownum'] = $this->_sections["pref"]['iteration'];
+$this->_sections["pref"]['index_prev'] = $this->_sections["pref"]['index'] - $this->_sections["pref"]['step'];
+$this->_sections["pref"]['index_next'] = $this->_sections["pref"]['index'] + $this->_sections["pref"]['step'];
+$this->_sections["pref"]['first']      = ($this->_sections["pref"]['iteration'] == 1);
+$this->_sections["pref"]['last']       = ($this->_sections["pref"]['iteration'] == $this->_sections["pref"]['total']);
+?>
+		    <tr>
+			<td><?php echo $this->_tpl_vars['preferences'][$this->_sections['pref']['index']]['label']; ?>
+: </td>
+			<td><input type="checkbox" name="preferences[]" value="<?php echo $this->_tpl_vars['preferences'][$this->_sections['pref']['index']]['pref']; ?>
+" <?php if ($this->_tpl_vars['preferences'][$this->_sections['pref']['index']]['checked']): ?>checked<?php endif; ?>></td>
+		    </tr>
+<?php endfor; endif; ?>
+		    <tr>
+			<td colspan="2" align="center"><br>
+			    <input type="reset"> <input type="submit" value="Submit"></td>
+		    </tr>
+		</table></form></td>
+    </tr>
+</table>
+<br>
+<form action="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+" method="post">
+    <input type="hidden" name="do" value="changecolumnlist">
+    <table border="0" cellpadding="0" cellspacing="0" width="300">
+	<tr>
+	    <td width="300"><table border="0" cellpadding="0" cellspacing="0" width="300">
+		    <tr>
+			<td width="300" colspan="2"><b><?php echo $this->_tpl_vars['STRING']['USER_PREF']['BugListColumns']; ?>
+</b></td>
+		    </tr><tr>
+			<td width="600" colspan="2"><?php echo $this->_tpl_vars['STRING']['USER_PREF']['ChooseFields']; ?>
+</td>
+		    </tr>
+<?php if (count((array)$this->_tpl_vars['field_titles'])):
+    foreach ((array)$this->_tpl_vars['field_titles'] as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+?>
+		    <tr valign="baseline">
+		        <td><input type="checkbox" name="column_list[]" value="<?php echo $this->_tpl_vars['key']; ?>
+" <?php if (in_array ( $this->_tpl_vars['key'] , $this->_tpl_vars['my_fields'] )): ?>checked<?php endif; ?>></td><td><?php echo $this->_tpl_vars['item']; ?>
+</td>
+		    </tr>
+<?php endforeach; endif; ?>
+		    <tr>
+		        <td align="center" colspan="2"><br>
+			    <input type="reset"> <input type="submit" value="Submit"></td>
+		    </tr>
+		</table></td>
+	    <td valign="top">
+<?php if (count ( $this->_tpl_vars['votes'] )): ?>
+		<b><?php echo $this->_tpl_vars['STRING']['USER_PREF']['Votes']; ?>
+</b>
+		<table border="0" cellpadding="1" cellspacing="1" width="300">
+		    <tr>
+			<th><?php echo $this->_tpl_vars['STRING']['USER_PREF']['Bug']; ?>
+</th>
+			<th><?php echo $this->_tpl_vars['STRING']['USER_PREF']['When']; ?>
+</th>
+			<th>&nbsp;</th>
+		    </tr>
+    <?php if (isset($this->_sections["vote"])) unset($this->_sections["vote"]);
+$this->_sections["vote"]['name'] = "vote";
+$this->_sections["vote"]['loop'] = is_array($this->_tpl_vars['votes']) ? count($this->_tpl_vars['votes']) : max(0, (int)$this->_tpl_vars['votes']);
+$this->_sections["vote"]['show'] = true;
+$this->_sections["vote"]['max'] = $this->_sections["vote"]['loop'];
+$this->_sections["vote"]['step'] = 1;
+$this->_sections["vote"]['start'] = $this->_sections["vote"]['step'] > 0 ? 0 : $this->_sections["vote"]['loop']-1;
+if ($this->_sections["vote"]['show']) {
+    $this->_sections["vote"]['total'] = $this->_sections["vote"]['loop'];
+    if ($this->_sections["vote"]['total'] == 0)
+        $this->_sections["vote"]['show'] = false;
+} else
+    $this->_sections["vote"]['total'] = 0;
+if ($this->_sections["vote"]['show']):
+
+            for ($this->_sections["vote"]['index'] = $this->_sections["vote"]['start'], $this->_sections["vote"]['iteration'] = 1;
+                 $this->_sections["vote"]['iteration'] <= $this->_sections["vote"]['total'];
+                 $this->_sections["vote"]['index'] += $this->_sections["vote"]['step'], $this->_sections["vote"]['iteration']++):
+$this->_sections["vote"]['rownum'] = $this->_sections["vote"]['iteration'];
+$this->_sections["vote"]['index_prev'] = $this->_sections["vote"]['index'] - $this->_sections["vote"]['step'];
+$this->_sections["vote"]['index_next'] = $this->_sections["vote"]['index'] + $this->_sections["vote"]['step'];
+$this->_sections["vote"]['first']      = ($this->_sections["vote"]['iteration'] == 1);
+$this->_sections["vote"]['last']       = ($this->_sections["vote"]['iteration'] == $this->_sections["vote"]['total']);
+?>
+		    <tr<?php if (!($this->_sections['vote']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+			<td align="center"><a href="bug.php?op=show&bugid=<?php echo $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['bug_id']; ?>
+">#<?php echo $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['bug_id']; ?>
+</a></td>
+			<td align="center"><?php echo $this->_run_mod_handler('date', true, $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['created_date'], DATE_FORMAT); ?>
+</td>
+			<td align="center"><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=delvote&bugid=<?php echo $this->_tpl_vars['votes'][$this->_sections['vote']['index']]['bug_id']; ?>
+" onClick="return confirm('<?php echo $this->_tpl_vars['STRING']['USER_PREF']['SureDeleteVote']; ?>
+');"><?php echo $this->_tpl_vars['STRING']['delete']; ?>
+</a></td>
+		    </tr>
+    <?php endfor; endif; ?>
+		</table>
+<?php endif; ?>
+	    </td>
+	</tr>
+    </table>
+</form>

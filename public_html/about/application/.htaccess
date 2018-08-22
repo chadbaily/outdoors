@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "Officers Only"
+AuthUserFile /usr/home/at/public_html/about/application/.htpasswd
+Require user officers
+
+Options +Indexes

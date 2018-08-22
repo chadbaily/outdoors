@@ -1,0 +1,22 @@
+select c_uid 
+from m_member inner join 
+(select c_member, ifnull(max(c_expiration_date),current_date) latest_exp
+ from m_membership where c_deleted = 0  group by c_member) memberships 
+on m_member.c_uid = memberships.c_member 
+where date_sub(latest_exp, interval 14 day) = current_date 
+and c_deleted = 0 and c_receive_email = 1
+insert into m_email (c_owner,c_subject, c_message,
+   c_created_date) values (1,"Your membership is expiring soon!", "Your Outdoors at UVA membership is expiring soon! 
+To renew your membership, just go to http://www.outdoorsatuva.org/members/join/renew. You'll be able to pick from a 12-month membership for $50 and a 5-month one for $30. Just follow the instructions for dropping off or mailing your dues and a new waiver.  Again this year, you'll get your dues back if you lead 4 or more club trips (one of which must be an intro trip). If you've led 4 trips in the past year, you still need to renew your membership above and hand in a waiver - we will waive the dues. Really active members also have the chance to become club officers.
+
+Remember that as a member, you can borrow club gear, sign up for trips, and receive discounts from local merchants. On all official trips, the club will again cover gas and lodging costs. For overnight trips, the club will pay for most food expenses.
+ 
+Please email the officers if you have any questions!
+
+Thanks,
+The Officers
+outdoors-officers@virginia.edu
+",current_date)insert into m_email_recipient (c_email, c_recipient) values (8951,5770)
+insert into m_email_recipient (c_email, c_recipient) values (8951,5845)
+insert into m_email_recipient (c_email, c_recipient) values (8951,5955)
+Finished script successfully

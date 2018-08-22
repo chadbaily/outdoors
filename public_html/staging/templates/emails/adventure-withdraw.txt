@@ -1,0 +1,6 @@
+Dear {TO_NAME},
+
+This email is to confirm that you have withdrawn from adventure '{C_TITLE}'.  
+
+Sincerely,
+{LEADER_NAME}

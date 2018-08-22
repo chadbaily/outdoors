@@ -1,0 +1,243 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Committee Members</h1>
+
+<p>Outdoors at UVa has created two committees: a service committee and a public 
+relations committee to give back to nature and to increase visibility of our
+club. If you have questions related to either of these, you can reach the 
+committee members at <script>document.write(email('outdoors-service',
+'virginia.edu'))</script>. Further contact information is available
+<a href="about/contact.shtml">here</a>.</p> 
+
+<h2>Service Committee Members</h2>
+
+<style type="text/css">
+.officertable img {margin-top:13px}
+</style>
+<table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
+
+<tr>
+   <td valign=top><img src="images/committee_harrington_v2.jpg"  alt="El Capitan"></td> 
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Matt Harrington</b></dt>
+      <dd>Captain / Head Honcho <script>document.write(email('mrh7we',
+'virginia.edu'))</script></dd>
+   </dl>
+   I was born and raised just outside Richmond, and it was there that I
+   learned the love of the wild. I'm a huge fan of anything that gets me
+   out and into touching the natural world. My favorite outdoor sports are
+   hiking, mountain biking, and rock climbing (probably in that order). For
+   the Outdoors Club, I do service so that I can give back to the outdoors
+   community that has been so generous to me in the past years. My motto
+   is: "ever onwards to the next adventure".
+</tr>
+
+<tr> 
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+   <td valign=top><img src="images/committee_franklin_v2.jpg"  alt="Green Ink"></td>
+  <td valign=top width="100%">
+  <dl>
+   <dt><b>John Franklin</b></dt>
+		 <dd>Green House Press Secretary<script>document.write(email('jef5gp',
+		 'virginia.edu'))</script></dd>
+  </dl>
+   Inner tubes are fun. More fun that writing blurbs. 
+</tr>
+
+<tr>
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+
+<tr>
+  <td valign=top><img src="images/committee_guncheon_v2.jpg"  alt="Outdoor Drummer"></td>
+  <td valign=top width="100%">
+   <dl>
+	 <dt><b>Kit Guncheon</b></dt>
+	  <dd>Dirt Root Shredder / Grass Roots Activist <script>document.write(email('kmg7ck',
+				   'virginia.edu'))</script></dd>
+   </dl>
+   Panning for gold is too mainstream. I'm panning for blurbs.
+</tr>
+
+<tr>
+ <td colspan=2>
+  <hr noshade size="1" width="100%">
+	</td>
+</tr>
+
+<tr>
+  <td valign=top><img src="images/committee_villarreal_v2.jpg"  alt="Outdoor Drummer"></td>
+  <td valign=top width="100%">
+ <dl>
+  <dt><b>Jessica Villarreal</b></dt>
+<dd>Arboreal Analyst / Secretary of Commerce <script>document.write(email('jrv4bm',
+		   'virginia.edu'))</script></dd>
+  </dl>
+  I'm pretty sure the blurbs won't find me here.
+</tr>
+<tr>
+  <td colspan=2>
+ <hr noshade size="1" width="100%">
+ </td>
+ </tr>
+
+<tr>
+   <td valign=top><img src="images/committee_blust_v2.jpg"  alt="Hunt Organizer"></td>
+  <td valign=top width="100%">
+ <dl>
+   <dt><b>Adrian Blust</b></dt>
+ <dd>Consultant / Tactical Advisor <script>document.write(email('asb8nk',
+		 'virginia.edu'))</script></dd>
+ </dl>
+   I put my blurb right here! Now it's gone! Curse you ocean! 
+</tr>
+
+<tr>
+  <td colspan=2>
+ <hr noshade size="1" width="100%">
+	</td>
+</tr>
+
+
+</tbody>
+</table>
+
+<h2>Public Relations Committee Members</h2>
+
+<table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
+
+<tr>
+   <td valign=top><img src="images/rsz_committee_kemp.jpg"  alt="Green Ink"></td>
+  <td valign=top width="100%">
+  <dl>
+   <dt><b>Jeremy Kemp</b></dt>
+		 <dd> PR Chair <script>document.write(email('jgk8xd',
+		 'virginia.edu'))</script></dd>
+  </dl>
+   Though I was born in Oregon, my home has always been the 
+   great flat state -- Florida. Between fishing, watersports, 
+   exploring mangrove tunnels, and doing some experimental 
+   kayak surfing I always managed to keep my thirst for Mother 
+   Nature at bay until the real treats came in the summers. 
+   My dad (a former trip leader for the Sierra Club) almost 
+   always insisted that we find a couple weeks to escape the 
+   heat each summer by going to the mountains. After my first 
+   time in the Sierras, I was hooked. Now that I finally live 
+   in a state where the elevation goes above 345 feet, you can 
+   find me hiking, backpacking, mountain biking, and finding 
+   swimming holes in which I can plunge. My favorite piece of 
+   wilderness is the Wind River Range in Wyoming.... if you ever 
+   find yourself in that area do yourself a favor and check it out.
+   Now that I'm an Officer with Outdoors at UVA I can only hope 
+   to infect more unsuspecting souls with my same passion for 
+   everything outdoors. 
+</tr>
+
+<tr>
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/committee-birkenthal.jpg"  alt="Green Ink"></td>
+  <td valign=top width="100%">
+  <dl>
+   <dt><b>David Birkenthal</b></dt>
+		 <dd> PR Committee Member / Tree Enthusiast <script>document.write(email('dab7er',
+		 'virginia.edu'))</script></dd>
+  </dl>
+   Back in Baltimore, for most of the great hikes, I would need to drive all the way out to the 
+   Appalachian Trail. But here in Charlottesville, we are all surrounded by great hiking trails.  I
+   am on the PR Committee for the Outdoors Club because I want to make sure as many 
+   people as possible take advantage of all the opportunity surrounding UVA. So, tell everyone 
+   you know about the best club on grounds! Also, as you can see, I climb way too many trees.
+</tr>
+
+<tr>
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top><img src="images/rsz-committee-johnson.jpg"  alt="Green Ink"></td>
+  <td valign=top width="100%">
+  <dl>
+   <dt><b>Hunter Johnson</b></dt>
+		 <dd> PR Committee Member / GoPro Maniac <script>document.write(email('haj4bk',
+		 'virginia.edu'))</script></dd>
+  </dl>
+   I've spent all of my life growing up in the Heart of the Blue 
+   Ridge Mountains nearby Roanoke, Virginia. From an early age 
+   I've been drawn by the serene beauty of the outdoors. I couldn't 
+   imagine living away from the mountains. My free spirit compels 
+   me to travel as much as possible and makes me up for any kind 
+   of adventure. I dream of conquering the longest trails in the 
+   U.S. such as the CDT, AT, and PCT. My main passions are long 
+   distance running, hiking, camping, and backpacking. Recently 
+   though, I have become addicted to whitewater (both rafting and 
+   kayaking) and am starting to climb. I desire to spread my love 
+   of the outdoors and nature to those around me. Chances are you'll 
+   never find me without a camera, my chief weapon of choice for 
+   inspiring others. I'm so stoked to be apart of this crew and 
+   look forward to spreading the Love of the Great Outdoors! 
+</tr>
+
+<tr>
+   <td colspan=2> 
+   <hr noshade size="1" width="100%">
+   </td>
+</tr>
+
+<tr>
+   <td valign=top >
+   <dl>
+	 <dt><b>Past Service Committee Members</b></dt>
+	</dl>
+   <ul>
+   <li>Andrews Inglis (2013-2014)</li>
+ </ul>
+   </td>
+   <td valign=top width="100%">
+   <dl>
+      <dt><b>Past PR Committee Members</b></dt>
+   </dl>
+   <ul>
+    <li>Hannah Kessenich (2013-2014)</li>
+  </ul>
+  </td>
+</tr>
+   
+</tbody> 
+</table>
+</div>
+
+<!-- Make sure pages without much content don't cause the navbar to overflow the
+    containing box -->
+<div style="clear:both">&nbsp;</div>
+</div>
+
+<p class="copyright">
+
+<a href="http://sourceforge.net/projects/socialclub">Powered by SocialClub</a> |
+<a href="about/copyright-terms-privacy.shtml">Copyright &copy; Outdoors at UVa</a> |
+<a href="about/copyright-terms-privacy.shtml">Terms of Use</a> | 
+<a href="about/copyright-terms-privacy.shtml">Privacy Policy</a> |
+<a href="about/contact.shtml">Contact Us</a> |
+
+</p>
+
+
+</body>
+</html>

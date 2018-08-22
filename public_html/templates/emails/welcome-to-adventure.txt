@@ -1,0 +1,16 @@
+Dear {C_FULL_NAME},
+
+You've joined '{C_TITLE}'.  If you were previously on the waitlist, you are now off it, and you are expected to attend this adventure!
+
+Most adventures have a waitlist.  IF YOU CAN'T ATTEND, PLEASE USE THE LINK BELOW
+TO WITHDRAW, and let the leader know, even if it's last-minute.  Withdrawing
+will automatically let the first person off the waitlist, and will ensure that
+you don't get marked as a no-show in the database.
+
+  Leader: {LEADER_NAME} <{LEADER_EMAIL}> {LEADER_PHONE}
+ Meet at: {DEPARTURE}, {C_START_DATE|_date_format,'l, M j Y \a\t g:i A'}
+     Fee: ${C_FEE}
+Withdraw: {BASEURL}/members/adventure/withdraw/{T_ADVENTURE}
+ Details: {BASEURL}/members/adventure/read/{T_ADVENTURE}
+
+See you soon!  - {LEADER_NAME}

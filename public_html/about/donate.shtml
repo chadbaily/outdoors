@@ -1,0 +1,69 @@
+<!--#include virtual="header.html" -->
+<!-- This page was created  Feb. 2014) -->
+
+<h1>Donations</h1>
+
+
+<dl>
+<dt>Why donate?</dt>
+<dd><p>If you are not familiar with our club, please take a moment to review <a href='about/how-it-works.shtml'>how our club works</a>, and check out what we've been up to:
+<a href='members/main/past-adventures'>past adventure list</a> and <a href='https://www.instagram.com/outdoorsatvirginia/'>photos</a> from select trips.</p>
+
+  <p>In 2013-2014, funding for Outdoors@UVa hit an all-time low. We received 50% of the typical funding in the past couple years, which was already well below the funding level Outdoors@UVa had just 4 years ago. Our club has maintained its membership numbers, but funding is on a downward trend, and we have to anticipate that this trend will continue.</p> 
+  <p>Gear that may have been new while you were a member is now well worn and in many cases in need of replacement, foremost for safety concerns. If we put all of our funding towards replacing gear, we would run out before it is all replaced, and we would not have any money for trips themselves. Just the same, if we invest in the trips, then we are severely limited in what trips we can do now that much of our gear is unusable.</p>
+
+</dd>
+
+<dt>Online donation:</dt>
+
+<dd>
+<p>You may choose any dollar amount you wish to donate. Even donations of $10 can add up quickly. </p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="WRZ2SFK9RQE44">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</dd>
+
+<p>Alternatively, you may donate via <a href='https://securelb.imodules.com/s/1535/customform/index.aspx?sid=1535&gid=16&pgid=1199&cid=2383&dids=880&BLEDIT=1'>UVa Fund</a>.</p>
+
+</dl>
+
+<h1>Payment for Membership</h1>
+<dl>
+<dt>Instructions</dt>
+<dd> Before proceding to pay for a membership, be sure that you have created an account on our <a href='members/join'>website</a>.
+You must create an account on our website to have a membership. If you have done so, but failed to make a payment at the time you
+signed up, you may choose from the options below. Remember that we also need a signed 
+<a href='http://www.outdoorsatuva.org/pub-files/OUVA_Liability_Waiver.pdf'>waiver</a> before we can activate your membership. 
+You can submit your waiver via mail or in person (see respective payment options below).
+</dd>
+<dt>Pay online</dt>
+<dd>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="HHH86H6PDH4ZS">
+<table>
+<tr><td><input type="hidden" name="on0" value="Types">Types</td></tr><tr><td><select name="os0">
+    <option value="5 month (semester)">5 month (semester) $30.00 USD</option>
+	<option value="12 month (year)">12 month (year) $50.00 USD</option>
+	</select> </td></tr>
+	</table>
+	<input type="hidden" name="currency_code" value="USD">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</dd>
+<dt>Pay via mail</dt>
+<dd>You may send a check (made out to Outdoors at UVa) to Outdoors at UVa, P.O. Box 400444, Charlottesville, VA 22904 
+or drop it off at the post office in Newcomb Hall, box 400444 (no postage is necessary if you drop it off at the office). 
+Cash is highly discouraged (Outdoors at UVa is not responsible if it gets lost)
+
+<dt>Pay in person</dt>
+<dd>If absolutely necessary you may meet an officer in person (e.g. to hand in cash dues). Please try to make one of our regularly scheduled <a href='about/schedule.shtml'>gear rooms</a>; if that does not work, you may email us <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> to request a time to meet.
+
+</dl>
+<!--#include virtual="footer.html" -->

@@ -1,0 +1,79 @@
+<form name="multipleForm" id="multipleForm" method="POST" action="members/checkout_gear/create">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="multipleForm">
+    <element
+        name="activity"
+        element-id="activity" />
+    <element
+        name="checkout"
+        element-id="checkout" />{config:}
+    <element
+        name="gear{c_uid}"
+        element-id="gear{c_uid}" />
+    <element
+        required-if="gear{c_uid}"
+        name="gear{c_uid}qty"
+        data-type="integer"
+        error-element="gear{c_uid}-error"
+        compare-to-id="gear{c_uid}avail"
+        compare-type="lessequal"
+        element-id="gear{c_uid}qty" />
+    <element
+        name="gear{c_uid}description"
+        error-element="gear{c_uid}-error"
+        element-id="gear{c_uid}description" />
+    <element    
+        name="gear{c_uid}avail"
+        data-type="integer"
+        required="1"
+        element-id="gear{c_uid}avail" />
+    {:config}
+</config>
+
+<input type="hidden" name="multiple" value="1" />
+<input type="hidden" name="checkout" id="checkout" />
+<input type="hidden" name="activity" id="activity" />
+
+<fieldset>
+<legend>Add in Bulk</legend>
+
+<table class="cleanHeaders" style="width:95%">
+  <tr>
+    <th colspan="2">Type</th>
+    <th style="width:80px">Qty Avail</th>
+    <th style="width:30px">Qty</th>
+    <th style="width:100px">Description</th>
+  </tr>{common:}
+  <tr id="gear{c_uid}-error" hidden="1">
+    <td class="error" colspan="5">Quantity is required and must be an integer.
+    You cannot check out more than is available.</td>
+  </tr>
+  <tr>
+    <td style="width:30px">
+      <input type="hidden" name="gear{c_uid}avail" value="{available}" id="gear{c_uid}avail" />
+      <input type="checkbox" name="gear{c_uid}" value="{c_uid}" id="gear{c_uid}" />
+      <input type="hidden" name="gear[]" value="{c_uid}" />
+    </td>
+    <td>
+      <label for="gear{c_uid}">{ic_title} &#187; {ty_title}</label>
+    </td>
+    <td>{available}</td>
+    <td>
+      <input type="text" name="gear{c_uid}qty" id="gear{c_uid}qty" size="3" style="width:30px"/>
+    </td>
+    <td>
+      <input type="text" name="gear{c_uid}description" id="gear{c_uid}description" maxlength="100" style="width:100px"/>
+    </td>
+  </tr>{:common}
+</table>
+
+<input type="submit" value="Add Gear" />
+
+</fieldset>
+
+</form>

@@ -1,0 +1,14 @@
+<!--#include virtual="header.html" -->
+
+<h1>Outdoors at UVa Member Discounts</h1>
+
+<p>As a member of Outdoors at UVA, you will get discounts at a variety of local businesses.  Outdoors at UVA currently has agreements between the following businesses:</p>
+
+<ul>
+ <li>Blue Ridge Mountain Sports (10%)</li>
+ <li>Extreme Sports (10%)</li>
+ <li>Rocky Top Climbing Gym</li>
+</ul>
+
+<p>For any questions regarding discounts, please ask the businesses.</p>
+<!--#include virtual="footer.html" -->

@@ -1,0 +1,63 @@
+<form name="theform" id="the-form" method="GET">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="the-form">
+    <element
+        name="title"
+        element-id="title" />
+    <element
+        name="location"
+        element-id="location" />
+    <element
+        name="leader"
+        element-id="leader" />
+    <element
+        name="start"
+        element-id="start" />
+    <element
+        name="end"
+        element-id="end" />
+</config>
+
+<fieldset>
+<legend>Filtering Options</legend>
+
+<table>
+  <tr>
+    <td>Where</td>
+    <td>
+      <input type="text" size="10" name="title" id="title" 
+        value="[title]"
+        onFocus="if(this.value=='[title]')this.value='';"
+        onBlur="if(this.value=='')this.value='[title]';"/>
+      <input type="text" size="10" name="location" id="location"
+        value="[location]"
+        onFocus="if(this.value=='[location]')this.value='';"
+        onBlur="if(this.value=='')this.value='[location]';"/>
+      <input type="text" size="10" name="leader" id="leader"
+        value="[leader]"
+        onFocus="if(this.value=='[leader]')this.value='';"
+        onBlur="if(this.value=='')this.value='[leader]';"/>
+    </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>and date is between</td>
+    <td>
+      <input type="text" size="10" name="start" id="start" />
+      and 
+      <input type="text" size="10" name="end" id="end" />
+    </td>
+    <td>
+      <input type="submit" value="Go" />
+    </td>
+  </tr>
+</table>
+
+</fieldset>
+
+</form>

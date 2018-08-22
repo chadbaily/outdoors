@@ -1,0 +1,35 @@
+<form name="theform" id="theform" method="POST" action="members/checkout_item/create">
+    <input type="hidden" name="form-name" id="form-name" value="1" />
+    <input type="hidden" name="checkout" id="checkout" />
+
+<config
+    hidden="1"
+    id="config"
+    sanity-check="form-name"
+    form-id="theform">
+    <element
+        data-type="integer"
+        required="1"
+        name="item"
+        element-id="item" />
+    <element
+        name="checkout"
+        element-id="checkout" />
+</config>
+
+<fieldset>
+<legend>Add a Single Item</legend>
+
+  <p hidden="1" id="item-error" class="error">
+    This field is required and must be an integer.
+  </p>
+
+  <p>Item number:
+    <input type="text" name="item" id="item" size="5" />
+    <input type="submit" value="Add Single Item" />
+  </p>
+
+</fieldset>
+
+</form>
+

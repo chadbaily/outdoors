@@ -1,0 +1,29 @@
+<!--#include virtual="header.html" -->
+
+<h1>Contact Outdoors at UVa</h1>
+
+<p>If you have unanswered questions, please read our <a
+href="about/faq.shtml">frequently asked questions</a> page before emailing
+the officers.  You might get your answer faster, and ease the workload on the
+officers.  Thanks!</p>
+
+<p>If you still need help, please email the officers at
+<script>document.write(email('outdoors-officers', 'virginia.edu'));</script>.
+You may also contact the webmasters by email at
+<script>document.write(email('outdoors-webmaster', 'virginia.edu'));</script>.</p>
+
+<p>If you need to contact us by mail, we suggest using the US Postal Service
+rather than University Messenger Mail, which may take weeks to reach us.  If
+you are on Grounds at UVa, you can take your mail to the Newcomb Hall post
+office, and it will go directly into our box.  Our postal address is</p>
+
+<address style="margin-left:1cm">
+Outdoors at UVa<br>
+P.O. Box 400444<br>
+Charlottesville, Virginia 22904
+</address>
+
+<p>You may also use our
+<a href="members/main/feedback">anonymous feedback form</a>
+to send mail to the officer's list.</p>
+<!--#include virtual="footer.html" -->

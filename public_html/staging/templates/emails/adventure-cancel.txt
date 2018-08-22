@@ -1,0 +1,8 @@
+Hello All,
+
+I'm sorry, but I have cancelled the adventure '{C_TITLE}' that was planned for
+{C_START}.
+
+Sincerely,
+
+{LEADER_NAME}

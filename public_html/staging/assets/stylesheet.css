@@ -1,0 +1,495 @@
+/* General styling */
+
+body, html {
+    background:white;
+}
+
+* {
+    font-family:Verdana, Helvetica, Sans-Serif;
+}
+
+th, td, p, dd, dl, li, body, form, input, textarea, option,
+legend, select, fieldset {
+    font-family:Verdana, Helvetica, Sans-Serif;
+    font-size:small;
+}
+
+tt {
+    color:maroon;
+}
+
+img {
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+caption, legend {
+    font-weight:bold;
+    color: #252;
+}
+
+dt {
+    font-weight:bold;
+}
+
+dt, dd {
+    margin-top: .5em;
+}
+
+form {
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+form.action {
+    margin-top: 1em;
+}
+
+fieldset {
+    margin:2em 0;
+    padding:.5em;
+}
+
+input[type='text']:focus, input[type='password']:focus, textarea:focus {
+    background:#eee;
+}
+input.compact {
+    margin:-5px;
+}
+input.squeeze {
+    font-size:x-small;
+    margin:0px;
+}
+input[type='radio'], input[type='checkbox'] {
+    margin: 0;
+    padding: 0;
+}
+select.compact, select.compact option {
+    font-size:10px;
+}
+
+h1, h2, h3 {
+    font-weight:bold;
+    color: #252;
+}
+h1 {
+    font-size:1.35em;
+    margin-top: 0;
+}
+h2 {
+    font-size:1.2em;
+}
+h3 {
+    font-size:1.15em;
+}
+h4.boxed {
+    padding: 4px;
+    margin: 8px 0;
+    background: #eee;
+    border-style: none none solid solid;
+    border-color: #252;
+    border-width: 1px;
+    font-size:1em;
+}
+
+/* Table Styling */
+
+table {
+    empty-cells:show;
+}
+.borders td, .borders th {
+    border:1px solid gray;
+    padding:3px;
+}
+.borders {
+    border-spacing:0px;
+    border:1px solid gray;
+}
+.collapsed {
+    border-collapse:collapse;
+}
+.elbowroom td, .elbowroom th {
+    padding-right:.5em;
+    padding-left:.5em;
+}
+.top td, .top th {
+    vertical-align: top;
+}
+.odd td {
+    background: #fcfaf2;
+}
+.ruled td {
+    border-bottom: 1px solid #B98601;
+}
+.ruled tr:last-child td {
+    border-bottom: none;
+}
+.ruled a:link, .ruled a:visited {
+    text-decoration: none;
+}
+.ruled a:hover {
+    text-decoration: underline;
+}
+.cleanHeaders th {
+    border-style: none none solid none;
+    border-color: black;
+    border-width: 1px;
+    text-align: left;
+    background: transparent;
+}
+.compact td, .compact th {
+    font-size:smaller;
+}
+.verticalHeaders th {
+    text-align:right;
+    border-right:1px solid #252;
+    white-space:nowrap;
+}
+.verticalHeaders th, .verticalHeaders td {
+    vertical-align:top;
+}
+.topborders th, .topborders td {
+    border-top:1px solid #252;
+}
+
+table.classic {
+    border-top: 1px solid #252;
+    border-bottom: 1px solid #252;
+}
+table.verticalMargins {
+    margin: 1em 0;
+}
+.hoverul:link {
+    text-decoration: none;
+}
+.hoverul:hover {
+    text-decoration: underline;
+}
+
+/* Miscellaneous Styling */
+
+.error {
+    border:1px solid maroon;
+    padding:3px 3px 3px 20px;
+    background: #fc5 url(error.png) no-repeat;
+}
+
+.underage td {
+    color:red;
+}
+
+.underage_paid td {
+    color:pink;
+}
+
+.paid td {
+    color:green;
+}
+
+.notice {
+    background: #dfe url(note.png) no-repeat;
+    border:1px solid #252;
+    padding:3px 3px 3px 20px;
+}
+.parameter {
+    border:1px solid black;
+    margin:1px;
+    padding:1px;
+    width:60px;
+}
+.parameter:focus {
+    background:#eee;
+}
+.tiny {
+    font-size:75%;
+    font-style:italic;
+}
+a.tiny {
+    color:black;
+    text-decoration: none;
+}
+.copyright {
+    font-size:75%;
+}
+.copyright a {
+    text-decoration: none;
+    color: black;
+}
+.disabled {
+    text-decoration: line-through;
+    color: gray;
+}
+img.thumbnail-right {
+    margin: 3px 0 3px 3px;
+    padding: 1px;
+    border: 1px solid #252;
+    float: right;
+}
+img.thumbnail-left {
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    border: 1px solid #252;
+    float: left;
+}
+img.framed {
+    padding: 1px;
+    border: 1px solid #252;
+}
+.indented {
+    margin-left: 2em;
+}
+.comboBox {
+    width: 400px;
+}
+
+/* Tabbed Box Styling */
+.tabbedBox table td {
+    background:url(nw.gif) no-repeat #DDD;
+    color:black;
+    text-align: center;
+    border-right:1px solid #FFF;
+    text-decoration:none;
+    border-bottom:1px solid #FFF;
+    padding: 3px;
+}
+.tabbedBox table td.active {
+    background:url(nw.gif) no-repeat #987;
+    color:white;
+    border-right:1px solid #FFF;
+    text-decoration:none;
+    border-bottom:1px solid #987;
+    font-weight: bold;
+}
+.tabbedBox table td a:link, .tabbedBox table td a:visited {
+    color:black;
+    display: block;
+    width: 100%;
+    text-decoration:none;
+}
+.tabbedBox table td.active a:link, .tabbedBox table td.active a:visited {
+    color:white;
+    text-decoration:none;
+}
+.tabbedBox table {
+    width: 100%;
+}
+.tabbedBox td {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    border:1px solid #987;
+    padding: .5em;
+}
+
+/* Calendar Styling */
+
+
+.calendar {
+    border-collapse:collapse;
+    border-spacing:0px;
+    border:1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+}
+.calendar th {
+    border:1px solid black;
+    padding:3px;
+    background: white;
+    font-weight:normal;
+}
+.calendar td {
+    border: 1px solid #000;
+    padding: 0px;
+    vertical-align: top;
+    background: #FFF4BC;
+}
+.calendar div {
+    overflow: hidden;
+    white-space:nowrap;
+}
+a.past {
+    color:#555;
+}
+td.Jan, td.Mar, td.May, td.Jul, td.Sep, td.Nov {
+    background: #CAD599;
+}
+td.hasEvent {
+    font-weight:bold;
+}
+
+/* Date Chooser Styling */
+.dateChooser td {
+    cursor:default;
+    text-align:center;
+}
+.dateChooser td.dateChooserActive:hover {
+    color:white;
+    background:#0A246A;
+}
+.dateChooser td.dateChooserActiveToday {
+    border: 1px solid red;
+}
+.dateChooser th {
+    background: #aaa;
+    color: white;
+    width: 18px;
+    border: none;
+}
+.dateChooser option, .dateChooser select {
+    font-size:10px;
+}
+.dateChooser {
+    border: 2px outset #aaa;
+    background: white;
+    padding: 1px;
+}
+.dateChooser table {
+    width:160px;
+}
+
+/* Vertical Navigation Styling */
+.navbar ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li {
+    font-size:10px;
+    margin: 0 0 5px 0;
+}
+
+.navbar li a {
+    border:1px #252;
+    border-style: solid solid solid none;
+    display: block;
+    padding: 2px;
+    margin: 0;
+    color: #252;
+    text-decoration: none;
+    width: 100%;
+    background: #eee;
+}
+
+html>body .navbar li a {
+    width: auto;
+}
+
+.navbar li a:hover {
+    text-decoration: none;
+    background: white;
+}
+
+.navbar li a.active {
+    background: #8ae;
+    color: black;
+}
+
+.navbar li a.active:hover {
+    background: #9bf;
+}
+
+.navbar ul ul {
+    margin: 0 0 0 1em;
+    padding: .5em 0 0 0;
+    border: 1px #252;
+    border-style: none none none solid;
+}
+
+
+/* Page Layout */
+#header {
+    margin-bottom: 25px;
+}
+
+#navbar {
+    width: 150px;
+    float: left;
+}
+
+#content {
+    padding: 0px 10px;
+    margin-left: 150px;
+}
+
+#wrapper {
+    border:1px solid red;
+    width: 799px;
+}
+
+/* Print styles */
+@media print {
+    th, td, p, dd, dl, li, body, form, input, textarea, option,
+    legend, select, fieldset {
+        font-family:Times New Roman, Times, Serif;
+    }
+    * {
+        font-family:Times New Roman, Times, Serif;
+    }
+    .tabbedBox {
+        display: none;
+    }
+    #header {
+        display: none;
+    }
+    #navbar {
+        display: none;
+    }
+    #wrapper {
+        border: none;
+        display: inline;
+    }
+    #content {
+        display: inline;
+    }
+    .box {
+        border:none;
+    display:inline;
+    }
+}
+
+/* Tinymenu Styles */
+div.tinyMenu {
+    visibility: hidden;
+    position: absolute;
+    background: #ccc;
+    border: 2px outset #aaa;
+    cursor: default;
+}
+
+div.tinyMenu a {
+    display: block;
+    padding: 2px 5px 2px 20px;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+    white-space:nowrap;
+}
+
+div.tinyMenu a:link, div.tinyMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+div.tinyMenu a:hover {
+    color:white;
+    background:#0A246A;
+    text-decoration: none;
+}
+
+/* Status columns */
+.checked_out, .checked_out td {
+    color:#F00;
+}
+.missing, .missing td {
+    color:#808080;
+    text-decoration: line-through;
+}
+
+.highlight {
+    background:yellow;
+}

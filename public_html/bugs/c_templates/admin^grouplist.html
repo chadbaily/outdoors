@@ -1,0 +1,97 @@
+<?php /* Smarty version 2.3.0, created on 2004-08-04 09:10:25
+         compiled from admin/grouplist.html */ ?>
+<?php $this->_load_plugins(array(
+array('modifier', 'stripslashes', 'admin/grouplist.html', 25, false),)); ?><script language="JavaScript">
+<!--
+	var me = '<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+';
+	<?php echo '
+		
+	function popupGroup(id) {
+		window.open(me + \'?op=edit&use_js=1&group_id=\'+id, \'ewin\', \'dependent=yes,width=250,height=150,scrollbars=1\');
+	}
+	'; ?>
+
+// -->
+</script>
+<table border="0" width="100%">
+  <tr>
+    <td valign="top">
+      <b>&nbsp;<?php echo $this->_tpl_vars['page_title']; ?>
+</b> - <a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&group_id=0" onClick="popupGroup(0); return false;"><?php echo $this->_tpl_vars['STRING']['addnew']; ?>
+ Group</a>
+      <hr size="1">
+      <table border="0" width="100%">
+        <tr>
+          <th class="<?php echo $this->_tpl_vars['headers']['name']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['name']['url']; ?>
+">Name</a></th>
+          <th class="<?php echo $this->_tpl_vars['headers']['count']['class']; ?>
+"><a href="<?php echo $this->_tpl_vars['headers']['count']['url']; ?>
+">Users</a></th>
+					<th>&nbsp;</th>
+        </tr>
+        <?php if (isset($this->_sections["group"])) unset($this->_sections["group"]);
+$this->_sections["group"]['name'] = "group";
+$this->_sections["group"]['loop'] = is_array($this->_tpl_vars['groups']) ? count($this->_tpl_vars['groups']) : max(0, (int)$this->_tpl_vars['groups']);
+$this->_sections["group"]['show'] = true;
+$this->_sections["group"]['max'] = $this->_sections["group"]['loop'];
+$this->_sections["group"]['step'] = 1;
+$this->_sections["group"]['start'] = $this->_sections["group"]['step'] > 0 ? 0 : $this->_sections["group"]['loop']-1;
+if ($this->_sections["group"]['show']) {
+    $this->_sections["group"]['total'] = $this->_sections["group"]['loop'];
+    if ($this->_sections["group"]['total'] == 0)
+        $this->_sections["group"]['show'] = false;
+} else
+    $this->_sections["group"]['total'] = 0;
+if ($this->_sections["group"]['show']):
+
+            for ($this->_sections["group"]['index'] = $this->_sections["group"]['start'], $this->_sections["group"]['iteration'] = 1;
+                 $this->_sections["group"]['iteration'] <= $this->_sections["group"]['total'];
+                 $this->_sections["group"]['index'] += $this->_sections["group"]['step'], $this->_sections["group"]['iteration']++):
+$this->_sections["group"]['rownum'] = $this->_sections["group"]['iteration'];
+$this->_sections["group"]['index_prev'] = $this->_sections["group"]['index'] - $this->_sections["group"]['step'];
+$this->_sections["group"]['index_next'] = $this->_sections["group"]['index'] + $this->_sections["group"]['step'];
+$this->_sections["group"]['first']      = ($this->_sections["group"]['iteration'] == 1);
+$this->_sections["group"]['last']       = ($this->_sections["group"]['iteration'] == $this->_sections["group"]['total']);
+?>
+        <tr<?php if (!($this->_sections['group']['iteration'] % 2)  ): ?> class="alt"<?php endif; ?>>
+          <td><a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=edit&group_id=<?php echo $this->_tpl_vars['groups'][$this->_sections['group']['index']]['group_id']; ?>
+" onClick="popupGroup(<?php echo $this->_tpl_vars['groups'][$this->_sections['group']['index']]['group_id']; ?>
+); return false;"><?php echo $this->_run_mod_handler('stripslashes', true, $this->_tpl_vars['groups'][$this->_sections['group']['index']]['group_name']); ?>
+</a></td>
+          <td align="center"><?php echo $this->_tpl_vars['groups'][$this->_sections['group']['index']]['count']; ?>
+</td>
+					<td align="center">
+						<?php if ($this->_tpl_vars['groups'][$this->_sections['group']['index']]['locked']): ?>
+							Locked
+						<?php else: ?>
+							<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=del&group_id=<?php echo $this->_tpl_vars['groups'][$this->_sections['group']['index']]['group_id']; ?>
+" onClick="return confirm('This will remove all user assignments to this group and the group itself.  Continue?')">Delete</a> | 
+							<a href="<?php echo $GLOBALS['HTTP_SERVER_VARS']['PHP_SELF']; ?>
+?op=purge&group_id=<?php echo $this->_tpl_vars['groups'][$this->_sections['group']['index']]['group_id']; ?>
+" onClick="return confirm('This will remove all user assignments to this group.  Continue?')">Purge</a>
+						<?php endif; ?>
+					</td>
+        </tr>
+        <?php endfor; endif; ?>
+				<tr>
+					<td colspan="3" align="center">
+						<br>
+  					<?php echo $this->_tpl_vars['first']; ?>
+ - <?php echo $this->_tpl_vars['last']; ?>
+ of <?php echo $this->_tpl_vars['total']; ?>
+
+						<br>
+						<?php if ($this->_tpl_vars['pages'] != "1"): ?>[ <?php echo $this->_tpl_vars['pages']; ?>
+ ]<?php endif; ?>
+  					<br>
+					</td>
+				</tr>
+      </table>
+    </td>
+	</tr>
+</table>
