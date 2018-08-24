@@ -125,9 +125,11 @@
 
 </config>
 
-<h2> How to Join the Club</h2>
-
-<p><strong>There are now two ways to join the club!</strong></p>
+<h2>How to Join the Club</h2>
+<p><strong>There is a new way to join the club!</strong>
+ We have been hard at work this summer and have a new and improved way to join. Check it out 
+ <a href='https://outdoors-at-uva-signup.herokuapp.com/signup' target="_blank">here</a>.</p>
+<!-- <p><strong>There are now two ways to join the club!</strong></p>
 <ol>
   <li>The old way, which requires manual activation</li>
   <li>The new way!! Which activates you automatically!</li>
@@ -165,21 +167,21 @@ three steps)</b> tend to be activated within 72 hours;
 however, within the first couple weeks of a semester, the activation time can be
 longer due to the "activation rush". Be aware that if your payment does not match your membership, or
 something is missing, then your activation may take longer. You should see an
-email from us within 72 hours if you need to correct your payment.
+email from us within 72 hours if you need to correct your payment.</p> -->
 
 <p class="error" id="overall-error" hidden="1">Some information is incorrect.
 Please correct the errors marked below and resubmit.</p>
 
-<fieldset>
-<legend>Name and Account Login Information</legend>
+<fieldset hidden="1">
+<legend hidden="1" >Name and Account Login Information</legend>
 
-<p>If you are already a member, or have been a member in the past, you probably
+<p hidden="1" >If you are already a member, or have been a member in the past, you probably
 do not need to join the club.  Instead, you just need to renew your membership.
 To renew your membership, <a href="members/join/renew">log
 in</a> and follow the instructions.  If you are having trouble, please contact
 the officers and we will help you as soon as possible.</p>
 
-<table width="100%" >
+<table hidden="1" width="100%" >
 
   <tr hidden="1" id="firstName-error">
     <td colspan="2" class="error">This field is required.</td>
@@ -283,10 +285,10 @@ the officers and we will help you as soon as possible.</p>
 </table>
 </fieldset>
 
-<fieldset>
-<legend>Contact Information</legend>
+<fieldset hidden="1">
+<legend hidden="1">Contact Information</legend>
 
-<table width="100%" >
+<table hidden="1" width="100%" >
 
   <tr>
     <td colspan="3">Address</td>
@@ -371,12 +373,12 @@ the officers and we will help you as soon as possible.</p>
 
 </fieldset>
 
-<fieldset>
-<legend>Choose a Membership Plan</legend>
+<fieldset hidden="1">
+<legend hidden="1">Choose a Membership Plan</legend>
 
 <p class="error" hidden="1" id="membership-plan-error">This field is required.</p>
 
-<table width="100%" class="top ruled compact cleanHeaders">
+<table hidden="1" width="100%" class="top ruled compact cleanHeaders">
   <tr>
     <th colspan="2">Membership Plan</th>
     <th nowrap="true">Begin/Expire Dates</th>
@@ -396,6 +398,6 @@ the officers and we will help you as soon as possible.</p>
 
 </fieldset>
 
-<p align="right"><input type="submit" value="Proceed to Next Step" /></p>
+<p hidden="1" align="right"><input type="submit" value="Proceed to Next Step" /></p>
 
 </form>
