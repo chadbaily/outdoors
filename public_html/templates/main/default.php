@@ -4,7 +4,7 @@
 <iframe width="560" height="316" style="padding-left:30px;"  src="https://www.youtube.com/embed/FPgSYvawcdQ?rel=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 <p><img src="images/epic2.jpg" height="150" class="thumbnail-right" c alt="A nearby
-waterfall">Outdoors at UVa is an exciting and fun outdoors club based
+waterfall">Outdoors at UVa is a club based
 at the University of Virginia, in Charlottesville, VA.
 We are a 100% student-run organization, so most of our
 members are <a href="http://www.virginia.edu/">University of Virginia</a>
