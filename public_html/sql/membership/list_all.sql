@@ -2,6 +2,7 @@ select
     me.c_uid,
     me.c_first_name,
     me.c_last_name,
+    me.c_email,
     if(date_add(me.c_birth_date, interval 18 year) > ms.c_created_date, 1, 0)
         as c_underage,
     ms.c_uid as membership_uid,
@@ -45,7 +46,7 @@ where (ms.c_status & {inactive,int} = {inactive,int})
     and mt.c_deleted <> 1
     and ifnull(ms.c_expiration_date, current_date) >= current_date
     and ({start,date} is null or ms.c_created_date >= {start,date})
-group by me.c_uid, me.c_first_name, me.c_last_name, me.c_birth_date,
+group by me.c_uid, me.c_first_name, me.c_last_name, me.c_email, me.c_birth_date,
     ms.c_created_date, ms.c_uid, ms.c_type, mt.c_title, ms.c_total_cost,
     mt.c_flexible, ms.c_begin_date, ms.c_expiration_date
 order by me.c_last_name, me.c_first_name

@@ -37,6 +37,7 @@ if the member is underage (red text).</p>
 <table class="top cleanHeaders">
   <tr>
     <th colspan="2">Member</th>
+    <th>Email</th>
     <th>Membership</th>
     <th>Dates</th>
   </tr>{row:}
@@ -47,6 +48,7 @@ if the member is underage (red text).</p>
     <td>
       <label for="check{membership_uid}">{c_last_name}, {c_first_name}</label>
     </td>
+    <td>{c_email}</td>
     <td>{c_title}</td>
     <td>
       &nbsp;{c_begin_date|_date_format,'n/j/y'}
@@ -60,4 +62,3 @@ if the member is underage (red text).</p>
 {:SOME}
 
 </form>
-
