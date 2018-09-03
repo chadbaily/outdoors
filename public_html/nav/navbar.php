@@ -46,7 +46,7 @@ $obj['navbar']->addNode("members/main/member-home", "Member's Area");
 $obj['navbar']->addNode("members/adventure", "Adventures", "Member's Area");
 $obj['navbar']->addNode("members/member/list_all", "Members", "Member's Area");
 $obj['navbar']->addNode("about/reimbursement.shtml", "Reimbursement Form and Policy (Updated!)", "Member's Area");
-$obj['navbar']->addNode("https://docs.google.com/spreadsheets/d/1srgTqgGdCj4B-MhF76eLqVhSWUn_IQ7ww_z1VFIGvAU/edit?usp=sharing", "Gear Inventory", "Member's Area");
+$obj['navbar']->addNode("about/gear.shtml", "Gear", "Member's Area");
 $obj['navbar']->addNode("about/officers.shtml", "Meet the Officers", "Member's Area");
 $obj['navbar']->addNode("../resources/", "Member Resources", "Member's Area");
 $obj['navbar']->addNode("https://www.facebook.com/groups/OutdoorsAtUVA/", "Facebook Group", "Member's Area");
