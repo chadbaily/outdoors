@@ -35,27 +35,8 @@
 <h1>Payment for Membership</h1>
 <dl>
 <dt>Instructions</dt>
-<dd> Before proceding to pay for a membership, be sure that you have created an account on our <a href='members/join'>website</a>.
-You must create an account on our website to have a membership. If you have done so, but failed to make a payment at the time you
-signed up, you may choose from the options below. Remember that we also need a signed 
-<a href='http://www.outdoorsatuva.org/pub-files/OUVA_Liability_Waiver.pdf'>waiver</a> before we can activate your membership. 
-You can submit your waiver via mail or in person (see respective payment options below).
-</dd>
-<dt>Pay online</dt>
-<dd>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="HHH86H6PDH4ZS">
-<table>
-<tr><td><input type="hidden" name="on0" value="Types">Types</td></tr><tr><td><select name="os0">
-    <option value="5 month (semester)">5 month (semester) $30.00 USD</option>
-	<option value="12 month (year)">12 month (year) $50.00 USD</option>
-	</select> </td></tr>
-	</table>
-	<input type="hidden" name="currency_code" value="USD">
-	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+<dd>To pay for a membership and join the club please use the <a href='members/join'>join</a> page. After payment, you will be automatically activated
+	and be able to join trips!
 </dd>
 <dt>Pay via mail</dt>
 <dd>You may send a check (made out to Outdoors at UVa) to Outdoors at UVa, P.O. Box 400444, Charlottesville, VA 22904 
