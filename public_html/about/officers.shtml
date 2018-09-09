@@ -2,438 +2,540 @@
 
 <h1>Outdoors at UVa Officers</h1>
 
-<p>If you have a question for the officers, please check our <a
-href="about/faq.shtml">frequently asked questions</a> page first.  If that
-doesn't help, please <a href="about/contact.shtml">contact us
-directly</a>.</p>
+<p>If you have a question for the officers, please check our <a href="about/faq.shtml">frequently asked questions</a>
+  page first. If that
+  doesn't help, please <a href="about/contact.shtml">contact us
+    directly</a>.</p>
 
 <style type="text/css">
-.officertable img {margin-top:13px}
+  .officertable img {
+    margin-top: 13px
+  }
 
-.rotate90 {
+  .rotate90 {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-}
+  }
 
 
-.rotate270 {
+  .rotate270 {
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
     -o-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
-}
-
+  }
 </style>
 <table cellspacing=4 cellpadding=0 width="100%" border=0 class="officertable">
 
 
-<tr>
-   <td valign=top><br><br><img src="images/Jim_Old.JPG" width=330px" class="rotate90"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Jim Old</b></dt>
-		 <dd>President <br> <script>document.write(email('jeo9mk',
-		 'virginia.edu'))</script></dd>
-	</dl>
-There is one thing some of you will come to understand if you don't already: Shredding is not just an activity, it is a lifestyle.  I shred, I tell jokes, I have fun, I hike some, then I run, then I realize that life is better on wheels and I shred some more.  There is only one group of bikers you can make fun of: Downhill bikers.  Although not always the case, this is because they are scared of climbs... but don't tell them I said that.  
-I'm high on life, and I'll teach you my ways.  I'm from the greatest state in the Union (TEXAS).  If I have a typo, it's either because I did it on purpose or because I'm an Engineer... I like to keep you guessing.  My goal is to get thunder thighs and calves of steel.  If you can't get on a biking trip of mine, I like pina coladas and a good joke.  This club makes me happier than an entire box of Kraft 3-cheeses mac and cheese, so I hope to meet you out in the wild where we can share in the happiness!   
-</tr>
+  <tr>
+    <td valign=top><br><br><img src="images/Jim_Old.JPG" width=330px" class="rotate90"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Jim Old</b></dt>
+        <dd>President <br>
+          <script>document.write(email('jeo9mk',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      There is one thing some of you will come to understand if you don't already: Shredding is not just an activity,
+      it is a lifestyle. I shred, I tell jokes, I have fun, I hike some, then I run, then I realize that life is better
+      on wheels and I shred some more. There is only one group of bikers you can make fun of: Downhill bikers. Although
+      not always the case, this is because they are scared of climbs... but don't tell them I said that.
+      I'm high on life, and I'll teach you my ways. I'm from the greatest state in the Union (TEXAS). If I have a typo,
+      it's either because I did it on purpose or because I'm an Engineer... I like to keep you guessing. My goal is to
+      get thunder thighs and calves of steel. If you can't get on a biking trip of mine, I like pina coladas and a good
+      joke. This club makes me happier than an entire box of Kraft 3-cheeses mac and cheese, so I hope to meet you out
+      in the wild where we can share in the happiness!
+  </tr>
 
 
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
 
-<tr>
-   <td valign=top><img src="images/victoria.JPG" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Victoria Alvarez</b></dt>
-		 <dd>Vice-President <br> <script>document.write(email('vaa2ac',
-		 'virginia.edu'))</script></dd>
-	</dl>
-Sure, life on a golf course was just peachy ... but the muggy swamplands and "hills" of Peachtree City, GA just didn't do it for me. Adventure calls bro. I traded in a golf cart for a pair of hiking boots, threw on a UVA sweatshirt, and came looking for other outdoor thrill-seekers. I stumbled upon an interesting crew of hippie-resembling (except Zakey), lettuce-loving, adventure-addicted, cider-gulping, Moab-obsessed, adrenaline junkie nature freaks. My kind of folks. Warmly welcomed into this band of fearless tree-huggers, I have become their enthusiast of all and master of none. Find me strollin' through the woods, climbing every tree, tryin' out new paddleboard tricks, spending too much time in an Eno (what is homework??), chillin' in sketchy cave crawl spaces, or wiping out like a pro wannabe-shredder. Come along and we'll go do everything we can to get lost in the outdoors. You bring the stories; I'll bring the puns.  
-<br>
-</tr>
-
-
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-<tr>
-   <td valign=top><img src="images/CharlieHaywood.JPG" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Charlie Haywood</b></dt>
-		 <dd> Treasurer <br> Trout Tickler  <br> <script>document.write(email('clh8uf',
-		 'virginia.edu'))</script></dd>
-	</dl>
-Hey you. Yeah you. Now you may have heard of me, and you might not have. But either way, I am everywhere and I am nowhere at the same goddamn time. How do I manage to go on 40+ trips a semester and still do that school thing? Well, the world just might never know. I'm currently studying in the E-school so I've been known to be found atop mountains crunching away on my TI-84 Plus Silver edition, sitting in waterfalls strummin my uke, standing along the banks of streams throwing flying things at swimming things, and anywhere else you can send to the fullest. Also known for my 3a.m. shenanigans, but if you wanna know more about that you'll just have to join the adventure see for yourself sometime ;) 
-</tr>
-
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-<tr>
-   <td valign=top><img src="images/bill.jpg" width=300px  alt="Shredwoman"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Bill Talley</b></dt>
-      <dd> Climbing Advisor <br> Co-Gear Master <br>
-Calcium Commando <br>
-Professional Bizarre Trip Description Writer <br> <script>document.write(email('wst5af',
-'virginia.edu'))</script></dd>
-   </dl>
-"I can't climb just a little. I need to crank like a bastard." -Klem Loskot
-</tr>
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-<tr>
-   <td valign=top><img src="images/lily.JPG" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Lily Wincele</b></dt>
-		 <dd>Co-Gear Master <br> <script>document.write(email('lww7pb',
-		 'virginia.edu'))</script></dd>
-	</dl>
-Lily did not provide a tidbit about herself, so here's a few random facts about her: She likes geology. She loves to ride her road bike, climb rocks, and hike. She volunteers with the SPCA, and also likes animals, especially dogs.
-<br>
-</tr>
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-
-<tr>
-   <td valign=top><img src= "images/officer_roatis.jpg"  alt="Steph"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Stephanie Roatis</b></dt>
-      <dd> PBR Committee Chair <br> Trail Streaking Enthusiast <script>document.write(email('sr9ed',
-'virginia.edu'))</script></dd>
-   </dl>
-   *Record scratch*
- *freeze frame*
-
-Yup thats me. You're probably wondering how I ended up in this situation.
-
-So, I showed up to UVa from the concrete jungle of Chicago (where the brats are bountiful and the sports enthusiasts are far and wide). 
-Next thing I know, these crunchy granola hippy weirdos kidnap me and tell me I need to "shred some gnar" and "get pitted" and "bird up."
-Did it end up being the raddest decision of my college career? You bet your wardrobe full of Patagonias it was. Now, I'm hiking, climbing, backpacking, shredding, and eating berries on the trail that I probably shouldn't. 
-If you ever need a mac-n-cheese pizza loving, cafe au lait addicted, happy-go-lucky Fratelli's fanatic, I'm your girl. Sometimes I'll start a sentence and I don't even know where it's going. 
-I just hope I find it along the way. Anyways. Uhm. WAPAHHHH 
- <a href="https://www.youtube.com/watch?v=hJdF8DJ70Dc">Me in real life!</a>
-</tr>
-
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/emily.png" width=300px  alt="Shredwoman"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Emily Deschambault</b></dt>
-      <dd> Service Committee Chair <br>
- <script>document.write(email('eld7hr',
-'virginia.edu'))</script></dd>
-   </dl>
-Whether I'm getting barked at by seals in rural Scotland or chilling in my hammock on Grounds, you will indeed 'cash me outside.' Become a member of Outdoors at UVA and join me as I do go chasing waterfalls (sorry TLC).
-You can follow along on my adventures at @viewsfromourchacos and @emilygoesexploring. 
-</tr>
-
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-<tr>
-   <td valign=top><img src="images/officer_izzy_franklin.jpg" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Izzy Franklin</b></dt>
-		 <dd>Provost of Flotational Inquiries <br>Gauley Fest Enthusiast  <br> <script>document.write(email('irf2cn',
-		 'virginia.edu'))</script></dd>
-	</dl>
-I'm probably off teaching some scrub how to kayak. Best way to reach me is by birdcall.<br>
-</tr>
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td valign=top><img src="images/victoria.JPG" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Victoria Alvarez</b></dt>
+        <dd>Vice-President <br>
+          <script>document.write(email('vaa2ac',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Sure, life on a golf course was just peachy ... but the muggy swamplands and "hills" of Peachtree City, GA just
+      didn't do it for me. Adventure calls bro. I traded in a golf cart for a pair of hiking boots, threw on a UVA
+      sweatshirt, and came looking for other outdoor thrill-seekers. I stumbled upon an interesting crew of
+      hippie-resembling (except Zakey), lettuce-loving, adventure-addicted, cider-gulping, Moab-obsessed, adrenaline
+      junkie nature freaks. My kind of folks. Warmly welcomed into this band of fearless tree-huggers, I have become
+      their enthusiast of all and master of none. Find me strollin' through the woods, climbing every tree, tryin' out
+      new paddleboard tricks, spending too much time in an Eno (what is homework??), chillin' in sketchy cave crawl
+      spaces, or wiping out like a pro wannabe-shredder. Come along and we'll go do everything we can to get lost in
+      the outdoors. You bring the stories; I'll bring the puns.
+      <br>
+  </tr>
 
 
 
-<tr>
-   <td valign=top><img src="images/SamClinard.jpg" width=300px alt="AT"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Sam Clinard</b></dt>
-      <dd> Hiking Advisor <br> <script>document.write(email('src7gd',
-'virginia.edu'))</script></dd>
-   </dl>
-Physics is a really hard major.
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-
-
-<tr>
-   <td valign=top><img src="images/officer_lu_bio.jpg"  alt="CaveHead"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Victoria Lu</b></dt>
-      <dd> Caving Advisor <br> Service Committee<br> <script>document.write(email('vgl8wt',
-'virginia.edu'))</script></dd>
-   </dl>
-   An adventurer I was born, and an adventurer I will die. You can find me exploring the deepest, darkest depths of the earth or climbing crags.
-</tr>
+  <tr>
+    <td valign=top><img src="images/CharlieHaywood.JPG" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Charlie Haywood</b></dt>
+        <dd> Treasurer <br> Trout Tickler <br>
+          <script>document.write(email('clh8uf',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Hey you. Yeah you. Now you may have heard of me, and you might not have. But either way, I am everywhere and I am
+      nowhere at the same goddamn time. How do I manage to go on 40+ trips a semester and still do that school thing?
+      Well, the world just might never know. I'm currently studying in the E-school so I've been known to be found atop
+      mountains crunching away on my TI-84 Plus Silver edition, sitting in waterfalls strummin my uke, standing along
+      the banks of streams throwing flying things at swimming things, and anywhere else you can send to the fullest.
+      Also known for my 3a.m. shenanigans, but if you wanna know more about that you'll just have to join the adventure
+      see for yourself sometime ;)
+  </tr>
 
 
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><img src="images/bill.jpg" width=300px alt="Shredwoman"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Bill Talley</b></dt>
+        <dd> Climbing Advisor <br> Co-Gear Master <br>
+          Calcium Commando <br>
+          Professional Bizarre Trip Description Writer <br>
+          <script>document.write(email('wst5af',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      "I can't climb just a little. I need to crank like a bastard." -Klem Loskot
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><img src="images/lily.JPG" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Lily Wincele</b></dt>
+        <dd>Co-Gear Master <br>
+          <script>document.write(email('lww7pb',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Lily did not provide a tidbit about herself, so here's a few random facts about her: She likes geology. She loves
+      to ride her road bike, climb rocks, and hike. She volunteers with the SPCA, and also likes animals, especially
+      dogs.
+      <br>
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
 
-<tr>
-   <td valign=top><img src="images/Chad_Baily.JPG" width=300px ></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Chad Baily</b></dt>
-      <dd> Web Master <br> <script>document.write(email('ceb4aq',
-'virginia.edu'))</script></dd>
-   </dl>
-Growing up as a 'watersports' kid but always having a longing for the outdoors, I have traded the sunny skies of the beach for an awe-inspiring life in the mountains. Whether it's learning to 'send it' or making hot cocoa in random places, I am always down for a new adventure and a good time. Change your environment and watch it change you.
-</tr>
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td valign=top><img src="images/officer_roatis.jpg" alt="Steph"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Stephanie Roatis</b></dt>
+        <dd> PBR Committee Chair <br> Trail Streaking Enthusiast
+          <script>document.write(email('sr9ed',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      *Record scratch*
+      *freeze frame*
 
-<tr>
-   <td valign=top><br><br><img src="images/Allie_Lowy.JPG" width=300px class="rotate270" ></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Allie Lowy</b></dt>
-      <dd> Sustainability Guru <br> <script>document.write(email('anl4uc',
-'virginia.edu'))</script></dd>
-   </dl>
-Born in a slotcanyon with a cup of Greenberry's coffee in one hand and a hilarious trip description in the other, Allie has been sending it since el dia uno. Hiking Upward gave her ascent from the womb a 6.9/5 for difficulty. When she first summited Old Rag at age 4, the mountain gods prophesied that she was destined for a life of the utmost sendiness, and a life of sendiness she has led. Leaving behind the majestic Maryland suburbs was tough, but the Blue Ridge mountains were calling and she had to go. Although her spatial existence is sometimes elusive, rumor has it that the scent of a Bodo's egg and cheese bagel, the sound of an acoustic guitar by a bonfire, or the faintest whisper of the word "Moab" will send her running from miles away. If you need someone to swim in a waterfall with, cry in an eno with, talk about trees, or cuddle the heck outta your dog, she is yo girl. Her only requests are that you laugh at her jokes and pretend she's taken off the ODC patagonia in the past week (but it's so soft and warm and such a pleasing shade of green, can ya blame her?)
-</tr>
+      Yup thats me. You're probably wondering how I ended up in this situation.
 
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+      So, I showed up to UVa from the concrete jungle of Chicago (where the brats are bountiful and the sports
+      enthusiasts are far and wide).
+      Next thing I know, these crunchy granola hippy weirdos kidnap me and tell me I need to "shred some gnar" and "get
+      pitted" and "bird up."
+      Did it end up being the raddest decision of my college career? You bet your wardrobe full of Patagonias it was.
+      Now, I'm hiking, climbing, backpacking, shredding, and eating berries on the trail that I probably shouldn't.
+      If you ever need a mac-n-cheese pizza loving, cafe au lait addicted, happy-go-lucky Fratelli's fanatic, I'm your
+      girl. Sometimes I'll start a sentence and I don't even know where it's going.
+      I just hope I find it along the way. Anyways. Uhm. WAPAHHHH
+      <a href="https://www.youtube.com/watch?v=hJdF8DJ70Dc">Me in real life!</a>
+  </tr>
 
-
-<tr>
-   <td valign=top><img src="images/zakey.jpg" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Zakey Faieq</b></dt>
-		 <dd>Facilitator of Shred <br> Chieftain Bike Mechanic <script>document.write(email('zaf2xk',
-		 'virginia.edu'))</script></dd>
-	</dl>
-Over time, the Outdoors Club has come to mean a lot to me. It has taught me, along with countless others, numerous ways to 'shred the gnar' in nature.
-For that, I am grateful, and I will do the best I can in my role as Facilitator of Shred to insure others also have the same opportunities to 'shred the gnar'.
-<br>
-So, in conclusion, <br>
-Ride or Die.
-</tr>
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/tristan.jpg" width=300px ></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Tristan Hamrick</b></dt>
-		 <dd>Climbing Advisor <br> Lord of the Ropes and Cams <script>document.write(email('tah5ua',
-		 'virginia.edu'))</script></dd>
-	</dl>
-The club needs a grappling hook, right?
-<br>
-</tr>
-
-	<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/rhaude.jpg" width=300px alt="SHREDDDD!"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Rhaude Dahlinghaus</b></dt>
-		 <dd>PBR aficionado <br> Climbing Advisor <br> All-sport Athlete <br> <script>document.write(email('sd5hb',
-		 'virginia.edu'))</script></dd>
-	</dl>
-Hi my name is Rhaude and I like rocks. I came here to party.
-<br>
-</tr>
-
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/audrey.jpg" width=300px  alt="Shredwoman"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Audrey Stephenson</b></dt>
-      <dd> Whitewater (Rubber) Boat Ridin' Advisor <br> <br>
-
-Audrenalene Rush <br>
- <script>document.write(email('As8ke',
-'virginia.edu'))</script></dd>
-   </dl>
-Growing up 20 minutes from beautiful hikes like Dragon's Tooth and McAfee's Knob and having a family who loves to hike, I've been lucky to know the simple peace of a mountain since I was young. But I didn't pay much thought to outdoor rec until I started working for a Boy Scout camp as a raft guide on the Lower New River. That experience showed me that the outdoors can pull you into the present moment not just through serenity but through the adrenaline of big waves and the flow of quick maneuvering. Nature simultaneously fills you with awe for the earth that we live on while getting you high off seeing what you can accomplish. The outdoors accepts anyone willing to give it a chance and I'm glad I get to share some of these awesome experiences with you granola peeps.
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/emily.png" width=300px alt="Shredwoman"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Emily Deschambault</b></dt>
+        <dd> Service Committee Chair <br>
+          <script>document.write(email('eld7hr',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Whether I'm getting barked at by seals in rural Scotland or chilling in my hammock on Grounds, you will indeed
+      'cash me outside.' Become a member of Outdoors at UVA and join me as I do go chasing waterfalls (sorry TLC).
+      You can follow along on my adventures at @viewsfromourchacos and @emilygoesexploring.
+  </tr>
 
 
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/SydneyHalleman.JPG" width=300px  alt="Shredwoman"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Sydney Halleman</b></dt>
-      <dd> Gear Master at Sea <script>document.write(email('sh3kh',
-'virginia.edu'))</script></dd>
-   </dl>
-  Alright kiddos, I bike, I ski, I climb, I nag you about your gear. I can climb your dorm room or house and you can DAMN well be sure that I'll be climbing your apartment complex if you have overdue gear.
-</tr>
+  <tr>
+    <td valign=top><img src="images/officer_izzy_franklin.jpg" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Izzy Franklin</b></dt>
+        <dd>Provost of Flotational Inquiries <br>Gauley Fest Enthusiast <br>
+          <script>document.write(email('irf2cn',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      I'm probably off teaching some scrub how to kayak. Best way to reach me is by birdcall.<br>
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
 
 
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
-<tr>
-   <td valign=top><img src="images/officer_gilb.png"  alt="Scottcadet"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Scott Gilb</b></dt>
-      <dd> P(B)R Committee / Scotty McShredhead <script>document.write(email('sg4fc',
-'virginia.edu'))</script></dd>
-   </dl>
-   Currently, the only thing more entertaining to me than sticks and rocks are mountain bikes. I hail from the wee little hamlet of Warrenton, on the outskirts of Northern Virginia. In the olden days of suburban pavement-shenanigans, I would shred upon unicycles, ripsticks, slacklines, and everything in-between. 
-   Since then, my proclivity to try new, wonkier outdoors activities has only grown. Come shred with me, be it on a bike or on the bongos. 
-   I will provide reassurance, and maybe some snacks.
-</tr>
+  <tr>
+    <td valign=top><img src="images/SamClinard.jpg" width=300px alt="AT"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Sam Clinard</b></dt>
+        <dd> Hiking Advisor <br>
+          <script>document.write(email('src7gd',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Physics is a really hard major.
+  </tr>
 
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<tr>
-   <td valign=top><img src="images/officer_kemp.png"  alt="Jdog"></td>
-  <td valign=top width="100%">
-	 <dl>
-	   <dt><b>Jeremy Kemp</b></dt>
-		 <dd>Local Legend <br> Van-Dwelling Alum <br> <script>document.write(email('jgk8xd',
-		 'virginia.edu'))</script></dd>
-	</dl>
-   Born on the banks of the Columbia River with a steaming mug of French-press brew in one hand, and a copy of Walden and a corncob pipe double-fisted in the other, I've always felt like I didn't belong under a roof. I still don't, so let's go see a sunrise, bag some peaks, or build a fire and jam. 
-This is the Outdoors Club and we want you to join the fun. <a href="http://www.dailyprogress.com/news/local/prospective-uva-law-student-sleeps-in-a-converted-van-to/article_2636ecfa-d87c-11e7-b617-c73fcb94a379.html"> Check out my van </a>
-</tr>
-					   
-<tr>
-  <td colspan=2>
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
 
-<tr>
-<td valign=top><img src="images/NedEnde.jpg"  width=300px alt="Nedarico"></td>
-<td valign=top width="100%">
-<div class="class1"><dl>
+  <tr>
+    <td valign=top><img src="images/officer_lu_bio.jpg" alt="CaveHead"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Victoria Lu</b></dt>
+        <dd> Caving Advisor <br> Service Committee<br>
+          <script>document.write(email('vgl8wt',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      An adventurer I was born, and an adventurer I will die. You can find me exploring the deepest, darkest depths of
+      the earth or climbing crags.
+  </tr>
 
-<dt><b>Nedward Ende</b></dt>
- <dd>Provost of Floatational Inquiries <script>document.write(email('eie6hd','virginia.edu'))</script></dd>
 
-</dl>
-I like being outside, both of doors and of my comfort zone. It's there that you can find who you are. 
-Growing up teaching kayaking and climbing in the legendary metropolis of Richmond, Va, and picking
-up a wee bit of mountain biking along the way, I am always looking for new adventures and company on my journey in the general direction of enlightenment.
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<tr>
-<td colspan=2>
-<hr noshade size="1" width="100%">
-</td>
-</tr>
 
-<tr>
-   <td valign=top><img src= "images/officer_Tanner.jpg"  alt="G Fish"></td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Garrett Tanner</b></dt>
-      <dd> Non-Biological Horse Trainer / Grand Daddy g. Fish / Thomas Shredison <script>document.write(email('gpt9ce',
-'virginia.edu'))</script></dd>
-   </dl>
-   Ride or Die is a lifestyle, not a choice. 
-   Born at the age of 13 on the sandy beaches of Fort Lauderdale Florida, where I began my adventuring with skim board and a icy cold 6-pack. 
-   As I got older, I eventually bought myself a one-way ticket on the shoelace express traveling to the Blue Ridge Mountains in Virginia. In the ancient 
-   forests of Central VA, I am here to guide you on your shreddiest of dreams where, together we will consume the tastiest of single track known in all of Appalachia. 
-</tr>
+  <tr>
+    <td valign=top><img src="images/Chad_Baily.JPG" width=300px></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Chad Baily</b></dt>
+        <dd> Web Master <br>
+          <script>document.write(email('ceb4aq',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Growing up as a 'watersports' kid but always having a longing for the outdoors, I have traded the sunny skies of
+      the beach for an awe-inspiring life in the mountains. Whether it's learning to 'send it' or making hot cocoa in
+      random places, I am always down for a new adventure and a good time. Change your environment and watch it change
+      you.
+  </tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<tr>
-<td colspan=2>
-<hr noshade size="1" width="100%">
-</td>
-</tr>
+  <tr>
+    <td valign=top><br><br><img src="images/Allie_Lowy.JPG" width=300px class="rotate270"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Allie Lowy</b></dt>
+        <dd> Sustainability Guru <br>
+          <script>document.write(email('anl4uc',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Born in a slotcanyon with a cup of Greenberry's coffee in one hand and a hilarious trip description in the other,
+      Allie has been sending it since el dia uno. Hiking Upward gave her ascent from the womb a 6.9/5 for difficulty.
+      When she first summited Old Rag at age 4, the mountain gods prophesied that she was destined for a life of the
+      utmost sendiness, and a life of sendiness she has led. Leaving behind the majestic Maryland suburbs was tough,
+      but the Blue Ridge mountains were calling and she had to go. Although her spatial existence is sometimes elusive,
+      rumor has it that the scent of a Bodo's egg and cheese bagel, the sound of an acoustic guitar by a bonfire, or
+      the faintest whisper of the word "Moab" will send her running from miles away. If you need someone to swim in a
+      waterfall with, cry in an eno with, talk about trees, or cuddle the heck outta your dog, she is yo girl. Her only
+      requests are that you laugh at her jokes and pretend she's taken off the ODC patagonia in the past week (but it's
+      so soft and warm and such a pleasing shade of green, can ya blame her?)
+  </tr>
 
-<!-- ~~~Possible New Formatting of Ned and Jeremiah's blurb~~~
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+
+  <tr>
+    <td valign=top><img src="images/zakey.jpg" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Zakey Faieq</b></dt>
+        <dd>Facilitator of Shred <br> Chieftain Bike Mechanic
+          <script>document.write(email('zaf2xk',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Over time, the Outdoors Club has come to mean a lot to me. It has taught me, along with countless others,
+      numerous ways to 'shred the gnar' in nature.
+      For that, I am grateful, and I will do the best I can in my role as Facilitator of Shred to insure others also
+      have the same opportunities to 'shred the gnar'.
+      <br>
+      So, in conclusion, <br>
+      Ride or Die.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/tristan.jpg" width=300px></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Tristan Hamrick</b></dt>
+        <dd>Climbing Advisor <br> Lord of the Ropes and Cams
+          <script>document.write(email('tah5ua',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      The club needs a grappling hook, right?
+      <br>
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/rhaude.jpg" width=300px alt="SHREDDDD!"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Rhaude Dahlinghaus</b></dt>
+        <dd>PBR aficionado <br> Climbing Advisor <br> All-sport Athlete <br>
+          <script>document.write(email('sd5hb',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Hi my name is Rhaude and I like rocks. I came here to party.
+      <br>
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/audrey.jpg" width=300px alt="Shredwoman"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Audrey Stephenson</b></dt>
+        <dd> Whitewater (Rubber) Boat Ridin' Advisor <br> <br>
+
+          Audrenalene Rush <br>
+          <script>document.write(email('As8ke',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Growing up 20 minutes from beautiful hikes like Dragon's Tooth and McAfee's Knob and having a family who loves to
+      hike, I've been lucky to know the simple peace of a mountain since I was young. But I didn't pay much thought to
+      outdoor rec until I started working for a Boy Scout camp as a raft guide on the Lower New River. That experience
+      showed me that the outdoors can pull you into the present moment not just through serenity but through the
+      adrenaline of big waves and the flow of quick maneuvering. Nature simultaneously fills you with awe for the earth
+      that we live on while getting you high off seeing what you can accomplish. The outdoors accepts anyone willing to
+      give it a chance and I'm glad I get to share some of these awesome experiences with you granola peeps.
+  </tr>
+
+
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/SydneyHalleman.JPG" width=300px alt="Shredwoman"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Sydney Halleman</b></dt>
+        <dd> Gear Master at Sea
+          <script>document.write(email('sh3kh',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Alright kiddos, I bike, I ski, I climb, I nag you about your gear. I can climb your dorm room or house and you
+      can DAMN well be sure that I'll be climbing your apartment complex if you have overdue gear.
+  </tr>
+
+
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td valign=top><img src="images/officer_gilb.png" alt="Scottcadet"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Scott Gilb</b></dt>
+        <dd> P(B)R Committee / Scotty McShredhead
+          <script>document.write(email('sg4fc',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Currently, the only thing more entertaining to me than sticks and rocks are mountain bikes. I hail from the wee
+      little hamlet of Warrenton, on the outskirts of Northern Virginia. In the olden days of suburban
+      pavement-shenanigans, I would shred upon unicycles, ripsticks, slacklines, and everything in-between.
+      Since then, my proclivity to try new, wonkier outdoors activities has only grown. Come shred with me, be it on a
+      bike or on the bongos.
+      I will provide reassurance, and maybe some snacks.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><img src="images/officer_kemp.png" alt="Jdog"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Jeremy Kemp</b></dt>
+        <dd>Local Legend <br> Van-Dwelling Alum <br>
+          <script>document.write(email('jgk8xd',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Born on the banks of the Columbia River with a steaming mug of French-press brew in one hand, and a copy of
+      Walden and a corncob pipe double-fisted in the other, I've always felt like I didn't belong under a roof. I still
+      don't, so let's go see a sunrise, bag some peaks, or build a fire and jam.
+      This is the Outdoors Club and we want you to join the fun. <a href="http://www.dailyprogress.com/news/local/prospective-uva-law-student-sleeps-in-a-converted-van-to/article_2636ecfa-d87c-11e7-b617-c73fcb94a379.html">
+        Check out my van </a>
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><img src="images/NedEnde.jpg" width=300px alt="Nedarico"></td>
+    <td valign=top width="100%">
+      <div class="class1">
+        <dl>
+
+          <dt><b>Nedward Ende</b></dt>
+          <dd>Provost of Floatational Inquiries
+            <script>document.write(email('eie6hd', 'virginia.edu'))</script>
+          </dd>
+
+        </dl>
+        I like being outside, both of doors and of my comfort zone. It's there that you can find who you are.
+        Growing up teaching kayaking and climbing in the legendary metropolis of Richmond, Va, and picking
+        up a wee bit of mountain biking along the way, I am always looking for new adventures and company on my journey
+        in the general direction of enlightenment.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><img src="images/officer_Tanner.jpg" alt="G Fish"></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Garrett Tanner</b></dt>
+        <dd> Non-Biological Horse Trainer / Grand Daddy g. Fish / Thomas Shredison
+          <script>document.write(email('gpt9ce',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      Ride or Die is a lifestyle, not a choice.
+      Born at the age of 13 on the sandy beaches of Fort Lauderdale Florida, where I began my adventuring with skim
+      board and a icy cold 6-pack.
+      As I got older, I eventually bought myself a one-way ticket on the shoelace express traveling to the Blue Ridge
+      Mountains in Virginia. In the ancient
+      forests of Central VA, I am here to guide you on your shreddiest of dreams where, together we will consume the
+      tastiest of single track known in all of Appalachia.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <!-- ~~~Possible New Formatting of Ned and Jeremiah's blurb~~~
 <tr>
  <td valign=top width="100%">
  <div class="item">
@@ -463,13 +565,13 @@ up a wee bit of mountain biking along the way, I am always looking for new adven
 </tr> -->
 
 
-<tr> 
-   <td colspan=2> 
-   <hr noshade size="1" width="100%">
-   </td>
-</tr>
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
 
-<!--Old officers blurbs
+  <!--Old officers blurbs
 <tr>
    <td valign=top><img src= "images/officers_early.jpg"  alt="BenJamin"></td>
    <td valign=top width="100%">
@@ -683,91 +785,91 @@ My love for the outdoors started well before my memories. Growing in the Vermont
    </td>
 </tr> -->
 
-<tr>
-   <td valign=top>
-  <dl>
-	<dt><b>Former Presidents</b></dt>
-	 </dl>
-	<ul>
+  <tr>
+    <td valign=top>
+      <dl>
+        <dt><b>Former Presidents</b></dt>
+      </dl>
+      <ul>
 
-    <li><b>Chris Bachmann</b> (2001-2003)</li>
-	<li><b>Thiago Ize</b>     (2001-2004)</li>
-    <li><b>Matt Rosefsky</b>  (2001-2004)</li>
-    <li><b>Aarash Sofla</b> (2001-2008)</li>
-	<li><b>Sophie Johnson</b> (2002-2006)</li>
-    <li><b>Case Taintor</b> (2002-2006)</li>
-    <li><b>Katrina Salmons</b> (2005-2011)</li>
-    <li><b>Eric Stauffer</b> (2006-2008)</li>
-    <li><b>Lila Warren</b>  (2006-2009)</li>
-	<li><b>Meghan Magennis</b> (2007-2008)</li>
-    <li><b>Bob Weaver</b>  (2007-2009)</li>
-    <li><b>Emily Powell</b> (2008-2010)</li>
-    <li><b>Lindsay Jamerson</b> (2008-2011)</li>
-    <li><b>Lynn Nichols</b> (2010-2011)</li>
-	<li><b>Rebecca Green</b> (-2012)</li>
-    <li><b>Emily Wetzel</b>  (-2012)</li>
-	<li><b>Michael Crocket</b> (2012-2013)</li>
-	<li><b>Helena Groves</b> (2013-2015)</li>
-	<li><b>Joseph Gibson</b> (2013-2015)</li>
+        <li><b>Chris Bachmann</b> (2001-2003)</li>
+        <li><b>Thiago Ize</b> (2001-2004)</li>
+        <li><b>Matt Rosefsky</b> (2001-2004)</li>
+        <li><b>Aarash Sofla</b> (2001-2008)</li>
+        <li><b>Sophie Johnson</b> (2002-2006)</li>
+        <li><b>Case Taintor</b> (2002-2006)</li>
+        <li><b>Katrina Salmons</b> (2005-2011)</li>
+        <li><b>Eric Stauffer</b> (2006-2008)</li>
+        <li><b>Lila Warren</b> (2006-2009)</li>
+        <li><b>Meghan Magennis</b> (2007-2008)</li>
+        <li><b>Bob Weaver</b> (2007-2009)</li>
+        <li><b>Emily Powell</b> (2008-2010)</li>
+        <li><b>Lindsay Jamerson</b> (2008-2011)</li>
+        <li><b>Lynn Nichols</b> (2010-2011)</li>
+        <li><b>Rebecca Green</b> (-2012)</li>
+        <li><b>Emily Wetzel</b> (-2012)</li>
+        <li><b>Michael Crocket</b> (2012-2013)</li>
+        <li><b>Helena Groves</b> (2013-2015)</li>
+        <li><b>Joseph Gibson</b> (2013-2015)</li>
         <li><b>Hannah Kessenich</b> (2015-2016)</li>
-<li><b>Jeremy Kemp</b> (2016-2017) </li>
-<li><b>Stephanie Roatis</b> (Fall 2017)</li>
-<li><b>Zakey Faieq</b>(Spring 2018)</li>
+        <li><b>Jeremy Kemp</b> (2016-2017) </li>
+        <li><b>Stephanie Roatis</b> (Fall 2017)</li>
+        <li><b>Zakey Faieq</b>(Spring 2018)</li>
 
 
-   </td>
-   <td valign=top width="100%">
-   <dl>
-      <dt><b>Former Officers (non presidents)</b></dt>
-   </dl>
-   <ul>
+    </td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Former Officers (non presidents)</b></dt>
+      </dl>
+      <ul>
 
-    
-    <li>Emily Anderson (2001-2002)</li>
-    <li>Dave Clark (2001-2004)</li>
-    <li>Deryn Goodwin  (2001-2002)</li>
-    <li>Jeff Scherr    (2001-2003)</li>
-    <li>Baron Schwartz     (2001-2006)</li>
-	<li>Kahlil Detrich (2003-2004)</li>
-    <li>Jim Sumner     (2003-2004)</li>
-    <li>David Wade     (2003-2004)</li>
-    <li>Rick Evans (2004-2006)</li>
-    <li>Marc Schwartz (2004-2006)</li>
-    <li>Lindsey Brown (2005-2006)</li>
-    <li>Quintin Brubaker (2005-2007)</li>
-    <li>Ryan Hauer (2005-2006)</li>
-    <li>Andrew Olesen (2005-2007)</li>
-    <li>Brian Tai (2007-2008)</li>
-    <li>Campbell Grant  (2007-2009)</li>
-    <li>Chris Chin (2008-2009)</li>
-    <li>Ryan Gilchrist (2008-2010)</li>
-    <li>Cristina Liebolt (2008-2010)</li>
-    <li>Joe Thompson (2009-2011)
-    <li>Ryan Elliott (2010-2011)</li>
-    <li>Amelia Rode (2010-2011)</li>
-    <li>Andrew Richers (2011-2012)</li>
-    <li>Andrew Cassidy (-2011)</li>
-	<li>David Abbott (-2012)</li>
-	<li>Jackson Bewley (2012-2014)</li>
-    <li>Max McHale (2012-2013)</li>
-    <li>Lindsey Shall (2012-2013)</li>
-	<li>Mitchell Oliver (2013-2014)</li>
-	<li>Olivia Rappe (2013-2014)</li>
-	<li>Charles Romero</li>
-	<li>Juliet Hammer (2014-2015)</li>
-	<li>Lucie Hanes (2014-2015)</li>
-	<li>Jack Armstrong (2014-2016)</li>
-        <li>Andrews  Inglis (2012-2016)</li>
-<li> Adrian Blust (2012-2016)</li>
-<li> Colin Mealey (2016-2017) </li>
-<li> Jeremiah Reilly (2012-2016) </li>
-<li> Isaac King (2012-2016) </li>
 
-   </ul>
-</td>
-</tr>
-   
-</tbody> 
+        <li>Emily Anderson (2001-2002)</li>
+        <li>Dave Clark (2001-2004)</li>
+        <li>Deryn Goodwin (2001-2002)</li>
+        <li>Jeff Scherr (2001-2003)</li>
+        <li>Baron Schwartz (2001-2006)</li>
+        <li>Kahlil Detrich (2003-2004)</li>
+        <li>Jim Sumner (2003-2004)</li>
+        <li>David Wade (2003-2004)</li>
+        <li>Rick Evans (2004-2006)</li>
+        <li>Marc Schwartz (2004-2006)</li>
+        <li>Lindsey Brown (2005-2006)</li>
+        <li>Quintin Brubaker (2005-2007)</li>
+        <li>Ryan Hauer (2005-2006)</li>
+        <li>Andrew Olesen (2005-2007)</li>
+        <li>Brian Tai (2007-2008)</li>
+        <li>Campbell Grant (2007-2009)</li>
+        <li>Chris Chin (2008-2009)</li>
+        <li>Ryan Gilchrist (2008-2010)</li>
+        <li>Cristina Liebolt (2008-2010)</li>
+        <li>Joe Thompson (2009-2011)
+        <li>Ryan Elliott (2010-2011)</li>
+        <li>Amelia Rode (2010-2011)</li>
+        <li>Andrew Richers (2011-2012)</li>
+        <li>Andrew Cassidy (-2011)</li>
+        <li>David Abbott (-2012)</li>
+        <li>Jackson Bewley (2012-2014)</li>
+        <li>Max McHale (2012-2013)</li>
+        <li>Lindsey Shall (2012-2013)</li>
+        <li>Mitchell Oliver (2013-2014)</li>
+        <li>Olivia Rappe (2013-2014)</li>
+        <li>Charles Romero</li>
+        <li>Juliet Hammer (2014-2015)</li>
+        <li>Lucie Hanes (2014-2015)</li>
+        <li>Jack Armstrong (2014-2016)</li>
+        <li>Andrews Inglis (2012-2016)</li>
+        <li> Adrian Blust (2012-2016)</li>
+        <li> Colin Mealey (2016-2017) </li>
+        <li> Jeremiah Reilly (2012-2016) </li>
+        <li> Isaac King (2012-2016) </li>
+
+      </ul>
+    </td>
+  </tr>
+
+  </tbody>
 </table>
 </div>
 
@@ -778,14 +880,15 @@ My love for the outdoors started well before my memories. Growing in the Vermont
 
 <p class="copyright">
 
-<a href="http://sourceforge.net/projects/socialclub">Powered by SocialClub</a> |
-<a href="about/copyright-terms-privacy.shtml">Copyright &copy; Outdoors at UVa</a> |
-<a href="about/copyright-terms-privacy.shtml">Terms of Use</a> | 
-<a href="about/copyright-terms-privacy.shtml">Privacy Policy</a> |
-<a href="about/contact.shtml">Contact Us</a> |
+  <a href="http://sourceforge.net/projects/socialclub">Powered by SocialClub</a> |
+  <a href="about/copyright-terms-privacy.shtml">Copyright &copy; Outdoors at UVa</a> |
+  <a href="about/copyright-terms-privacy.shtml">Terms of Use</a> |
+  <a href="about/copyright-terms-privacy.shtml">Privacy Policy</a> |
+  <a href="about/contact.shtml">Contact Us</a> |
 
 </p>
 
 
 </body>
+
 </html>
