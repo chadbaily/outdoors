@@ -1,6 +1,6 @@
 <!--#include virtual="header.html" -->
 
-<h1>Outdoors at UVA Gear</h1>
+<h1>It's a shed...it's a shack, it's the <strong>Gear Room</strong></h1>
 
 To see all of our current gear available for checkout please click <a href="https://docs.google.com/spreadsheets/d/1srgTqgGdCj4B-MhF76eLqVhSWUn_IQ7ww_z1VFIGvAU/edit?usp=sharing"
     target="_blank">here</a>.
@@ -28,5 +28,21 @@ your responsibility, not the officers, to return your gear in the condition you 
 <br>
 <br> If none of these times work for you, please email the officers <script>document.write(email('outdoors-officers', 'virginia.edu'));</script> a few days in advance
 to schedule a separate time to be let into the gear room.
+
+<h2>Directions
+</h2>
+<ol>
+    <li>Start at Echols Dorm</li>
+    <li>Go right on McCormick</li>
+    <li>Turn right on Alderman Rd</li>
+    <li>Take a left on Leake Drive</li>
+    <li>Walk to the end of the road. There are several buildings and parking on either side.</li>
+    <li>Pass a picnic table on the right. Keep going!</li>
+    <li>Walk straight to the first big maintenance building directly ahead. Walk behind the building on the left side. Walk up the stairs</li>
+    <li>End: Knock on the door.</li>
+</ol>
+<div>
+    <img src="./images/gear_room.jpg" width="600px">
+</div>
 
 <!--#include virtual="footer.html" -->
