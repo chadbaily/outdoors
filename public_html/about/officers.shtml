@@ -358,7 +358,7 @@
     <td valign=top width="100%">
       <dl>
         <dt><b>Mason Riffee</b></dt>
-        <dd>Biking Guru <br> Running Guru
+        <dd>Biking Guru <br> Running Guru <br>
           <script>document.write(email('hmr2xq',
               'virginia.edu'))</script>
         </dd>
