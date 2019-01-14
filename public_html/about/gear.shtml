@@ -2,53 +2,76 @@
 
 <h1>It's a shed...it's a shack, it's the <strong>Gear Room</strong></h1>
 
-To see all of our current gear available for checkout please click <a href="https://docs.google.com/spreadsheets/d/1srgTqgGdCj4B-MhF76eLqVhSWUn_IQ7ww_z1VFIGvAU/edit?usp=sharing"
-    target="_blank">here</a>.
-<br>
-<br> Gear is due one week from when it is checked out. Keeping gear past its due date is a <strong>UVA Honor Offense.</strong>
-<br>
-<br> Here is the current gear room schedule as of <strong>Fall 2018</strong>:
+To see all of our current gear available for checkout please click
+<a href="https://gear-tracker.com/" target="_blank">here</a>. <br />
+<br />
+<a href="https://goo.gl/maps/8qRp4Krr1yK2" target="_blank"
+  >Here is a google map link to the gear room so its extra easy to find.</a
+>
+<br />
+<br />
+Gear is due one week from when it is checked out. Keeping gear past its due date
+is a <strong>UVA Honor Offense.</strong> <br />
+<br />
+<!-- <strong
+  >The Gear Room times for 2019 are currently being made. Please check back
+  shortly</strong
+>
+<br /> -->
+<br> Here is the current gear room schedule for the week of <strong>1/14/2019</strong> ONLY:
 <ul>
-    <li>Monday 11am -> Lily Wincele </li>
-    <li>Tuesday 6pm -> Bill Talley</li>
-    <li>Wednesday 5pm -> Charlie Haywood</li>
-    <li>Thursday 12:15pm -> Victoria Alvarez</li>
-    <!-- <li>Sunday pm -> Jim Old</li> -->
+    <li>Monday 6:30pm -> Bill Talley (804) 248-5317</li>
+    <li>Wednesday 5:15pm -> Lily Wincele (914) 648-0584</li>
+    <li>Thursday 5pm -> Charlie Haywood (540) 319-1117</li>
+    <li>Friday 11am -> Victoria Alvarez (678) 520-3016</li>
+    <li>Sunday 5pm -> Jim Old (409) 225-896</li>
 </ul>
-<br> Please text the officer leading of the gear room if you will be late. <strong>Officers remain at the gear room
-    only
-    for as long as people are checking in/out gear (usually about 20-25 minutes).</strong> You may also purchase ODC
-t-shirts,
-hoo rags, bucket hats, and more at the gear room!
-<br>
-<br>
-<strong>BEFORE CHECKING OUT AND RETURNING GEAR, READ OUR HANDBOOK
-    <a href="https://docs.google.com/document/d/1DglEsx2yKP5OyjhtaeEJ6T1PqSxMJOsarl8tZHjnTtU/edit?usp=sharing" target="_blank">
-        HERE</a>.
-</strong>
-If you return damaged, dirty, or incomplete gear, you will jeopardize your ability to check out gear in the future. It
-is
-your responsibility, not the officers, to return your gear in the condition you received it.
-<br>
-<br> If none of these times work for you, please email the officers
-<script>document.write(email('outdoors-officers', 'virginia.edu'));</script> a few days in advance
-to schedule a separate time to be let into the gear room.
 
-<h2>Directions
-</h2>
+<br />
+Please text the officer leading of the gear room if you will be late.
+<strong
+  >Officers remain at the gear room only for as long as people are checking
+  in/out gear (usually about 20-25 minutes).</strong
+>
+You may also purchase ODC t-shirts, hoo rags, bucket hats, and more at the gear
+room! <br />
+<br />
+<strong
+  >BEFORE CHECKING OUT AND RETURNING GEAR, READ OUR HANDBOOK
+  <a
+    href="https://docs.google.com/document/d/1DglEsx2yKP5OyjhtaeEJ6T1PqSxMJOsarl8tZHjnTtU/edit?usp=sharing"
+    target="_blank"
+  >
+    HERE</a
+  >.
+</strong>
+If you return damaged, dirty, or incomplete gear, you will jeopardize your
+ability to check out gear in the future. It is your responsibility, not the
+officers, to return your gear in the condition you received it. <br />
+<br />
+If none of these times work for you, please email the officers
+<script>
+  document.write(email('outdoors-officers', 'virginia.edu'));
+</script>
+a few days in advance to schedule a separate time to be let into the gear room.
+
+<h2>Directions</h2>
 <ol>
-    <li>Start at Echols Dorm</li>
-    <li>Go right on McCormick</li>
-    <li>Turn right on Alderman Rd</li>
-    <li>Take a left on Leake Drive</li>
-    <li>Walk to the end of the road. There are several buildings and parking on either side.</li>
-    <li>Pass a picnic table on the right. Keep going!</li>
-    <li>Walk straight to the first big maintenance building directly ahead. Walk behind the building on the left side.
-        Walk up the stairs</li>
-    <li>End: Knock on the door.</li>
+  <li>Start at Echols Dorm</li>
+  <li>Go right on McCormick</li>
+  <li>Turn right on Alderman Rd</li>
+  <li>Take a left on Leake Drive</li>
+  <li>
+    Walk to the end of the road. There are several buildings and parking on
+    either side.
+  </li>
+  <li>Pass a picnic table on the right. Keep going!</li>
+  <li>
+    Walk straight to the first big maintenance building directly ahead. Walk
+    behind the building on the left side. Walk up the stairs
+  </li>
+  <li>End: Knock on the door.</li>
 </ol>
-<div>
-    <img src="./images/how to get to gear room.png" width="600px">
-</div>
+<div><img src="./images/how to get to gear room.png" width="600px" /></div>
 
 <!--#include virtual="footer.html" -->
