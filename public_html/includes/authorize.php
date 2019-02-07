@@ -54,10 +54,10 @@ else {
 # Check the webserver's time against the database server's time.
 # Allow 60 seconds of difference before aborting the page execution.
 if (isset($cfg['db_server_time']) && $cfg['db_server_time']
-        && abs(strtotime($cfg['db_server_time']) - time()) > 60) {
+        && abs(strtotime($cfg['db_server_time']) - time()) > 70) {
     $res['navbar'] = "Member's Area";
     $res['content'] = "Error: the database server's time is incorrect.  "
-        . "I have notified the webmasters.";
+        . "I have notified the webmasters. Time difference is: " . abs(strtotime($cfg['db_server_time']) - time()) . " seconds";
     trigger_error("DB server time: $cfg[db_server_time].  "
         . "Webserver time: " .  time(), E_USER_ERROR);
 
