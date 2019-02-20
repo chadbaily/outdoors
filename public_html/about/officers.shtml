@@ -442,6 +442,48 @@
     </td>
   </tr>
 
+  <tr>
+    <td valign=top><br><br><img src="images/anna_cuddeback.jpeg" width=300px></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Anna Cuddeback</b></dt>
+        <dd>Resident Astronut<br>
+          <script>document.write(email('atc4yk',
+              'virginia.edu'))</script>
+        </dd>
+      </dl>
+      The three phrases that best sum up Anna Cuddeback are as follows: Ballin' on a budget, peace, love and dirt, and "may I please have a bandaid?"
+      Anna is a croc-obsessed life form, and her diet subsists primarily of peanut butter clif bars and Dunkin' iced coffee.
+      She is also emotionally attached to her Nalgene. If you're not sure where she is, you can probably find her bouldering at Slaughter or scooping up deals at your local Goodwill.
+      Like Dwight Schrute, she always keeps an extra set of Birkenstocks in the car for special occasions.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
+  <tr>
+    <td valign=top><br><br><img src="images/matthew_houff.jpeg" width=300px></td>
+    <td valign=top width="100%">
+      <dl>
+        <dt><b>Matthew Houff</b></dt>
+        <dd>
+          <script>document.write(email('matthewhouff98',
+              'gmail.com'))</script>
+        </dd>
+      </dl>
+      I've been practicing unexpected aerial dismounts on my mountain bike for some time now. I enjoy climbing boulders when I'm not crashing into them.
+      I like being outside (duh), swimming in cold water, and taking deep breaths in the woods. I love adventures and seeing beginners get stoked for their first whack at shredding outside.
+  </tr>
+
+  <tr>
+    <td colspan=2>
+      <hr noshade size="1" width="100%">
+    </td>
+  </tr>
+
   <!-- ~~~Possible New Formatting of Ned and Jeremiah's blurb~~~
 <tr>
  <td valign=top width="100%">
