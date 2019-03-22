@@ -12,7 +12,7 @@
 <a href="https://www.facebook.com/groups/OutdoorsAtUVA/"> <img src="images/58_fb.png" style="padding-right:10px;" align="left"></a> Join our Facebook page for important updates and to connect with other members!
 <br>
 <br>
-<a href="https://www.instagram.com/outdoorsatvirginia/"> <img src="images/instalogo.png" style="padding-left:5px;" align="right" height="77px" width="77px"></a>
+<a href="https://www.instagram.com/uvaoutdoors/"> <img src="images/instalogo.png" style="padding-left:5px;" align="right" height="77px" width="77px"></a>
 If you'd like photos from any of your trips to be featured on our instagram, email the officers with photos or links to photo albums and we'll add it for you!
     </td>
 
@@ -27,7 +27,7 @@ If you'd like photos from any of your trips to be featured on our instagram, ema
 	</script>
       <!--End Rotating Image Block -->
       </a>
-       Check out the <a href="https://www.instagram.com/outdoorsatvirginia/">photo
+       Check out the <a href="https://www.instagram.com/uvaoutdoors/">photo
       galleries</a>.  If you have photos, <a 
 href="http://www.outdoorsatuva.org/resources/?PostingPictures"> 
 post them!</a>

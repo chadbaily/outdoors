@@ -37,7 +37,7 @@ $obj['navbar']->addNode("about/officers.shtml", "Club Officers", "Home");
 # $obj['navbar']->addNode("about/committees.shtml", "Committee Members", "Home");
 $obj['navbar']->addNode("members/main/past-adventures", "Past Adventures", "Home");
 $obj['navbar']->addNode("about/donate.shtml", "Donate / Pay Dues", "Home");
-$obj['navbar']->addNode("https://www.instagram.com/outdoorsatvirginia/'target=_blank'", "Instagram", "Home");
+$obj['navbar']->addNode("https://www.instagram.com/uvaoutdoors/'target=_blank'", "Instagram", "Home");
 
 
 $obj['navbar']->addNode("members/join", "Join {CLUB_NAME}");
@@ -50,7 +50,7 @@ $obj['navbar']->addNode("about/gear.shtml", "Gear", "Member's Area");
 $obj['navbar']->addNode("about/officers.shtml", "Meet the Officers", "Member's Area");
 $obj['navbar']->addNode("../resources/", "Member Resources", "Member's Area");
 $obj['navbar']->addNode("https://www.facebook.com/groups/OutdoorsAtUVA/'target=_blank'", "Facebook Group", "Member's Area");
-$obj['navbar']->addNode("https://www.instagram.com/outdoorsatvirginia/'target=_blank'", "Instagram", "Member's Area");
+$obj['navbar']->addNode("https://www.instagram.com/uvaoutdoors/'target=_blank'", "Instagram", "Member's Area");
 $obj['navbar']->addNode("members/classified_ad", "Classified Ads", "Member's Area");
 $obj['navbar']->addNode("members/profile", "Profile", "Member's Area");
 

@@ -53,7 +53,7 @@ leadership skills.
 </blockquote>
 <br>
 
-<a href="https://www.instagram.com/outdoorsatvirginia/"> Check us out on Instagram:<br><br>
+<a href="https://www.instagram.com/uvaoutdoors/"> Check us out on Instagram:<br><br>
 <img src="images/insta.png" 
 height="100"
 style="padding-left:40px;">
